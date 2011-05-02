@@ -1,0 +1,76 @@
+
+.main .orcamento{
+
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;	
+}
+
+.tableOrcm{
+	font-family: Calibri;	
+}
+
+.tableOrcm td{
+	font-size: 90%;	
+}
+
+.tableOrcm tr{
+	
+}
+
+.tableOrcm td.dado{
+	text-align:center;
+}
+
+.date td{
+	background: transparent url(../images/green_header_background.gif) repeat-x top left;
+	text-align: center;
+	font-weight: bold;
+	color: #FFFFFF
+}
+
+.header td{
+	background: transparent url(../images/gray_header_background.gif) repeat-x top left;	
+	text-align: center;
+	font-weight: bold;
+}
+
+
+.header td.header_categoria{
+	
+}
+
+.categoria{
+	background: transparent url(../images/gray_row_background.gif) repeat-x top left;
+}
+
+.categoria td{
+	font-weight: bold;	
+}
+
+.categoria_cred{
+	background: transparent url(../images/blue_row_background.gif) repeat-x top left;
+}
+
+.categoria_cred td{
+	font-weight: bold;	
+}
+
+.subcategoria{
+	padding-left: 15px;
+}
+
+.subcategoria_cred td{
+	background-color: #D7EBFF
+}
+
+.saldo td{
+	background: transparent url(../images/gray_header_background.gif) repeat-x top left;
+	font-weight: bold;	
+	font-size: 100%;
+}
+
+span.warning{
+	font-weight: bold;
+	color: #FF0000;	
+}

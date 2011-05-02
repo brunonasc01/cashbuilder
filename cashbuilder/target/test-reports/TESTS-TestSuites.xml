@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="saow5036" id="0" name="OrcamentoTests" package="com.cashbuilder" tests="2" time="0.784" timestamp="2011-02-23T20:15:14">
+      <properties />
+
+      <testcase classname="com.cashbuilder.OrcamentoTests" name="testSomething" time="0.752" />
+
+      <testcase classname="com.cashbuilder.OrcamentoTests" name="testaGravacao" time="0.016" />
+
+      <system-out><![CDATA[--Output from testSomething--
+--Output from testaGravacao--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+--Output from testaGravacao--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="saow5036" id="1" name="OrcmItemTests" package="com.cashbuilder" tests="2" time="1.019" timestamp="2011-02-23T20:15:14">
+      <properties />
+
+      <testcase classname="com.cashbuilder.OrcmItemTests" name="testSomething" time="0.016" />
+
+      <testcase classname="com.cashbuilder.OrcmItemTests" name="testBusca" time="1.003" />
+
+      <system-out><![CDATA[--Output from testSomething--
+--Output from testBusca--
+total 210.0 categoria Vestuário
+total 265.0 categoria Higiene
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+--Output from testBusca--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

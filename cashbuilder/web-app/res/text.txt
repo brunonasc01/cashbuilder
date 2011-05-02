@@ -1,0 +1,55 @@
+public static CfgRule getMNEMONICRule()
+{
+	return new CfgRule(COMPONENT.METADATA_ID)
+	{
+		public boolean apply(IDepOperator anOperator, OperatorInstanceFinder aFinder) throws Exception
+		{
+			((COMPONENTRulesManager) this.getOwnRuleManager(anOperator)).applyMNEMONICRule(
+					((CfgOperator) anOperator).getOwnerComponent(), (ComponentsTree) aFinder);
+			return true;
+		}
+
+		public String getObserverMneumonic()
+		{
+			return MNEMONIC;
+		}
+
+	};
+}
+	
+public void applyMNEMONICRule(Component aComponent, ComponentsTree aTree) throws Exception {}	
+
+
+public static final String MNEMONIC			= "MNEMONIC";
+
+
+// ==========
+try
+{
+	AttributeData dataAttrib = aComponent.getAttributeData(MNEMONIC);
+	saveAttributeStatus(dataAttrib);
+	applyMNEMONICRule(aComponent, aTree);
+	handleRuleExecutionCompletion(dataAttrib, aComponent, aTree);
+}
+catch (ValueNotValidException vnve)
+{
+	AttributeData attrData = aComponent.getAttributeData(MNEMONIC);
+	attrData.setOwnRulesPendency(true);
+	attrData.setOwnRulesErrorMessage("own_rules_error_in_another_att_msg", vnve.getMessage());
+}
+	
+	
+/**
+ * Calcula característica MNEMONIC.
+ * 
+ * @param aComponent Componente.
+ * @param aTree Árvore de componentes.
+ * @exception java.lang.Exception
+ */
+public void applyMNEMONICRule(Component aComponent, ComponentsTree aTree) throws Exception
+{
+	AttributeData attData = aComponent.getAttributeData(MNEMONIC);
+}
+
+RuleApplier.registerOperator(MNEMONIC);	
+	
