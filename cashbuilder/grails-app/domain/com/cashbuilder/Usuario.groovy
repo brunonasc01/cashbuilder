@@ -9,8 +9,8 @@ class Usuario {
 	
     static constraints = {
 		
-		userId(size:3..20,unique:true)
-		password(size: 6..8, 
+		userId(size:3..20,unique:true,blank:false)
+		password(size: 6..8,blank:false, 
 					Validator: { passwd, user ->
 						return passwd != user.userId
 					}

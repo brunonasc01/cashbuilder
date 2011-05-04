@@ -30,7 +30,7 @@
                 <g:renderErrors bean="${usuarioInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="registro_save" >
+            <g:form action="save" >
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -49,16 +49,7 @@
                                     <label for="password"><g:message code="usuario.password.label" default="Password" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'password', 'errors')}">
-                                    <g:passwordField name="password" maxlength="8" value="${usuarioInstance?.password}" />
-                                </td>
-                            </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="passwordRepeat"><g:message code="usuario.password.label" default="Repetir Senha" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'passwordRepeat', 'errors')}">
-                                    <g:passwordField name="passwordRepeat" maxlength="8" value="${usuarioInstance?.passwordRepeat}" />
+                                    <g:textField name="password" maxlength="8" value="${usuarioInstance?.password}" />
                                 </td>
                             </tr>
                         

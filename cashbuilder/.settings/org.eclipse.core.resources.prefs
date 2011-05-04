@@ -1,5 +1,6 @@
-#Mon Mar 21 12:00:12 AMT 2011
+#Tue May 03 14:21:54 BRT 2011
 eclipse.preferences.version=1
+encoding//grails-app/i18n/messages_pt_BR.properties=UTF-8
 encoding//grails-app/views/administracao/index.gsp=UTF-8
 encoding//grails-app/views/home/index.gsp=UTF-8
 encoding//grails-app/views/login/index.gsp=UTF-8
@@ -7,6 +8,5 @@ encoding//grails-app/views/relatorio/fluxocaixa.gsp=UTF-8
 encoding//grails-app/views/relatorio/grafico.gsp=UTF-8
 encoding//grails-app/views/relatorio/orcamento.gsp=UTF-8
 encoding//grails-app/views/search/search.gsp=UTF-8
-encoding//grails-app/views/usuario/registro.gsp=UTF-8
 encoding//src/groovy/com/cashbuilder/utils/DateUtils.groovy=UTF-8
 encoding/<project>=UTF-8
