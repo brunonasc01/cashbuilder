@@ -1,0 +1,41 @@
+
+.logo {
+	margin-top: 10px;
+ 	background-color: #CCDDCC;
+ 	height: 50px;
+}
+
+.subheader {
+ 	background-color: #CCCCCC;
+ 	height: 25px;
+}
+
+.menu {
+	background-color: #DDCCCC;
+	height: 75px;
+}
+
+.box_saldo {
+	background-color: #EEFFFF;
+	height: 150px;
+}
+
+.box_registro {
+	background-color: #FFEEFF;
+	height: 300px;
+}
+
+.box_ultimos_pgs {
+	background-color: #FFFFEE;
+	height: 300px;
+}
+
+.box_tags {
+	background-color: #DDCCCC;
+	height: 150px;
+}
+
+.rodape {
+	background-color: #CCDDCC;
+	height: 25px;
+}
