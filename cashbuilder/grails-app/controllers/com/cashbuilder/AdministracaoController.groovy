@@ -16,7 +16,7 @@ class AdministracaoController {
 	
 	def valida_login = {
 		
-		session.user = Usuario.findByUserIdAndPassword(params.userId,params.password)
+		session.user = Usuario.findByEmailAndPassword(params.email,params.password)
 		
 		if(session.user){
 			redirect(controller:'home')

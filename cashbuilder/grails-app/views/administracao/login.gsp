@@ -18,10 +18,10 @@
 					<tbody>
 						<tr class="prop">
 						    <td valign="top" class="name">
-						        <label for="userId">User</label>
+						        <label for="email">E-mail</label>
 						    </td>
 						    <td valign="top" class="value">
-						        <g:textField name="userId" maxlength="20" value="" />
+						        <g:textField name="email" maxlength="20" value="" />
 						    </td>
 						</tr>
 						

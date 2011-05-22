@@ -8,64 +8,59 @@
     </head>
     <body>
 	  	<div class="span-24">
-		  	
-		  		<g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
-            </g:if>
             <g:hasErrors bean="${usuarioInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${usuarioInstance}" as="list" />
-            </div>
+            	<div class="error">
+                	<g:renderErrors bean="${usuarioInstance}" as="list" />
+            	</div>
             </g:hasErrors>
-            <g:form action="save_reg" >
-                <div class="dialog">
-                    <table>
-                        <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="userId"><g:message code="usuario.userId.label" default="User Id" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'userId', 'errors')}">
-                                    <g:textField name="userId" maxlength="20" value="${usuarioInstance?.userId}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="password"><g:message code="usuario.password.label" default="Password" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'password', 'errors')}">
-                                    <g:passwordField name="password" maxlength="8" value="${usuarioInstance?.password}" />
-                                </td>
-                            </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="passwordRepeat"><g:message code="usuario.password.label" default="Repetir Senha" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'passwordRepeat', 'errors')}">
-                                    <g:passwordField name="passwordRepeat" maxlength="8" value="${usuarioInstance?.passwordRepeat}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="email"><g:message code="usuario.email.label" default="Email" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'email', 'errors')}">
-                                    <g:textField name="email" value="${usuarioInstance?.email}" />
-                                </td>
-                            </tr>
-                        
-                        </tbody>
-                    </table>
-                </div>
-                <div class="buttons">
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
-                </div>
+
+            <g:form class="regform" action="save_reg" >
+            	<fieldset>
+		            <legend>Simple sample form</legend>
+		            
+		            <div class="span-12 append-10">
+
+						<div class="span-4">
+							<label for="email"><g:message code="usuario.email.label" default="Email" /></label>
+						</div>			              
+						<div class="span-8 last">
+							<g:textField name="email" value="${usuarioInstance?.email}" />
+						</div>
+			            			            
+			            <div class="span-4">
+							<label for="emailRepeat"><g:message code="usuario.emailRepeat.label" default="Confime o Email" /></label>
+						</div>			              
+						<div class="span-8 last">
+							<g:textField name="emailRepeat" value="${usuarioInstance?.emailRepeat}" />
+						</div>
+
+						<div class="span-4">
+							<label for="nome"><g:message code="usuario.nome.label" default="Nome" /></label>
+						</div>			              
+						<div class="span-8 last">
+							<g:textField name="nome" maxlength="20" value="${usuarioInstance?.nome}" />
+						</div>
+						
+						<div class="span-4">
+							<label for="password"><g:message code="usuario.password.label" default="Senha" /></label>
+						</div>			              
+						<div class="span-8 last">
+							<g:passwordField name="password" maxlength="20" value="${usuarioInstance?.password}" />
+						</div>
+						
+						<div class="span-4">
+							<label for="passwordRepeat"><g:message code="usuario.passwordRepeat.label" default="Confirme a Senha" /></label>
+						</div>			              
+						<div class="span-8 last">
+							<g:passwordField name="passwordRepeat" maxlength="20" value="${usuarioInstance?.passwordRepeat}" />
+						</div>
+						
+						<div class="span-8 prepend-4 last">
+							<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						</div>
+		            </div>
+          		</fieldset>
             </g:form>
-			
 	  	</div>
 	</body>		
 </html>

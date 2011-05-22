@@ -4,25 +4,31 @@ import java.util.Date;
 
 class UsuarioRegistroCommand {
 	
-	String userId
+	String email
+	String emailRepeat
+	String nome
 	String password
 	String passwordRepeat
-	String email
+	
 	Date dateCreated
 		
 	static constraints = {
-		userId(size:3..20, blank: false)
+		email(email: true, blank:false)
+		emailRepeat(nullable: false,
+			validator: { email2, urc ->
+					if(email2 != urc.email)
+						return ['emailRepeated']
+			})
+		
+		nome(size:3..20, blank: false)
 		password(size: 6..8, blank: false,
 					Validator: { passwd, user ->
-						return passwd != user.userId
-					})
-		
+						return passwd != user.nome
+					})		
 		passwordRepeat(nullable: false,
 			validator: { passwd2, urc ->
 					if(passwd2 != urc.password)
 						return ['passwordRepeated'] 
 			})
-
-		email(email: true, nullable: true)
 	}
 }
