@@ -40,10 +40,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="userId"><g:message code="usuario.userId.label" default="User Id" /></label>
+                                  <label for="email"><g:message code="usuario.email.label" default="Email" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'userId', 'errors')}">
-                                    <g:textField name="userId" maxlength="20" value="${usuarioInstance?.userId}" />
+                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'email', 'errors')}">
+                                    <g:textField name="email" value="${usuarioInstance?.email}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="nome"><g:message code="usuario.nome.label" default="Nome" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'nome', 'errors')}">
+                                    <g:textField name="nome" maxlength="20" value="${usuarioInstance?.nome}" />
                                 </td>
                             </tr>
                         
@@ -53,15 +62,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'password', 'errors')}">
                                     <g:textField name="password" maxlength="8" value="${usuarioInstance?.password}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="email"><g:message code="usuario.email.label" default="Email" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'email', 'errors')}">
-                                    <g:textField name="email" value="${usuarioInstance?.email}" />
                                 </td>
                             </tr>
                         

@@ -13,7 +13,7 @@ class Usuario {
 		nome(size:3..20,blank:false)
 		password(size: 6..8,blank:false, 
 					Validator: { passwd, user ->
-						return passwd != user.userId
+						return passwd != user.email
 					}
 				)
     }
@@ -21,6 +21,6 @@ class Usuario {
 	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento]
 	
 	String toString(){
-		"${userId}"
+		"${nome} : ${email}"
 	}
 }

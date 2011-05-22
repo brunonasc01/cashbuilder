@@ -6,6 +6,8 @@ import com.cashbuilder.cmd.UsuarioRegistroCommand;
 
 class AdministracaoController {
 
+	def usuarioService
+	
     def index = { }
 	
 	def login = {
@@ -36,14 +38,24 @@ class AdministracaoController {
 	
 	def save_reg = { UsuarioRegistroCommand urc ->
 
-		if (!urc.hasErrors()) {
-			def usuarioInstance = new Usuario(urc.properties)
-			usuarioInstance.save(flush: true)
-			flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
-			redirect(action: "login", id: usuarioInstance.id)
-		}
-		else {
+		if(usuarioService.isValidEmail( new Usuario(urc.properties)))
+		{
+			flash.message = "Endereço de e-mail ja cadastrado."
 			render(view: "cadastro_usr", model: [usuarioInstance: urc])
+			
+		}else{
+			if (!urc.hasErrors()) {
+				def usuarioInstance = new Usuario(urc.properties)
+				usuarioInstance.save(flush: true)
+				
+				usuarioService.initUser(usuarioInstance)
+				
+				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+				redirect(action: "login", id: usuarioInstance.id)
+			}
+			else {
+				render(view: "cadastro_usr", model: [usuarioInstance: urc])
+			}
 		}
 	}
 }

@@ -31,11 +31,11 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'usuario.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="userId" title="${message(code: 'usuario.userId.label', default: 'User Id')}" />
+                            <g:sortableColumn property="email" title="${message(code: 'usuario.email.label', default: 'Email')}" />
+                        
+                            <g:sortableColumn property="nome" title="${message(code: 'usuario.nome.label', default: 'Nome')}" />
                         
                             <g:sortableColumn property="password" title="${message(code: 'usuario.password.label', default: 'Password')}" />
-                        
-                            <g:sortableColumn property="email" title="${message(code: 'usuario.email.label', default: 'Email')}" />
                         
                             <g:sortableColumn property="dateCreated" title="${message(code: 'usuario.dateCreated.label', default: 'Date Created')}" />
                         
@@ -47,11 +47,11 @@
                         
                             <td><g:link action="show" id="${usuarioInstance.id}">${fieldValue(bean: usuarioInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: usuarioInstance, field: "userId")}</td>
+                            <td>${fieldValue(bean: usuarioInstance, field: "email")}</td>
+                        
+                            <td>${fieldValue(bean: usuarioInstance, field: "nome")}</td>
                         
                             <td>${fieldValue(bean: usuarioInstance, field: "password")}</td>
-                        
-                            <td>${fieldValue(bean: usuarioInstance, field: "email")}</td>
                         
                             <td><g:formatDate date="${usuarioInstance.dateCreated}" /></td>
                         

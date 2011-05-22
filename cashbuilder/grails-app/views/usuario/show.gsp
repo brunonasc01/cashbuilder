@@ -37,9 +37,16 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="usuario.userId.label" default="User Id" /></td>
+                            <td valign="top" class="name"><g:message code="usuario.email.label" default="Email" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: usuarioInstance, field: "userId")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: usuarioInstance, field: "email")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="usuario.nome.label" default="Nome" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: usuarioInstance, field: "nome")}</td>
                             
                         </tr>
                     
@@ -47,13 +54,6 @@
                             <td valign="top" class="name"><g:message code="usuario.password.label" default="Password" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: usuarioInstance, field: "password")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="usuario.email.label" default="Email" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: usuarioInstance, field: "email")}</td>
                             
                         </tr>
                     
