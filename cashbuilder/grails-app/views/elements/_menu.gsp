@@ -1,4 +1,4 @@
-
+<g:if test="${session.user}">
 	<div class="span-4">
 		<div class="menu">
 		visao geral 75px
@@ -34,3 +34,4 @@
 		Como poupar 75px
 		</div>
 	</div>
+</g:if>

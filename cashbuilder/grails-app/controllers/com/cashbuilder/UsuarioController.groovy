@@ -1,5 +1,7 @@
 package com.cashbuilder
 
+import com.cashbuilder.cmd.UsuarioRegistroCommand;
+
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -97,46 +99,4 @@ class UsuarioController {
             redirect(action: "list")
         }
     }
-	
-	def registro = {
-        
-    }
-	
-	def registro_save = { UsuarioRegistroCommand urc ->
-
-		if (!urc.hasErrors()) {
-			def usuarioInstance = new Usuario(urc.properties)
-			usuarioInstance.save(flush: true)
-			flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
-			redirect(action: "show", id: usuarioInstance.id)
-		}
-		else {
-			render(view: "registro", model: [usuarioInstance: urc])
-		}
-	}
-}
-
-class UsuarioRegistroCommand {
-	
-	String userId
-	String password
-	String passwordRepeat
-	String email
-	Date dateCreated
-		
-	static constraints = {
-		userId(size:3..20, blank: false)
-		password(size: 6..8, blank: false,
-					Validator: { passwd, user ->
-						return passwd != user.userId
-					})
-		
-		passwordRepeat(nullable: false,
-			validator: { passwd2, urc ->
-					if(passwd2 != urc.password)
-						return ['passwordRepeated'] 
-			})
-
-		email(email: true, nullable: true)
-	}
 }

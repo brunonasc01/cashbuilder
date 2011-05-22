@@ -1,28 +1,19 @@
 <html>
     <head>
-        <title>Welcome to Grails</title>
-        <meta name="layout" content="main" />
+        <title>Sistema Grails</title>
+        <meta name="layout" content="base" />
+        
     </head>
     <body>
-    
-    	<div class="menu">
-			<div class="green">
-				<div id="slatenav">
-					<ul>
-						<li><g:link controller="usuario" action="registro">Novo Usuário</g:link></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="conteudo">
-			<g:if test="${flash.message}">
+	  	<div class="span-24">
+		  	
+		  		<g:if test="${flash.message}">
 				<div class="flash">
 					${flash.message}
 				</div>
 			</g:if>
 			
-			<g:form action="autenticacao" controller="login">
+			<g:form action="valida_login" controller="administracao">
 				<table>
 					<tbody>
 						<tr class="prop">
@@ -51,6 +42,7 @@
 					</tbody>
 				</table>
 			</g:form>
-		</div>
-    </body>
+			
+	  	</div>
+	</body>		
 </html>

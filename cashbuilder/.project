@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<locationURI>GRAILS_ROOT/1.3.6/projects/cashbuilder/plugins</locationURI>
+			<location>C:/Users/bruno/.grails/1.3.6/projects/cashbuilder/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>

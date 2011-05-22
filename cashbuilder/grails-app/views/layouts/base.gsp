@@ -19,11 +19,9 @@
 		  		<div class="logo">
 		  		Logo 50px
 		  		</div>
-		  		
-		  		<div class="subheader">
-		  		sub header 25px
-		  		</div>
-		  		
+
+		  		<g:render template="/elements/subheader" ></g:render>
+
 		  		<g:render template="/elements/menu" ></g:render>
 		  	</div>
 		  	
