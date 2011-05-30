@@ -209,4 +209,44 @@ class OrcamentoService {
 	   DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
 	   df.format(saldo)
    }
+   
+	double calcTotalRealCategoria(OrcmMes mes, Categoria categoria){
+
+		int _mes = mes.mes
+		int _ano = mes.orcamento.ano
+		Date firstDate = DateUtils.getFirstDate(_mes, _ano)
+		Date lastDate = DateUtils.getLastDate(_mes,_ano)
+
+		def pagamentos = Pagamento.createCriteria().list {
+			and {
+				eq('categoria', categoria)
+				between('data', firstDate, lastDate)
+			}
+		}
+
+		double total = 0.0
+
+		if(pagamentos){
+			pagamentos.each {
+				total += it.valor
+			}
+		}
+		
+		total
+	}
+
+   double calcTotalPrevCategoria(OrcmMes mes, Categoria categoria){
+	   
+	   double total = 0.0
+	   
+	   def itensList = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+	   
+	   if(itensList != null){
+		   itensList.each{
+			   total += it.valorPrevisto
+		   }
+	   }
+
+	   total
+   }
 }
