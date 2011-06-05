@@ -16,7 +16,7 @@ class FluxocaixaService {
 	* Calcula o saldo Realizado
 	* @return o saldo realizado
 	*/
-	String calcSaldo(OrcmMes mes,Usuario user){
+	double calcSaldo(OrcmMes mes,Usuario user){
 		
 		int _mes = mes.mes
 		int _ano = mes.orcamento.ano
@@ -46,15 +46,14 @@ class FluxocaixaService {
  
 		saldo = entradas - saidas
 		
-		DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
-		df.format(saldo)
+		return saldo
 	}
 	
 	/**
-	* Calcula o Total de Debitos em um mes
-	* @return o total de debitos
+	* Calcula o Total de Debitos ou Credito em um Mes
+	* @return o total
 	*/
-	String calcTotal(OrcmMes mes,Usuario user,boolean credito){
+	double calcTotal(OrcmMes mes,Usuario user,boolean credito){
 		
 		int _mes = mes.mes
 		int _ano = mes.orcamento.ano
@@ -80,7 +79,6 @@ class FluxocaixaService {
 			}
 		}
  
-		DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
-		df.format(total)
+		return total
 	}
 }

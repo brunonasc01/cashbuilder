@@ -15,7 +15,7 @@ class OrcmMes {
 	static belongsTo = [orcamento: Orcamento]
 	
     static constraints = {
-		mes(size:1..12,unique:true)
+		mes(size:0..11,unique:true)
     }
 	
 	String toString(){

@@ -17,7 +17,7 @@ class UsuarioService {
 		Orcamento orcm = new Orcamento(ano: ano,user:user)
 		orcm.save(flush: true) 
 		
-		for(int mes in 1..12){
+		for(int mes in 0..11){
 			new OrcmMes(mes:mes,orcamento:orcm).save(flush:true)
 		}
 		

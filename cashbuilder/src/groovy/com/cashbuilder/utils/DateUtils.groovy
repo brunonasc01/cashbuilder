@@ -12,25 +12,25 @@ class DateUtils {
 	static String getMonth(Integer month){
 		
 		switch(month){
-			case 1:	return "Janeiro"
-			case 2:	return "Fevereiro"
-			case 3:	return "Março"
-			case 4:	return "Abril"
-			case 5:	return "Maio"
-			case 6:	return "Junho"
-			case 7:	return "Julho"
-			case 8:	return "Agosto"
-			case 9:	return "Setembro"
-			case 10: return "Outubro"
-			case 11: return "Novembro"
-			case 12: return "Dezembro"
+			case 0:	return "Janeiro"
+			case 1:	return "Fevereiro"
+			case 2:	return "Março"
+			case 3:	return "Abril"
+			case 4:	return "Maio"
+			case 5:	return "Junho"
+			case 6:	return "Julho"
+			case 7:	return "Agosto"
+			case 8:	return "Setembro"
+			case 9: return "Outubro"
+			case 10: return "Novembro"
+			case 11: return "Dezembro"
 		}
 	}
 	
 	static Date getLastDate(int month, int year){
 		Calendar cal = Calendar.getInstance()
 		cal.clear()
-		cal.set(Calendar.MONTH,month-1)
+		cal.set(Calendar.MONTH,month)
 		cal.set(Calendar.YEAR,year)
 		
 		int lastDay = cal.getActualMaximum(Calendar.DATE)
@@ -42,7 +42,7 @@ class DateUtils {
 	static Date getFirstDate(int month, int year){
 		Calendar cal = Calendar.getInstance()
 		cal.clear()
-		cal.set(Calendar.MONTH,month-1)
+		cal.set(Calendar.MONTH,month)
 		cal.set(Calendar.YEAR,year)
 		
 		int lastDay = cal.getActualMinimum(Calendar.DATE)

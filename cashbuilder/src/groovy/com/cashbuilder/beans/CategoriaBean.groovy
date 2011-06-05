@@ -1,6 +1,6 @@
-package com.cashbuilder.views
+package com.cashbuilder.beans
 
-class CategoriaView {
+class CategoriaBean {
 
 	String categoria
 	double vlPrevisto

@@ -2,14 +2,11 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        
     </head>
     <body>
 	  	<div class="span-16">
-		  	<div class="span-8">
-		  		<div class="box_saldo">
-					saldo 150px
-				</div>
+		  	<div class="span-8">		  		
+				<g:render template="/elements/box_saldo"  ></g:render>
 			</div>
 			
 			<div class="span-8 last">

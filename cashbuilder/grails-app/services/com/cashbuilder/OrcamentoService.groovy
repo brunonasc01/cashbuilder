@@ -178,6 +178,9 @@ class OrcamentoService {
 	   df.format(saldo)
    }
    
+   
+   
+   
    /**
    * Calcula o saldo Realizado
    * @return o saldo realizado
@@ -210,7 +213,9 @@ class OrcamentoService {
 	   df.format(saldo)
    }
    
-	double calcTotalRealCategoria(OrcmMes mes, Categoria categoria){
+   //------------------ New Methods ------------------
+   
+   double calcTotalRealCategoria(OrcmMes mes, Categoria categoria){
 
 		int _mes = mes.mes
 		int _ano = mes.orcamento.ano
