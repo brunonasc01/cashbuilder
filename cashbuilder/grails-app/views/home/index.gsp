@@ -17,22 +17,11 @@
 			
 			<hr class="space" />
 				
-			<div class="box_registro">
-				<div id="controllerList" class="dialog">
-	                <h2>Available Controllers:</h2>
-	                <ul>
-	                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-	                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-	                    </g:each>
-	                </ul>
-				</div>
-			</div>
+			<g:render template="/elements/box_registro_rapido"></g:render>
 	  	</div>
 	  	
 	  	<div class="span-8 last">
-	  		<div class="box_ultimos_pgs">
-				ultimos pagamentos 300px
-			</div>
+	  		<g:render template="/elements/box_ultimos_pgs" bean="${ultimosRegistros }" ></g:render>
 			
 			<hr class="space" />
 			
@@ -40,5 +29,14 @@
 				tags 150px
 			</div>
 	  	</div>
+	  	
+	  	<div id="controllerList" class="dialog">
+               <h2>Available Controllers:</h2>
+               <ul>
+                   <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                       <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+                   </g:each>
+               </ul>
+		</div>
 	</body>		
 </html>

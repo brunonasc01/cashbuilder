@@ -19,6 +19,9 @@ class HomeController {
 		boxSaldo.saidas = fluxocaixaService.calcTotal(mes,user,false)		
 		boxSaldo.saldo = boxSaldo.entradas - boxSaldo.saidas
 		
-		[boxSaldo : boxSaldo]
+		//box ultimos pagamentos
+		def ultimosRegistros = Pagamento.search("*",[max: 5, sort:'data', order:'desc'])
+		
+		[boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros]
 	}
 }
