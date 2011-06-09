@@ -7,24 +7,39 @@
     </head>
     <body>
     	<div class="span-6">
-    		<div class="box_saldo">
-					menu 150px
-			</div>
+    		<g:form action="index">
+    			<fieldset>
+            		<legend>Filtro</legend>
+    				
+    				<div class="span-1">
+    					<label for="anoId">Ano</label>
+    				</div>
+
+    				<div class="span-4 last">
+	    				<g:select name="anoId"
+							from="${anos}" 
+							optionKey="ano" value="${params.anoId}" noSelection="['': 'Sel.']" />
+					</div>		
+    		
+    				<div class="span-1">
+    					<label for="mesId">Mes</label>
+    				</div>
+
+    				<div class="span-4 last">
+	    				<g:select name="mesId"
+							from="${meses}" 
+							optionKey="mes" value="${params.mesId}" noSelection="['': 'Sel.']" />
+					</div>
+    		
+    				<div class="span-2">
+    					<g:submitButton name="filtrar" value="Filtrar"></g:submitButton>
+    				</div>
+    			</fieldset>
+			</g:form>
     	</div>
     
     	<div class="span-18 last">
-    		<g:if test="${result}">
-    			<h2>${result.ano }</h2>
-    			<h3>${result.mes }</h3>
-    			
-    			<g:each var="orcm" in="${result.items}">
-    				
-    				<div>
-    					<b>${orcm.categoria}</b>
-    				</div>
-    				
-    			</g:each>
-    		</g:if>
+    		<g:render template="/elements/orcamento_detalhado" bean="${orcamento}"></g:render>
 		</div>
 	</body>		
 </html>

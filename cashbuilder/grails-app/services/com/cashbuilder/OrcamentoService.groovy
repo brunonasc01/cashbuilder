@@ -254,4 +254,40 @@ class OrcamentoService {
 
 	   total
    }
+   
+   double calcTotalPrevSubcategoria(OrcmMes mes, Subcategoria subcategoria){
+	   
+		OrcmItem item = OrcmItem.findBySubcategoriaAndMes(subcategoria,mes)
+		
+		if(item != null){
+			return item.valorPrevisto
+		}
+		
+		return 0.0
+	}
+   
+   double calcTotalRealSubcategoria(OrcmMes mes, Subcategoria subcategoria){
+	   
+			   int _mes = mes.mes
+			   int _ano = mes.orcamento.ano
+			   Date firstDate = DateUtils.getFirstDate(_mes, _ano)
+			   Date lastDate = DateUtils.getLastDate(_mes,_ano)
+			   
+			   def pagamentos = Pagamento.createCriteria().list {
+				   and {
+					   eq('subcategoria', subcategoria)
+					   between('data', firstDate, lastDate)
+				   }
+			   }
+			   
+			   double total = 0.0
+			   
+			   if(pagamentos){
+				   pagamentos.each {
+					   total += it.valor
+				   }
+			   }
+	   
+			   total
+   }
 }
