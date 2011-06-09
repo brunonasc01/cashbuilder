@@ -1,5 +1,6 @@
 package com.cashbuilder
 
+import com.cashbuilder.beans.BoxRegRapidoBean;
 import com.cashbuilder.beans.BoxSaldoBean;
 
 class HomeController {
@@ -22,6 +23,31 @@ class HomeController {
 		//box ultimos pagamentos
 		def ultimosRegistros = Pagamento.search("*",[max: 5, sort:'data', order:'desc'])
 		
-		[boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros]
+		//box registro rapido
+		def allCategorias = Categoria.findAllByUser(user)
+		List allSubcategoria = new ArrayList()
+
+		allCategorias.each { categoria ->
+			def subcategorias = Subcategoria.findAllByCategoria(categoria)
+			allSubcategoria.addAll(subcategorias)
+		}
+
+		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
+		
+		[boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros, registroRapido : registroRapido]
+	}
+	
+	def save_registro = {
+		
+		def pagamento = new Pagamento(params)
+
+		def user = session.user.attach()
+		pagamento.user = user
+		
+		if(!pagamento.hasErrors()){
+			pagamento.save(flush:true)
+		}
+
+		redirect(action: "index")
 	}
 }

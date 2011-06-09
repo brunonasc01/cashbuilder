@@ -17,7 +17,7 @@
 			
 			<hr class="space" />
 				
-			<g:render template="/elements/box_registro_rapido"></g:render>
+			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
 	  	</div>
 	  	
 	  	<div class="span-8 last">
