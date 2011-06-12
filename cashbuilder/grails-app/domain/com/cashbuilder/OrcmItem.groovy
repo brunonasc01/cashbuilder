@@ -4,7 +4,7 @@ class OrcmItem {
  
 	Categoria categoria
 	Subcategoria subcategoria
-	double valorPrevisto
+	int valorPrevisto
 	
     static constraints = {
     }

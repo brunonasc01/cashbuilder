@@ -17,6 +17,7 @@ class Categoria {
 	
 	static mapping = {
 		subcategorias sort: 'nome'
+		sort nome: "asc"
 	}
 	
 	static belongsTo = [user: Usuario]

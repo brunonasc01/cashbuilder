@@ -3,6 +3,7 @@ package com.cashbuilder
 import java.util.Date;
 
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
+import com.cashbuilder.utils.DateUtils;
 
 class AdministracaoController {
 
@@ -57,5 +58,32 @@ class AdministracaoController {
 				render(view: "cadastro_usr", model: [usuarioInstance: urc])
 			}
 		}
+	}
+	
+	def adm_orcm = {
+		
+		if(!params.mesId || !params.anoId){
+			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
+			params.anoId = DateUtils.currentYear
+		}
+		
+		int iMes = Integer.valueOf(params.mesId)
+		int iAno = Integer.valueOf(params.anoId)
+		
+		def user = session.user.attach()
+		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
+		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
+		
+		[orcmMes : mes]
+	}
+	
+	def save_itens = {
+		
+		def orcmMes = OrcmMes.get(params.id)
+		
+		orcmMes.properties = params
+		
+		
+		render(view: "adm_orcm", model: [orcmMes: orcmMes])
 	}
 }

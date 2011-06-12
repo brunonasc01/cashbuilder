@@ -1,7 +1,9 @@
 package com.cashbuilder
 
+
+import com.cashbuilder.beans.administracao.DefaultFieldsBean;
 import com.cashbuilder.utils.DateUtils;
-import com.cashbuilder.utils.DefaultFields;
+
 
 class UsuarioService {
 
@@ -21,11 +23,22 @@ class UsuarioService {
 			new OrcmMes(mes:mes,orcamento:orcm).save(flush:true)
 		}
 		
-		List categorias = DefaultFields.getCategories()
-		
-		for(String categoria : categorias){
-			boolean credito = categoria.equals("Receita")
-			new Categoria(nome:categoria,receita:credito,user:user).save(flush:true)
+		DefaultFieldsBean bean = new DefaultFieldsBean()
+		bean.init()
+
+		bean.mapCategorias.each { map ->
+			
+			map.each { categ ->
+
+				boolean receita = categ.key.equals("Receita")
+				
+				Categoria categoriaBean = new Categoria( nome:categ.key, user:user, receita:receita ).save(flush: true)
+				List lsSubcat = categ.value
+	
+				lsSubcat.each { subcat ->
+					new Subcategoria(nome: subcat,categoria:categoriaBean).save(flush: true)
+				}
+			}
 		}
 	}
 	

@@ -1,7 +1,7 @@
 <g:if test="${session.user}">
 	<div class="span-4">
 		<div class="menu">
-		visao geral 75px
+		<g:link controller="home" >Home</g:link>
 		</div>
 	</div>
 	
