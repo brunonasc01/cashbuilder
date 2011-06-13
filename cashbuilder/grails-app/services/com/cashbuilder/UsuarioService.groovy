@@ -18,11 +18,7 @@ class UsuarioService {
 		int ano = DateUtils.getCurrentYear()
 		Orcamento orcm = new Orcamento(ano: ano,user:user)
 		orcm.save(flush: true) 
-		
-		for(int mes in 0..11){
-			new OrcmMes(mes:mes,orcamento:orcm).save(flush:true)
-		}
-		
+
 		DefaultFieldsBean bean = new DefaultFieldsBean()
 		bean.init()
 
@@ -37,6 +33,21 @@ class UsuarioService {
 	
 				lsSubcat.each { subcat ->
 					new Subcategoria(nome: subcat,categoria:categoriaBean).save(flush: true)
+				}
+			}
+		}
+		
+		def allCategorias = Categoria.findAllByUser(user)
+		
+		for(int mes in 0..11){
+			OrcmMes orcmMes = new OrcmMes(mes:mes,orcamento:orcm).save(flush:true)
+			
+			for(Categoria categoria in allCategorias){
+				
+				def subcategorias = Subcategoria.findAllByCategoria(categoria)
+				
+				for(Subcategoria subcategoria in subcategorias){
+					new OrcmItem(categoria:categoria,subcategoria:subcategoria,mes:orcmMes).save(flush:true)
 				}
 			}
 		}
