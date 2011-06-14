@@ -64,21 +64,27 @@ class OrcamentoController {
 			bean.vlPrevisto = orcamentoService.calcTotalPrevCategoria(mes,categoria)
 			bean.vlRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
 			
-			List lsSubCategorias = new ArrayList()
-			
-			categoria.subcategorias.each { subcategoria ->
+			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
+
+				List lsSubCategorias = new ArrayList()
+
+				categoria.subcategorias.each { subcategoria ->
+
+					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
+					sBean.nome = subcategoria.nome
+					sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
+					sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
+
+					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
+						lsSubCategorias.add sBean
+					}
+				}
+
+				bean.subcategorias = lsSubCategorias
+
 				
-				OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
-				sBean.nome = subcategoria.nome
-				sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
-				sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
-				
-				lsSubCategorias.add sBean
+				lsEntradas.add(bean)
 			}
-
-			bean.subcategorias = lsSubCategorias
-
-			lsEntradas.add(bean)
 		}
 		
 		//saida
@@ -92,26 +98,34 @@ class OrcamentoController {
 			bean.vlPrevisto = orcamentoService.calcTotalPrevCategoria(mes,categoria)
 			bean.vlRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
 			
-			List lsSubCategorias = new ArrayList()
-			
-			categoria.subcategorias.each { subcategoria ->
-				
-				OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
-				sBean.nome = subcategoria.nome
-				sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
-				sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
-				
-				lsSubCategorias.add sBean
+			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
+
+				List lsSubCategorias = new ArrayList()
+
+				categoria.subcategorias.each { subcategoria ->
+
+					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
+					sBean.nome = subcategoria.nome
+					sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
+					sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
+
+					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
+						lsSubCategorias.add sBean
+					}
+				}
+
+				bean.subcategorias = lsSubCategorias
+
+				lsSaidas.add(bean)
 			}
-
-			bean.subcategorias = lsSubCategorias
-
-			lsSaidas.add(bean)
 		}
 
 		orcmBean.orcmEntradas = lsEntradas
 		orcmBean.orcmSaidas = lsSaidas
 		
-		[result : result, anos : orcamentos, meses : meses, orcamento : orcmBean]
+		def saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
+		def saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
+		
+		[result : result, anos : orcamentos, meses : meses, orcamento : orcmBean, saldoPrevisto : saldoPrevisto, saldoRealizado : saldoRealizado]
 	}
 }

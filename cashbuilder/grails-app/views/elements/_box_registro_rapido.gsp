@@ -30,7 +30,9 @@
 						<label for="natureza"><g:message code="pagamento.natureza.label" default="Natureza" /></label>
 					</div>
 					<div class="span-3 last">
-						<g:select name="natureza" noSelection="['': 'Selecione']" >
+						<g:select name="natureza"
+								from="${['D', 'C']}"
+								 noSelection="['': 'Selecione']" >
 							
 						</g:select>
 					</div>

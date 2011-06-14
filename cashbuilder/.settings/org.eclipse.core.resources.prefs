@@ -1,6 +1,7 @@
-#Wed Jun 08 20:21:52 BRT 2011
+#Mon Jun 13 21:20:01 BRT 2011
 eclipse.preferences.version=1
 encoding//grails-app/i18n/messages_pt_BR.properties=UTF-8
+encoding//grails-app/views/administracao/adm_orcm.gsp=UTF-8
 encoding//grails-app/views/administracao/index.gsp=UTF-8
 encoding//grails-app/views/elements/_box_registro_rapido.gsp=UTF-8
 encoding//grails-app/views/elements/_box_saldo.gsp=UTF-8

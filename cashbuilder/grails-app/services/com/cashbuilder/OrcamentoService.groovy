@@ -138,80 +138,7 @@ class OrcamentoService {
 		value
 	} 
 	
-	/**
-	* Calcula o saldo Previsto
-	* @return o saldo previsto
-	*/
-   String calcSaldoPrevisto(OrcmMes mes){
-	   
-	   double saldo = 0
-	   double entradas = 0
-	   double saidas = 0
-	   
-	   //Credito
-	   def categoriasCred = Categoria.findAllByReceita(true)
-	   
-	   categoriasCred.each{ categoria ->
-		   
-		   def itensCred = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-		   
-		   itensCred.each{ item ->
-			   entradas += item.valorPrevisto
-		   }
-	   }
-	   
-	   //Debito
-	   def categoriasDeb = Categoria.findAllByReceita(false)
-	   
-	   categoriasDeb.each{ categoria ->
-		   
-		   def itensDeb = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-		   
-		   itensDeb.each{ item ->
-			   saidas += item.valorPrevisto
-		   }
-	   }
-	   
-	   saldo = entradas - saidas
-	   DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
-
-	   df.format(saldo)
-   }
-   
-   
-   
-   
-   /**
-   * Calcula o saldo Realizado
-   * @return o saldo realizado
-   */
-   String calcSaldoRealizado(OrcmMes mes){
-	   
-	   int _mes = mes.mes
-	   int _ano = mes.orcamento.ano
-	   Date firstDate = DateUtils.getFirstDate(_mes, _ano)
-	   Date lastDate = DateUtils.getLastDate(_mes,_ano)
-	   def pagamentos = Pagamento.findAllByDataBetween(firstDate,lastDate)
-	   
-	   double saldo = 0
-	   double entradas = 0
-	   double saidas = 0
-	   
-	   if(pagamentos){
-		   pagamentos.each { pg ->
-			   if(pg.natureza.equals("C")){
-				   entradas += pg.valor
-			   }else {
-				   saidas += pg.valor
-			   }
-		   }
-	   }
-
-	   saldo = entradas - saidas
-	   
-	   DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
-	   df.format(saldo)
-   }
+	
    
    //------------------ New Methods ------------------
    
@@ -290,4 +217,76 @@ class OrcamentoService {
 	   
 			   total
    }
+   
+   /**
+   * Calcula o saldo Previsto
+   * @return o saldo previsto
+   */
+  String calcSaldoPrevisto(OrcmMes mes){
+	  
+	  double saldo = 0
+	  double entradas = 0
+	  double saidas = 0
+	  
+	  //Credito
+	  def categoriasCred = Categoria.findAllByReceita(true)
+	  
+	  categoriasCred.each{ categoria ->
+		  
+		  def itensCred = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+		  
+		  itensCred.each{ item ->
+			  entradas += item.valorPrevisto
+		  }
+	  }
+	  
+	  //Debito
+	  def categoriasDeb = Categoria.findAllByReceita(false)
+	  
+	  categoriasDeb.each{ categoria ->
+		  
+		  def itensDeb = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+		  
+		  itensDeb.each{ item ->
+			  saidas += item.valorPrevisto
+		  }
+	  }
+	  
+	  saldo = entradas - saidas
+	  DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
+
+	  df.format(saldo)
+  }
+
+  /**
+  * Calcula o saldo Realizado
+  * @return o saldo realizado
+  */
+  String calcSaldoRealizado(OrcmMes mes){
+	  
+	  int _mes = mes.mes
+	  int _ano = mes.orcamento.ano
+	  Date firstDate = DateUtils.getFirstDate(_mes, _ano)
+	  Date lastDate = DateUtils.getLastDate(_mes,_ano)
+	  def pagamentos = Pagamento.findAllByDataBetween(firstDate,lastDate)
+	  
+	  double saldo = 0
+	  double entradas = 0
+	  double saidas = 0
+	  
+	  if(pagamentos){
+		  pagamentos.each { pg ->
+			  if(pg.natureza.equals("C")){
+				  entradas += pg.valor
+			  }else {
+				  saidas += pg.valor
+			  }
+		  }
+	  }
+
+	  saldo = entradas - saidas
+	  
+	  DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
+	  df.format(saldo)
+  }
 }

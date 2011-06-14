@@ -2,6 +2,7 @@ package com.cashbuilder
 
 import java.util.Date;
 
+import com.cashbuilder.beans.administracao.OrcmMesBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
 import com.cashbuilder.utils.DateUtils;
 
@@ -74,16 +75,51 @@ class AdministracaoController {
 		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 		
-		[orcmMes : mes]
+		List orcmItens = new ArrayList()
+		
+		def allCategorias = Categoria.findAllByUser(user)
+		
+		allCategorias.each { categoria ->
+			
+			OrcmMesBean bean = new OrcmMesBean()
+			bean.categoria = categoria.nome
+			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+			
+			orcmItens.add bean
+		}
+
+		[orcmItens : orcmItens, orcmMes: mes]
 	}
 	
 	def save_itens = {
+						
+		def user = session.user.attach()
 		
-		def orcmMes = OrcmMes.get(params.id)
-		
+		def orcmMes = OrcmMes.get(params.id)		
 		orcmMes.properties = params
 		
+		List orcmItens = new ArrayList()
 		
-		render(view: "adm_orcm", model: [orcmMes: orcmMes])
+		def newOrcm = OrcmMes.get(params.id)
+		def allCategorias = Categoria.findAllByUser(user)
+		
+		allCategorias.each { categoria ->
+			
+			OrcmMesBean bean = new OrcmMesBean()
+			bean.categoria = categoria.nome
+			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,newOrcm)
+			
+			orcmItens.add bean
+		}
+
+		def tipoSave = params?.tipoSave
+		
+		if(tipoSave.equals("ano")){
+			flash.message = "Orcamento para o Ano Salvo com Sucesso."
+		}else{
+			flash.message = "Orcamento para o Mes Salvo com Sucesso."
+		}
+		
+		redirect(action:'adm_orcm')
 	}
 }

@@ -1,16 +1,16 @@
-dataSource {
-	pooled = true
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
-	password = ""
-}
 //dataSource {
 //	pooled = true
-//	driverClassName = "oracle.jdbc.driver.OracleDriver"
-//	url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
-//	username = "CASH_BUILDER"
-//	password = "hj1Br9a"
+//	driverClassName = "org.hsqldb.jdbcDriver"
+//	username = "sa"
+//	password = ""
 //}
+dataSource {
+	pooled = true
+	driverClassName = "oracle.jdbc.driver.OracleDriver"
+	url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
+	username = "CASH_BUILDER"
+	password = "hj1Br9a"
+}
 hibernate {
 	cache.use_second_level_cache = true
 	cache.use_query_cache = true
@@ -24,8 +24,8 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+			dbCreate = "update" // one of 'create', 'create-drop','update'
+			url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
 		}
 	}
 	test {
@@ -37,7 +37,7 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
 		}
 	}
 }

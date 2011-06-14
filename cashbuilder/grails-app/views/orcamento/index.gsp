@@ -36,6 +36,22 @@
     				</div>
     			</fieldset>
 			</g:form>
+			
+			<div class="span-3">
+				Saldo Previsto
+			</div>
+			
+			<div class="span-3 last">
+				${saldoPrevisto }
+			</div>
+			
+			<div class="span-3">
+				Saldo Realizado
+			</div>
+			
+			<div class="span-3 last">
+				${saldoRealizado }
+			</div>
     	</div>
     
     	<div class="span-18 last">
