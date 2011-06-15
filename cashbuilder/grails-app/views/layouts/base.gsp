@@ -2,9 +2,11 @@
 <html>
     <head>
         <title><g:layoutTitle default="Grails" /></title>
-        <link rel="stylesheet" href="${resource(dir:'css',file:'base.css')}" />
+
         <link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'screen.css')}" />
         <link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'print.css')}" />
+        
+		<link rel="stylesheet" href="${resource(dir:'css',file:'base.css')}" />
         <!--[if IE]>
     		<link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'ie.css')}" />
   		<![endif]-->
