@@ -1,5 +1,6 @@
 package com.cashbuilder
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 import com.cashbuilder.beans.administracao.OrcmMesBean;
@@ -9,6 +10,7 @@ import com.cashbuilder.utils.DateUtils;
 class AdministracaoController {
 
 	def usuarioService
+	def orcamentoService
 	
     def index = { }
 	
@@ -75,45 +77,60 @@ class AdministracaoController {
 		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 		
-		List orcmItens = new ArrayList()
+		List lsItensDeb = new ArrayList()
+		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
 		
-		def allCategorias = Categoria.findAllByUser(user)
-		
-		allCategorias.each { categoria ->
-			
+		categoriasDeb.each { categoria ->
+
 			OrcmMesBean bean = new OrcmMesBean()
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-			
-			orcmItens.add bean
+
+			lsItensDeb.add bean
 		}
 
-		[orcmItens : orcmItens, orcmMes: mes]
+		List lsItensCred = new ArrayList()
+		def categoriasCredito = Categoria.findAllByReceitaAndUser(true,user)
+		
+		categoriasCredito.each { categoria ->
+						
+			OrcmMesBean bean = new OrcmMesBean()
+			bean.categoria = categoria.nome
+			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+
+			lsItensCred.add bean
+		}
+		
+		//totais previstos
+		DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
+		
+		String totalEntradas = df.format(orcamentoService.calcTotalPrev(mes,true))
+		String totalSaidas = df.format(orcamentoService.calcTotalPrev(mes,false))
+		String saldo = orcamentoService.calcSaldoPrevisto(mes)
+		
+		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes,totalEntradas: totalEntradas, totalSaidas: totalSaidas, saldo:saldo ]
 	}
 	
 	def save_itens = {
 						
 		def user = session.user.attach()
-		
-		def orcmMes = OrcmMes.get(params.id)		
-		orcmMes.properties = params
-		
-		List orcmItens = new ArrayList()
-		
-		def newOrcm = OrcmMes.get(params.id)
-		def allCategorias = Categoria.findAllByUser(user)
-		
-		allCategorias.each { categoria ->
-			
-			OrcmMesBean bean = new OrcmMesBean()
-			bean.categoria = categoria.nome
-			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,newOrcm)
-			
-			orcmItens.add bean
-		}
-
 		def tipoSave = params?.tipoSave
 		
+		if(("mes").equals(tipoSave)){
+			def orcmMes = OrcmMes.get(params.id)
+			orcmMes.properties = params
+
+		}else if(("ano").equals(tipoSave)){
+			def orcmMes = OrcmMes.get(params.id)
+			def orcamento = orcmMes.orcamento
+			
+			def allOrcmMes = OrcmMes.findAllByOrcamento(orcamento)
+			
+			allOrcmMes.each {
+				it.properties = params
+			}
+		}
+
 		if(tipoSave.equals("ano")){
 			flash.message = "Orcamento para o Ano Salvo com Sucesso."
 		}else{

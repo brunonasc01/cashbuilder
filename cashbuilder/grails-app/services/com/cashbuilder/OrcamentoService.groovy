@@ -289,4 +289,22 @@ class OrcamentoService {
 	  DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
 	  df.format(saldo)
   }
+  
+  double calcTotalPrev(OrcmMes mes, boolean receita){
+	  
+	  double total = 0.0
+	  
+	  def itensList = OrcmItem.findAllByMes(mes)
+	  
+	  if(itensList != null){
+		  itensList.each{
+
+			  if(it.categoria.receita == receita){
+				  total += it.valorPrevisto
+			  }
+		  }
+	  }
+
+	  total
+  }
 }
