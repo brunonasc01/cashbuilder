@@ -1,7 +1,5 @@
 package com.cashbuilder
 
-
-import com.cashbuilder.beans.administracao.DefaultFieldsBean;
 import com.cashbuilder.utils.DateUtils;
 
 
@@ -13,30 +11,34 @@ class UsuarioService {
 
     }
 	
-	void initUser(Usuario user){
+	void initUser(Usuario user,File file){
 		
 		int ano = DateUtils.getCurrentYear()
 		Orcamento orcm = new Orcamento(ano: ano,user:user)
 		orcm.save(flush: true) 
 
-		DefaultFieldsBean bean = new DefaultFieldsBean()
-		bean.init()
+		
+		Scanner sc = new Scanner(file);
 
-		bean.mapCategorias.each { map ->
+		while (sc.hasNext()) {
+
+			String[] linhaBase = sc.nextLine().split(":")
 			
-			map.each { categ ->
-
-				boolean receita = categ.key.equals("Receita")
+			if(linhaBase.length > 0 && !linhaBase[0].contains("#")){
 				
-				Categoria categoriaBean = new Categoria( nome:categ.key, user:user, receita:receita ).save(flush: true)
-				List lsSubcat = categ.value
-	
-				lsSubcat.each { subcat ->
-					new Subcategoria(nome: subcat,categoria:categoriaBean).save(flush: true)
+				String categoria = linhaBase[0]
+				boolean receita = ("Receitas").equals(categoria)
+				
+				Categoria categoriaBean = new Categoria( nome:categoria, user:user, receita:receita ).save(flush: true)
+				
+				String[] subcategorias = linhaBase[1].split(";")
+				
+				for(String nome : subcategorias) { 
+					new Subcategoria(nome: nome,categoria:categoriaBean).save(flush: true)
 				}
 			}
 		}
-		
+
 		def allCategorias = Categoria.findAllByUser(user)
 		
 		for(int mes in 0..11){
