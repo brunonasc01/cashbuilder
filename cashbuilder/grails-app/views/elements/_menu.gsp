@@ -13,7 +13,7 @@
 	
 	<div class="span-4">
 		<div class="menu">
-		fluxo de caixa 75px
+			<g:link controller="fluxoCaixa" >Fluxo de Caixa</g:link>
 		</div>
 	</div>
 	
@@ -31,7 +31,7 @@
 	
 	<div class="span-4 last">
 		<div class="menu">
-		Como poupar 75px
+			<g:link controller="administracao" >Administracao</g:link>
 		</div>
 	</div>
 </g:if>
