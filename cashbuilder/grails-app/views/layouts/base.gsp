@@ -16,24 +16,27 @@
         <g:javascript library="application" />
     </head>
     <body>
-    	<div class="container showgrid">
+    	<div class="container">
     		<div class="span-24">
-		  		<div class="logo">
-		  		Logo 50px
+    			
+    			<div class="header shadow_content">
+			  		<div class="logo">
+			  			Logo 50px
+			  		</div>
+	
+			  		<g:render template="/elements/subheader" ></g:render>
 		  		</div>
 
-		  		<g:render template="/elements/subheader" ></g:render>
-
 		  		<g:render template="/elements/menu" ></g:render>
-		  	</div>
-		  	
-		  	<hr class="space" />
-		  	
-			<g:layoutBody />
-			
-			<hr class="space" />
 
-		  	<g:render template="/elements/rodape" ></g:render>
+			  	<div class="content shadow_content">
+					<g:layoutBody />
+				</div>
+	
+				<div class="clear"></div>
+	
+			  	<g:render template="/elements/rodape" ></g:render>
+		  	</div>
     	</div>
     </body>
 </html>

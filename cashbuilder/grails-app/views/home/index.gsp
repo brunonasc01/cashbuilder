@@ -5,14 +5,9 @@
     </head>
     <body>
 	  	<div class="span-16">
-		  	<div class="span-8">		  		
-				<g:render template="/elements/box_saldo"  ></g:render>
-			</div>
-			
-			<div class="span-8 last">
-		  		<div class="box_saldo">
-					saldo 150px
-				</div>
+		  	
+	  		<div class="box_saldo">
+				avisos 150px
 			</div>
 			
 			<hr class="space" />
@@ -21,13 +16,12 @@
 	  	</div>
 	  	
 	  	<div class="span-8 last">
+	  				  		
+			<g:render template="/elements/box_saldo"  ></g:render>
+	  	
+	  		<hr class="space" />
+	  	
 	  		<g:render template="/elements/box_ultimos_pgs" bean="${ultimosRegistros }" ></g:render>
-			
-			<hr class="space" />
-			
-			<div class="box_tags">
-				tags 150px
-			</div>
 	  	</div>
 	  	
 	  	<div id="controllerList" class="dialog">

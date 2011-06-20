@@ -35,6 +35,12 @@
     				</div>
     			</fieldset>
 			</g:form>
+			
+			<g:form controller="pagamento" action="novo">
+				<div class="span-2">
+    				<g:submitButton name="novo" value="Novo Registro"></g:submitButton>
+    			</div>
+			</g:form>
     	</div>
     
     	<div class="span-18 last">

@@ -4,7 +4,7 @@
         <meta name="layout" content="base" />
     </head>
     <body>
-	  	<div class="span-24">
+	  	
 			<g:if test="${flash.message}">
 				<div class="error">
 					${flash.message}
@@ -41,6 +41,6 @@
 		            </div>
           		</fieldset>
 			</g:form>
-	  	</div>
+	  	
 	</body>		
 </html>

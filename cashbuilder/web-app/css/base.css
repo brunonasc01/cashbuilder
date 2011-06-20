@@ -2,9 +2,13 @@ body {
 	background: url(../images/back.jpg) repeat-x scroll 0 0 #9CC4CF;
 }
 
-.logo {
+.header{
 	margin-top: 10px;
- 	background-color: #CCDDCC;
+	margin-bottom: 10px;
+}
+
+.logo {
+	background-color: #FFFFFF;		
  	height: 50px;
 }
 
@@ -16,6 +20,22 @@ body {
 .menu {
 	background-color: #DDCCCC;
 	height: 75px;
+}
+
+.content {
+	background-color: #FFFFFF;
+	min-height: 300px;
+	margin-bottom: 10px;
+}
+
+.rodape {
+	background-color: #FFFFEE;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+.regform {
+	/*line-height: 3;*/
 }
 
 .box_saldo {
@@ -33,16 +53,22 @@ body {
 	height: 300px;
 }
 
-.box_tags {
-	background-color: #DDCCCC;
-	height: 150px;
+.shadow_content {
+	-moz-box-shadow: 5px 0px 15px #A7ABAF;
+	-webkit-box-shadow: 5px 0px 15px #A7ABAF;
+	box-shadow: 5px 0px 15px #A7ABAF;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
 
-.rodape {
-	background-color: #CCDDCC;
-	height: 25px;
-}
-
-.regform {
-	line-height: 3;
+.shadow_footer {
+	-moz-box-shadow: 5px 10px 15px #A7ABAF;
+	-webkit-box-shadow: 5px 10px 15px #A7ABAF;
+	box-shadow: 5px 10px 15px #A7ABAF;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
