@@ -6,13 +6,48 @@
         <meta name="layout" content="base" />
     </head>
     <body>
+
+		<div class="span-24">
+
+    	<g:form action="adm_orcm">
+   			<fieldset>
+           		<legend>Filtro</legend>
+   				
+   				<div class="span-1">
+   					<label for="anoId">Ano</label>
+   				</div>
+
+   				<div class="span-4 last">
+    				<g:select name="anoId"
+						from="${anos}" 
+						optionKey="ano" value="${params.anoId}" noSelection="['': 'Sel.']" />
+				</div>		
+   		
+   				<div class="span-1">
+   					<label for="mesId">Mes</label>
+   				</div>
+
+   				<div class="span-4 last">
+    				<g:select name="mesId"
+						from="${meses}" 
+						optionKey="mes" value="${params.mesId}" noSelection="['': 'Sel.']" />
+				</div>
+   		
+   				<div class="span-2">
+   					<g:submitButton name="filtrar" value="Filtrar"></g:submitButton>
+   				</div>
+   			</fieldset>
+		</g:form>
+		
+		</div>
+    
     	<g:form method="POST" class="regform" action="save_itens" >
 	    	<div class="span-6">
 	   			<fieldset>
 	           		<legend>Aplicar para</legend>
 					
 					<div class="span-3">
-						<label for="Mes">Mês atual</label>
+						<label for="Mes">Mês atual (${orcmMes.mes })</label>
 					</div>			              
 					<div class="span-2 last">
 						<g:radio name="tipoSave" value="mes" checked="true"></g:radio>

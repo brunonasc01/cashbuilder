@@ -78,6 +78,10 @@ class AdministracaoController {
 		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 		
+		//form de filtro
+		def orcamentos = Orcamento.findAllByUser(user)
+		def meses = OrcmMes.findAllByOrcamento(orcamento)
+		
 		List lsItensDeb = new ArrayList()
 		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
 		
@@ -109,7 +113,8 @@ class AdministracaoController {
 		String totalSaidas = df.format(orcamentoService.calcTotalPrev(mes,false))
 		String saldo = orcamentoService.calcSaldoPrevisto(mes)
 		
-		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes,totalEntradas: totalEntradas, totalSaidas: totalSaidas, saldo:saldo ]
+		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes, anos: orcamentos, meses: meses,
+			totalEntradas: totalEntradas, totalSaidas: totalSaidas, saldo:saldo ]
 	}
 	
 	def save_itens = {
