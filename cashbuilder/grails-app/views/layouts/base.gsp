@@ -29,7 +29,7 @@
 
 		  		<g:render template="/elements/menu" ></g:render>
 
-			  	<div class="content shadow_content">
+			  	<div class="span-24 content shadow_content">
 					<g:layoutBody />
 				</div>
 	
