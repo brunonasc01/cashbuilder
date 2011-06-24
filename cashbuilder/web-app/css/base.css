@@ -14,7 +14,7 @@ body {
 
 .subheader {
  	background-color: #CCCCCC;
- 	height: 25px;
+ 	padding: 0.5em;
 }
 
 .menu {
@@ -30,26 +30,27 @@ body {
 
 .rodape {
 	background-color: #FFFFEE;
-	height: 40px;
+	padding: 0.5em;
 	margin-bottom: 10px;
 }
 
-.regform {
-	/*line-height: 3;*/
+.box {
+	padding: 0.8em
 }
 
-.box_saldo {
-	background-color: #EEFFFF;
+.avisos {
 	height: 150px;
 }
 
-.box_registro {
-	background-color: #FFEEFF;
+.saldo {
+	height: 150px;
+}
+
+.registro_rapido {
 	height: 300px;
 }
 
-.box_ultimos_pgs {
-	background-color: #FFFFEE;
+.registros_recentes {
 	height: 300px;
 }
 
@@ -72,3 +73,9 @@ body {
 	/* For IE 5.5 - 7 */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
+
+/* --- FORM --- */
+.form-label { margin-top: 6px; text-align: right; }
+
+/* --- BOX --- */
+.inner-space { margin: 5px; }

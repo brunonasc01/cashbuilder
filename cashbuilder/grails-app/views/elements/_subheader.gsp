@@ -1,9 +1,9 @@
 
-<div class="subheader">
+<div class="subheader ui-corner-bottom">
 	sub header 25px 
 
-	<g:link controller="administracao" action="login">login</g:link>
-
+	<g:link controller="administracao" action="login"><strong>Login:</strong></g:link>
+	
 	<g:if test="${session.user}"> 
 		<g:link controller="administracao"  action="logoff">sair</g:link>
 	</g:if>
