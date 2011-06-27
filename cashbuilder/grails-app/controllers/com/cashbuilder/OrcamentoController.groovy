@@ -126,6 +126,6 @@ class OrcamentoController {
 		def saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
 		def saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
 		
-		[result : result, anos : orcamentos, meses : meses, orcamento : orcmBean, saldoPrevisto : saldoPrevisto, saldoRealizado : saldoRealizado]
+		[orcm : true, result : result, anos : orcamentos, meses : meses, orcamento : orcmBean, saldoPrevisto : saldoPrevisto, saldoRealizado : saldoRealizado]
 	}
 }

@@ -48,6 +48,6 @@ class FluxoCaixaController {
 		bean.saldo = df.format(fluxocaixaService.calcSaldo(mes,user))
 				
 		
-		[anos: orcamentos, meses: meses,fluxoCaixa:bean]
+		[flow: true, anos: orcamentos, meses: meses,fluxoCaixa:bean]
 	}
 }

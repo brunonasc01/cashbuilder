@@ -12,7 +12,10 @@ class AdministracaoController {
 	def usuarioService
 	def orcamentoService
 	
-    def index = { }
+    def index = {
+	
+		[adm : true]	
+	}
 	
 	def login = {
 		if(session.user){

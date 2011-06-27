@@ -34,7 +34,7 @@ class HomeController {
 
 		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
 		
-		[boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros, registroRapido : registroRapido]
+		[home: true, boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros, registroRapido : registroRapido]
 	}
 	
 	def save_registro = {
