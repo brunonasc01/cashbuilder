@@ -1,4 +1,4 @@
-<div class="box registro_rapido ui-corner-all">
+<div class="box registro_rapido ui-corner-all shadow_box">
 	<g:form class="regform" action="save_registro" controller="home">
 		<fieldset>
             <legend>Registro Rápido</legend>
@@ -20,7 +20,7 @@
 				<small>Débito</small>
 				<g:radio name="natureza" value="D" checked="true"></g:radio>
 				<small>Crédito</small>
-				<g:radio name="natureza" value="C" checked="true"></g:radio>
+				<g:radio name="natureza" value="C"></g:radio>
 			</div>
 
 			

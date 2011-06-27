@@ -4,9 +4,9 @@
         <meta name="layout" content="base" />
         
 		<script>
-	  	$(function(){
-			$("form").form();
-		});
+<%--	  	$(function(){--%>
+<%--			$("form").form();--%>
+<%--		});--%>
 		</script>
     </head>
 

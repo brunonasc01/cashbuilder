@@ -1,76 +1,22 @@
 
-.main .orcamento{
+table .orcamento{ }
 
-	width: 100%;
-	overflow-x: auto;
-	overflow-y: hidden;	
-}
+table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
-.tableOrcm{
-	font-family: Calibri;	
-}
+.orcamento tr{ }
 
-.tableOrcm td{
-	font-size: 90%;	
-}
+.orcamento tr.header td{ font-weight: bold; text-align: center; }
 
-.tableOrcm tr{
-	
-}
+.orcamento tr.categoria td { font-weight: bold; text-align: center;}
 
-.tableOrcm td.dado{
-	text-align:center;
-}
+.orcamento tr.categoria { background-color: #CCCCCC; }
 
-.date td{
-	background: transparent url(../images/green_header_background.gif) repeat-x top left;
-	text-align: center;
-	font-weight: bold;
-	color: #FFFFFF
-}
+.orcamento tr.categoria td.nome { text-align: left; }
 
-.header td{
-	background: transparent url(../images/gray_header_background.gif) repeat-x top left;	
-	text-align: center;
-	font-weight: bold;
-}
+.orcamento tr.subcategoria td { text-align: center;}
 
+.orcamento tr.subcategoria td.nome { padding-left: 20px; text-align: left; }
 
-.header td.header_categoria{
-	
-}
+.date td{ background: blue; color: #FFFFFF }
 
-.categoria{
-	background: transparent url(../images/gray_row_background.gif) repeat-x top left;
-}
-
-.categoria td{
-	font-weight: bold;	
-}
-
-.categoria_cred{
-	background: transparent url(../images/blue_row_background.gif) repeat-x top left;
-}
-
-.categoria_cred td{
-	font-weight: bold;	
-}
-
-.subcategoria{
-	padding-left: 15px;
-}
-
-.subcategoria_cred td{
-	background-color: #D7EBFF
-}
-
-.saldo td{
-	background: transparent url(../images/gray_header_background.gif) repeat-x top left;
-	font-weight: bold;	
-	font-size: 100%;
-}
-
-span.warning{
-	font-weight: bold;
-	color: #FF0000;	
-}
+span.warning{ font-weight: bold; color: #FF0000; }

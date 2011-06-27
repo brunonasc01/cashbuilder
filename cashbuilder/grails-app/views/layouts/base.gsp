@@ -32,8 +32,8 @@
 
 	  		<g:render template="/elements/menu" ></g:render>
 
-		  	<div class="span-24 content ui-corner-all">
-		  		<div class="inner-space">
+		  	<div class="span-24 content ui-corner-bottom">
+		  		<div class="content-inner-space">
 					<g:layoutBody />
 				</div>
 			</div>

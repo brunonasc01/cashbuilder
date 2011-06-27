@@ -1,5 +1,7 @@
 body {
 	background: url(../images/back.jpg) repeat-x scroll 0 0 #9CC4CF;
+	font-family: Calibri;
+	font-size: 100%;
 }
 
 .header{
@@ -18,8 +20,18 @@ body {
 }
 
 .menu {
-	background-color: #DDCCCC;
+	background-color: #CCCCCC;
+	padding: 0.3em;
 	height: 75px;
+	text-align: center;
+}
+
+.menu:hover{ background-color: #FFFFFF; }
+
+.ativo { background-color: #FFFFFF; } 
+
+.menu a{
+	text-decoration: none;	
 }
 
 .content {
@@ -46,12 +58,26 @@ body {
 	height: 150px;
 }
 
+.saldo-small {
+	height: 75px;
+}
+
 .registro_rapido {
 	height: 300px;
 }
 
 .registros_recentes {
 	height: 300px;
+}
+
+.shadow_box {
+	-moz-box-shadow: 3px 3px 3px 3px #A7ABAF;
+	-webkit-box-shadow: 3px 3px 3px 3px #A7ABAF;
+	box-shadow: 3px 3px 3px 3px #A7ABAF;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#000000');
 }
 
 .shadow_content {
@@ -79,3 +105,5 @@ body {
 
 /* --- BOX --- */
 .inner-space { margin: 5px; }
+
+.content-inner-space { margin: 18px }
