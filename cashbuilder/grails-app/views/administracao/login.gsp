@@ -2,13 +2,6 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-
-        <script>
-	  	$(function(){
-			$("form").form();
-			 
-			});
-		</script>
     </head>
 
     <body>

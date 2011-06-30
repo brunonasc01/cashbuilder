@@ -2,10 +2,44 @@
     <head>
         <title>Sistema Grails - Fluxo de Caixa</title>
         <meta name="layout" content="base" />
-		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='orcm.css'/>" />
+		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='cashflow.css'/>" />
     </head>
     <body>
     	<div class="span-6">
+    		<div class="box saldo-small ui-corner-all shadow_box">
+				<g:form controller="pagamento" action="novo">
+					<div class="span-2">
+	    				<g:submitButton name="novo" value="Novo Registro"></g:submitButton>
+	    			</div>
+				</g:form>
+			</div>
+    	
+    		<div class="box saldo-small ui-corner-all shadow_box">
+				<div class="span-3">
+					Entradas
+				</div>
+				
+				<div class="span-2 last">
+					<g:formatNumber number="${fluxoCaixa.entradas}" format="###,###,##0.00"></g:formatNumber>
+				</div>
+				
+				<div class="span-3">
+					Saídas
+				</div>
+				
+				<div class="span-2 last">
+					<g:formatNumber number="${fluxoCaixa.saidas}" format="###,###,##0.00"></g:formatNumber>
+				</div>
+				
+				<div class="span-3">
+					Saldo
+				</div>
+				
+				<div class="span-2 last">
+					<g:formatNumber number="${fluxoCaixa.saldo}" format="###,###,##0.00"></g:formatNumber>
+				</div>
+			</div>
+    	
     		<div class="box ui-corner-all shadow_box">
 	    		<g:form action="index">
 	    			<fieldset>
@@ -35,14 +69,6 @@
 	    					<g:submitButton name="filtrar" value="Filtrar"></g:submitButton>
 	    				</div>
 	    			</fieldset>
-				</g:form>
-			</div>
-			
-			<div class="box saldo-small ui-corner-all shadow_box">
-				<g:form controller="pagamento" action="novo">
-					<div class="span-2">
-	    				<g:submitButton name="novo" value="Novo Registro"></g:submitButton>
-	    			</div>
 				</g:form>
 			</div>
     	</div>

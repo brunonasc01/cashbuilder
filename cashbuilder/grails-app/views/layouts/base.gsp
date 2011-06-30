@@ -16,7 +16,6 @@
 		
 		<g:javascript src="jquery-1.5.1.min.js" />
         <g:javascript src="jquery-ui-1.8.13.custom.min.js" />
-        <g:javascript src="ui.form.js" />
 
         <g:layoutHead />
         

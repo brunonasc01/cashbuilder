@@ -1,0 +1,16 @@
+
+table .cashflow { }
+
+.cashflow td { font-size: 80%;}
+
+.cashflow tbody tr:nth-child(even) td, tbody tr.even td { background-color:#FFFFFF; }
+
+.cashflow tr.header { background-color: #AAAAAA; }
+
+.cashflow tr td{ text-align: center; }
+
+.cashflow tr.header td{ font-weight: bold; font-size: 90%; }
+
+.cashflow tr td.descricao { text-align: left; }
+
+span.warning{ font-weight: bold; color: #FF0000; }

@@ -3,7 +3,7 @@ package com.cashbuilder.beans.fluxocaixa
 class FluxoCaixaBean {
 	
 	def pagamentos
-	String entradas
-	String saidas
-	String saldo
+	double entradas
+	double saidas
+	double saldo
 }

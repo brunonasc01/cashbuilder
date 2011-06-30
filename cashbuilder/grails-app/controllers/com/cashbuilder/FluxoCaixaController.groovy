@@ -41,11 +41,9 @@ class FluxoCaixaController {
 		
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 
-		DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
-		
-		bean.entradas = df.format(fluxocaixaService.calcTotal(mes,user,true))
-		bean.saidas = df.format(fluxocaixaService.calcTotal(mes,user,false))
-		bean.saldo = df.format(fluxocaixaService.calcSaldo(mes,user))
+		bean.entradas = fluxocaixaService.calcTotal(mes,user,true)
+		bean.saidas = fluxocaixaService.calcTotal(mes,user,false)
+		bean.saldo = fluxocaixaService.calcSaldo(mes,user)
 				
 		
 		[flow: true, anos: orcamentos, meses: meses,fluxoCaixa:bean]

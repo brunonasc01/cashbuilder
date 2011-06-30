@@ -7,7 +7,7 @@
 				<td colspan="2">${orcamento.mes }</td>
 			</tr>
 	
-			<tr class="header">
+			<tr class="titulo header">
 				<td width="75">CATEGORIA</td>
 				<td width="100">PREVISTO</td>
 				<td width="100">REALIZADO</td>

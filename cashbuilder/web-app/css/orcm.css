@@ -5,6 +5,10 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
 .orcamento tr{ }
 
+.orcamento tr.date { background-color: #5555FF; color: #FFFFFF }
+
+.orcamento tr.titulo { background-color: #AAAAAA; }
+
 .orcamento tr.header td{ font-weight: bold; text-align: center; }
 
 .orcamento tr.categoria td { font-weight: bold; text-align: center;}
@@ -13,10 +17,10 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
 .orcamento tr.categoria td.nome { text-align: left; }
 
+.orcamento tr.subcategoria { background-color: #FFFFFF; }
+
 .orcamento tr.subcategoria td { text-align: center;}
 
 .orcamento tr.subcategoria td.nome { padding-left: 20px; text-align: left; }
-
-.date td{ background: blue; color: #FFFFFF }
 
 span.warning{ font-weight: bold; color: #FF0000; }
