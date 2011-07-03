@@ -7,8 +7,6 @@ import java.util.Date;
 
 class DateUtils {
 
-	static String moneyMask = "###,###,##0.00"
-	
 	static String getMonth(Integer month){
 		
 		switch(month){
@@ -24,6 +22,7 @@ class DateUtils {
 			case 9: return "Outubro"
 			case 10: return "Novembro"
 			case 11: return "Dezembro"
+			default: return "undefined"
 		}
 	}
 	
@@ -54,6 +53,11 @@ class DateUtils {
 	static int getCurrentYear(){
 		
 		return Calendar.getInstance().get(Calendar.YEAR)
+	}
+	
+	static int getCurrentMonth(){
+		
+		return Calendar.getInstance().get(Calendar.MONTH)
 	}
 
 	static main(args){

@@ -4,6 +4,12 @@ body {
 	font-size: 100%;
 }
 
+.positivo { color: #00642D; }
+
+.negativo { color: #E40101; }
+
+h1, h2, h3, h4, h5, h6 {font-family: Calibri;}
+
 .header{
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -56,10 +62,6 @@ body {
 
 .saldo {
 	height: 150px;
-}
-
-.saldo-small {
-	height: 75px;
 }
 
 .registro_rapido {

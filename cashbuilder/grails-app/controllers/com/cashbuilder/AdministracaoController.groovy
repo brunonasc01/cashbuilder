@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.cashbuilder.beans.administracao.OrcmMesBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class AdministracaoController {
@@ -110,7 +111,7 @@ class AdministracaoController {
 		}
 		
 		//totais previstos
-		DecimalFormat df = new DecimalFormat(DateUtils.moneyMask)
+		DecimalFormat df = new DecimalFormat(Constants.moneyMask)
 		
 		String totalEntradas = df.format(orcamentoService.calcTotalPrev(mes,true))
 		String totalSaidas = df.format(orcamentoService.calcTotalPrev(mes,false))

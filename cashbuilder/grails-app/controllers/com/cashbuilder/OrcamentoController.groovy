@@ -7,6 +7,7 @@ import com.cashbuilder.beans.OrcmDetalhadoItemBean;
 import java.util.Calendar;
 
 import com.cashbuilder.beans.OrcmBean;
+import com.cashbuilder.beans.orcamento.OrcamentoBoxSaldoBean;
 import com.cashbuilder.utils.DateUtils;
 
 class OrcamentoController {
@@ -18,7 +19,7 @@ class OrcamentoController {
     def index = {
 
 		if(!params.mesId || !params.anoId){
-			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
+			params.mesId = DateUtils.currentMonth
 			params.anoId = DateUtils.currentYear
 		}
 		
@@ -29,20 +30,6 @@ class OrcamentoController {
 		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 		
-		List<CategoriaBean> listCategorias = new ArrayList<CategoriaBean>()
-		def allCategorias = Categoria.findAllByUser(user)
-		
-		allCategorias.each { categoria ->
-			
-			double vlMax = orcamentoService.calcTotalPrevCategoria(mes,categoria)
-			double vlReal = orcamentoService.calcTotalRealCategoria(mes,categoria)
-			double percent = vlReal / vlMax
-			
-			listCategorias.add(new CategoriaBean(categoria:categoria.nome,vlPrevisto:vlMax,
-				vlRealizado:vlReal,percentual:percent))
-		}
-
-		OrcmBean result = new OrcmBean(ano:orcamento.ano,mes:mes.mes,items:listCategorias) 
 		
 		//form de filtro
 		def orcamentos = Orcamento.findAllByUser(user)
@@ -123,9 +110,11 @@ class OrcamentoController {
 		orcmBean.orcmEntradas = lsEntradas
 		orcmBean.orcmSaidas = lsSaidas
 		
-		def saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
-		def saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
+		OrcamentoBoxSaldoBean box = new OrcamentoBoxSaldoBean()
 		
-		[orcm : true, result : result, anos : orcamentos, meses : meses, orcamento : orcmBean, saldoPrevisto : saldoPrevisto, saldoRealizado : saldoRealizado]
+		box.saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
+		box.saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
+		
+		[orcm : true, anos : orcamentos, meses : meses, orcamento : orcmBean, boxSaldo: box]
 	}
 }

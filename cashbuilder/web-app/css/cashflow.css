@@ -13,4 +13,16 @@ table .cashflow { }
 
 .cashflow tr td.descricao { text-align: left; }
 
+/* BOX LATERAL */
+
+.saldo-csflow { height: 100px; font-weight: bold; font-size: 105%; }
+
+.saldo-csflow .title { margin-left: 0;/*15px;*/ text-align: right; }
+
+.saldo-csflow h5{ margin-bottom: 1px; font-size: 110%; border-bottom: 1px solid black; }
+
+.new-reg { text-align: center; }
+
+.new-reg a { text-decoration: none; }
+
 span.warning{ font-weight: bold; color: #FF0000; }

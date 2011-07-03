@@ -1,10 +1,11 @@
 
+<%@page import="com.cashbuilder.utils.DateUtils"%>
+<%@page import="com.cashbuilder.utils.Constants"%>
 <g:if test="${orcamento }">
 	<table class="orcamento">
 		<tbody>
 			<tr class="date header">
-				<td>${orcamento.ano }</td>
-				<td colspan="2">${orcamento.mes }</td>
+				<td colspan="3">${DateUtils.getMonth(orcamento.mes) } - ${orcamento.ano }</td>
 			</tr>
 	
 			<tr class="titulo header">
@@ -17,15 +18,23 @@
 				<g:each var="entrada" in="${orcamento.orcmEntradas}">
 					<tr class="categoria">
 						<td class="nome">${entrada.nome }</td>
-						<td>${entrada.vlPrevisto }</td>
-						<td>${entrada.vlRealizado }</td>
+						<td>
+							<g:formatNumber number="${entrada.vlPrevisto }" format="${Constants.moneyMask}"/>
+						</td>
+						<td>
+							<g:formatNumber number="${entrada.vlRealizado }" format="${Constants.moneyMask}"/>
+						</td>
 					</tr>
 					<g:if test="${entrada.subcategorias}">
 						<g:each var="subcategoria" in="${entrada.subcategorias}">
 							<tr class="subcategoria">
 								<td class="nome">${subcategoria.nome }</td>
-								<td>${subcategoria.vlPrevisto}</td>
-								<td>${subcategoria.vlRealizado}</td>
+								<td>
+									<g:formatNumber number="${subcategoria.vlPrevisto }" format="${Constants.moneyMask}"/>
+								</td>
+								<td>
+									<g:formatNumber number="${subcategoria.vlRealizado}" format="${Constants.moneyMask}"/>
+								</td>
 							</tr>
 						</g:each>
 					</g:if>
@@ -36,15 +45,23 @@
 				<g:each var="saida" in="${orcamento.orcmSaidas}">
 					<tr class="categoria">
 						<td class="nome">${saida.nome }</td>
-						<td>${saida.vlPrevisto }</td>
-						<td>${saida.vlRealizado }</td>
+						<td>
+							<g:formatNumber number="${saida.vlPrevisto }" format="${Constants.moneyMask}"/>
+						</td>
+						<td>
+							<g:formatNumber number="${saida.vlRealizado }" format="${Constants.moneyMask}"/>
+						</td>
 					</tr>
 					<g:if test="${saida.subcategorias}">
 						<g:each var="subcategoria" in="${saida.subcategorias}">
 							<tr class="subcategoria">
 								<td class="nome">${subcategoria.nome }</td>
-								<td>${subcategoria.vlPrevisto}</td>
-								<td>${subcategoria.vlRealizado}</td>
+								<td>
+									<g:formatNumber number="${subcategoria.vlPrevisto}" format="${Constants.moneyMask}"/>
+								</td>
+								<td>
+									<g:formatNumber number="${subcategoria.vlRealizado}" format="${Constants.moneyMask}"/>
+								</td>
 							</tr>
 						</g:each>
 					</g:if>

@@ -1,3 +1,4 @@
+<%@page import="com.cashbuilder.utils.Constants"%>
 <html>
     <head>
         <title>Sistema Grails - Orcamento</title>
@@ -39,23 +40,25 @@
 				</g:form>
 			</div>
 			
-			<div class="box saldo-small ui-corner-all shadow_box">
-				<div class="span-3">
-					Saldo Previsto
+			<g:if test="${boxSaldo }">
+				<div class="box saldo-orcm ui-corner-all shadow_box">
+					<h5>Saldo (R$)</h5>
+
+					<g:set var="classPrevisto" value="${(boxSaldo.saldoPrevisto > 0) ? 'positivo' : 'negativo' }"></g:set>
+
+					<div class="title span-2">Previsto</div>
+					<div class="span-2 ${classPrevisto } last">
+						<g:formatNumber number="${boxSaldo.saldoPrevisto }" format="${Constants.moneyMask}"/>
+					</div>
+					
+					<g:set var="classRealizado" value="${(boxSaldo.saldoRealizado > 0) ? 'positivo' : 'negativo' }"></g:set>
+					
+					<div class="title span-2">Realizado</div>
+					<div class="span-2 ${classRealizado } last">
+						<g:formatNumber number="${boxSaldo.saldoRealizado }" format="${Constants.moneyMask}"/>
+					</div>
 				</div>
-				
-				<div class="span-2 last">
-					${saldoPrevisto }
-				</div>
-				
-				<div class="span-3">
-					Saldo Realizado
-				</div>
-				
-				<div class="span-2 last">
-					${saldoRealizado }
-				</div>
-			</div>
+			</g:if>
     	</div>
     
     	<div class="box ui-corner-all span-16 last shadow_box">

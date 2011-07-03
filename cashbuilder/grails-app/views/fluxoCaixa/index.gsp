@@ -6,36 +6,32 @@
     </head>
     <body>
     	<div class="span-6">
-    		<div class="box saldo-small ui-corner-all shadow_box">
-				<g:form controller="pagamento" action="novo">
-					<div class="span-2">
-	    				<g:submitButton name="novo" value="Novo Registro"></g:submitButton>
-	    			</div>
-				</g:form>
+    		<div class="box new-reg ui-corner-all shadow_box">
+    			<g:link controller="pagamento" action="novo" >
+					<img src="${resource(dir:'images',file:'add-icon.png')}"/>
+					<br />Orçamento
+				</g:link>
 			</div>
     	
-    		<div class="box saldo-small ui-corner-all shadow_box">
-				<div class="span-3">
-					Entradas
-				</div>
-				
-				<div class="span-2 last">
+    		<div class="box saldo-csflow ui-corner-all shadow_box">
+    			<h5>Totais (R$)</h5>
+    		
+				<div class="title span-2">Entradas</div>
+				<div class="span-3 last">
+					<span class="positivo">+</span>
 					<g:formatNumber number="${fluxoCaixa.entradas}" format="###,###,##0.00"></g:formatNumber>
 				</div>
 				
-				<div class="span-3">
-					Saídas
-				</div>
-				
-				<div class="span-2 last">
+				<div class="title span-2">Saídas</div>
+				<div class="span-3 last">
+					<span class="negativo">-</span>
 					<g:formatNumber number="${fluxoCaixa.saidas}" format="###,###,##0.00"></g:formatNumber>
 				</div>
 				
-				<div class="span-3">
-					Saldo
-				</div>
+				<g:set var="classSaldo" value="${(fluxoCaixa.saldo > 0) ? 'positivo' : 'negativo' }"></g:set>
 				
-				<div class="span-2 last">
+				<div class="title span-2">Saldo</div>
+				<div class="span-3 ${classSaldo } last">
 					<g:formatNumber number="${fluxoCaixa.saldo}" format="###,###,##0.00"></g:formatNumber>
 				</div>
 			</div>
