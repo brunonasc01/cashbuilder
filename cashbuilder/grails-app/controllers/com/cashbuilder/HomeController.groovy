@@ -2,6 +2,7 @@ package com.cashbuilder
 
 import com.cashbuilder.beans.BoxRegRapidoBean;
 import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.utils.DateUtils;
 
 class HomeController {
 
@@ -19,9 +20,31 @@ class HomeController {
 		boxSaldo.entradas = fluxocaixaService.calcTotal(mes,user,true)
 		boxSaldo.saidas = fluxocaixaService.calcTotal(mes,user,false)		
 		boxSaldo.saldo = boxSaldo.entradas - boxSaldo.saidas
+
+		int iMes = DateUtils.currentMonth
+		int iAno = DateUtils.currentYear
+		
+		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
+		Date lastDate = DateUtils.getLastDate(iMes,iAno)
+		
+		def pagamentos = Pagamento.createCriteria().list {
+			and {
+				eq('user', user)
+				between('data', firstDate, lastDate)
+			}
+		}
+		
+		def pgsNoMes = [:]
+		
+		for(Pagamento pg :pagamentos){
+			
+			String subCategoria = pg.subcategoria
+			pgsNoMes.put(subCategoria,pg.valor)
+		}
+		
 		
 		//box ultimos pagamentos
-		def ultimosRegistros = Pagamento.search("*",[max: 5, sort:'data', order:'desc'])
+		def ultimosRegistros = Pagamento.search("*",[max: 3, sort:'data', order:'desc'])
 		
 		//box registro rapido
 		def allCategorias = Categoria.findAllByUser(user)

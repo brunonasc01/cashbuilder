@@ -17,9 +17,16 @@
 		<g:javascript src="jquery-1.5.1.min.js" />
         <g:javascript src="jquery-ui-1.8.13.custom.min.js" />
 
+		<script type="text/javascript">
+			$(function() {
+				$( "input:submit, button" ).button();
+			});
+		</script>
+
         <g:layoutHead />
-        
+
         <g:javascript library="application" />
+        
     </head>
     <body>
     	<div class="container">

@@ -8,7 +8,7 @@
 				<label for="data"><g:message code="pagamento.data.label" default="Data" /></label>
 			</div>			              
 			<div class="span-5 append-6 last">
-				<input type="text" class="date" name="data" value="" />
+				<g:jqDatePicker class="date" name="data" value="" />
 			</div>
 
 			<div class="form-label span-3">
@@ -55,7 +55,7 @@
 			
 			<div class="span-11 prepend-3">
 				<g:submitButton name="gravar" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				<g:submitButton name="limpar" class="save" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
+				<g:submitButton name="limpar" type="reset" class="save" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
 			</div>           
 		</fieldset>
        </g:form>			

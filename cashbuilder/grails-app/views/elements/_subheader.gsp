@@ -1,13 +1,15 @@
 
 <div class="subheader ui-corner-bottom">
-	sub header 25px 
 
-	<g:link controller="administracao" action="login"><strong>Login:</strong></g:link>
-	
-	<g:if test="${session.user}"> 
-		<g:link controller="administracao"  action="logoff">sair</g:link>
+	<g:if test="${session.user}">
+		<span>Bem vindo ${session.user.nome }</span>
+		<span> | </span>	
+				
+		<g:link controller="administracao" action="logoff">sair</g:link>
 	</g:if>
 	<g:else>
+		<g:link controller="administracao" action="login">Login</g:link>
+		<span> | </span>
 		<g:link controller="administracao" action="cadastro_usr">registro</g:link>
 	</g:else>
 </div>

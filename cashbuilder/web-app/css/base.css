@@ -4,6 +4,8 @@ body {
 	font-size: 100%;
 }
 
+.border { border: 1px solid red; }
+
 .positivo { color: #00642D; }
 
 .negativo { color: #E40101; }
@@ -60,17 +62,20 @@ h1, h2, h3, h4, h5, h6 {font-family: Calibri;}
 	height: 150px;
 }
 
-.saldo {
-	height: 150px;
-}
+p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; font-size: 105%; font-weight: bold; text-align: left; }
+
+.saldo { height: 150px; }
+
+.saldo .subtitle { font-weight:bold; margin-left: 0; text-align: right; }
+
 
 .registro_rapido {
 	height: 300px;
 }
 
-.registros_recentes {
-	height: 300px;
-}
+.registros_recentes { height: 300px; }
+
+.registros_recentes p.data { font-weight: bold; margin-bottom: 0px; }
 
 .shadow_box {
 	-moz-box-shadow: 3px 3px 3px 3px #A7ABAF;
