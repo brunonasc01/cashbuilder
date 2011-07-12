@@ -1,3 +1,4 @@
+<%@page import="com.cashbuilder.utils.Constants"%>
 <html>
     <head>
         <title>Sistema Grails - Fluxo de Caixa</title>
@@ -9,7 +10,7 @@
     		<div class="box new-reg ui-corner-all shadow_box">
     			<g:link controller="pagamento" action="novo" >
 					<img src="${resource(dir:'images',file:'add-icon.png')}"/>
-					<br />Orçamento
+					<br />Novo Lançamento
 				</g:link>
 			</div>
     	
@@ -17,22 +18,20 @@
     			<h5>Totais (R$)</h5>
     		
 				<div class="title span-2">Entradas</div>
-				<div class="span-3 last">
-					<span class="positivo">+</span>
-					<g:formatNumber number="${fluxoCaixa.entradas}" format="###,###,##0.00"></g:formatNumber>
+				<div class="span-3 positivo last">
+					<g:formatNumber number="${fluxoCaixa.entradas}" format="${Constants.moneyMask}"></g:formatNumber>
 				</div>
 				
 				<div class="title span-2">Saídas</div>
-				<div class="span-3 last">
-					<span class="negativo">-</span>
-					<g:formatNumber number="${fluxoCaixa.saidas}" format="###,###,##0.00"></g:formatNumber>
+				<div class="span-3 negativo last">
+					<g:formatNumber number="${fluxoCaixa.saidas}" format="${Constants.moneyMask}"></g:formatNumber>
 				</div>
 				
 				<g:set var="classSaldo" value="${(fluxoCaixa.saldo > 0) ? 'positivo' : 'negativo' }"></g:set>
 				
 				<div class="title span-2">Saldo</div>
 				<div class="span-3 ${classSaldo } last">
-					<g:formatNumber number="${fluxoCaixa.saldo}" format="###,###,##0.00"></g:formatNumber>
+					<g:formatNumber number="${fluxoCaixa.saldo}" format="${Constants.moneyMask}"></g:formatNumber>
 				</div>
 			</div>
     	

@@ -28,9 +28,12 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 /* BOX LATERAL */
 
 .saldo-orcm { height: 80px; font-weight: bold; font-size: 105%; }
+.saldo-adm { height: 100px; font-weight: bold; font-size: 105%; }
 
 .saldo-orcm .title { margin-left: 15px; text-align: right; }
+.saldo-adm .title { margin-left: 15px; text-align: right; }
 
 .saldo-orcm h5{ margin-bottom: 1px; font-size: 110%; border-bottom: 1px solid black; }
+.saldo-adm h5{ margin-bottom: 1px; font-size: 110%; border-bottom: 1px solid black; }
 
 span.warning{ font-weight: bold; color: #FF0000; }

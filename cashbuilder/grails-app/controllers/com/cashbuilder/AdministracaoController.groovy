@@ -3,6 +3,7 @@ package com.cashbuilder
 import java.text.DecimalFormat;
 import java.util.Date;
 
+import com.cashbuilder.beans.administracao.OrcmAdmBoxBean;
 import com.cashbuilder.beans.administracao.OrcmMesBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
 import com.cashbuilder.utils.Constants;
@@ -113,12 +114,14 @@ class AdministracaoController {
 		//totais previstos
 		DecimalFormat df = new DecimalFormat(Constants.moneyMask)
 		
-		String totalEntradas = df.format(orcamentoService.calcTotalPrev(mes,true))
-		String totalSaidas = df.format(orcamentoService.calcTotalPrev(mes,false))
-		String saldo = orcamentoService.calcSaldoPrevisto(mes)
+		OrcmAdmBoxBean bean = new OrcmAdmBoxBean()
+		bean.entradas = orcamentoService.calcTotalPrev(mes,true)
+		bean.saidas = orcamentoService.calcTotalPrev(mes,false)
+		bean.saldo = orcamentoService.calcSaldoPrevisto(mes)
+				
 		
 		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes, anos: orcamentos, meses: meses,
-			totalEntradas: totalEntradas, totalSaidas: totalSaidas, saldo:saldo ]
+			orcmBox: bean, df: df, adm:true ]
 	}
 	
 	def save_itens = {
