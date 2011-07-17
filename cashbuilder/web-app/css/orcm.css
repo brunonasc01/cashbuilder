@@ -25,6 +25,21 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
 .orcamento tr.subcategoria td.nome { padding-left: 20px; text-align: left; }
 
+/* VIEW BASIC */
+
+.viewchange { }
+
+.basic .categoria { background-color: #eeeeee; float:left; font-size: 105%; font-weight:bold; height: 65px; margin-bottom: 20px;}
+
+.basic .categoria p.rotulo { margin-left: 10px; margin-bottom: 0.3em; }
+
+.basic .categoria .btplus { text-align: center;}
+
+.basic .categoria .atual { text-align: right; }
+
+.basic .categoria .previsto { text-align: left; }
+
+
 /* BOX LATERAL */
 
 .saldo-orcm { height: 80px; font-weight: bold; font-size: 105%; }

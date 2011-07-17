@@ -1,8 +1,6 @@
 <div class="box registro_rapido ui-corner-all shadow_box">
 	<g:form class="regform" action="save_registro" controller="home">
-		<fieldset>
-            <legend>Registro Rápido</legend>
-
+		<p class="title">Registro Rápido</p>
 			
 			<div class="form-label span-3">
 				<label for="data"><g:message code="pagamento.data.label" default="Data" /></label>
@@ -16,11 +14,6 @@
 			</div>			              
 			<div class="span-8 append-3 last">
 				<g:textField size="10" maxlength="10" name="valor" value="" />
-
-				<small>Débito</small>
-				<g:radio name="natureza" value="D" checked="true"></g:radio>
-				<small>Crédito</small>
-				<g:radio name="natureza" value="C"></g:radio>
 			</div>
 
 			
@@ -54,9 +47,9 @@
 			</div>
 			
 			<div class="span-11 prepend-3">
-				<g:submitButton name="gravar" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				<g:submitButton name="limpar" type="reset" class="save" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
+				<g:submitButton name="gravar" class="save" value="Gravar" />
+				<g:submitButton name="limpar" class="reset" type="reset" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
 			</div>           
-		</fieldset>
+		
        </g:form>			
 </div>

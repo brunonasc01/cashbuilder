@@ -19,7 +19,7 @@
 
 		<script type="text/javascript">
 			$(function() {
-				$( "input:submit, button" ).button();
+				$( "input:submit, button, input:reset" ).button();
 			});
 		</script>
 

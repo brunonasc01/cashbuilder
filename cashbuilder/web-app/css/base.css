@@ -1,8 +1,11 @@
-body {
-	background: url(../images/back.jpg) repeat-x scroll 0 0 #9CC4CF;
-	font-family: Calibri;
-	font-size: 100%;
-}
+
+/* --- GERAL --- */
+
+body { background: url(../images/back.jpg) repeat-x scroll 0 0 #9CC4CF; font-family: Calibri; font-size: 100%; }
+
+h1, h2, h3, h4, h5, h6 {font-family: Calibri;}
+
+p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; font-size: 105%; font-weight: bold; text-align: left; }
 
 .border { border: 1px solid red; }
 
@@ -10,72 +13,64 @@ body {
 
 .negativo { color: #E40101; }
 
-h1, h2, h3, h4, h5, h6 {font-family: Calibri;}
+.box { padding: 0.8em }
 
-.header{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+.inner-space { margin: 5px; }
 
-.logo {
-	background-color: #FFFFFF;		
- 	height: 50px;
-}
+.content-inner-space { margin: 18px }
 
-.subheader {
- 	background-color: #CCCCCC;
- 	padding: 0.5em;
-}
 
-.menu {
-	background-color: #CCCCCC;
-	padding: 0.3em;
-	height: 75px;
-	text-align: center;
-}
+/* --- TOPO --- */
+
+.header{ margin-top: 10px; margin-bottom: 10px; }
+
+.logo { background-color: #FFFFFF; height: 50px; }
+
+.subheader { background-color: #CCCCCC; padding: 0.5em; }
+
+.menu { background-color: #CCCCCC; padding: 0.3em; height: 75px; text-align: center; }
 
 .menu:hover{ background-color: #FFFFFF; }
 
 .ativo { background-color: #FFFFFF; } 
 
-.menu a{
-	text-decoration: none;	
-}
+.menu a{ text-decoration: none; }
 
-.content {
-	background-color: #FFFFFF;
-	min-height: 300px;
-	margin-bottom: 10px;
-}
 
-.rodape {
-	background-color: #FFFFEE;
-	padding: 0.5em;
-	margin-bottom: 10px;
-}
+/* --- CENTRO --- */
 
-.box {
-	padding: 0.8em
-}
+.content { background-color: #FFFFFF; min-height: 300px; margin-bottom: 10px; }
 
-.avisos {
-	height: 150px;
-}
+.avisos { height: 150px; }
 
-p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; font-size: 105%; font-weight: bold; text-align: left; }
-
-.saldo { height: 150px; }
-
+.saldo { height: 150px; font-weight: bold;}
 .saldo .subtitle { font-weight:bold; margin-left: 0; text-align: right; }
 
-
-.registro_rapido {
-	height: 300px;
-}
+.registro_rapido { height: 300px; }
 
 .registros_recentes { height: 300px; }
-
 .registros_recentes p.data { font-weight: bold; margin-bottom: 0px; }
+
+
+/* --- RODAPE --- */
+
+.rodape { background-color: #FFFFEE; padding: 0.5em; margin-bottom: 10px; text-align: center;}
+
+.links { text-align: right; }
+
+/* --- FORMULARIO --- */
+
+.form-label { margin-top: 6px; text-align: right; }
+
+.title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 20px; font-size: 105%; }
+
+.title-natureza { background-color: #AAAAAA; font-size: 120%; }
+
+form input.save {  background: #E6E6E6 url(../images/save-icon.png) 5px 50% no-repeat; padding-left: 2.4em; }
+
+form input.reset {  background: #E6E6E6 url(../images/blank-icon.png) 5px 50% no-repeat; padding-left: 2.4em; }
+
+/* --- EFEITOS --- */
 
 .shadow_box {
 	-moz-box-shadow: 3px 3px 3px 3px #A7ABAF;
@@ -106,15 +101,3 @@ p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; 
 	/* For IE 5.5 - 7 */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
-
-/* --- FORM --- */
-.form-label { margin-top: 6px; text-align: right; }
-
-.title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 20px; font-size: 105%; }
-
-.title-natureza { background-color: #AAAAAA; font-size: 120%; }
-
-/* --- BOX --- */
-.inner-space { margin: 5px; }
-
-.content-inner-space { margin: 18px }

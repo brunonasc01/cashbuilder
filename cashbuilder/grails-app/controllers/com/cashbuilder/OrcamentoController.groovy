@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import com.cashbuilder.beans.OrcmBean;
 import com.cashbuilder.beans.orcamento.OrcamentoBoxSaldoBean;
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class OrcamentoController {
@@ -114,6 +115,11 @@ class OrcamentoController {
 		
 		box.saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
 		box.saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
+		
+		//Tipo de visualizacao
+		if(!params.viewType){
+			params.viewType = Constants.BASIC
+		}
 		
 		[orcm : true, anos : orcamentos, meses : meses, orcamento : orcmBean, boxSaldo: box]
 	}

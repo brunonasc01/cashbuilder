@@ -13,16 +13,8 @@
 	    			<fieldset>
 	            		<legend>Filtro</legend>
 	    				
-	    				<div class="form-label span-1">
-	    					<label for="anoId">Ano</label>
-	    				</div>
-	
-	    				<div class="span-3 last">
-		    				<g:select name="anoId"
-								from="${anos}" 
-								optionKey="ano" value="${params.anoId}" noSelection="['': 'Sel.']" />
-						</div>		
-	    		
+	    				<g:hiddenField name="anoId" value="${params.anoId}"></g:hiddenField>
+
 	    				<div class="form-label span-1">
 	    					<label for="mesId">Mes</label>
 	    				</div>
@@ -38,6 +30,19 @@
 	    				</div>
 	    			</fieldset>
 				</g:form>
+			</div>
+			
+			<div class="box ui-corner-all shadow_box">
+				<g:if test="${params.viewType.equals(Constants.BASIC)}">
+					<g:link action="index" params="[viewType:'COMPLETE']">
+						Ver em Detalhe
+					</g:link>
+				</g:if>
+				<g:else>
+					<g:link action="index" params="[viewType:'BASIC']">
+						Ver Resumo
+					</g:link>
+				</g:else>
 			</div>
 			
 			<g:if test="${boxSaldo }">
@@ -62,7 +67,12 @@
     	</div>
     
     	<div class="box ui-corner-all span-16 last shadow_box">
-    		<g:render template="/elements/orcamento_detalhado" bean="${orcamento}"></g:render>
+    		<g:if test="${params.viewType.equals(Constants.BASIC)}">
+    			<g:render template="/elements/orcamento_basico" bean="${orcamento}"></g:render>
+    		</g:if>
+    		<g:else>
+    			<g:render template="/elements/orcamento_detalhado" bean="${orcamento}"></g:render>
+    		</g:else>
 		</div>
 	</body>		
 </html>

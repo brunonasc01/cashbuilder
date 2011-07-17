@@ -2,6 +2,7 @@ package com.cashbuilder
 
 import com.cashbuilder.beans.BoxRegRapidoBean;
 import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class HomeController {
@@ -44,7 +45,10 @@ class HomeController {
 		
 		
 		//box ultimos pagamentos
-		def ultimosRegistros = Pagamento.search("*",[max: 3, sort:'data', order:'desc'])
+		def ultimosRegistros = Pagamento.createCriteria().list(max:3) {
+			eq('user', user)
+			order("data", "desc")
+		}
 		
 		//box registro rapido
 		def allCategorias = Categoria.findAllByUser(user)
@@ -64,6 +68,12 @@ class HomeController {
 		
 		def pagamento = new Pagamento(params)
 
+		if(pagamento?.categoria?.receita){
+			pagamento.natureza = Constants.CREDITO
+		} else {
+			pagamento.natureza = Constants.DEBITO
+		}
+		
 		def user = session.user.attach()
 		pagamento.user = user
 		

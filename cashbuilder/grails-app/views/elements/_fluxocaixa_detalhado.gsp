@@ -1,5 +1,5 @@
 <g:if test="${fluxoCaixa}">
-	<table class="cashflow">
+	<table id="cashflow" class="cashflow">
 		<tbody>
 			<tr class="header">
 				<td></td>

@@ -29,12 +29,13 @@ class FluxoCaixaController {
 		//fluxo de caixa
 		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
 		Date lastDate = DateUtils.getLastDate(iMes,iAno)
-		
+
 		def pagamentos = Pagamento.createCriteria().list {
 			and {
 				eq('user', user)
 				between('data', firstDate, lastDate)
 			}
+			order("data", "asc")
 		}
 
 		FluxoCaixaBean bean = new FluxoCaixaBean(pagamentos:pagamentos)

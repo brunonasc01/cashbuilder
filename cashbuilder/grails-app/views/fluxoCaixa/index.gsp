@@ -4,6 +4,14 @@
         <title>Sistema Grails - Fluxo de Caixa</title>
         <meta name="layout" content="base" />
 		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='cashflow.css'/>" />
+		
+		<g:javascript src="cashflow-ui.js" />
+		
+		<script type="text/javascript">
+			$(function() {
+				cashflow('cashflow');
+			});
+		</script>
     </head>
     <body>
     	<div class="span-6">
