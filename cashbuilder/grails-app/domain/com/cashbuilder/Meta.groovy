@@ -6,6 +6,8 @@ class Meta {
 	String descricao
 	Date dataInicio
 	Date dataFim
+	double valorAlmejado
+	boolean finalizado
 	
 	static hasMany = [subcategorias: Subcategoria]
 	    	
@@ -15,8 +17,9 @@ class Meta {
 		
 		nome(unique:true, blank: false, size:3..50)
 		descricao(size:10..200)
-		dataInicio(nullable:false)
-		dataFim(nullable:false)		
+		dataInicio(blank:false)
+		dataFim(blank:false)		
+		valorAlmejado(scale:2,blank:false)
 		subcategorias(nullable:false)
 	}
 }

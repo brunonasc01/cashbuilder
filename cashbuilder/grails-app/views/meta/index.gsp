@@ -1,3 +1,4 @@
+<%@page import="com.cashbuilder.utils.Constants"%>
 <html>
     <head>
         <title>Sistema Grails</title>
@@ -26,7 +27,7 @@
 	            </g:hasErrors>
 			</g:else>
 			
-            <g:form action="save_reg" >
+            <g:form action="save" >
             	<fieldset>
 		            <legend>Registro de Meta</legend>
 
@@ -44,6 +45,13 @@
 					</div>			              
 					<div class="span-6 last">
 						<g:textField name="descricao" value="${metaInstance?.descricao}" />
+					</div>
+					
+					<div class="form-label span-4">
+						<label for="valorAlmejado">Valor Desejado</label>
+					</div>			              
+					<div class="span-6 last">
+						<g:textField name="valorAlmejado" value="${metaInstance?.valorAlmejado}" />
 					</div>
 					
 					<div class="form-label span-4">
@@ -66,20 +74,22 @@
 						<label for="categoria"><g:message code="pagamento.categoria.label" default="Categoria" /></label>
 					</div>			              
 					<div class="span-6 last">
-						<g:if test="${categorias}">
-							 <g:select name="categoria.id"
-								from="${categorias}" 
+						<g:if test="${listCategorias}">
+							 <g:select
+								from="${listCategorias?.categorias}" 
 								optionKey="id" value="" noSelection="['': 'Selecione']" />
 						</g:if>
 					</div>
 		
+					<g:set var="counter" value="${0}" />
+		
 					<div class="form-label span-4">
 						<label for="subcategoria"><g:message code="pagamento.subcategoria.label" default="Subcategoria" /></label>
 					</div>			              
-					<div class="span-5 append-6 last">
-						<g:if test="${metaInstance}">
-							 <g:select name="subcategoria.id"
-								from="${metaInstance.subcategorias}" 
+					<div class="span-6 last">
+						<g:if test="${listCategorias}">
+							 <g:select name="subcategorias[${counter}].id"
+								from="${listCategorias?.subcategorias}" 
 								optionKey="id" value="" noSelection="['': 'Selecione']" />
 						</g:if>
 					</div>
@@ -91,6 +101,28 @@
 					</div>
           		</fieldset>
             </g:form>
+            
+            <g:set var="prog" value="${0}" />
+            
+            <g:if test="${metas }">
+            	<g:each var="meta" in="${metas}">
+            		<p>${meta.nome }</p>
+            		<p>${meta.descricao }</p>            	
+            		R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.moneyMask}"></g:formatNumber>
+            		
+            		<div id="progressbar${prog }"></div>
+            		
+            		<script type="text/javascript">
+					$(function() {
+						$( "#progressbar${prog }" ).progressbar({
+							value: ${meta.porcentagem}
+						});
+					});
+				</script>
+            		
+					<g:set var="prog" value="${prog + 1}" />
+            	</g:each>
+            </g:if>
 	  	</div>
 	  	</div>
 	</body>		

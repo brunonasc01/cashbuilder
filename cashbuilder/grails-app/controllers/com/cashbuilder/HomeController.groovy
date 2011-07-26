@@ -47,7 +47,7 @@ class HomeController {
 		//box ultimos pagamentos
 		def ultimosRegistros = Pagamento.createCriteria().list(max:3) {
 			eq('user', user)
-			order("data", "desc")
+			order("id", "desc")
 		}
 		
 		//box registro rapido

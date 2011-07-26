@@ -14,6 +14,7 @@
 	            		<legend>Filtro</legend>
 	    				
 	    				<g:hiddenField name="anoId" value="${params.anoId}"></g:hiddenField>
+	    				<g:hiddenField name="viewType" value="${params.viewType}"></g:hiddenField>
 
 	    				<div class="form-label span-1">
 	    					<label for="mesId">Mes</label>

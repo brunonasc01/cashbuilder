@@ -28,7 +28,7 @@
 	
 	<div class="span-4">
 		<div class="menu ui-corner-top ${goal? "ativo" : "" }">
-			<g:link controller="home" >
+			<g:link controller="meta" >
 				<img src="${resource(dir:'images',file:'metas-icon.png')}"/>
 				<br />Metas
 			</g:link>
