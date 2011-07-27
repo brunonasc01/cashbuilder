@@ -70,6 +70,11 @@ form input.save {  background: #E6E6E6 url(../images/save-icon.png) 5px 50% no-r
 
 form input.reset {  background: #E6E6E6 url(../images/blank-icon.png) 5px 50% no-repeat; padding-left: 2.4em; }
 
+/* --- META --- */
+.meta { border: 1px solid; padding: 5px; margin-bottom: 10px; }
+.meta .title { font-size: 130%; font-weight: bold;  }
+.meta .status { text-align: right; font-weight: bold; } 
+
 /* --- EFEITOS --- */
 
 .shadow_box {

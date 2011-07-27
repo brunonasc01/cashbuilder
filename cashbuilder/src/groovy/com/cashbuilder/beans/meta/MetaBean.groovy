@@ -3,8 +3,8 @@ package com.cashbuilder.beans.meta
 class MetaBean {
 
 	String nome
-	String descricao
-	String status
+	def status
+	double valorFinal
 	double valorAcumulado
 	double porcentagem
 }

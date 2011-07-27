@@ -39,14 +39,7 @@
 					</div>
 					
 					<div class="clear"></div>
-		            			            
-		            <div class="form-label span-4">
-						<label for="descricao">Descricao</label>
-					</div>			              
-					<div class="span-6 last">
-						<g:textField name="descricao" value="${metaInstance?.descricao}" />
-					</div>
-					
+
 					<div class="form-label span-4">
 						<label for="valorAlmejado">Valor Desejado</label>
 					</div>			              
@@ -101,29 +94,53 @@
 					</div>
           		</fieldset>
             </g:form>
+            </div>
+            
+            <div class="clear"></div>
             
             <g:set var="prog" value="${0}" />
             
             <g:if test="${metas }">
             	<g:each var="meta" in="${metas}">
-            		<p>${meta.nome }</p>
-            		<p>${meta.descricao }</p>            	
-            		R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.moneyMask}"></g:formatNumber>
-            		
-            		<div id="progressbar${prog }"></div>
-            		
-            		<script type="text/javascript">
-					$(function() {
-						$( "#progressbar${prog }" ).progressbar({
-							value: ${meta.porcentagem}
+            		<div class="meta span-15">
+	            		<div class="title span-10">${meta.nome }</div>
+
+						<div class="status span-5 last">
+						
+						<g:if test="${meta.status == Constants.GOAL_COMPLETE }">
+							<i class="positivo">ALCANCADO!</i>
+						</g:if>
+						<g:elseif test="${meta.status == Constants.GOAL_FAILED }">
+							<i class="negativo">EXPIRADO</i>
+						</g:elseif>
+						<g:elseif test="${meta.status == Constants.GOAL_WORKING }">
+							<i>EM ANDAMENTO</i>
+						</g:elseif>
+						</div>
+
+						<div class="span-15 append-5">
+		            		<b>R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.moneyMask}"></g:formatNumber></b>
+		            		de
+		            		<b>R$ <g:formatNumber number="${meta.valorFinal }" format="${Constants.moneyMask}"></g:formatNumber></b>
+	            		</div>
+	            		
+	            		<div class="span-15">
+	            			<div id="progressbar${prog }"></div>
+	            		</div>
+
+	            		<script type="text/javascript">
+						$(function() {
+							$( "#progressbar${prog }" ).progressbar({
+								value: ${meta.porcentagem}
+							});
 						});
-					});
-				</script>
-            		
-					<g:set var="prog" value="${prog + 1}" />
+						</script>
+	            		
+						<g:set var="prog" value="${prog + 1}" />
+					</div>
             	</g:each>
             </g:if>
-	  	</div>
+	  	
 	  	</div>
 	</body>		
 </html>

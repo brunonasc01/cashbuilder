@@ -2,6 +2,7 @@ package com.cashbuilder
 
 import com.cashbuilder.beans.BoxRegRapidoBean;
 import com.cashbuilder.beans.meta.MetaBean;
+import com.cashbuilder.utils.Constants;
 
 class MetaController {
 
@@ -12,10 +13,12 @@ class MetaController {
 		def user = session.user.attach()
 
 		//box registro rapido
-		def allCategorias = Categoria.findAllByUser(user)
+		def categorias = Categoria.findAllByUser(user)
+		List allCategorias = new ArrayList()
 		List allSubcategoria = new ArrayList()
 
-		allCategorias.each { categoria ->
+		categorias.each { categoria ->
+			allCategorias.add categoria
 			def subcategorias = Subcategoria.findAllByCategoria(categoria)
 			allSubcategoria.addAll(subcategorias)
 		}
@@ -48,11 +51,42 @@ class MetaController {
 				}
 			}
 			
-			bean.nome = meta.nome
-			bean.descricao = meta.descricao
-			bean.valorAcumulado = total
-			bean.porcentagem = (total/meta.valorAlmejado)*100 
+			Date date = new Date()
 			
+			if(date.after(meta.dataFim)){
+				if(total >= meta.valorAlmejado){
+					bean.status = Constants.GOAL_COMPLETE
+				}else{
+					bean.status = Constants.GOAL_FAILED
+				}
+			}else{
+				if(total >= meta.valorAlmejado){
+					bean.status = Constants.GOAL_COMPLETE
+				}else{
+					bean.status = Constants.GOAL_WORKING
+					
+				}
+			}
+
+			switch(bean.status){
+				
+				case Constants.GOAL_WORKING:
+				bean.porcentagem = (total/meta.valorAlmejado)*100
+				break
+				
+				case Constants.GOAL_COMPLETE:
+				bean.porcentagem = 100
+				break
+				
+				case Constants.GOAL_FAILED:
+				bean.porcentagem = 0
+				break
+			}
+									
+			bean.nome = meta.nome
+			bean.valorFinal = meta.valorAlmejado
+			bean.valorAcumulado = total
+
 			listMetas.add(bean)
 		}
 			
