@@ -37,7 +37,7 @@
 	
 	<div class="span-4">
 		<div class="menu ui-corner-top ${stats? "ativo" : "" }">
-			<g:link controller="home" >
+			<g:link controller="relatorio" >
 				<img src="${resource(dir:'images',file:'relatorio-icon.png')}"/>
 				<br />Relatórios
 			</g:link>

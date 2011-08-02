@@ -1,6 +1,11 @@
 package com.cashbuilder
 
+import com.cashbuilder.beans.relatorio.MultiBarChartDataBean;
+import com.cashbuilder.beans.relatorio.PieChartDataBean;
 import com.cashbuilder.utils.DateUtils;
+import com.grailsfusioncharts.beans.MultiBarChartBean;
+import com.grailsfusioncharts.beans.MultiLineChartBean;
+import com.grailsfusioncharts.beans.PieChartBean;
 
 class RelatorioController {
 
@@ -9,89 +14,49 @@ class RelatorioController {
 	
     def index = {
 		
-		redirect(action:orcamento)	
-	}
-	
-	def orcamento = {
-		
-		def user = session.user.attach()
-		def orcamento = Orcamento.findByAnoAndUser(Calendar.getInstance().get(Calendar.YEAR),user)
-		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
-		def categoriasCred = Categoria.findAllByReceitaAndUser(true,user)
-
-		[orcamento : orcamento, saidas : categoriasDeb, entradas : categoriasCred, service : orcamentoService]
-	}
-	
-	def fluxocaixa = {
-
-		if(!params.mesId || !params.anoId){
-			params.mesId = 1
-			params.anoId = DateUtils.currentYear
-		}
-
 		def user = session.user.attach()
 		
-		int mes = Integer.valueOf(params.mesId)
-		int ano = Integer.valueOf(params.anoId)
-		
-		Date firstDate = DateUtils.getFirstDate(mes,ano)
-		Date lastDate = DateUtils.getLastDate(mes,ano)
-		
-		def pagamentos = Pagamento.createCriteria().list {
-			and {
-				eq('user', user)
-				between('data', firstDate, lastDate)
-			}
-		}
-		
-		def orcamentos = Orcamento.findAllByUser(user)
-		
-		def curOrcm = Orcamento.findByUserAndAno(user,ano)
-		def meses = OrcmMes.findAllByOrcamento(curOrcm)
-		
-		def curMes = OrcmMes.findByOrcamentoAndMes(curOrcm,mes)
+		int iMes = DateUtils.currentMonth
+		int iAno = DateUtils.currentYear
+		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
+		Date lastDate = DateUtils.getLastDate(iMes,iAno)
 
-		[pagamentos: pagamentos, anos: orcamentos, meses: meses, mes: curMes, service: fluxocaixaService]
-	}
-	
-	def grafico = {
+		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
+		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
+		def categorias = Categoria.findAllByReceitaAndUser(false,user)
 		
-		if(!params.mesId || !params.anoId){
-			params.mesId = 1
-			params.anoId = DateUtils.currentYear
-		}
+		//grafico de pizza
+		def pieDataList = new ArrayList()
+		
+		categorias.each { categoria ->
 
-		def user = session.user.attach()
-		
-		int mes = Integer.valueOf(params.mesId)
-		int ano = Integer.valueOf(params.anoId)
-		
-		Date firstDate = DateUtils.getFirstDate(mes,ano)
-		Date lastDate = DateUtils.getLastDate(mes,ano)
-		
-		def pagamentos = Pagamento.createCriteria().list {
-			and {
-				eq('user', user)
-				between('data', firstDate, lastDate)
-			}
-		}
-		
-		def pgsNoMes = [:]
-		
-		for(Pagamento pg :pagamentos){
+			double totalRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
 			
-			String subCategoria = pg.subcategoria
-			pgsNoMes.put(subCategoria,pg.valor)
+			if(totalRealizado > 0){
+				PieChartDataBean bean = new PieChartDataBean(categoria: categoria.nome, total: totalRealizado)
+				pieDataList.add bean
+			}
 		}
 		
-		def orcamentos = Orcamento.findAllByUser(user)
+		String pieData = PieChartBean.generateGraph(pieDataList)
 		
-		def curOrcm = Orcamento.findByUserAndAno(user,ano)
-		def meses = OrcmMes.findAllByOrcamento(curOrcm)
 		
-		def curMes = OrcmMes.findByOrcamentoAndMes(curOrcm,mes)
-
-		[pgsNoMes: pgsNoMes, anos: orcamentos, meses: meses, mes: curMes]
+		//grafico de barras
+		def barDataList = new ArrayList()
+		
+		for(int idMes in iMes-1..iMes+1){
+			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
+			double entradas = fluxocaixaService.calcTotal(orcmMes,user,true)
+			double saidas = fluxocaixaService.calcTotal(orcmMes,user,false)
+			
+			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMonth(idMes),entradas:entradas,saidas:saidas)
+			barDataList.add bean
+		}
+		
+		String barData = MultiBarChartBean.generateChart(barDataList)
+		
+		String lineData = MultiLineChartBean.generateGraph(barDataList)
+		
+		[stats:true, pieData: pieData, barData: barData, lineData: lineData]	
 	}
-	
 }

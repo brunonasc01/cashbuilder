@@ -68,7 +68,7 @@
 					</div>			              
 					<div class="span-6 last">
 						<g:if test="${listCategorias}">
-							 <g:select
+							 <g:select name="select"
 								from="${listCategorias?.categorias}" 
 								optionKey="id" value="" noSelection="['': 'Selecione']" />
 						</g:if>

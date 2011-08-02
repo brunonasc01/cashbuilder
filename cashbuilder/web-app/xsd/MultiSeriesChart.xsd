@@ -1,0 +1,96 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:element name="graph" type="graph"/>
+	<xsd:complexType name="graph">
+		<xsd:sequence>
+			<xsd:element ref="categories"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element ref="dataset"  minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	  	<!-- Texto e labels -->
+	  	<xsd:attribute name="caption" default="" type="xsd:string"/> <!-- Título -->
+	  	<xsd:attribute name="subCaption" default="" type="xsd:string"/> <!-- Sub Título -->
+	  	<xsd:attribute name="xAxisName" default="" type="xsd:string"/> <!-- Texto do eixo x -->
+	  	<xsd:attribute name="yAxisName" default="" type="xsd:string"/> <!-- Texto do eixo y -->
+	  	<xsd:attribute name="rotateYAxisName" default="1" type="xsd:string"/> <!-- Rotação do eixo Y: 1 Vertical, 0 Horizontal -->
+	  	<xsd:attribute name="labelDisplay" default="Rotate" type="xsd:string"/> <!-- Exibição do label no eixo x: WRAP (quebra linha),Rotate(Gira),Stagger ,  -->
+	  	<xsd:attribute name="slantLabels" default="0" type="xsd:string"/>	<!-- 0, labels a 90º, 1, labels a 45º. Utilizado em conjunto com o Rotate no label display -->  	
+	  	<xsd:attribute name="shownames" default="1" type="xsd:string"/> <!-- 1 - Mostra o nome das séries -->
+	  	<xsd:attribute name="showvalues" default="0" type="xsd:string"/> <!-- 0 - Oculta os números no gráfico -->
+	  		  	
+	  	<!-- Números -->
+	  	<xsd:attribute name="decimals" default="2 " type="xsd:string"/> <!-- Quantidade de casas decimais -->
+	  	<xsd:attribute name="formatNumberScale" default="1" type="xsd:string"/> <!-- 1 - Os números serão formatados -->
+	  	<xsd:attribute name="inDecimalSeparator" default="," type="xsd:string"/> <!-- Separador decimal dos valores no xml -->
+	  	<xsd:attribute name="inThousandSeparator" default="." type="xsd:string"/> <!-- Separador de milhar dos valores no xml -->
+	  	<xsd:attribute name="decimalSeparator" default="," type="xsd:string"/> <!-- Separador decimal dos valores no gráfico -->
+	  	<xsd:attribute name="thousandSeparator" default="." type="xsd:string"/> <!-- Separador de milhar dos valores no gráfico -->
+	  	<xsd:attribute name="numberScaleValue" default="1000,1000,1000" type="xsd:string" /> <!-- Intervalos das escalas de valores  -->
+	  	<xsd:attribute name="numberScaleUnit" default=" Mil, Milhão, Bi" type="xsd:string"/> <!-- Unidade para abreviação de valores formatados -->
+	  	<xsd:attribute name="yAxisMinValue" default="" type="xsd:string"/> <!-- Valor mínimo da escala do gráfico -->
+	  	<xsd:attribute name="yAxisMaxValue" default="" type="xsd:string"/> <!-- Valor máximo da escala do gráfico -->
+	  	
+	  	
+	  	<!-- Formatação do gráfico -->
+	  	<xsd:attribute name="palette" default="2" type="xsd:string"/> <!-- Paleta de cores -->
+	  	<xsd:attribute name="useRoundEdges" default="1" type="xsd:string"/> <!-- Bordas arredondadas -->
+	  	<xsd:attribute name="legendBorderAlpha" default="0" type="xsd:string"/> <!-- Alpha da borda da legenda -->
+	  	<xsd:attribute name="bgColor" default="FFFFFF" type="xsd:string"/> <!-- Cor do fundo -->
+	  	<xsd:attribute name="borderColor" default="FFFFFF" type="xsd:string"/> <!-- Cor da borda  -->
+	  	<xsd:attribute name="canvasBgColor" default="FFFFFF" type="xsd:string"/><!-- Cor da área do gráfico -->
+	  	<xsd:attribute name="alternateHGridColor" default="FFFFFF" type="xsd:string"/><!-- Cor da linha de grade horizontal -->
+	  	<xsd:attribute name="alternateVGridColor" default="FFFFFF" type="xsd:string"/><!-- Cor da linha de grade vertical -->
+	  	<xsd:attribute name="AlternateHGridAlpha" default="0" type="xsd:string"/>
+	  	<xsd:attribute name="showShadow" default="1" type="xsd:string"/><!-- 1 Exibe sombra do gráfico  -->
+	  	<xsd:attribute name="lineThickness" default="2" type="xsd:string"/>  	<!-- Espessura da linha no gráfico de linhas -->
+	  	<xsd:attribute name="canvasBorderThickness" default="1" type="xsd:string"/><!-- Espessura da borda do canvas -->
+	  	<xsd:attribute name="showAlternateHGridColor" default="1" type="xsd:string"/>
+	  	<xsd:attribute name="decimalPrecision" default="1" type="xsd:string"/>
+	  	<xsd:attribute name="divLineAlpha" default="0" type="xsd:string"/>
+	  	<xsd:attribute name="divLineColor" default="FFFFFF" type="xsd:string"/>
+	  	<xsd:attribute name="numdivlines" default="0" type="xsd:string"/>
+	  	<xsd:attribute name="rotateNames" default="0" type="xsd:string"/>
+	  	<xsd:attribute name="hovercapborder" default="000000" type="xsd:string"/>
+		<xsd:attribute name="hovercapbg" default="FFFFFF" type="xsd:string"/>
+
+
+
+<!-- Apenas para a home -->
+	  	<xsd:attribute name="showPlotBorder" default="0" type="xsd:string"/> <!-- Exibe borda na área do gráfico -->
+	  	<xsd:attribute name="canvasBaseDepth" default="1" type="xsd:string"/><!-- Espessura da base do canvas --> 
+	  	<xsd:attribute name="showLegend" default="0" type="xsd:string"/><!-- 0 - Não Exibe a legenda -->
+	  	<xsd:attribute name="chartBottomMargin" default="0" type="xsd:string"/><!-- Margem do rodapé do gráfico -->
+
+	 </xsd:complexType>
+
+	<xsd:element name="categories" type="categories" />
+	<xsd:complexType  name="categories">
+	  	<xsd:sequence>
+	  		<xsd:element ref="category" minOccurs="1" maxOccurs="unbounded"/>
+	  	</xsd:sequence>
+	  	
+	  	<xsd:attribute name="font"  type="xsd:string"/>
+		<xsd:attribute name="fontSize"  type="xsd:string"/>
+		<xsd:attribute name="fontColor"  type="xsd:string"/>
+	</xsd:complexType>
+	
+	<xsd:element name="category" type="category"/>
+	<xsd:complexType name="category">
+		<xsd:attribute name="name"  type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:element name="dataset">
+		<xsd:complexType>
+			<xsd:sequence>
+		  		<xsd:element ref="set" minOccurs="1" maxOccurs="unbounded"/>
+		  	</xsd:sequence>
+		
+			<xsd:attribute name="seriesname"  type="xsd:string"/>
+			<xsd:attribute name="color"  type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="set" type="set"/>
+	<xsd:complexType name="set">
+		<xsd:attribute name="value"  type="xsd:string"/>
+	</xsd:complexType>
+</xsd:schema> 
