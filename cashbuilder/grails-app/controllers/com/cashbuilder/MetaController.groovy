@@ -55,30 +55,30 @@ class MetaController {
 			
 			if(date.after(meta.dataFim)){
 				if(total >= meta.valorAlmejado){
-					bean.status = Constants.GOAL_COMPLETE
+					bean.status = Constants.META_ATINGIDA
 				}else{
-					bean.status = Constants.GOAL_FAILED
+					bean.status = Constants.META_PERDIDA
 				}
 			}else{
 				if(total >= meta.valorAlmejado){
-					bean.status = Constants.GOAL_COMPLETE
+					bean.status = Constants.META_ATINGIDA
 				}else{
-					bean.status = Constants.GOAL_WORKING
+					bean.status = Constants.META_CORRENTE
 					
 				}
 			}
 
 			switch(bean.status){
 				
-				case Constants.GOAL_WORKING:
+				case Constants.META_CORRENTE:
 				bean.porcentagem = (total/meta.valorAlmejado)*100
 				break
 				
-				case Constants.GOAL_COMPLETE:
+				case Constants.META_ATINGIDA:
 				bean.porcentagem = 100
 				break
 				
-				case Constants.GOAL_FAILED:
+				case Constants.META_PERDIDA:
 				bean.porcentagem = 0
 				break
 			}

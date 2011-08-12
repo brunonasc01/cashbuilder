@@ -7,19 +7,19 @@
 	
 		<div class="subtitle span-2">Entradas</div>
 		<div class="span-2 positivo last">
-			<g:formatNumber number="${boxSaldo.entradas}" format="${Constants.moneyMask}"></g:formatNumber>
+			<g:formatNumber number="${boxSaldo.entradas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 		</div>
 				
 		<div class="subtitle span-2">Saídas</div>
 		<div class="span-2 negativo last">
-			<g:formatNumber number="${boxSaldo.saidas}" format="${Constants.moneyMask}"></g:formatNumber>
+			<g:formatNumber number="${boxSaldo.saidas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 		</div>
 				
 		<g:set var="classSaldo" value="${(boxSaldo.saldo > 0) ? 'positivo' : 'negativo' }"></g:set>
 		
 		<div class="subtitle span-2">Saldo</div>
 		<div class="span-2 ${classSaldo } last">
-			<g:formatNumber number="${boxSaldo.saldo}" format="${Constants.moneyMask}"></g:formatNumber>
+			<g:formatNumber number="${boxSaldo.saldo}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 		</div>
 		</div>
 		<div class="span-2 last">

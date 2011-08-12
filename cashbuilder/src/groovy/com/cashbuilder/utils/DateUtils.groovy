@@ -1,15 +1,18 @@
 package com.cashbuilder.utils
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 class DateUtils {
 
-	static String getMonth(Integer month){
+	/**
+	 * Retorna a String equivalente ao mes informado
+	 * @param mes numero do mes
+	 * @return
+	 */
+	static String getMes(Integer mes){
 		
-		switch(month){
+		switch(mes){
 			case 0:	return "Janeiro"
 			case 1:	return "Fevereiro"
 			case 2:	return "Março"
@@ -22,55 +25,61 @@ class DateUtils {
 			case 9: return "Outubro"
 			case 10: return "Novembro"
 			case 11: return "Dezembro"
-			default: return "undefined"
+			default: return "indefinido"
 		}
 	}
 	
-	static Date getLastDate(int month, int year){
+	/**
+	 * Obtem o ultimo dia do mes
+	 * @param mes o mes
+	 * @param ano o ano
+	 * @return o ultimo dia do mes
+	 */
+	static Date getUltimoDia(int mes, int ano){
 		Calendar cal = Calendar.getInstance()
 		cal.clear()
-		cal.set(Calendar.MONTH,month)
-		cal.set(Calendar.YEAR,year)
+		cal.set(Calendar.MONTH,mes)
+		cal.set(Calendar.YEAR,ano)
 		
-		int lastDay = cal.getActualMaximum(Calendar.DATE)
-		cal.set(Calendar.DATE,lastDay)
+		int ultimoDia = cal.getActualMaximum(Calendar.DATE)
+		cal.set(Calendar.DATE,ultimoDia)
 		
 		return new Date(cal.getTimeInMillis())
 	}
 	
-	static Date getFirstDate(int month, int year){
+	/**
+	 * Obtem o primeiro dia do mes
+	 * @param mes o mes
+	 * @param ano o ano
+	 * @return o primeiro dia do mes
+	 */
+	static Date getPrimeiroDia(int mes, int ano){
 		Calendar cal = Calendar.getInstance()
 		cal.clear()
-		cal.set(Calendar.MONTH,month)
-		cal.set(Calendar.YEAR,year)
+		cal.set(Calendar.MONTH,mes)
+		cal.set(Calendar.YEAR,ano)
 		
-		int lastDay = cal.getActualMinimum(Calendar.DATE)
-		cal.set(Calendar.DATE,lastDay)
+		int primeiroDia = cal.getActualMinimum(Calendar.DATE)
+		cal.set(Calendar.DATE,primeiroDia)
 		
 		return new Date(cal.getTimeInMillis())
 	}
 	
-	static int getCurrentYear(){
+	/**
+	 * Obtem o ano atual
+	 * @return o ano atual
+	 */
+	static int getAnoAtual(){
 		
 		return Calendar.getInstance().get(Calendar.YEAR)
 	}
 	
-	static int getCurrentMonth(){
+	/**
+	 * Obtem o mes atual
+	 * @return o mes atual
+	 */
+	static int getMesAtual(){
 		
 		return Calendar.getInstance().get(Calendar.MONTH)
-	}
-
-	static main(args){
-
-		//println getLastDate(2,2009)
-		
-		double total = 1150.33
-		
-		DecimalFormat df = new DecimalFormat("###,###,##0.00");
-
-		//NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale ("pt", "BR"));
-		
-		
-		println df.format(total)
 	}
 }

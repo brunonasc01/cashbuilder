@@ -7,7 +7,7 @@ import com.cashbuilder.utils.DateUtils;
 
 class HomeController {
 
-	def fluxocaixaService
+	def orcamentoService
 	
     def index = {
 		
@@ -18,15 +18,15 @@ class HomeController {
 		
 		//box saldo
 		BoxSaldoBean boxSaldo = new BoxSaldoBean();
-		boxSaldo.entradas = fluxocaixaService.calcTotal(mes,user,true)
-		boxSaldo.saidas = fluxocaixaService.calcTotal(mes,user,false)		
+		boxSaldo.entradas = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)
+		boxSaldo.saidas = orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO)		
 		boxSaldo.saldo = boxSaldo.entradas - boxSaldo.saidas
 
-		int iMes = DateUtils.currentMonth
-		int iAno = DateUtils.currentYear
+		int iMes = DateUtils.mesAtual
+		int iAno = DateUtils.anoAtual
 		
-		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
-		Date lastDate = DateUtils.getLastDate(iMes,iAno)
+		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
+		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
 		
 		def pagamentos = Pagamento.createCriteria().list {
 			and {

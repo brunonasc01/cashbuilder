@@ -20,8 +20,8 @@ class OrcamentoController {
     def index = {
 
 		if(!params.mesId || !params.anoId){
-			params.mesId = DateUtils.currentMonth
-			params.anoId = DateUtils.currentYear
+			params.mesId = DateUtils.mesAtual
+			params.anoId = DateUtils.anoAtual
 		}
 		
 		int iMes = Integer.valueOf(params.mesId)
@@ -49,8 +49,8 @@ class OrcamentoController {
 		categoriasCred.each { categoria ->
 			OrcmDetalhadoItemBean bean = new OrcmDetalhadoItemBean()
 			bean.nome = categoria.nome
-			bean.vlPrevisto = orcamentoService.calcTotalPrevCategoria(mes,categoria)
-			bean.vlRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
+			bean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
+			bean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
 			
 			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
 
@@ -60,8 +60,8 @@ class OrcamentoController {
 
 					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
 					sBean.nome = subcategoria.nome
-					sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
-					sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
+					sBean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
+					sBean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
 					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
 						lsSubCategorias.add sBean
@@ -83,8 +83,8 @@ class OrcamentoController {
 		categoriasDeb.each { categoria ->
 			OrcmDetalhadoItemBean bean = new OrcmDetalhadoItemBean()
 			bean.nome = categoria.nome
-			bean.vlPrevisto = orcamentoService.calcTotalPrevCategoria(mes,categoria)
-			bean.vlRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
+			bean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
+			bean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
 			
 			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
 
@@ -94,8 +94,8 @@ class OrcamentoController {
 
 					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
 					sBean.nome = subcategoria.nome
-					sBean.vlPrevisto = orcamentoService.calcTotalPrevSubcategoria(mes,subcategoria)
-					sBean.vlRealizado = orcamentoService.calcTotalRealSubcategoria(mes,subcategoria)
+					sBean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
+					sBean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
 					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
 						lsSubCategorias.add sBean
@@ -113,12 +113,12 @@ class OrcamentoController {
 		
 		OrcamentoBoxSaldoBean box = new OrcamentoBoxSaldoBean()
 		
-		box.saldoPrevisto = orcamentoService.calcSaldoPrevisto(mes)
-		box.saldoRealizado = orcamentoService.calcSaldoRealizado(mes)
+		box.saldoPrevisto = orcamentoService.getSaldoPrevisto(mes)
+		box.saldoRealizado = orcamentoService.getSaldoRealizado(mes,user)
 		
 		//Tipo de visualizacao
 		if(!params.viewType){
-			params.viewType = Constants.BASIC
+			params.viewType = Constants.BASICO
 		}
 		
 		[orcm : true, anos : orcamentos, meses : meses, orcamento : orcmBean, boxSaldo: box]

@@ -25,7 +25,7 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
 .orcamento tr.subcategoria td.nome { padding-left: 20px; text-align: left; }
 
-/* VIEW BASIC */
+/* VIEW BASICO */
 
 .viewchange { }
 

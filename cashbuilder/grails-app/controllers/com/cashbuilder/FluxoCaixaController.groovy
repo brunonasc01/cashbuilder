@@ -3,17 +3,18 @@ package com.cashbuilder
 import java.text.DecimalFormat;
 
 import com.cashbuilder.beans.fluxocaixa.FluxoCaixaBean;
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class FluxoCaixaController {
 
-	def fluxocaixaService
+	def orcamentoService
 	
     def index = {
 	
 		if(!params.mesId || !params.anoId){
 			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
-			params.anoId = DateUtils.currentYear
+			params.anoId = DateUtils.anoAtual
 		}
 		
 		int iMes = Integer.valueOf(params.mesId)
@@ -27,8 +28,8 @@ class FluxoCaixaController {
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
 		
 		//fluxo de caixa
-		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
-		Date lastDate = DateUtils.getLastDate(iMes,iAno)
+		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
+		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
 
 		def pagamentos = Pagamento.createCriteria().list {
 			and {
@@ -42,9 +43,9 @@ class FluxoCaixaController {
 		
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 
-		bean.entradas = fluxocaixaService.calcTotal(mes,user,true)
-		bean.saidas = fluxocaixaService.calcTotal(mes,user,false)
-		bean.saldo = fluxocaixaService.calcSaldo(mes,user)
+		bean.entradas = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)
+		bean.saidas = orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO)
+		bean.saldo = orcamentoService.getSaldoRealizado(mes,user)
 				
 		
 		[flow: true, anos: orcamentos, meses: meses,fluxoCaixa:bean]

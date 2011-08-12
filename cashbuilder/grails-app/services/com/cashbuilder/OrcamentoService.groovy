@@ -1,179 +1,116 @@
 package com.cashbuilder
 
-import java.text.DecimalFormat;
-
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
+/**
+ * Classe utilizada para calculo de totais realizados e previsto
+ * @author nascimbr
+ *
+ */
 class OrcamentoService {
 
-    static transactional = true
+	static transactional = true
 
-    def serviceMethod() {
+	def serviceMethod() {
+	}
 
-    }
+	/**
+	 * Calcula o total de pagamentos no mes, dado um criterio
+	 * O criterio pode ser uma Categoria, Subcategoria ou Natureza do pagamento
+	 * @param orcmMes o mes
+	 * @param usuario o usuario
+	 * @param criterio o filtro para o calculo
+	 * @return o total de pagamentos no mes
+	 */
+	double getTotalRealizado(OrcmMes orcmMes, Usuario usuario, def criterio){
 
-   double calcTotalRealCategoria(OrcmMes mes, Categoria categoria){
+		String nomeCriterio;
 
-		int _mes = mes.mes
-		int _ano = mes.orcamento.ano
-		Date firstDate = DateUtils.getFirstDate(_mes, _ano)
-		Date lastDate = DateUtils.getLastDate(_mes,_ano)
+		if(criterio in Categoria){
+			nomeCriterio = "categoria"
+		} else if(criterio in Subcategoria){
+			nomeCriterio = "subcategoria"
+		} else if(criterio in String){
+			nomeCriterio = "natureza"
+		}
 
-		def pagamentos = Pagamento.createCriteria().list {
+		int mes = orcmMes.mes
+		int ano = orcmMes.orcamento.ano
+		Date primeiroDia = DateUtils.getPrimeiroDia(mes, ano)
+		Date ultimoDia = DateUtils.getUltimoDia(mes, ano)
+
+		double total = Pagamento.createCriteria().get {
 			and {
-				eq('categoria', categoria)
-				between('data', firstDate, lastDate)
+				eq('user', usuario)
+				eq(nomeCriterio, criterio)
+				between('data', primeiroDia, ultimoDia)
+			}
+			projections { sum "valor" }
+		}
+
+		(total)? total : 0
+	}
+
+	/**
+	 * Calcula o saldo no mes
+	 * @param ormcMes o mes
+	 * @param usuario o usuario
+	 * @return o saldo atual
+	 */
+	double getSaldoRealizado(OrcmMes ormcMes,Usuario usuario){
+
+		double entradas = getTotalRealizado(ormcMes, usuario, Constants.CREDITO)
+		double saidas = getTotalRealizado(ormcMes, usuario, Constants.DEBITO)
+
+		entradas - saidas
+	}
+	
+	/**
+	 * Calcula o saldo previsto no mes, dado um criterio
+	 * O criterio pode ser uma Categoria, Subcategoria ou Natureza do pagamento
+	 * @param mes o mes
+	 * @param criterio o criterio de calculo
+	 * @return o total previsto
+	 */
+	double getTotalPrevisto(OrcmMes mes, def criterio){
+
+		double total;
+
+		if(criterio in Categoria){
+			total = OrcmItem.findAllByCategoriaAndMes(criterio,mes).sum { it.valorPrevisto }
+			
+		} else if(criterio in Subcategoria){
+			OrcmItem item = OrcmItem.findBySubcategoriaAndMes(criterio,mes)
+			total = item?.valorPrevisto
+
+		} else if (criterio in Boolean){
+			def categorias = Categoria.findAllByReceita(criterio)
+		
+			if(categorias){
+				total = OrcmItem.createCriteria().get {
+					and {
+						eq('mes', mes)
+						'in'('categoria', categorias)
+					}
+					projections { sum "valorPrevisto" }
+				}
 			}
 		}
 
-		double total = 0.0
-
-		if(pagamentos){
-			pagamentos.each {
-				total += it.valor
-			}
-		}
-		
-		total
+		(total)? total : 0
 	}
+	
+	/**
+	* Calcula o saldo previsto em um mes
+	* @param mes o mes
+	* @return o saldo previsto
+	*/
+   double getSaldoPrevisto(OrcmMes mes){
 
-   double calcTotalPrevCategoria(OrcmMes mes, Categoria categoria){
-	   
-	   double total = 0.0
-	   
-	   def itensList = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-	   
-	   if(itensList != null){
-		   itensList.each{
-			   total += it.valorPrevisto
-		   }
-	   }
+	   double entradas = getTotalPrevisto(mes,true)
+	   double saidas = getTotalPrevisto(mes,false)
 
-	   total
+	   entradas - saidas
    }
-   
-   double calcTotalPrevSubcategoria(OrcmMes mes, Subcategoria subcategoria){
-	   
-		OrcmItem item = OrcmItem.findBySubcategoriaAndMes(subcategoria,mes)
-		
-		if(item != null){
-			return item.valorPrevisto
-		}
-		
-		return 0.0
-	}
-   
-   double calcTotalRealSubcategoria(OrcmMes mes, Subcategoria subcategoria){
-	   
-			   int _mes = mes.mes
-			   int _ano = mes.orcamento.ano
-			   Date firstDate = DateUtils.getFirstDate(_mes, _ano)
-			   Date lastDate = DateUtils.getLastDate(_mes,_ano)
-			   
-			   def pagamentos = Pagamento.createCriteria().list {
-				   and {
-					   eq('subcategoria', subcategoria)
-					   between('data', firstDate, lastDate)
-				   }
-			   }
-			   
-			   double total = 0.0
-			   
-			   if(pagamentos){
-				   pagamentos.each {
-					   total += it.valor
-				   }
-			   }
-	   
-			   total
-   }
-   
-   /**
-   * Calcula o saldo Previsto
-   * @return o saldo previsto
-   */
-  double calcSaldoPrevisto(OrcmMes mes){
-	  
-	  double saldo = 0
-	  double entradas = 0
-	  double saidas = 0
-	  
-	  //Credito
-	  def categoriasCred = Categoria.findAllByReceita(true)
-	  
-	  categoriasCred.each{ categoria ->
-		  
-		  def itensCred = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-		  
-		  itensCred.each{ item ->
-			  entradas += item.valorPrevisto
-		  }
-	  }
-	  
-	  //Debito
-	  def categoriasDeb = Categoria.findAllByReceita(false)
-	  
-	  categoriasDeb.each{ categoria ->
-		  
-		  def itensDeb = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
-		  
-		  itensDeb.each{ item ->
-			  saidas += item.valorPrevisto
-		  }
-	  }
-	  
-	  saldo = entradas - saidas
-	 
-	  return saldo
-  }
-
-  /**
-  * Calcula o saldo Realizado
-  * @return o saldo realizado
-  */
-  double calcSaldoRealizado(OrcmMes mes){
-	  
-	  int _mes = mes.mes
-	  int _ano = mes.orcamento.ano
-	  Date firstDate = DateUtils.getFirstDate(_mes, _ano)
-	  Date lastDate = DateUtils.getLastDate(_mes,_ano)
-	  def pagamentos = Pagamento.findAllByDataBetween(firstDate,lastDate)
-	  
-	  double saldo = 0
-	  double entradas = 0
-	  double saidas = 0
-	  
-	  if(pagamentos){
-		  pagamentos.each { pg ->
-			  if(pg.natureza.equals("C")){
-				  entradas += pg.valor
-			  }else {
-				  saidas += pg.valor
-			  }
-		  }
-	  }
-
-	  saldo = entradas - saidas
-	  
-	 return saldo
-  }
-  
-  double calcTotalPrev(OrcmMes mes, boolean receita){
-	  
-	  double total = 0.0
-	  
-	  def itensList = OrcmItem.findAllByMes(mes)
-	  
-	  if(itensList != null){
-		  itensList.each{
-
-			  if(it.categoria.receita == receita){
-				  total += it.valorPrevisto
-			  }
-		  }
-	  }
-
-	  total
-  }
 }

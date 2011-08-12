@@ -11,10 +11,10 @@ class UsuarioService {
 
     }
 	
-	void initUser(Usuario user,File file){
+	void inicializaUsuario(Usuario usuario,File file){
 		
-		int ano = DateUtils.getCurrentYear()
-		Orcamento orcm = new Orcamento(ano: ano,user:user)
+		int ano = DateUtils.getAnoAtual()
+		Orcamento orcm = new Orcamento(ano: ano,user:usuario)
 		orcm.save(flush: true)
 
 		file.eachLine{ linha ->
@@ -26,7 +26,7 @@ class UsuarioService {
 				String categoria = linhaBase[0]
 				boolean receita = ("Receitas").equals(categoria)
 
-				Categoria categoriaBean = new Categoria( nome:categoria, user:user, receita:receita ).save(flush: true)
+				Categoria categoriaBean = new Categoria( nome:categoria, user:usuario, receita:receita ).save(flush: true)
 				
 				String[] subcategorias = linhaBase[1].split(";")
 				
@@ -36,7 +36,7 @@ class UsuarioService {
 			}
 		}
 
-		def allCategorias = Categoria.findAllByUser(user)
+		def allCategorias = Categoria.findAllByUser(usuario)
 		
 		for(int mes in 0..11){
 			OrcmMes orcmMes = new OrcmMes(mes:mes,orcamento:orcm).save(flush:true)
@@ -52,8 +52,8 @@ class UsuarioService {
 		}
 	}
 	
-	boolean isValidEmail(Usuario user){
+	boolean isEmailValido(Usuario usuario){
 		
-		return Usuario.findByEmail(user.email)
+		return Usuario.findByEmail(usuario.email)
 	}
 }

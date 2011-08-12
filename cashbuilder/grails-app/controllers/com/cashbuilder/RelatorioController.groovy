@@ -2,6 +2,7 @@ package com.cashbuilder
 
 import com.cashbuilder.beans.relatorio.MultiBarChartDataBean;
 import com.cashbuilder.beans.relatorio.PieChartDataBean;
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 import com.grailsfusioncharts.beans.MultiBarChartBean;
 import com.grailsfusioncharts.beans.MultiLineChartBean;
@@ -10,16 +11,15 @@ import com.grailsfusioncharts.beans.PieChartBean;
 class RelatorioController {
 
 	def orcamentoService
-	def fluxocaixaService
 	
     def index = {
 		
 		def user = session.user.attach()
 		
-		int iMes = DateUtils.currentMonth
-		int iAno = DateUtils.currentYear
-		Date firstDate = DateUtils.getFirstDate(iMes,iAno)
-		Date lastDate = DateUtils.getLastDate(iMes,iAno)
+		int iMes = DateUtils.mesAtual
+		int iAno = DateUtils.anoAtual
+		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
+		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
 
 		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
@@ -30,7 +30,7 @@ class RelatorioController {
 		
 		categorias.each { categoria ->
 
-			double totalRealizado = orcamentoService.calcTotalRealCategoria(mes,categoria)
+			double totalRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
 			
 			if(totalRealizado > 0){
 				PieChartDataBean bean = new PieChartDataBean(categoria: categoria.nome, total: totalRealizado)
@@ -46,10 +46,10 @@ class RelatorioController {
 		
 		for(int idMes in iMes-1..iMes+1){
 			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
-			double entradas = fluxocaixaService.calcTotal(orcmMes,user,true)
-			double saidas = fluxocaixaService.calcTotal(orcmMes,user,false)
+			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
+			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
 			
-			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMonth(idMes),entradas:entradas,saidas:saidas)
+			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMes(idMes),entradas:entradas,saidas:saidas)
 			barDataList.add bean
 		}
 		

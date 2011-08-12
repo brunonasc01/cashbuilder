@@ -34,13 +34,13 @@
 			</div>
 			
 			<div class="box ui-corner-all shadow_box">
-				<g:if test="${params.viewType.equals(Constants.BASIC)}">
-					<g:link action="index" params="[viewType:'COMPLETE']">
+				<g:if test="${params.viewType.equals(Constants.BASICO)}">
+					<g:link action="index" params="[viewType:'COMPLETO']">
 						Ver em Detalhe
 					</g:link>
 				</g:if>
 				<g:else>
-					<g:link action="index" params="[viewType:'BASIC']">
+					<g:link action="index" params="[viewType:'BASICO']">
 						Ver Resumo
 					</g:link>
 				</g:else>
@@ -54,21 +54,21 @@
 
 					<div class="title span-2">Previsto</div>
 					<div class="span-2 ${classPrevisto } last">
-						<g:formatNumber number="${boxSaldo.saldoPrevisto }" format="${Constants.moneyMask}"/>
+						<g:formatNumber number="${boxSaldo.saldoPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 					
 					<g:set var="classRealizado" value="${(boxSaldo.saldoRealizado > 0) ? 'positivo' : 'negativo' }"></g:set>
 					
 					<div class="title span-2">Realizado</div>
 					<div class="span-2 ${classRealizado } last">
-						<g:formatNumber number="${boxSaldo.saldoRealizado }" format="${Constants.moneyMask}"/>
+						<g:formatNumber number="${boxSaldo.saldoRealizado }" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 				</div>
 			</g:if>
     	</div>
     
     	<div class="box ui-corner-all span-16 last shadow_box">
-    		<g:if test="${params.viewType.equals(Constants.BASIC)}">
+    		<g:if test="${params.viewType.equals(Constants.BASICO)}">
     			<g:render template="/elements/orcamento_basico" bean="${orcamento}"></g:render>
     		</g:if>
     		<g:else>

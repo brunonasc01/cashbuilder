@@ -38,7 +38,7 @@
 		   			<fieldset>
 		           		<legend>Aplicar para</legend>
 						
-						<div class="span-3"><label for="Mes">Mês (${DateUtils.getMonth(orcmMes.mes) })</label></div>
+						<div class="span-3"><label for="Mes">Mês (${DateUtils.getMes(orcmMes.mes) })</label></div>
 						<div class="span-1 last"><g:radio name="tipoSave" value="mes" checked="true"></g:radio></div>
 						
 						<div class="span-3"><label for="Ano">Ano</label></div>
@@ -56,17 +56,17 @@
 
 						<div class="span-2 prepend-1"><label>Entradas</label></div>
 						<div class="span-2 positivo last">
-							<g:formatNumber number="${orcmBox.entradas}" format="${Constants.moneyMask}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.entradas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 						
 						<div class="span-2 prepend-1"><label>Saidas</label></div>
 						<div class="span-2 negativo last">
-							<g:formatNumber number="${orcmBox.saidas}" format="${Constants.moneyMask}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.saidas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 						
 						<div class="span-2 prepend-1"><label>Saldo</label></div>
 						<div class="span-2 last">
-							<g:formatNumber number="${orcmBox.saldo}" format="${Constants.moneyMask}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.saldo}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 					</div>
 				</g:if>

@@ -47,7 +47,7 @@ class AdministracaoController {
 	
 	def save_reg = { UsuarioRegistroCommand urc ->
 
-		if(usuarioService.isValidEmail( new Usuario(urc.properties)))
+		if(usuarioService.isEmailValido( new Usuario(urc.properties)))
 		{
 			flash.message = "Endereço de e-mail ja cadastrado."
 			render(view: "cadastro_usr", model: [usuarioInstance: urc])
@@ -58,7 +58,7 @@ class AdministracaoController {
 				usuarioInstance.save(flush: true)
 
 				File file = grailsAttributes.getApplicationContext().getResource("res/categorias.csv").getFile()
-				usuarioService.initUser(usuarioInstance,file)
+				usuarioService.inicializaUsuario(usuarioInstance,file)
 
 				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
 				redirect(action: "login", id: usuarioInstance.id)
@@ -73,7 +73,7 @@ class AdministracaoController {
 		
 		if(!params.mesId || !params.anoId){
 			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
-			params.anoId = DateUtils.currentYear
+			params.anoId = DateUtils.anoAtual
 		}
 		
 		int iMes = Integer.valueOf(params.mesId)
@@ -112,12 +112,12 @@ class AdministracaoController {
 		}
 		
 		//totais previstos
-		DecimalFormat df = new DecimalFormat(Constants.moneyMask)
+		DecimalFormat df = new DecimalFormat(Constants.FORMATO_MOEDA)
 		
 		OrcmAdmBoxBean bean = new OrcmAdmBoxBean()
-		bean.entradas = orcamentoService.calcTotalPrev(mes,true)
-		bean.saidas = orcamentoService.calcTotalPrev(mes,false)
-		bean.saldo = orcamentoService.calcSaldoPrevisto(mes)
+		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
+		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)
+		bean.saldo = orcamentoService.getSaldoPrevisto(mes)
 				
 		
 		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes, anos: orcamentos, meses: meses,

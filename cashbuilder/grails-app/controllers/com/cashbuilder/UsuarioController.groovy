@@ -4,6 +4,8 @@ import com.cashbuilder.cmd.UsuarioRegistroCommand;
 
 class UsuarioController {
 
+	def usuarioService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -99,4 +101,28 @@ class UsuarioController {
             redirect(action: "list")
         }
     }
+	
+	def grava_registro = { UsuarioRegistroCommand urc ->
+		
+		if(usuarioService.isEmailValido( new Usuario(urc.properties)))
+		{
+			flash.message = "Endereço de e-mail ja cadastrado."
+			render(view: "cadastro_usr", model: [usuarioInstance: urc])
+			
+		}else{
+			if (!urc.hasErrors()) {
+				def usuarioInstance = new Usuario(urc.properties)
+				usuarioInstance.save(flush: true)
+
+				File file = grailsAttributes.getApplicationContext().getResource("res/categorias.csv").getFile()
+				usuarioService.inicializaUsuario(usuarioInstance,file)
+
+				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+				redirect(action: "login", id: usuarioInstance.id)
+			}
+			else {
+				render(view: "cadastro_usr", model: [usuarioInstance: urc])
+			}
+		}
+	}
 }

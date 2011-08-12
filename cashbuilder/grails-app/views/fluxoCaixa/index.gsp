@@ -27,19 +27,19 @@
     		
 				<div class="title span-2">Entradas</div>
 				<div class="span-3 positivo last">
-					<g:formatNumber number="${fluxoCaixa.entradas}" format="${Constants.moneyMask}"></g:formatNumber>
+					<g:formatNumber number="${fluxoCaixa.entradas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</div>
 				
 				<div class="title span-2">Saídas</div>
 				<div class="span-3 negativo last">
-					<g:formatNumber number="${fluxoCaixa.saidas}" format="${Constants.moneyMask}"></g:formatNumber>
+					<g:formatNumber number="${fluxoCaixa.saidas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</div>
 				
 				<g:set var="classSaldo" value="${(fluxoCaixa.saldo > 0) ? 'positivo' : 'negativo' }"></g:set>
 				
 				<div class="title span-2">Saldo</div>
 				<div class="span-3 ${classSaldo } last">
-					<g:formatNumber number="${fluxoCaixa.saldo}" format="${Constants.moneyMask}"></g:formatNumber>
+					<g:formatNumber number="${fluxoCaixa.saldo}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</div>
 			</div>
     	

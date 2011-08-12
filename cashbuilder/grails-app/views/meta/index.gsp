@@ -107,21 +107,21 @@
 
 						<div class="status span-5 last">
 						
-						<g:if test="${meta.status == Constants.GOAL_COMPLETE }">
+						<g:if test="${meta.status == Constants.META_ATINGIDA }">
 							<i class="positivo">ALCANCADO!</i>
 						</g:if>
-						<g:elseif test="${meta.status == Constants.GOAL_FAILED }">
+						<g:elseif test="${meta.status == Constants.META_PERDIDA }">
 							<i class="negativo">EXPIRADO</i>
 						</g:elseif>
-						<g:elseif test="${meta.status == Constants.GOAL_WORKING }">
+						<g:elseif test="${meta.status == Constants.META_CORRENTE }">
 							<i>EM ANDAMENTO</i>
 						</g:elseif>
 						</div>
 
 						<div class="span-15 append-5">
-		            		<b>R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.moneyMask}"></g:formatNumber></b>
+		            		<b>R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber></b>
 		            		de
-		            		<b>R$ <g:formatNumber number="${meta.valorFinal }" format="${Constants.moneyMask}"></g:formatNumber></b>
+		            		<b>R$ <g:formatNumber number="${meta.valorFinal }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber></b>
 	            		</div>
 	            		
 	            		<div class="span-15">

@@ -3,7 +3,7 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 <g:if test="${orcamento }">
 <div class="basic">
-	<p class="title"> Orçamento ${DateUtils.getMonth(orcamento.mes) } - ${orcamento.ano } </p>
+	<p class="title"> Orçamento ${DateUtils.getMes(orcamento.mes) } - ${orcamento.ano } </p>
 
 	<g:set var="counter" value="${0}" />
 
@@ -21,7 +21,7 @@
 				</div>
 				
 				<div class="atual span-3">
-					<g:formatNumber number="${entrada.vlRealizado }" format="${Constants.moneyMask}"/>
+					<g:formatNumber number="${entrada.vlRealizado }" format="${Constants.FORMATO_MOEDA}"/>
 				</div>
 				
 				<div class="span-9">
@@ -45,7 +45,7 @@
 				</script>
 				
 				<div class="previsto span-3 last">
-					<g:formatNumber number="${entrada.vlPrevisto }" format="${Constants.moneyMask}"/>
+					<g:formatNumber number="${entrada.vlPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
 				</div>
 			</div>
 			
@@ -69,7 +69,7 @@
 				</div>
 				
 				<div class="atual span-3">
-					<g:formatNumber number="${saida.vlRealizado }" format="${Constants.moneyMask}"/>
+					<g:formatNumber number="${saida.vlRealizado }" format="${Constants.FORMATO_MOEDA}"/>
 				</div>
 				
 				<div class="span-9">
@@ -93,7 +93,7 @@
 				</script>
 				
 				<div class="previsto span-3 last">
-					<g:formatNumber number="${saida.vlPrevisto }" format="${Constants.moneyMask}"/>
+					<g:formatNumber number="${saida.vlPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
 				</div>
 			</div>
 			
