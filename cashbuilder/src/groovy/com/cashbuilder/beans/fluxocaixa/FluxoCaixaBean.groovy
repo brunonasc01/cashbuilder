@@ -6,4 +6,8 @@ class FluxoCaixaBean {
 	double entradas
 	double saidas
 	double saldo
+	
+	public double getSaldo(){
+		return entradas - saidas
+	}
 }

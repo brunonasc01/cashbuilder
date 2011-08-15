@@ -7,6 +7,8 @@ class Usuario {
 	String password
 	Date dateCreated
 	
+	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento]
+	
     static constraints = {
 		
 		email(email: true, unique:true,blank:false)
@@ -17,9 +19,7 @@ class Usuario {
 					}
 				)
     }
-	
-	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento]
-	
+
 	String toString(){
 		"${nome} : ${email}"
 	}

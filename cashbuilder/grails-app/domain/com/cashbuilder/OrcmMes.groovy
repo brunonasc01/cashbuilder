@@ -1,29 +1,24 @@
 package com.cashbuilder
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Date;
-
 import com.cashbuilder.utils.DateUtils;
 
 class OrcmMes {
 
 	Integer mes
+
+	static belongsTo = [orcamento: Orcamento]
 	
 	static hasMany = [itens: OrcmItem]
 	
-	static belongsTo = [orcamento: Orcamento]
-	
     static constraints = {
-		mes(size:0..11,unique:true)
+		mes(size:0..11)
     }
-	
-	String toString(){
-		"${DateUtils.getMonth(mes)}"
+
+	static mapping = {
+		sort mes: "asc" 
 	}
 	
-	static mapping = {
-		
-		sort mes: "asc" 
+	String toString(){
+		"${DateUtils.getMes(mes)}"
 	}
 }

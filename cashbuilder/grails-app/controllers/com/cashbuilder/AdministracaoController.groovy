@@ -3,7 +3,7 @@ package com.cashbuilder
 import java.text.DecimalFormat;
 import java.util.Date;
 
-import com.cashbuilder.beans.administracao.OrcmAdmBoxBean;
+import com.cashbuilder.beans.BoxSaldoBean;
 import com.cashbuilder.beans.administracao.OrcmMesBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
 import com.cashbuilder.utils.Constants;
@@ -71,35 +71,32 @@ class AdministracaoController {
 	
 	def adm_orcm = {
 		
-		if(!params.mesId || !params.anoId){
-			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
-			params.anoId = DateUtils.anoAtual
+		if(!params.mesId){
+			params.mesId = DateUtils.mesAtual
 		}
 		
 		int iMes = Integer.valueOf(params.mesId)
-		int iAno = Integer.valueOf(params.anoId)
-		
+
 		def user = session.user.attach()
-		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
+		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
 		
 		//form de filtro
-		def orcamentos = Orcamento.findAllByUser(user)
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
 		
-		List lsItensDeb = new ArrayList()
-		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
+		List listaDebito = new ArrayList()
+		def categoriasDebito = Categoria.findAllByReceitaAndUser(false,user)
 		
-		categoriasDeb.each { categoria ->
+		categoriasDebito.each { categoria ->
 
 			OrcmMesBean bean = new OrcmMesBean()
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
 
-			lsItensDeb.add bean
+			listaDebito.add bean
 		}
 
-		List lsItensCred = new ArrayList()
+		List listaCredito = new ArrayList()
 		def categoriasCredito = Categoria.findAllByReceitaAndUser(true,user)
 		
 		categoriasCredito.each { categoria ->
@@ -108,20 +105,17 @@ class AdministracaoController {
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
 
-			lsItensCred.add bean
+			listaCredito.add bean
 		}
 		
 		//totais previstos
 		DecimalFormat df = new DecimalFormat(Constants.FORMATO_MOEDA)
 		
-		OrcmAdmBoxBean bean = new OrcmAdmBoxBean()
+		BoxSaldoBean bean = new BoxSaldoBean()
 		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
 		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)
-		bean.saldo = orcamentoService.getSaldoPrevisto(mes)
-				
-		
-		[itensDeb: lsItensDeb, itensCred: lsItensCred, orcmMes: mes, anos: orcamentos, meses: meses,
-			orcmBox: bean, df: df, adm:true ]
+
+		[ adm: true,  df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, orcmBox: bean]
 	}
 	
 	def save_itens = {

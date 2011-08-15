@@ -6,8 +6,11 @@ class OrcmItem {
 	Subcategoria subcategoria
 	double valorPrevisto
 	
-    static constraints = {
-    }
-	
 	static belongsTo = [mes: OrcmMes]
+	
+    static constraints = {
+		categoria(nullable:false)
+		subcategoria(nullable:false)
+		valorPrevisto(blank:false, scale:2)
+    }
 }

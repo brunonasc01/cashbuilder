@@ -12,42 +12,37 @@ class FluxoCaixaController {
 	
     def index = {
 	
-		if(!params.mesId || !params.anoId){
-			params.mesId = Calendar.getInstance().get(Calendar.MONTH)
-			params.anoId = DateUtils.anoAtual
+		if(!params.mesId){
+			params.mesId = DateUtils.mesAtual
 		}
 		
-		int iMes = Integer.valueOf(params.mesId)
-		int iAno = Integer.valueOf(params.anoId)
+		int mesAtual = Integer.valueOf(params.mesId)
+		int anoAtual = DateUtils.anoAtual
 		
 		def user = session.user.attach()
-		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
+		def orcamento = Orcamento.findByAnoAndUser(anoAtual,user)
 
-		//form de filtro
-		def orcamentos = Orcamento.findAllByUser(user)
+		//form de filtro		
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
 		
 		//fluxo de caixa
-		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
-		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
+		Date primeiroDia = DateUtils.getPrimeiroDia(mesAtual,anoAtual)
+		Date ultimoDia = DateUtils.getUltimoDia(mesAtual,anoAtual)
 
 		def pagamentos = Pagamento.createCriteria().list {
 			and {
 				eq('user', user)
-				between('data', firstDate, lastDate)
+				between('data', primeiroDia, ultimoDia)
 			}
 			order("data", "asc")
 		}
 
 		FluxoCaixaBean bean = new FluxoCaixaBean(pagamentos:pagamentos)
 		
-		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
-
+		def mes = OrcmMes.findByMesAndOrcamento(mesAtual,orcamento)
 		bean.entradas = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)
 		bean.saidas = orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO)
-		bean.saldo = orcamentoService.getSaldoRealizado(mes,user)
-				
-		
-		[flow: true, anos: orcamentos, meses: meses,fluxoCaixa:bean]
+
+		[flow: true, meses: meses, fluxoCaixa:bean]
 	}
 }

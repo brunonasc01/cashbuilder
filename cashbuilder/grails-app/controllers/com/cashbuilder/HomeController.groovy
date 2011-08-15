@@ -12,39 +12,16 @@ class HomeController {
     def index = {
 		
 		def user = session.user.attach()
-		def orcamento = Orcamento.findByAnoAndUser(Calendar.getInstance().get(Calendar.YEAR),user)
-		def mes = OrcmMes.findByMesAndOrcamento(Calendar.getInstance().get(Calendar.MONTH),orcamento)
-		
-		
+
+		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+		def mesAtual = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,orcamento)
+
 		//box saldo
 		BoxSaldoBean boxSaldo = new BoxSaldoBean();
-		boxSaldo.entradas = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)
-		boxSaldo.saidas = orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO)		
-		boxSaldo.saldo = boxSaldo.entradas - boxSaldo.saidas
-
-		int iMes = DateUtils.mesAtual
-		int iAno = DateUtils.anoAtual
+		boxSaldo.entradas = orcamentoService.getTotalRealizado(mesAtual,user,Constants.CREDITO)
+		boxSaldo.saidas = orcamentoService.getTotalRealizado(mesAtual,user,Constants.DEBITO)		
 		
-		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
-		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
-		
-		def pagamentos = Pagamento.createCriteria().list {
-			and {
-				eq('user', user)
-				between('data', firstDate, lastDate)
-			}
-		}
-		
-		def pgsNoMes = [:]
-		
-		for(Pagamento pg :pagamentos){
-			
-			String subCategoria = pg.subcategoria
-			pgsNoMes.put(subCategoria,pg.valor)
-		}
-		
-		
-		//box ultimos pagamentos
+		//box ultimos registro
 		def ultimosRegistros = Pagamento.createCriteria().list(max:3) {
 			eq('user', user)
 			order("id", "desc")
@@ -52,27 +29,19 @@ class HomeController {
 		
 		//box registro rapido
 		def allCategorias = Categoria.findAllByUser(user)
-		List allSubcategoria = new ArrayList()
-
-		allCategorias.each { categoria ->
-			def subcategorias = Subcategoria.findAllByCategoria(categoria)
-			allSubcategoria.addAll(subcategorias)
+		def allSubcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', allCategorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
+		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategorias)
 		
-		[home: true, boxSaldo : boxSaldo, ultimosRegistros : ultimosRegistros, registroRapido : registroRapido]
+		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: registroRapido]
 	}
 	
 	def save_registro = {
 		
 		def pagamento = new Pagamento(params)
-
-		if(pagamento?.categoria?.receita){
-			pagamento.natureza = Constants.CREDITO
-		} else {
-			pagamento.natureza = Constants.DEBITO
-		}
+		pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
 		
 		def user = session.user.attach()
 		pagamento.user = user

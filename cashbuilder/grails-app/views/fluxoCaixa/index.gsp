@@ -47,17 +47,7 @@
 	    		<g:form action="index">
 	    			<fieldset>
 	            		<legend>Filtro</legend>
-	    				
-	    				<div class="form-label span-1">
-	    					<label for="anoId">Ano</label>
-	    				</div>
-	
-	    				<div class="span-3 last">
-		    				<g:select name="anoId"
-								from="${anos}" 
-								optionKey="ano" value="${params.anoId}" noSelection="['': 'Sel.']" />
-						</div>		
-	    		
+
 	    				<div class="form-label span-1">
 	    					<label for="mesId">Mes</label>
 	    				</div>

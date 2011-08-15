@@ -1,126 +1,113 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.CategoriaBean;
-import com.cashbuilder.beans.OrcamentoDetalhadoBean;
-import com.cashbuilder.beans.OrcmDetalhadoItemBean;
-
-import java.util.Calendar;
-
-import com.cashbuilder.beans.OrcmBean;
-import com.cashbuilder.beans.orcamento.OrcamentoBoxSaldoBean;
+import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.beans.orcamento.OrcamentoBean;
+import com.cashbuilder.beans.orcamento.OrcamentoItemBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class OrcamentoController {
 
 	def orcamentoService
-	
+
 	def scaffold = true
-	
-    def index = {
 
-		if(!params.mesId || !params.anoId){
+	def index = {
+
+		if(!params.mesId){
 			params.mesId = DateUtils.mesAtual
-			params.anoId = DateUtils.anoAtual
 		}
-		
+
 		int iMes = Integer.valueOf(params.mesId)
-		int iAno = Integer.valueOf(params.anoId)
-		
+
 		def user = session.user.attach()
-		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
+		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
-		
-		
+
 		//form de filtro
-		def orcamentos = Orcamento.findAllByUser(user)
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
-		
+
 		//orcamento detalhado
-		OrcamentoDetalhadoBean orcmBean = new OrcamentoDetalhadoBean()
-		orcmBean.ano = orcamento.ano
-		orcmBean.mes = mes.mes
-		
+		OrcamentoBean orcamentoBean = new OrcamentoBean()
+		orcamentoBean.ano =  orcamento.ano
+		orcamentoBean.mes = DateUtils.getMes(mes.mes)
+
 		//entradas
-		List lsEntradas = new ArrayList()
-		
+		List listEntradas = new ArrayList()
+
 		def categoriasCred = Categoria.findAllByReceitaAndUser(true,user)
-		
+
 		categoriasCred.each { categoria ->
-			OrcmDetalhadoItemBean bean = new OrcmDetalhadoItemBean()
-			bean.nome = categoria.nome
-			bean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
-			bean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
-			
-			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
+			OrcamentoItemBean OrcmCategoriaBean = new OrcamentoItemBean()
+			OrcmCategoriaBean.nome = categoria.nome
+			OrcmCategoriaBean.valorPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
+			OrcmCategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
 
-				List lsSubCategorias = new ArrayList()
+			if(OrcmCategoriaBean.valorPrevisto > 0 || OrcmCategoriaBean.valorRealizado > 0){
+
+				List listSubcategorias = new ArrayList()
 
 				categoria.subcategorias.each { subcategoria ->
 
-					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
-					sBean.nome = subcategoria.nome
-					sBean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
-					sBean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
+					OrcamentoItemBean OrcmSubcategoriaBean = new OrcamentoItemBean()
+					OrcmSubcategoriaBean.nome = subcategoria.nome
+					OrcmSubcategoriaBean.valorPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
+					OrcmSubcategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
-					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
-						lsSubCategorias.add sBean
+					if(OrcmSubcategoriaBean.valorPrevisto > 0 || OrcmSubcategoriaBean.valorRealizado > 0){
+						listSubcategorias.add OrcmSubcategoriaBean
 					}
 				}
 
-				bean.subcategorias = lsSubCategorias
-
-				
-				lsEntradas.add(bean)
+				OrcmCategoriaBean.subcategorias = listSubcategorias
+				listEntradas.add(OrcmCategoriaBean)
 			}
 		}
-		
+
 		//saida
-		List lsSaidas = new ArrayList()
-		
-		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
-		
-		categoriasDeb.each { categoria ->
-			OrcmDetalhadoItemBean bean = new OrcmDetalhadoItemBean()
-			bean.nome = categoria.nome
-			bean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
-			bean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
-			
-			if(bean.vlPrevisto > 0 || bean.vlRealizado > 0){
+		List listSaidas = new ArrayList()
 
-				List lsSubCategorias = new ArrayList()
+		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
+
+		categoriasDeb.each { categoria ->
+			OrcamentoItemBean OrcmCategoriaBean = new OrcamentoItemBean()
+			OrcmCategoriaBean.nome = categoria.nome
+			OrcmCategoriaBean.valorPrevisto = orcamentoService.getTotalPrevisto(mes,categoria)
+			OrcmCategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,categoria)
+
+			if(OrcmCategoriaBean.valorPrevisto > 0 || OrcmCategoriaBean.valorRealizado > 0){
+
+				List listSubcategorias = new ArrayList()
 
 				categoria.subcategorias.each { subcategoria ->
 
-					OrcmDetalhadoItemBean sBean = new OrcmDetalhadoItemBean()
-					sBean.nome = subcategoria.nome
-					sBean.vlPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
-					sBean.vlRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
+					OrcamentoItemBean OrcmSubcategoriaBean = new OrcamentoItemBean()
+					OrcmSubcategoriaBean.nome = subcategoria.nome
+					OrcmSubcategoriaBean.valorPrevisto = orcamentoService.getTotalPrevisto(mes,subcategoria)
+					OrcmSubcategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
-					if(sBean.vlPrevisto > 0 || sBean.vlRealizado > 0){
-						lsSubCategorias.add sBean
+					if(OrcmSubcategoriaBean.valorPrevisto > 0 || OrcmSubcategoriaBean.valorRealizado > 0){
+						listSubcategorias.add OrcmSubcategoriaBean
 					}
 				}
 
-				bean.subcategorias = lsSubCategorias
-
-				lsSaidas.add(bean)
+				OrcmCategoriaBean.subcategorias = listSubcategorias
+				listSaidas.add(OrcmCategoriaBean)
 			}
 		}
 
-		orcmBean.orcmEntradas = lsEntradas
-		orcmBean.orcmSaidas = lsSaidas
-		
-		OrcamentoBoxSaldoBean box = new OrcamentoBoxSaldoBean()
-		
+		orcamentoBean.listaCredito = listEntradas
+		orcamentoBean.listaDebito = listSaidas
+
+		BoxSaldoBean box = new BoxSaldoBean()
 		box.saldoPrevisto = orcamentoService.getSaldoPrevisto(mes)
 		box.saldoRealizado = orcamentoService.getSaldoRealizado(mes,user)
-		
+
 		//Tipo de visualizacao
 		if(!params.viewType){
 			params.viewType = Constants.BASICO
 		}
-		
-		[orcm : true, anos : orcamentos, meses : meses, orcamento : orcmBean, boxSaldo: box]
+
+		[orcm: true, meses: meses, orcamento: orcamentoBean, boxSaldo: box]
 	}
 }

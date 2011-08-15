@@ -4,17 +4,17 @@ class Subcategoria {
 
 	String nome
 	
+	static belongsTo = [categoria: Categoria]
+	
     static constraints = {
+		nome(size:3..30,blank:false)
     }
 
-	static belongsTo = [categoria: Categoria]
+	static mapping = {
+		sort nome: "asc"
+	}
 	
 	String toString(){
 		"${nome}"
-	}
-	
-	static mapping = {
-		
-		sort nome: "asc"
 	}
 }

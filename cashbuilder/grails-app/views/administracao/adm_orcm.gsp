@@ -13,14 +13,7 @@
 	    		<div class="box ui-corner-all shadow_box">
 		    		<fieldset>
 		           		<legend>Filtro</legend>
-		   				
-		   				<div class="span-1"><label for="anoId">Ano</label></div>
-		   				<div class="span-3 last">
-		    				<g:select name="anoId"
-								from="${anos}" 
-								optionKey="ano" value="${params.anoId}" noSelection="['': 'Sel.']" />
-						</div>		
-		   		
+
 		   				<div class="span-1"><label for="mesId">Mes</label></div>
 		   				<div class="span-3 last">
 		    				<g:select name="mesId"

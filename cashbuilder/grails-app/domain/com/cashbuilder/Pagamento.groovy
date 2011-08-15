@@ -1,7 +1,5 @@
 package com.cashbuilder
 
-import com.cashbuilder.utils.DateUtils;
-
 class Pagamento {
 
 	static searchable = {
@@ -15,13 +13,13 @@ class Pagamento {
 	Categoria categoria
 	Subcategoria subcategoria
 	
+	static belongsTo = [user: Usuario]
+	
     static constraints = {
 		
-		categoria(nullable:true)
-		subcategoria(nullable:true)
+		data(blank: false)
+		valor(blank:false, scale:2)
+		categoria(nullable:false)
+		subcategoria(nullable:false)
     }
-	
-	static belongsTo = [user: Usuario]
-		
-	
 }

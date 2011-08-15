@@ -5,20 +5,20 @@ class Categoria {
 	String nome
 	boolean receita
 	
-    static constraints = {
-		nome(unique:true, blank: false, size:3..20)
-    }
-
+	static belongsTo = [user: Usuario]
+	
 	static hasMany = [subcategorias: Subcategoria]
 	
-	String toString(){
-		"${nome}"
-	}
-	
+    static constraints = {
+		nome(blank: false, size:3..20)
+    }
+
 	static mapping = {
 		subcategorias sort: 'nome'
 		sort nome: "asc"
 	}
 	
-	static belongsTo = [user: Usuario]
+	String toString(){
+		"${nome}"
+	}
 }
