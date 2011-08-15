@@ -1,3 +1,19 @@
+
+<g:javascript>
+$(document).ready(function() {
+	$("#comboCategoria").change(function() {
+		$.ajax({
+              url: "/cashbuilder/categoria/categoriaSelected",
+              data: "id=" + this.value,
+              cache: false,
+              success: function(html) {
+              $("#comboSubcategorias").html(html);
+              }
+		});
+	});
+});
+</g:javascript>
+
 <div class="box registro_rapido ui-corner-all shadow_box">
 	<g:form class="regform" action="save_registro" controller="home">
 		<p class="title">Registro Rápido</p>
@@ -22,7 +38,7 @@
 			</div>			              
 			<div class="span-5 append-6 last">
 				<g:if test="${registroRapido}">
-					 <g:select name="categoria.id"
+					 <g:select id="comboCategoria" name="categoria.id"
 						from="${registroRapido.categorias}" 
 						optionKey="id" value="" noSelection="['': 'Selecione']" />
 				</g:if>
@@ -33,9 +49,10 @@
 			</div>			              
 			<div class="span-5 append-6 last">
 				<g:if test="${registroRapido}">
+					<span id="comboSubcategorias">
 					 <g:select name="subcategoria.id"
-						from="${registroRapido.subcategorias}" 
-						optionKey="id" value="" noSelection="['': 'Selecione']" />
+						noSelection="['': 'Selecione uma categoria']" />
+					</span>
 				</g:if>
 			</div>
 

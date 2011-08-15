@@ -3,4 +3,11 @@ package com.cashbuilder
 class CategoriaController {
 
     def index = { }
+	
+	def categoriaSelected = {
+		
+		def id = params.id
+		def categoria = Categoria.findById(params.id)
+		render g.select(optionKey: 'id', from: categoria.subcategorias, id: "comboSubcategorias", name: "subcategoria.id")
+	}
 }
