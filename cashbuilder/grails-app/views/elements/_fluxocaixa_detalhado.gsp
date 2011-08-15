@@ -1,3 +1,5 @@
+<%@page import="com.cashbuilder.utils.Constants"%>
+
 <g:if test="${fluxoCaixa}">
 	<table id="cashflow" class="cashflow">
 		<tbody>
@@ -23,19 +25,19 @@
 	
 					<td>
 						<g:if test="${pg.natureza.equals('C')}">
-							${pg.valor}
+							<g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="0" format="###,###,##0.00"></g:formatNumber>
+							<g:formatNumber number="0" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:else>
 					</td>						
 	
 					<td>
 						<g:if test="${pg.natureza.equals('D')}">
-						  <g:formatNumber number="${pg.valor}" format="###,###,##0.00"></g:formatNumber>
+						  <g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="0" format="###,###,##0.00"></g:formatNumber>
+							<g:formatNumber number="0" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:else>
 					</td>
 

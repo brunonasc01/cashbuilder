@@ -1,3 +1,3 @@
 	<div class="logo ui-corner-top">
-	Logo 50px
+	CASHBUILDER
 	</div>

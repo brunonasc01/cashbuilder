@@ -16,13 +16,11 @@ class RelatorioController {
 		
 		def user = session.user.attach()
 		
-		int iMes = DateUtils.mesAtual
-		int iAno = DateUtils.anoAtual
-		Date firstDate = DateUtils.getPrimeiroDia(iMes,iAno)
-		Date lastDate = DateUtils.getUltimoDia(iMes,iAno)
-
-		def orcamento = Orcamento.findByAnoAndUser(iAno,user)
-		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
+		int mesAtual = DateUtils.mesAtual
+		int anoAtual = DateUtils.anoAtual
+		
+		def orcamento = Orcamento.findByAnoAndUser(anoAtual,user)
+		def mes = OrcmMes.findByMesAndOrcamento(mesAtual,orcamento)
 		def categorias = Categoria.findAllByReceitaAndUser(false,user)
 		
 		//grafico de pizza
@@ -44,7 +42,7 @@ class RelatorioController {
 		//grafico de barras
 		def barDataList = new ArrayList()
 		
-		for(int idMes in iMes-1..iMes+1){
+		for(int idMes in mesAtual-1..mesAtual+1){
 			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
 			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
 			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)

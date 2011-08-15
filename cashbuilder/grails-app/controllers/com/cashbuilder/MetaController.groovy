@@ -6,51 +6,42 @@ import com.cashbuilder.utils.Constants;
 
 class MetaController {
 
-	def scaffold = true
-	
     def index = {
 		
 		def user = session.user.attach()
 
-		//box registro rapido
+		//box registro rapido		
 		def categorias = Categoria.findAllByUser(user)
-		List allCategorias = new ArrayList()
-		List allSubcategoria = new ArrayList()
-
-		categorias.each { categoria ->
-			allCategorias.add categoria
-			def subcategorias = Subcategoria.findAllByCategoria(categoria)
-			allSubcategoria.addAll(subcategorias)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
+		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
 		
 		// Lista de Metas
-		List listMetas = new ArrayList<MetaBean>()
+		List listaMetas = new ArrayList<MetaBean>()
 		
 		def metas = Meta.findAllByUser(user)
 		
 		metas.each { meta ->
 			
 			MetaBean bean = new MetaBean()
-			double total = 0.0
+			double total = 0
 			
 			meta.subcategorias.each{ subcategoria ->
 
-				def pagamentos = Pagamento.createCriteria().list {
+				total = Pagamento.createCriteria().get {
 					and {
+						eq('user', user)
 						eq('subcategoria', subcategoria)
 						between('data', meta.dataInicio, meta.dataFim)
 					}
+					projections { sum "valor" }
 				}
-
-				if(pagamentos){
-					pagamentos.each {
-						total += it.valor
-					}
-				}
+				
+				total = (total)? total : 0
 			}
-			
+
 			Date date = new Date()
 			
 			if(date.after(meta.dataFim)){
@@ -64,7 +55,6 @@ class MetaController {
 					bean.status = Constants.META_ATINGIDA
 				}else{
 					bean.status = Constants.META_CORRENTE
-					
 				}
 			}
 
@@ -87,12 +77,10 @@ class MetaController {
 			bean.valorFinal = meta.valorAlmejado
 			bean.valorAcumulado = total
 
-			listMetas.add(bean)
+			listaMetas.add(bean)
 		}
-			
-		
 
-		[goal : true, listCategorias: registroRapido, metas: listMetas ]
+		[goal : true, listCategorias: registroRapido, metas: listaMetas ]
 	}
 
 

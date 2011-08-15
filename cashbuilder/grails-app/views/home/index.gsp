@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
@@ -16,14 +17,5 @@
 
 	  		<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros }" ></g:render>
 	  	</div>
-	  	
-<%--	  	<div id="controllerList" class="dialog">--%>
-<%--			<h2>Available Controllers:</h2>--%>
-<%--			<ul>--%>
-<%--				<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">--%>
-<%--					<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>--%>
-<%--				</g:each>--%>
-<%--			</ul>--%>
-<%--		</div>--%>
 	</body>		
 </html>

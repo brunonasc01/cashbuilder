@@ -10,8 +10,6 @@ class OrcamentoController {
 
 	def orcamentoService
 
-	def scaffold = true
-
 	def index = {
 
 		if(!params.mesId){
