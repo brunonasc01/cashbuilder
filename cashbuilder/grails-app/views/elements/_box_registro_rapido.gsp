@@ -1,16 +1,7 @@
 
 <g:javascript>
 $(document).ready(function() {
-	$("#comboCategoria").change(function() {
-		$.ajax({
-              url: "/cashbuilder/categoria/categoriaSelected",
-              data: "id=" + this.value,
-              cache: false,
-              success: function(html) {
-              $("#comboSubcategorias").html(html);
-              }
-		});
-	});
+	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
 });
 </g:javascript>
 

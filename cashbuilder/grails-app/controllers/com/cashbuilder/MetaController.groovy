@@ -26,21 +26,17 @@ class MetaController {
 		metas.each { meta ->
 			
 			MetaBean bean = new MetaBean()
-			double total = 0
-			
-			meta.subcategorias.each{ subcategoria ->
 
-				total = Pagamento.createCriteria().get {
-					and {
-						eq('user', user)
-						eq('subcategoria', subcategoria)
-						between('data', meta.dataInicio, meta.dataFim)
-					}
-					projections { sum "valor" }
+			double	total = Pagamento.createCriteria().get {
+				and {
+					eq('user', user)
+					'in'('subcategoria', meta.subcategorias)
+					between('data', meta.dataInicio, meta.dataFim)
 				}
-				
-				total = (total)? total : 0
+				projections { sum "valor" }
 			}
+				
+			total = (total)? total : 0
 
 			Date date = new Date()
 			

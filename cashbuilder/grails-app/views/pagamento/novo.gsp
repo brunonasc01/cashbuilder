@@ -1,3 +1,5 @@
+
+
 <g:form class="regform" controller="pagamento">
 
 	<fieldset>
@@ -8,7 +10,7 @@
 				<label for="data"><g:message code="pagamento.data.label" default="Data" /></label>
 			</div>			              
 			<div class="span-8 last">
-				<g:datePicker name="data" value="" />
+				<g:jqDatePicker class="date" name="data" value="" />
 			</div>
 		</div>
 
@@ -20,19 +22,7 @@
 				<g:textField size="10" maxlength="10" name="valor" value="" />
 			</div>
 		</div>
-			
-		<div class="span-5 last append-6">
-			<div class="span-2">
-				<label for="natureza"><g:message code="pagamento.natureza.label" default="Natureza" /></label>
-			</div>
-			<div class="span-3 last">
-				<g:select name="natureza" from="${['D', 'C']}" noSelection="['': 'Selecione']"
-					value="" >
-					
-				</g:select>
-			</div>
-		</div>
-		
+
 		<div class="span-6">
 			<div class="span-2">
 				<label for="categoria"><g:message code="pagamento.categoria.label" default="Categoria" /></label>

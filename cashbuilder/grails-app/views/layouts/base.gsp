@@ -15,6 +15,7 @@
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
 		
 		<g:javascript src="jquery-1.5.1.min.js" />
+		<g:javascript src="funcoes-gerais.js" />
         <g:javascript src="jquery-ui-1.8.13.custom.min.js" />
 
 		<script type="text/javascript">
