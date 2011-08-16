@@ -19,6 +19,11 @@ p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; 
 
 .content-inner-space { margin: 18px }
 
+/* --- MODAL --- */
+
+.mascara { position:absolute; left:0; top:0; z-index:9000; background-color:#000000; display:none; }
+
+.modal { background-color: #FFFFFF; position:absolute; left:0; top:0; width:440px; height:200px; display:none; z-index:9999; padding:20px; }
 
 /* --- TOPO --- */
 

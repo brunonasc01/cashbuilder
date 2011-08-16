@@ -1,4 +1,9 @@
 
+<g:javascript>
+$(document).ready(function() {
+	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
+});
+</g:javascript>
 
 <g:form class="regform" controller="pagamento">
 
@@ -29,7 +34,7 @@
 			</div>			              
 			<div class="span-4 last">
 				<g:if test="${listCategorias}">
-					 <g:select name="categoria.id"
+					 <g:select id="comboCategoria" name="categoria.id"
 						from="${listCategorias?.categorias}" 
 						optionKey="id" value="" noSelection="['': 'Selecione']" />
 				</g:if>
@@ -42,9 +47,11 @@
 			</div>			              
 			<div class="span-3 last">
 				<g:if test="${listCategorias}">
+					<span id="comboSubcategorias">
 					 <g:select name="subcategoria.id"
 						from="${listCategorias?.subcategorias}" 
 						optionKey="id" value="" noSelection="['': 'Selecione']" />
+					</span>
 				</g:if>
 			</div>
 		</div>

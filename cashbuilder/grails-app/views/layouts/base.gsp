@@ -48,6 +48,8 @@
 			<div class="clear"></div>
 
 		  	<g:render template="/elements/rodape" ></g:render>
+
+		  	<div class="mascara"></div>
     	</div>
     </body>
 </html>

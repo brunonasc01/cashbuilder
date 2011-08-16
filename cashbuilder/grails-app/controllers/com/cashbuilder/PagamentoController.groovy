@@ -28,17 +28,29 @@ class PagamentoController {
 		def user = session.user.attach()
 
 		//box registro rapido
-		def allCategorias = Categoria.findAllByUser(user)
-		List allSubcategoria = new ArrayList()
-
-		allCategorias.each { categoria ->
-			def subcategorias = Subcategoria.findAllByCategoria(categoria)
-			allSubcategoria.addAll(subcategorias)
+		def categorias = Categoria.findAllByUser(user)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
+		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
 		
 		[listCategorias: registroRapido]
+	}
+	
+	def ajaxNovo = {
+		
+		def user = session.user.attach()
+		
+		//box registro rapido
+		def categorias = Categoria.findAllByUser(user)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
+		}
+
+		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
+		
+		render(view: "novo", model: [listCategorias: registroRapido])
 	}
 	
 	def edit = {
@@ -51,15 +63,12 @@ class PagamentoController {
 		else {
 			
 			//box registro rapido
-			def allCategorias = Categoria.findAllByUser(pagamento.user)
-			List allSubcategoria = new ArrayList()
-	
-			allCategorias.each { categoria ->
-				def subcategorias = Subcategoria.findAllByCategoria(categoria)
-				allSubcategoria.addAll(subcategorias)
+			def categorias = Categoria.findAllByUser(pagamento.user)
+			def subcategorias = Subcategoria.createCriteria().list{
+				'in'('categoria', categorias)
 			}
 	
-			BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategoria)
+			BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
 			
 			return [pagamento: pagamento, listCategorias: registroRapido]
 		}

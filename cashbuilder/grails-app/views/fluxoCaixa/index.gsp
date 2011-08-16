@@ -8,20 +8,28 @@
 		
 		<g:javascript src="cashflow-ui.js" />
 		
-		<script type="text/javascript">
+		<g:javascript>
 			$(function() {
 				cashflow('cashflow');
 			});
-		</script>
+			
+			$(document).ready(function() {
+				ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo");
+			});
+		</g:javascript>
     </head>
     <body>
     	<div class="span-6">
     		<div class="box new-reg ui-corner-all shadow_box">
-    			<g:link controller="pagamento" action="novo" >
+    			<g:link elementId="linkNovo" controller="pagamento" action="novo" >
 					<img src="${resource(dir:'images',file:'add-icon.png')}"/>
 					<br />Novo Lançamento
 				</g:link>
 			</div>
+    	
+    		<div id="popupNovo" class="box registro_rapido ui-corner-all shadow_box modal">
+    		
+    		</div>
     	
     		<div class="box saldo-csflow ui-corner-all shadow_box">
     			<h5>Totais (R$)</h5>
