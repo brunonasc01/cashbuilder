@@ -10,28 +10,35 @@ class UsuarioService {
     def serviceMethod() {
 
     }
-	
-	void inicializaUsuario(Usuario usuario,File file){
+
+	/**
+	 * Cria a estrutura inicial para utilizacao do sistema
+	 * @param usuario usuario atual
+	 * @param arquivos lista de categorias para construcao do orcamento
+	 */
+	void geraPerfil(Usuario usuario,def arquivos){
 		
 		int ano = DateUtils.getAnoAtual()
 		Orcamento orcm = new Orcamento(ano: ano,user:usuario)
 		orcm.save(flush: true)
 
-		file.eachLine{ linha ->
-			
-			String[] linhaBase = linha.split(":")
-			
-			if(linhaBase.length > 0 && !linhaBase[0].contains("#")){
+		arquivos.each { arquivo ->
+			arquivo.eachLine{ linha ->
 				
-				String categoria = linhaBase[0]
-				boolean receita = ("Receitas").equals(categoria)
-
-				Categoria categoriaBean = new Categoria( nome:categoria, user:usuario, receita:receita ).save(flush: true)
+				String[] linhaBase = linha.split(":")
 				
-				String[] subcategorias = linhaBase[1].split(";")
-				
-				subcategorias.each { nome ->
-					new Subcategoria(nome: nome,categoria:categoriaBean).save(flush: true)
+				if(linhaBase.length > 0 && !linhaBase[0].contains("#")){
+					
+					String categoria = linhaBase[0]
+					boolean receita = ("Receitas").equals(categoria)
+	
+					Categoria categoriaBean = new Categoria( nome:categoria, user:usuario, receita:receita ).save(flush: true)
+					
+					String[] subcategorias = linhaBase[1].split(";")
+					
+					subcategorias.each { nome ->
+						new Subcategoria(nome: nome,categoria:categoriaBean).save(flush: true)
+					}
 				}
 			}
 		}
@@ -52,6 +59,11 @@ class UsuarioService {
 		}
 	}
 	
+	/**
+	 * Verifica se o email informado e valido
+	 * @param usuario usuario com email a ser verificado
+	 * @return true se o email existir no banco de dado
+	 */
 	boolean isEmailValido(Usuario usuario){
 		
 		return Usuario.findByEmail(usuario.email)

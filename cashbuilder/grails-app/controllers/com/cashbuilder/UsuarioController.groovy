@@ -114,9 +114,6 @@ class UsuarioController {
 				def usuarioInstance = new Usuario(urc.properties)
 				usuarioInstance.save(flush: true)
 
-				File file = grailsAttributes.getApplicationContext().getResource("res/categorias.csv").getFile()
-				usuarioService.inicializaUsuario(usuarioInstance,file)
-
 				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
 				redirect(action: "login", id: usuarioInstance.id)
 			}

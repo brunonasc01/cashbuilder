@@ -30,7 +30,13 @@ class AdministracaoController {
 		session.user = Usuario.findByEmailAndPassword(params.email,params.password)
 		
 		if(session.user){
-			redirect(controller:'home')
+			def perfil = Perfil.findByUsuario(session.user)
+			
+			if(perfil.primeiroLogin){
+				redirect(controller:'perfil')
+			}else {
+				redirect(controller:'home')
+			}
 		}else{
 			flash.message = "Usuário ou Senha inválidos"
 			redirect(action:'login')
@@ -57,8 +63,7 @@ class AdministracaoController {
 				def usuarioInstance = new Usuario(urc.properties)
 				usuarioInstance.save(flush: true)
 
-				File file = grailsAttributes.getApplicationContext().getResource("res/categorias.csv").getFile()
-				usuarioService.inicializaUsuario(usuarioInstance,file)
+				new Perfil(usuario: usuarioInstance,primeiroLogin: true).save(flush: true)
 
 				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
 				redirect(action: "login", id: usuarioInstance.id)
