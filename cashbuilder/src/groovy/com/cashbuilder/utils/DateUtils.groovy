@@ -66,6 +66,34 @@ class DateUtils {
 	}
 	
 	/**
+	 * Obtem o dia informado
+	 * @param dia o dia
+	 * @param mes o mes
+	 * @param ano o ano
+	 * @param amanhecer se verdadeiro, o retorno sera a primeira hora, senao sera a ultima
+	 * @return o dia
+	 */
+	static Date getDia(int dia, int mes, int ano, boolean amanhecer ){
+		Calendar cal = Calendar.getInstance()
+		cal.clear()
+		cal.set(Calendar.DATE,dia)
+		cal.set(Calendar.MONTH,mes)
+		cal.set(Calendar.YEAR,ano)
+		
+		int hora;
+		
+		if(amanhecer){
+			hora =cal.getActualMinimum(Calendar.HOUR)
+		}else{
+			hora =cal.getActualMaximum(Calendar.HOUR)
+		}
+		
+		cal.set(Calendar.HOUR,hora)
+		
+		return new Date(cal.getTimeInMillis())
+	}
+	
+	/**
 	 * Obtem o ano atual
 	 * @return o ano atual
 	 */

@@ -51,13 +51,6 @@ function autoModal(id) {
 
 	$(result).fadeIn(1000);
 
-	// $('.window .close').click(function (e) {
-	// e.preventDefault();
-	//		
-	// $('#mask').hide();
-	// $('.window').hide();
-	// });
-
 	$('.mascara').click(function() {
 		$(this).hide();
 		$(result).hide();

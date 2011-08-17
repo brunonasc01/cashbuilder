@@ -1,5 +1,7 @@
 package com.cashbuilder
 
+import java.util.Date;
+
 import com.cashbuilder.beans.relatorio.MultiBarChartDataBean;
 import com.cashbuilder.beans.relatorio.PieChartDataBean;
 import com.cashbuilder.utils.Constants;
@@ -11,6 +13,7 @@ import com.grailsfusioncharts.beans.PieChartBean;
 class RelatorioController {
 
 	def orcamentoService
+	def geralService
 	
     def index = {
 		
@@ -53,7 +56,25 @@ class RelatorioController {
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
-		String lineData = MultiLineChartBean.generateGraph(barDataList)
+		//grafico de linhas
+		def lineDataList = new ArrayList()
+		
+		Date primeiroDia = DateUtils.getPrimeiroDia(mesAtual, anoAtual)
+		Date ultimoDia = DateUtils.getUltimoDia(mesAtual, anoAtual)
+		
+		for(int dia in primeiroDia.day..ultimoDia.day){
+			
+			Date inicioDia = DateUtils.getDia(dia, mesAtual, anoAtual, true)
+			Date fimDia = DateUtils.getDia(dia, mesAtual, anoAtual, false)
+			
+			double entradas = geralService.getTotalPagamentos(user,inicioDia,fimDia, Constants.CREDITO)
+			double saidas = geralService.getTotalPagamentos(user,inicioDia,fimDia, Constants.DEBITO)
+			
+			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:dia,entradas:entradas,saidas:saidas)
+			lineDataList.add bean
+		}
+
+		String lineData = MultiLineChartBean.generateGraph(lineDataList)
 		
 		[stats:true, pieData: pieData, barData: barData, lineData: lineData]	
 	}

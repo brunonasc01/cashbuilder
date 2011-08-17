@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.BoxRegRapidoBean;
+import com.cashbuilder.utils.Constants;
 
 class PagamentoController {
 
@@ -99,6 +100,7 @@ class PagamentoController {
 	def save = {
 
 		def pagamento = new Pagamento(params)
+		pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
 		
 		def user = session.user.attach()
 		pagamento.user = user
