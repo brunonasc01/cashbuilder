@@ -1,4 +1,4 @@
-<g:if test="${session.user}">
+<g:if test="${session.user && !ocultaMenu}">
 	<div class="span-4">
 		<div class="menu ui-corner-top ${home? "ativo" : "" }">
 			<g:link controller="home" >
