@@ -1,6 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.BoxRegRapidoBean;
+import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.utils.Constants;
 
 class PagamentoController {
@@ -34,7 +34,7 @@ class PagamentoController {
 			'in'('categoria', categorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
+		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 		
 		[listCategorias: registroRapido]
 	}
@@ -49,7 +49,7 @@ class PagamentoController {
 			'in'('categoria', categorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
+		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 		
 		render(view: "novo", model: [listCategorias: registroRapido])
 	}
@@ -69,7 +69,7 @@ class PagamentoController {
 				'in'('categoria', categorias)
 			}
 	
-			BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
+			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 			
 			return [pagamento: pagamento, listCategorias: registroRapido]
 		}

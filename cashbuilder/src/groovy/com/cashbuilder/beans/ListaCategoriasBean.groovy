@@ -1,7 +1,8 @@
 package com.cashbuilder.beans
 
-class BoxRegRapidoBean {
+class ListaCategoriasBean {
 
+	String categoria
 	def categorias
 	def subcategorias
 }

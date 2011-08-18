@@ -1,6 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.BoxRegRapidoBean;
+import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.beans.BoxSaldoBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -33,7 +33,7 @@ class HomeController {
 			'in'('categoria', allCategorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:allCategorias, subcategorias:allSubcategorias)
+		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:allCategorias, subcategorias:allSubcategorias)
 		
 		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: registroRapido]
 	}

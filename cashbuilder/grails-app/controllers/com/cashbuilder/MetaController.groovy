@@ -1,6 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.BoxRegRapidoBean;
+import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.beans.meta.MetaBean;
 import com.cashbuilder.utils.Constants;
 
@@ -16,7 +16,7 @@ class MetaController {
 			'in'('categoria', categorias)
 		}
 
-		BoxRegRapidoBean registroRapido = new BoxRegRapidoBean(categorias:categorias, subcategorias:subcategorias)
+		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 		
 		// Lista de Metas
 		List listaMetas = new ArrayList<MetaBean>()

@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Date;
 
 import com.cashbuilder.beans.BoxSaldoBean;
-import com.cashbuilder.beans.administracao.OrcmMesBean;
+import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -94,7 +94,7 @@ class AdministracaoController {
 		
 		categoriasDebito.each { categoria ->
 
-			OrcmMesBean bean = new OrcmMesBean()
+			ListaCategoriasBean bean = new ListaCategoriasBean()
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
 
@@ -106,7 +106,7 @@ class AdministracaoController {
 		
 		categoriasCredito.each { categoria ->
 						
-			OrcmMesBean bean = new OrcmMesBean()
+			ListaCategoriasBean bean = new ListaCategoriasBean()
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
 
