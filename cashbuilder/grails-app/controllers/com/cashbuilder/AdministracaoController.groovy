@@ -1,6 +1,8 @@
 package com.cashbuilder
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.Date;
 
 import com.cashbuilder.beans.BoxSaldoBean;
@@ -114,8 +116,12 @@ class AdministracaoController {
 		}
 		
 		//totais previstos
-		DecimalFormat df = new DecimalFormat(Constants.FORMATO_MOEDA)
-		
+		NumberFormat cf = NumberFormat.getCurrencyInstance()
+		DecimalFormat df = (DecimalFormat) cf
+		DecimalFormatSymbols dfs = df.getDecimalFormatSymbols()
+		dfs.setCurrencySymbol ""
+		df.setDecimalFormatSymbols dfs
+
 		BoxSaldoBean bean = new BoxSaldoBean()
 		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
 		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)

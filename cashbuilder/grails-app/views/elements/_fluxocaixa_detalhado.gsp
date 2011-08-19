@@ -28,7 +28,7 @@
 							<g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="0" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:else>
 					</td>						
 	
@@ -37,7 +37,7 @@
 						  <g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="0" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</g:else>
 					</td>
 
