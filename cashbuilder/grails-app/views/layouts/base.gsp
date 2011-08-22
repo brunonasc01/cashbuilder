@@ -19,9 +19,7 @@
         <g:javascript src="jquery-ui-1.8.13.custom.min.js" />
 
 		<script type="text/javascript">
-			$(function() {
-				$( "input:submit, button, input:reset" ).button();
-			});
+			
 		</script>
 
         <g:layoutHead />

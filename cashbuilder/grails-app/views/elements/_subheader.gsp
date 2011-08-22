@@ -10,6 +10,6 @@
 	<g:else>
 		<g:link controller="administracao" action="login">Login</g:link>
 		<span> | </span>
-		<g:link controller="administracao" action="cadastro_usr">registro</g:link>
+		<g:link controller="usuario" action="novo">registro</g:link>
 	</g:else>
 </div>

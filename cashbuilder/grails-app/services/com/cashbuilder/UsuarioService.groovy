@@ -64,7 +64,7 @@ class UsuarioService {
 	 * @param usuario usuario com email a ser verificado
 	 * @return true se o email existir no banco de dado
 	 */
-	boolean isEmailValido(Usuario usuario){
+	boolean isEmailJaCadastrado(Usuario usuario){
 		
 		return Usuario.findByEmail(usuario.email)
 	}

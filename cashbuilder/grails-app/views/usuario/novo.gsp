@@ -22,7 +22,7 @@
 	            </g:hasErrors>
 			</g:else>
 			
-            <g:form action="save_reg" >
+            <g:form action="grava_usuario" >
             	<fieldset>
 		            <legend>Registro de Usuario</legend>
 

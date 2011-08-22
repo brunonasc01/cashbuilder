@@ -2,8 +2,6 @@ package com.cashbuilder
 
 class CategoriaController {
 
-    def index = { }
-	
 	def categoriaSelected = {
 		
 		def id = params.id

@@ -50,7 +50,7 @@
 
 						<div class="span-2 prepend-1"><label>Entradas</label></div>
 						<div class="span-2 positivo last">
-							<g:formatNumber number="${orcmBox.entradas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.entradas}"  format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 						
 						<div class="span-2 prepend-1"><label>Saidas</label></div>

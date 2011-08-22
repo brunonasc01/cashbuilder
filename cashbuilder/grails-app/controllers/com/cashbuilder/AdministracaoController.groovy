@@ -13,8 +13,8 @@ import com.cashbuilder.utils.DateUtils;
 
 class AdministracaoController {
 
-	def usuarioService
 	def orcamentoService
+	def geralService
 	
     def index = {
 	
@@ -50,32 +50,7 @@ class AdministracaoController {
 		session.user = null
 		redirect(action:'login')
 	}
-	
-	def cadastro_usr = { }
-	
-	def save_reg = { UsuarioRegistroCommand urc ->
 
-		if(usuarioService.isEmailValido( new Usuario(urc.properties)))
-		{
-			flash.message = "Endereço de e-mail ja cadastrado."
-			render(view: "cadastro_usr", model: [usuarioInstance: urc])
-			
-		}else{
-			if (!urc.hasErrors()) {
-				def usuarioInstance = new Usuario(urc.properties)
-				usuarioInstance.save(flush: true)
-
-				new Perfil(usuario: usuarioInstance,primeiroLogin: true).save(flush: true)
-
-				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
-				redirect(action: "login", id: usuarioInstance.id)
-			}
-			else {
-				render(view: "cadastro_usr", model: [usuarioInstance: urc])
-			}
-		}
-	}
-	
 	def adm_orcm = {
 		
 		if(!params.mesId){
@@ -98,7 +73,7 @@ class AdministracaoController {
 
 			ListaCategoriasBean bean = new ListaCategoriasBean()
 			bean.categoria = categoria.nome
-			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
 
 			listaDebito.add bean
 		}
@@ -110,23 +85,19 @@ class AdministracaoController {
 						
 			ListaCategoriasBean bean = new ListaCategoriasBean()
 			bean.categoria = categoria.nome
-			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes)
+			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
 
 			listaCredito.add bean
 		}
 		
 		//totais previstos
-		NumberFormat cf = NumberFormat.getCurrencyInstance()
-		DecimalFormat df = (DecimalFormat) cf
-		DecimalFormatSymbols dfs = df.getDecimalFormatSymbols()
-		dfs.setCurrencySymbol ""
-		df.setDecimalFormatSymbols dfs
-
+		def df = geralService.getFormatadorNumerico()
+		
 		BoxSaldoBean bean = new BoxSaldoBean()
 		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
 		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)
 
-		[ adm: true,  df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, orcmBox: bean]
+		[ adm: true, df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, orcmBox: bean]
 	}
 	
 	def save_itens = {

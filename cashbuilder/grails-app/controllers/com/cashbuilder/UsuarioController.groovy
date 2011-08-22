@@ -6,8 +6,33 @@ class UsuarioController {
 
 	def usuarioService
 	
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [grava_usuario: "POST"]
 
+	def novo = { }
+	
+	def grava_usuario = { UsuarioRegistroCommand urc ->
+		
+		if(usuarioService.isEmailJaCadastrado( new Usuario(urc.properties)))
+		{
+			flash.message = "Endereço de e-mail ja cadastrado."
+			render(view: "grava_usuario", model: [usuarioInstance: urc])
+			
+		}else{
+			if (!urc.hasErrors()) {
+				def usuarioInstance = new Usuario(urc.properties)
+				usuarioInstance.save(flush: true)
+
+				new Perfil(usuario: usuarioInstance,primeiroLogin: true).save(flush: true)
+
+				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+				redirect(controller: "administracao", action: "login", id: usuarioInstance.id)
+			}
+			else {
+				render(view: "cadastro_usr", model: [usuarioInstance: urc])
+			}
+		}
+	}
+	
     def index = {
         redirect(action: "list", params: params)
     }
@@ -101,25 +126,4 @@ class UsuarioController {
             redirect(action: "list")
         }
     }
-	
-	def grava_registro = { UsuarioRegistroCommand urc ->
-		
-		if(usuarioService.isEmailValido( new Usuario(urc.properties)))
-		{
-			flash.message = "Endereço de e-mail ja cadastrado."
-			render(view: "cadastro_usr", model: [usuarioInstance: urc])
-			
-		}else{
-			if (!urc.hasErrors()) {
-				def usuarioInstance = new Usuario(urc.properties)
-				usuarioInstance.save(flush: true)
-
-				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
-				redirect(action: "login", id: usuarioInstance.id)
-			}
-			else {
-				render(view: "cadastro_usr", model: [usuarioInstance: urc])
-			}
-		}
-	}
 }
