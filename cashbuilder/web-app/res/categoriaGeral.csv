@@ -1,14 +1,13 @@
-Receitas:Salário;Aluguel;Pensão;Férias
-Investimentos:Poupança;Ações;Fundos;Previdência Privada
-Educação:Escola;Faculdade;Cursos;Material Escolar
-Saúde:Convênio;Remédios;Consultas;Academia
-Alimentação:Supermercado;Feira;Açougue
+Receitas:Salário;Décimo Terceiro;Férias;Extras;Pensão
+Investimentos:Ações;Fundos;Poupança;Previdência Privada
+Alimentação:Açougue;Feira;Refeições;Supermercado
+Moradia:Água Encanada;Aluguel;Condomínio;Energia Elétrica;Financiamento;Gás;IPTU;Manutenção;Reforma
+Saúde:Plano de Saúde;Consultas;Exames;Remédios
+Educação:Cursos;Faculdade
 Transporte:Passagens;Táxi
-Moradia:Aluguel;Condomínio;Manutenção e Reformas;IPTU;Financiamento
-Utilitários:Energia Elétrica;Água Encanada;Gás
-Telecom:Telefone Fixo;Celular;Internet;TV por Assinatura
-Gastos Pessoais:Estética;Vestuário;Doações
-Compras:Presentes;Eletrônicos;Eletrodomésticos;Móveis
-Lazer:Cinema e Teatro;Viagens;Restaurantes;Jogos
+Telecomunicações:Telefone Fixo;Celular;Internet;TV por Assinatura
+Gastos Pessoais:Academia;Calçados;Doações;Estética;Livros;Papelaria;Roupas
+Compras:Eletrônicos;Eletrodomésticos;Móveis;Presentes
+Lazer:Bares;Cinema;Jogos;Restaurantes;Teatro;Viagens
 Tarifas Bancárias:Manutenção de Conta;Juros;DemaisTaxas
 Seguros:Seguro de Vida;Seguro Automóvel;Seguro Residencial

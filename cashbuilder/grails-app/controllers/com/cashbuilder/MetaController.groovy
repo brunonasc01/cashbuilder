@@ -79,7 +79,34 @@ class MetaController {
 		[goal : true, listCategorias: registroRapido, metas: listaMetas ]
 	}
 
+	def novo = {
+		
+		def user = session.user.attach()
 
+		def categorias = Categoria.findAllByUser(user)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
+		}
+
+		ListaCategoriasBean listaCategorias = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+		
+		[listCategorias: listaCategorias]
+	}
+
+	def ajaxNovo = {
+		
+		def user = session.user.attach()
+
+		def categorias = Categoria.findAllByUser(user)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
+		}
+
+		ListaCategoriasBean listaCategorias = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+		
+		render(view: "novo", model: [listCategorias: listaCategorias])
+	}
+	
 	def save = {
 
 		def meta = new Meta(params)
