@@ -8,6 +8,7 @@ import java.util.Date;
 import com.cashbuilder.beans.BoxSaldoBean;
 import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
+import com.cashbuilder.eventos.EventManager;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -37,6 +38,9 @@ class AdministracaoController {
 			if(perfil.primeiroLogin){
 				redirect(controller:'perfil')
 			}else {
+				EventManager evtManager = new EventManager()
+				evtManager.checkEvents(session.user, null)
+
 				redirect(controller:'home')
 			}
 		}else{

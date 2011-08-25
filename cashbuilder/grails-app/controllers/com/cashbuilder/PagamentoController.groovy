@@ -5,6 +5,8 @@ import com.cashbuilder.utils.Constants;
 
 class PagamentoController {
 
+	def geralService
+	
 	def delete = {
 		def pagamento = Pagamento.get(params.id)
 
@@ -70,8 +72,30 @@ class PagamentoController {
 			}
 	
 			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+			def df = geralService.getFormatadorNumerico()
 			
-			return [pagamento: pagamento, listCategorias: registroRapido]
+			return [pagamento: pagamento, listCategorias: registroRapido, df: df]
+		}
+	}
+	
+	def ajaxEdit = {
+		def pagamento = Pagamento.get(params.id)
+		
+		if (!pagamento) {
+			flash.message = "Nao foi possivel editar o pagamento, tente novamente"
+			redirect(controller:"fluxoCaixa", action: "index")
+		}
+		else {
+			
+			//box registro rapido
+			def categorias = Categoria.findAllByUser(pagamento.user)
+			def subcategorias = Subcategoria.createCriteria().list{
+				'in'('categoria', categorias)
+			}
+	
+			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+			
+			render(view: "edit", model: [listCategorias: registroRapido])
 		}
 	}
 	
@@ -82,8 +106,9 @@ class PagamentoController {
 		if (pagamento) {
 			
 			pagamento.properties = params
+			pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
 
-			if (!pagamento.hasErrors() && pagamento.save(flush: true)) {
+			if (!pagamento.hasErrors()) {
 				flash.message = "Registro atualizado com sucesso."
 				redirect(controller:"fluxoCaixa", action: "index")
 			}

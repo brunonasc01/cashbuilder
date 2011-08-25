@@ -9,8 +9,12 @@ class JqueryDatePickerTagLib {
 		def minDate = attrs.minDate
 		def showDay = attrs.showDay
 		
+		Calendar cal = Calendar.getInstance()
+		
 		//Create date text field and supporting hidden text fields need by grails
 		out.println "<input type='text' name='${name}' id='${id}' />"
+		out.println "<input type='hidden' name='${name}_minute' id='${id}_minute' value='${cal.get(Calendar.MINUTE)}' />"
+		out.println "<input type='hidden' name='${name}_hour' id='${id}_hour' value='${cal.get(Calendar.HOUR_OF_DAY)}' />"
 		out.println "<input type='hidden' name='${name}_day' id='${id}_day' />"
 		out.println "<input type='hidden' name='${name}_month' id='${id}_month' />"
 		out.println "<input type='hidden' name='${name}_year' id='${id}_year' />"

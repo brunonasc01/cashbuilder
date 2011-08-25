@@ -83,14 +83,35 @@ class DateUtils {
 		int hora;
 		
 		if(amanhecer){
-			hora =cal.getActualMinimum(Calendar.HOUR)
+			hora =cal.getActualMinimum(Calendar.HOUR_OF_DAY)
 		}else{
-			hora =cal.getActualMaximum(Calendar.HOUR)
+			hora =cal.getActualMaximum(Calendar.HOUR_OF_DAY)
 		}
 		
 		cal.set(Calendar.HOUR,hora)
 		
 		return new Date(cal.getTimeInMillis())
+	}
+	
+	/**
+	 * Obtem o dia atual
+	 * @param minimo se verdadeiro, obtem a primeira hora do dia
+	 * @return o dia atual
+	 */
+	static Date getHoje(boolean minimo){
+		
+		Calendar cal = Calendar.getInstance()
+		int hora;
+
+		if(minimo){
+			hora =cal.getActualMinimum(Calendar.HOUR_OF_DAY)
+		}else{
+			hora =cal.getActualMaximum(Calendar.HOUR_OF_DAY)
+		}
+
+		cal.set(Calendar.HOUR,hora)
+		
+		new Date(cal.getTimeInMillis())
 	}
 	
 	/**

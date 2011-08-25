@@ -4,7 +4,7 @@ import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 /**
- * Classe utilizada para calculo de totais realizados e previsto
+ * Classe auxiliar para Orcamento e Fluxo de Caixa
  * @author nascimbr
  *
  */
