@@ -3,6 +3,7 @@ function ajaxComboSubcategoria(idCategoria,action,idComboSubcategoria){
 	
 	$("#"+idCategoria).change(function() {
 		$.ajax({
+			type: 'post',
 			url: action,
 			data: "id=" + this.value,
 			cache: false,
@@ -19,6 +20,7 @@ function ajaxModal(idTrigger,action,idResult){
 		e.preventDefault();
 		
 		$.ajax({
+			type: 'post',
 			url: action,
 			cache: false,
 			success: function(html) {
@@ -41,7 +43,7 @@ function autoModal(id) {
 		'height' : maskHeight
 	});
 
-	$('.mascara').fadeTo("fast", 0.8);
+	$('.mascara').fadeTo("fast", 0.4);
 
 	var winH = $(window).height();
 	var winW = $(window).width();
