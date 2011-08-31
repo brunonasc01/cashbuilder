@@ -31,6 +31,24 @@ function ajaxModal(idTrigger,action,idResult){
 	});
 }
 
+function ajaxSubmitToModal(trigger,action,result){
+	$('#'+trigger).click(function(e){
+		e.preventDefault();
+
+		$.ajax({
+			type: 'POST',
+			data: $(this).parents('form:first').serialize(),
+			url: action,
+			success:function(data,textStatus){
+				$("#"+result).html(data);
+				autoModal(result);
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){},
+			complete:function(XMLHttpRequest,textStatus){}
+		});
+	});
+}
+
 function autoModal(id) {
 
 	var result = "#"+id;

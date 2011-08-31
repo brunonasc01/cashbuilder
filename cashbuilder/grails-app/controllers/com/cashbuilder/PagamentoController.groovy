@@ -15,8 +15,8 @@ class PagamentoController {
 				pagamento.delete(flush: true)
 				flash.message = "Registro excluido com sucesso"
 				redirect(controller:"fluxoCaixa", action: "index")
-			}
-			catch (org.springframework.dao.DataIntegrityViolationException e) {
+
+			} catch (org.springframework.dao.DataIntegrityViolationException e) {
 
 			}
 		}
@@ -79,6 +79,7 @@ class PagamentoController {
 	}
 	
 	def ajaxEdit = {
+
 		def pagamento = Pagamento.get(params.id)
 		
 		if (!pagamento) {
@@ -94,8 +95,9 @@ class PagamentoController {
 			}
 	
 			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+			def df = geralService.getFormatadorNumerico()
 			
-			render(view: "edit", model: [listCategorias: registroRapido])
+			render(view: "edit", model: [listCategorias: registroRapido, pagamento: pagamento, df: df])
 		}
 	}
 	

@@ -12,12 +12,18 @@
 				<td>Descrição</td>
 			</tr>
 	
+			<g:javascript>
+			$(function() {
+				ajaxSubmitToModal('btSubmit','/cashbuilder/pagamento/ajaxEdit','popupNovo');
+			});
+			</g:javascript>
+	
 			<g:each var="pg" in="${fluxoCaixa.pagamentos}">
 				<tr>
 					<td>
-		                <g:form controller="pagamento">
+		                <g:form name="formEdit" controller="pagamento">
 		                    <input type="hidden" name="id" value="${pg.id}" id="id" />
-		                    <span class="button"><input type="submit" name="_action_edit" value="E" class="edit" /></span>
+		                    <span class="button"><input type="submit" id="btSubmit" name="edit" value="E" class="edit" /></span>
 		                    <span class="button"><input type="submit" name="_action_delete" value="D" class="delete" onclick="return confirm('Tem Certeza?');" /></span>
 		                </g:form>
 					</td>
