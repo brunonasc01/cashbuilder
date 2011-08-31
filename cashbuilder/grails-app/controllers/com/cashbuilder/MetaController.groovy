@@ -6,17 +6,12 @@ import com.cashbuilder.utils.Constants;
 
 class MetaController {
 
+	def geralService
+	
     def index = {
 		
 		def user = session.user.attach()
-
-		//box registro rapido		
-		def categorias = Categoria.findAllByUser(user)
-		def subcategorias = Subcategoria.createCriteria().list{
-			'in'('categoria', categorias)
-		}
-
-		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+		def categoriesList = geralService.getCategoriesList(user)
 		
 		// Lista de Metas
 		List listaMetas = new ArrayList<MetaBean>()
@@ -76,21 +71,7 @@ class MetaController {
 			listaMetas.add(bean)
 		}
 
-		[goal : true, listCategorias: registroRapido, metas: listaMetas ]
-	}
-
-	def novo = {
-		
-		def user = session.user.attach()
-
-		def categorias = Categoria.findAllByUser(user)
-		def subcategorias = Subcategoria.createCriteria().list{
-			'in'('categoria', categorias)
-		}
-
-		ListaCategoriasBean listaCategorias = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
-		
-		[listCategorias: listaCategorias]
+		[goal : true, listCategorias: categoriesList, metas: listaMetas ]
 	}
 
 	def ajaxNovo = {

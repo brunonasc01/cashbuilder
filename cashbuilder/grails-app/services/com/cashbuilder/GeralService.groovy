@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 
+import com.cashbuilder.beans.ListaCategoriasBean;
+
 class GeralService {
 
     static transactional = true
@@ -46,5 +48,19 @@ class GeralService {
 		df.setDecimalFormatSymbols dfs
 		
 		df
+	}
+	
+	/**
+	 * Obtem as categorias e subcategorias do usuario atual
+	 * @return objeto contendo todas as categorias
+	 */
+	ListaCategoriasBean getCategoriesList(Usuario user){
+		
+		def categorias = Categoria.findAllByUser(user)
+		def subcategorias = Subcategoria.createCriteria().list{
+			'in'('categoria', categorias)
+		}
+		
+		new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 	}
 }

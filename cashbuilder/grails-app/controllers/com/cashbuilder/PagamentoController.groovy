@@ -1,6 +1,5 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.utils.Constants;
 
 class PagamentoController {
@@ -25,59 +24,15 @@ class PagamentoController {
 			redirect(controller:"fluxoCaixa", action: "index")
 		}
 	}
-	
-	def novo = {
 
-		def user = session.user.attach()
-
-		//box registro rapido
-		def categorias = Categoria.findAllByUser(user)
-		def subcategorias = Subcategoria.createCriteria().list{
-			'in'('categoria', categorias)
-		}
-
-		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
-		
-		[listCategorias: registroRapido]
-	}
-	
 	def ajaxNovo = {
 		
 		def user = session.user.attach()
+		def categoriesList = geralService.getCategoriesList(user)
 		
-		//box registro rapido
-		def categorias = Categoria.findAllByUser(user)
-		def subcategorias = Subcategoria.createCriteria().list{
-			'in'('categoria', categorias)
-		}
+		render(view: "novo", model: [listCategorias: categoriesList])
+	}
 
-		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
-		
-		render(view: "novo", model: [listCategorias: registroRapido])
-	}
-	
-	def edit = {
-		def pagamento = Pagamento.get(params.id)
-		
-		if (!pagamento) {
-			flash.message = "Nao foi possivel editar o pagamento, tente novamente"
-			redirect(controller:"fluxoCaixa", action: "index")
-		}
-		else {
-			
-			//box registro rapido
-			def categorias = Categoria.findAllByUser(pagamento.user)
-			def subcategorias = Subcategoria.createCriteria().list{
-				'in'('categoria', categorias)
-			}
-	
-			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
-			def df = geralService.getFormatadorNumerico()
-			
-			return [pagamento: pagamento, listCategorias: registroRapido, df: df]
-		}
-	}
-	
 	def ajaxEdit = {
 
 		def pagamento = Pagamento.get(params.id)
@@ -88,16 +43,10 @@ class PagamentoController {
 		}
 		else {
 			
-			//box registro rapido
-			def categorias = Categoria.findAllByUser(pagamento.user)
-			def subcategorias = Subcategoria.createCriteria().list{
-				'in'('categoria', categorias)
-			}
-	
-			ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
+			def categoriesList = geralService.getCategoriesList(pagamento.user)
 			def df = geralService.getFormatadorNumerico()
 			
-			render(view: "edit", model: [listCategorias: registroRapido, pagamento: pagamento, df: df])
+			render(view: "edit", model: [listCategorias: categoriesList, pagamento: pagamento, df: df])
 		}
 	}
 	

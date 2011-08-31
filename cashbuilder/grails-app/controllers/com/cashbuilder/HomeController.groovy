@@ -8,6 +8,7 @@ import com.cashbuilder.utils.DateUtils;
 class HomeController {
 
 	def orcamentoService
+	def geralService
 	
     def index = {
 		
@@ -26,16 +27,10 @@ class HomeController {
 			eq('user', user)
 			order("id", "desc")
 		}
-		
-		//box registro rapido
-		def allCategorias = Categoria.findAllByUser(user)
-		def allSubcategorias = Subcategoria.createCriteria().list{
-			'in'('categoria', allCategorias)
-		}
 
-		ListaCategoriasBean registroRapido = new ListaCategoriasBean(categorias:allCategorias, subcategorias:allSubcategorias)
+		def categoriesList = geralService.getCategoriesList(user)
 		
-		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: registroRapido]
+		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList]
 	}
 	
 	def save_registro = {
