@@ -1,10 +1,6 @@
 package com.cashbuilder
 
 class Pagamento {
-
-	static searchable = {
-		spellCheck "include"
-	}
 	
 	Date data
 	double valor
