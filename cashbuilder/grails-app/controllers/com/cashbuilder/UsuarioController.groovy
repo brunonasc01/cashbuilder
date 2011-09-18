@@ -126,4 +126,15 @@ class UsuarioController {
             redirect(action: "list")
         }
     }
+	
+	def validator = { UsuarioRegistroCommand urc ->
+		
+		def fieldName = params.fieldName
+
+		if(fieldName && urc.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: urc,field: fieldName)
+		}else {
+			render ""
+		}
+	}
 }

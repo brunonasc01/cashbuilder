@@ -11,6 +11,8 @@
         
 		<link rel="stylesheet" href="${resource(dir:'css',file:'base.css')}" />
 		<link rel="stylesheet" href="${resource(dir:'css/custom-theme',file:'jquery-ui-1.8.13.custom.css')}" />
+		<link rel="stylesheet" href="${resource(dir:'css',file:'form_validator.css')}" />
+		
         
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
 		

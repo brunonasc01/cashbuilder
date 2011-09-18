@@ -1,0 +1,9 @@
+input.error_border { border: 2px solid red;}
+			
+.error_label { color: red; }
+
+.error_msg {font-weight: bold; font-size:90%; margin-top:5px; color: red; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }
+
+.ok_msg {font-weight: bold; color: green; background: url(../images/form/ok-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }
+
+.error_msg ul { margin: auto; padding: 0; list-style-type: none; }
