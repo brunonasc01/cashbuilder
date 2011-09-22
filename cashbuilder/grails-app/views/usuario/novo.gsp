@@ -8,7 +8,7 @@
         
         <g:javascript>
 		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/usuario/validator");
+			ajaxValidate("/cashbuilder/usuario/validator","userForm");
 		});
 		</g:javascript>
     </head>
@@ -28,7 +28,7 @@
 	            </g:hasErrors>
 			</g:else>
 			
-            <g:form action="grava_usuario" >
+            <g:form name="userForm" action="grava_usuario" >
             	<p class="title">Registro de Usuario</p>
 
 					<div id="field">
@@ -101,8 +101,12 @@
 					
 					<div class="clear"></div>
 					
-					<div class="span-8 prepend-4 last">
-						<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<div id="submitField">
+						<div class="span-3 prepend-4">
+							<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						</div>
+						<div class="span-9 alert_msg last">
+						</div>
 					</div>
             </g:form>
 	  	</div>

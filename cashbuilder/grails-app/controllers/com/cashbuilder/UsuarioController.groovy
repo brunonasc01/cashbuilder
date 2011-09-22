@@ -15,7 +15,7 @@ class UsuarioController {
 		if(usuarioService.isEmailJaCadastrado( new Usuario(urc.properties)))
 		{
 			flash.message = "Endereço de e-mail ja cadastrado."
-			render(view: "grava_usuario", model: [usuarioInstance: urc])
+			render(view: "novo", model: [usuarioInstance: urc])
 			
 		}else{
 			if (!urc.hasErrors()) {
@@ -28,7 +28,7 @@ class UsuarioController {
 				redirect(controller: "administracao", action: "login", id: usuarioInstance.id)
 			}
 			else {
-				render(view: "cadastro_usr", model: [usuarioInstance: urc])
+				render(view: "novo", model: [usuarioInstance: urc])
 			}
 		}
 	}
@@ -132,7 +132,7 @@ class UsuarioController {
 		def fieldName = params.fieldName
 
 		if(fieldName.equals("FORM") && urc.hasErrors()){
-			render g.renderErrors(bean: urc)
+			render "${message(code: 'default.form.error.message', default: 'error')}"
 		} else if(fieldName && urc.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: urc,field: fieldName)
 		}else {

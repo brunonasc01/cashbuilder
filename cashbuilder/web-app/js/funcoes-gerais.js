@@ -118,9 +118,11 @@ function modal(trigger,id) {
 	});			
 }
 
-function ajaxValidate(action){
+function ajaxValidate(action,formId){
 	
-	$('form:first input[type="submit"]').click(function(e){
+	var form = $('#'+formId);
+			
+	form.find('input[type="submit"]').click(function(e){
 		
 		e.preventDefault();
 		var parameters = '&fieldName=FORM';
@@ -128,20 +130,20 @@ function ajaxValidate(action){
 		$.ajax({
 			type: 'post',
 			url: action,
-			data: $('form:first').serialize()+parameters,
+			data: form.serialize()+parameters,
 			cache: false,
 			success: function(html) {
 				if(html.length > 0){
+					renderSubmitErrors(html,formId);
 					return false
 				} else {
-					$('form:first').submit();
+					form.submit();
 				}
 			}
 		});
 	});
-	
-	
-	$('form:first #field').each(function(i){
+
+	form.find('#field').each(function(i){
 		
 		$(this).find('input:first').change(function(){
 
@@ -150,7 +152,7 @@ function ajaxValidate(action){
 			
 			if(name.indexOf('Repeat') != -1){
 				var ancName = name.substring(0,name.indexOf('Repeat'));
-				var ancField = $('form:first').find('input[name='+ancName+']');
+				var ancField = form.find('input[name='+ancName+']');
 				
 				parameters += '&';
 				parameters += ancField.serialize();
@@ -162,28 +164,42 @@ function ajaxValidate(action){
 				data: $(this).serialize()+parameters,
 				cache: false,
 				success: function(html) {
-					renderErrors(html,i)
+					renderErrors(html,i,formId)
 				}
 			});
 		});
 	});
 }
 
-function renderErrors(data,index){
+function renderSubmitErrors(data,formId){
 
+	var submitField = $('#'+formId).find('#submitField div:last');
+	
 	if(data.length > 0){
-		$('form:first #field').eq(index).find('div:last').removeClass('ok_msg');
+		submitField.html(data);
+		submitField.show();
+	}else{
+		submitField.hide();
+	}
+}
+
+function renderErrors(data,index,formId){
+
+	var formField = $('#'+formId).find('#field').eq(index);
+	
+	if(data.length > 0){
+		formField.find('div:last').removeClass('ok_msg');
 		
-		$('form:first #field').eq(index).find('label:first').addClass('error_label');
-		$('form:first #field').eq(index).find('input:first').addClass('error_border');
-		$('form:first #field').eq(index).find('div:last').addClass('error_msg');
-		$('form:first #field').eq(index).find('div:last').html(data);
+		formField.find('label:first').addClass('error_label');
+		formField.find('input:first').addClass('error_border');
+		formField.find('div:last').addClass('error_msg');
+		formField.find('div:last').html(data);
 	} else {
-		$('form:first #field').eq(index).find('label:first').removeClass('error_label');
-		$('form:first #field').eq(index).find('input:first').removeClass('error_border');
-		$('form:first #field').eq(index).find('div:last').removeClass('error_msg');
+		formField.find('label:first').removeClass('error_label');
+		formField.find('input:first').removeClass('error_border');
+		formField.find('div:last').removeClass('error_msg');
 		
-		$('form:first #field').eq(index).find('div:last').html('OK');
-		$('form:first #field').eq(index).find('div:last').addClass('ok_msg');
+		formField.find('div:last').html('OK');
+		formField.find('div:last').addClass('ok_msg');
 	}
 }
