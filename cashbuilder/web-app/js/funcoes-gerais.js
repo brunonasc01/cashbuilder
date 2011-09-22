@@ -120,16 +120,35 @@ function modal(trigger,id) {
 
 function ajaxValidate(action){
 	
+	$('form:first input[type="submit"]').click(function(e){
+		
+		e.preventDefault();
+		var parameters = '&fieldName=FORM';
+		
+		$.ajax({
+			type: 'post',
+			url: action,
+			data: $('form:first').serialize()+parameters,
+			cache: false,
+			success: function(html) {
+				if(html.length > 0){
+					return false
+				} else {
+					$('form:first').submit();
+				}
+			}
+		});
+	});
+	
+	
 	$('form:first #field').each(function(i){
 		
 		$(this).find('input:first').change(function(){
 
 			var name = $(this).attr('name')
-			
 			var parameters = '&fieldName='+name;
 			
 			if(name.indexOf('Repeat') != -1){
-				
 				var ancName = name.substring(0,name.indexOf('Repeat'));
 				var ancField = $('form:first').find('input[name='+ancName+']');
 				

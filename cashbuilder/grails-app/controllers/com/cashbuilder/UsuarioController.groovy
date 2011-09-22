@@ -131,7 +131,9 @@ class UsuarioController {
 		
 		def fieldName = params.fieldName
 
-		if(fieldName && urc.errors.hasFieldErrors(fieldName)){
+		if(fieldName.equals("FORM") && urc.hasErrors()){
+			render g.renderErrors(bean: urc)
+		} else if(fieldName && urc.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: urc,field: fieldName)
 		}else {
 			render ""
