@@ -35,10 +35,10 @@
 						<div class="form-label span-4">
 							<label for="email"><g:message code="usuario.email.label" default="Email" /></label>
 						</div>			              
-						<div class="span-5">
+						<div class="form-input span-4">
 							<g:textField name="email" value="${usuarioInstance?.email}" />
 						</div>
-						<div class="span-8 last">
+						<div class="form-msg span-8 last">
 							
 						</div>
 					</div>
@@ -47,13 +47,13 @@
 		            		
 		            <div id="field">	            
 			            <div class="form-label span-4">
-							<label for="emailRepeat"><g:message code="usuario.emailRepeat.label" default="Confime o Email" /></label>
+							<label class="error_label" for="emailRepeat"><g:message code="usuario.emailRepeat.label" default="Confime o Email" /></label>
 						</div>			              
-						<div class="span-5">
+						<div class="form-input span-4">
 							<g:textField name="emailRepeat" value="${usuarioInstance?.emailRepeat}" />
 						</div>
-						<div class="span-7 last">
-							
+						<div class="form-msg span-8 last">
+
 						</div>
 					</div>
 
@@ -63,10 +63,10 @@
 						<div class="form-label span-4">
 							<label for="nome"><g:message code="usuario.nome.label" default="Nome" /></label>
 						</div>			              
-						<div class="span-5">
+						<div class="form-input span-4">
 							<g:textField name="nome" maxlength="20" value="${usuarioInstance?.nome}" />
 						</div>
-						<div class="span-7 last">
+						<div class="form-msg span-8 last">
 							
 						</div>
 					</div>
@@ -77,10 +77,10 @@
 						<div class="form-label span-4">
 							<label for="password"><g:message code="usuario.password.label" default="Senha" /></label>
 						</div>			              
-						<div class="span-5">
+						<div class="form-input span-4">
 							<g:passwordField name="password" maxlength="20" value="${usuarioInstance?.password}" />
 						</div>
-						<div class="span-7 last">
+						<div class="form-msg span-8 last">
 							
 						</div>
 					</div>
@@ -91,10 +91,10 @@
 						<div class="form-label span-4">
 							<label for="passwordRepeat"><g:message code="usuario.passwordRepeat.label" default="Confirme a Senha" /></label>
 						</div>			              
-						<div class="span-5">
+						<div class="form-input span-4">
 							<g:passwordField name="passwordRepeat" maxlength="20" value="${usuarioInstance?.passwordRepeat}" />
 						</div>
-						<div class="span-7 last">
+						<div class="form-msg span-8 last">
 							
 						</div>
 					</div>
@@ -105,7 +105,7 @@
 						<div class="span-3 prepend-4">
 							<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 						</div>
-						<div class="span-9 alert_msg last">
+						<div class="span-9 alert-msg last">
 						</div>
 					</div>
             </g:form>

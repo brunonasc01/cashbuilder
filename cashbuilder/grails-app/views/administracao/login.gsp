@@ -3,38 +3,56 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
+        
+        <g:javascript>
+		$(document).ready(function() {
+			ajaxValidate("/cashbuilder/administracao/validator","loginForm");
+		});
+		</g:javascript>
     </head>
 
     <body>
-		<div class="span-8">
+		<div class="span-9">
 			<g:if test="${flash.message}">
 				<div class="error">
 					${flash.message}
 				</div>
 			</g:if>
 
-			<g:form action="valida_login" controller="administracao">
-				<fieldset>
-		            <legend>Login no Sistema</legend>
+			<g:form name="loginForm" action="valida_login" controller="administracao">
+				<p class="title">Login</p>
 	
+				<div id="field">
 					<div class="form-label span-2">
 						<label for="email"><g:message code="usuario.email.label" default="Email" /></label>
 					</div>			              
-					<div class="span-4 last">
-						<g:textField name="email" value="" />
+					<div class="form-input span-4">
+						<g:textField name="email"  value="" />
 					</div>
-	
+					<div class="form-msg span-1 last">
+							
+					</div>
+				</div>
+
+				<div class="clear"></div>
+
+				<div id="field">
 					<div class="form-label span-2">
 						<label for="password"><g:message code="usuario.password.label" default="Senha" /></label>
 					</div>			              
-					<div class="span-4 last">
+					<div class="form-input span-4">
 						<g:passwordField name="password" maxlength="20" value="" />
 					</div>
-					
-					<div class="span-4 prepend-2">
-						<g:submitButton name="login" value="Login" />
+					<div class="form-msg span-1 last">
+							
 					</div>
-	         	</fieldset>
+				</div>
+				
+				<div class="clear"></div>
+				
+				<div class="span-4 prepend-2">
+					<g:submitButton name="login" value="Login" />
+				</div>
 			</g:form>
 		</div>
 	</body>		

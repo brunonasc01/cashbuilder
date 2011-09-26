@@ -63,17 +63,6 @@ p.title { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 10px; 
 
 .links { text-align: right; }
 
-/* --- FORMULARIO --- */
-
-.form-label { margin-top: 6px; text-align: right; }
-
-.title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 20px; font-size: 105%; }
-
-.title-natureza { background-color: #AAAAAA; font-size: 120%; }
-
-form input.save {  background: #E6E6E6 url(../images/save-icon.png) 5px 50% no-repeat; padding-left: 2.4em; }
-
-form input.reset {  background: #E6E6E6 url(../images/blank-icon.png) 5px 50% no-repeat; padding-left: 2.4em; }
 
 /* --- META --- */
 .meta { border: 1px solid; padding: 5px; margin-bottom: 10px; }

@@ -132,4 +132,17 @@ class AdministracaoController {
 		
 		redirect(action:'adm_orcm')
 	}
+	
+	def validator = { UsuarioRegistroCommand urc ->
+		
+		def fieldName = params.fieldName
+
+		if(fieldName.equals("FORM") && urc.hasErrors()){
+			render "${message(code: 'default.form.error.message', default: 'error')}"
+		} else if(fieldName && urc.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: urc,field: fieldName)
+		}else {
+			render ""
+		}
+	}
 }

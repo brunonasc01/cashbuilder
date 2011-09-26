@@ -145,7 +145,7 @@ function ajaxValidate(action,formId){
 
 	form.find('#field').each(function(i){
 		
-		$(this).find('input:first').change(function(){
+		$(this).find('input:first').focusout(function(){
 
 			var name = $(this).attr('name')
 			var parameters = '&fieldName='+name;
@@ -188,18 +188,18 @@ function renderErrors(data,index,formId){
 	var formField = $('#'+formId).find('#field').eq(index);
 	
 	if(data.length > 0){
-		formField.find('div:last').removeClass('ok_msg');
+		formField.find('div:last').removeClass('ok-msg');
 		
-		formField.find('label:first').addClass('error_label');
-		formField.find('input:first').addClass('error_border');
-		formField.find('div:last').addClass('error_msg');
+		formField.find('label:first').addClass('error-label');
+		formField.find('input:first').addClass('error-input');
+		formField.find('div:last').addClass('error-msg');
 		formField.find('div:last').html(data);
 	} else {
-		formField.find('label:first').removeClass('error_label');
-		formField.find('input:first').removeClass('error_border');
-		formField.find('div:last').removeClass('error_msg');
+		formField.find('label:first').removeClass('error-label');
+		formField.find('input:first').removeClass('error-border');
+		formField.find('div:last').removeClass('error-msg');
 		
 		formField.find('div:last').html('OK');
-		formField.find('div:last').addClass('ok_msg');
+		formField.find('div:last').addClass('ok-msg');
 	}
 }

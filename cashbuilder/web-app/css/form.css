@@ -1,0 +1,30 @@
+/* --- FORM - GERAL --- */
+
+input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0; }
+
+form .form-label, .form-input, .form-msg { margin: 0.3em 0; }
+
+form .form-label { text-align: right; }
+
+form .form-input { margin-left: 10px; margin-right: 10px; }
+
+form .form-msg { font-weight: bold; font-size: 90%; padding-left: 25px;  }
+
+form .title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 20px; font-size: 105%; }
+
+form .title-natureza { background-color: #AAAAAA; font-size: 120%; }
+
+
+/* --- FORM - VALIDACAO --- */
+
+input.error-input { border: 2px solid red;}
+			
+form .error-label { color: red; }
+
+form .error-msg {color: red; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; }
+
+form .error-msg ul { margin: auto; padding: 0; list-style-type: none; }
+
+form .ok-msg {color: green; background: url(../images/form/ok-form-icon.png) 1px 50% no-repeat; }
+
+form .alert-msg  {font-weight: bold; font-size:90%; display:none; color: black; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }
