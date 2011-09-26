@@ -8,7 +8,7 @@
         
         <g:javascript>
 		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/usuario/validator","userForm");
+			ajaxValidate("/cashbuilder/usuario/validator","userForm",false);
 		});
 		</g:javascript>
     </head>

@@ -118,7 +118,7 @@ function modal(trigger,id) {
 	});			
 }
 
-function ajaxValidate(action,formId){
+function ajaxValidate(action,formId,short){
 	
 	var form = $('#'+formId);
 			
@@ -164,7 +164,11 @@ function ajaxValidate(action,formId){
 				data: $(this).serialize()+parameters,
 				cache: false,
 				success: function(html) {
-					renderErrors(html,i,formId)
+					if(!short){
+						renderErrors(html,i,formId)
+					} else {
+						renderShortErrors(html,i,formId)
+					}
 				}
 			});
 		});
@@ -196,10 +200,34 @@ function renderErrors(data,index,formId){
 		formField.find('div:last').html(data);
 	} else {
 		formField.find('label:first').removeClass('error-label');
-		formField.find('input:first').removeClass('error-border');
+		formField.find('input:first').removeClass('error-input');
 		formField.find('div:last').removeClass('error-msg');
 		
 		formField.find('div:last').html('OK');
 		formField.find('div:last').addClass('ok-msg');
+	}
+}
+
+function renderShortErrors(data,index,formId){
+
+	var formField = $('#'+formId).find('#field').eq(index);
+	
+	if(data.length > 0){
+		formField.find('div:odd').removeClass('form-input-ok');
+		
+		formField.find('label:first').addClass('error-label');
+		formField.find('input:first').addClass('error-input');
+		formField.find('div:odd').addClass('form-input-error');
+		formField.find('div:last').addClass('error-msg-short');		
+		formField.find('div:last').html(data);
+		formField.find('div:last').show();
+	} else {
+		formField.find('label:first').removeClass('error-label');
+		formField.find('input:first').removeClass('error-input');
+		formField.find('div:odd').removeClass('form-input-error');
+		formField.find('div:last').removeClass('error-msg-short');
+		formField.find('div:last').hide();
+		formField.find('div:last').html('');
+		formField.find('div:odd').addClass('form-input-ok');
 	}
 }

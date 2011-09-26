@@ -6,13 +6,13 @@
         
         <g:javascript>
 		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/administracao/validator","loginForm");
+			ajaxValidate("/cashbuilder/administracao/validator","loginForm",true);
 		});
 		</g:javascript>
     </head>
 
     <body>
-		<div class="span-9">
+		<div class="span-8">
 			<g:if test="${flash.message}">
 				<div class="error">
 					${flash.message}
@@ -26,10 +26,10 @@
 					<div class="form-label span-2">
 						<label for="email"><g:message code="usuario.email.label" default="Email" /></label>
 					</div>			              
-					<div class="form-input span-4">
+					<div class="form-input span-5 last">
 						<g:textField name="email"  value="" />
 					</div>
-					<div class="form-msg span-1 last">
+					<div class="form-msg-short prepend-1 span-7">
 							
 					</div>
 				</div>
@@ -40,18 +40,22 @@
 					<div class="form-label span-2">
 						<label for="password"><g:message code="usuario.password.label" default="Senha" /></label>
 					</div>			              
-					<div class="form-input span-4">
+					<div class="form-input span-5 last">
 						<g:passwordField name="password" maxlength="20" value="" />
 					</div>
-					<div class="form-msg span-1 last">
+					<div class="form-msg-short prepend-1 span-7">
 							
 					</div>
 				</div>
 				
 				<div class="clear"></div>
-				
-				<div class="span-4 prepend-2">
-					<g:submitButton name="login" value="Login" />
+
+				<div id="submitField">
+					<div class="span-1 prepend-2">
+						<g:submitButton name="login" value="OK" />
+					</div>
+					<div class="span-4 alert-msg-short last">
+						</div>
 				</div>
 			</g:form>
 		</div>
