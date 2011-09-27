@@ -9,59 +9,46 @@
     	<p>Antes de iniciar a utilização do sistema, é preciso fornecer alguns
 		dados para criação do seu perfil:</p>
 
-		<div class="span-14">
+		<div class="span-18">
 			<g:form class="regform" controller="perfil">
 				<g:hiddenField name="primeiroLogin" value="false"></g:hiddenField>
 			
-				<div class="form-label span-4">
-					<label for="nomeCompleto"><g:message code="perfil.nomeCompleto" default="Nome Completo" /></label>
-				</div>			              
-				<div class="span-5 append-3 last">
-					<g:textField size="45" maxlength="50" name="nomeCompleto" value="" />
-				</div>
+				<fv:textInput name="nomeCompleto" />
 				
-				<div class="form-label span-4">
-					<label for="cidade"><g:message code="perfil.cidade" default="Cidade" /></label>
-				</div>			              
-				<div class="span-5 append-3 last">
-					<g:textField size="20" maxlength="20" name="cidade" value="" />
-				</div>
+				<fv:textInput name="cidade" />
+
+				<fv:textInput name="estado" />	
 				
+				<fv:textInput name="pais" />
+
 				<div class="form-label span-4">
-					<label for="estado"><g:message code="perfil.estado" default="Estado" /></label>
-				</div>			              
-				<div class="span-5 append-3 last">
-					<g:textField size="20" maxlength="20" name="estado" value="" />
-				</div>
-				
-				<div class="form-label span-4">
-					<label for="pais"><g:message code="perfil.pais" default="País" /></label>
-				</div>			              
-				<div class="span-5 append-3 last">
-					<g:textField size="20" maxlength="20" name="pais" value="" />
-				</div>
-				
-				<div class="form-label span-4">
-					<label for="perfil"><g:message code="perfil.perfil" default="Perfil" /></label>
-					
+					<label><g:message code="perfil.label" default="Perfil" /></label>
 				</div>			              
 				<div class="span-8 last">
 					<small>Marque apenas os items que você possui</small>
 				</div>
+
+				<div class="span-9">
 	
-				<div class="span-5 prepend-4 append-3">
+				<div class="">
 					<g:checkBox name="animalEstimacao"></g:checkBox>
 					Animal de Estimação	
 				</div>
 				
-				<div class="span-5 prepend-4 append-3">
+				<div class="">
 					<g:checkBox name="automovel"></g:checkBox>
 					Carro / Moto
 				</div>
 				
-				<div class="span-5 prepend-4 append-3">
+				<div class="">
 					<g:checkBox name="filho"></g:checkBox>
 					Filho(s)
+				</div>
+				
+				</div>
+				
+				<div class="span-7 last">
+					avisos
 				</div>
 				
 				<hr class="space"></hr>

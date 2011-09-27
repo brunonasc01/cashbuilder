@@ -22,33 +22,9 @@
 			<g:form name="loginForm" action="valida_login" controller="administracao">
 				<p class="title">Login</p>
 	
-				<div id="field">
-					<div class="form-label span-2">
-						<label for="email"><g:message code="usuario.email.label" default="Email" /></label>
-					</div>			              
-					<div class="form-input span-5 last">
-						<g:textField name="email"  value="" />
-					</div>
-					<div class="form-msg-short prepend-1 span-7">
-							
-					</div>
-				</div>
-
-				<div class="clear"></div>
-
-				<div id="field">
-					<div class="form-label span-2">
-						<label for="password"><g:message code="usuario.password.label" default="Senha" /></label>
-					</div>			              
-					<div class="form-input span-5 last">
-						<g:passwordField name="password" maxlength="20" value="" />
-					</div>
-					<div class="form-msg-short prepend-1 span-7">
-							
-					</div>
-				</div>
+				<fv:textInputShort name="email" />
 				
-				<div class="clear"></div>
+				<fv:passwordInputShort name="password" maxlength="20" />
 
 				<div id="submitField">
 					<div class="span-1 prepend-2">
