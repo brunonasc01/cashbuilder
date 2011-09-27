@@ -35,7 +35,7 @@ class AdministracaoController {
 		if(session.user){
 			def perfil = Perfil.findByUsuario(session.user)
 			
-			if(perfil.primeiroLogin){
+			if(!perfil){
 				redirect(controller:'perfil')
 			}else {
 				EventManager evtManager = new EventManager()

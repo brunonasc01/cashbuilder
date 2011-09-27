@@ -22,8 +22,6 @@ class UsuarioController {
 				def usuarioInstance = new Usuario(urc.properties)
 				usuarioInstance.save(flush: true)
 
-				new Perfil(usuario: usuarioInstance,primeiroLogin: true).save(flush: true)
-
 				flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
 				redirect(controller: "administracao", action: "login", id: usuarioInstance.id)
 			}

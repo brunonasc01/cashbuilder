@@ -11,10 +11,9 @@ class Perfil {
 	static belongsTo = [usuario: Usuario]
 	
 	static constraints = {
-		nomeCompleto(nullable: true, maxLength:40)		
-		cidade(nullable: true)
-		estado(nullable: true)
-		cidade(nullable: true)
-		pais(nullable: true)
+		nomeCompleto(blank: false, maxLength:40)		
+		cidade(blank: false)
+		estado(blank: false)
+		pais(blank: false)
 	}
 }

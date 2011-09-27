@@ -10,13 +10,15 @@ class PerfilController {
 	}
 	
 	def save = {
+
+		def perfil = new Perfil(params)
 		
 		def user = session.user.attach()
-		def perfil = Perfil.findByUsuario(user)
+		perfil.usuario = user
 		
-		if(perfil){
-			perfil.properties = params
-
+		if(!perfil.hasErrors()){
+			perfil.save(flush:true)
+			
 			def listaCategorias = new ArrayList()
 			
 			File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categoriaGeral.csv").getFile()
@@ -40,6 +42,21 @@ class PerfilController {
 			usuarioService.geraPerfil(user,listaCategorias)
 			
 			redirect(controller:'home')
+		} else{
+			render(view: "index", model: [profileInstance: perfil])
+		}
+	}
+	
+	def validator = { Perfil profile ->
+		
+		def fieldName = params.fieldName
+
+		if(fieldName.equals("FORM") && profile.hasErrors()){
+			render g.renderErrors(bean: profile)
+		} else if(fieldName && profile.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: profile,field: fieldName)
+		}else {
+			render ""
 		}
 	}
 }
