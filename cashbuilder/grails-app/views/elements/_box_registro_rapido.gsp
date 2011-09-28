@@ -18,6 +18,8 @@ $(document).ready(function() {
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
 
+		<div class="clear"></div>
+
 		<div class="form-label span-3">
 			<label><g:message code="pagamento.valor.label" default="Valor" /></label>
 		</div>			              
@@ -26,6 +28,8 @@ $(document).ready(function() {
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
+		
+		<div class="clear"></div>
 
 		<div class="form-label span-3">
 			<label><g:message code="pagamento.categoria.label" default="Categoria" /></label>
@@ -39,6 +43,8 @@ $(document).ready(function() {
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
+
+		<div class="clear"></div>
 
 		<div class="form-label span-3">
 			<label><g:message code="pagamento.subcategoria.label" default="Subcategoria" /></label>
@@ -54,14 +60,18 @@ $(document).ready(function() {
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
 
+		<div class="clear"></div>
+
 		<div class="form-label span-3">
-			<label><g:message code="usuario.descricao.label" default="Descricao" /></label>
+			<label><g:message code="pagamento.descricao.label" default="Descricao" /></label>
 		</div>			              
-		<div class="form-input span-5 last">
-			<g:textField maxlength="150" name="descricao" value="" />
+		<div class="form-input span-7 last">
+			<g:textField size="35" maxlength="150" name="descricao" value="" />
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
+		
+		<div class="clear"></div>
 		
 		<div class="span-11 prepend-3">
 			<g:submitButton name="gravar" class="save" value="Gravar" />
