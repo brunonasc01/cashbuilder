@@ -145,7 +145,7 @@ function ajaxValidate(action,formId,short){
 
 	form.find('#field').each(function(i){
 		
-		$(this).find('input:first').focusout(function(){
+		$(this).find('input:first,select:first').focusout(function(){
 
 			var name = $(this).attr('name')
 			var parameters = '&fieldName='+name;

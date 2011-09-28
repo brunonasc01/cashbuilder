@@ -21,9 +21,9 @@ form .title-natureza { background-color: #AAAAAA; font-size: 120%; }
 
 input.error-input { border: 2px solid red;}
 
-form .form-input-error { margin-right: 10px; background: url(../images/form/error-form-icon.png) 160px 50% no-repeat;  }
+form .form-input-error { margin-right: 10px; background: url(../images/form/error-form-icon.png) no-repeat 95% 50%;  }
 
-form .form-input-ok { margin-right: 10px; background: url(../images/form/ok-form-icon.png) 160px 50% no-repeat;  }
+form .form-input-ok { margin-right: 10px; background: url(../images/form/ok-form-icon.png) no-repeat 95% 50%; }
 
 form .error-label { color: red; }
 

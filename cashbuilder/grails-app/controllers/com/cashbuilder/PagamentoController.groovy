@@ -94,4 +94,21 @@ class PagamentoController {
 	def cancel = {
 		redirect(controller:"fluxoCaixa", action: "index")
 	}
+	
+	def validator = { Pagamento payment ->
+		
+		String fieldName = params.fieldName
+		
+		if(fieldName.indexOf(".") != -1){
+			fieldName = fieldName.substring(0, fieldName.indexOf("."))	
+		}
+
+		if(fieldName.equals("FORM") && payment.hasErrors()){
+			render g.renderErrors(bean: payment)
+		} else if(fieldName && payment.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: payment,field: fieldName)
+		}else {
+			render ""
+		}
+	}
 }
