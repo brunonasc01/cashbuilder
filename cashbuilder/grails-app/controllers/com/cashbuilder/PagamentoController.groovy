@@ -101,6 +101,13 @@ class PagamentoController {
 		
 		if(fieldName.indexOf(".") != -1){
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))	
+		} else if(fieldName.equals("valor")){
+				
+			if(!params.valor){
+				payment.valor = 0
+				payment.clearErrors()
+				payment.validate()
+			}
 		}
 
 		if(fieldName.equals("FORM") && payment.hasErrors()){

@@ -148,15 +148,7 @@ function ajaxValidate(action,formId,short){
 		$(this).find('input:first,select:first').focusout(function(){
 
 			var name = $(this).attr('name')
-			var parameters = '&fieldName='+name;
-			
-			if(name.indexOf('Repeat') != -1){
-				var ancName = name.substring(0,name.indexOf('Repeat'));
-				var ancField = form.find('input[name='+ancName+']');
-				
-				parameters += '&';
-				parameters += ancField.serialize();
-			}
+			var parameters = processParameters(name,form);
 			
 			$.ajax({
 				type: 'post',
@@ -173,6 +165,36 @@ function ajaxValidate(action,formId,short){
 			});
 		});
 	});
+}
+
+function processParameters(name,form){
+
+	var params = '&fieldName='+name;
+	
+	if(name.indexOf('Repeat') != -1){
+		var ancName = name.substring(0,name.indexOf('Repeat'));
+		var ancField = form.find('input[name='+ancName+']');
+		
+		params += '&';
+		params += ancField.serialize();
+	} else if(name == "data" || name == "date"){
+				
+		var dayField = form.find('input[name="'+name+'_day"]');
+		params += serializeField(dayField)
+		
+		var monthField = form.find('input[name="'+name+'_month"]');
+		params += serializeField(monthField)
+		
+		var yearField = form.find('input[name="'+name+'_year"]');
+		params += serializeField(yearField)
+	}
+
+	return params;
+}
+
+function serializeField(field){
+	
+	return '&'+field.serialize();
 }
 
 function renderSubmitErrors(data,formId){
@@ -216,17 +238,17 @@ function renderShortErrors(data,index,formId){
 		formField.find('div:odd').removeClass('form-input-ok');
 		
 		formField.find('label:first').addClass('error-label');
-		formField.find('input:first').addClass('error-input');
+		formField.find('input:first,select:first').addClass('error-input');
 		formField.find('div:odd').addClass('form-input-error');
 		formField.find('div:last').addClass('error-msg-short');		
 		formField.find('div:last').html(data);
-		formField.find('div:last').show();
+		formField.find('div:last').slideDown('slow');
 	} else {
 		formField.find('label:first').removeClass('error-label');
-		formField.find('input:first').removeClass('error-input');
+		formField.find('input:first,select:first').removeClass('error-input');
 		formField.find('div:odd').removeClass('form-input-error');
-		formField.find('div:last').removeClass('error-msg-short');
-		formField.find('div:last').hide();
+		//formField.find('div:last').removeClass('error-msg-short');
+		formField.find('div:last').slideUp('slow');
 		formField.find('div:last').html('');
 		formField.find('div:odd').addClass('form-input-ok');
 	}

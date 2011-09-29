@@ -14,7 +14,11 @@ class Pagamento {
     static constraints = {
 		
 		data(blank: false)
-		valor(blank:false, scale:2)
+		valor(blank:false, scale:2,
+			validator: { value ->
+					if( value in String || value <= 0 )
+						return ['empty']
+			})
 		categoria(nullable:false)
 		subcategoria(nullable:false)
     }
