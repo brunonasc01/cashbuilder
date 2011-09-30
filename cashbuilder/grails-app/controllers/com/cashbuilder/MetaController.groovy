@@ -105,4 +105,27 @@ class MetaController {
 		}
 	}
 	
+	def validator = { Meta bean ->
+
+		String fieldName = params.fieldName
+
+		if(fieldName.indexOf(".") != -1){
+			fieldName = fieldName.substring(0, fieldName.indexOf("."))
+		} else if(fieldName.equals("valorAlmejado")){
+				
+			if(!params.valorAlmejado){
+				bean.valorAlmejado = 0
+				bean.clearErrors()
+				bean.validate()
+			}
+		}
+
+		if(fieldName.equals("FORM") && bean.hasErrors()){
+			render g.renderErrors(bean: bean)
+		} else if(fieldName && bean.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: bean,field: fieldName)
+		}else {
+			render ""
+		}
+	}
 }

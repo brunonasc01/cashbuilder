@@ -1,46 +1,65 @@
 <g:javascript>
 $(document).ready(function() {
 	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
+	
+	ajaxValidate("/cashbuilder/pagamento/validator","editPaymentForm",true);
 });
 </g:javascript>
 
 <g:if test="${pagamento }">
-	<g:form class="regform" controller="pagamento">
+	<g:form name="editPaymentForm" action="update" class="regform" controller="pagamento">
 		<g:hiddenField name="id" value="${pagamento?.id}" />
 		<g:hiddenField name="version" value="${pagamento?.version}" />
 	
 		<p class="title">Editar Pagamento</p>
 
-		<div class="form-label span-3">
-			<label for="data"><g:message code="pagamento.data.label" default="Data" /></label>
-		</div>
-		<div class="span-5 append-3 last">
-			<g:jqDatePicker class="date" name="data" value="${pagamento?.data }" />
-		</div>
-
-		<div class="form-label span-3">
-			<label for="valor"><g:message code="pagamento.valor.label" default="Valor" /></label>
-		</div>
-		<div class="span-5 append-3 last">
-			<g:textField size="10" maxlength="10" name="valor" value="${df.format(pagamento?.valor)}" />
+		<div id="field">
+			<div class="form-label span-3">
+				<label><g:message code="pagamento.data.label" default="Data" /></label>
+			</div>			              
+			<div class="form-input span-5 last">
+				<g:jqDatePicker class="date" name="data" value="${pagamento?.data }" />
+			</div>
+			<div class="form-msg-short span-7 append-5 prepend-2">
+			</div>
 		</div>
 
-		<div class="form-label span-3">
-			<label for="categoria"><g:message code="pagamento.categoria.label" default="Categoria" /></label>
-		</div>	
-		<div class="span-5 append-3 last">
-			<g:if test="${listCategorias}">
-				 <g:select id="comboCategoria" name="categoria.id"
-					from="${listCategorias?.categorias}" 
-					optionKey="id" value="${pagamento?.categoria.id}" noSelection="['': 'Selecione']" />
-			</g:if>		
+		<div class="clear"></div>
+	
+		<div id="field">
+			<div class="form-label span-3">
+				<label><g:message code="pagamento.valor.label" default="Valor" /></label>
+			</div>			              
+			<div class="form-input span-5 last">
+				<g:textField maxlength="10" name="valor" value="${df.format(pagamento?.valor)}" />
+			</div>
+			<div class="form-msg-short span-7 append-5 prepend-2">
+			</div>
 		</div>
 
-		<div class="form-label span-3">
-			<label for="subcategoria"><g:message code="pagamento.subcategoria.label" default="Subcategoria" /></label>
+		<div class="clear"></div>
+	
+		<div id="field">
+			<div class="form-label span-3">
+				<label><g:message code="pagamento.categoria.label" default="Categoria" /></label>
+			</div>			              
+			<div class="form-input span-5 last">
+				<g:if test="${listCategorias}">
+					 <g:select id="comboCategoria" name="categoria.id"
+						from="${listCategorias?.categorias}" 
+						optionKey="id" value="${pagamento?.categoria.id}" noSelection="['': 'Selecione']" />
+				</g:if>
+			</div>
+			<div class="form-msg-short span-7 append-5 prepend-2">
+			</div>
 		</div>
-
-		<div class="span-5 append-3 last">
+		
+		<div class="clear"></div>
+		
+		<div class="form-label span-3">
+			<label><g:message code="pagamento.subcategoria.label" default="Subcategoria" /></label>
+		</div>			              
+		<div class="form-input span-5 last">
 			<g:if test="${listCategorias}">
 				<span id="comboSubcategorias">
 				 <g:select name="subcategoria.id"
@@ -49,17 +68,25 @@ $(document).ready(function() {
 				</span>
 			</g:if>
 		</div>
+		<div class="form-msg-short span-7 append-5 prepend-2">
+		</div>
 
-		<div class="form-label span-3">
-			<label for="descricao"><g:message code="usuario.descricao.label" default="Descricao" /></label>
-		</div>			              
-		<div class="span-8 last">
-			<g:textField size="45" maxlength="150" name="descricao" value="${pagamento?.descricao }" />
+		<div class="clear"></div>
+	
+		<div id="field">
+			<div class="form-label span-3">
+				<label><g:message code="pagamento.descricao.label" default="Descricao" /></label>
+			</div>			              
+			<div class="form-input span-7 last">
+				<g:textField size="33" maxlength="150" name="descricao" value="${pagamento?.descricao }" />
+			</div>
+			<div class="form-msg-short span-7 append-5 prepend-2">
+			</div>
 		</div>
 
 		<div class="span-5 prepend-6">
-			<span class="button"><input type="submit" name="_action_update" value="Update" class="edit" /></span>
-			<span class="button"><input type="submit" name="_action_cancel" value="Cancel" class="cancel"/></span>
+			<span class="button"><input type="submit" name="update" value="Update" class="edit" /></span>
+			<span class="button"><input type="reset" name="cancel" value="Cancel" class="cancel"/></span>
 		</div>           
 		
 	</g:form>			
