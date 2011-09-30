@@ -32,7 +32,8 @@ function ajaxModal(idTrigger,action,idResult){
 }
 
 function ajaxSubmitToModal(trigger,action,result){
-	$('#'+trigger).click(function(e){
+
+	$('input[name="edit"]').click(function(e){
 		e.preventDefault();
 
 		$.ajax({
