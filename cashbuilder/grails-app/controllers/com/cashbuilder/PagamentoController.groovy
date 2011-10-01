@@ -101,7 +101,7 @@ class PagamentoController {
 		
 		if(fieldName.indexOf(".") != -1){
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))	
-		} else if(fieldName.equals("valor")){
+		} else if(fieldName.equals("valor") || fieldName.equals("FORM")){
 				
 			if(!params.valor){
 				payment.valor = 0
@@ -111,7 +111,7 @@ class PagamentoController {
 		}
 
 		if(fieldName.equals("FORM") && payment.hasErrors()){
-			render g.renderErrors(bean: payment)
+			render "${message(code: 'default.form.error.message', default: 'error')}"
 		} else if(fieldName && payment.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: payment,field: fieldName)
 		}else {

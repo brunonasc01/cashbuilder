@@ -60,9 +60,8 @@ $(document).ready(function() {
 	<div class="form-input span-5 last">
 		<g:if test="${listCategorias}">
 			<span id="comboSubcategorias">
-			 <g:select name="subcategoria.id"
-				from="${listCategorias?.subcategorias}" 
-				optionKey="id" value="" noSelection="['': 'Selecione']" />
+				<g:select name="subcategoria.id"
+					noSelection="['': 'Selecione uma categoria']" />
 			</span>
 		</g:if>
 	</div>
