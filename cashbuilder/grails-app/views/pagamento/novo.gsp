@@ -81,9 +81,12 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	<div class="span-5 prepend-6">
-		<span class="button"><input type="submit" name="save" value="Save" class="save" /></span>
-		<span class="button"><input type="reset" name="clean" value="Limpar" class="cancel" /></span>
+	<div id="submitField">
+		<div class="span-4 prepend-3">
+			<span class="button"><input type="submit" name="save" value="Save" class="save" /></span>
+			<span class="button"><input type="reset" name="clean" value="Limpar" class="cancel" /></span>
+		</div>
+		<div class='alert-msg span-7 prepend-3 last'></div>
 	</div>           
 	
 </g:form>

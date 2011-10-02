@@ -84,11 +84,12 @@ $(document).ready(function() {
 		<div class="clear"></div>
 		
 		<div id="submitField">
-		<div class="span-11 prepend-3">
-			<g:submitButton name="gravar" class="save" value="Gravar" />
-			<g:submitButton name="limpar" class="reset" type="reset" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
-		</div>
-		<div class='alert-msg span-9 last'></div>
+			<div class="span-5 prepend-3">
+				<g:submitButton name="gravar" class="save" value="Gravar" />
+				<g:submitButton name="limpar" class="reset" type="reset" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
+			</div>
+			<div class="clear"></div>
+			<div class='alert-msg span-7 prepend-3 last'></div>
 		</div>
 	</g:form>			
 </div>

@@ -36,7 +36,8 @@ class FormValidatorTagLib {
 		builder <<=		"<div class='span-3 prepend-4'>"
 		builder <<=			generateInput(attrs)
 		builder <<=		"</div>"
-		builder <<=		"<div class='alert-msg span-9 last'></div>"
+		builder <<=		"<div class='clear'></div>"
+		builder <<=		"<div class='alert-msg span-8 prepend-4 last'></div>"
 		builder <<= "</div>"
 		
 		builder

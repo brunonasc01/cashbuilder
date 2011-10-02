@@ -29,7 +29,7 @@ $(document).ready(function() {
 			<label><g:message code="meta.valorFinal.label" default="Valor Desejado" /></label>
 		</div>			              
 		<div class="form-input span-5 last">
-			<g:textField name="valorAlmejado" value="${metaInstance?.valorFinal}" />
+			<g:textField name="valorAlmejado" value="${metaInstance?.valorAlmejado}" />
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
@@ -100,10 +100,10 @@ $(document).ready(function() {
 	<div class="clear"></div>
 	
 	<div id="submitField">	
-		<div class="span-8 prepend-3">
-			<span class="button"><input type="submit" name="save" value="Save" class="save" /></span>
+		<div class="span-4 prepend-3">
+			<input type="submit" name="save" value="Gravar" class="save" />
 		</div>
-		<div class='alert-msg span-9 last'></div>
+		<div class='alert-msg span-7 prepend-3 last'></div>
 	</div>
 	
 </g:form>

@@ -35,6 +35,6 @@ form .error-msg ul, .error-msg-short ul { margin: auto; padding: 0; list-style-t
 
 form .ok-msg {color: green; background: url(../images/form/ok-form-icon.png) 1px 50% no-repeat; }
 
-form .alert-msg  {font-weight: bold; font-size:80%; display:none; color: black; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }
+form .alert-msg  {font-weight: bold; font-size:80%; display:none; color: red; }
 
 form .alert-msg-short  {margin-top: 3px; font-weight: bold; font-size:80%; display:none; color: black; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }

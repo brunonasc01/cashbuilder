@@ -27,10 +27,11 @@
 				<fv:passwordInputShort name="password" maxlength="20" />
 
 				<div id="submitField">
-					<div class="span-1 prepend-2">
+					<div class="span-2 prepend-2">
 						<g:submitButton name="login" value="OK" />
 					</div>
-					<div class="span-4 alert-msg-short last">
+					<div class="clear"></div>
+					<div class="span-6 prepend-2 alert-msg last">
 						</div>
 				</div>
 			</g:form>

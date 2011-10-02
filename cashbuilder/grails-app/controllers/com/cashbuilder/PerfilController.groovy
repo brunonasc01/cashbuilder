@@ -52,7 +52,7 @@ class PerfilController {
 		def fieldName = params.fieldName
 
 		if(fieldName.equals("FORM") && profile.hasErrors()){
-			render g.renderErrors(bean: profile)
+			render "${message(code: 'default.form.error.message', default: 'error')}"
 		} else if(fieldName && profile.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: profile,field: fieldName)
 		}else {

@@ -138,7 +138,7 @@ class AdministracaoController {
 		def fieldName = params.fieldName
 
 		if(fieldName.equals("FORM") && (urc.errors.hasFieldErrors("email") || urc.errors.hasFieldErrors("password"))){
-			render "${message(code: 'default.invalid.data.message', default: 'erro')}"
+			render "${message(code: 'default.form.error.message', default: 'erro')}"
 		} else if(fieldName && urc.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: urc,field: fieldName)
 		}else {

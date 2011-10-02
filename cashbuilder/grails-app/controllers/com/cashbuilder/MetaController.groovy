@@ -111,7 +111,7 @@ class MetaController {
 
 		if(fieldName.indexOf(".") != -1){
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))
-		} else if(fieldName.equals("valorAlmejado")){
+		} else if(fieldName.equals("valorAlmejado") || fieldName.equals("FORM")){
 				
 			if(!params.valorAlmejado){
 				bean.valorAlmejado = 0
@@ -121,7 +121,7 @@ class MetaController {
 		}
 
 		if(fieldName.equals("FORM") && bean.hasErrors()){
-			render g.renderErrors(bean: bean)
+			render "${message(code: 'default.form.error.message', default: 'error')}"
 		} else if(fieldName && bean.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: bean,field: fieldName)
 		}else {

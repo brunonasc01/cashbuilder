@@ -19,7 +19,11 @@ class Meta {
 		descricao(nullable:true)		
 		dataInicio(blank:false)
 		dataFim(blank:false)		
-		valorAlmejado(scale:2, blank:false)
+		valorAlmejado(scale:2,
+			validator: { value ->
+				if( value in String || value <= 0 )
+					return ['empty']
+			})
 		subcategorias(nullable:false)
 	}
 }
