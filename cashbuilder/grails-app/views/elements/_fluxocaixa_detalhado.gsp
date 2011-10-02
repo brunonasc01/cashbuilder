@@ -23,8 +23,8 @@
 					<td>
 		                <g:form name="formEdit" controller="pagamento">
 		                    <input type="hidden" name="id" value="${pg.id}" id="id" />
-		                    <span class="button"><input type="submit" id="btSubmit" name="edit" value="E" class="edit" /></span>
-		                    <span class="button"><input type="submit" name="_action_delete" value="D" class="delete" onclick="return confirm('Tem Certeza?');" /></span>
+		                    <input type="submit" id="btSubmit" name="edit" class="bt_edit" value="" title="editar" />
+		                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
 		                </g:form>
 					</td>
 					<td><g:formatDate format="dd" date="${pg.data}"></g:formatDate></td>
