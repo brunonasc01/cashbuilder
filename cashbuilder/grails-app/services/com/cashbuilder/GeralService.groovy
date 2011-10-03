@@ -63,4 +63,22 @@ class GeralService {
 		
 		new ListaCategoriasBean(categorias:categorias, subcategorias:subcategorias)
 	}
+
+	/**
+	 * Verifica se uma string contem letras	
+	 * @param text string a ser verificada
+	 * @return true se existir alguma letra na string
+	 */
+	boolean containsLetters(String text){
+
+		boolean found = false
+		
+		text.getChars().each { 
+			if(it.isLetter()){
+				found = true
+			}
+		}
+
+		return found
+	}
 }

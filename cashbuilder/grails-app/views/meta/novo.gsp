@@ -42,7 +42,7 @@ $(document).ready(function() {
 			<label><g:message code="meta.dataInicio.label" default="Data Inicio" /></label>
 		</div>			              
 		<div class="form-input span-5 last">
-			<g:jqDatePicker class="date" name="dataInicio" value="${metaInstance?.dataInicio}" />
+			<g:jqDatePicker class="date" name="dataInicio" value="" />
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>
@@ -55,7 +55,7 @@ $(document).ready(function() {
 			<label><g:message code="meta.dataFim.label" default="Data Fim" /></label>
 		</div>			              
 		<div class="form-input span-5 last">
-			<g:jqDatePicker class="date" name="dataFim" value="${metaInstance?.dataFim}" />
+			<g:jqDatePicker class="date" name="dataFim" value="" />
 		</div>
 		<div class="form-msg-short span-7 append-5 prepend-2">
 		</div>

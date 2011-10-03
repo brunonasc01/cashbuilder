@@ -113,7 +113,7 @@ class MetaController {
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))
 		} else if(fieldName.equals("valorAlmejado") || fieldName.equals("FORM")){
 				
-			if(!params.valorAlmejado){
+			if(!params.valorAlmejado || geralService.containsLetters(params.valorAlmejado)){
 				bean.valorAlmejado = 0
 				bean.clearErrors()
 				bean.validate()

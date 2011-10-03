@@ -178,7 +178,7 @@ function processParameters(name,form){
 		
 		params += '&';
 		params += ancField.serialize();
-	} else if(name == "data" || name == "date"){
+	} else if(name.indexOf('data') != -1 || name == name.indexOf('date') != -1){
 				
 		var dayField = form.find('input[name="'+name+'_day"]');
 		params += serializeField(dayField)
@@ -248,7 +248,6 @@ function renderShortErrors(data,index,formId){
 		formField.find('label:first').removeClass('error-label');
 		formField.find('input:first,select:first').removeClass('error-input');
 		formField.find('div:odd').removeClass('form-input-error');
-		//formField.find('div:last').removeClass('error-msg-short');
 		formField.find('div:last').slideUp('slow');
 		formField.find('div:last').html('');
 		formField.find('div:odd').addClass('form-input-ok');

@@ -103,7 +103,7 @@ class PagamentoController {
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))	
 		} else if(fieldName.equals("valor") || fieldName.equals("FORM")){
 				
-			if(!params.valor){
+			if(!params.valor || geralService.containsLetters(params.valor)){
 				payment.valor = 0
 				payment.clearErrors()
 				payment.validate()
