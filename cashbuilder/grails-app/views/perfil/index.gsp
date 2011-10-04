@@ -4,9 +4,19 @@
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
         
-         <g:javascript>
+		<g:javascript base="http://cidades-estados-js.googlecode.com/files/" src="cidades-estados-1.2-utf8.js"/>
+        
+		<g:javascript>
 		$(document).ready(function() {
+			new dgCidadesEstados({
+			    estado: $('#estado').get(0),
+			    cidade: $('#cidade').get(0),
+			    change: true
+			  });
+		
 			ajaxValidate("/cashbuilder/perfil/validator","profileForm",false);
+			
+			$('#cidade').addClass("sel_city");
 		});
 		</g:javascript>
     </head>
@@ -20,11 +30,21 @@
 			
 				<fv:textInput name="nomeCompleto" />
 				
-				<fv:textInput name="cidade" />
-
-				<fv:textInput name="estado" />	
+				<fv:textInput name="estado" />
 				
-				<fv:textInput name="pais" />
+				<div id="field">
+					<div class="form-label span-4">
+						<label><g:message code="cidade.label" default="Cidade" /> </label>
+					</div>
+					<div class="form-input span-4">
+						<g:textField name="cidade"/>
+					</div>
+					<div class="form-msg span-8 last"></div>
+				</div>
+				
+				<div class="clear"></div>
+
+				<fv:textInput name="pais" disabled="disabled" value="Brasil"/>
 
 				<div class="form-label span-4">
 					<label><g:message code="perfil.label" default="Perfil" /></label>

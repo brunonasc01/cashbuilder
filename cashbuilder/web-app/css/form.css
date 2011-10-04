@@ -22,6 +22,8 @@ input.bt_delete { width: 16px; background: url(../images/form/delete-icon.png) n
 
 /* --- FORM - VALIDACAO --- */
 
+form select.sel_city { width: 153px; }
+
 input.error-input, select.error-input { border: 2px solid red;}
 
 form .form-input-error { margin-right: 10px; background: url(../images/form/error-form-icon.png) no-repeat 95% 50%;  }
