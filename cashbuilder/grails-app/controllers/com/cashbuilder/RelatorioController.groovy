@@ -27,7 +27,7 @@ class RelatorioController {
 		def categorias = Categoria.findAllByReceitaAndUser(false,user)
 		
 		//grafico de pizza
-		def pieDataList = new ArrayList()
+		def pieDataList = []
 		
 		categorias.each { categoria ->
 
@@ -35,7 +35,7 @@ class RelatorioController {
 			
 			if(totalRealizado > 0){
 				PieChartDataBean bean = new PieChartDataBean(categoria: categoria.nome, total: totalRealizado)
-				pieDataList.add bean
+				pieDataList += bean
 			}
 		}
 		
@@ -43,7 +43,7 @@ class RelatorioController {
 		
 		
 		//grafico de barras
-		def barDataList = new ArrayList()
+		def barDataList = []
 		
 		for(int idMes in mesAtual-1..mesAtual+1){
 			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
@@ -51,13 +51,13 @@ class RelatorioController {
 			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
 			
 			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMes(idMes),entradas:entradas,saidas:saidas)
-			barDataList.add bean
+			barDataList += bean
 		}
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
 		//grafico de linhas
-		def lineDataList = new ArrayList()
+		def lineDataList = []
 		
 		Date primeiroDia = DateUtils.getPrimeiroDia(mesAtual, anoAtual)
 		Date ultimoDia = DateUtils.getUltimoDia(mesAtual, anoAtual)
@@ -71,7 +71,7 @@ class RelatorioController {
 			double saidas = geralService.getTotalPagamentos(user,inicioDia,fimDia, Constants.DEBITO)
 			
 			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:dia,entradas:entradas,saidas:saidas)
-			lineDataList.add bean
+			lineDataList += bean
 		}
 
 		String lineData = MultiLineChartBean.generateGraph(lineDataList)

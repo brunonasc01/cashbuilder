@@ -31,7 +31,7 @@ class OrcamentoController {
 		orcamentoBean.mes = DateUtils.getMes(mes.mes)
 
 		//entradas
-		List listEntradas = new ArrayList()
+		def listEntradas = []
 
 		def categoriasCred = Categoria.findAllByReceitaAndUser(true,user)
 
@@ -43,7 +43,7 @@ class OrcamentoController {
 
 			if(OrcmCategoriaBean.valorPrevisto > 0 || OrcmCategoriaBean.valorRealizado > 0){
 
-				List listSubcategorias = new ArrayList()
+				def listSubcategorias = []
 
 				categoria.subcategorias.each { subcategoria ->
 
@@ -53,17 +53,17 @@ class OrcamentoController {
 					OrcmSubcategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
 					if(OrcmSubcategoriaBean.valorPrevisto > 0 || OrcmSubcategoriaBean.valorRealizado > 0){
-						listSubcategorias.add OrcmSubcategoriaBean
+						listSubcategorias += OrcmSubcategoriaBean
 					}
 				}
 
 				OrcmCategoriaBean.subcategorias = listSubcategorias
-				listEntradas.add(OrcmCategoriaBean)
+				listEntradas += OrcmCategoriaBean
 			}
 		}
 
 		//saida
-		List listSaidas = new ArrayList()
+		def listSaidas = []
 
 		def categoriasDeb = Categoria.findAllByReceitaAndUser(false,user)
 
@@ -75,7 +75,7 @@ class OrcamentoController {
 
 			if(OrcmCategoriaBean.valorPrevisto > 0 || OrcmCategoriaBean.valorRealizado > 0){
 
-				List listSubcategorias = new ArrayList()
+				def listSubcategorias = []
 
 				categoria.subcategorias.each { subcategoria ->
 
@@ -85,12 +85,12 @@ class OrcamentoController {
 					OrcmSubcategoriaBean.valorRealizado = orcamentoService.getTotalRealizado(mes,user,subcategoria)
 
 					if(OrcmSubcategoriaBean.valorPrevisto > 0 || OrcmSubcategoriaBean.valorRealizado > 0){
-						listSubcategorias.add OrcmSubcategoriaBean
+						listSubcategorias += OrcmSubcategoriaBean
 					}
 				}
 
 				OrcmCategoriaBean.subcategorias = listSubcategorias
-				listSaidas.add(OrcmCategoriaBean)
+				listSaidas += OrcmCategoriaBean
 			}
 		}
 

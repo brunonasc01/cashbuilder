@@ -16,9 +16,9 @@ form .title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; marg
 
 form .title-natureza { background-color: #AAAAAA; font-size: 120%; }
 
-input.bt_edit { background: url(../images/form/edit-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
+input.bt_edit { width: 16px; background: url(../images/form/edit-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
 
-input.bt_delete { background: url(../images/form/delete-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
+input.bt_delete { width: 16px; background: url(../images/form/delete-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
 
 /* --- FORM - VALIDACAO --- */
 

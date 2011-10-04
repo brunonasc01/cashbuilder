@@ -19,24 +19,24 @@ class PerfilController {
 		if(!perfil.hasErrors()){
 			perfil.save(flush:true)
 			
-			def listaCategorias = new ArrayList()
+			def listaCategorias = []
 			
 			File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categoriaGeral.csv").getFile()
-			listaCategorias.add fileGeral
+			listaCategorias += fileGeral
 
 			if(params.animalEstimacao){
 				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaMascote.csv").getFile()
-				listaCategorias.add file
+				listaCategorias += file
 			}
 
 			if(params.automovel){
 				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaVeiculo.csv").getFile()
-				listaCategorias.add file
+				listaCategorias += file
 			}
 
 			if(params.filho){
 				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaFilho.csv").getFile()
-				listaCategorias.add file
+				listaCategorias += file
 			}
 
 			usuarioService.geraPerfil(user,listaCategorias)

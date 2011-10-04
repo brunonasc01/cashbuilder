@@ -70,7 +70,7 @@ class AdministracaoController {
 		//form de filtro
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
 		
-		List listaDebito = new ArrayList()
+		def listaDebito = []
 		def categoriasDebito = Categoria.findAllByReceitaAndUser(false,user)
 		
 		categoriasDebito.each { categoria ->
@@ -79,10 +79,10 @@ class AdministracaoController {
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
 
-			listaDebito.add bean
+			listaDebito += bean
 		}
 
-		List listaCredito = new ArrayList()
+		def listaCredito = []
 		def categoriasCredito = Categoria.findAllByReceitaAndUser(true,user)
 		
 		categoriasCredito.each { categoria ->
@@ -91,7 +91,7 @@ class AdministracaoController {
 			bean.categoria = categoria.nome
 			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
 
-			listaCredito.add bean
+			listaCredito += bean
 		}
 		
 		//totais previstos

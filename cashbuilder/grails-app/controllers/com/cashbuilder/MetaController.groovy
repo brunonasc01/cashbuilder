@@ -14,7 +14,7 @@ class MetaController {
 		def categoriesList = geralService.getCategoriesList(user)
 		
 		// Lista de Metas
-		List listaMetas = new ArrayList<MetaBean>()
+		def listaMetas = []
 		
 		def metas = Meta.findAllByUser(user)
 		
@@ -68,7 +68,7 @@ class MetaController {
 			bean.valorFinal = meta.valorAlmejado
 			bean.valorAcumulado = total
 
-			listaMetas.add(bean)
+			listaMetas += bean
 		}
 
 		[goal : true, listCategorias: categoriesList, metas: listaMetas ]
