@@ -44,7 +44,7 @@
 				
 				<div class="clear"></div>
 
-				<fv:textInput name="pais" disabled="disabled" value="Brasil"/>
+				<fv:textInput name="pais" value="Brasil"/>
 
 				<div class="form-label span-4">
 					<label><g:message code="perfil.label" default="Perfil" /></label>

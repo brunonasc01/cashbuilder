@@ -1,5 +1,6 @@
 package com.cashbuilder
 
+import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -52,6 +53,24 @@ class OrcamentoService {
 		(total)? total : 0
 	}
 
+	List getOrcmItems(Usuario user, int mes, def criterio){
+		
+		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+		def orcmMes =  OrcmMes.findByMesAndOrcamento(mes,orcamento)
+		def result = []
+		
+		if (criterio in Boolean){			
+			def list = Categoria.findAllByReceitaAndUser(criterio,user)
+			
+			list.each {
+				result += new ListaCategoriasBean(categoria: it.nome, 
+					subcategorias: OrcmItem.findAllByCategoriaAndMes(it,orcmMes,[sort:"subcategoria"]))
+			}
+		}
+		
+		result
+	}
+	
 	/**
 	 * Calcula o saldo no mes
 	 * @param ormcMes o mes

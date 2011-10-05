@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 
 import com.cashbuilder.beans.ListaCategoriasBean;
+import com.cashbuilder.utils.DateUtils;
 
 class GeralService {
 
@@ -79,6 +80,22 @@ class GeralService {
 			}
 		}
 
-		return found
+		found
+	}
+	
+	List getPagamentos(Usuario user, int month, int year){
+		
+		Date primeiroDia = DateUtils.getPrimeiroDia(month,year)
+		Date ultimoDia = DateUtils.getUltimoDia(month,year)
+
+		def pagamentos = Pagamento.createCriteria().list {
+			and {
+				eq('user', user)
+				between('data', primeiroDia, ultimoDia)
+			}
+			order("data", "asc")
+		}
+		
+		pagamentos
 	}
 }

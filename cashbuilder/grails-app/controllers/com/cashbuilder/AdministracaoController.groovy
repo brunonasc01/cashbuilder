@@ -8,7 +8,6 @@ import java.util.Date;
 import com.cashbuilder.beans.BoxSaldoBean;
 import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.cmd.UsuarioRegistroCommand;
-import com.cashbuilder.eventos.EventManager;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -16,6 +15,7 @@ class AdministracaoController {
 
 	def orcamentoService
 	def geralService
+	def eventService
 	
     def index = {
 	
@@ -30,17 +30,17 @@ class AdministracaoController {
 	
 	def valida_login = {
 		
-		session.user = Usuario.findByEmailAndPassword(params.email,params.password)
+		def user = Usuario.findByEmailAndPassword(params.email,params.password)
 		
-		if(session.user){
-			def perfil = Perfil.findByUsuario(session.user)
+		if(user){
+			session.user = user
+							
+			def perfil = Perfil.findByUsuario(user)
 			
 			if(!perfil){
 				redirect(controller:'perfil')
 			}else {
-				EventManager evtManager = new EventManager()
-				evtManager.checkEvents(session.user, null)
-
+				eventService.checkEvents(user, null)
 				redirect(controller:'home')
 			}
 		}else{
@@ -66,37 +66,12 @@ class AdministracaoController {
 		def user = session.user.attach()
 		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
 		def mes = OrcmMes.findByMesAndOrcamento(iMes,orcamento)
-		
-		//form de filtro
+
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
-		
-		def listaDebito = []
-		def categoriasDebito = Categoria.findAllByReceitaAndUser(false,user)
-		
-		categoriasDebito.each { categoria ->
-
-			ListaCategoriasBean bean = new ListaCategoriasBean()
-			bean.categoria = categoria.nome
-			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
-
-			listaDebito += bean
-		}
-
-		def listaCredito = []
-		def categoriasCredito = Categoria.findAllByReceitaAndUser(true,user)
-		
-		categoriasCredito.each { categoria ->
-						
-			ListaCategoriasBean bean = new ListaCategoriasBean()
-			bean.categoria = categoria.nome
-			bean.subcategorias = OrcmItem.findAllByCategoriaAndMes(categoria,mes,[sort:"subcategoria"])
-
-			listaCredito += bean
-		}
-		
-		//totais previstos
+		def listaDebito = orcamentoService.getOrcmItems(user,iMes,false)
+		def listaCredito = orcamentoService.getOrcmItems(user,iMes,true)
 		def df = geralService.getFormatadorNumerico()
-		
+
 		BoxSaldoBean bean = new BoxSaldoBean()
 		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
 		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)

@@ -9,6 +9,7 @@ class HomeController {
 
 	def orcamentoService
 	def geralService
+	def paymentService
 	
     def index = {
 		
@@ -35,16 +36,13 @@ class HomeController {
 	
 	def save_registro = {
 		
-		def pagamento = new Pagamento(params)
-		pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
-		
-		def user = session.user.attach()
-		pagamento.user = user
-		
-		if(!pagamento.hasErrors()){
-			pagamento.save(flush:true)
+		try {
+			def user = session.user.attach()
+			def newPayment = paymentService.savePayment(user, params.properties)
+			flash.message = "Pagamento gravado com sucesso"
+		} catch (RuntimeException re){
+			flash.message = re.message
 		}
-
 		redirect(action: "index")
 	}
 }

@@ -7,7 +7,7 @@ class Usuario {
 	String password
 	Date dateCreated
 	
-	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento]
+	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento, metas: Meta]
 	
     static constraints = {
 		

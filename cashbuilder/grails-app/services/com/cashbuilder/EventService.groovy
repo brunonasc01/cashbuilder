@@ -1,22 +1,25 @@
-package com.cashbuilder.eventos
+package com.cashbuilder
 
 import java.util.Date;
 
-import com.cashbuilder.Orcamento;
-import com.cashbuilder.OrcmItem;
-import com.cashbuilder.OrcmMes;
-import com.cashbuilder.Pagamento;
-import com.cashbuilder.Usuario;
 import com.cashbuilder.utils.DateUtils;
 
-class EventManager {
+class EventService {
 
+    static transactional = true
+
+    def serviceMethod() {
+
+    }
+	
 	void checkEvents(Usuario user, Date date){
 		
 		calculateBudget(user,date)
+		
+		processAlerts(user)
 	}
 	
-	private void calculateBudget(Usuario user, Date date){
+	void calculateBudget(Usuario user, Date date){
 		Date initialDate = (date)? date : user.dateCreated
 		Date actualDate = DateUtils.getHoje(false)
 
@@ -68,7 +71,12 @@ class EventManager {
 
 	*/
    
-   private void processaAlertas(Usuario usuario){
+   void processAlerts(Usuario user){
+	   
+	   def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+	   def mes = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,budget)
+	   
+	 //  double total = orcamentoService.getSaldoRealizado(mes,user)
 	   
 	   //Debitos > Creditos
 	   Date hojeCedo = DateUtils.getHoje(true)
@@ -78,4 +86,5 @@ class EventManager {
 //	   double saidas = geralService.getTotalPagamentos(usuario,hojeCedo, hojeNoite, Constants.DEBITO)
 	   
    }
+	
 }

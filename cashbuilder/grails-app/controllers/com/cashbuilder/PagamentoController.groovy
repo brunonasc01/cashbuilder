@@ -5,6 +5,7 @@ import com.cashbuilder.utils.Constants;
 class PagamentoController {
 
 	def geralService
+	def paymentService
 	
 	def delete = {
 		def pagamento = Pagamento.get(params.id)
@@ -74,21 +75,14 @@ class PagamentoController {
 	}
 	
 	def save = {
-
-		def pagamento = new Pagamento(params)
-		pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
-		
-		def user = session.user.attach()
-		pagamento.user = user
-		
-		if(!pagamento.hasErrors()){
-			pagamento.save(flush:true)
-
-			redirect(controller:"fluxoCaixa", action: "index")
+		try {
+			def user = session.user.attach()
+			def newPayment = paymentService.savePayment(user, params.properties)
+			flash.message = "Pagamento gravado com sucesso"
+		} catch (RuntimeException re){
+			flash.message = re.message
 		}
-		else{
-			render(view: "novo", model: [pagamento: pagamento])
-		}
+		redirect(controller:"fluxoCaixa", action: "index")
 	}
 	
 	def cancel = {
