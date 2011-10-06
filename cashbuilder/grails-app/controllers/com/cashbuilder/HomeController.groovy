@@ -30,8 +30,9 @@ class HomeController {
 		}
 
 		def categoriesList = geralService.getCategoriesList(user)
+		def alerts = Alert.findAllByOrcamento(orcamento)
 		
-		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList]
+		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
 	}
 	
 	def save_registro = {

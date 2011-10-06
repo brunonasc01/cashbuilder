@@ -1,8 +1,13 @@
 <div class="box avisos ui-corner-all shadow_box">
 	<p class="title">Avisos</p>
 	<ul>
-		<li>Aviso 1 blablablablablablablablablablablabla</li>
-		<li>Aviso 2 blablablablablablablablablablablabla</li>
-		<li>Aviso 3 blablablablablablablablablabla</li>
+		<g:if test="${alerts}">
+			<g:each var="alert" in="${alerts }">
+				<li><g:message code="${alert.message }" /> </li>
+			</g:each>
+		</g:if>
+		<g:else>
+			<li>Nenhum alerta</li>
+		</g:else>
 	</ul>
 </div>

@@ -16,6 +16,9 @@ class Constants {
 	static int META_CORRENTE = 0
 	static int META_PERDIDA = 2
 	
+	static int ALERT_SALDO_POSITIVO = 0
+	static int ALERT_SALDO_NEGATIVO = 1
+	
 	static String getFORMATO_MOEDA(){
 						
 		NumberFormat cf = NumberFormat.getCurrencyInstance()

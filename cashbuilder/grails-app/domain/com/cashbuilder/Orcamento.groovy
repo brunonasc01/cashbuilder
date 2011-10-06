@@ -7,7 +7,7 @@ class Orcamento {
 	
 	static belongsTo = [user: Usuario]
 	
-	static hasMany = [meses: OrcmMes]
+	static hasMany = [meses: OrcmMes, alerts: Alert]
 	
     static constraints = {
 		ano(blank:false)

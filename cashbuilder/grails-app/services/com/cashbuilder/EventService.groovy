@@ -2,20 +2,22 @@ package com.cashbuilder
 
 import java.util.Date;
 
+import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
 class EventService {
 
     static transactional = true
 
+	def orcamentoService
+	
     def serviceMethod() {
 
     }
 	
 	void checkEvents(Usuario user, Date date){
-		
+
 		calculateBudget(user,date)
-		
 		processAlerts(user)
 	}
 	
@@ -71,20 +73,29 @@ class EventService {
 
 	*/
    
-   void processAlerts(Usuario user){
-	   
-	   def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
-	   def mes = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,budget)
-	   
-	 //  double total = orcamentoService.getSaldoRealizado(mes,user)
-	   
-	   //Debitos > Creditos
-	   Date hojeCedo = DateUtils.getHoje(true)
-	   Date hojeNoite = DateUtils.getHoje(false)
-	   
-//	   double entradas = geralService.getTotalPagamentos(usuario,hojeCedo, hojeNoite, Constants.CREDITO)
-//	   double saidas = geralService.getTotalPagamentos(usuario,hojeCedo, hojeNoite, Constants.DEBITO)
-	   
-   }
+	void processAlerts(Usuario user){
+
+		def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+		def mes = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,budget)
+		
+		if(orcamentoService.getSaldoPrevisto(mes) > 0 && orcamentoService.getSaldoRealizado(mes,user) > 0){			
+			createOrUpdateAlert(budget,Constants.ALERT_SALDO_POSITIVO,"alert.saldo.positivo.message")
+			
+   		}else if(orcamentoService.getSaldoPrevisto(mes) < 0 || orcamentoService.getSaldoRealizado(mes,user) < 0){
+		   createOrUpdateAlert(budget,Constants.ALERT_SALDO_NEGATIVO,"alert.saldo.negativo.message")
+		}
+	}
+
+	Alert createOrUpdateAlert(Orcamento budget, int type, String messageCode){
+
+		def alert = Alert.findByType(type)
+		
+		 if(!alert){
+			 alert = new Alert(orcamento: budget, enable: true, type: type, message: messageCode)
+			 alert.save()
+		 } else if(!alert.enable){
+			 alert.enable = true
+		 }
+	}
 	
 }

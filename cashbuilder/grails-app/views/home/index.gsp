@@ -7,7 +7,7 @@
 
     <body>
 	  	<div class="span-16">
-	  		<g:render template="/elements/box_avisos"  ></g:render>
+	  		<g:render template="/elements/box_avisos" bean="${alerts}" ></g:render>
 
 			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
 	  	</div>
