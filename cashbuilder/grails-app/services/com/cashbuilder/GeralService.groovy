@@ -98,4 +98,86 @@ class GeralService {
 		
 		pagamentos
 	}
+	
+	boolean saveManualBudget(Usuario user, String mesId, String saveType, String properties){
+		if(user){
+			def orcmMes = OrcmMes.get(mesId)
+			
+			if(orcmMes){
+				
+				if(saveType.equals("mes")){
+					orcmMes.properties = properties
+					
+				} else if(saveType.equals("ano")){
+					def orcamento = orcmMes.orcamento
+					
+					OrcmMes.findAllByOrcamento(orcamento).each {
+						it.properties = properties
+					}
+				}
+			} else {
+				throw new RuntimeException(message: "Mes selecionado invalido ou vazio")
+			}
+		} else {
+			throw new RuntimeException(message: "Usuario Invalido")
+		}
+	}
+	
+	
+	/**
+	 * Cria a estrutura inicial para utilizacao do sistema
+	 * @param user usuario atual
+	 * @param files lista de categorias para construcao do orcamento
+	 */
+	void makeOrcmProfile(Usuario user,def files){
+	   	   
+	   Orcamento budget = new Orcamento(ano: DateUtils.anoAtual,user:user)
+	   
+	   if(budget.save()){
+		   files.each { file ->
+			   file.eachLine{ linha ->
+				   
+				   String[] linhaBase = linha.split(":")
+				   
+				   if(linhaBase.length > 0 && !linhaBase[0].contains("#")){
+					   
+					   String categoria = linhaBase[0]
+					   boolean receita = ("Receitas").equals(categoria)
+	   
+					   Categoria categoriaBean = new Categoria( nome:categoria, user:user, receita:receita )
+					   
+					   if(categoriaBean.save()){
+						   String[] subcategorias = linhaBase[1].split(";")
+						   
+						   subcategorias.each { nome ->
+							   new Subcategoria(nome: nome,categoria:categoriaBean).save()
+						   }
+					   } else {
+					   		throw new RuntimeException(message:"Erro ao gravar a Categoria: ${categoriaBean.nome}")
+					   }
+				   }
+			   }
+		   }
+	
+		   def allCategorias = Categoria.findAllByUser(user)
+	
+		   (0..11).each { mes ->
+			   OrcmMes orcmMes = new OrcmMes(mes:mes,orcamento:budget)
+			   
+			   if(orcmMes.save()){
+				   allCategorias.each{ categoria ->
+					   def subcategorias = Subcategoria.findAllByCategoria(categoria)
+					   
+					   subcategorias.each{ subcategoria ->
+						   new OrcmItem(categoria:categoria,subcategoria:subcategoria,mes:orcmMes).save()
+					   }
+				   }
+			   } else {
+			   		throw new RuntimeException(message:"Erro ao gravar o Orcamento do Mes: ${mes}")
+			   }
+		   }
+	   } else {
+	   		throw new RuntimeException("Nao foi possivel criar o orcamento, tente novamente")
+	   }
+   }
 }

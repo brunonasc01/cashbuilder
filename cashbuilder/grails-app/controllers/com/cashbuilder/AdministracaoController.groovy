@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.cashbuilder.beans.BoxSaldoBean;
 import com.cashbuilder.beans.ListaCategoriasBean;
-import com.cashbuilder.cmd.UsuarioRegistroCommand;
+import com.cashbuilder.cmd.UsuarioCommand;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -31,10 +31,9 @@ class AdministracaoController {
 	def valida_login = {
 		
 		def user = Usuario.findByEmailAndPassword(params.email,params.password)
-		
+
 		if(user){
 			session.user = user
-							
 			def perfil = Perfil.findByUsuario(user)
 			
 			if(!perfil){
@@ -80,35 +79,24 @@ class AdministracaoController {
 	}
 	
 	def save_itens = {
-						
-		def user = session.user.attach()
-		def tipoSave = params?.tipoSave
-		
-		if(("mes").equals(tipoSave)){
-			def orcmMes = OrcmMes.get(params.id)
-			orcmMes.properties = params
+		try{
+			def user = session.user.attach()
+			def tipoSave = params.tipoSave
+			geralService.saveManualBudget(user,params.id,tipoSave,params.properties)
 
-		}else if(("ano").equals(tipoSave)){
-			def orcmMes = OrcmMes.get(params.id)
-			def orcamento = orcmMes.orcamento
-			
-			def allOrcmMes = OrcmMes.findAllByOrcamento(orcamento)
-			
-			allOrcmMes.each {
-				it.properties = params
+			if(tipoSave.equals("ano")){
+				flash.message = "Orcamento para o Ano Salvo com Sucesso."
+			}else{
+				flash.message = "Orcamento para o Mes Salvo com Sucesso."
 			}
+		} catch(RuntimeException re){
+			flash.message = re.message
 		}
 
-		if(tipoSave.equals("ano")){
-			flash.message = "Orcamento para o Ano Salvo com Sucesso."
-		}else{
-			flash.message = "Orcamento para o Mes Salvo com Sucesso."
-		}
-		
 		redirect(action:'adm_orcm')
 	}
 	
-	def validator = { UsuarioRegistroCommand urc ->
+	def validator = { UsuarioCommand urc ->
 		
 		def fieldName = params.fieldName
 

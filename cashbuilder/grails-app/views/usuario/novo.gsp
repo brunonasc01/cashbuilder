@@ -28,7 +28,7 @@
 	            </g:hasErrors>
 			</g:else>
 			
-            <g:form name="userForm" action="grava_usuario" >
+            <g:form name="userForm" action="save" >
             	<p class="title">Registro de Usuario</p>
 
 					<fv:textInput name="email" value="${usuarioInstance?.email}" />

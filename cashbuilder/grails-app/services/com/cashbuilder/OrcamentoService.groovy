@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.ListaCategoriasBean;
+import com.cashbuilder.beans.orcamento.OrcamentoItemBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -65,6 +66,45 @@ class OrcamentoService {
 			list.each {
 				result += new ListaCategoriasBean(categoria: it.nome, 
 					subcategorias: OrcmItem.findAllByCategoriaAndMes(it,orcmMes,[sort:"subcategoria"]))
+			}
+		}
+		
+		result
+	}
+	
+	List getOrcmData(Usuario user, OrcmMes mes, def criterio){
+		
+		def result = []
+		
+		if (criterio in Boolean){
+			
+			def fatherList = Categoria.findAllByReceitaAndUser(criterio,user)
+			
+			fatherList.each { categoria ->
+				OrcamentoItemBean fatherBean = new OrcamentoItemBean()
+				fatherBean.nome = categoria.nome
+				fatherBean.valorPrevisto = getTotalPrevisto(mes,categoria)
+				fatherBean.valorRealizado = getTotalRealizado(mes,user,categoria)
+				
+				if(fatherBean.valorPrevisto > 0 || fatherBean.valorRealizado > 0){
+					
+					def childList = []
+	
+					categoria.subcategorias.each { subcategoria ->
+	
+						OrcamentoItemBean childBean = new OrcamentoItemBean()
+						childBean.nome = subcategoria.nome
+						childBean.valorPrevisto = getTotalPrevisto(mes,subcategoria)
+						childBean.valorRealizado = getTotalRealizado(mes,user,subcategoria)
+	
+						if(childBean.valorPrevisto > 0 || childBean.valorRealizado > 0){
+							childList += childBean
+						}
+					}
+	
+					fatherBean.subcategorias = childList
+					result += fatherBean
+				}
 			}
 		}
 		

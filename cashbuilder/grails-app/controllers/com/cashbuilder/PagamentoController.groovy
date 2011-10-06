@@ -7,72 +7,7 @@ class PagamentoController {
 	def geralService
 	def paymentService
 	
-	def delete = {
-		def pagamento = Pagamento.get(params.id)
-
-		if (pagamento) {
-			try {
-				pagamento.delete(flush: true)
-				flash.message = "Registro excluido com sucesso"
-				redirect(controller:"fluxoCaixa", action: "index")
-
-			} catch (org.springframework.dao.DataIntegrityViolationException e) {
-
-			}
-		}
-		else {
-			flash.message = "Erro ao apagar o registro, tente novamente"
-			redirect(controller:"fluxoCaixa", action: "index")
-		}
-	}
-
-	def ajaxNovo = {
-		
-		def user = session.user.attach()
-		def categoriesList = geralService.getCategoriesList(user)
-		
-		render(view: "novo", model: [listCategorias: categoriesList])
-	}
-
-	def ajaxEdit = {
-
-		def pagamento = Pagamento.get(params.id)
-		
-		if (!pagamento) {
-			flash.message = "Nao foi possivel editar o pagamento, tente novamente"
-			redirect(controller:"fluxoCaixa", action: "index")
-		}
-		else {
-			
-			def categoriesList = geralService.getCategoriesList(pagamento.user)
-			def df = geralService.getFormatadorNumerico()
-			
-			render(view: "edit", model: [listCategorias: categoriesList, pagamento: pagamento, df: df])
-		}
-	}
-	
-	def update = {
-
-		def pagamento = Pagamento.get(params.id)
-
-		if (pagamento) {
-			
-			pagamento.properties = params
-			pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
-
-			if (!pagamento.hasErrors()) {
-				flash.message = "Registro atualizado com sucesso."
-				redirect(controller:"fluxoCaixa", action: "index")
-			}
-			else {
-				render(view: "edit", model: [pagamento: pagamento])
-			}
-		}
-		else {
-			flash.message = "Nao foi possivel atualizar o registro, tente novamente."
-			redirect(action: "edit")
-		}
-	}
+	static allowedMethods = [delete: "POST", update: "POST", save: "POST"]
 	
 	def save = {
 		try {
@@ -85,10 +20,45 @@ class PagamentoController {
 		redirect(controller:"fluxoCaixa", action: "index")
 	}
 	
-	def cancel = {
+	def delete = {
+		try {
+			paymentService.deletePayment(params.id)
+			flash.message = "Registro excluido com sucesso"
+		} catch(RuntimeException re) {
+			flash.message = re.message
+		}
+		redirect(controller:"fluxoCaixa", action: "index")
+	}
+
+	def update = {
+		try {
+			paymentService.updatePayment(params.id,params.properties)
+			flash.message = "Registro atualizado com sucesso."
+		} catch(Exception e){
+			flash.message = e.message
+		}
 		redirect(controller:"fluxoCaixa", action: "index")
 	}
 	
+	def ajaxNovo = {		
+		def user = session.user.attach()
+		def categoriesList = geralService.getCategoriesList(user)
+		render(view: "novo", model: [listCategorias: categoriesList])
+	}
+
+	def ajaxEdit = {
+		def pagamento = Pagamento.get(params.id)
+		
+		if (!pagamento) {
+			flash.message = "Nao foi possivel editar o pagamento, tente novamente"
+			redirect(controller:"fluxoCaixa", action: "index")
+		} else {
+			def categoriesList = geralService.getCategoriesList(pagamento.user)
+			def df = geralService.getFormatadorNumerico()
+			render(view: "edit", model: [listCategorias: categoriesList, pagamento: pagamento, df: df])
+		}
+	}
+
 	def validator = { Pagamento payment ->
 		
 		String fieldName = params.fieldName

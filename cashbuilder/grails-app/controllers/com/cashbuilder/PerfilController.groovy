@@ -1,8 +1,8 @@
 package com.cashbuilder
 
 class PerfilController {
-
-	def usuarioService
+		
+	def geralService
 	
     def index = {
 	
@@ -39,7 +39,7 @@ class PerfilController {
 				listaCategorias += file
 			}
 
-			usuarioService.geraPerfil(user,listaCategorias)
+			geralService.makeOrcmProfile(user,listaCategorias)
 			
 			redirect(controller:'home')
 		} else{

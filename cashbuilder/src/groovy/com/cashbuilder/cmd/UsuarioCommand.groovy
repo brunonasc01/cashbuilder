@@ -2,7 +2,7 @@ package com.cashbuilder.cmd
 
 import java.util.Date;
 
-class UsuarioRegistroCommand {
+class UsuarioCommand {
 	
 	String email
 	String emailRepeat
