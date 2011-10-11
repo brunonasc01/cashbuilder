@@ -9,7 +9,7 @@ class Alert {
 	static belongsTo = [orcamento: Orcamento]
 	
     static constraints = {
-		type(unique: true)
+		type(unique: true,blank: false)
 		message(blank: false)
     }
 }

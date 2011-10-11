@@ -59,18 +59,12 @@ class RelatorioController {
 		//grafico de linhas
 		def lineDataList = []
 		
-		Date primeiroDia = DateUtils.getPrimeiroDia(mesAtual, anoAtual)
-		Date ultimoDia = DateUtils.getUltimoDia(mesAtual, anoAtual)
-		
-		for(int dia in primeiroDia.day..ultimoDia.day){
+		for(int idMes in mesAtual-1..mesAtual+1){
+			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
+			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
+			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
 			
-			Date inicioDia = DateUtils.getDia(dia, mesAtual, anoAtual, true)
-			Date fimDia = DateUtils.getDia(dia, mesAtual, anoAtual, false)
-			
-			double entradas = geralService.getTotalPagamentos(user,inicioDia,fimDia, Constants.CREDITO)
-			double saidas = geralService.getTotalPagamentos(user,inicioDia,fimDia, Constants.DEBITO)
-			
-			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:dia,entradas:entradas,saidas:saidas)
+			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMes(idMes),entradas:entradas,saidas:saidas)
 			lineDataList += bean
 		}
 

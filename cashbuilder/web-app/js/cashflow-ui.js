@@ -8,7 +8,11 @@ function cashflow(id){
 	});
 
 	$(table+' tr').hover(function(){
-		$(this).addClass("ui-state-hover");
+			var trClassName = $(this).attr('class');
+			
+			if(trClassName != "header"){
+				$(this).addClass("ui-state-hover");
+			}
 		},function(){
 			$(this).removeClass("ui-state-hover");
 		}

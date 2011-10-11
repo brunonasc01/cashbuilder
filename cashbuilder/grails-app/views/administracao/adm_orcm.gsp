@@ -50,17 +50,17 @@
 
 						<div class="span-2 prepend-1"><label>Entradas</label></div>
 						<div class="span-2 positivo last">
-							<g:formatNumber number="${orcmBox.entradas}"  format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 						
 						<div class="span-2 prepend-1"><label>Saidas</label></div>
 						<div class="span-2 negativo last">
-							<g:formatNumber number="${orcmBox.saidas}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 						
 						<div class="span-2 prepend-1"><label>Saldo</label></div>
 						<div class="span-2 last">
-							<g:formatNumber number="${orcmBox.saldo}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${orcmBox.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 						</div>
 					</div>
 				</g:if>

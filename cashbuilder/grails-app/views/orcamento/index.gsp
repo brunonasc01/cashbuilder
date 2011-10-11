@@ -55,14 +55,14 @@
 
 					<div class="title span-2">Previsto</div>
 					<div class="span-2 ${classPrevisto } last">
-						<g:formatNumber number="${boxSaldo.saldoPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
+						<g:formatNumber number="${boxSaldo.saldoPrevisto }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 					
 					<g:set var="classRealizado" value="${(boxSaldo.saldoRealizado > 0) ? 'positivo' : 'negativo' }"></g:set>
 					
 					<div class="title span-2">Realizado</div>
 					<div class="span-2 ${classRealizado } last">
-						<g:formatNumber number="${boxSaldo.saldoRealizado }" format="${Constants.FORMATO_MOEDA}"/>
+						<g:formatNumber number="${boxSaldo.saldoRealizado }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 				</div>
 			</g:if>
