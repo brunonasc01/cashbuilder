@@ -9,16 +9,15 @@
 		<g:javascript src="cashflow-ui.js" />
 		
 		<g:javascript>
-			$(function() {
-				cashflow('cashflow');
-			});
-			
-			$(document).ready(function() {
-				ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo");
-			});
+		$(function() {
+			cashflow('cashflow');
+			monthMenuUI('${monthIndex}','month_list');
+			ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo");
+		});
 		</g:javascript>
     </head>
     <body>
+    	<g:render template="/elements/month_menu"></g:render>
     	<div class="span-6">
     		<div class="box new-reg ui-corner-all shadow_box">
     			<g:link elementId="linkNovo" controller="pagamento" action="novo" >
@@ -50,28 +49,6 @@
 				<div class="span-3 ${classSaldo } last">
 					<g:formatNumber number="${fluxoCaixa.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</div>
-			</div>
-    	
-    		<div class="box ui-corner-all shadow_box">
-	    		<g:form action="index">
-	    			<fieldset>
-	            		<legend>Filtro</legend>
-
-	    				<div class="form-label span-1">
-	    					<label for="mesId">Mes</label>
-	    				</div>
-	
-	    				<div class="span-3 last">
-		    				<g:select name="mesId"
-								from="${meses}" 
-								optionKey="mes" value="${params.mesId}" noSelection="['': 'Sel.']" />
-						</div>
-	    		
-	    				<div class="span-2 prepend-1">
-	    					<g:submitButton name="filtrar" value="Filtrar"></g:submitButton>
-	    				</div>
-	    			</fieldset>
-				</g:form>
 			</div>
     	</div>
     

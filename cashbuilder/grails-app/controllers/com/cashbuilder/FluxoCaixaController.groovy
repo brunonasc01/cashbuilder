@@ -28,6 +28,6 @@ class FluxoCaixaController {
 			entradas: orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO),
 			saidas: orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO))
 
-		[flow: true, meses: meses, fluxoCaixa:bean]
+		[flow: true, monthIndex: mesAtual, meses: meses, fluxoCaixa:bean]
 	}
 }

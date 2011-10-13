@@ -13,11 +13,18 @@ p.title { border-bottom: 1px solid black; margin-bottom: 5px; margin-top: 10px; 
 
 .negativo { color: #E40101; }
 
-.box { padding: 0.8em }
+.box { padding: 0.8em; }
 
 .inner-space { margin: 5px; }
 
 .content-inner-space { margin: 18px }
+
+.month_menu { background-color: #CCCCCC; margin-bottom: 10px; padding-top: 0; padding-bottom: 0; padding-left: 0.8em; padding-right: 0.8em; }
+.month_menu ul { margin: auto; padding: 0; list-style-type: none; }
+.month_menu ul li { float: left; width: 72px; text-align: center; font-size: 90%; }
+.month_menu ul li a {text-decoration: none; color: #999999; }
+.month_menu ul li.month_menu_selected { background-color: #FFF; }
+.month_menu ul li.month_menu_selected a { color: black; }
 
 /* --- MODAL --- */
 

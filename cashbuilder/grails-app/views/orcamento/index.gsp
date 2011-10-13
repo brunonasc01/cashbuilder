@@ -6,34 +6,17 @@
         <meta name="layout" content="base" />
         <link rel="stylesheet" href="<g:createLinkTo dir='css' file='orcm.css'/>" />
         
+        <g:javascript>
+        	$(function() {
+				monthMenuUI('${monthIndex}','month_list');
+			});
+        </g:javascript>
+        
     </head>
     <body>
-    	<div class="span-6">
-    		<div class="box ui-corner-all shadow_box">
-	    		<g:form action="index">
-	    			<fieldset>
-	            		<legend>Filtro</legend>
-	    				
-	    				<g:hiddenField name="anoId" value="${params.anoId}"></g:hiddenField>
-	    				<g:hiddenField name="viewType" value="${params.viewType}"></g:hiddenField>
+    	<g:render template="/elements/month_menu"></g:render>
 
-	    				<div class="form-label span-1">
-	    					<label for="mesId">Mes</label>
-	    				</div>
-	
-	    				<div class="span-3 last">
-		    				<g:select name="mesId"
-								from="${meses}" 
-								optionKey="mes" value="${params.mesId}" noSelection="['': 'Sel.']" />
-						</div>
-	    		
-	    				<div class="span-2 prepend-1">
-	    					<g:submitButton name="filtrar" value="Filtrar"></g:submitButton>
-	    				</div>
-	    			</fieldset>
-				</g:form>
-			</div>
-			
+    	<div class="span-6">
 			<div class="box ui-corner-all shadow_box">
 				<g:if test="${params.viewType.equals(Constants.BASICO)}">
 					<g:link action="index" params="[viewType:'COMPLETO']">

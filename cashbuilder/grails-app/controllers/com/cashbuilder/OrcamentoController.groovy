@@ -40,6 +40,6 @@ class OrcamentoController {
 			params.viewType = Constants.BASICO
 		}
 
-		[orcm: true, meses: meses, orcamento: orcamentoBean, boxSaldo: box]
+		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, boxSaldo: box]
 	}
 }
