@@ -9,6 +9,7 @@
         <g:javascript>
         	$(function() {
 				monthMenuUI('${monthIndex}','month_list');
+				makeBudgetBars();
 			});
         </g:javascript>
         
