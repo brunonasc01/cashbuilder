@@ -1,71 +1,55 @@
-
 <%@page import="com.cashbuilder.utils.Constants"%>
-<g:if test="${orcamento }">
-<div id="orcm-Basic" class="basic">
-	<p class="title"> Orçamento ${orcamento.mes} - ${orcamento.ano } </p>
 
-	<g:if test="${orcamento.listaCredito }">
-		<p class="title">
-			ENTRADAS
-		</p>
-	
-		<g:each var="entrada" in="${orcamento.listaCredito}">
-			<div class="categoria">
-				<p class="rotulo">${entrada.nome }</p>
+<g:if test="${list}">	
+	<g:each var="orcm" in="${list}">
+		<div class="categoria">
+			<p class="rotulo">${orcm.nome }</p>
 
-				<div class="btplus span-1">
-					+
-				</div>
+			<div id="orcm-Basic">
+				<div id="orcm-item" class="span-16">
+					<div class="btplus span-1">
+						<span>+</span>
+					</div>
 
-				<div id="orcm-item">
-					<g:hiddenField name="prevVal" value="${entrada.valorPrevisto }"/>
-					<g:hiddenField name="realVal" value="${entrada.valorRealizado }"/>
+					<g:hiddenField name="prevVal" value="${orcm.valorPrevisto }"/>
+					<g:hiddenField name="realVal" value="${orcm.valorRealizado }"/>
 					
 					<div  class="atual span-3">
-						<g:formatNumber number="${entrada.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
+						<g:formatNumber number="${orcm.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 					<div class="span-9">
 						<div id="progressbar"></div>
 					</div>
 					<div class="previsto span-3 last">
-						<g:formatNumber number="${entrada.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
+						<g:formatNumber number="${orcm.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
 					</div>
 				</div>
-			</div>
-		</g:each>
-	</g:if>
-
-	<div class="clear">
-	</div>
-
-	<g:if test="${orcamento.listaDebito }">
-		<p class="title">
-			SAIDAS
-		</p>
-	
-		<g:each var="saida" in="${orcamento.listaDebito}">
-			<div class="categoria">
-				<p class="rotulo">${saida.nome }</p>
-				<div class="btplus span-1">
-					+
-				</div>
 				
-				<div id="orcm-item">
-					<g:hiddenField name="prevVal" value="${saida.valorPrevisto }"/>
-					<g:hiddenField name="realVal" value="${saida.valorRealizado }"/>
-				
-					<div class="atual span-3">
-						<g:formatNumber number="${saida.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
-					</div>				
-					<div class="span-9">
-						<div id="progressbar"></div>
-					</div>				
-					<div class="previsto span-3 last">
-						<g:formatNumber number="${saida.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
+				<g:if test="${orcm.subcategorias}">
+					<div id="list-detail" class="subcategoria span-14">
+						<g:each var="orcmFilho" in="${orcm.subcategorias}">
+							<p class="rotulo">${orcmFilho.nome }</p>
+							
+							<div id="orcm-subitem">
+								<g:hiddenField name="prevVal" value="${orcmFilho.valorPrevisto }"/>
+								<g:hiddenField name="realVal" value="${orcmFilho.valorRealizado }"/>
+								
+								<div class="atual span-3">
+									<g:formatNumber number="${orcmFilho.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
+								</div>
+								<div class="span-8">
+									<div id="progressbar"></div>
+								</div>
+								<div class="previsto span-3 last">
+									<g:formatNumber number="${orcmFilho.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
+								</div>
+							</div>
+						</g:each>
 					</div>
-				</div>
+				</g:if>
 			</div>
-		</g:each>
-	</g:if>
-</div>	
+		</div>
+	</g:each>
 </g:if>
+
+	

@@ -40,20 +40,37 @@ function cashflow(id){
 }
 
 function makeBudgetBars(){
-	$('#orcm-Basic').find('#orcm-item').each(function(){
-		var pgressBar = $(this).find("#progressbar");
-		var prevVal = $(this).find("input[name='prevVal']");
-		var realVal = $(this).find("input[name='realVal']");
-		var percent = (realVal.val() / prevVal.val())*100
+	$('.basic').find('#orcm-Basic').each(function(){
+		
+		var item = $(this).find('#orcm-item');
+		var subitem = $(this).find('#orcm-subitem');
+		var btplus = item.find('span:first');
 
-		var pGress = setInterval(function() {
-			var pVal = pgressBar.progressbar('option', 'value');
-			var pCnt = !isNaN(pVal) ? (pVal + 2) : 0; 
-			if (pCnt > percent) {
-				clearInterval(pGress); 
-			} else {
-				pgressBar.progressbar({value: pCnt});
-			}
-		},percent);
+		btplus.click(function(){
+			subitem.parents('#list-detail').slideToggle('fast');
+
+			subitem.each(function(){
+				activateProgressBar(this);
+			});
+		});
+
+		activateProgressBar(item);
 	});
+}
+
+function activateProgressBar(element){
+	var pgressBar = $(element).find("#progressbar");
+	var prevVal = $(element).find("input[name='prevVal']");
+	var realVal = $(element).find("input[name='realVal']");
+	var percent = (realVal.val() / prevVal.val())*100
+
+	var pGress = setInterval(function() {
+		var pVal = pgressBar.progressbar('option', 'value');
+		var pCnt = !isNaN(pVal) ? (pVal + 2) : 0; 
+		if (pCnt > percent) {
+			clearInterval(pGress); 
+		} else {
+			pgressBar.progressbar({value: pCnt});
+		}
+	},percent);
 }

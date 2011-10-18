@@ -35,11 +35,6 @@ class OrcamentoController {
 		box.saldoPrevisto = orcamentoService.getSaldoPrevisto(mes)
 		box.saldoRealizado = orcamentoService.getSaldoRealizado(mes,user)
 
-		//Tipo de visualizacao
-		if(!params.viewType){
-			params.viewType = Constants.BASICO
-		}
-
 		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, boxSaldo: box]
 	}
 }

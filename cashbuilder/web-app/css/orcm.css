@@ -27,17 +27,15 @@ table.orcamento tbody tr:nth-child(even) td, tbody tr.even td {background:none;}
 
 /* VIEW BASICO */
 
-.viewchange { }
+.basic .atual { text-align: right; }
+.basic .previsto { text-align: left; }
+.basic p.rotulo { margin-left: 10px; margin-bottom: 0.3em; }
 
-.basic .categoria { background-color: #eeeeee; float:left; font-size: 105%; font-weight:bold; height: 65px; margin-bottom: 20px;}
+.basic .categoria { background-color: #eeeeee; float:left; font-size: 105%; min-height: 65px; font-weight:bold; margin-bottom: 20px;}
+.basic .categoria .btplus { text-align: right;}
+.basic .categoria .btplus span { cursor:pointer; } 
 
-.basic .categoria p.rotulo { margin-left: 10px; margin-bottom: 0.3em; }
-
-.basic .categoria .btplus { text-align: center;}
-
-.basic .categoria .atual { text-align: right; }
-
-.basic .categoria .previsto { text-align: left; }
+.basic .subcategoria { background-color: #eeeeee; display:none; font-size: 95%; font-weight:bold; margin-left:30px; margin-top: 15px; padding-bottom: 10px;}
 
 
 /* BOX LATERAL */

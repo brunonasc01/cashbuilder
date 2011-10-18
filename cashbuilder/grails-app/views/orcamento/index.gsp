@@ -18,19 +18,6 @@
     	<g:render template="/elements/month_menu"></g:render>
 
     	<div class="span-6">
-			<div class="box ui-corner-all shadow_box">
-				<g:if test="${params.viewType.equals(Constants.BASICO)}">
-					<g:link action="index" params="[viewType:'COMPLETO']">
-						Ver em Detalhe
-					</g:link>
-				</g:if>
-				<g:else>
-					<g:link action="index" params="[viewType:'BASICO']">
-						Ver Resumo
-					</g:link>
-				</g:else>
-			</div>
-			
 			<g:if test="${boxSaldo }">
 				<div class="box saldo-orcm ui-corner-all shadow_box">
 					<h5>Saldo (R$)</h5>
@@ -53,12 +40,23 @@
     	</div>
     
     	<div class="box ui-corner-all span-16 last shadow_box">
-    		<g:if test="${params.viewType.equals(Constants.BASICO)}">
-    			<g:render template="/elements/orcamento_basico" bean="${orcamento}"></g:render>
+    		<g:if test="${orcamento }">
+    			<div class="basic">
+    				<p class="title"> Orçamento ${orcamento.mes} - ${orcamento.ano } </p>
+    				
+    				<g:if test="${orcamento.listaCredito }">
+    					<p class="title">ENTRADAS</p>
+    					<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaCredito}"></g:render>
+    				
+    					<div class="clear"></div>
+    				</g:if>
+    				
+    				<g:if test="${orcamento.listaDebito }">
+						<p class="title">SAIDAS</p>
+						<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaDebito}"></g:render>
+					</g:if>
+    			</div>
     		</g:if>
-    		<g:else>
-    			<g:render template="/elements/orcamento_detalhado" bean="${orcamento}"></g:render>
-    		</g:else>
 		</div>
 	</body>		
 </html>
