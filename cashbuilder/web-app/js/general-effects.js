@@ -47,6 +47,7 @@ function makeBudgetBars(){
 		var btplus = item.find('span:first');
 
 		btplus.click(function(){
+			toggleExpandButton(btplus);
 			subitem.parents('#list-detail').slideToggle('fast');
 
 			subitem.each(function(){
@@ -56,6 +57,12 @@ function makeBudgetBars(){
 
 		activateProgressBar(item);
 	});
+}
+
+function toggleExpandButton(element){
+	
+	(element.html() == "+") ?
+			element.html("-") : element.html("+");
 }
 
 function activateProgressBar(element){
