@@ -13,7 +13,7 @@ class Usuario {
 		
 		email(email: true, unique:true,blank:false)
 		nome(size:3..20,blank:false)
-		password(size: 6..8,blank:false, 
+		password(blank:false, 
 					Validator: { passwd, user ->
 						return passwd != user.email
 					}

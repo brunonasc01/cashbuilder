@@ -16,6 +16,7 @@ class AdministracaoController {
 	def orcamentoService
 	def geralService
 	def eventService
+	def usuarioService
 	
     def index = {
 	
@@ -29,8 +30,8 @@ class AdministracaoController {
 	}
 	
 	def valida_login = {
-		
-		def user = Usuario.findByEmailAndPassword(params.email,params.password)
+				
+		def user = usuarioService.verifyLogin(params) 
 
 		if(user){
 			session.user = user

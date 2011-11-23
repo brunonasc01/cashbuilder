@@ -14,6 +14,11 @@ class UsuarioService {
 
     }
 	
+	Usuario verifyLogin(Map params){
+		String password = Encoder.encode(params.password)
+		return Usuario.findByEmailAndPassword(params.email,password)
+	}
+	
 	/**
 	 * Verifica se o email informado e valido
 	 * @param usuario usuario com email a ser verificado
@@ -30,6 +35,8 @@ class UsuarioService {
 			if(isEmailAvailable(userCommand.email)){				
 				if(userCommand.validate()){
 					def newUser = new Usuario(userCommand.properties)
+					newUser.password = Encoder.encode(newUser.password)
+					
 					if(newUser.save()){				
 						return newUser
 					} else{
