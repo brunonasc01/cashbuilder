@@ -6,10 +6,9 @@
 //}
 dataSource {
 	pooled = true
-	driverClassName = "oracle.jdbc.driver.OracleDriver"
-	url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
-	username = "CASH_BUILDER"
-	password = "hj1Br9a"
+	driverClassName = "com.mysql.jdbc.Driver"
+	username = "root"
+	password = "g40Nf65"
 }
 hibernate {
 	cache.use_second_level_cache = true
@@ -17,15 +16,13 @@ hibernate {
 	cache.provider_class = 'net.sf.ehcache.hibernate.EhCacheProvider'
 }
 
-//Backup
-//url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
 
 // environment specific settings
 environments {
 	development {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
-			url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
+			url = "jdbc:mysql://127.0.0.1:3306/cashbuilder"
 		}
 	}
 	test {
@@ -37,7 +34,7 @@ environments {
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
+			url = "jdbc:mysql://127.0.0.1:3306/cashbuilder"
 		}
 	}
 }
