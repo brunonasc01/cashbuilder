@@ -45,7 +45,7 @@ class RelatorioController {
 		//grafico de barras
 		def barDataList = []
 		
-		for(int idMes in mesAtual-1..mesAtual+1){
+		for(int idMes in mesAtual-2..mesAtual){
 			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
 			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
 			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
@@ -59,7 +59,7 @@ class RelatorioController {
 		//grafico de linhas
 		def lineDataList = []
 		
-		for(int idMes in mesAtual-1..mesAtual+1){
+		for(int idMes in mesAtual-2..mesAtual){
 			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
 			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
 			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
