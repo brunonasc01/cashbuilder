@@ -4,6 +4,7 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
+        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='goal.css'/>" />
         
         <g:javascript>
         	$(document).ready(function() {
@@ -13,63 +14,97 @@
     </head>
 
     <body>
-	  	<div class="span-6">
-	  		<div class="box new-reg ui-corner-all shadow_box">
+    	<div class="span-24">
+			<div id="title">
+    			<h3>Metas</h3>
+    		</div>
+    	</div>
+    
+	  	<div class="span-7">
+	  		<div id="lbox">
     			<g:link elementId="linkNovaMeta" action="novo" >
-					<p>Nova Meta</p>
+					Nova Meta
 				</g:link>
 			</div>
+			
+			<div id="lbox">
+				<div class="title">
+    				Estatisticas
+    			</div>
+    			
+    			<div class="inside">
+    				<ul>
+    					<li>
+    						Metas em Andamento
+    						00
+    					</li>
+    					<li>
+    						Metas Alcancadas
+    						00
+    					</li>
+    					<li>
+    						Metas Expiradas
+    						00
+    					</li>
+    				</ul>
+    			</div>
+			</div>
+	  	</div>
+
+	  	<div class="span-17 last">
+			<div id="rbox">
+				<div class="inside">
+	            <g:if test="${metas }">
+	            	<g:set var="prog" value="${0}" />
+	            
+	            	<g:each var="meta" in="${metas}">
+	            	<div id="goal">
+	            		<ul>
+	            			<li class="name">${meta.nome }</li>
+	            			<li class="state">
+		            			<g:if test="${meta.status == Constants.META_ATINGIDA }">
+									<i>ALCANCADO!</i>
+								</g:if>
+								<g:elseif test="${meta.status == Constants.META_PERDIDA }">
+									<i>EXPIRADO</i>
+								</g:elseif>
+								<g:elseif test="${meta.status == Constants.META_CORRENTE }">
+									<i>EM ANDAMENTO</i>
+								</g:elseif>
+							</li>
+							<li class="values">
+								<g:formatNumber number="${meta.valorAcumulado }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</li>
+							
+							<li class="of"> de </li>
+							
+							<li class="values">
+								<g:formatNumber number="${meta.valorFinal }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</li>
+							
+							<li class="space">&nbsp;</li>
+							
+							<li class="bar">
+								<div id="progressbar${prog }"></div>
+								
+								<script type="text/javascript">
+								$(function() {
+									$( "#progressbar${prog }" ).progressbar({
+										value: ${meta.porcentagem}
+									});
+								});
+								</script>
+							</li>
+	            		</ul>
+	            		<g:set var="prog" value="${prog + 1}" />
+	            	</div>
+	            	<div class="clear"></div>
+	            	</g:each>
+	            </g:if>
+	            </div>
+            </div>
 	  	</div>
 	  	
-	  	<div id="popupNovo" class="box registro_rapido ui-corner-all shadow_box modal">
-    		
-		</div>
-	  	
-	  	<div class="box ui-corner-all span-16 last shadow_box">
-
-            <g:set var="prog" value="${0}" />
-            
-            <g:if test="${metas }">
-            	<g:each var="meta" in="${metas}">
-            		<div class="meta span-15">
-	            		<div class="title span-10">${meta.nome }</div>
-
-						<div class="status span-5 last">
-						
-						<g:if test="${meta.status == Constants.META_ATINGIDA }">
-							<i class="positivo">ALCANCADO!</i>
-						</g:if>
-						<g:elseif test="${meta.status == Constants.META_PERDIDA }">
-							<i class="negativo">EXPIRADO</i>
-						</g:elseif>
-						<g:elseif test="${meta.status == Constants.META_CORRENTE }">
-							<i>EM ANDAMENTO</i>
-						</g:elseif>
-						</div>
-
-						<div class="span-15 append-5">
-		            		<b>R$ <g:formatNumber number="${meta.valorAcumulado }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber></b>
-		            		de
-		            		<b>R$ <g:formatNumber number="${meta.valorFinal }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber></b>
-	            		</div>
-	            		
-	            		<div class="span-15">
-	            			<div id="progressbar${prog }"></div>
-	            		</div>
-
-	            		<script type="text/javascript">
-						$(function() {
-							$( "#progressbar${prog }" ).progressbar({
-								value: ${meta.porcentagem}
-							});
-						});
-						</script>
-	            		
-						<g:set var="prog" value="${prog + 1}" />
-					</div>
-            	</g:each>
-            </g:if>
-	  	
-	  	</div>
+	  	<div id="popupNovo" class=""></div>
 	</body>		
 </html>

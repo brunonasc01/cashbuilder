@@ -4,7 +4,7 @@
     <head>
         <title>Sistema Grails - Orcamento</title>
         <meta name="layout" content="base" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='orcm.css'/>" />
+        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='budget.css'/>" />
         
         <g:javascript>
         	$(function() {
@@ -17,43 +17,54 @@
     <body>
     	<g:render template="/elements/month_menu"></g:render>
 
-    	<div class="span-6">
+		<div class="span-24">
+			<div id="title">
+    			<h3>${orcamento.mes} - ${orcamento.ano }</h3>
+    		</div>
+    	</div>
+
+    	<div class="span-7">
 			<g:if test="${boxSaldo }">
-				<div class="box saldo-orcm ui-corner-all shadow_box">
-					<h5>Saldo (R$)</h5>
-
-					<g:set var="classPrevisto" value="${(boxSaldo.saldoPrevisto > 0) ? 'positivo' : 'negativo' }"></g:set>
-
-					<div class="title span-2">Previsto</div>
-					<div class="span-2 ${classPrevisto } last">
-						<g:formatNumber number="${boxSaldo.saldoPrevisto }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
-					</div>
+				<div id="lbox">
+					<div class="title">Saldo</div>
 					
-					<g:set var="classRealizado" value="${(boxSaldo.saldoRealizado > 0) ? 'positivo' : 'negativo' }"></g:set>
-					
-					<div class="title span-2">Realizado</div>
-					<div class="span-2 ${classRealizado } last">
-						<g:formatNumber number="${boxSaldo.saldoRealizado }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
+					<div class="inside">
+						<g:set var="classPrevisto" value="${(boxSaldo.saldoPrevisto > 0) ? 'positivo' : 'negativo' }"></g:set>
+						<ul>
+							<li>
+								Previsto
+								<g:formatNumber number="${boxSaldo.saldoPrevisto }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
+							</li>
+							
+							<li>
+								Realizado
+								<g:formatNumber number="${boxSaldo.saldoRealizado }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</g:if>
     	</div>
     
-    	<div class="box ui-corner-all span-16 last shadow_box">
+    	<div class="span-17 last">
     		<g:if test="${orcamento }">
-    			<div class="basic">
-    				<p class="title"> Orçamento ${orcamento.mes} - ${orcamento.ano } </p>
-    				
+    			<div id="rbox">
+
     				<g:if test="${orcamento.listaCredito }">
-    					<p class="title">ENTRADAS</p>
-    					<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaCredito}"></g:render>
-    				
-    					<div class="clear"></div>
+    					<div class="title">ENTRADAS</div>
+    					
+    					<div class="inside">
+    						<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaCredito}"></g:render>
+    					</div>
     				</g:if>
     				
+    				<div class="clear"></div>
+    				
     				<g:if test="${orcamento.listaDebito }">
-						<p class="title">SAIDAS</p>
-						<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaDebito}"></g:render>
+						<div class="title">SAIDAS</div>
+						<div class="inside">
+							<g:render template="/elements/orcamento_basico" var="list" bean="${orcamento.listaDebito}"></g:render>
+						</div>
 					</g:if>
     			</div>
     		</g:if>

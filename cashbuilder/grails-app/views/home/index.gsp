@@ -12,7 +12,7 @@
 			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
 	  	</div>
 	  	
-	  	<div class="span-7 last">
+	  	<div class="span-8 last">
 			<g:render template="/elements/box_saldo"  ></g:render>
 
 	  		<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros }" ></g:render>

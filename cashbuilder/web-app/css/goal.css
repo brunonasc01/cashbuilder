@@ -1,0 +1,16 @@
+/* goal */
+
+.ui-progressbar { height: 23px; }
+
+#itemList { padding: 0; }
+
+#goal { padding: 10px 0; }
+
+#goal ul { width: inherit; background: #ccc; }
+#goal ul li { background: #fff; float: left; margin:0; text-align: center; font-weight: bold; }
+#goal ul li.name { width: 68%; text-align: left; padding-left: 2%;}
+#goal ul li.state { width: 28%; text-align: right; padding-right: 2%; }
+#goal ul li.values { width: 20%; }
+#goal ul li.of { width: 5%; }
+#goal ul li.space { width: 55%; }
+#goal ul li.bar { width: 100%; clear:both;}

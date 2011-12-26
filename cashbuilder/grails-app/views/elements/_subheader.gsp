@@ -1,5 +1,5 @@
 
-<div class="subheader ui-corner-bottom">
+<div class="subheader">
 
 	<g:if test="${session.user}">
 		<span>Bem vindo ${session.user.nome }</span>

@@ -6,13 +6,6 @@
         
     </head>
     <body>
-	  	<div class="span-24">
-		  	
-		  		<div class="box_saldo">
-					saldo 150px
-					Texto introdutorio
-				</div>
-			
-	  	</div>
+		Texto introdutorio
 	</body>		
 </html>

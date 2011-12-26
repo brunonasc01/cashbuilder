@@ -11,7 +11,7 @@
     <body>
     	<g:form class="regform">
 	    	<div class="span-6">
-	    		<div class="box ui-corner-all shadow_box">
+	    		<div class="box">
 		    		<fieldset>
 		           		<legend>Filtro</legend>
 
@@ -28,7 +28,7 @@
 		   			</fieldset>
 	   			</div>
 	    	
-	    		<div class="box ui-corner-all shadow_box">
+	    		<div class="box">
 		   			<fieldset>
 		           		<legend>Aplicar para</legend>
 						
@@ -45,7 +45,7 @@
 		   			</fieldset>
 	   			</div>
 	   			<g:if test="${orcmBox }">
-		   			<div class="box saldo-adm ui-corner-all shadow_box">
+		   			<div class="box saldo-adm">
 		   				<h5>Totais Previstos (R$)</h5>
 
 						<div class="span-2 prepend-1"><label>Entradas</label></div>
@@ -66,7 +66,7 @@
 				</g:if>
 	    	</div>
     
-		  	<div class="box ui-corner-all span-16 last shadow_box">
+		  	<div class="box span-16 last">
 		  		<g:if test="${flash.message}">
 					<div class="notice">
 						${flash.message}

@@ -1,8 +1,11 @@
 <%@page import="com.cashbuilder.utils.TextUtils"%>
 <%@page import="com.cashbuilder.utils.Constants"%>
 	
-<div class="box registros_recentes ui-corner-all shadow_box">
-	<p class="title">Ultimos Registros</p>
+<div id="rbox">
+	<div class="title">
+		Ultimos Registros
+	</div>
+	<div class="inside">
 	<g:if test="${ultimosRegistros }">
 		<g:each var="pagamento" in="${ultimosRegistros}">
 			<div class="data span-6">
@@ -24,4 +27,5 @@
 	<g:else>
 		Nenhum registro
 	</g:else>
+	</div>
 </div>

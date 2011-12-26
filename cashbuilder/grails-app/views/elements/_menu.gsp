@@ -1,55 +1,9 @@
 <g:if test="${session.user && !ocultaMenu}">
-	<div class="span-4">
-		<div class="menu ui-corner-top ${home? "ativo" : "" }">
-			<g:link controller="home" >
-				<img src="${resource(dir:'images',file:'home-icon.png')}"/>
-				<br />Home
-			</g:link>
-		</div>
-	</div>
-	
-	<div class="span-4">
-		<div class="menu ui-corner-top ${orcm? "ativo" : "" }">
-			<g:link controller="orcamento" >
-				<img src="${resource(dir:'images',file:'orcm-icon.png')}"/>
-				<br />Orçamento
-			</g:link>
-		</div>
-	</div>
-	
-	<div class="span-4">
-		<div class="menu ui-corner-top ${flow? "ativo" : "" }">
-			<g:link controller="fluxoCaixa" >
-				<img src="${resource(dir:'images',file:'flow-icon.png')}"/>
-				<br />Fluxo de Caixa
-			</g:link>
-		</div>
-	</div>
-	
-	<div class="span-4">
-		<div class="menu ui-corner-top ${goal? "ativo" : "" }">
-			<g:link controller="meta" >
-				<img src="${resource(dir:'images',file:'metas-icon.png')}"/>
-				<br />Metas
-			</g:link>
-		</div>
-	</div>
-	
-	<div class="span-4">
-		<div class="menu ui-corner-top ${stats? "ativo" : "" }">
-			<g:link controller="relatorio" >
-				<img src="${resource(dir:'images',file:'relatorio-icon.png')}"/>
-				<br />Relatórios
-			</g:link>
-		</div>
-	</div>
-	
-	<div class="span-4 last">
-		<div class="menu ui-corner-top ${adm? "ativo" : "" }">
-			<g:link controller="administracao" >
-				<img src="${resource(dir:'images',file:'adm-icon.png')}"/>
-				<br />Administracao
-			</g:link>
-		</div>
-	</div>
+	<div class="equ span-4"><g:link controller="home">Home</g:link></div>    		
+	<div class="diff span-4"><g:link controller="orcamento">Orcamento</g:link></div>
+	<div class="equ span-4"><g:link controller="fluxoCaixa">Fluxo de Caixa</g:link></div>
+	<div class="diff span-4"><g:link controller="meta">Metas</g:link></div>
+	<div class="equ span-4"><g:link controller="relatorio">Relatorios</g:link></div>
+	<div class="diff span-4 last"><g:link controller="administracao">Administracao</g:link></div>
 </g:if>
+

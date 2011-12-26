@@ -1,0 +1,43 @@
+/* General */
+ul, p, h3 { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { text-decoration: none; }
+body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; }
+
+#menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
+#menuMonth ul li { background: #ccf; float: left; font-weight: bold; margin:0;}
+#menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }
+#menuMonth ul li:hover a { background-color: #777; color:#000;}
+
+/* Header */
+#header { background-color: #eee; }
+#header .logo { height: 50px; }
+#header .subheader { background-color: #ccc; padding: 0.2em 0; }
+
+/* Menu */
+#menubar { background-color: #eef; text-align: center; }
+#menubar div { padding: 2em 0; }
+/*rm*/#menubar .diff { background-color: #ddf; }
+/*rm*/#menubar .equ { background-color: #ccf; }
+
+/* Center */
+#content { background-color: #ddd; min-height: 200px;}
+
+#title { margin: 20px 10px 0 10px; background: #cdc; padding: 1em 0.5em; }
+#title h3 { font-weight: bold; }
+
+#lbox, #rbox, #cbox {  padding:0; background: #fff; } 
+#lbox { margin:10px 0 10px 10px; }
+#rbox { margin:10px 10px 10px 0; }
+#cbox { margin:10px 0; }
+
+#lbox .title, #rbox .title, #cbox .title, #lbox .inside, #rbox .inside, #cbox .inside { padding: 0 0.5em; }
+#title, #lbox .title, #rbox .title, #cbox .title { font-weight: bold; background: #92b6c1;  }
+
+/* fiorde tropical #6a9bac */
+/* rio ebro #92b6c1 */
+
+/* Footer */
+#footer { background-color: #ccc; text-align: center; padding: 0.5em 0; }
+
+/*rm*/div,li { border: 0px solid; }

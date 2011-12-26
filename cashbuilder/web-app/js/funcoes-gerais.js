@@ -14,7 +14,7 @@ function ajaxComboSubcategoria(idCategoria,action,idComboSubcategoria){
 	});
 }
 
-function ajaxModal(idTrigger,action,idResult){
+function ajaxModal(idTrigger,action,idResult,txtTitle){
 	
 	$("#"+idTrigger).click(function(e) {
 		e.preventDefault();
@@ -25,13 +25,21 @@ function ajaxModal(idTrigger,action,idResult){
 			cache: false,
 			success: function(html) {
 				$("#"+idResult).html(html);
-				autoModal(idResult);
+
+				$("#"+idResult).dialog({
+					modal: true,
+					resizable: false,
+					width: 480,
+					height: 340,
+					title: txtTitle
+				});
+
 			}
 		});
 	});
 }
 
-function ajaxSubmitToModal(trigger,action,result){
+function ajaxSubmitToModal(trigger,action,result,txtTitle){
 
 	$('input[name="edit"]').click(function(e){
 		e.preventDefault();
@@ -42,7 +50,14 @@ function ajaxSubmitToModal(trigger,action,result){
 			url: action,
 			success:function(data,textStatus){
 				$("#"+result).html(data);
-				autoModal(result);
+				
+				$("#"+result).dialog({
+					modal: true,
+					resizable: false,
+					width: 480,
+					height: 340,
+					title: txtTitle
+				});
 			},
 			error:function(XMLHttpRequest,textStatus,errorThrown){},
 			complete:function(XMLHttpRequest,textStatus){}

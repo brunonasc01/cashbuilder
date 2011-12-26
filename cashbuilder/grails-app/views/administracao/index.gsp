@@ -3,21 +3,37 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
+        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='adm.css'/>" />
     </head>
     <body>
-	  	<div class="span-7">
-			<h3>Orçamento</h3>
-			<ul>
-				<li><g:link action="adm_orcm">Categorização do orçamento</g:link></li>
-			</ul>
+    	<div class="span-24">
+			<div id="title">
+    			<h3>Administracao</h3>
+    		</div>
+    	</div>
+    
+	  	<div class="span-8">
+			<div id="lbox">
+				<div class="inside">
+					<ul>
+						<li><g:link action="adm_orcm">Categorização do orçamento</g:link></li>
+					</ul>
+				</div>
+			</div>
 	  	</div>
 	  	
-	  	<div class="span-7">
-			coluna 2
+	  	<div class="span-8">
+	  		<div id="cbox">
+				center column
+			</div>
 	  	</div>
 	  	
-	  	<div class="span-7 last">
-			coluna 3
+	  	<div class="span-8 last">
+	  		<div id="rbox">
+	  			<div class="inside">
+					right column
+				</div>
+			</div>
 	  	</div>
 	</body>		
 </html>

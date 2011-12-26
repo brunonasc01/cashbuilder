@@ -1,7 +1,7 @@
 <%@page import="com.cashbuilder.utils.DateUtils"%>
 
-<div class="month_menu ui-corner-all span-22">
-	<ul id="month_list">
+<div id="menuMonth">
+	<ul>
 		<li><g:link params="[mesId:'0']">${DateUtils.getMes(0)}</g:link></li>
 		<li><g:link params="[mesId:'1']">${DateUtils.getMes(1)}</g:link></li>
 		<li><g:link params="[mesId:'2']">${DateUtils.getMes(2)}</g:link></li>

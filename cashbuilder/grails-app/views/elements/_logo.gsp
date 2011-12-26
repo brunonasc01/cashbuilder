@@ -1,3 +1,3 @@
-	<div class="logo ui-corner-top">
+	<div class="logo">
 	CASHBUILDER
 	</div>

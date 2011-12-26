@@ -2,52 +2,44 @@
 
 <g:if test="${list}">	
 	<g:each var="orcm" in="${list}">
-		<div class="categoria">
-			<p class="rotulo">${orcm.nome }</p>
+		<div id="budgetList">
+			<div id="fatherItem">
 
-			<div id="orcm-Basic">
-				<div id="orcm-item" class="span-16">
-					<div class="btplus span-1">
-						<span>+</span>
-					</div>
+				<g:hiddenField name="prevVal" value="${orcm.valorPrevisto }"/>
+				<g:hiddenField name="realVal" value="${orcm.valorRealizado }"/>
+			
+				<ul>
+					<li class="name">${orcm.nome }</li>
+					<li class="button">+</li>
+					<li class="values"><span class="right"><g:formatNumber number="${orcm.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/></span></li>
+					<li class="pbar"><div id="progressbar"></div></li>
+					<li class="values"><g:formatNumber number="${orcm.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/></li>
+				</ul>
+			</div>
 
-					<g:hiddenField name="prevVal" value="${orcm.valorPrevisto }"/>
-					<g:hiddenField name="realVal" value="${orcm.valorRealizado }"/>
-					
-					<div  class="atual span-3">
-						<g:formatNumber number="${orcm.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
-					</div>
-					<div class="span-9">
-						<div id="progressbar"></div>
-					</div>
-					<div class="previsto span-3 last">
-						<g:formatNumber number="${orcm.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
-					</div>
-				</div>
-				
+			<div class="clear"></div>
+			
+			<div id="childItem">
 				<g:if test="${orcm.subcategorias}">
-					<div id="list-detail" class="subcategoria span-14">
-						<g:each var="orcmFilho" in="${orcm.subcategorias}">
-							<p class="rotulo">${orcmFilho.nome }</p>
-							
-							<div id="orcm-subitem">
-								<g:hiddenField name="prevVal" value="${orcmFilho.valorPrevisto }"/>
-								<g:hiddenField name="realVal" value="${orcmFilho.valorRealizado }"/>
-								
-								<div class="atual span-3">
-									<g:formatNumber number="${orcmFilho.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/>
-								</div>
-								<div class="span-8">
-									<div id="progressbar"></div>
-								</div>
-								<div class="previsto span-3 last">
-									<g:formatNumber number="${orcmFilho.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/>
-								</div>
-							</div>
-						</g:each>
-					</div>
+					<g:each var="orcmFilho" in="${orcm.subcategorias}">
+						
+						<g:hiddenField name="prevVal" value="${orcmFilho.valorPrevisto }"/>
+						<g:hiddenField name="realVal" value="${orcmFilho.valorRealizado }"/>
+
+						<ul>
+							<li class="name">${orcmFilho.nome }</li>
+							<li class="values"><span class="right"><g:formatNumber number="${orcmFilho.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/></span></li>
+							<li class="of">de</li>
+							<li class="values"><g:formatNumber number="${orcmFilho.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/></li>
+							<li class="bar"><div id="progressbar"></div></li>
+						</ul>
+
+						<div class="clear"></div>
+					</g:each>
 				</g:if>
 			</div>
+			
+			<div class="clear"></div>
 		</div>
 	</g:each>
 </g:if>
