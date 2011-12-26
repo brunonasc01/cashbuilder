@@ -1,5 +1,4 @@
 /* cashflow */
-
 #itemList { padding: 0; }
 
 #itemList ul { width: inherit; background: #ccc; }
@@ -12,32 +11,3 @@
 #itemList ul li.category { width: 25%; }
 #itemList ul li.desc { width: 30%; }
 
-/* old */
-
-table .cashflow { }
-
-.cashflow td { font-size: 80%;}
-
-.cashflow tbody tr:nth-child(even) td, tbody tr.even td { background:#FFFFFF; }
-
-.cashflow tr.header { background-color: #AAAAAA; }
-
-.cashflow tr td{ text-align: center; }
-
-.cashflow tr.header td{ font-weight: bold; font-size: 90%; }
-
-.cashflow tr td.descricao { text-align: left; }
-
-/* BOX LATERAL */
-
-.saldo-csflow { height: 100px; font-weight: bold; font-size: 105%; }
-
-.saldo-csflow .title { margin-left: 0;/*15px;*/ text-align: right; }
-
-.saldo-csflow h5{ margin-bottom: 1px; font-size: 110%; border-bottom: 1px solid black; }
-
-.new-reg { text-align: center; }
-
-.new-reg a { text-decoration: none; }
-
-span.warning{ font-weight: bold; color: #FF0000; }

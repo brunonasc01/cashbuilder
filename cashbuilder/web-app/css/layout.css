@@ -4,10 +4,15 @@ ul { list-style: none; }
 a { text-decoration: none; }
 body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; }
 
+/* jquery ui */
+.ui-datepicker { font-size: 11px; }
+.ui-dialog { font-size: 0.8em; }
+
 #menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
-#menuMonth ul li { background: #ccf; float: left; font-weight: bold; margin:0;}
+#menuMonth ul li { background: #ccc; float: left; font-weight: bold; margin:0;}
 #menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }
-#menuMonth ul li:hover a { background-color: #777; color:#000;}
+#menuMonth ul li.selected a { background-color: #92b6c1; color:#000; }
+#menuMonth ul li:hover a { background-color: #92b6c1; color:#000;}
 
 /* Header */
 #header { background-color: #eee; }
@@ -15,13 +20,13 @@ body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 1
 #header .subheader { background-color: #ccc; padding: 0.2em 0; }
 
 /* Menu */
-#menubar { background-color: #eef; text-align: center; }
-#menubar div { padding: 2em 0; }
-/*rm*/#menubar .diff { background-color: #ddf; }
-/*rm*/#menubar .equ { background-color: #ccf; }
+#menubar { text-align: center; }
+#menubar div { padding: 2em 0; background-color: #ccc; }
+#menubar .ativo { background-color: #eee; }
+#menubar div:hover { background-color: #eee; }
 
 /* Center */
-#content { background-color: #ddd; min-height: 200px;}
+#content { background-color: #eee; min-height: 200px;}
 
 #title { margin: 20px 10px 0 10px; background: #cdc; padding: 1em 0.5em; }
 #title h3 { font-weight: bold; }
@@ -34,10 +39,11 @@ body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 1
 #lbox .title, #rbox .title, #cbox .title, #lbox .inside, #rbox .inside, #cbox .inside { padding: 0 0.5em; }
 #title, #lbox .title, #rbox .title, #cbox .title { font-weight: bold; background: #92b6c1;  }
 
+/* background colors */
 /* fiorde tropical #6a9bac */
 /* rio ebro #92b6c1 */
 
 /* Footer */
-#footer { background-color: #ccc; text-align: center; padding: 0.5em 0; }
+#footer { background-color: #eee; text-align: center; padding: 0.5em 0; }
 
 /*rm*/div,li { border: 0px solid; }

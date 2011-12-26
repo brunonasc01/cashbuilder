@@ -6,26 +6,23 @@
 		Ultimos Registros
 	</div>
 	<div class="inside">
-	<g:if test="${ultimosRegistros }">
-		<g:each var="pagamento" in="${ultimosRegistros}">
-			<div class="data span-6">
-				<g:formatDate date="${pagamento.data }" format="dd/MM"></g:formatDate>
-			</div>
-			<div class="item_data span-6">
-				<div class="span-2">
-					<g:formatNumber number="${pagamento.valor }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-				</div>	
-				<div class="span-4 last">
-					${pagamento.subcategoria }
-				</div>
-				<div class="span-6">
-					${TextUtils.abbreviateText(pagamento.descricao,35)  }
-				</div>
-			</div>
-		</g:each>
-	</g:if>
-	<g:else>
-		Nenhum registro
-	</g:else>
+		<g:if test="${ultimosRegistros }">
+			<g:each var="pagamento" in="${ultimosRegistros}">
+				<ul>
+					<li>
+						<g:formatDate date="${pagamento.data }" format="dd/MM"></g:formatDate>
+					</li>
+					<li>
+						${pagamento.subcategoria }
+					</li>
+					<li>
+						${TextUtils.abbreviateText(pagamento.descricao,45)  }
+					</li>
+				</ul>
+			</g:each>
+		</g:if>
+		<g:else>
+			Nenhum registro
+		</g:else>
 	</div>
 </div>

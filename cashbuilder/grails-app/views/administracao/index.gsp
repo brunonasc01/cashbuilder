@@ -14,9 +14,12 @@
     
 	  	<div class="span-8">
 			<div id="lbox">
+				<div class="title">
+					Orcamento
+				</div>
 				<div class="inside">
 					<ul>
-						<li><g:link action="adm_orcm">Categorização do orçamento</g:link></li>
+						<li><g:link action="adm_orcm">Definir Orcamento Manual</g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -24,14 +27,20 @@
 	  	
 	  	<div class="span-8">
 	  		<div id="cbox">
-				center column
+				<div class="inside">
+					<ul>
+						<li>second column</li>
+					</ul>
+				</div>
 			</div>
 	  	</div>
 	  	
 	  	<div class="span-8 last">
-	  		<div id="rbox">
-	  			<div class="inside">
-					right column
+			<div id="rbox">
+				<div class="inside">
+					<ul>
+						<li>third column</li>
+					</ul>
 				</div>
 			</div>
 	  	</div>

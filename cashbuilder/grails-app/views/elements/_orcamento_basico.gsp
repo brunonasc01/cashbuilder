@@ -22,7 +22,7 @@
 			<div id="childItem">
 				<g:if test="${orcm.subcategorias}">
 					<g:each var="orcmFilho" in="${orcm.subcategorias}">
-						
+					<div id="item">	
 						<g:hiddenField name="prevVal" value="${orcmFilho.valorPrevisto }"/>
 						<g:hiddenField name="realVal" value="${orcmFilho.valorRealizado }"/>
 
@@ -35,6 +35,7 @@
 						</ul>
 
 						<div class="clear"></div>
+					</div>
 					</g:each>
 				</g:if>
 			</div>

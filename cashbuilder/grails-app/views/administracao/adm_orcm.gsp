@@ -6,134 +6,144 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='orcm.css'/>" />
+
+        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='adm.css'/>" />
     </head>
     <body>
+    	<g:render template="/elements/month_menu" var="action" bean="adm_orcm"></g:render>
+    
+    	<div class="span-24">
+			<div id="title">
+    			<h3>Orcamento Manual</h3>
+    		</div>
+    	</div>
+    
     	<g:form class="regform">
-	    	<div class="span-6">
-	    		<div class="box">
-		    		<fieldset>
-		           		<legend>Filtro</legend>
-
-		   				<div class="span-1"><label for="mesId">Mes</label></div>
-		   				<div class="span-3 last">
-		    				<g:select name="mesId"
-								from="${meses}" 
-								optionKey="mes" value="${params.mesId}" noSelection="['': 'Sel.']" />
-						</div>
-		   		
-		   				<div class="span-2">
-		   					<g:submitButton name="_action_adm_orcm" value="Filtrar"></g:submitButton>
-		   				</div>
-		   			</fieldset>
+	    	<div class="span-7">
+	    			    	
+	    		<div id="lbox">
+		   			<div class="title">
+		           		Aplicar para
+		           	</div>
+		           	
+		           	<div class="inside">
+		           		<ul>
+		           			<li>
+		           				Mês (${DateUtils.getMes(orcmMes.mes) })	
+		           				<g:radio name="tipoSave" value="mes" checked="true"></g:radio>
+		           			</li>
+		           			<li>
+		           				Ano <g:radio name="tipoSave" value="ano" ></g:radio>
+		           			</li>
+		           			
+		           			<li>
+		           				<g:submitButton name="_action_save_itens" class="save"
+		   						 value="Gravar" />
+		           			</li>
+		           		</ul>
+		   			</div>
 	   			</div>
-	    	
-	    		<div class="box">
-		   			<fieldset>
-		           		<legend>Aplicar para</legend>
-						
-						<div class="span-3"><label for="Mes">Mês (${DateUtils.getMes(orcmMes.mes) })</label></div>
-						<div class="span-1 last"><g:radio name="tipoSave" value="mes" checked="true"></g:radio></div>
-						
-						<div class="span-3"><label for="Ano">Ano</label></div>
-						<div class="span-1 last"><g:radio name="tipoSave" value="ano" ></g:radio></div>
-	
-		   				<div class="span-2 prepend-1">
-		   					<g:submitButton name="_action_save_itens" class="save"
-		   						 value="${message(code: 'default.button.create.label', default: 'Create')}" />
-		   				</div>
-		   			</fieldset>
-	   			</div>
+	   			
 	   			<g:if test="${orcmBox }">
-		   			<div class="box saldo-adm">
-		   				<h5>Totais Previstos (R$)</h5>
+		   			<div id="lbox">
+		   				<div class="title">
+		   					Totais Previstos (R$)
+		   				</div>
 
-						<div class="span-2 prepend-1"><label>Entradas</label></div>
-						<div class="span-2 positivo last">
-							<g:formatNumber number="${orcmBox.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</div>
-						
-						<div class="span-2 prepend-1"><label>Saidas</label></div>
-						<div class="span-2 negativo last">
-							<g:formatNumber number="${orcmBox.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</div>
-						
-						<div class="span-2 prepend-1"><label>Saldo</label></div>
-						<div class="span-2 last">
-							<g:formatNumber number="${orcmBox.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						<div class="inside">
+							<ul>
+								<li>
+									Entradas
+									<g:formatNumber number="${orcmBox.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+								</li>
+								<li>
+									Saidas
+									<g:formatNumber number="${orcmBox.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+								</li>
+								<li>
+									Saldo
+									<g:formatNumber number="${orcmBox.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</g:if>
 	    	</div>
     
-		  	<div class="box span-16 last">
-		  		<g:if test="${flash.message}">
-					<div class="notice">
-						${flash.message}
-					</div>
-				</g:if>
-		  		<g:else>
-		            <g:hasErrors bean="${orcmMes}">
-		            	<div class="error">
-		                	<g:renderErrors bean="${orcmMes}" as="list" />
-		            	</div>
-		            </g:hasErrors>
-				</g:else>
-
-				<g:hiddenField name="id" value="${orcmMes.id}"></g:hiddenField>
-				<g:set var="counter" value="${0}" />
-				
-				<div class="title-natureza span-15">
-					<label>ENTRADAS</label>
-				</div>
-				
-				<g:each var="bean" in="${itensCred}">
-
-					<div class="title-categoria span-6 append-9">
-						<label for="categoria">${bean.categoria }</label>
-					</div>
-
-					<g:each var="item" in="${bean.subcategorias}">
-						<div class="form-label span-4">
-							<label for="categoria">${item.subcategoria }</label>
-						</div>			              
-						<div class="span-4 append-7 last">
-							<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
+		  	<div class="span-17 last">
+		  		<div id="rbox">
+			  		<g:if test="${flash.message}">
+						<div class="notice">
+							${flash.message}
 						</div>
-
-						<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
-						<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
-						<g:set var="counter" value="${counter + 1}" />
-						<div class="clear"></div>
-					</g:each>
-				</g:each>
-
-				<hr class="space" />
-
-				<div class="title-natureza span-15">
-					<label>SAIDAS</label>
-				</div>
-				
-				<g:each var="bean" in="${itensDeb}">
-
-					<div class="title-categoria span-6 append-9">
-						<label for="categoria">${bean.categoria }</label>
+					</g:if>
+			  		<g:else>
+			            <g:hasErrors bean="${orcmMes}">
+			            	<div class="error">
+			                	<g:renderErrors bean="${orcmMes}" as="list" />
+			            	</div>
+			            </g:hasErrors>
+					</g:else>
+	
+					<g:hiddenField name="id" value="${orcmMes.id}"></g:hiddenField>
+					<g:set var="counter" value="${0}" />
+					
+					<div class="title">
+						ENTRADAS
 					</div>
-
-					<g:each var="item" in="${bean.subcategorias}">
-						<div class="form-label span-4">
-							<label for="categoria">${item.subcategoria }</label>
-						</div>			              
-						<div class="span-4 append-7 last">
-							<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
-						</div>
-
-						<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
-						<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
-						<g:set var="counter" value="${counter + 1}" />
-						<div class="clear"></div>
-					</g:each>
-				</g:each>
+					
+					<div class="inside">
+						<g:each var="bean" in="${itensCred}">
+		
+							<div class="title-categoria span-6 append-9">
+								<label for="categoria">${bean.categoria }</label>
+							</div>
+		
+							<g:each var="item" in="${bean.subcategorias}">
+								<div class="form-label span-4">
+									<label for="categoria">${item.subcategoria }</label>
+								</div>			              
+								<div class="span-4 append-7 last">
+									<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
+								</div>
+		
+								<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
+								<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
+								<g:set var="counter" value="${counter + 1}" />
+								<div class="clear"></div>
+							</g:each>
+						</g:each>
+					</div>
+	
+					<div class="clear"></div>
+	
+					<div class="title">
+						SAIDAS
+					</div>
+					
+					<div class="inside">
+						<g:each var="bean" in="${itensDeb}">
+		
+							<div class="title-categoria span-6 append-9">
+								<label for="categoria">${bean.categoria }</label>
+							</div>
+		
+							<g:each var="item" in="${bean.subcategorias}">
+								<div class="form-label span-4">
+									<label for="categoria">${item.subcategoria }</label>
+								</div>			              
+								<div class="span-4 append-7 last">
+									<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
+								</div>
+		
+								<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
+								<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
+								<g:set var="counter" value="${counter + 1}" />
+								<div class="clear"></div>
+							</g:each>
+						</g:each>
+					</div>
+				</div>
           	</div>
 		</g:form>
 	</body>		

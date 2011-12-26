@@ -8,14 +8,13 @@
         
         <g:javascript>
         	$(function() {
-				monthMenuUI('${monthIndex}','month_list');
 				makeBudgetBars();
 			});
         </g:javascript>
         
     </head>
     <body>
-    	<g:render template="/elements/month_menu"></g:render>
+    	<g:render template="/elements/month_menu" var="index" bean="${monthIndex}"></g:render>
 
 		<div class="span-24">
 			<div id="title">

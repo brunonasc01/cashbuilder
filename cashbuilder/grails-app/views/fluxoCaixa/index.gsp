@@ -5,19 +5,19 @@
         <title>Sistema Grails - Fluxo de Caixa</title>
         <meta name="layout" content="base" />
 		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='cashflow.css'/>" />
+		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='modalform.css'/>" />
 		
 		<g:javascript src="cashflow-ui.js" />
 		
 		<g:javascript>
 		$(function() {
 			cashflow('cashflow');
-			monthMenuUI('${monthIndex}','month_list');
 			ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo");
 		});
 		</g:javascript>
     </head>
     <body>
-    	<g:render template="/elements/month_menu"></g:render>
+    	<g:render template="/elements/month_menu" var="index" bean="${monthIndex}"></g:render>
     	
     	<div class="span-24">
 			<div id="title">

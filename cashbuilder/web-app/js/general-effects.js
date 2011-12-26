@@ -3,16 +3,16 @@ function monthMenuUI(month, menu_id){
 	
 	var menu = $('#'+menu_id);
 	menu.find('li').each(function(i){
-
+		
 		if(i == month){
-			$(this).addClass('month_menu_selected');
+			$(this).addClass('selected');
 		} else {
 			$(this).hover(
 				function () {
-					$(this).addClass('month_menu_selected');
+					$(this).addClass('selected');
 				},
 				function () {
-					$(this).removeClass('month_menu_selected');
+					$(this).removeClass('selected');
 				}
 			);
 		}
@@ -40,32 +40,42 @@ function cashflow(id){
 }
 
 function makeBudgetBars(){
-	$('.basic').find('#orcm-Basic').each(function(){
+	$('#rbox').find('#budgetList').each(function(){
 		
-		var item = $(this).find('#orcm-item');
-		var subitem = $(this).find('#orcm-subitem');
-		var btplus = item.find('span:first');
+		var father = $(this).find('#fatherItem');
+		var child = $(this).find('#childItem');
+		var expandButton = father.find('li[class=button]');
 
-		btplus.click(function(){
-			toggleExpandButton(btplus);
-			subitem.parents('#list-detail').slideToggle('fast');
+		child.hide();
+		
+		expandButton.click(function(){
+			toggleExpandButton(expandButton);
+			child.slideToggle('fast');
 
-			subitem.each(function(){
-				activateProgressBar(this);
+			child.find('#item').each(function(){
+				staticProgressBar(this);
 			});
 		});
 
-		activateProgressBar(item);
+		animateProgressBar(father);
 	});
 }
 
 function toggleExpandButton(element){
-	
 	(element.html() == "+") ?
 			element.html("-") : element.html("+");
 }
 
-function activateProgressBar(element){
+function staticProgressBar(element){
+	var pgressBar = $(element).find("#progressbar");
+	var prevVal = $(element).find("input[name='prevVal']");
+	var realVal = $(element).find("input[name='realVal']");
+	var percent = (realVal.val() / prevVal.val())*100
+
+	pgressBar.progressbar({value: percent});
+}
+
+function animateProgressBar(element){
 	var pgressBar = $(element).find("#progressbar");
 	var prevVal = $(element).find("input[name='prevVal']");
 	var realVal = $(element).find("input[name='realVal']");
