@@ -5,10 +5,12 @@
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
         <link rel="stylesheet" href="<g:createLinkTo dir='css' file='goal.css'/>" />
+        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='modalform.css'/>" />
         
         <g:javascript>
         	$(document).ready(function() {
-				ajaxModal("linkNovaMeta","/cashbuilder/meta/ajaxNovo","popupNovo");
+				ajaxModal("linkNovaMeta","/cashbuilder/meta/ajaxNovo","popupNovo",
+				"${message(code: 'meta.novo.title', default: 'Novo')}");
 			});
         </g:javascript>
     </head>

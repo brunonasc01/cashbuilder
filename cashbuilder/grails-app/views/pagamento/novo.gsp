@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 </g:javascript>
 
-<g:form name="newTransaction" action="save" class="regform" controller="pagamento">
+<g:form name="newTransaction" action="save" controller="pagamento">
 
 	<div id="field">
 		<ul>

@@ -12,7 +12,8 @@
 		<g:javascript>
 		$(function() {
 			cashflow('cashflow');
-			ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo");
+			ajaxModal("linkNovo","/cashbuilder/pagamento/ajaxNovo","popupNovo",
+				"${message(code: 'pagamento.novo.title', default: 'Novo')}");
 		});
 		</g:javascript>
     </head>

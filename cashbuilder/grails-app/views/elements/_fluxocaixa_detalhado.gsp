@@ -13,7 +13,8 @@
 
 		<g:javascript>
 		$(function() {
-			ajaxSubmitToModal('btSubmit','/cashbuilder/pagamento/ajaxEdit','popupNovo');
+			ajaxSubmitToModal('btSubmit','/cashbuilder/pagamento/ajaxEdit','popupNovo',
+				"${message(code: 'pagamento.edit.title', default: 'Editar')}");
 		});
 		</g:javascript>
 

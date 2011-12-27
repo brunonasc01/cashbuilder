@@ -25,15 +25,7 @@ function ajaxModal(idTrigger,action,idResult,txtTitle){
 			cache: false,
 			success: function(html) {
 				$("#"+idResult).html(html);
-
-				$("#"+idResult).dialog({
-					modal: true,
-					resizable: false,
-					width: 460,
-					height: 330,
-					title: txtTitle
-				});
-
+				modal(idResult,txtTitle);
 			}
 		});
 	});
@@ -50,18 +42,21 @@ function ajaxSubmitToModal(trigger,action,result,txtTitle){
 			url: action,
 			success:function(data,textStatus){
 				$("#"+result).html(data);
-				
-				$("#"+result).dialog({
-					modal: true,
-					resizable: false,
-					width: 480,
-					height: 340,
-					title: txtTitle
-				});
+				modal(result,txtTitle);
 			},
 			error:function(XMLHttpRequest,textStatus,errorThrown){},
 			complete:function(XMLHttpRequest,textStatus){}
 		});
+	});
+}
+
+function modal(elemId,txtTitle){
+	$("#"+elemId).dialog({
+		modal: true,
+		resizable: false,
+		width: 460,
+		height: 320,
+		title: txtTitle
 	});
 }
 
@@ -91,47 +86,6 @@ function autoModal(id) {
 		$(this).hide();
 		$(result).hide();
 	});
-}
-
-function modal(trigger,id) {	
-
-	$("#"+trigger).click(function(e) {
-		e.preventDefault();
-		
-		//var id = $(this).attr('href');
-	
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-	
-		$('.mascara').css({'width':maskWidth,'height':maskHeight});
-
-//		$('.mascara').fadeIn(1000);	
-//		$('.mascara').fadeTo("slow",0.8);	
-		$('.mascara').fadeTo("fast",0.8);
-		
-	
-		//Get the window height and width
-		var winH = $(window).height();
-		var winW = $(window).width();
-              
-		$("#"+id).css('top',  winH/2-$("#"+id).height()/2);
-		$("#"+id).css('left', winW/2-$("#"+id).width()/2);
-	
-		$("#"+id).fadeIn(1000); 
-	
-	});
-	
-//	$('.window .close').click(function (e) {
-//		e.preventDefault();
-//		
-//		$('#mask').hide();
-//		$('.window').hide();
-//	});		
-	
-	$('.mascara').click(function () {
-		$(this).hide();
-		$("#"+id).hide();
-	});			
 }
 
 function ajaxValidate(action,formId,short){
