@@ -29,8 +29,8 @@ function ajaxModal(idTrigger,action,idResult,txtTitle){
 				$("#"+idResult).dialog({
 					modal: true,
 					resizable: false,
-					width: 480,
-					height: 340,
+					width: 460,
+					height: 330,
 					title: txtTitle
 				});
 
@@ -215,7 +215,7 @@ function serializeField(field){
 
 function renderSubmitErrors(data,formId){
 
-	var submitField = $('#'+formId).find('#submitField div:last');
+	var submitField = $('#'+formId).find('#submitField li:last');
 	
 	if(data.length > 0){
 		submitField.html(data);
@@ -251,20 +251,16 @@ function renderShortErrors(data,index,formId){
 	var formField = $('#'+formId).find('#field').eq(index);
 	
 	if(data.length > 0){
-		formField.find('div:odd').removeClass('form-input-ok');
-		
-		formField.find('label:first').addClass('error-label');
-		formField.find('input:first,select:first').addClass('error-input');
-		formField.find('div:odd').addClass('form-input-error');
-		formField.find('div:last').addClass('error-msg-short');		
-		formField.find('div:last').html(data);
-		formField.find('div:last').slideDown('slow');
+		formField.find('li:first').addClass('label-error');
+		formField.find('input:first,select:first').parent().addClass('input-error');
+		formField.find('li:last').addClass('message-error');
+		formField.find('li:last').html(data);
+		formField.find('input:first,select:first').parent().removeClass('input-ok');
 	} else {
-		formField.find('label:first').removeClass('error-label');
-		formField.find('input:first,select:first').removeClass('error-input');
-		formField.find('div:odd').removeClass('form-input-error');
-		formField.find('div:last').slideUp('slow');
-		formField.find('div:last').html('');
-		formField.find('div:odd').addClass('form-input-ok');
+		formField.find('li:first').removeClass('label-error');
+		formField.find('input:first,select:first').parent().removeClass('input-error')
+		formField.find('li:last').removeClass('message-error');
+		formField.find('li:last').html('');
+		formField.find('input:first,select:first').parent().addClass('input-ok');
 	}
 }

@@ -1,2 +1,17 @@
 /* modal form */
-form ul li { float: left; line-height: 25px; font-weight: bold; margin:0;}
+form ul li { float: left; line-height: 25px; text-align: left; font-weight: bold; margin:0;}
+
+/* design */
+form ul li.label { width: 25%; text-align: right;  }
+form ul li.input { width: auto; padding-left: 2%; padding-right: 5%; }
+form ul li.message { width: 70%; padding-left: 25%; font-size: 85%; line-height: 20px; height: 20px;  }
+form ul li.button { padding-left: 25%; margin-top: 10px;  }
+
+/* validation */
+form ul li.label-error, form ul li.message-error { color: #f00; }
+form ul li.input-ok { background: url(../images/form/ok-form-icon.png) no-repeat right center; }
+form ul li.input-error { background: url(../images/form/error-form-icon.png) no-repeat right center; }
+form ul li.input-error input, form ul li.input-error select { border: 2px solid red;}
+
+form ul li.message ul li { margin: 0; padding: 0; line-height: inherit; }
+
