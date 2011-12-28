@@ -32,16 +32,17 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 /* Center */
 #content { background-color: #eee; min-height: 200px;}
 
-#title { margin: 20px 10px 0 10px; background: #cdc; padding: 1em 0.5em; }
+#title { margin: 20px 10px 0 10px; background: #92b6c1; padding: 1em 0.5em; }
 #title h3 { font-weight: bold; }
 
-#lbox, #rbox, #cbox {  padding:0; background: #fff; } 
+#lbox, #rbox, #cbox, #obox {  padding:0; background: #fff; } 
 #lbox { margin:10px 0 10px 10px; }
 #rbox { margin:10px 10px 10px 0; }
 #cbox { margin:10px 0; }
+#obox { margin:10px; }
 
-#lbox .title, #rbox .title, #cbox .title, #lbox .inside, #rbox .inside, #cbox .inside { padding: 0 0.5em; }
-#title, #lbox .title, #rbox .title, #cbox .title { font-weight: bold; background: #92b6c1;  }
+.title, .inside { padding: 0 0.5em; }
+.title { font-weight: bold; background: #92b6c1;  }
 
 /* background colors */
 /* fiorde tropical #6a9bac */

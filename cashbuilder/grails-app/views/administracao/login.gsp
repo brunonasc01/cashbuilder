@@ -12,29 +12,56 @@
     </head>
 
     <body>
-		<div class="span-8">
-			<g:if test="${flash.message}">
-				<div class="error">
-					${flash.message}
-				</div>
-			</g:if>
-
-			<g:form name="loginForm" action="valida_login" controller="administracao">
-				<p class="title">Login</p>
-	
-				<fv:textInputShort name="email" />
-				
-				<fv:passwordInputShort name="password" maxlength="20" />
-
-				<div id="submitField">
-					<div class="span-2 prepend-2">
-						<g:submitButton name="login" value="OK" />
+		<div class="span-15">
+			<div id="obox">			
+				<g:form class="loginForm" name="loginForm" action="valida_login" controller="administracao">
+					<div class="title">
+						Login no Sistema
 					</div>
-					<div class="clear"></div>
-					<div class="span-6 prepend-2 alert-msg last">
+		
+					<g:if test="${flash.message}">
+						<div class="error">
+							${flash.message}
 						</div>
-				</div>
-			</g:form>
+					</g:if>
+			
+					<div class="inside">
+						<ul id="field">
+							<li class="label">
+								<g:message code="email.label" default="Email" />
+							</li>
+							<li class="input">
+								<g:textField name="email" value="${usuarioInstance?.email}" />
+							</li>
+							<li class="message"></li>
+						</ul>
+						
+						<div class="clear"></div>
+						
+						<ul id="field">
+							<li class="label">
+								<g:message code="password.label" default=Senha" />
+							</li>
+							<li class="input">
+								<g:passwordField name="password" value="${usuarioInstance?.password}" />
+							</li>
+							<li class="message"></li>
+						</ul>
+
+						<div class="clear"></div>
+
+						<ul id="submitField">
+							<li class="button">
+								<g:submitButton name="login" value="Entrar" />
+							</li>
+							<li class="message"></li>
+						</ul>
+						
+						<div class="clear"></div>
+					</div>
+				</g:form>
+			</div>
+			<div class="clear"></div>
 		</div>
 	</body>		
 </html>
