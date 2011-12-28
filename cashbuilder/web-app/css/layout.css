@@ -8,6 +8,10 @@ body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 1
 .ui-datepicker { font-size: 11px; }
 .ui-dialog { font-size: 0.8em; }
 
+/* blueprint css */
+textarea { width: auto; height: auto; font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 90%; }
+input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0; }
+
 #menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
 #menuMonth ul li { background: #ccc; float: left; font-weight: bold; margin:0;}
 #menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }

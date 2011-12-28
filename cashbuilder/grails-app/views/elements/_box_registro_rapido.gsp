@@ -2,99 +2,95 @@
 <g:javascript>
 $(document).ready(function() {
 	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
-	
-	ajaxValidate("/cashbuilder/pagamento/validator","expressForm",true);
+	ajaxValidate("/cashbuilder/pagamento/validator","xpNewReg",true);
 });
 </g:javascript>
 
 <div id="lbox">
-	<g:form name="expressForm" class="regform" action="save_registro" controller="home">
+	<g:form class="boxForm" name="xpNewReg" action="save_registro" controller="home">
 		<div class="title">
 			Registro Rápido
 		</div>
 		
 		<div class="inside">
-			<div id="field">
-			<div class="form-label span-3">
-				<label><g:message code="pagamento.data.label" default="Data" /></label>
-			</div>			              
-			<div class="form-input span-5 last">
-				<g:jqDatePicker class="date" name="data" value="" />
-			</div>
-			<div class="form-msg-short span-7 append-5 prepend-2">
-			</div>
-			</div>
-	
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.data.label" default="Data" />
+				</li>
+				<li class="input">
+					<g:jqDatePicker class="date" name="data" value="" />
+				</li>
+				<li class="message"></li>
+			</ul>
+
 			<div class="clear"></div>
 
-			<div id="field">
-			<div class="form-label span-3">
-				<label><g:message code="pagamento.valor.label" default="Valor" /></label>
-			</div>			              
-			<div class="form-input span-5 last">
-				<g:textField maxlength="10" name="valor" value="" />
-			</div>
-			<div class="form-msg-short span-7 append-5 prepend-2">
-			</div>
-			</div>
-		
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.valor.label" default="Valor" />
+				</li>
+				<li class="input">
+					<g:textField maxlength="10" name="valor" value="" />
+				</li>
+				<li class="message"></li>
+			</ul>
+
 			<div class="clear"></div>
 	
-			<div id="field">
-			<div class="form-label span-3">
-				<label><g:message code="pagamento.categoria.label" default="Categoria" /></label>
-			</div>			              
-				<div class="form-input span-5 last">
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.categoria.label" default="Categoria" />
+				</li>
+				<li class="input">
 					<g:if test="${registroRapido}">
 						 <g:select id="comboCategoria" name="categoria.id"
 							from="${registroRapido.categorias}" 
 							optionKey="id" value="" noSelection="['': 'Selecione']" />
 					</g:if>
-				</div>
-				<div class="form-msg-short span-7 append-5 prepend-2">
-				</div>
-			</div>
+				</li>
+				<li class="message"></li>
+			</ul>
 
 			<div class="clear"></div>
 
-			<div class="form-label span-3">
-				<label><g:message code="pagamento.subcategoria.label" default="Subcategoria" /></label>
-			</div>			              
-			<div class="form-input span-5 last">
-				<g:if test="${registroRapido}">
-					<span id="comboSubcategorias">
-					 <g:select name="subcategoria.id"
-						noSelection="['': 'Selecione uma categoria']" />
-					</span>
-				</g:if>
-			</div>
-			<div class="form-msg-short span-7 append-5 prepend-2">
-			</div>
-	
+			<ul>
+				<li class="label">
+					<g:message code="pagamento.subcategoria.label" default="Subcategoria" />
+				</li>
+				<li class="input">
+					<g:if test="${registroRapido}">
+						<span id="comboSubcategorias">
+						 <g:select name="subcategoria.id"
+							noSelection="['': 'Selecione uma categoria']" />
+						</span>
+					</g:if>
+				</li>
+				<li class="message"></li>
+			</ul>
+
 			<div class="clear"></div>
 		
-			<div id="field">
-				<div class="form-label span-3">
-					<label><g:message code="pagamento.descricao.label" default="Descricao" /></label>
-				</div>			              
-				<div class="form-input span-7 last">
-					<g:textField size="33" maxlength="150" name="descricao" value="" />
-				</div>
-				<div class="form-msg-short span-7 append-5 prepend-2">
-				</div>
-			</div>
-		
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.descricao.label" default="Descricao" />
+				</li>
+				<li class="input">
+					<g:textArea name="descricao" maxlength="150"></g:textArea>
+				</li>
+				<li class="message"></li>
+			</ul>
+
 			<div class="clear"></div>
-			
-			<div id="submitField">
-				<div class="span-5 prepend-3">
+						
+			<ul id="submitField">
+				<li class="button">
 					<g:submitButton name="gravar" class="save" value="Gravar" />
 					<g:submitButton name="limpar" class="reset" type="reset" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
-				</div>
-				<div class="clear"></div>
-				<div class='alert-msg span-7 prepend-3 last'></div>
-			</div>
-
+				</li>
+				<li class="message"></li>
+			</ul>
+			
+			<div class="clear"></div>
 		</div>
 	</g:form>			
 </div>

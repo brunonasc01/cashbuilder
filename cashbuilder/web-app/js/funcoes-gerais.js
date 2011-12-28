@@ -115,7 +115,7 @@ function ajaxValidate(action,formId,short){
 
 	form.find('#field').each(function(i){
 		
-		$(this).find('input:first,select:first').focusout(function(){
+		$(this).find('input:first,select:first,textarea:first').focusout(function(){
 
 			var name = $(this).attr('name')
 			var parameters = processParameters(name,form);
@@ -206,15 +206,15 @@ function renderShortErrors(data,index,formId){
 	
 	if(data.length > 0){
 		formField.find('li:first').addClass('label-error');
-		formField.find('input:first,select:first').parent().addClass('input-error');
+		formField.find('input:first,select:first,textarea:first').parent().addClass('input-error');
 		formField.find('li:last').addClass('message-error');
 		formField.find('li:last').html(data);
-		formField.find('input:first,select:first').parent().removeClass('input-ok');
+		formField.find('input:first,select:first,textarea:first').parent().removeClass('input-ok');
 	} else {
 		formField.find('li:first').removeClass('label-error');
-		formField.find('input:first,select:first').parent().removeClass('input-error')
+		formField.find('input:first,select:first,textarea:first').parent().removeClass('input-error')
 		formField.find('li:last').removeClass('message-error');
 		formField.find('li:last').html('');
-		formField.find('input:first,select:first').parent().addClass('input-ok');
+		formField.find('input:first,select:first,textarea:first').parent().addClass('input-ok');
 	}
 }

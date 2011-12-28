@@ -10,6 +10,8 @@
 	  		<g:render template="/elements/box_avisos" bean="${alerts}" ></g:render>
 
 			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
+			
+			<div class="clear"></div>
 	  	</div>
 	  	
 	  	<div class="span-8 last">

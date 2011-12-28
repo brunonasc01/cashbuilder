@@ -1,45 +1,27 @@
+/* form */
+form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}
+
+/* home form box */
+
+/* design */
+form.boxForm ul li.label { width: 17%;  text-align: right; }
+*form.boxForm ul li.input select { margin-left: 10px; }
+form.boxForm ul li.input { width: auto; padding-left: 1%; padding-right: 5%; }
+form.boxForm ul li.message { min-width: 40%; padding-left: 1%; font-size: 85%; }
+form.boxForm ul li.button { padding-left: 18%; margin-top: 5px;}
+
+/* validation */
+form.boxForm ul li.label-error, form ul li.message-error { color: #f00; }
+form.boxForm ul li.input-ok { background: url(../images/form/ok-form-icon.png) no-repeat right center; }
+form.boxForm ul li.input-error { background: url(../images/form/error-form-icon.png) no-repeat right center; }
+form.boxForm ul li.input-error input, form ul li.input-error select { border: 2px solid red;}
+form.boxForm ul li.message ul li { margin: 0; padding: 0; line-height: inherit; }
+
+/* old */
+
 /* --- FORM - GERAL --- */
-
-input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0; }
-
-form .form-label, .form-input, .form-msg { margin: 0.3em 0; }
-
-form .form-label { text-align: right; margin-right: 10px; }
-
-form .form-input { margin-right: 10px; }
-
-form .form-msg { font-weight: bold; font-size: 90%; padding-left: 25px;  }
-
-form .form-msg-short { margin-top: -5px; margin-bottom: 3px; font-weight: bold; font-size: 80%; display:none;}
-
-form .title-categoria { border-bottom: 1px solid black; margin-bottom: 3px; margin-top: 20px; font-size: 105%; }
-
-form .title-natureza { background-color: #AAAAAA; font-size: 120%; }
 
 input.bt_edit { width: 16px; background: url(../images/form/edit-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
 
 input.bt_delete { width: 16px; background: url(../images/form/delete-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
 
-/* --- FORM - VALIDACAO --- */
-
-form select.sel_city { width: 153px; }
-
-input.error-input, select.error-input { border: 2px solid red;}
-
-form .form-input-error { margin-right: 10px; background: url(../images/form/error-form-icon.png) no-repeat 95% 50%;  }
-
-form .form-input-ok { margin-right: 10px; background: url(../images/form/ok-form-icon.png) no-repeat 95% 50%; }
-
-form .error-label { color: red; }
-
-form .error-msg {color: red; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; }
-
-form .error-msg-short {color: red; min-width:250px; }
-
-form .error-msg ul, .error-msg-short ul { margin: auto; padding: 0; list-style-type: none; }
-
-form .ok-msg {color: green; background: url(../images/form/ok-form-icon.png) 1px 50% no-repeat; }
-
-form .alert-msg  {font-weight: bold; font-size:80%; display:none; color: red; }
-
-form .alert-msg-short  {margin-top: 3px; font-weight: bold; font-size:80%; display:none; color: black; background: url(../images/form/error-form-icon.png) 1px 50% no-repeat; padding-left: 2em; }
