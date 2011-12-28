@@ -20,6 +20,12 @@
 		<g:javascript src="funcoes-gerais.js" />
 		<g:javascript src="general-effects.js" />
 
+		<script>
+			$(function() {
+				$( "input:submit, button, input:reset" ).button();
+			});
+		</script>
+
         <g:layoutHead />
     </head>
     <body>

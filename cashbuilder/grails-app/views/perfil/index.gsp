@@ -14,72 +14,114 @@
 			    change: true
 			  });
 		
-			ajaxValidate("/cashbuilder/perfil/validator","profileForm",false);
+			ajaxValidate("/cashbuilder/perfil/validator","profileForm",true);
 			
 			$('#cidade').addClass("sel_city");
 		});
 		</g:javascript>
     </head>
     <body>    
-    	<p>Antes de iniciar a utilização do sistema, é preciso fornecer alguns
-		dados para criação do seu perfil:</p>
+    	<div id="obox">
+    		<div class="title">
+    			Cadastro de Perfil
+    		</div>
+    		
+    		<div class="inside">
+		    	<p>Antes de iniciar a utilização do sistema, é preciso fornecer alguns
+				dados para criação do seu perfil:</p>
 
-		<div class="span-20">
-			<g:form name="profileForm" action="save">
-				<g:hiddenField name="primeiroLogin" value="false"></g:hiddenField>
-			
-				<fv:textInput name="nomeCompleto" />
+				<g:form class="userForm" name="profileForm" action="save">
+					<g:hiddenField name="primeiroLogin" value="false"></g:hiddenField>
 				
-				<fv:textInput name="estado" />
+					<ul id="field">
+						<li class="label">
+							<g:message code="nomeCompleto.label" default="Nome Completo" />
+						</li>
+						<li class="input">
+							<g:textField name="nomeCompleto" />
+						</li>
+						<li class="message"></li>
+					</ul>
 				
-				<div id="field">
-					<div class="form-label span-4">
-						<label><g:message code="cidade.label" default="Cidade" /> </label>
-					</div>
-					<div class="form-input span-4">
-						<g:textField name="cidade"/>
-					</div>
-					<div class="form-msg span-8 last"></div>
-				</div>
+					<div class="clear"></div>
 				
-				<div class="clear"></div>
-
-				<fv:textInput name="pais" value="Brasil"/>
-
-				<div class="form-label span-4">
-					<label><g:message code="perfil.label" default="Perfil" /></label>
-				</div>			              
-				<div class="span-8 append-7 last">
-					<small>Marque apenas os items que você possui</small>
-				</div>
-
-				<div class="span-6">
-					<div class="">
-						<g:checkBox name="animalEstimacao"></g:checkBox>
-						Animal de Estimação	
-					</div>
+					<ul id="field">
+						<li class="label">
+							<g:message code="estado.label" default="Estado" />
+						</li>
+						<li class="input">
+							<g:textField name="estado" />
+						</li>
+						<li class="message"></li>
+					</ul>
 					
-					<div class="">
-						<g:checkBox name="automovel"></g:checkBox>
-						Carro / Moto
-					</div>
+					<div class="clear"></div>
 					
-					<div class="">
-						<g:checkBox name="filho"></g:checkBox>
-						Filho(s)
-					</div>
-				</div>
-				
-				<div class="span-8 last">
-					Marque os items com atenção. Assim o sistema poderá criar uma seleção de categorias
-					fiel as suas necessidade.  
-				</div>
-				
-				<hr class="space"></hr>
-				
-				<fv:submitButton name="save" class="save" value="${message(code: 'default.button.create.label', default: 'Gravar')}" />
-			</g:form>
-		</div>
-	  	
+					<ul id="field">
+						<li class="label">
+							<g:message code="cidade.label" default="Cidade" />
+						</li>
+						<li class="input">
+							<g:textField name="cidade" />
+						</li>
+						<li class="message"></li>
+					</ul>
+					
+					<div class="clear"></div>
+
+					<ul id="field">
+						<li class="label">
+							<g:message code="pais.label" default="Pais" />
+						</li>
+						<li class="input">
+							<g:textField name="pais" value="Brasil"/>
+						</li>
+						<li class="message"></li>
+					</ul>
+						
+					<div class="clear"></div>
+						
+					<ul id="field">
+						<li class="label">
+							<g:message code="despesas.label" default="Despesas" />
+						</li>
+						<li class="input">
+							<small>(Marque apenas os items que você possui)</small>
+							
+							<ul>
+								<li>
+									<g:checkBox name="animalEstimacao"></g:checkBox>
+									Animal de Estimação
+								</li>
+								<li>
+									<g:checkBox name="automovel"></g:checkBox>
+									Carro / Moto
+								</li>
+								<li>
+									<g:checkBox name="filho"></g:checkBox>
+									Filho(s)
+								</li>
+							</ul>
+						</li>
+						<li class="message">
+							Marque as despesas com atenção. Assim o sistema poderá criar uma seleção de categorias
+						fiel as suas necessidades.  
+						</li>
+					</ul>
+										
+					<div class="clear"></div>
+					
+					<ul id="submitField">
+						<li class="button">
+							<g:submitButton name="save" class="save" value="Gravar" />
+						</li>
+						<li class="message"></li>
+					</ul>
+					
+					<div class="clear"></div>
+				</g:form>
+			</div>
+	  	</div>
+	  	<div class="clear"></div>
 	</body>		
 </html>

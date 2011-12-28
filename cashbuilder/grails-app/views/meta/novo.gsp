@@ -2,12 +2,12 @@
 <g:javascript>
 $(document).ready(function() {
 	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaMultipleSelected","comboSubcategorias");
-	
 	ajaxValidate("/cashbuilder/meta/validator","newGoal",true);
+	$( "input:submit, button, input:reset" ).button();
 });
 </g:javascript>
 
-<g:form name="newGoal" controller="meta" action="save">
+<g:form class="modalForm" name="newGoal" controller="meta" action="save">
 
 	<div id="field">
 		<ul>

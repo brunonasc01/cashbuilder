@@ -1,3 +1,3 @@
 	<div class="logo">
-	CASHBUILDER
+		<h2>CA$HBUILDER</h2>
 	</div>

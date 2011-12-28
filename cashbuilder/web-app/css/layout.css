@@ -1,5 +1,5 @@
 /* General */
-ul, p, h3 { margin: 0; padding: 0; }
+ul, p, h3, h2 { margin: 0; padding: 0; }
 ul { list-style: none; }
 a { text-decoration: none; }
 body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; }
@@ -7,6 +7,7 @@ body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 1
 /* jquery ui */
 .ui-datepicker { font-size: 11px; }
 .ui-dialog { font-size: 0.8em; }
+input.ui-button { font-size: 80%; padding: 0.3em 0.8em; }
 
 /* blueprint css */
 textarea { width: auto; height: auto; font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 90%; }
@@ -19,15 +20,18 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 #menuMonth ul li:hover a { background-color: #92b6c1; color:#000;}
 
 /* Header */
-#header { background-color: #eee; }
-#header .logo { height: 50px; }
-#header .subheader { background-color: #ccc; padding: 0.2em 0; }
+#header { background-color: #92b6c1; }
+#header .logo { height: 50px; padding-left: 5px; font-family: "Arial Black", Arial, sans-serif; }
+#header .logo h2 { color: #fff; }
+#header .subheader { background-color: #ccc; padding: 0.2em 0; padding-left: 5px; }
 
 /* Menu */
 #menubar { text-align: center; }
-#menubar div { padding: 2em 0; background-color: #ccc; }
+#menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; }
+#menubar div a { color: #999; }
 #menubar .ativo { background-color: #eee; }
 #menubar div:hover { background-color: #eee; }
+#menubar .ativo a, #menubar div:hover a { color: #000; }
 
 /* Center */
 #content { background-color: #eee; min-height: 200px;}
