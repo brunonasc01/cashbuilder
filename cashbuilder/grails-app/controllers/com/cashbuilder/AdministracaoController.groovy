@@ -40,6 +40,12 @@ class AdministracaoController {
 			if(!perfil){
 				redirect(controller:'perfil')
 			}else {
+				def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+			
+				if(!budget){
+					geralService.createNewBudget(user, DateUtils.anoAtual)
+				}
+
 				eventService.checkEvents(user, null)
 				redirect(controller:'home')
 			}

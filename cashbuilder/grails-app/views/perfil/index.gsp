@@ -80,34 +80,33 @@
 					</ul>
 						
 					<div class="clear"></div>
-						
-					<ul id="field">
-						<li class="label">
-							<g:message code="despesas.label" default="Despesas" />
-						</li>
-						<li class="input">
-							<small>(Marque apenas os items que você possui)</small>
-							
-							<ul>
-								<li>
-									<g:checkBox name="animalEstimacao"></g:checkBox>
-									Animal de Estimação
-								</li>
-								<li>
-									<g:checkBox name="automovel"></g:checkBox>
-									Carro / Moto
-								</li>
-								<li>
-									<g:checkBox name="filho"></g:checkBox>
-									Filho(s)
-								</li>
-							</ul>
-						</li>
-						<li class="message">
-							Marque as despesas com atenção. Assim o sistema poderá criar uma seleção de categorias
-						fiel as suas necessidades.  
-						</li>
-					</ul>
+					
+					<g:if test="${expenses }" >
+						<g:set var="counter" value="${0}" />
+						<ul id="field">
+							<li class="label">
+								<g:message code="despesas.label" default="Despesas" />
+							</li>
+							<li class="input">
+								<small>(Marque apenas os items que você possui)</small>
+								
+								<ul>
+									<g:each var="expense" in="${expenses}">
+										<li>
+											<g:hiddenField name="expenses[${counter}].name" value="${expense.name }"></g:hiddenField>
+											<g:checkBox name="expenses[${counter}].enabled"></g:checkBox>
+											${expense.name }
+										</li>
+										<g:set var="counter" value="${counter + 1}" />
+									</g:each>
+								</ul>
+							</li>
+							<li class="message">
+								Marque as despesas com atenção. Assim o sistema poderá criar uma seleção de categorias
+							fiel as suas necessidades.  
+							</li>
+						</ul>
+					</g:if>
 										
 					<div class="clear"></div>
 					

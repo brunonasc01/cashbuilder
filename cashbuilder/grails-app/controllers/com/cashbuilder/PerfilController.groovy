@@ -6,7 +6,15 @@ class PerfilController {
 	
     def index = {
 	
-		[ocultaMenu: true]	
+		def expensesList = []
+		
+		def namesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
+		
+		namesList.each { 
+			expensesList += new CustomExpenses(name:it,enabled:false)
+		}
+		
+		[ocultaMenu: true, expenses : expensesList]	
 	}
 	
 	def save = {
@@ -24,19 +32,16 @@ class PerfilController {
 			File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categoriaGeral.csv").getFile()
 			listaCategorias += fileGeral
 
-			if(params.animalEstimacao){
-				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaMascote.csv").getFile()
-				listaCategorias += file
-			}
-
-			if(params.automovel){
-				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaVeiculo.csv").getFile()
-				listaCategorias += file
-			}
-
-			if(params.filho){
-				File file = grailsAttributes.getApplicationContext().getResource("res/categoriaFilho.csv").getFile()
-				listaCategorias += file
+			def expensesFileMap = ["Animal de Estimacao":"res/categoriaMascote.csv",
+									"Carro ou Moto":"res/categoriaVeiculo.csv",
+									"Filho(s)":"res/categoriaFilho.csv"]
+			
+			perfil.expenses.each { expense ->
+				if(expense.enabled){
+					String resourcePath = expensesFileMap.get(expense.name)
+					File file = grailsAttributes.getApplicationContext().getResource(resourcePath).getFile()
+					listaCategorias += file
+				}
 			}
 
 			geralService.makeOrcmProfile(user,listaCategorias)

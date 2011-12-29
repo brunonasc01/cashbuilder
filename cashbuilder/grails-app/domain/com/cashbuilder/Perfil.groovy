@@ -8,6 +8,8 @@ class Perfil {
 	String pais
 	boolean primeiroLogin
 	
+	static hasMany = [expenses: CustomExpenses]
+	
 	static belongsTo = [usuario: Usuario]
 	
 	static constraints = {

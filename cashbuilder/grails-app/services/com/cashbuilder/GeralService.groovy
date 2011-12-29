@@ -179,5 +179,40 @@ class GeralService {
 	   } else {
 	   		throw new RuntimeException("Nao foi possivel criar o orcamento, tente novamente")
 	   }
-   }
+	}
+	
+	/**
+	 * Cria um novo orcamento (a cada ano novo)
+	 * @param user Usuario
+	 * @param year o ano do orcamento a ser criado
+	 */
+	void createNewBudget(Usuario user, int year){
+		
+		Orcamento budget = new Orcamento(ano: year,user:user)
+		
+		if(budget.save()){
+			
+			Orcamento oldBudget = Orcamento.findByAnoAndUser(year-1,user)
+			
+			if(oldBudget){
+				def oldBudgetMonthsList = OrcmMes.findAllByOrcamento(oldBudget)
+				
+				oldBudgetMonthsList.each{ budgetMonth ->
+					def newBudgetMonth = new OrcmMes(mes:budgetMonth.mes,orcamento:budget)
+					
+					if(newBudgetMonth.save()){
+						def oldBudgetMonthItems = budgetMonth.itens
+						
+						oldBudgetMonthItems.each{ item ->
+							new OrcmItem(categoria:item.categoria,subcategoria:item.subcategoria,mes:newBudgetMonth).save()
+						}
+					} else {
+			   			throw new RuntimeException(message:"Erro ao gravar o Orcamento do Mes: ${budgetMonth.mes}")
+					}
+				}
+			}
+		} else {
+	   		throw new RuntimeException("Nao foi possivel criar o orcamento, tente novamente")
+	   }
+	}
 }
