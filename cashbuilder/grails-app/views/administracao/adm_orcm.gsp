@@ -18,7 +18,7 @@
     		</div>
     	</div>
     
-    	<g:form class="regform">
+    	<g:form class="budgetForm">
 	    	<div class="span-7">
 	    			    	
 	    		<div id="lbox">
@@ -27,20 +27,25 @@
 		           	</div>
 		           	
 		           	<div class="inside">
-		           		<ul>
-		           			<li>
-		           				Mês (${DateUtils.getMes(orcmMes.mes) })	
+		           		<ul class="boxes">
+		           			<li class="label">
+		           				Mês (${DateUtils.getMes(orcmMes.mes) })
+		           			</li>
+		           			<li class="input">
 		           				<g:radio name="tipoSave" value="mes" checked="true"></g:radio>
 		           			</li>
-		           			<li>
-		           				Ano <g:radio name="tipoSave" value="ano" ></g:radio>
+		           			<li class="label">
+		           				Ano (${DateUtils.anoAtual })
+		           			</li>
+		           			<li class="input">
+		           				<g:radio name="tipoSave" value="ano" ></g:radio>
 		           			</li>
 		           			
-		           			<li>
-		           				<g:submitButton name="_action_save_itens" class="save"
-		   						 value="Gravar" />
+		           			<li class="button">
+		           				<g:submitButton name="_action_save_itens" class="save" value="Gravar" />
 		           			</li>
 		           		</ul>
+		           		<div class="clear"></div>
 		   			</div>
 	   			</div>
 	   			
@@ -51,7 +56,7 @@
 		   				</div>
 
 						<div class="inside">
-							<ul>
+							<ul class="display">
 								<li>
 									Entradas
 									<g:formatNumber number="${orcmBox.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
@@ -65,6 +70,7 @@
 									<g:formatNumber number="${orcmBox.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 								</li>
 							</ul>
+							<div class="clear"></div>
 						</div>
 					</div>
 				</g:if>
@@ -94,19 +100,19 @@
 					
 					<div class="inside">
 						<g:each var="bean" in="${itensCred}">
-		
-							<div class="title-categoria span-6 append-9">
-								<label for="categoria">${bean.categoria }</label>
-							</div>
-		
+
+							<h5>${bean.categoria }</h5>							
+
 							<g:each var="item" in="${bean.subcategorias}">
-								<div class="form-label span-4">
-									<label for="categoria">${item.subcategoria }</label>
-								</div>			              
-								<div class="span-4 append-7 last">
-									<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
-								</div>
-		
+							
+								<ul>
+									<li class="label">
+										${item.subcategoria }
+									</li>
+									<li class="input">
+										<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
+									</li>
+								</ul>
 								<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
 								<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
 								<g:set var="counter" value="${counter + 1}" />
@@ -123,19 +129,19 @@
 					
 					<div class="inside">
 						<g:each var="bean" in="${itensDeb}">
-		
-							<div class="title-categoria span-6 append-9">
-								<label for="categoria">${bean.categoria }</label>
-							</div>
+
+							<h5>${bean.categoria }</h5>
 		
 							<g:each var="item" in="${bean.subcategorias}">
-								<div class="form-label span-4">
-									<label for="categoria">${item.subcategoria }</label>
-								</div>			              
-								<div class="span-4 append-7 last">
-									<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
-								</div>
-		
+								<ul>
+									<li class="label">
+										${item.subcategoria }
+									</li>
+									<li class="input">
+										<g:textField name="itens[${counter}].valorPrevisto" value="${df.format(item?.valorPrevisto) }" />
+									</li>
+								</ul>
+
 								<g:hiddenField name="itens[${counter}].subcategoria.id" value="${item?.subcategoria.id }"></g:hiddenField>
 								<g:hiddenField name="itens[${counter}].categoria.id" value="${item?.categoria.id }"></g:hiddenField>
 								<g:set var="counter" value="${counter + 1}" />

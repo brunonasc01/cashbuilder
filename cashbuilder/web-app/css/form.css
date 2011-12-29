@@ -33,6 +33,19 @@ form.loginForm ul li.message { min-width: 200px; padding-left: 5px; font-size: 8
 form.loginForm ul#submitField li.message { margin-top: 5px; }
 form.loginForm ul li.button { padding-left: 65px; margin-top: 5px;}
 
+/* budget form */
+form.budgetForm h5 { font-size: 110%; margin-top: 10px;}
+
+form.budgetForm ul li.label { width: 140px;;  text-align: right; }
+*form.budgetForm ul li.input select { margin-left: 10px; }
+form.budgetForm ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
+
+form.budgetForm ul.boxes li.label { width: 50%; text-align: right; }
+form.budgetForm ul.boxes li.input { width: auto; padding-left: 10px; }
+form.budgetForm ul.boxes li.button { width: 100%; padding-left: 0; text-align: center; }
+
+form.budgetForm ul.display li { float:none; }
+
 /* old */
 
 /* --- FORM - GERAL --- */
