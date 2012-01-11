@@ -27,9 +27,12 @@
 	  	
 	  	<div class="span-8">
 	  		<div id="cbox">
+				<div class="title">
+					Cadastro
+				</div>
 				<div class="inside">
 					<ul>
-						<li>second column</li>
+						<li><g:link controller="usuario" action="edit">Alterar Dados Cadastrais</g:link></li>
 					</ul>
 				</div>
 			</div>

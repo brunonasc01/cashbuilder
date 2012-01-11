@@ -51,4 +51,21 @@ class UsuarioService {
 		}
 		throw new RuntimeException("Usuario Invalido")
 	}
+	
+	Usuario updateUser(Map params){
+		def userInstance = Usuario.get(params.id)
+		
+		if(userInstance){
+			userInstance.properties = params
+			
+			if(userInstance.hasErrors()){
+				throw new ValidationException("Dados invalidos",userInstance.errors)
+			}
+			else{ 
+				userInstance.save(flush: true)
+				return userInstance
+			}
+		}
+		throw new RuntimeException("Usuario Invalido")
+	}
 }

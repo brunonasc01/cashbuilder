@@ -13,12 +13,6 @@ input.ui-button { font-size: 80%; padding: 0.3em 0.8em; }
 textarea { width: auto; height: auto; font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 90%; }
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0; }
 
-#menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
-#menuMonth ul li { background: #ccc; float: left; font-weight: bold; margin:0;}
-#menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }
-#menuMonth ul li.selected a { background-color: #92b6c1; color:#000; }
-#menuMonth ul li:hover a { background-color: #92b6c1; color:#000;}
-
 /* Header */
 #header { background-color: #92b6c1; }
 #header .logo { height: 50px; padding-left: 5px; font-family: "Arial Black", Arial, sans-serif; }
@@ -27,11 +21,32 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 
 /* Menu */
 #menubar { text-align: center; }
-#menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; }
-#menubar div a { color: #999; }
-#menubar .ativo { background-color: #eee; }
-#menubar div:hover { background-color: #eee; }
-#menubar .ativo a, #menubar div:hover a { color: #000; }
+#menubar a { color: #999; }
+#menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; cursor: pointer; }
+#menubar .ativo, #menubar div:hover { background-color: #eee; color: #000; }
+#menubar .ativo span, #menubar div:hover span { background-position: 48px 0; }
+#menubar span { margin: 0 51px; background: url(../images/test_img.png); width: 48px; height: 48px; display: block; }
+
+/* Menu Icons */ 
+#menubar span.home { background-position: 0 0; }
+#menubar .ativo span.home { background-position: 48px 0; }
+#menubar span.budget { background-position: 0 0; }
+#menubar .ativo span.budget { background-position: 48px 0; }
+#menubar span.cashflow { background-position: 0 0; }
+#menubar .ativo span.cashflow { background-position: 48px 0; }
+#menubar span.goal { background-position: 0 0; }
+#menubar .ativo span.goal { background-position: 48px 0; }
+#menubar span.reports { background-position: 0 0; }
+#menubar .ativo span.reports { background-position: 48px 0; }
+#menubar span.adm { background-position: 0 0; }
+#menubar .ativo span.adm { background-position: 48px 0; }
+
+/* Month Select Menu */
+#menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
+#menuMonth ul li { background: #ccc; float: left; font-weight: bold; margin:0;}
+#menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }
+#menuMonth ul li.selected a { background-color: #92b6c1; color:#000; }
+#menuMonth ul li:hover a { background-color: #92b6c1; color:#000;}
 
 /* Center */
 #content { background-color: #eee; min-height: 200px;}

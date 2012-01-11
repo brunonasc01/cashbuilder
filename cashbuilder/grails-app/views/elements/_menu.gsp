@@ -1,39 +1,43 @@
 <g:if test="${session.user && !ocultaMenu}">
-	<div class="span-4 ${home? "ativo" : "" }">
-		<g:link controller="home">
-			<img src="${resource(dir:'images',file:'home-icon.png')}"/>
-			<br />Home
-		</g:link>
-	</div>    		
-	<div class="span-4 ${orcm? "ativo" : "" }">
-		<g:link controller="orcamento">
-			<img src="${resource(dir:'images',file:'orcm-icon.png')}"/>
-			<br />Orcamento
-		</g:link>
-	</div>
-	<div class="span-4 ${flow? "ativo" : "" }">
-		<g:link controller="fluxoCaixa">
-			<img src="${resource(dir:'images',file:'flow-icon.png')}"/>
-			<br />Fluxo de Caixa
-		</g:link>
-	</div>
-	<div class="span-4 ${goal? "ativo" : "" }">
-		<g:link controller="meta">
-			<img src="${resource(dir:'images',file:'metas-icon.png')}"/>
-			<br />Metas
-		</g:link>
-	</div>
-	<div class="span-4 ${stats? "ativo" : "" }">
-		<g:link controller="relatorio">
-			<img src="${resource(dir:'images',file:'relatorio-icon.png')}"/>
-			<br />Relatorios
-		</g:link>
-	</div>
-	<div class="span-4 ${adm? "ativo" : "" } last">
-		<g:link controller="administracao">
-			<img src="${resource(dir:'images',file:'adm-icon.png')}"/>
-			<br />Administracao
-		</g:link>
-	</div>
-</g:if>
+	<g:link controller="home">
+		<div class="span-4 ${home? "ativo" : "" }">
+			<span class="home"></span>
+			Home
+		</div>
+	</g:link>
+	
+	<g:link controller="orcamento">    		
+		<div class="span-4 ${orcm? "ativo" : "" }">
+			<span class="budget"></span>
+			Orcamento
+		</div>
+	</g:link>
+	
+	<g:link controller="fluxoCaixa">
+		<div class="span-4 ${flow? "ativo" : "" }">
+			<span class="cashflow"></span>
+			Fluxo de Caixa
+		</div>
+	</g:link>
+	
+	<g:link controller="meta">
+		<div class="span-4 ${goal? "ativo" : "" }">
+			<span class="goal"></span>
+			Metas
+		</div>
+	</g:link>
+	
+	<g:link controller="relatorio">
+		<div class="span-4 ${stats? "ativo" : "" }">
+			<span class="reports"></span>
+			Relatorios
+		</div>
+	</g:link>
 
+	<g:link controller="administracao">
+		<div class="span-4 ${adm? "ativo" : "" } last">
+			<span class="adm"></span>
+			Administracao
+		</div>
+	</g:link>
+</g:if>

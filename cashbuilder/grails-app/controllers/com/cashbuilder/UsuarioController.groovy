@@ -24,11 +24,24 @@ class UsuarioController {
 	}
 
     def edit = {
-       
+		def user = session.user.attach()
+				
+		def profile = Perfil.findByUsuario(user)
+		
+		[usuario: user, perfil: profile]
     }
 
     def update = {
-        
+		try {
+			def user = usuarioService.updateUser(params)
+			session.user = user
+
+			flash.message = "Usuario atualizado com sucesso"
+			redirect(controller: "administracao", action: "index")
+		} catch(Exception e){
+			flash.message = e.message
+			render(view: "edit")
+		}
     }
 
     def delete = {
