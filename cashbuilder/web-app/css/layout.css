@@ -25,21 +25,17 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 #menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; cursor: pointer; }
 #menubar .ativo, #menubar div:hover { background-color: #eee; color: #000; }
 #menubar .ativo span, #menubar div:hover span { background-position: 48px 0; }
-#menubar span { margin: 0 51px; background: url(../images/test_img.png); width: 48px; height: 48px; display: block; }
+#menubar span { margin: 0 51px; width: 48px; height: 48px; display: block; }
 
 /* Menu Icons */ 
-#menubar span.home { background-position: 0 0; }
-#menubar .ativo span.home { background-position: 48px 0; }
-#menubar span.budget { background-position: 0 0; }
-#menubar .ativo span.budget { background-position: 48px 0; }
-#menubar span.cashflow { background-position: 0 0; }
-#menubar .ativo span.cashflow { background-position: 48px 0; }
-#menubar span.goal { background-position: 0 0; }
-#menubar .ativo span.goal { background-position: 48px 0; }
-#menubar span.reports { background-position: 0 0; }
-#menubar .ativo span.reports { background-position: 48px 0; }
-#menubar span.adm { background-position: 0 0; }
-#menubar .ativo span.adm { background-position: 48px 0; }
+#menubar span.home { background: url(../images/home_icon.png); }
+#menubar span.budget { background: url(../images/budget_icon.png); }
+#menubar span.cashflow { background: url(../images/flow_icon.png); }
+#menubar span.goal { background: url(../images/goal_icon.png); }
+#menubar span.reports { background: url(../images/report_icon.png); }
+#menubar span.adm { background: url(../images/adm_icon.png); }
+
+#menubar .ativo span { background-position: 48px 0; }
 
 /* Month Select Menu */
 #menuMonth { text-align: center; margin: 0 1px; margin-top: 10px; }
@@ -62,6 +58,14 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 
 .title, .inside { padding: 0 0.5em; }
 .title { font-weight: bold; background: #92b6c1;  }
+
+.positive { color: #00642D; }
+.negative { color: #E40101; }
+
+#balanceBox ul { width: 55%;  }
+#balanceBox ul li { float: left; font-weight: bold; margin:0; }
+#balanceBox li.label { width: 45%; text-align: right; }
+#balanceBox li.value { width: 50%; padding-left: 5%; }
 
 /* background colors */
 /* fiorde tropical #6a9bac */

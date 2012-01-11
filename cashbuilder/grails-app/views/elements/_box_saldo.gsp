@@ -4,24 +4,40 @@
 	<div class="title">
 		Saldo Atual
 	</div>
-	<div class="inside">
+	<div id="balanceBox" class="inside">
 		<g:if test="${boxSaldo}">
 			<ul>
-				<li>
+				<li class="label">
 					Entradas
-					<g:formatNumber number="${boxSaldo.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
-				<li>
+				<li class="value">
+					<span class="positive">
+						<g:formatNumber number="${boxSaldo.entradas}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</span>					
+				</li>
+				<li class="label">
 					Saídas
-					<g:formatNumber number="${boxSaldo.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
-				<li>	
-					<g:set var="classSaldo" value="${(boxSaldo.saldo > 0) ? 'positivo' : 'negativo' }"></g:set>
+				<li class="value">
+					<span class="negative">
+						<g:formatNumber number="${boxSaldo.saidas}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</span>
+				</li>
+				<li class="label">
+					<g:set var="classSaldo" value="${(boxSaldo.saldo >= 0) ? 'positive' : 'negative' }"></g:set>
 					Saldo
-					<g:formatNumber number="${boxSaldo.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+				</li>
+				<li class="value">
+					<span class="${classSaldo }">
+						<g:formatNumber number="${boxSaldo.saldo}" currencySymbol=""
+							 format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</span>
 				</li>
 			</ul>
 			
 		</g:if>
+		<div class="clear"></div>
 	</div>
 </div>
