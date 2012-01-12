@@ -62,10 +62,10 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 .positive { color: #00642D; }
 .negative { color: #E40101; }
 
-#balanceBox ul { width: 55%;  }
+#balanceBox ul { width: 180px;  }
 #balanceBox ul li { float: left; font-weight: bold; margin:0; }
-#balanceBox li.label { width: 45%; text-align: right; }
-#balanceBox li.value { width: 50%; padding-left: 5%; }
+#balanceBox li.label { width: 80px; text-align: right; }
+#balanceBox li.value { width: 90px; padding-left: 10px; }
 
 /* background colors */
 /* fiorde tropical #6a9bac */

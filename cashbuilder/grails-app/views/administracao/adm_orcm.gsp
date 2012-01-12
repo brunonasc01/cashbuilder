@@ -48,32 +48,10 @@
 		           		<div class="clear"></div>
 		   			</div>
 	   			</div>
-	   			
-	   			<g:if test="${orcmBox }">
-		   			<div id="lbox">
-		   				<div class="title">
-		   					Totais Previstos (R$)
-		   				</div>
 
-						<div class="inside">
-							<ul class="display">
-								<li>
-									Entradas
-									<g:formatNumber number="${orcmBox.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-								</li>
-								<li>
-									Saidas
-									<g:formatNumber number="${orcmBox.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-								</li>
-								<li>
-									Saldo
-									<g:formatNumber number="${orcmBox.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-								</li>
-							</ul>
-							<div class="clear"></div>
-						</div>
-					</div>
-				</g:if>
+	   			<div id="lbox">
+	   				<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
+				</div>
 	    	</div>
     
 		  	<div class="span-17 last">

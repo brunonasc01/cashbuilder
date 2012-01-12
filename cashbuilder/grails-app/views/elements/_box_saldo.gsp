@@ -1,43 +1,54 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
-<div id="rbox">
 	<div class="title">
-		Saldo Atual
+		<g:message code="${bean.title }" default="Saldo" />		
 	</div>
 	<div id="balanceBox" class="inside">
-		<g:if test="${boxSaldo}">
-			<ul>
-				<li class="label">
-					Entradas
-				</li>
-				<li class="value">
-					<span class="positive">
-						<g:formatNumber number="${boxSaldo.entradas}" currencySymbol=""
+		<g:if test="${bean}">
+			<g:if test="${bean.isBudget }">
+				<ul>
+					<li class="label">
+						Previsto
+					</li>
+					<li class="value ${bean.plannedClass}">
+						<g:formatNumber number="${bean.plannedBalance}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</span>					
-				</li>
-				<li class="label">
-					Saídas
-				</li>
-				<li class="value">
-					<span class="negative">
-						<g:formatNumber number="${boxSaldo.saidas}" currencySymbol=""
+					</li>
+					<li class="label">
+						Realizado
+					</li>
+					<li class="value ${bean.actualClass}">
+						<g:formatNumber number="${bean.actualBalance}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</span>
-				</li>
-				<li class="label">
-					<g:set var="classSaldo" value="${(boxSaldo.saldo >= 0) ? 'positive' : 'negative' }"></g:set>
-					Saldo
-				</li>
-				<li class="value">
-					<span class="${classSaldo }">
-						<g:formatNumber number="${boxSaldo.saldo}" currencySymbol=""
+					</li>
+				</ul>
+			</g:if>
+			<g:else>
+				<ul>
+					<li class="label">
+						Entradas
+					</li>
+					<li class="value positive">
+						<g:formatNumber number="${bean.income}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</li>
+					<li class="label">
+						Saídas
+					</li>
+					<li class="value negative">
+						<g:formatNumber number="${bean.expense}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</li>
+					<li class="label">
+						Saldo
+					</li>
+					<li class="value ${bean.balanceClass}">
+						<g:formatNumber number="${bean.balance}" currencySymbol=""
 							 format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</span>
-				</li>
-			</ul>
-			
+					</li>
+				</ul>
+			</g:else>
 		</g:if>
 		<div class="clear"></div>
 	</div>
-</div>
+

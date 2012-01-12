@@ -1,5 +1,6 @@
 package com.cashbuilder
 
+import com.cashbuilder.beans.BalanceBoxBean;
 import com.cashbuilder.beans.fluxocaixa.FluxoCaixaBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -24,10 +25,14 @@ class FluxoCaixaController {
 		def meses = OrcmMes.findAllByOrcamento(orcamento)
 		def mes = OrcmMes.findByMesAndOrcamento(mesAtual,orcamento)
 						
-		FluxoCaixaBean bean = new FluxoCaixaBean(pagamentos: geralService.getPagamentos(user,mesAtual,anoAtual),
-			entradas: orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO),
-			saidas: orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO))
+		FluxoCaixaBean bean = new FluxoCaixaBean(pagamentos: geralService.getPagamentos(user,mesAtual,anoAtual))
 
-		[flow: true, monthIndex: mesAtual, meses: meses, fluxoCaixa:bean]
+		BalanceBoxBean balanceBox = new BalanceBoxBean()
+		balanceBox.title = "box.balance.title2"
+		balanceBox.income = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)
+		balanceBox.expense = orcamentoService.getTotalRealizado(mes,user,Constants.DEBITO)
+		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
+		
+		[flow: true, monthIndex: mesAtual, meses: meses, fluxoCaixa:bean, balanceBox: balanceBox]
 	}
 }

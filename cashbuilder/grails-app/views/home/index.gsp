@@ -15,7 +15,9 @@
 	  	</div>
 	  	
 	  	<div class="span-8 last">
-			<g:render template="/elements/box_saldo"  ></g:render>
+	  		<div id="rbox">
+				<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>
+			</div>
 
 	  		<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros }" ></g:render>
 	  	</div>

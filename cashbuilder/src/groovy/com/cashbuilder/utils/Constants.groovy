@@ -19,6 +19,9 @@ class Constants {
 	static int ALERT_SALDO_POSITIVO = 0
 	static int ALERT_SALDO_NEGATIVO = 1
 	
+	static String POSITIVE = "positive"
+	static String NEGATIVE = "negative"
+	
 	static String getFORMATO_MOEDA(){
 						
 		NumberFormat cf = NumberFormat.getCurrencyInstance()

@@ -34,29 +34,7 @@
 			</div>
 
     		<div id="lbox">
-    			<div class="title">
-    				Totais (R$)
-    			</div>
-    		
-    			<div class="inside">
-    				
-    				<ul>
-    					<li>
-    						Entradas
-    						<g:formatNumber number="${fluxoCaixa.entradas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-    					</li>
-    					
-    					<li>
-    						Saídas
-    						<g:formatNumber number="${fluxoCaixa.saidas}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-    					</li>
-    					
-    					<li>
-    						Saldo
-    						<g:formatNumber number="${fluxoCaixa.saldo}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-    					</li>
-    				</ul>
-				</div>
+    			<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
 			</div>
     	</div>
     

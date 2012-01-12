@@ -1,7 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.ListaCategoriasBean;
-import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.beans.BalanceBoxBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
 
@@ -19,9 +19,11 @@ class HomeController {
 		def mesAtual = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,orcamento)
 
 		//box saldo
-		BoxSaldoBean boxSaldo = new BoxSaldoBean();
-		boxSaldo.entradas = orcamentoService.getTotalRealizado(mesAtual,user,Constants.CREDITO)
-		boxSaldo.saidas = orcamentoService.getTotalRealizado(mesAtual,user,Constants.DEBITO)		
+		BalanceBoxBean balanceBox = new BalanceBoxBean();
+		balanceBox.title = "box.balance.title1"
+		balanceBox.income = orcamentoService.getTotalRealizado(mesAtual,user,Constants.CREDITO)
+		balanceBox.expense = orcamentoService.getTotalRealizado(mesAtual,user,Constants.DEBITO)		
+		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
 		//box ultimos registro
 		def ultimosRegistros = Pagamento.createCriteria().list(max:3) {
@@ -32,7 +34,7 @@ class HomeController {
 		def categoriesList = geralService.getCategoriesList(user)
 		def alerts = Alert.findAllByOrcamento(orcamento)
 		
-		[home: true, boxSaldo: boxSaldo, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
+		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
 	}
 	
 	def save_registro = {

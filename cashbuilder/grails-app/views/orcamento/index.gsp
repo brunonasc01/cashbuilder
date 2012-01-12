@@ -23,26 +23,9 @@
     	</div>
 
     	<div class="span-7">
-			<g:if test="${boxSaldo }">
-				<div id="lbox">
-					<div class="title">Saldo</div>
-					
-					<div class="inside">
-						<g:set var="classPrevisto" value="${(boxSaldo.saldoPrevisto > 0) ? 'positivo' : 'negativo' }"></g:set>
-						<ul>
-							<li>
-								Previsto
-								<g:formatNumber number="${boxSaldo.saldoPrevisto }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
-							</li>
-							
-							<li>
-								Realizado
-								<g:formatNumber number="${boxSaldo.saldoRealizado }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</g:if>
+			<div id="lbox">
+				<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>
+			</div>
     	</div>
     
     	<div class="span-17 last">

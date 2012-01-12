@@ -1,6 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.beans.BalanceBoxBean;
 import com.cashbuilder.beans.orcamento.OrcamentoBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -31,10 +31,13 @@ class OrcamentoController {
 		orcamentoBean.listaCredito = listEntradas
 		orcamentoBean.listaDebito = listSaidas
 
-		BoxSaldoBean box = new BoxSaldoBean()
-		box.saldoPrevisto = orcamentoService.getSaldoPrevisto(mes)
-		box.saldoRealizado = orcamentoService.getSaldoRealizado(mes,user)
-
-		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, boxSaldo: box]
+		BalanceBoxBean balanceBox = new BalanceBoxBean(isBudget:true)
+		balanceBox.title = "box.balance.title3"
+		balanceBox.plannedBalance = orcamentoService.getSaldoPrevisto(mes)
+		balanceBox.actualBalance = orcamentoService.getSaldoRealizado(mes,user)
+		balanceBox.plannedClass = (balanceBox.plannedBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
+		balanceBox.actualClass = (balanceBox.actualBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
+		
+		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, balanceBox: balanceBox]
 	}
 }

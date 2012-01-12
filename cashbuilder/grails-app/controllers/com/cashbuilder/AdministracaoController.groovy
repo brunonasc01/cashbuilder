@@ -5,7 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Date;
 
-import com.cashbuilder.beans.BoxSaldoBean;
+import com.cashbuilder.beans.BalanceBoxBean;
 import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.cmd.UsuarioCommand;
 import com.cashbuilder.utils.Constants;
@@ -78,11 +78,13 @@ class AdministracaoController {
 		def listaCredito = orcamentoService.getOrcmItems(user,iMes,true)
 		def df = geralService.getFormatadorNumerico()
 
-		BoxSaldoBean bean = new BoxSaldoBean()
-		bean.entradas = orcamentoService.getTotalPrevisto(mes,true)
-		bean.saidas = orcamentoService.getTotalPrevisto(mes,false)
-
-		[ adm: true, df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, orcmBox: bean]
+		BalanceBoxBean balanceBox = new BalanceBoxBean()
+		balanceBox.title = "box.balance.title4"
+		balanceBox.income = orcamentoService.getTotalPrevisto(mes,true)
+		balanceBox.expense = orcamentoService.getTotalPrevisto(mes,false)
+		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE 
+		
+		[ adm: true, df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, balanceBox: balanceBox]
 	}
 	
 	def save_itens = {
