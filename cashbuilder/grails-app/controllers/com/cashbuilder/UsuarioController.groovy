@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.cmd.UsuarioCommand;
+import com.cashbuilder.cmd.UsuarioEditCommand;
 
 class UsuarioController {
 
@@ -25,10 +26,8 @@ class UsuarioController {
 
     def edit = {
 		def user = session.user.attach()
-				
-		def profile = Perfil.findByUsuario(user)
-		
-		[usuario: user, perfil: profile]
+
+		[usuario: user]
     }
 
     def update = {

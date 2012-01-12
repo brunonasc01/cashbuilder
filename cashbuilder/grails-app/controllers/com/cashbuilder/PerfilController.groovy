@@ -18,11 +18,10 @@ class PerfilController {
 	}
 	
 	def save = {
-
-		def perfil = new Perfil(params)
-		
 		def user = session.user.attach()
-		perfil.usuario = user
+
+		def perfil = new Perfil(usuario:user)
+		perfil.properties = params
 		
 		if(!perfil.hasErrors()){
 			perfil.save(flush:true)

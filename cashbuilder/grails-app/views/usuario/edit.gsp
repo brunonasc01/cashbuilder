@@ -9,7 +9,7 @@
         
         <g:javascript>
 		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/usuario/validator","editUser",true);
+			//ajaxValidate("/cashbuilder/usuario/editValidator","editUser",true);
 		});
 		</g:javascript>
     </head>
@@ -34,15 +34,15 @@
 						</div>
 					</g:if>
 			  		<g:else>
-			            <g:hasErrors bean="${user}">
+			            <g:hasErrors bean="${usuario}">
 			            	<div class="error">
-			                	<g:renderErrors bean="${user}" as="list" />
+			                	<g:renderErrors bean="${usuario}" as="list" />
 			            	</div>
 			            </g:hasErrors>
 					</g:else>
 	
 					<div class="inside">
-						<g:hiddenField name="id" value="${user?.id }" />
+						<g:hiddenField name="id" value="${usuario?.id }" />
 
 						<ul id="field">
 							<li class="label">
@@ -53,7 +53,55 @@
 							</li>
 							<li class="message"></li>
 						</ul>
+						
+						<div class="clear"></div>
+						
+						<ul id="field">
+							<li class="label">
+								<g:message code="nomeCompleto.label" default="Nome Completo" />
+							</li>
+							<li class="input">
+								<g:textField name="perfil.nomeCompleto" value="${usuario?.perfil?.nomeCompleto}" />
+							</li>
+							<li class="message"></li>
+						</ul>
 	
+						<div class="clear"></div>
+
+						<ul id="field">
+							<li class="label">
+								<g:message code="estado.label" default="Estado" />
+							</li>
+							<li class="input">
+								<g:textField name="perfil.estado" value="${usuario?.perfil?.estado}"/>
+							</li>
+							<li class="message"></li>
+						</ul>
+						
+						<div class="clear"></div>
+						
+						<ul id="field">
+							<li class="label">
+								<g:message code="cidade.label" default="Cidade" />
+							</li>
+							<li class="input">
+								<g:textField name="perfil.cidade" value="${usuario?.perfil?.cidade}"/>
+							</li>
+							<li class="message"></li>
+						</ul>
+						
+						<div class="clear"></div>
+	
+						<ul id="field">
+							<li class="label">
+								<g:message code="pais.label" default="Pais" />
+							</li>
+							<li class="input">
+								<g:textField name="perfil.pais" value="${usuario?.perfil?.pais}"/>
+							</li>
+							<li class="message"></li>
+						</ul>
+
 						<div class="clear"></div>
 
 						<ul id="submitField">

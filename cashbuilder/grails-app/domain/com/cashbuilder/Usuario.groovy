@@ -6,6 +6,7 @@ class Usuario {
 	String nome
 	String password
 	Date dateCreated
+	Perfil perfil
 	
 	static hasMany = [orcamentos: Orcamento, categorias: Categoria, pagamentos: Pagamento, metas: Meta]
 	
@@ -18,9 +19,14 @@ class Usuario {
 						return passwd != user.email
 					}
 				)
+		perfil(nullable:true)
     }
 
 	String toString(){
 		"${nome} : ${email}"
+	}
+	
+	static mapping = {
+		perfil lazy:false
 	}
 }

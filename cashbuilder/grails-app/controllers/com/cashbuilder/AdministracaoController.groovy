@@ -35,7 +35,7 @@ class AdministracaoController {
 
 		if(user){
 			session.user = user
-			def perfil = Perfil.findByUsuario(user)
+			def perfil = user.perfil
 			
 			if(!perfil){
 				redirect(controller:'perfil')
