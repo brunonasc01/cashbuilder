@@ -59,4 +59,24 @@ class UsuarioController {
 			render ""
 		}
 	}
+	
+	def editValidator = { UsuarioEditCommand urc ->
+
+		def fieldName = params.fieldName
+		urc.perfil.validate()
+		def bean = urc
+
+		if(fieldName.contains("perfil")){
+			fieldName = fieldName.substring( fieldName.indexOf(".")+1,fieldName.size())
+			bean = urc.perfil
+		}
+		
+		if(fieldName.equals("FORM") && (urc.perfil.hasErrors() || urc.hasErrors())){
+			render "${message(code: 'default.form.error.message', default: 'error')}"
+		} else if(fieldName && bean.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: bean,field: fieldName)
+		} else {
+			render ""
+		}
+	}
 }

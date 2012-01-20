@@ -9,7 +9,15 @@
         
         <g:javascript>
 		$(document).ready(function() {
-			//ajaxValidate("/cashbuilder/usuario/editValidator","editUser",true);
+			new dgCidadesEstados({
+			    estado: $('#estado').get(0),
+			    cidade: $('#cidade').get(0),
+			    estadoVal: '${usuario?.perfil?.estado}',
+			    cidadeVal: '${usuario?.perfil?.cidade}',
+			    change: true
+			  });
+		
+			ajaxValidate("/cashbuilder/usuario/editValidator","editUser",true);
 		});
 		</g:javascript>
     </head>
@@ -73,7 +81,7 @@
 								<g:message code="estado.label" default="Estado" />
 							</li>
 							<li class="input">
-								<g:textField name="perfil.estado" value="${usuario?.perfil?.estado}"/>
+								<input type="text" name="perfil.estado" id="estado" value="${usuario?.perfil?.estado}"/>
 							</li>
 							<li class="message"></li>
 						</ul>
@@ -85,7 +93,7 @@
 								<g:message code="cidade.label" default="Cidade" />
 							</li>
 							<li class="input">
-								<g:textField name="perfil.cidade" value="${usuario?.perfil?.cidade}"/>
+								<input type="text" name="perfil.cidade" id="cidade" value="${usuario?.perfil?.cidade}"/>
 							</li>
 							<li class="message"></li>
 						</ul>
