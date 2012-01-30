@@ -2,6 +2,8 @@ package com.cashbuilder
 
 import com.cashbuilder.cmd.UsuarioCommand;
 import com.cashbuilder.cmd.UsuarioEditCommand;
+import com.cashbuilder.cmd.UsuarioEmailEditCommand;
+import com.cashbuilder.cmd.UsuarioPasswordEditCommand;
 
 class UsuarioController {
 
@@ -29,6 +31,18 @@ class UsuarioController {
 
 		[usuario: user]
     }
+	
+	def edit_mail = {
+		def user = session.user.attach()
+
+		[usuario: user]
+	}
+	
+	def edit_password = {
+		def user = session.user.attach()
+
+		[usuario: user]
+	}
 
     def update = {
 		try {
@@ -42,6 +56,33 @@ class UsuarioController {
 			render(view: "edit")
 		}
     }
+	
+	def updateMail = { UsuarioEmailEditCommand uec ->
+		try {
+			def user = usuarioService.updateMail(uec)
+			session.user = user
+
+			flash.message = "E-mail atualizado com sucesso"
+			redirect(controller: "administracao", action: "index")
+		} catch(Exception e){
+			flash.message = e.message
+			render(view: "edit_mail", model: [usuario: session.user.attach()])
+		}
+	}
+	
+	def updatePassword = { UsuarioPasswordEditCommand upc ->
+		try {
+			def user = usuarioService.updatePassword(upc)
+			session.user = user
+
+			flash.message = "Senha atualizada com sucesso"
+			redirect(controller: "administracao", action: "index")
+		} catch(Exception e){
+			flash.message = e.message
+			
+			render(view: "edit_password", model: [usuario: session.user.attach()])
+		}
+	}
 
     def delete = {
        
@@ -76,6 +117,32 @@ class UsuarioController {
 		} else if(fieldName && bean.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: bean,field: fieldName)
 		} else {
+			render ""
+		}
+	}
+	
+	def emailEditValidator = { UsuarioEmailEditCommand uec ->
+		
+		def fieldName = params.fieldName
+
+		if(fieldName.equals("FORM") && uec.hasErrors()){
+			render "${message(code: 'default.form.error.message', default: 'error')}"
+		} else if(fieldName && uec.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: uec,field: fieldName)
+		}else {
+			render ""
+		}
+	}
+	
+	def passwordEditValidator = { UsuarioPasswordEditCommand uec ->
+		
+		def fieldName = params.fieldName
+
+		if(fieldName.equals("FORM") && uec.hasErrors()){
+			render "${message(code: 'default.form.error.message', default: 'error')}"
+		} else if(fieldName && uec.errors.hasFieldErrors(fieldName)){
+			render g.renderErrors(bean: uec,field: fieldName)
+		}else {
 			render ""
 		}
 	}
