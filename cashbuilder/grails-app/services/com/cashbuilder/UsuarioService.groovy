@@ -68,4 +68,44 @@ class UsuarioService {
 		}
 		throw new RuntimeException("Usuario Invalido")
 	}
+	
+	Usuario updateMail(def userMailCommand){
+		
+		if(userMailCommand.validate()){
+			def userInstance = Usuario.get(userMailCommand.id)
+			
+			if(userInstance){
+				
+				if(userInstance.email != userMailCommand.email){
+					throw new RuntimeException("O e-mail atual esta incorreta")
+				}
+				
+				userInstance.email = userMailCommand.emailNovo
+				userInstance.save(flush: true)
+				return userInstance
+			}
+		}
+
+		throw new RuntimeException("Dados Invalidos")
+	}
+	
+	Usuario updatePassword(def userPasswordCommand){
+		
+		if(userPasswordCommand.validate()){
+			def userInstance = Usuario.get(userPasswordCommand.id)
+			
+			if(userInstance){
+				
+				if(userInstance.password != Encoder.encode(userPasswordCommand.password)){
+					throw new RuntimeException("A senha atual esta incorreta")
+				}
+				
+				userInstance.password = Encoder.encode(userPasswordCommand.passwordNovo)
+				userInstance.save(flush: true)
+				return userInstance
+			}
+		}
+
+		throw new RuntimeException("Dados Invalidos")
+	}
 }

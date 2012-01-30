@@ -10,6 +10,16 @@
 			<div id="title">
     			<h3>Administracao</h3>
     		</div>
+
+			
+	    		<g:if test="${flash.message}">
+	    			<div class="inside">
+						<div class="success">
+							${flash.message}
+						</div>
+					</div>
+				</g:if>
+			
     	</div>
     
 	  	<div class="span-8">
@@ -33,6 +43,10 @@
 				<div class="inside">
 					<ul>
 						<li><g:link controller="usuario" action="edit">Alterar Dados Cadastrais</g:link></li>
+						
+						<li><g:link controller="usuario" action="edit_mail">Atualizar endereço de E-Mail</g:link></li>
+						
+						<li><g:link controller="usuario" action="edit_password">Alterar senha de acesso</g:link></li>
 					</ul>
 				</div>
 			</div>

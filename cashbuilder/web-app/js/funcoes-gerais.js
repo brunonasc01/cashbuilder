@@ -144,7 +144,19 @@ function processParameters(name,form){
 	if(name.indexOf('Repeat') != -1){
 		var ancName = name.substring(0,name.indexOf('Repeat'));
 		var ancField = form.find('input[name='+ancName+']');
-		
+		var ancField2 = form.find('input[name='+ancName+'Novo]');
+
+		params += '&';
+		params += ancField.serialize();
+
+		if(ancField2 != null){	
+			params += '&';
+			params += ancField2.serialize();
+		}
+	}else if(name.indexOf('Novo') != -1){
+		var ancName = name.substring(0,name.indexOf('Novo'));
+		var ancField = form.find('input[name='+ancName+']');
+
 		params += '&';
 		params += ancField.serialize();
 	} else if(name.indexOf('data') != -1 || name == name.indexOf('date') != -1){
