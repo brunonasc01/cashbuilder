@@ -34,21 +34,28 @@
     				Estatisticas
     			</div>
     			
-    			<div class="inside">
+    			<div id="goalBox" class="inside">
     				<ul>
-    					<li>
+    					<li class="label">
     						Metas em Andamento
-    						00
     					</li>
-    					<li>
+    					<li class="value">
+    						${goalResults[0]}
+    					</li>
+    					<li class="label">
     						Metas Alcancadas
-    						00
     					</li>
-    					<li>
+    					<li class="value">
+    						${goalResults[1]}
+    					</li>
+    					<li class="label">
     						Metas Expiradas
-    						00
+    					</li>
+    					<li class="value">
+    						${goalResults[2]}
     					</li>
     				</ul>
+    				<div class="clear"></div>
     			</div>
 			</div>
 	  	</div>

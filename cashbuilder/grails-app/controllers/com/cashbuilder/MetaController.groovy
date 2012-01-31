@@ -14,8 +14,9 @@ class MetaController {
 		def user = session.user.attach()
 		def categoriesList = geralService.getCategoriesList(user)
 		def listaMetas = metaService.getMetas(user)
-
-		[goal : true, listCategorias: categoriesList, metas: listaMetas ]
+		def goalResults = metaService.getGoalStats(user)
+		
+		[goal : true, listCategorias: categoriesList, metas: listaMetas, goalResults: goalResults ]
 	}
 		
 	def save = {

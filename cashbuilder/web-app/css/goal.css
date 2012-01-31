@@ -14,3 +14,8 @@
 #goal ul li.of { width: 5%; }
 #goal ul li.space { width: 55%; }
 #goal ul li.bar { width: 100%; clear:both;}
+
+#goalBox ul { width: auto;  }
+#goalBox ul li { float: left; font-weight: bold; margin:0; }
+#goalBox li.label { width: 160px; text-align: right; }
+#goalBox li.value { width: 70px; padding-left: 10px; }
