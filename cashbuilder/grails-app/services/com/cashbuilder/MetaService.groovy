@@ -1,5 +1,7 @@
 package com.cashbuilder
 
+import java.text.DecimalFormat;
+
 import com.cashbuilder.beans.meta.MetaBean;
 import com.cashbuilder.utils.Constants;
 
@@ -129,9 +131,12 @@ class MetaService {
 		}
 
 		if(goalsTotal > 0){
-			result[0] = "${workingGoals} (${(workingGoals/goalsTotal)*100}%)"
-			result[1] = "${finishedGoals} (${(finishedGoals/goalsTotal)*100}%)"
-			result[2] = "${lostGoals} (${(lostGoals/goalsTotal)*100}%)"
+			DecimalFormat df = new DecimalFormat()
+			df.setMaximumFractionDigits(2);
+			
+			result[0] = "${workingGoals} (${df.format((workingGoals/goalsTotal)*100)}%)"
+			result[1] = "${finishedGoals} (${df.format((finishedGoals/goalsTotal)*100)}%)"
+			result[2] = "${lostGoals} (${df.format((lostGoals/goalsTotal)*100)}%)"
 		}
 		
 		result
