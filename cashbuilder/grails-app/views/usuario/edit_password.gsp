@@ -46,13 +46,13 @@
 							<li class="label">
 								<g:message code="edit.password.label" default=Senha" />
 							</li>
-							<li class="input">
+							<li class="input field-space">
 								<g:passwordField name="password" value="" />
 							</li>
 							<li class="message"></li>
 						</ul>
 
-						<div class="clear"></div> <hr class="space"></hr>
+						<div class="clear"></div> <span class="spaceBox"/>
 
 						<ul id="field">
 							<li class="label">

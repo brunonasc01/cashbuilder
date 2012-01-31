@@ -42,9 +42,9 @@
 				</div>
 				<div class="inside">
 					<ul>
-						<li><g:link controller="usuario" action="edit">Alterar Dados Cadastrais</g:link></li>
+						<li><g:link controller="usuario" action="edit">Alterar dados cadastrais</g:link></li>
 						
-						<li><g:link controller="usuario" action="edit_mail">Atualizar endereço de E-Mail</g:link></li>
+						<li><g:link controller="usuario" action="edit_mail">Alterar endereço de e-mail</g:link></li>
 						
 						<li><g:link controller="usuario" action="edit_password">Alterar senha de acesso</g:link></li>
 					</ul>

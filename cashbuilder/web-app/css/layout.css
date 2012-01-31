@@ -57,6 +57,7 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 #obox { margin:10px; }
 
 .title, .inside { padding: 0 0.5em; }
+.inside { padding-bottom: 0.5em; padding-top: 0.2em; }
 .title { font-weight: bold; background: #92b6c1;  }
 
 .positive { color: #00642D; }

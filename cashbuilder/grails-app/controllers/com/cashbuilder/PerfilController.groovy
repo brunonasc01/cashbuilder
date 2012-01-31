@@ -5,16 +5,10 @@ class PerfilController {
 	def geralService
 	
     def index = {
-	
-		def expensesList = []
-		
+
 		def namesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
 		
-		namesList.each { 
-			expensesList += new CustomExpenses(name:it,enabled:false)
-		}
-		
-		[ocultaMenu: true, expenses : expensesList]	
+		[ocultaMenu: true, expenses : namesList]	
 	}
 	
 	def save = {

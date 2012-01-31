@@ -46,13 +46,13 @@
 							<li class="label">
 								<g:message code="edit.email.label" default=Email" />
 							</li>
-							<li class="input">
+							<li class="input field-space">
 								<g:textField name="email" value="" />
 							</li>
 							<li class="message"></li>
 						</ul>
 
-						<div class="clear"></div> <hr class="space"></hr>
+						<div class="clear"></div>
 
 						<ul id="field">
 							<li class="label">

@@ -77,7 +77,7 @@ class UsuarioService {
 			if(userInstance){
 				
 				if(userInstance.email != userMailCommand.email){
-					throw new RuntimeException("O e-mail atual esta incorreta")
+					throw new RuntimeException("O e-mail atual esta incorreto")
 				}
 				
 				userInstance.email = userMailCommand.emailNovo
@@ -95,8 +95,9 @@ class UsuarioService {
 			def userInstance = Usuario.get(userPasswordCommand.id)
 			
 			if(userInstance){
-				
-				if(userInstance.password != Encoder.encode(userPasswordCommand.password)){
+				String oldPassword = Encoder.encode(userPasswordCommand.password)
+												
+				if(!userInstance.password.equals(oldPassword)){
 					throw new RuntimeException("A senha atual esta incorreta")
 				}
 				

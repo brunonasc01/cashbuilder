@@ -93,9 +93,9 @@
 								<ul>
 									<g:each var="expense" in="${expenses}">
 										<li>
-											<g:hiddenField name="expenses[${counter}].name" value="${expense.name }"></g:hiddenField>
+											<g:hiddenField name="expenses[${counter}].name" value="${expense }"></g:hiddenField>
 											<g:checkBox name="expenses[${counter}].enabled"></g:checkBox>
-											${expense.name }
+											${expense }
 										</li>
 										<g:set var="counter" value="${counter + 1}" />
 									</g:each>
