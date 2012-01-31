@@ -84,7 +84,7 @@ class AdministracaoController {
 		balanceBox.expense = orcamentoService.getTotalPrevisto(mes,false)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE 
 		
-		[ adm: true, df: df, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, balanceBox: balanceBox]
+		[ adm: true, df: df, monthIndex: iMes, itensDeb: listaDebito, itensCred: listaCredito, orcmMes: mes, meses: meses, balanceBox: balanceBox]
 	}
 	
 	def save_itens = {
@@ -102,7 +102,7 @@ class AdministracaoController {
 			flash.message = re.message
 		}
 
-		redirect(action:'adm_orcm')
+		redirect(action:'adm_orcm', params: [mesId: params.mesId])
 	}
 	
 	def validator = { UsuarioCommand urc ->

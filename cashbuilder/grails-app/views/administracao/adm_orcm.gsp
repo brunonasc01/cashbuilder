@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="<g:createLinkTo dir='css' file='adm.css'/>" />
     </head>
     <body>
-    	<g:render template="/elements/month_menu" var="action" bean="adm_orcm"></g:render>
-    
+    	<g:monthMenu action="adm_orcm" month="${monthIndex}" />
+
     	<div class="span-24">
 			<div id="title">
     			<h3>Orcamento Manual</h3>
@@ -69,6 +69,7 @@
 			            </g:hasErrors>
 					</g:else>
 	
+					<g:hiddenField name="mesId" value="${orcmMes.mes}"></g:hiddenField>
 					<g:hiddenField name="id" value="${orcmMes.id}"></g:hiddenField>
 					<g:set var="counter" value="${0}" />
 					

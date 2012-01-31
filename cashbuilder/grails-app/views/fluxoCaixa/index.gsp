@@ -18,8 +18,8 @@
 		</g:javascript>
     </head>
     <body>
-    	<g:render template="/elements/month_menu" var="index" bean="${monthIndex}"></g:render>
-    	
+		<g:monthMenu month="${monthIndex}" />
+
     	<div class="span-24">
 			<div id="title">
     			<h3>Mes - Ano</h3>
