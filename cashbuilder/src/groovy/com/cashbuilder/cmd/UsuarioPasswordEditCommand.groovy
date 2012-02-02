@@ -16,7 +16,7 @@ class UsuarioPasswordEditCommand {
 
 		password(blank: false)
 		
-		passwordNovo(blank: false, size: 6..8,
+		passwordNovo(blank: false, size: 6..20,
 			validator: { newPass, upc ->
 					if(newPass.equals(upc.password))
 						return ['passwordOld']

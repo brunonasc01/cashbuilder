@@ -21,7 +21,7 @@ class UsuarioCommand {
 			})
 		
 		nome(size:3..20, blank: false)
-		password(size: 6..8, blank: false,
+		password(size: 6..20, blank: false,
 					Validator: { passwd, user ->
 						return passwd != user.nome
 					})		

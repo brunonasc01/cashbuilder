@@ -11,6 +11,8 @@ class HomeController {
 	def geralService
 	def paymentService
 	
+	static allowedMethods = [save_registro: "POST"]
+	
     def index = {
 		
 		def user = session.user.attach()

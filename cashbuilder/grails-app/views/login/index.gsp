@@ -1,20 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
-        <title>Sistema Grails</title>
         <meta name="layout" content="base" />
         
         <g:javascript>
 		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/administracao/validator","loginForm",true);
+			ajaxValidate("/cashbuilder/login/validator","loginForm",true);
 		});
 		</g:javascript>
+
     </head>
 
     <body>
 		<div class="span-15">
 			<div id="obox">			
-				<g:form class="loginForm" name="loginForm" action="valida_login" controller="administracao">
+				<g:form class="loginForm" name="loginForm" action="validate_access">
 					<div class="title">
 						Login no Sistema
 					</div>

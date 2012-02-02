@@ -9,6 +9,8 @@ class MetaController {
 	def geralService
 	def metaService
 	
+	static allowedMethods = [save: "POST"]
+	
     def index = {
 		
 		def user = session.user.attach()

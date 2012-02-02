@@ -4,6 +4,8 @@ class PerfilController {
 		
 	def geralService
 	
+	static allowedMethods = [save: "POST"]
+	
     def index = {
 
 		def namesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]

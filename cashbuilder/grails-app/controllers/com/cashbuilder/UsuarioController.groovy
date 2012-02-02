@@ -9,7 +9,7 @@ class UsuarioController {
 
 	def usuarioService
 	
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", updateMail: "POST", updatePassword: "POST"]
 
 	def novo = { 
 		
@@ -19,7 +19,7 @@ class UsuarioController {
 		try{
 			def newUser = usuarioService.saveUser(urc)
 			flash.message = "Usuario registrado com sucesso"
-			redirect(controller: "administracao", action: "login")
+			redirect(controller: "login")
 		}catch(Exception e){
 			flash.message = e.message
 			render(view: "novo")
@@ -84,10 +84,6 @@ class UsuarioController {
 		}
 	}
 
-    def delete = {
-       
-    }
-	
 	def validator = { UsuarioCommand urc ->
 		
 		def fieldName = params.fieldName

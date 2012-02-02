@@ -14,51 +14,13 @@ import com.cashbuilder.utils.DateUtils;
 class AdministracaoController {
 
 	def orcamentoService
-	def geralService
-	def eventService
-	def usuarioService
+	def geralService	
+		
+	static allowedMethods = [save_itens: "POST"]
 	
     def index = {
 	
 		[adm : true]	
-	}
-	
-	def login = {
-		if(session.user){
-			redirect(controller:'home')
-		}
-	}
-	
-	def valida_login = {
-				
-		def user = usuarioService.verifyLogin(params) 
-
-		if(user){
-			session.user = user
-			def perfil = user.perfil
-			
-			if(!perfil){
-				redirect(controller:'perfil')
-			}else {
-				def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
-			
-				if(!budget){
-					geralService.createNewBudget(user, DateUtils.anoAtual)
-				}
-
-				eventService.checkEvents(user, null)
-				redirect(controller:'home')
-			}
-		}else{
-			flash.message = "Usuário ou Senha inválidos"
-			redirect(action:'login')
-		}
-	}
-	
-	def logoff = {
-
-		session.user = null
-		redirect(action:'login')
 	}
 
 	def adm_orcm = {
@@ -103,18 +65,5 @@ class AdministracaoController {
 		}
 
 		redirect(action:'adm_orcm', params: [mesId: params.mesId])
-	}
-	
-	def validator = { UsuarioCommand urc ->
-		
-		def fieldName = params.fieldName
-
-		if(fieldName.equals("FORM") && (urc.errors.hasFieldErrors("email") || urc.errors.hasFieldErrors("password"))){
-			render "${message(code: 'default.form.error.message', default: 'erro')}"
-		} else if(fieldName && urc.errors.hasFieldErrors(fieldName)){
-			render g.renderErrors(bean: urc,field: fieldName)
-		}else {
-			render ""
-		}
 	}
 }

@@ -3,10 +3,10 @@ package com.cashbuilder
 class LoginFilters {
 
     def filters = {
-        all(controller:'home|relatorio', action:'*') {
+        all(controller:'pagamento|home|fluxocaixa|orcamento|meta|relatorio|administracao', action:'*') {
             before = {
 				if (!session.user) {
-					redirect(controller: 'administracao', action: 'login')
+					redirect(controller: 'login')
 					return false
 				}
             }
