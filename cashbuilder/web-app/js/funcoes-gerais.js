@@ -88,8 +88,8 @@ function autoModal(id) {
 	});
 }
 
-function ajaxValidate(action,formId,short){
-	
+function ajaxValidate(action,formId){
+
 	var form = $('#'+formId);
 			
 	form.find('input[type="submit"]').click(function(e){
@@ -126,11 +126,7 @@ function ajaxValidate(action,formId,short){
 				data: $(this).serialize()+parameters,
 				cache: false,
 				success: function(html) {
-					if(!short){
-						renderErrors(html,i,formId)
-					} else {
-						renderShortErrors(html,i,formId)
-					}
+					renderShortErrors(html,i,formId)
 				}
 			});
 		});
@@ -188,27 +184,6 @@ function renderSubmitErrors(data,formId){
 		submitField.show();
 	}else{
 		submitField.hide();
-	}
-}
-
-function renderErrors(data,index,formId){
-
-	var formField = $('#'+formId).find('#field').eq(index);
-	
-	if(data.length > 0){
-		formField.find('div:last').removeClass('ok-msg');
-		
-		formField.find('label:first').addClass('error-label');
-		formField.find('input:first').addClass('error-input');
-		formField.find('div:last').addClass('error-msg');
-		formField.find('div:last').html(data);
-	} else {
-		formField.find('label:first').removeClass('error-label');
-		formField.find('input:first').removeClass('error-input');
-		formField.find('div:last').removeClass('error-msg');
-		
-		formField.find('div:last').html('OK');
-		formField.find('div:last').addClass('ok-msg');
 	}
 }
 

@@ -1,10 +1,12 @@
 <g:javascript>
 $(document).ready(function() {
-	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
-	ajaxValidate("/cashbuilder/pagamento/validator","editTransaction",true);
 	$( "input:submit, button, input:reset" ).button();
 });
 </g:javascript>
+
+<g:comboCategorias trigger="comboCategoria" target="comboSubcategorias"/>
+
+<g:validateForm controller="pagamento" form="editTransaction" />
 
 <g:if test="${pagamento }">
 	<g:form class="modalForm" name="editTransaction" action="update" controller="pagamento">

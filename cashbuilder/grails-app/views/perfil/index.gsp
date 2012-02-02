@@ -1,24 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
-        <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        
-		<g:javascript base="http://cidades-estados-js.googlecode.com/files/" src="cidades-estados-1.2-utf8.js"/>
-        
-		<g:javascript>
-		$(document).ready(function() {
-			new dgCidadesEstados({
-			    estado: $('#estado').get(0),
-			    cidade: $('#cidade').get(0),
-			    change: true
-			  });
-		
-			ajaxValidate("/cashbuilder/perfil/validator","profileForm",true);
-			
-			$('#cidade').addClass("sel_city");
-		});
-		</g:javascript>
+
+		<g:dgCidadesEstados estado="estado" cidade="cidade"/>		
+		<g:validateForm controller="perfil" form="profileForm" />
     </head>
     <body>    
     	<div id="obox">

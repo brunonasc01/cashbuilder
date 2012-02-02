@@ -5,11 +5,7 @@
     <head>
         <meta name="layout" content="base" />
 
-        <g:javascript>
-		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/usuario/emailEditValidator","editMail",true);
-		});
-		</g:javascript>
+		<g:validateForm controller="usuario" form="editMail" action="emailEditValidator" />
     </head>
     
     <body>

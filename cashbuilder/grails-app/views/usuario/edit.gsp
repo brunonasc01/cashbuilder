@@ -4,22 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
         <meta name="layout" content="base" />
-        
-        <g:javascript base="http://cidades-estados-js.googlecode.com/files/" src="cidades-estados-1.2-utf8.js"/>
-        
-        <g:javascript>
-		$(document).ready(function() {
-			new dgCidadesEstados({
-			    estado: $('#estado').get(0),
-			    cidade: $('#cidade').get(0),
-			    estadoVal: '${usuario?.perfil?.estado}',
-			    cidadeVal: '${usuario?.perfil?.cidade}',
-			    change: true
-			  });
-		
-			ajaxValidate("/cashbuilder/usuario/editValidator","editUser",true);
-		});
-		</g:javascript>
+
+		<g:dgCidadesEstados estado="estado" estado_valor="${usuario?.perfil?.estado}" 
+			cidade="cidade" cidade_valor="${usuario?.perfil?.cidade}" />
+		<g:validateForm controller="usuario" form="editUser" action="editValidator" />
     </head>
     
     <body>

@@ -1,10 +1,7 @@
 
-<g:javascript>
-$(document).ready(function() {
-	ajaxComboSubcategoria("comboCategoria","/cashbuilder/categoria/categoriaSelected","comboSubcategorias");
-	ajaxValidate("/cashbuilder/pagamento/validator","xpNewReg",true);
-});
-</g:javascript>
+<g:comboCategorias trigger="comboCategoria" target="comboSubcategorias"/>
+<g:validateForm controller="pagamento" form="xpNewReg" />
+
 
 <div id="lbox">
 	<g:form class="boxForm" name="xpNewReg" action="save_registro" controller="home">

@@ -6,11 +6,7 @@
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
         
-        <g:javascript>
-		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/usuario/validator","newUser",true);
-		});
-		</g:javascript>
+        <g:validateForm controller="usuario" form="newUser" />
     </head>
     
     <body>

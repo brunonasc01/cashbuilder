@@ -8,6 +8,7 @@ class Pagamento {
 	String descricao
 	Categoria categoria
 	Subcategoria subcategoria
+	int parcels	
 	
 	static belongsTo = [user: Usuario]
 	
@@ -21,5 +22,6 @@ class Pagamento {
 			})
 		categoria(nullable:false)
 		subcategoria(nullable:false)
+		parcels(blank:false, min:1)
     }
 }

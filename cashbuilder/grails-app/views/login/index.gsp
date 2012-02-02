@@ -2,13 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
         <meta name="layout" content="base" />
-        
-        <g:javascript>
-		$(document).ready(function() {
-			ajaxValidate("/cashbuilder/login/validator","loginForm",true);
-		});
-		</g:javascript>
 
+		<g:validateForm controller="login" form="loginForm" />
     </head>
 
     <body>
