@@ -44,6 +44,13 @@ class DateUtils {
 		int ultimoDia = cal.getActualMaximum(Calendar.DATE)
 		cal.set(Calendar.DATE,ultimoDia)
 		
+		int lastHour = cal.getActualMaximum(Calendar.HOUR_OF_DAY)
+		cal.set(Calendar.HOUR_OF_DAY,lastHour)
+		
+		int lastTime = cal.getActualMaximum(Calendar.MINUTE)
+		cal.set(Calendar.MINUTE,lastTime) 	
+		cal.set(Calendar.SECOND,lastTime)
+		
 		return new Date(cal.getTimeInMillis())
 	}
 	
