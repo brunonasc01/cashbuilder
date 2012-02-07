@@ -12,6 +12,9 @@ $(document).ready(function() {
 	<g:form class="modalForm" name="editTransaction" action="update" controller="pagamento">
 		<g:hiddenField name="id" value="${pagamento?.id}" />
 		<g:hiddenField name="version" value="${pagamento?.version}" />
+		<g:hiddenField name="parcels" value="${pagamento?.parcels}"></g:hiddenField>
+		<g:hiddenField name="natureza" value="${pagamento?.natureza}"></g:hiddenField>
+		<g:hiddenField name="user.id" value="${pagamento?.user?.id}"></g:hiddenField>
 
 		<ul id="field">
 			<li class="label">

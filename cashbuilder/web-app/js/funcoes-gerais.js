@@ -55,7 +55,7 @@ function modal(elemId,txtTitle){
 		modal: true,
 		resizable: false,
 		width: 460,
-		height: 320,
+		height: 400,
 		title: txtTitle
 	});
 }
@@ -88,6 +88,8 @@ function autoModal(id) {
 	});
 }
 
+var validateFieldTypes = 'input[type=text]:first,input[type=password]:first,select:first,textarea:first';
+
 function ajaxValidate(action,formId){
 
 	var form = $('#'+formId);
@@ -115,7 +117,7 @@ function ajaxValidate(action,formId){
 
 	form.find('#field').each(function(i){
 		
-		$(this).find('input:first,select:first,textarea:first').focusout(function(){
+		$(this).find(validateFieldTypes).focusout(function(){
 
 			var name = $(this).attr('name')
 			var parameters = processParameters(name,form);
@@ -193,15 +195,15 @@ function renderShortErrors(data,index,formId){
 	
 	if(data.length > 0){
 		formField.find('li:first').addClass('label-error');
-		formField.find('input:first,select:first,textarea:first').parent().addClass('input-error');
+		formField.find(validateFieldTypes).parent().addClass('input-error');
 		formField.find('li:last').addClass('message-error');
 		formField.find('li:last').html(data);
-		formField.find('input:first,select:first,textarea:first').parent().removeClass('input-ok');
+		formField.find(validateFieldTypes).parent().removeClass('input-ok');
 	} else {
 		formField.find('li:first').removeClass('label-error');
-		formField.find('input:first,select:first,textarea:first').parent().removeClass('input-error')
+		formField.find(validateFieldTypes).parent().removeClass('input-error')
 		formField.find('li:last').removeClass('message-error');
 		formField.find('li:last').html('');
-		formField.find('input:first,select:first,textarea:first').parent().addClass('input-ok');
+		formField.find(validateFieldTypes).parent().addClass('input-ok');
 	}
 }

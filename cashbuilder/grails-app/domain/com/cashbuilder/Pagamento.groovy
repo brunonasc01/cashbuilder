@@ -22,6 +22,11 @@ class Pagamento {
 			})
 		categoria(nullable:false)
 		subcategoria(nullable:false)
-		parcels(blank:false, min:1)
+
+		parcels(blank:false, min:1,
+			validator: { value ->
+					if( value in String )
+						return ['empty']
+			})
     }
 }

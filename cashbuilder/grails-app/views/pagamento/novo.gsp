@@ -3,12 +3,18 @@
 $(document).ready(function() {
 	$("input:submit, button, input:reset").button();
 });
+
+enableParcels();
 </g:javascript>
 
 <g:comboCategorias trigger="comboCategoria" target="comboSubcategorias"/>
 <g:validateForm controller="pagamento" form="newTransaction" />
 
 <g:form class="modalForm" name="newTransaction" action="save" controller="pagamento">
+
+	
+	<g:hiddenField name="natureza" value="D"></g:hiddenField>
+	<g:hiddenField name="user.id" value="-1"></g:hiddenField>
 
 	<ul id="field">
 		<li class="label">
@@ -34,6 +40,22 @@ $(document).ready(function() {
 		
 	<div class="clear"></div>
 	
+	<div id="hidden_element">
+		<ul id="field">
+			<li class="label">
+				<g:message code="pagamento.parcel.label" default="Parcelado ?" />
+			</li>
+			<li class="composed_input">
+				<g:checkBox name="parcel" />
+				<small id="parcel_msg">marque para inserir as parcelas</small>
+				<g:textField maxlength="2" size="2" name="parcels" value="1" />
+			</li>
+			<li class="message"></li>
+		</ul>
+
+		<div class="clear"></div>
+	</div>
+
 	<ul id="field">
 		<li class="label">
 			<g:message code="pagamento.categoria.label" default="Categoria" />
@@ -57,7 +79,7 @@ $(document).ready(function() {
 		<li class="input">
 			<g:if test="${listCategorias}">
 				<span id="comboSubcategorias">
-					<g:select name="subcategoria.id"
+					<g:select name="subcategoria.id" from=""
 						noSelection="['': 'Selecione uma categoria']" />
 				</span>
 			</g:if>
@@ -72,7 +94,7 @@ $(document).ready(function() {
 			<g:message code="pagamento.descricao.label" default="Descricao" />			
 		</li>
 		<li class="input">
-			<g:textField size="33" maxlength="150" name="descricao" value="" />
+			<g:textArea maxlength="150" name="descricao" value="" />
 		<li>
 		<li class="message"></li>
 	</ul>

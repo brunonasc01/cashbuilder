@@ -43,7 +43,7 @@ class HomeController {
 		
 		try {
 			def user = session.user.attach()
-			def newPayment = paymentService.savePayment(user, params.properties)
+			def newPayment = paymentService.savePayment(user, params)
 			flash.message = "Pagamento gravado com sucesso"
 		} catch (RuntimeException re){
 			flash.message = re.message

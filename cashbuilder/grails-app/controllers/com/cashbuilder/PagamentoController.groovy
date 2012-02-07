@@ -12,7 +12,7 @@ class PagamentoController {
 	def save = {
 		try {
 			def user = session.user.attach()
-			def newPayment = paymentService.savePayment(user, params.properties)
+			def newPayment = paymentService.savePayment(user, params)
 			flash.message = "Pagamento gravado com sucesso"
 		} catch (RuntimeException re){
 			flash.message = re.message
@@ -62,13 +62,20 @@ class PagamentoController {
 	def validator = { Pagamento payment ->
 		
 		String fieldName = params.fieldName
+		def specialFields = ["valor","parcels"]
 		
 		if(fieldName.indexOf(".") != -1){
 			fieldName = fieldName.substring(0, fieldName.indexOf("."))	
-		} else if(fieldName.equals("valor") || fieldName.equals("FORM")){
+		} else if(specialFields.contains(fieldName) || fieldName.equals("FORM")){
 				
 			if(!params.valor || geralService.containsLetters(params.valor)){
 				payment.valor = 0
+				payment.clearErrors()
+				payment.validate()
+			 }
+			
+			if(!params.parcels || geralService.containsLetters(params.parcels)){
+				payment.parcels = 0
 				payment.clearErrors()
 				payment.validate()
 			}

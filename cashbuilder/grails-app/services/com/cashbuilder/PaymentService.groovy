@@ -1,8 +1,11 @@
 package com.cashbuilder
 
+import java.util.Map;
+
 import grails.validation.ValidationException;
 
 import com.cashbuilder.utils.Constants;
+import com.cashbuilder.utils.DateUtils;
 
 class PaymentService {
 
@@ -12,19 +15,59 @@ class PaymentService {
 
     }
 	
-	Pagamento savePayment(Usuario user, String properties){
+	Pagamento savePayment(Usuario user, Map params){
 		if(user){
-			def pagamento = new Pagamento(properties)
-			pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO;
-			pagamento.user = user
+			int parcels = Integer.valueOf(params.parcels)?: 1
 
-			if(pagamento.save()){
-				return pagamento
+			if(parcels <= 1){
+				def pagamento = new Pagamento(params.properties)
+				pagamento.natureza = (pagamento.categoria?.receita)? Constants.CREDITO : Constants.DEBITO
+				pagamento.user = user
+
+				if(pagamento.save()){
+					return pagamento
+				} else {
+					throw new RuntimeException(message: "Pagamento invalido ou vazio")
+				}
 			} else {
-				throw new RuntimeException(message: "Pagamento invalido ou vazio")
+				savePaymentParcels(user,params)
+				return null
 			}
+			
 		}
 		throw new RuntimeException(message: "Usuario Invalido")
+	}
+	
+	void savePaymentParcels(Usuario user, Map params){
+		
+		Calendar paymentDate = Calendar.getInstance()
+		def basePayment = new Pagamento(params.properties)
+		basePayment.natureza = (basePayment.categoria?.receita)? Constants.CREDITO : Constants.DEBITO
+		basePayment.user = user
+						
+		paymentDate.setTime(basePayment.data)
+		int parcels = basePayment.parcels
+		basePayment.valor = basePayment.valor/parcels
+		basePayment.parcels = 1
+
+		int paymentMonth = paymentDate.get(Calendar.MONTH)
+		int paymentYear = paymentDate.get(Calendar.YEAR)
+
+		(0..parcels-1).each {
+			paymentDate.set(Calendar.MONTH,paymentMonth)
+			paymentDate.set(Calendar.YEAR,paymentYear)
+			
+			def paymentParcel = new Pagamento(basePayment.properties)
+			paymentParcel.data = new Date(paymentDate.getTimeInMillis())
+			paymentParcel.save(flush:true)
+			
+			if(paymentMonth == Calendar.DECEMBER){
+				paymentMonth = 0
+				paymentYear += 1
+			} else {
+				paymentMonth += 1
+			}
+		}
 	}
 	
 	boolean deletePayment(String paymentId){

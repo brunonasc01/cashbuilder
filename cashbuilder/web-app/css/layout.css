@@ -46,6 +46,7 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 
 /* Center */
 #content { background-color: #eee; min-height: 200px;}
+#hidden_element { display: none; }
 
 #title { margin: 20px 10px 0 10px; background: #92b6c1; padding: 1em 0.5em; }
 #title h3 { font-weight: bold; }

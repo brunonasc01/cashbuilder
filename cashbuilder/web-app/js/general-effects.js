@@ -91,3 +91,19 @@ function animateProgressBar(element){
 		}
 	},percent);
 }
+
+function enableParcels(){
+	$(document).ready(function(){
+		$('#hidden_element').show();
+		$('#parcels').toggle();
+		
+		$('#parcel').click(function(){
+			$('#parcel_msg').toggle();
+			$('#parcels').toggle();
+			
+			if(!$('#parcels').is(':visible')){
+				$('#parcels').attr("value","1");
+			}
+		});
+	});
+}
