@@ -33,7 +33,7 @@ class MetaController {
 		redirect(controller:"meta", action: "index")
 	}
 
-	def ajaxNovo = {
+	def newGoal = {
 		
 		def user = session.user.attach()
 		def listaCategorias = geralService.getCategoriesList(user)

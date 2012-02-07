@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.BalanceBoxBean;
+import com.cashbuilder.beans.DateBean;
 import com.cashbuilder.beans.orcamento.OrcamentoBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -26,8 +27,7 @@ class OrcamentoController {
 		def listSaidas = orcamentoService.getOrcmData(user, mes, false)
 		
 		OrcamentoBean orcamentoBean = new OrcamentoBean()
-		orcamentoBean.ano =  orcamento.ano
-		orcamentoBean.mes = DateUtils.getMes(mes.mes)
+		orcamentoBean.date = new DateBean(year: orcamento.ano, month: DateUtils.getMes(mes.mes))
 		orcamentoBean.listaCredito = listEntradas
 		orcamentoBean.listaDebito = listSaidas
 

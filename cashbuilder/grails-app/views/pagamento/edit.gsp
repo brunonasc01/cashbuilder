@@ -10,87 +10,95 @@ $(document).ready(function() {
 
 <g:if test="${pagamento }">
 	<g:form class="modalForm" name="editTransaction" action="update" controller="pagamento">
+		<div class="title">
+			Editar Lancamento
+		</div>
+		
 		<g:hiddenField name="id" value="${pagamento?.id}" />
 		<g:hiddenField name="version" value="${pagamento?.version}" />
 		<g:hiddenField name="parcels" value="${pagamento?.parcels}"></g:hiddenField>
 		<g:hiddenField name="natureza" value="${pagamento?.natureza}"></g:hiddenField>
 		<g:hiddenField name="user.id" value="${pagamento?.user?.id}"></g:hiddenField>
 
-		<ul id="field">
-			<li class="label">
-				<g:message code="pagamento.data.label" default="Data" />
-			</li>
-			<li class="input">
-				<g:jqDatePicker class="date" name="data" value="${pagamento?.data }" />
-			<li>
-			<li class="message"></li>
-		</ul>
-
-		<div class="clear"></div>
-
-		<ul id="field">
-			<li class="label">
-				<g:message code="pagamento.valor.label" default="Valor" />
-			</li>
-			<li class="input">
-				<g:textField maxlength="10" name="valor" value="${df.format(pagamento?.valor)}" />
-			<li>
-			<li class="message"></li>
-		</ul>
-
-		<div class="clear"></div>
-
-		<ul id="field">
-			<li class="label">
-				<g:message code="pagamento.categoria.label" default="Categoria" />
-			</li>
-			<li class="input">
-				<g:if test="${listCategorias}">
-					 <g:select id="comboCategoria" name="categoria.id"
-						from="${listCategorias?.categorias}" 
-						optionKey="id" value="${pagamento?.categoria.id}" noSelection="['': 'Selecione']" />
-				</g:if>
-			<li>
-			<li class="message"></li>
-		</ul>
-
-		<div class="clear"></div>
-		
-		<ul>
-			<li class="label">
-				<g:message code="pagamento.subcategoria.label" default="Subcategoria" />
-			</li>
-			<li class="input">
-				<g:if test="${listCategorias}">
-					<span id="comboSubcategorias">
-					 <g:select name="subcategoria.id"
-						from="${listCategorias?.subcategorias}" 
-						optionKey="id" value="${pagamento?.subcategoria.id }" noSelection="['': 'Selecione']" />
-					</span>
-				</g:if>
-			<li>
-			<li class="message"></li>
-		</ul>
-
-		<div class="clear"></div>
-
-		<ul id="field">
-			<li class="label">
-				<g:message code="pagamento.descricao.label" default="Descricao" />			
-			</li>
-			<li class="input">
-				<g:textField size="33" maxlength="150" name="descricao" value="${pagamento?.descricao }" />
-			<li>
-			<li class="message"></li>
-		</ul>
-
-		<div class="clear"></div>
-		
-		<ul id="submitField">
-			<li class="button">
-				<input type="submit" name="update" value="Update" class="edit" />
-			</li>
-			<li class="message"></li>
-		</ul>
+		<div class="inside">
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.data.label" default="Data" />
+				</li>
+				<li class="input">
+					<g:jqDatePicker class="date" name="data" value="${pagamento?.data }" />
+				<li>
+				<li class="message"></li>
+			</ul>
+	
+			<div class="clear"></div>
+	
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.valor.label" default="Valor" />
+				</li>
+				<li class="input">
+					<g:textField maxlength="10" name="valor" value="${df.format(pagamento?.valor)}" />
+				<li>
+				<li class="message"></li>
+			</ul>
+	
+			<div class="clear"></div>
+	
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.categoria.label" default="Categoria" />
+				</li>
+				<li class="input">
+					<g:if test="${listCategorias}">
+						 <g:select id="comboCategoria" name="categoria.id"
+							from="${listCategorias?.categorias}" 
+							optionKey="id" value="${pagamento?.categoria.id}" noSelection="['': 'Selecione']" />
+					</g:if>
+				<li>
+				<li class="message"></li>
+			</ul>
+	
+			<div class="clear"></div>
+			
+			<ul>
+				<li class="label">
+					<g:message code="pagamento.subcategoria.label" default="Subcategoria" />
+				</li>
+				<li class="input">
+					<g:if test="${listCategorias}">
+						<span id="comboSubcategorias">
+						 <g:select name="subcategoria.id"
+							from="${listCategorias?.subcategorias}" 
+							optionKey="id" value="${pagamento?.subcategoria.id }" noSelection="['': 'Selecione']" />
+						</span>
+					</g:if>
+				<li>
+				<li class="message"></li>
+			</ul>
+	
+			<div class="clear"></div>
+	
+			<ul id="field">
+				<li class="label">
+					<g:message code="pagamento.descricao.label" default="Descricao" />			
+				</li>
+				<li class="input">
+					<g:textField size="33" maxlength="150" name="descricao" value="${pagamento?.descricao }" />
+				<li>
+				<li class="message"></li>
+			</ul>
+	
+			<div class="clear"></div>
+			
+			<ul id="submitField">
+				<li class="button">
+					<input type="submit" name="update" value="Update" class="edit" />
+				</li>
+				<li class="message"></li>
+			</ul>
+			
+			<div class="clear"></div>
+		</div>
 	</g:form>			
 </g:if>

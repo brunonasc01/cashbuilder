@@ -18,7 +18,7 @@
 
 		<div class="span-24">
 			<div id="title">
-    			<h3>${orcamento.mes} - ${orcamento.ano }</h3>
+    			<h3>${orcamento.date?.month} - ${orcamento.date?.year }</h3>
     		</div>
     	</div>
 

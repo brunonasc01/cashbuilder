@@ -13,8 +13,7 @@
 
 		<g:javascript>
 		$(function() {
-			ajaxSubmitToModal('btSubmit','/cashbuilder/pagamento/ajaxEdit','popupNovo',
-				"${message(code: 'pagamento.edit.title', default: 'Editar')}");
+			ajaxSubmit('editButton','modal','edit');
 		});
 		</g:javascript>
 
@@ -22,8 +21,8 @@
 			<ul>
 				<li class="buttons">
 					<g:form name="formEdit" controller="pagamento">
-	                    <input type="hidden" name="id" value="${pg.id}" id="id" />
-	                    <input type="submit" id="btSubmit" name="edit" class="bt_edit" value="" title="editar" />
+	                    <g:hiddenField name="id" value="${pg.id}" />
+	                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
 	                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
 	                </g:form>
 				</li>

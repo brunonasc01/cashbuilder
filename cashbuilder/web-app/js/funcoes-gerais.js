@@ -50,6 +50,38 @@ function ajaxSubmitToModal(trigger,action,result,txtTitle){
 	});
 }
 
+function ajaxSubmit(trigger,result,action){
+
+	var submitButton = $('input[name='+trigger+']');
+
+	submitButton.click(function(e){
+		e.preventDefault();
+
+		var formData = $(this).parents('form:first').serialize();
+		var formAction = $(this).parents('form:first').attr('action');
+		var returnElement = $("#"+result)
+
+		if(action != null){
+			formAction += '/'+action;
+		}
+
+		$.ajax({
+			type: 'POST',
+			data: formData,
+			url: formAction,
+			success:function(data,textStatus){
+				returnElement.html(data);
+			},
+			beforeSend: function(){
+				returnElement.html('<img src="/cashbuilder/images/ajax-loader.gif"/>');
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){},
+			complete:function(XMLHttpRequest,textStatus){}
+		});
+	});
+}
+
+
 function modal(elemId,txtTitle){
 	$("#"+elemId).dialog({
 		modal: true,

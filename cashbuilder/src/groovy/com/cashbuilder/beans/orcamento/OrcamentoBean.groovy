@@ -1,9 +1,10 @@
 package com.cashbuilder.beans.orcamento
 
+import com.cashbuilder.beans.DateBean;
+
 class OrcamentoBean {
 
-	def ano
-	def mes
+	DateBean date
 	def listaCredito
 	def listaDebito
 }

@@ -75,6 +75,7 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 #lastTransactionsBox ul li.category { font-style: italic;  }
 #lastTransactionsBox ul li.description { width: 100%; font-size: 95%; margin-bottom: 5px; }
 
+.boxButton { margin: 10% 50px; font-weight: bold; }
 
 /* background colors */
 /* fiorde tropical #6a9bac */

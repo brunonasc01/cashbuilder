@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.BalanceBoxBean;
+import com.cashbuilder.beans.DateBean
 import com.cashbuilder.beans.fluxocaixa.FluxoCaixaBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
@@ -26,7 +27,8 @@ class FluxoCaixaController {
 		def mes = OrcmMes.findByMesAndOrcamento(mesAtual,orcamento)
 						
 		FluxoCaixaBean bean = new FluxoCaixaBean(pagamentos: geralService.getPagamentos(user,mesAtual,anoAtual))
-
+		bean.date = new DateBean(year: anoAtual, month: DateUtils.getMes(mesAtual))
+		
 		BalanceBoxBean balanceBox = new BalanceBoxBean()
 		balanceBox.title = "box.balance.title2"
 		balanceBox.income = orcamentoService.getTotalRealizado(mes,user,Constants.CREDITO)

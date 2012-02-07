@@ -9,8 +9,7 @@
         
         <g:javascript>
         	$(document).ready(function() {
-				ajaxModal("linkNovaMeta","/cashbuilder/meta/ajaxNovo","popupNovo",
-				"${message(code: 'meta.novo.title', default: 'Novo')}");
+				ajaxSubmit('newButton','modal');
 			});
         </g:javascript>
     </head>
@@ -24,9 +23,9 @@
     
 	  	<div class="span-7">
 	  		<div id="lbox">
-    			<g:link elementId="linkNovaMeta" action="novo" >
-					Nova Meta
-				</g:link>
+	  			<g:form action="newGoal">
+					<g:submitButton name="newButton" class="boxButton" value="Nova Meta" />
+				</g:form>
 			</div>
 			
 			<div id="lbox">
@@ -62,6 +61,7 @@
 
 	  	<div class="span-17 last">
 			<div id="rbox">
+			<div id="modal">
 				<div class="inside">
 	            <g:if test="${metas }">
 	            	<g:set var="prog" value="${0}" />
@@ -111,9 +111,8 @@
 	            	</g:each>
 	            </g:if>
 	            </div>
+	        </div>
             </div>
 	  	</div>
-	  	
-	  	<div id="popupNovo" class=""></div>
 	</body>		
 </html>

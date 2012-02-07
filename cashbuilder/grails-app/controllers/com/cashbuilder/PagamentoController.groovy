@@ -1,7 +1,5 @@
 package com.cashbuilder
 
-import com.cashbuilder.utils.Constants;
-
 class PagamentoController {
 
 	def geralService
@@ -17,7 +15,7 @@ class PagamentoController {
 		} catch (RuntimeException re){
 			flash.message = re.message
 		}
-		redirect(controller:"fluxoCaixa", action: "index")
+		redirect(controller:"fluxoCaixa", action: "index", params: [mesId: params.mesId])
 	}
 	
 	def delete = {
@@ -40,13 +38,14 @@ class PagamentoController {
 		redirect(controller:"fluxoCaixa", action: "index")
 	}
 	
-	def ajaxNovo = {		
+	def newTransaction = {
 		def user = session.user.attach()
 		def categoriesList = geralService.getCategoriesList(user)
-		render(view: "novo", model: [listCategorias: categoriesList])
-	}
 
-	def ajaxEdit = {
+		render(view: "novo", model: [listCategorias: categoriesList, mesId: params.mesId])
+	}
+	
+	def edit = {
 		def pagamento = Pagamento.get(params.id)
 		
 		if (!pagamento) {
