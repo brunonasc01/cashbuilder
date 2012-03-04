@@ -1,15 +1,9 @@
 /* cashflow */
-#itemList { padding: 0; }
+table { background: #bbb; }
+table tr.header td{ font-weight: bold; background: #bbb; font-size: 1em; }
+table td { background: #fff; border: 1px solid #bbb; font-size: 0.9em; text-align: center; }
+*table td { border: 0; }
 
-#itemList ul { width: inherit; background: #ccc; }
-#itemList ul.header li { font-weight: bold; background: #bbb; font-size: 1em; }
-#itemList ul li { background: #fff; float: left; text-align: center; margin:0; font-size: 0.9em; }
-#itemList ul li.buttons { width: 10%; }
-#itemList ul li.day { width: 5%; }
-#itemList ul li.in { width: 15%; }
-#itemList ul li.out { width: 15%; }
-#itemList ul li.category { width: 25%; }
-#itemList ul li.desc { width: 30%; }
 
 /* transaction form */
 form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}

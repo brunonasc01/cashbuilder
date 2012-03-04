@@ -40,7 +40,7 @@
 
 						<ul id="field">
 							<li class="label">
-								<g:message code="edit.password.label" default=Senha" />
+								<g:message code="edit.password.label" default="Senha" />
 							</li>
 							<li class="input field-space">
 								<g:passwordField name="password" value="" />

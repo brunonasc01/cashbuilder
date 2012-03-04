@@ -93,7 +93,7 @@ function animateProgressBar(element){
 }
 
 function enableParcels(){
-	$(document).ready(function(){
+	$(function(){
 		$('#hidden_element').show();
 		$('#parcels').toggle();
 		
@@ -105,5 +105,11 @@ function enableParcels(){
 				$('#parcels').attr("value","1");
 			}
 		});
+	});
+}
+
+function styleButtons(){
+	$(function() {
+		$( "input:submit, button, input:reset" ).button();
 	});
 }

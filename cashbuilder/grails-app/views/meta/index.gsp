@@ -4,11 +4,10 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='goal.css'/>" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='modalform.css'/>" />
+        <r:require modules="goal"/>
         
         <g:javascript>
-        	$(document).ready(function() {
+        	$(function() {
 				ajaxSubmit('newButton','modal');
 			});
         </g:javascript>
@@ -23,9 +22,11 @@
     
 	  	<div class="span-7">
 	  		<div id="lbox">
-	  			<g:form action="newGoal">
-					<g:submitButton name="newButton" class="boxButton" value="Nova Meta" />
-				</g:form>
+	  			<div class="inside center">
+		  			<g:form action="newGoal">
+						<g:submitButton name="newButton" class="boxButton" value="Nova Meta" />
+					</g:form>
+				</div>
 			</div>
 			
 			<div id="lbox">

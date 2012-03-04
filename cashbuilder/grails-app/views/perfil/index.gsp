@@ -18,6 +18,7 @@
 
 				<g:form class="userForm" name="profileForm" action="save">
 					<g:hiddenField name="primeiroLogin" value="false"></g:hiddenField>
+					<g:hiddenField name="usuario.id" value="-1"></g:hiddenField>
 				
 					<ul id="field">
 						<li class="label">

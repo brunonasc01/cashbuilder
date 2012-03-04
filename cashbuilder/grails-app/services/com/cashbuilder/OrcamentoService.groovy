@@ -42,7 +42,9 @@ class OrcamentoService {
 		Date primeiroDia = DateUtils.getPrimeiroDia(mes, ano)
 		Date ultimoDia = DateUtils.getUltimoDia(mes, ano)
 
-		double total = Pagamento.createCriteria().get {
+		def c =  Pagamento.createCriteria()
+		
+		def total = c.get {
 			and {
 				eq('user', usuario)
 				eq(nomeCriterio, criterio)
@@ -147,7 +149,9 @@ class OrcamentoService {
 			def categorias = Categoria.findAllByReceita(criterio)
 		
 			if(categorias){
-				total = OrcmItem.createCriteria().get {
+				def c = OrcmItem.createCriteria()
+				
+				total = c.get {
 					and {
 						eq('mes', mes)
 						'in'('categoria', categorias)

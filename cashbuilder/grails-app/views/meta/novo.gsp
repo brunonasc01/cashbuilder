@@ -1,8 +1,6 @@
 
 <g:javascript>
-$(document).ready(function() {
-	$( "input:submit, button, input:reset" ).button();
-});
+styleButtons()
 </g:javascript>
 
 <g:comboCategorias trigger="comboCategoria" target="comboSubcategorias" action="categoriaMultipleSelected"/>
@@ -10,6 +8,8 @@ $(document).ready(function() {
 <g:validateForm controller="meta" form="newGoal" />
 
 <g:form class="modalForm" name="newGoal" controller="meta" action="save">
+	<g:hiddenField name="user.id" value="-1"></g:hiddenField>
+
 	<div class="title">
 		Nova Meta
 	</div>
@@ -121,3 +121,5 @@ $(document).ready(function() {
 		<div class="clear"></div>
 	</div>
 </g:form>
+
+<r:layoutResources disposition="defer"/>

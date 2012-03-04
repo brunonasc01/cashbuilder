@@ -40,7 +40,7 @@
 
 						<ul id="field">
 							<li class="label">
-								<g:message code="edit.email.label" default=Email" />
+								<g:message code="edit.email.label" default="Email" />
 							</li>
 							<li class="input field-space">
 								<g:textField name="email" value="" />

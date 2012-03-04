@@ -3,7 +3,7 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='adm.css'/>" />
+        <r:require module="adm"/>
     </head>
     <body>
     	<div class="span-24">

@@ -25,7 +25,8 @@ class GeralService {
 	 */
 	double getTotalPagamentos(Usuario usuario, Date dataInicial, Date dataFinal, String natureza){
 		
-		double total = Pagamento.createCriteria().get {
+		def c =  Pagamento.createCriteria()
+		double total = c.get {
 			and {
 				eq('user', usuario)
 				eq('natureza', natureza)
@@ -58,7 +59,8 @@ class GeralService {
 	ListaCategoriasBean getCategoriesList(Usuario user){
 		
 		def categorias = Categoria.findAllByUser(user)
-		def subcategorias = Subcategoria.createCriteria().list{
+		def c =  Subcategoria.createCriteria()
+		def subcategorias = c.list{
 			'in'('categoria', categorias)
 		}
 		
@@ -88,7 +90,8 @@ class GeralService {
 		Date primeiroDia = DateUtils.getPrimeiroDia(month,year)
 		Date ultimoDia = DateUtils.getUltimoDia(month,year)
 
-		def pagamentos = Pagamento.createCriteria().list {
+		def c = Pagamento.createCriteria()
+		def pagamentos = c.list {
 			and {
 				eq('user', user)
 				between('data', primeiroDia, ultimoDia)

@@ -56,7 +56,7 @@
 				
 					<ul id="field">
 						<li class="label">
-							<g:message code="nome.label" default=Nome" />
+							<g:message code="nome.label" default="Nome" />
 						</li>
 						<li class="input">
 							<g:textField name="nome" value="${usuarioInstance?.nome}" />
@@ -68,7 +68,7 @@
 
 					<ul id="field">
 						<li class="label">
-							<g:message code="password.label" default=Senha" />
+							<g:message code="password.label" default="Senha" />
 						</li>
 						<li class="input">
 							<g:passwordField name="password" value="${usuarioInstance?.password}" />
@@ -80,7 +80,7 @@
 
 					<ul id="field">
 						<li class="label">
-							<g:message code="passwordRepeat.label" default=Repetir Senha" />
+							<g:message code="passwordRepeat.label" default="Repetir Senha" />
 						</li>
 						<li class="input">
 							<g:passwordField name="passwordRepeat" value="${usuarioInstance?.passwordRepeat}" />

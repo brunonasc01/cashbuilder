@@ -1,0 +1,31 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:element name="graph" type="graph"/>
+	<xsd:complexType name="graph">
+		<xsd:sequence>
+			<xsd:element ref="set" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		
+		<xsd:attribute name="caption" default="" type="xsd:string"/>
+		<xsd:attribute name="yAxisName" default="" type="xsd:string"/>
+		<xsd:attribute name="numberPrefix" default="" type="xsd:string"/>
+		
+		<xsd:attribute name="decimalPrecision" default="0" type="xsd:string"/>
+		<xsd:attribute name="divlinedecimalPrecision" default="0" type="xsd:string"/>
+		<xsd:attribute name="limitsdecimalPrecision" default="0" type="xsd:string"/>
+		<xsd:attribute name="inDecimalSeparator" default="," type="xsd:string"/>
+	  	<xsd:attribute name="inThousandSeparator" default="." type="xsd:string"/>
+	  	<xsd:attribute name="decimalSeparator" default="," type="xsd:string"/>
+	  	<xsd:attribute name="thousandSeparator" default="." type="xsd:string"/>
+
+		<xsd:attribute name="palette" default="2" type="xsd:string"/>
+	 </xsd:complexType>
+	
+	<xsd:element name="set" type="set"/>
+	<xsd:complexType name="set">
+		<xsd:attribute name="name" type="xsd:string"/> 
+		<xsd:attribute name="value" type="xsd:decimal"/>
+		<xsd:attribute name="color" type="xsd:string"/> 
+	</xsd:complexType>
+
+</xsd:schema> 

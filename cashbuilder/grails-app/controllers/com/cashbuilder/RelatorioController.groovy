@@ -2,10 +2,12 @@ package com.cashbuilder
 
 import java.util.Date;
 
+import com.cashbuilder.beans.relatorio.GraphDataBean;
 import com.cashbuilder.beans.relatorio.MultiBarChartDataBean;
 import com.cashbuilder.beans.relatorio.PieChartDataBean;
 import com.cashbuilder.utils.Constants;
 import com.cashbuilder.utils.DateUtils;
+import com.grailsfusioncharts.beans.Column3dChartBean;
 import com.grailsfusioncharts.beans.MultiBarChartBean;
 import com.grailsfusioncharts.beans.MultiLineChartBean;
 import com.grailsfusioncharts.beans.PieChartBean;
@@ -28,6 +30,7 @@ class RelatorioController {
 		
 		//grafico de pizza
 		def pieDataList = []
+		def columnDataList = []
 		
 		categorias.each { categoria ->
 
@@ -36,9 +39,13 @@ class RelatorioController {
 			if(totalRealizado > 0){
 				PieChartDataBean bean = new PieChartDataBean(categoria: categoria.nome, total: totalRealizado)
 				pieDataList += bean
+				
+				GraphDataBean dataBean = new GraphDataBean(name: categoria.nome, value: totalRealizado)
+				columnDataList += dataBean
 			}
 		}
 		
+		String columnData = Column3dChartBean.generateGraph(columnDataList)
 		String pieData = PieChartBean.generateGraph(pieDataList)
 		
 		//Definicao de mes inicial e final
@@ -59,20 +66,6 @@ class RelatorioController {
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
-		//grafico de linhas
-		def lineDataList = []
-		
-		for(int idMes in firstMonth..lastMonth){
-			def orcmMes = OrcmMes.findByMesAndOrcamento(idMes,orcamento)
-			double entradas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.CREDITO)
-			double saidas = orcamentoService.getTotalRealizado(orcmMes,user,Constants.DEBITO)
-			
-			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMes(idMes),entradas:entradas,saidas:saidas)
-			lineDataList += bean
-		}
-
-		String lineData = MultiLineChartBean.generateGraph(lineDataList)
-		
-		[stats:true, pieData: pieData, barData: barData, lineData: lineData]	
+		[stats:true, pieData: pieData, columnData: columnData, barData: barData]	
 	}
 }

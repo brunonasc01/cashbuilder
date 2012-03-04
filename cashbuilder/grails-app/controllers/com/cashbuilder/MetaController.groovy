@@ -28,7 +28,6 @@ class MetaController {
 			flash.message = "Meta gravada com sucesso"
 		} catch (RuntimeException re){
 			flash.message = re.message
-			println re.message
 		}
 		redirect(controller:"meta", action: "index")
 	}

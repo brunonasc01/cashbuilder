@@ -4,7 +4,7 @@
     <head>
         <title>Sistema Grails - Orcamento</title>
         <meta name="layout" content="base" />
-        <link rel="stylesheet" href="<g:createLinkTo dir='css' file='budget.css'/>" />
+        <r:require modules="budget"/>
         
         <g:javascript>
         	$(function() {

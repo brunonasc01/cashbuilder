@@ -9,10 +9,11 @@ class AjaxEffectsTagLib {
 		def form = attrs.form
 		def controller = attrs.controller
 		def action = attrs.action?: default_action
+		def onTop = attrs.onTop?: false;
 		
 		out << "<script>"
 		out << "\$(document).ready(function(){"
-		out << "ajaxValidate('${project}${controller}/${action}','${form}');"
+		out << "ajaxValidate('${project}${controller}/${action}','${form}',${onTop});"
 		out << "});"
 		out << "</script>"
 	}

@@ -42,7 +42,7 @@
 
 						<ul id="field">
 							<li class="label">
-								<g:message code="nome.label" default=Nome" />
+								<g:message code="nome.label" default="Nome" />
 							</li>
 							<li class="input">
 								<g:textField name="nome" value="${usuario?.nome}" />

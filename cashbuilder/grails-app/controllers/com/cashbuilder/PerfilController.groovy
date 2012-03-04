@@ -15,6 +15,7 @@ class PerfilController {
 	
 	def save = {
 		def user = session.user.attach()
+		params."usuario.id" = user.id
 
 		def perfil = new Perfil(usuario:user)
 		perfil.properties = params

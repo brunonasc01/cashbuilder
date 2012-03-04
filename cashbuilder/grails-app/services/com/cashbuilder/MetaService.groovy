@@ -31,12 +31,12 @@ class MetaService {
 		
 		def result = []
 		def metas = Meta.findAllByUser(user)
-		
+				
 		metas.each { meta ->
-			
 			MetaBean bean = new MetaBean()
+			def c = Pagamento.createCriteria()
 
-			double	total = Pagamento.createCriteria().get {
+			Double total = c.get {
 				and {
 					eq('user', user)
 					'in'('subcategoria', meta.subcategorias)
@@ -101,8 +101,9 @@ class MetaService {
 		metas.each { meta ->
 
 			MetaBean bean = new MetaBean()
+			def c =  Pagamento.createCriteria()
 
-			double	total = Pagamento.createCriteria().get {
+			Double total = c.get {
 				and {
 					eq('user', user)
 					'in'('subcategoria', meta.subcategorias)

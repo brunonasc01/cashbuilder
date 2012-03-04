@@ -28,7 +28,9 @@ class HomeController {
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
 		//box ultimos registro
-		def ultimosRegistros = Pagamento.createCriteria().list(max:3) {
+		def c =  Pagamento.createCriteria()
+		
+		def ultimosRegistros = c.list(max:3) {
 			eq('user', user)
 			order("id", "desc")
 		}

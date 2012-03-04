@@ -1,9 +1,6 @@
 
 <g:javascript>
-$(document).ready(function() {
-	$("input:submit, button, input:reset").button();
-});
-
+styleButtons();
 enableParcels();
 </g:javascript>
 
@@ -115,3 +112,5 @@ enableParcels();
 		<div class="clear"></div>
 	</div>
 </g:form>
+
+<r:layoutResources disposition="defer"/>

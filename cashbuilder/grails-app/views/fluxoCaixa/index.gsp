@@ -4,7 +4,7 @@
     <head>
         <title>Sistema Grails - Fluxo de Caixa</title>
         <meta name="layout" content="base" />
-		<link rel="stylesheet" href="<g:createLinkTo dir='css' file='cashflow.css'/>" />
+		<r:require modules="cashflow"/>
 
 		<g:javascript>
 		$(function() {
@@ -23,10 +23,12 @@
     	
     	<div class="span-7">
     		<div id="lbox">
-				<g:form action="newTransaction" controller="pagamento">
-					<g:hiddenField name="mesId" value="${monthIndex}" />
-					<g:submitButton name="newButton" class="boxButton" value="Novo Lancamento" />
-				</g:form>
+    			<div class="inside center">
+					<g:form action="newTransaction" controller="pagamento">
+						<g:hiddenField name="mesId" value="${monthIndex}" />
+						<g:submitButton name="newButton" class="boxButton" value="Novo Lancamento" />
+					</g:form>
+				</div>
 			</div>
 
     		<div id="lbox">

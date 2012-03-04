@@ -3,15 +3,15 @@
     <head>
         <meta name="layout" content="base" />
 
-		<g:validateForm controller="login" form="loginForm" />
+		<g:validateForm controller="login" form="loginForm" onTop="true" />
     </head>
 
     <body>
-		<div class="span-15">
-			<div id="obox">			
+		<div class="span-12">
+			<div id="lbox">			
 				<g:form class="loginForm" name="loginForm" action="validate_access">
 					<div class="title">
-						Login no Sistema
+						Acesso ao Cashbuilder
 					</div>
 		
 					<g:if test="${flash.message}">
@@ -19,7 +19,11 @@
 							${flash.message}
 						</div>
 					</g:if>
-			
+					
+					<div id="error" class="msg-erro">
+						
+					</div>
+
 					<div class="inside">
 						<ul id="field">
 							<li class="label">
@@ -35,7 +39,7 @@
 						
 						<ul id="field">
 							<li class="label">
-								<g:message code="password.label" default=Senha" />
+								<g:message code="password.label" default="Senha" />
 							</li>
 							<li class="input">
 								<g:passwordField name="password" value="${usuarioInstance?.password}" />
@@ -57,6 +61,22 @@
 				</g:form>
 			</div>
 			<div class="clear"></div>
+		</div>
+		
+		<div class="span-12 last">
+			<div id="rbox">
+				<div class="title">
+					Novo Usuario
+				</div>
+				
+				<div class="inside center">
+					Faca o registro e de um novo futuro para suas financas
+					
+					<g:form controller="usuario" action="novo">
+						<g:submitButton name="newUser" class="singleButton" value="Cadastrar"/>
+					</g:form>
+				</div>
+			</div>
 		</div>
 	</body>		
 </html>

@@ -1,55 +1,57 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
 <g:if test="${fluxoCaixa}">
-	<div id="itemList">
-		<ul class="header">
-			<li class="buttons">.....</li>
-			<li class="day">Dia</li>
-			<li class="in">Entrada</li>
-			<li class="out">Saida</li>
-			<li class="category">Categoria</li>
-			<li class="desc">Descricao</li>
-		</ul>
+	<table>
+		<tbody>
+			<tr class="header">
+				<td></td>
+				<td>Dia</td>
+				<td>Entrada</td>
+				<td>Saida</td>
+				<td>Categoria</td>
+				<td>Descricao</td>
+			</tr>
+	
+			<g:javascript>
+			$(function() {
+				ajaxSubmit('editButton','modal','edit');
+			});
+			</g:javascript>
+	
+			<g:each var="pg" in="${fluxoCaixa.pagamentos}">
+				<tr>
+					<td width="50">
+		                <g:form name="formEdit" controller="pagamento">
+		                    <g:hiddenField name="id" value="${pg.id}" />
+		                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
+		                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
+		                </g:form>
+					</td>
+					<td width="40"><g:formatDate format="dd" date="${pg.data}"></g:formatDate></td>
+	
+					<td width="90">
+						<g:if test="${pg.natureza.equals('C')}">
+							<g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:if>
+						<g:else>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:else>
+					</td>						
+	
+					<td width="90">
+						<g:if test="${pg.natureza.equals('D')}">
+						  <g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:if>
+						<g:else>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:else>
+					</td>
 
-		<g:javascript>
-		$(function() {
-			ajaxSubmit('editButton','modal','edit');
-		});
-		</g:javascript>
-
-		<g:each var="pg" in="${fluxoCaixa.pagamentos}">
-			<ul>
-				<li class="buttons">
-					<g:form name="formEdit" controller="pagamento">
-	                    <g:hiddenField name="id" value="${pg.id}" />
-	                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
-	                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
-	                </g:form>
-				</li>
-				<li class="day">
-					<g:formatDate format="dd" date="${pg.data}"></g:formatDate>
-				</li>
-				<li class="in">
-					<g:if test="${pg.natureza.equals('C')}">
-						<g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</g:if>
-					<g:else>
-						<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</g:else>
-				</li>
-				<li class="out">
-					<g:if test="${pg.natureza.equals('D')}">
-					  <g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</g:if>
-					<g:else>
-						<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</g:else>
-				</li>
-				<li class="category">${pg.subcategoria}</li>
-				<li class="desc">${pg.descricao}</li>
-			</ul>
-			
-			<div class="clear"></div>
-		</g:each>
-	</div>
+					<td width="100">${pg.subcategoria}</td>
+					
+					<td>${pg.descricao}</td>
+				</tr>
+			</g:each>
+		</tbody>
+	</table>
 </g:if>

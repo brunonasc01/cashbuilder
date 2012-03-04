@@ -16,22 +16,12 @@ class MultiBarChartBean {
 		ObjectFactory factory = new ObjectFactory();
 
 		Graph graph =(Graph)(factory.createGraph());
-
-		graph.setCaption 'Fluxo de Caixa'
-		graph.setSubCaption 'Relação Entrada / Saída dos últimos 03 meses'
-		graph.setAlternateHGridColor 'CCCCCC'
-		graph.setAlternateHGridAlpha '30'
-		graph.setShowAlternateHGridColor '1'
-		graph.setDecimalPrecision '0'
+		
+		graph.setDecimalPrecision '2'
 		graph.setFormatNumberScale '0'
 		graph.setThousandSeparator '.'
-		graph.setDivLineAlpha '80'
-		graph.setDivLineColor 'CCCCCC'
-		graph.setNumdivlines '9'
-		graph.setYAxisMaxValue '100'
+		graph.setDecimalSeparator ','
 		graph.setRotateNames '0'
-		graph.setHovercapborder '889E6D'
-		graph.setHovercapbg 'DEDEBE'
 		graph.setYAxisName 'Valor'
 		graph.setXAxisName 'Mês'
 		

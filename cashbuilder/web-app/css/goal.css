@@ -19,3 +19,13 @@
 #goalBox ul li { float: left; font-weight: bold; margin:0; }
 #goalBox li.label { width: 160px; text-align: right; }
 #goalBox li.value { width: 70px; padding-left: 10px; }
+
+/* form */
+form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}
+
+form.modalForm ul li.label { width: 110px; text-align: right;  }
+form.modalForm ul li.input { width: auto; padding-left: 10px; padding-right: 20px; }
+form.modalForm ul li.message { width: 250px; padding-left: 10px; font-size: 85%; }
+form.modalForm ul li.button { padding-left: 120px; margin-top: 5px;}
+form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-right: 5%; }
+*form.modalForm ul li.composed_input { width: auto; padding-left: 15px; padding-right: 5%; }

@@ -31,25 +31,6 @@ function ajaxModal(idTrigger,action,idResult,txtTitle){
 	});
 }
 
-function ajaxSubmitToModal(trigger,action,result,txtTitle){
-
-	$('input[name="edit"]').click(function(e){
-		e.preventDefault();
-
-		$.ajax({
-			type: 'POST',
-			data: $(this).parents('form:first').serialize(),
-			url: action,
-			success:function(data,textStatus){
-				$("#"+result).html(data);
-				modal(result,txtTitle);
-			},
-			error:function(XMLHttpRequest,textStatus,errorThrown){},
-			complete:function(XMLHttpRequest,textStatus){}
-		});
-	});
-}
-
 function ajaxSubmit(trigger,result,action){
 
 	var submitButton = $('input[name='+trigger+']');
@@ -62,7 +43,7 @@ function ajaxSubmit(trigger,result,action){
 		var returnElement = $("#"+result)
 
 		if(action != null){
-			formAction += '/'+action;
+			formAction = formAction.replace('index',action);
 		}
 
 		$.ajax({
@@ -122,7 +103,7 @@ function autoModal(id) {
 
 var validateFieldTypes = 'input[type=text]:first,input[type=password]:first,select:first,textarea:first';
 
-function ajaxValidate(action,formId){
+function ajaxValidate(action,formId,onTop){
 
 	var form = $('#'+formId);
 			
@@ -152,17 +133,22 @@ function ajaxValidate(action,formId){
 		$(this).find(validateFieldTypes).focusout(function(){
 
 			var name = $(this).attr('name')
-			var parameters = processParameters(name,form);
 			
-			$.ajax({
-				type: 'post',
-				url: action,
-				data: $(this).serialize()+parameters,
-				cache: false,
-				success: function(html) {
-					renderShortErrors(html,i,formId)
-				}
-			});
+			if(name.indexOf('data') == -1){
+				var parameters = processParameters(name,form);
+				
+				$.ajax({
+					type: 'post',
+					url: action,
+					data: $(this).serialize()+parameters,
+					cache: false,
+					success: function(html) {
+						renderErrors(html,i,formId,onTop)
+					}
+				});
+			} else {
+				renderErrors("",i,formId,onTop)
+			}
 		});
 	});
 }
@@ -221,21 +207,32 @@ function renderSubmitErrors(data,formId){
 	}
 }
 
-function renderShortErrors(data,index,formId){
+function renderErrors(data,index,formId,onTop){
 
 	var formField = $('#'+formId).find('#field').eq(index);
 	
 	if(data.length > 0){
 		formField.find('li:first').addClass('label-error');
 		formField.find(validateFieldTypes).parent().addClass('input-error');
-		formField.find('li:last').addClass('message-error');
-		formField.find('li:last').html(data);
+
+		if(onTop){
+			$('#'+formId).find('#error').show().html(data);
+		} else {
+			formField.find('li:last').addClass('message-error');
+			formField.find('li:last').html(data);
+		}
+		
 		formField.find(validateFieldTypes).parent().removeClass('input-ok');
 	} else {
 		formField.find('li:first').removeClass('label-error');
 		formField.find(validateFieldTypes).parent().removeClass('input-error')
-		formField.find('li:last').removeClass('message-error');
-		formField.find('li:last').html('');
+		
+		if(onTop){
+			$('#'+formId).find('#error').hide().html('');
+		} else {
+			formField.find('li:last').removeClass('message-error');
+			formField.find('li:last').html('');
+		}
 		formField.find(validateFieldTypes).parent().addClass('input-ok');
 	}
 }

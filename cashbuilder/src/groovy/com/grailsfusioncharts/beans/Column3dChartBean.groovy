@@ -3,27 +3,27 @@ package com.grailsfusioncharts.beans
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
-import com.grailsfusioncharts.piechart.*;
+import com.grailsfusioncharts.column3d.*;
 
-class PieChartBean {
+class Column3dChartBean {
 
 	public static String generateGraph(def chartData){
 
-		JAXBContext jaxbContext = JAXBContext.newInstance("com.grailsfusioncharts.piechart");
-		Marshaller marshaller = jaxbContext.createMarshaller();
-		ObjectFactory factory = new ObjectFactory();
+		JAXBContext jaxbContext = JAXBContext.newInstance("com.grailsfusioncharts.column3d")
+		Marshaller marshaller = jaxbContext.createMarshaller()
+		ObjectFactory factory = new ObjectFactory()
 
-		Graph graph =(Graph)(factory.createGraph());
-		
-		graph.setShownames '1'
-		graph.setShowvalues '0'
+		Graph graph =(Graph)(factory.createGraph())
+
+		graph.setNumberPrefix("R\$")
 		graph.setDecimalPrecision '2'
-		graph.setFormatNumberScale '0'
+		graph.setThousandSeparator '.'
+		graph.setDecimalSeparator ','
 				
 		chartData.each{
 			Set set = (Set) factory.createSet()
-			set.setName it.categoria
-			set.setValue it.total
+			set.setName it.name
+			set.setValue it.value
 
 			graph.getSet().add set
 		}
@@ -33,7 +33,6 @@ class PieChartBean {
 		marshaller.marshal(graph, wr)
 		String result = wr.toString().replace("\"","'")
 
-		
 		result
 	}
 }

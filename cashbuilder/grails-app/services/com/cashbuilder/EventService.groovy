@@ -30,14 +30,14 @@ class EventService {
 			Orcamento budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
 
 			if(!budget.calculated){
-
 				def budgetMonths = budget.meses
 
 				budgetMonths.each { month ->
 					def monthItems = month.itens
-
+					def c =  Pagamento.createCriteria()
+					
 					monthItems.each{ item ->
-						double total = Pagamento.createCriteria().get {
+						double total = c.get {
 							and {
 								eq('user', user)
 								eq('subcategoria', item.subcategoria)

@@ -1,11 +1,8 @@
 <g:javascript>
-$(document).ready(function() {
-	$( "input:submit, button, input:reset" ).button();
-});
+styleButtons();
 </g:javascript>
 
 <g:comboCategorias trigger="comboCategoria" target="comboSubcategorias"/>
-
 <g:validateForm controller="pagamento" form="editTransaction" />
 
 <g:if test="${pagamento }">
@@ -101,4 +98,5 @@ $(document).ready(function() {
 			<div class="clear"></div>
 		</div>
 	</g:form>			
+	<r:layoutResources disposition="defer"/>
 </g:if>

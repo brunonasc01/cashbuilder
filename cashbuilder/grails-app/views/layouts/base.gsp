@@ -3,27 +3,12 @@
     <head>
         <title><g:layoutTitle default="CASHBUILDER" /></title>
 
-		<link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'screen.css')}" media="screen, projection" />
-        <link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'print.css')}" media="print" />
-        <!--[if IE]>
-    		<link rel="stylesheet" href="${resource(dir:'css/blueprint',file:'ie.css')}" media="screen, projection" />
-  		<![endif]-->
-
-		<link rel="stylesheet" href="${resource(dir:'css/custom-theme',file:'jquery-ui.css')}" />
-		<link rel="stylesheet" href="${resource(dir:'css',file:'form.css')}" />
-		<link rel="stylesheet" href="${resource(dir:'css',file:'layout.css')}" />
-
-        <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
-		
-		<g:javascript src="jquery.js" />
-		<g:javascript src="jquery-ui.js" />
-		<g:javascript src="funcoes-gerais.js" />
-		<g:javascript src="general-effects.js" />
+        <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />		
+		<r:require modules="core"/>
+		<r:layoutResources/>
 
 		<script>
-			$(function() {
-				$( "input:submit, button, input:reset" ).button();
-			});
+		styleButtons();
 		</script>
 
         <g:layoutHead />
@@ -52,5 +37,7 @@
 		  		<g:render template="/elements/rodape" ></g:render>
 		  	</div>
     	</div>
+    	
+    	<r:layoutResources/>
     </body>
 </html>
