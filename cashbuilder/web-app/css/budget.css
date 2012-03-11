@@ -14,12 +14,21 @@
 #fatherItem ul li.pbar { width: 41%; padding: 0 2%; }
 
 #childItem { margin: 10px 10px 0 10px; }
-#childItem #item { margin-bottom: 5px; }
+#childItem #item { margin-bottom: 5px; padding: 5px; text-align: center; }
+
 #childItem ul li.values { width: 20%; }
 #childItem ul li.name { width: 50%; }
 #childItem ul li.of { width: 10%; text-align: center;}
 #childItem ul li.bar { width: 100%; }
+#childItem ul li.slider { width: 76%; padding: 0 2%; margin-top: 8px; }
+#childItem ul li.slider .ui-slider { font-size: 0.8em; }
+#childItem ul li.input { width: 20%; }
 
-#fatherItem ul li, #childItem ul li { background: #fff; float: left; line-height: 25px; font-weight: bold; margin:0;}
+#fatherItem ul li, #childItem ul li { float: left; line-height: 25px; font-weight: bold; margin:0; text-align: left;}
+
+#childItem #item ul#edition { display:none; }
+
+#childItem #item .edit, #childItem #item .save { display: none; font-size: 0.5em; margin-bottom: 5px; border-bottom: 2px solid #fff; padding-bottom: 4px; }
+#childItem #item:hover { background-color: #ccc; }
 
 #progressbar { height: 23px; display: block; width: 100% };

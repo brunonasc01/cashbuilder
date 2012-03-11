@@ -20,6 +20,14 @@
 			<div id="title">
     			<h3>${orcamento.date?.month} - ${orcamento.date?.year }</h3>
     		</div>
+    		
+    		<g:if test="${flash.message}">
+    			<div class="inside">
+					<div class="success">
+						${flash.message}
+					</div>
+				</div>
+			</g:if>
     	</div>
 
     	<div class="span-7">

@@ -9,7 +9,8 @@ import com.cashbuilder.utils.DateUtils;
 class OrcamentoController {
 
 	def orcamentoService
-
+	def geralService
+	
 	def index = {
 
 		if(!params.mesId){
@@ -38,6 +39,8 @@ class OrcamentoController {
 		balanceBox.plannedClass = (balanceBox.plannedBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		balanceBox.actualClass = (balanceBox.actualBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
-		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, balanceBox: balanceBox]
+		def df = geralService.getFormatadorNumerico()
+		
+		[orcm: true, monthIndex: iMes, meses: meses, orcamento: orcamentoBean, balanceBox: balanceBox, df: df]
 	}
 }
