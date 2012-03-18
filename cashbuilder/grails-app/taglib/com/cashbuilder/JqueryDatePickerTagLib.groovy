@@ -18,9 +18,9 @@ class JqueryDatePickerTagLib {
 		out << "<input type='text' name='${name}' id='${name}' value='${date}' readonly='true' />"
 		out << "<input type='hidden' name='${name}_minute' id='${name}_minute' value='${cal.get(Calendar.MINUTE)}' />"
 		out << "<input type='hidden' name='${name}_hour' id='${name}_hour' value='${cal.get(Calendar.HOUR_OF_DAY)}' />"
-		out << "<input type='hidden' name='${name}_day' id='${name}_day' />"
-		out << "<input type='hidden' name='${name}_month' id='${name}_month' />"
-		out << "<input type='hidden' name='${name}_year' id='${name}_year' />"
+		out << "<input type='hidden' name='${name}_day' id='${name}_day' value='${value? cal.get(Calendar.DATE) : ''}' />"
+		out << "<input type='hidden' name='${name}_month' id='${name}_month' value='${value? cal.get(Calendar.MONTH)+1 : ''}'/>"
+		out << "<input type='hidden' name='${name}_year' id='${name}_year' value='${value? cal.get(Calendar.YEAR) : ''}'/>"
 
 		//Code to parse selected date into hidden fields required by grails
 		out << "<script type='text/javascript'> \$(function(){"

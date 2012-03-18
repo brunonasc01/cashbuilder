@@ -112,14 +112,15 @@ function budgetSliderBar(element){
 		range: "min",
 		value: prevVal.val(),
 		min: 0,
-		max: (realVal.val() > prevVal.val()) ? realVal.val() : prevVal.val()*3 ,
+		max: (realVal.val() > prevVal.val()) ? parseInt(realVal.val()) : prevVal.val()*3 ,
 		step: 10,
 		slide: function( event, ui ) {
 			
-			var value = ui.value+",00";
-						
+			var value = new String(ui.value);
+			value = normalizeDecimal(value);
+			
 			manualInput.val( value );
-			formInputValue.val( ui.value );
+			formInputValue.val( value );
 			displayVal.html( "R$ " + value );
 		}
 	});
