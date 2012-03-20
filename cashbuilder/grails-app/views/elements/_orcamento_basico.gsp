@@ -10,7 +10,7 @@
 			
 				<ul>
 					<li class="name">${category.nome }</li>
-					<li class="button">+</li>
+					<li class="button"><span class="ui-icon ui-icon-circle-plus"></span></li>
 					<li class="values"><span class="right"><g:formatNumber number="${category.valorRealizado }" format="${Constants.FORMATO_MOEDA}"/></span></li>
 					<li class="pbar"><div id="progressbar"></div></li>
 					<li class="values"><g:formatNumber number="${category.valorPrevisto }" format="${Constants.FORMATO_MOEDA}"/></li>

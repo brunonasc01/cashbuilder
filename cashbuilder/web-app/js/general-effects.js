@@ -87,8 +87,18 @@ function toggleEdit(element){
 }
 
 function toggleExpandButton(element){
-	(element.html() == "+") ?
-			element.html("-") : element.html("+");
+
+	var span = element.find('span:first');
+	var spanClass = span.attr('class');
+	
+	if(spanClass.indexOf('plus') != -1){
+		span.removeClass('ui-icon-circle-plus');
+		span.addClass('ui-icon-circle-minus');
+		
+	} else if(spanClass.indexOf('minus') != -1){
+		span.removeClass('ui-icon-circle-minus');
+		span.addClass('ui-icon-circle-plus');
+	}
 }
 
 function staticProgressBar(element){

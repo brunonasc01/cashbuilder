@@ -10,6 +10,7 @@
 #fatherItem { width: inherit; background: #ccc; }
 #fatherItem ul li.name { width: 100%; }
 #fatherItem ul li.button { width: 5%; text-align: center;  }
+#fatherItem ul li.button span.ui-icon { margin-left: 8px;  }
 #fatherItem ul li.values { width: 25%; }
 #fatherItem ul li.pbar { width: 41%; padding: 0 2%; }
 
