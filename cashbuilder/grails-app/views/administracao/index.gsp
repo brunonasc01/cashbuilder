@@ -54,9 +54,12 @@
 	  	
 	  	<div class="span-8 last">
 			<div id="rbox">
+				<div class="title">
+					Edicao de Categorias
+				</div>
 				<div class="inside">
 					<ul>
-						<li>third column</li>
+						<li><g:link controller="categoria" action="new_category">Nova categoria/subcategoria</g:link></li>
 					</ul>
 				</div>
 			</div>

@@ -108,12 +108,13 @@ class GeralService {
 			
 			if(orcmMes){
 				
+				def orcamento = orcmMes.orcamento
+				orcamento.calculated = true;
+								
 				if(saveType.equals("mes")){
 					orcmMes.properties = properties
-					
+
 				} else if(saveType.equals("ano")){
-					def orcamento = orcmMes.orcamento
-					
 					OrcmMes.findAllByOrcamento(orcamento).each {
 						it.properties = properties
 					}
@@ -191,7 +192,7 @@ class GeralService {
 	 */
 	void createNewBudget(Usuario user, int year){
 		
-		Orcamento budget = new Orcamento(ano: year,user:user)
+		Orcamento budget = new Orcamento(ano: year,user:user, calculated:true)
 		
 		if(budget.save()){
 			

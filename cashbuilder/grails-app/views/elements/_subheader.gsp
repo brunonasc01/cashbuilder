@@ -6,8 +6,8 @@
 			<g:message code="default.welcome.message" default="Welcome" />
 			${session.user.nome }
 		</span>
-		<span> | </span>	
-				
+		<span> | </span>
+
 		<g:link controller="login" action="logoff">
 			<g:message code="default.logoff.label" default="logoff" />
 		</g:link>

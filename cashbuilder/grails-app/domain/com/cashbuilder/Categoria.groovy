@@ -4,6 +4,7 @@ class Categoria {
 
 	String nome
 	boolean receita
+	boolean custom
 	
 	static belongsTo = [user: Usuario]
 	
