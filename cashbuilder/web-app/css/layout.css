@@ -1,7 +1,8 @@
 /* General */
 ul, p, h3, h2, h5 { margin: 0; padding: 0; }
 ul { list-style: none; }
-a { text-decoration: none; }
+a { color:#333; text-decoration: none; }
+a:focus, a:hover {color:#000; text-decoration: underline;}
 body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; }
 .center { text-align: center; }
 
@@ -24,6 +25,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 /* Menu */
 #menubar { text-align: center; }
 #menubar a { color: #999; }
+#menubar a:hover { text-decoration: none; }
 #menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; cursor: pointer; }
 #menubar .ativo, #menubar div:hover { background-color: #eee; color: #000; }
 #menubar .ativo span, #menubar div:hover span { background-position: 48px 0; }
@@ -44,7 +46,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 #menuMonth ul li { background: #ccc; float: left; font-weight: bold; margin:0;}
 #menuMonth ul li a { line-height: 1.5em; width: 79px;; padding: 0; display: block; color: #999; }
 #menuMonth ul li.selected a { background-color: #92b6c1; color:#000; }
-#menuMonth ul li:hover a { background-color: #92b6c1; color:#000;}
+#menuMonth ul li:hover a { background-color: #92b6c1; color:#000; text-decoration: none;}
 
 /* Center */
 #content { background-color: #eee; min-height: 200px;}
