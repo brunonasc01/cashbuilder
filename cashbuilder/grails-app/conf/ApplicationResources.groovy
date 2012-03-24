@@ -41,4 +41,8 @@ modules = {
 	adm {
 		resource url:'css/adm.css'
 	}
+	
+	recaptcha {
+		resource url:'css/recaptcha.css'
+	}
 }

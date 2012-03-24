@@ -8,6 +8,7 @@ import com.cashbuilder.cmd.UsuarioPasswordEditCommand;
 class UsuarioController {
 
 	def usuarioService
+	def recaptchaService
 	
     static allowedMethods = [save: "POST", update: "POST", updateMail: "POST", updatePassword: "POST"]
 
@@ -17,12 +18,19 @@ class UsuarioController {
 	
 	def save = { UsuarioCommand urc ->
 		try{
+			def recaptchaOK = true
+			
+			if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
+				 recaptchaOK = false
+				 throw new RuntimeException("O texto de validacao esta incorreto.")
+			}
+			
 			def newUser = usuarioService.saveUser(urc)
 			flash.message = "Usuario registrado com sucesso"
 			redirect(controller: "login")
 		}catch(Exception e){
 			flash.message = e.message
-			render(view: "novo")
+			render(view: "novo",model:[usuarioInstance:urc])
 		}
 	}
 
