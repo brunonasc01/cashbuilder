@@ -1,55 +1,52 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.ListaCategoriasBean;
 import com.cashbuilder.beans.BalanceBoxBean;
-import com.cashbuilder.utils.Constants;
-import com.cashbuilder.utils.DateUtils;
 
 class HomeController {
 
-	def orcamentoService
-	def geralService
-	def paymentService
+	def budgetService
+	def generalService
+	def transactionService
 	
 	static allowedMethods = [save_registro: "POST"]
 	
-    def index = {
+    def index() {
 		
 		def user = session.user.attach()
 
-		def orcamento = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
-		def mesAtual = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,orcamento)
+		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		def budgetMonth = BudgetMonth.findByMonthAndBudget(DateUtils.currentMonth,budget)
 
 		//box saldo
 		BalanceBoxBean balanceBox = new BalanceBoxBean();
 		balanceBox.title = "box.balance.title1"
-		balanceBox.income = orcamentoService.getTotalRealizado(mesAtual,user,Constants.CREDITO)
-		balanceBox.expense = orcamentoService.getTotalRealizado(mesAtual,user,Constants.DEBITO)		
+		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)
+		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)		
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
 		//box ultimos registro
-		def c =  Pagamento.createCriteria()
+		def c =  Transaction.createCriteria()
 		
-		def ultimosRegistros = c.list(max:3) {
+		def ultimosRegistros = c.list(max:4) {
 			eq('user', user)
 			order("id", "desc")
 		}
 
-		def categoriesList = geralService.getCategoriesList(user)
-		def alerts = Alert.findAllByOrcamento(orcamento)
+		def categoriesList = generalService.getCategoriesList(user)
+		def alerts = Alert.findAllByBudget(budget)
 		
 		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
 	}
 	
-	def save_registro = {
+	def saveTransaction() {
+
+		def user = session.user.attach()
+		def transaction = transactionService.saveTransaction(user, params)
 		
-		try {
-			def user = session.user.attach()
-			def newPayment = paymentService.savePayment(user, params)
-			flash.message = "Pagamento gravado com sucesso"
-		} catch (RuntimeException re){
-			flash.message = re.message
+		if(transaction.hasErrors()){
+			render(view: "index",model:[transaction:transaction])
+		} else {
+			redirect(action: "index")
 		}
-		redirect(action: "index")
 	}
 }

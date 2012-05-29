@@ -6,7 +6,7 @@ class Alert {
 	String message
 	boolean enable
 
-	static belongsTo = [orcamento: Orcamento]
+	static belongsTo = [budget: Budget]
 	
     static constraints = {
 		type(unique: true,blank: false)

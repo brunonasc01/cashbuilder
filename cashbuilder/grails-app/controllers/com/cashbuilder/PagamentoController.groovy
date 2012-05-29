@@ -80,8 +80,8 @@ class PagamentoController {
 			}
 		}
 
-		if(fieldName.equals("FORM") && payment.hasErrors()){
-			render "${message(code: 'default.form.error.message', default: 'error')}"
+		if(fieldName.equals("FORM") && payment.hasErrors()){			
+			render ""
 		} else if(fieldName && payment.errors.hasFieldErrors(fieldName)){
 			render g.renderErrors(bean: payment,field: fieldName)
 		}else {

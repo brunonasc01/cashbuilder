@@ -12,6 +12,10 @@ class UsuarioController {
 	
     static allowedMethods = [save: "POST", update: "POST", updateMail: "POST", updatePassword: "POST"]
 
+	def cadastro = {
+		
+	}
+	
 	def novo = { 
 		
 	}

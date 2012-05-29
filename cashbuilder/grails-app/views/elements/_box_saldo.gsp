@@ -1,12 +1,12 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
 	<div class="title">
-		<g:message code="${bean.title }" default="Saldo" />		
+		Orcamento Atual		
 	</div>
 	<div id="balanceBox" class="inside">
 		<g:if test="${bean}">
 			<g:if test="${bean.isBudget }">
-				<ul>
+				<ul class="simple">
 					<li class="label">
 						Previsto
 					</li>
@@ -14,6 +14,8 @@
 						<g:formatNumber number="${bean.plannedBalance}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
+				</ul>
+				<ul class="simple">
 					<li class="label">
 						Realizado
 					</li>
@@ -32,13 +34,27 @@
 						<g:formatNumber number="${bean.income}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
+					<li class="budget-value">
+						2000
+					</li>
+				</ul>
+				
+				<div class="clear"></div>
+				
+				<ul>
 					<li class="label">
-						Saídas
+						Saidas
 					</li>
 					<li class="value negative">
 						<g:formatNumber number="${bean.expense}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
+					<li class="budget-value">
+						de 2.000,00
+					</li>
+				</ul>
+				
+				<ul>
 					<li class="label">
 						Saldo
 					</li>

@@ -7,19 +7,19 @@
 	</div>
 	<div id="lastTransactionsBox" class="inside">
 		<g:if test="${ultimosRegistros }">
-			<g:each var="pagamento" in="${ultimosRegistros}">
+			<g:each var="transaction" in="${ultimosRegistros}">
 				<ul>
 					<li class="date">
-						<g:formatDate date="${pagamento.data }" format="dd/MM"></g:formatDate>
+						<g:formatDate date="${transaction.date }" format="dd/MM"></g:formatDate>
 					</li>
 					<li class="value">
-						<g:formatNumber number="${pagamento.valor }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</li>
+						<g:formatNumber number="${transaction.value }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</li>					
 					<li class="category">
-						${pagamento.subcategoria }
+						${transaction.subcategory }
 					</li>
 					<li class="description">
-						${TextUtils.abbreviateText(pagamento.descricao,45)  }
+						${TextUtils.abbreviateText(transaction.description,45)  }
 					</li>
 				</ul>
 			</g:each>

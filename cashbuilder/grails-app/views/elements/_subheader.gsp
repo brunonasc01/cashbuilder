@@ -4,7 +4,7 @@
 	<g:if test="${session.user}">
 		<span>
 			<g:message code="default.welcome.message" default="Welcome" />
-			${session.user.nome }
+			${session.user.firstName }
 		</span>
 		<span> | </span>
 
@@ -13,11 +13,11 @@
 		</g:link>
 	</g:if>
 	<g:else>
-		<g:link controller="login">
+		<a href="javascript:autoModal('dialog');">
 			<g:message code="default.login.label" default="login" />
-		</g:link>
+		</a>
 		<span> | </span>
-		<g:link controller="usuario" action="novo">
+		<g:link controller="user" action="signup">
 			<g:message code="default.signup.label" default="signup" />
 		</g:link>
 	</g:else>

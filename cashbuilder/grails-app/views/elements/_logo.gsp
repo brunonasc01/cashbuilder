@@ -1,3 +1,3 @@
 	<div class="logo">
-		<h2>CA$HBUILDER</h2>
+		<h2>sys</h2>
 	</div>

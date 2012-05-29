@@ -2,8 +2,6 @@ package com.cashbuilder.cmd
 
 import java.util.Date;
 
-import org.apache.commons.lang.Validate;
-
 class UsuarioPasswordEditCommand {
 	
 	long id

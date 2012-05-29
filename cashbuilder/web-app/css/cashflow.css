@@ -14,3 +14,17 @@ form.modalForm ul li.message { width: 250px; padding-left: 10px; font-size: 85%;
 form.modalForm ul li.button { padding-left: 120px; margin-top: 5px;}
 form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-right: 5%; }
 *form.modalForm ul li.composed_input { width: auto; padding-left: 15px; padding-right: 5%; }
+
+.cashflow ul.legend { font-weight:bold; color: #fff; background-color: #495154; }
+.cashflow ul { float:left; width: 642px; border-bottom: 1px solid #ccc; background-color: #eee;}
+.cashflow ul:nth-child(even)  { background-color: inherit;  }
+.cashflow ul li { float:left; line-height:25px; }
+.cashflow ul li.first-line { padding-left:50px;  }
+.cashflow ul li.buttons { width:50px; text-align:center;}
+.cashflow ul li.day { width:50px; text-align:center;}
+.cashflow ul li.income { width:110px;}
+.cashflow ul li.expense { width:110px;}
+.cashflow ul li.category { width:120px;}
+.cashflow ul li.description { width:202px; }
+.cashflow ul.last { border-bottom: none; }
+

@@ -6,8 +6,8 @@
 		</div>
 	</g:link>
 	
-	<g:link controller="orcamento">    		
-		<div class="span-4 ${orcm? "ativo" : "" }">
+	<g:link controller="budget">    		
+		<div class="span-4 ${budget? "ativo" : "" }">
 			<span class="budget"></span>
 			Orcamento
 		</div>

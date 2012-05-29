@@ -40,4 +40,5 @@
     	
     	<r:layoutResources/>
     </body>
+    <div class="mascara"/></div>
 </html>

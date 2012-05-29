@@ -40,9 +40,9 @@ class AjaxEffectsTagLib {
 		out << "</script>"
 	}
 	
-	def comboCategorias = { attrs ->
-		def project = '/cashbuilder/categoria/'
-		def default_action = 'categoriaSelected'
+	def categoriesCombo = { attrs ->
+		def project = '/cashbuilder/category/'
+		def default_action = 'selectedCategory'
 
 		def trigger = attrs.trigger
 		def target = attrs.target

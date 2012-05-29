@@ -1,112 +1,100 @@
 
-<g:comboCategorias trigger="comboCategoria" target="comboSubcategorias"/>
-<g:validateForm controller="pagamento" form="xpNewReg" />
+<g:categoriesCombo trigger="categoryCombo" target="subcategoriesCombo"/>
 
 <g:javascript>
 enableParcels();
 </g:javascript>
 
 <div id="lbox">
-	<g:form class="boxForm" name="xpNewReg" action="save_registro" controller="home">
+	<g:form class="boxForm" name="xpNewReg" action="saveTransaction" controller="home">
 		<div class="title">
-			Registro Rápido
+			Novo Lancamento
 		</div>
 
-		<g:hiddenField name="natureza" value="D"></g:hiddenField>
-		<g:hiddenField name="user.id" value="-1"></g:hiddenField>
-		
 		<div class="inside">
+			<g:hasErrors bean="${transaction}">
+            	<div class="form-errors">
+                	<g:renderErrors bean="${transaction}" as="list" />
+            	</div>
+            </g:hasErrors>
+		
+			<div class="clear"></div>
+			
+			<small><g:message code="form.compulsory.message" /></small>
+		
 			<ul id="field">
 				<li class="label">
 					<g:message code="pagamento.data.label" default="Data" />
 				</li>
 				<li class="input">
-					<g:jqDatePicker class="date" name="data" value="" />
+					<g:jqDatePicker class="date" name="date" value="" />
 				</li>
-				<li class="message"></li>
 			</ul>
 
-			<div class="clear"></div>
-
-			<ul id="field">
+			<hr />
+			
+			<ul>
 				<li class="label">
-					<g:message code="pagamento.valor.label" default="Valor" />
+					<g:message code="pagamento.valor.label" default="Valor" />*
 				</li>
 				<li class="input">
-					<g:textField maxlength="10" name="valor" value="" />
+					<g:textField maxlength="10" name="value" value="" />
 				</li>
-				<li class="message"></li>
+				
+				<li class="label">
+					<g:message code="pagamento.parcel.label" default="Parcelado ?" />
+				</li>
+				<li class="composed_input">
+					<g:checkBox name="parcel" />
+					<small id="parcel_msg">marque para inserir</small>
+					<g:textField maxlength="2" size="2" name="parcels" value="1" />
+				</li>
 			</ul>
-
-			<div class="clear"></div>
 			
-			<div id="hidden_element">
-				<ul id="field">
-					<li class="label">
-						<g:message code="pagamento.parcel.label" default="Parcelado ?" />
-					</li>
-					<li class="composed_input">
-						<g:checkBox name="parcel" />
-						<small id="parcel_msg">marque para inserir as parcelas</small>
-						<g:textField maxlength="2" size="2" name="parcels" value="1" />
-					</li>
-					<li class="message"></li>
-				</ul>
-	
-				<div class="clear"></div>
-			</div>
+			<hr />
 			
 			<ul id="field">
 				<li class="label">
-					<g:message code="pagamento.categoria.label" default="Categoria" />
+					<g:message code="pagamento.categoria.label" default="Categoria" />*
 				</li>
-				<li class="input">
+				<li class="input category">
 					<g:if test="${registroRapido}">
-						 <g:select id="comboCategoria" name="categoria.id"
-							from="${registroRapido.categorias}" 
+						 <g:select id="categoryCombo" name="category.id"
+							from="${registroRapido.categories}" 
 							optionKey="id" value="" noSelection="['': 'Selecione']" />
 					</g:if>
 				</li>
-				<li class="message"></li>
-			</ul>
-
-			<div class="clear"></div>
-
-			<ul>
+				
 				<li class="label">
-					<g:message code="pagamento.subcategoria.label" default="Subcategoria" />
+					<g:message code="pagamento.subcategoria.label" default="Subcategoria" />*
 				</li>
-				<li class="input">
+				<li class="input subcategory">
 					<g:if test="${registroRapido}">
-						<span id="comboSubcategorias">
-						 <g:select name="subcategoria.id" from=""
+						<span id="subcategoriesCombo">
+						 <g:select name="subcategory.id" from=""
 							noSelection="['': 'Selecione uma categoria']" />
 						</span>
 					</g:if>
 				</li>
-				<li class="message"></li>
 			</ul>
 
-			<div class="clear"></div>
+			<hr />
 		
 			<ul id="field">
 				<li class="label">
 					<g:message code="pagamento.descricao.label" default="Descricao" />
 				</li>
 				<li class="input">
-					<g:textArea name="descricao" maxlength="150"></g:textArea>
+					<g:textField name="description" maxlength="100" size="64"></g:textField>
 				</li>
-				<li class="message"></li>
 			</ul>
 
-			<div class="clear"></div>
+			<hr />
 						
 			<ul id="submitField">
 				<li class="button">
 					<g:submitButton name="gravar" class="save" value="Gravar" />
-					<g:submitButton name="limpar" class="reset" type="reset" value="${message(code: 'default.button.clean.label', default: 'Limpar')}" />
 				</li>
-				<li class="message"></li>
 			</ul>
 			
 			<div class="clear"></div>

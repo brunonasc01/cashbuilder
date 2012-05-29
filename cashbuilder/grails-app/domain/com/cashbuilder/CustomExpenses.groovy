@@ -5,9 +5,9 @@ class CustomExpenses {
 	String name
 	boolean enabled
 	
-	static belongsTo = [profile : Perfil]
+	static belongsTo = [profile : Profile]
 	
     static constraints = {
-		name(blank: false)
+		name(blank:false)
     }
 }

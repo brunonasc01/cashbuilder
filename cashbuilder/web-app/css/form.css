@@ -1,39 +1,71 @@
 /* form */
-form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}
+form ul li { float: left; line-height: 40px; text-align: left; font-weight: bold; margin: 5px 0; }
+form h3 { font-weight:bold; margin-bottom: 5px; margin-top: 20px; margin-left: 10px; }
+
+.form-errors { display:block; border: 2px solid #E40101; color: #E40101; background: #fccfcf; margin: 5px; font-size: .9em; }
+.form-errors ul { list-style: disc; padding-left: 1.5em; }
+.form-errors ul li { float: none; font-weight: bold; margin-left:5px; line-height: 25px;}
+
+form .label-error { color: #E40101; }
+form .input-error input { border: 2px solid #E40101; }
+
+/* new user form */
+form.userForm ul li.label { width: 150px;  text-align: right; }
+*form.userForm ul li.input select { margin-left: 10px; }
+form.userForm ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
+form.userForm ul li.button { width: 100%; text-align: center; margin-top: 0; }
+
+form.userForm ul.check-options { padding-left: 0; }
+form.userForm ul.check-options li { line-height: 20px; }
+form ul li small { font-weight: normal; }
+form ul li.warn { line-height: 20px; margin-top: 0; margin-left: 150px; padding-left: 5px; }
+form p.policy-message { margin-top: 20px; text-align: center; font-size:.8em;margin-bottom:1.875em;line-height:1.875em; }
+
+/* home form box */
+form.boxForm ul li.label { width: 100px; text-align: right; }
+form.boxForm ul li.input { width: 150px; padding: 0 .5em; }
+*form.boxForm ul li.input select { margin-left: 10px; }
+form.boxForm ul li.subcategory select { width: 180px; }
+form.boxForm ul li.description { width: 450px; padding: 0 .5em; }
+form.boxForm ul li.composed_input { width: 180px; }
+*form.boxForm ul li.composed_input { width: 180px; padding-left: 15px; padding-right: 5%; }
+form.boxForm ul li.composed_input input[type="checkbox"] { margin-left: .8em; }
+form.boxForm ul li.composed_input small { line-height: 38px; }
+form.boxForm ul li.button { margin-left: 100px; padding: 0 .5em;}
+
+
+/* login form */
+form.loginForm ul li.label { width: 60px;  text-align: right; }
+form.loginForm ul li.input { width: 160px; padding-left: 5px; }
+form.loginForm ul li.button { width: 100%; text-align: center; }
+form.loginForm  ul.password  { margin-top: 10px; }
+form.loginForm  ul.password li { line-height: 20px; margin-bottom:0; }
+form.loginForm  ul li.lostpassword { width:220px; margin-top:0; text-align: right; line-height: 1em; }
+/*form.loginForm  ul li.message { width: 220px; text-align: right; line-height: 1em; margin:0;}*/
+
+
+
+
 
 /* validation */
-form ul li.label-error, form ul li.message-error { color: #f00; }
+/*form ul li.label-error, form ul li.message-error { color: #f00; }
 form ul li.input-ok { background: url(../images/form/ok-form-icon.png) no-repeat right center; }
 form ul li.input-error { background: url(../images/form/error-form-icon.png) no-repeat right center; }
 form ul li.input-error input, form ul li.input-error select { border: 2px solid red;}
-form ul li.message ul li { margin: 0; padding: 0; line-height: inherit; }
+form ul li.message ul li { margin: 0; padding: 0; line-height: inherit; }*/
 
-/* home form box */
-form.boxForm ul li.label { width: 17%;  text-align: right; }
-*form.boxForm ul li.input select { margin-left: 10px; }
-form.boxForm ul li.input { width: auto; padding-left: 1%; padding-right: 5%; }
-form.boxForm ul li.message { min-width: 40%; padding-left: 1%; font-size: 85%; }
-form.boxForm ul li.button { padding-left: 18%; margin-top: 5px;}
-form.boxForm ul li.composed_input { width: auto; padding-left: 1%; padding-right: 5%; }
-*form.boxForm ul li.composed_input { width: auto; padding-left: 15px; padding-right: 5%; }
 
-/* new user form */
-form.userForm ul li.label { width: 140px;;  text-align: right; }
-*form.userForm ul li.input select { margin-left: 10px; }
-form.userForm ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
-form.userForm ul li.message { width: 300px;; padding-left: 5px; font-size: 85%; }
-form.userForm ul li.button { padding-left: 145px; margin-top: 5px;}
+
+
+
+
+
+
 
 /* profile form */
 form.userForm ul li.input ul li { float:none; }
 
-/* login form */
-form.loginForm ul li.label { width: 60px;;  text-align: right; }
-*form.loginForm ul li.input select { margin-left: 10px; }
-form.loginForm ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
-form.loginForm ul li.message { min-width: 200px; padding-left: 5px; font-size: 85%; }
-form.loginForm ul#submitField li.message { margin-top: 5px; }
-form.loginForm ul li.button { padding-left: 65px; margin-top: 5px;}
+
 
 /* budget form */
 form.budgetForm h5 { font-size: 110%; margin-top: 10px;}
