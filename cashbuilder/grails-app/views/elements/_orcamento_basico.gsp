@@ -1,7 +1,7 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
 <g:if test="${list}">	
-	<g:each var="category" in="${list}">
+	<g:each var="category" in="${list}" status="i">
 		<div id="budgetList">
 			<div id="fatherItem">
 
@@ -66,7 +66,9 @@
 			<div class="clear"></div>
 		</div>
 		
-		<hr />
+		<g:if test="${i < list.size()-1}">
+			<hr />
+		</g:if>
 	</g:each>
 </g:if>
 

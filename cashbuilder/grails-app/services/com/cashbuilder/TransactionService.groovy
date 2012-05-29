@@ -88,4 +88,21 @@ class TransactionService {
 //		}
 //		throw new RuntimeException(message: "Nao foi possivel atualizar o registro, tente novamente")
 //	}
+	
+	def getTransactions(User user, int month, int year){
+		
+		Date firstDay = DateUtils.getFirstDay(month,year)
+		Date lastDay = DateUtils.getLastDay(month,year)
+
+		def c = Transaction.createCriteria()
+		def transactions = c.list {
+			and {
+				eq('user', user)
+				between('date', firstDay, lastDay)
+			}
+			order("date", "asc")
+		}
+		
+		transactions
+	}
 }

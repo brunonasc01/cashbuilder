@@ -1,57 +1,75 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
-<g:if test="${fluxoCaixa}">
-	<table>
-		<tbody>
-			<tr class="header">
-				<td></td>
-				<td>Dia</td>
-				<td>Entrada</td>
-				<td>Saida</td>
-				<td>Categoria</td>
-				<td>Descricao</td>
-			</tr>
-	
-			<g:javascript>
-			$(function() {
-				ajaxSubmit('editButton','modal','edit');
-			});
-			</g:javascript>
-	
-			<g:each var="pg" in="${fluxoCaixa.pagamentos}">
-				<tr>
-					<td width="50">
-		                <g:form name="formEdit" controller="pagamento">
-		                    <g:hiddenField name="id" value="${pg.id}" />
-		                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
-		                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
-		                </g:form>
-					</td>
-					<td width="40"><g:formatDate format="dd" date="${pg.data}"></g:formatDate></td>
-	
-					<td width="90">
-						<g:if test="${pg.natureza.equals('C')}">
-							<g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</g:if>
-						<g:else>
-							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</g:else>
-					</td>						
-	
-					<td width="90">
-						<g:if test="${pg.natureza.equals('D')}">
-						  <g:formatNumber number="${pg.valor}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</g:if>
-						<g:else>
-							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-						</g:else>
-					</td>
-
-					<td width="100">${pg.subcategoria}</td>
+<g:if test="${cashFlow}">
+	<g:javascript>
+	$(function() {
+		ajaxSubmit('editButton','modal','edit');
+	});
+	</g:javascript>
+			
+	<div class="span-17 last">
+   		<div id="rbox">
+			<div class="inside cashflow">
+				<ul class="legend">
+					<li class="buttons">
 					
-					<td>${pg.descricao}</td>
-				</tr>
-			</g:each>
-		</tbody>
-	</table>
+					</li>
+					<li class="day first-line">
+					Dia
+					</li>
+					<li class="income">
+					Entrada
+					</li>
+					<li class="expense">
+					Saida
+					</li>
+					<li class="category">
+					Categoria
+					</li>
+					<li class="description">
+					Descricao
+					</li>
+				</ul>
+				
+				<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
+					<ul class="${counter == cashFlow.transactions.size() - 1? 'last' : ''  }">
+						<li class="buttons">
+							 <g:form name="formEdit" controller="pagamento">
+			                    <g:hiddenField name="id" value="${transaction.id}" />
+			                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
+			                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
+			                </g:form>
+						</li>
+						<li class="day">
+							<g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
+						</li>
+						<li class="income">
+							<g:if test="${transaction.nature.equals('C')}">
+								<g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</g:if>
+							<g:else>
+								<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</g:else>
+						</li>
+						<li class="expense">
+							<g:if test="${transaction.nature.equals('D')}">
+							  <g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</g:if>
+							<g:else>
+								<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							</g:else>
+						</li>
+						<li class="category">
+							${transaction.subcategory}
+						</li>
+						<li class="description">
+							${transaction.description}
+						</li>
+					</ul>
+				</g:each>
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>	
 </g:if>

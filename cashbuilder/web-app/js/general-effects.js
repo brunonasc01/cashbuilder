@@ -116,7 +116,7 @@ function budgetSliderBar(element){
 	var realVal = $(element).find("input[name='realVal']");
 	var displayVal = $(element).find("#prev");
 	var manualInput = $(element).find("input[name='manualValue']");
-	var formInputValue = $(element).find("input[name='valorPrevisto']");
+	var formInputValue = $(element).find("input[name='budgetedValue']");
 
 	sliderBar.slider({
 		range: "min",

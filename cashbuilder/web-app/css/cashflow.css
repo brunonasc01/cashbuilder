@@ -24,7 +24,7 @@ form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-rig
 .cashflow ul li.day { width:50px; text-align:center;}
 .cashflow ul li.income { width:110px;}
 .cashflow ul li.expense { width:110px;}
-.cashflow ul li.category { width:120px;}
-.cashflow ul li.description { width:202px; }
+.cashflow ul li.category { width:130px;}
+.cashflow ul li.description { width:192px; }
 .cashflow ul.last { border-bottom: none; }
 

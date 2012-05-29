@@ -7,8 +7,8 @@
 	</div>
 	<div id="lastTransactionsBox" class="inside">
 		<g:if test="${ultimosRegistros }">
-			<g:each var="transaction" in="${ultimosRegistros}">
-				<ul>
+			<g:each var="transaction" in="${ultimosRegistros}" status="counter">
+				<ul class="${counter == ultimosRegistros.size() - 1? 'last' : ''  }">
 					<li class="date">
 						<g:formatDate date="${transaction.date }" format="dd/MM"></g:formatDate>
 					</li>

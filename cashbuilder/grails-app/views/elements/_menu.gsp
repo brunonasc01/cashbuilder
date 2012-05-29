@@ -13,8 +13,8 @@
 		</div>
 	</g:link>
 	
-	<g:link controller="fluxoCaixa">
-		<div class="span-4 ${flow? "ativo" : "" }">
+	<g:link controller="cashflow">
+		<div class="span-4 ${cashflow? "ativo" : "" }">
 			<span class="cashflow"></span>
 			Fluxo de Caixa
 		</div>

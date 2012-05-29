@@ -10,7 +10,7 @@ class BudgetItemController {
 		
 		if(budgetItem){
 			budgetItem.properties = params.properties
-			println budgetItem.save()
+			budgetItem.save()
 			flash.message = "Orcamento atualizado com sucesso"
 		}
 		

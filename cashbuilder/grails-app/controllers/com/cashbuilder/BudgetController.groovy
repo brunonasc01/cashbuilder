@@ -26,7 +26,7 @@ class BudgetController {
 		def listSaidas = budgetService.getBudgetData(user, bugetMonth, false)
 		
 		BudgetBean budgetBean = new BudgetBean()
-		budgetBean.date = new DateBean(year: budget.year, month: DateUtils.getMes(bugetMonth.month))
+		budgetBean.date = new DateBean(year: budget.year, month: DateUtils.getMonth(bugetMonth.month))
 		budgetBean.incomeList = listEntradas
 		budgetBean.expenseList = listSaidas
 

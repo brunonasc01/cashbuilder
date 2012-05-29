@@ -10,12 +10,12 @@ class DateUtils {
 	 * @param mes numero do mes
 	 * @return
 	 */
-	static String getMes(Integer mes){
+	static String getMonth(Integer month){
 		
-		switch(mes){
+		switch(month){
 			case 0:	return "Janeiro"
 			case 1:	return "Fevereiro"
-			case 2:	return "MarÃ§o"
+			case 2:	return "Março"
 			case 3:	return "Abril"
 			case 4:	return "Maio"
 			case 5:	return "Junho"

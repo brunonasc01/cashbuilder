@@ -132,11 +132,11 @@ class BudgetService {
 	double getBudgetedTotal(BudgetMonth month, def criteria){
 
 		double total;
-
-		if(criteria in Categoria){
+		
+		if(criteria in Category){
 			total = BudgetItem.findAllByCategoryAndMonth(criteria,month).sum { it.budgetedValue }
 			
-		} else if(criteria in Subcategoria){
+		} else if(criteria in Subcategory){
 			BudgetItem item = BudgetItem.findBySubcategoryAndMonth(criteria,month)
 			total = item?.budgetedValue
 
