@@ -3,7 +3,7 @@ package com.cashbuilder
 class LoginController {
 
 	def userService
-	def geralService
+	def budgetService
 	def eventService
 	
 	static allowedMethods = [validate_access: "POST"]
@@ -13,14 +13,13 @@ class LoginController {
 		
 		if(user){
 			session.user = user
-
 			def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
-			
+
 			if(!budget){
-				geralService.createNewBudget(user, DateUtils.currentYear)
+				budgetService.createNewBudget(user, DateUtils.currentYear)
 			}
-		
-			//eventService.checkEvents(user, null)
+
+			eventService.checkEvents(user, null)
 			redirect(controller:'home')
 			
 		}else{
@@ -31,6 +30,6 @@ class LoginController {
 	
 	def logoff = {
 		session.user = null
-		redirect(action:'index')
+		redirect(uri:"/")
 	}
 }

@@ -7,7 +7,7 @@
 
 		<g:javascript>
 		$(function() {
-			ajaxSubmit('newButton','modal');
+			ajaxSubmitToModal('newButton','dialog');
 		});
 		</g:javascript>
     </head>
@@ -20,11 +20,19 @@
     		</div>
     	</div>
     	
+    	<g:if test="${flash.message}">
+    		<div class="span-24">
+				<div class="form-errors-large">
+					${flash.message}
+				</div>
+			</div>
+		</g:if>
+    	
     	<div class="span-7">
     		<div id="lbox">
     			<div class="inside center">
-					<g:form action="newTransaction" controller="pagamento">
-						<g:hiddenField name="mesId" value="${monthIndex}" />
+					<g:form action="newTransaction" controller="transaction">
+						<g:hiddenField name="monthId" value="${monthIndex}" />
 						<g:submitButton name="newButton" class="boxButton" value="Novo Lancamento" />
 					</g:form>
 				</div>
@@ -37,16 +45,14 @@
     
     	<div class="span-17 last">
     		<div id="rbox">
-    			<div id="modal">
-		    		<g:if test="${flash.message}">
-						<div class="notice">
-							${flash.message}
-						</div>
-					</g:if>
-		    	
-		    		<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
-	    		</div>
+	    		<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
     		</div>
+		</div>
+		
+		<div class="span-16" id="dialog">
+			<div id="popup">	
+		
+			</div>
 		</div>
 	</body>		
 </html>

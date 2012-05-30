@@ -73,21 +73,20 @@ class TransactionService {
 		}
 	}
 	
-//	Pagamento updatePayment(String paymentId, String properties){
-//		def pagamento = Pagamento.get(paymentId)
-//		
-//		if(pagamento) {
-//			pagamento.properties = properties
-//			pagamento.natureza = (pagamento.categoria.receita)? Constants.CREDITO : Constants.DEBITO;
-//			
-//			if(pagamento.validate()){
-//				return pagamento
-//			} else {
-//				throw new ValidationException("Pagamento invalido",pagamento.errors)
-//			}
-//		}
-//		throw new RuntimeException(message: "Nao foi possivel atualizar o registro, tente novamente")
-//	}
+	Transaction updateTransaction(Map params){		
+		def transaction = Transaction.get(params.id)
+		
+		if(transaction) {
+			transaction.properties = params
+			transaction.nature = (transaction.category.income)? Constants.CREDITO : Constants.DEBITO;
+			
+			if(transaction.validate()){
+				transaction.save()
+			}
+		}
+		
+		transaction
+	}
 	
 	def getTransactions(User user, int month, int year){
 		

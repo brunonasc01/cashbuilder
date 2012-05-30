@@ -3,7 +3,7 @@
 <g:if test="${cashFlow}">
 	<g:javascript>
 	$(function() {
-		ajaxSubmit('editButton','modal','edit');
+		ajaxSubmitToModal('editButton','dialog','edit');
 	});
 	</g:javascript>
 			
@@ -12,9 +12,9 @@
 			<div class="inside cashflow">
 				<ul class="legend">
 					<li class="buttons">
-					
+					&nbsp
 					</li>
-					<li class="day first-line">
+					<li class="day">
 					Dia
 					</li>
 					<li class="income">
@@ -34,7 +34,7 @@
 				<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
 					<ul class="${counter == cashFlow.transactions.size() - 1? 'last' : ''  }">
 						<li class="buttons">
-							 <g:form name="formEdit" controller="pagamento">
+							 <g:form name="formEdit" controller="transaction">
 			                    <g:hiddenField name="id" value="${transaction.id}" />
 			                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
 			                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />

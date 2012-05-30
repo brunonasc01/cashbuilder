@@ -12,11 +12,11 @@ enableParcels();
 		</div>
 
 		<div class="inside">
-			<g:hasErrors bean="${transaction}">
-            	<div class="form-errors">
-                	<g:renderErrors bean="${transaction}" as="list" />
-            	</div>
-            </g:hasErrors>
+            <g:if test="${flash.message}">	    		
+				<div class="form-errors">
+					${flash.message}
+				</div>
+			</g:if>
 		
 			<div class="clear"></div>
 			

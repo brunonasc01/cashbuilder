@@ -11,7 +11,9 @@ class BalanceBoxBean {
 	String balanceClass
 
 	double income
+	double plannedIncome
 	double expense
+	double plannedExpense
 	double plannedBalance
 	double actualBalance
 	boolean isBudget

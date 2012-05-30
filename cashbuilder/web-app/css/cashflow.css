@@ -19,7 +19,6 @@ form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-rig
 .cashflow ul { float:left; width: 642px; border-bottom: 1px solid #ccc; background-color: #eee;}
 .cashflow ul:nth-child(even)  { background-color: inherit;  }
 .cashflow ul li { float:left; line-height:25px; }
-.cashflow ul li.first-line { padding-left:50px;  }
 .cashflow ul li.buttons { width:50px; text-align:center;}
 .cashflow ul li.day { width:50px; text-align:center;}
 .cashflow ul li.income { width:110px;}

@@ -62,6 +62,37 @@ function ajaxSubmit(trigger,result,action){
 	});
 }
 
+function ajaxSubmitToModal(trigger,result,action){
+
+	var submitButton = $('input[name='+trigger+']');
+
+	submitButton.click(function(e){
+		e.preventDefault();
+
+		var formData = $(this).parents('form:first').serialize();
+		var formAction = $(this).parents('form:first').attr('action');
+		var returnElement = $("#"+result).find("#popup");
+
+		if(action != null){
+			formAction = formAction.replace('index',action);
+		}
+
+		$.ajax({
+			type: 'POST',
+			data: formData,
+			url: formAction,
+			success:function(data,textStatus){
+				returnElement.html(data);
+				 autoModal(result);
+			},
+			beforeSend: function(){
+				returnElement.html('<img src="/cashbuilder/images/ajax-loader.gif"/>');
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){},
+			complete:function(XMLHttpRequest,textStatus){}
+		});
+	});
+}
 
 function modal(elemId,txtTitle){
 	$("#"+elemId).dialog({

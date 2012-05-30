@@ -190,9 +190,6 @@ function animateProgressBar(element){
 
 function enableParcels(){
 	$(function(){
-		$('#hidden_element').show();
-		$('#parcels').toggle();
-		
 		$('#parcel').click(function(){
 			$('#parcel_msg').toggle();
 			$('#parcels').toggle();

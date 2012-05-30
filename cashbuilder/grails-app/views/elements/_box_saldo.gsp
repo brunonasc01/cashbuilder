@@ -1,7 +1,7 @@
 <%@page import="com.cashbuilder.utils.Constants"%>
 
 	<div class="title">
-		Orcamento Atual		
+		<g:message code="${bean.title }" default="Saldo" />
 	</div>
 	<div id="balanceBox" class="inside">
 		<g:if test="${bean}">
@@ -35,7 +35,8 @@
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
 					<li class="budget-value">
-						2000
+						de <g:formatNumber number="${bean.plannedIncome}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
 				</ul>
 				
@@ -50,7 +51,8 @@
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
 					<li class="budget-value">
-						de 2.000,00
+						de <g:formatNumber number="${bean.plannedExpense}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
 				</ul>
 				

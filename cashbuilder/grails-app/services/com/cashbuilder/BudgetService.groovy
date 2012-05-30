@@ -171,4 +171,34 @@ class BudgetService {
 
 	   entradas - saidas
    }
+   
+   /**
+   * Cria um novo orcamento (a cada ano novo)
+   * @param user Usuario
+   * @param year o ano do orcamento a ser criado
+   */
+  void createNewBudget(User user, int year){
+	  
+	  Budget budget = new Budget(year: year,user: user, calculated:true)
+	  
+	  if(budget.save()){
+		  Budget oldBudget = Budget.findByYearAndUser(year-1,user)
+		  
+		  if(oldBudget){
+			  def oldBudgetMonthsList = BudgetMonth.findAllByBudget(oldBudget)
+			  
+			  oldBudgetMonthsList.each{ budgetMonth ->
+				  def newBudgetMonth = new BudgetMonth(month:budgetMonth.month,budget:budget)
+				  
+				  if(newBudgetMonth.save()){
+					  def oldBudgetMonthItems = budgetMonth.itens
+					  
+					  oldBudgetMonthItems.each{ item ->
+						  new BudgetItem(category:item.category,subcategory:item.subcategory,month:newBudgetMonth).save()
+					  }
+				  }
+			  }
+		  }
+	  }
+  }
 }

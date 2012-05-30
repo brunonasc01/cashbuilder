@@ -2,54 +2,50 @@ package com.cashbuilder
 
 import java.util.Date;
 
-import com.cashbuilder.utils.Constants;
-import com.cashbuilder.utils.DateUtils;
-
 class EventService {
 
     static transactional = true
 
-	def orcamentoService
+	def budgetService
 	
     def serviceMethod() {
 
     }
 	
-	void checkEvents(Usuario user, Date date){
+	void checkEvents(User user, Date date){
 
 		calculateBudget(user,date)
 		processAlerts(user)
 	}
 	
-	void calculateBudget(Usuario user, Date date){
+	void calculateBudget(User user, Date date){
 		Date initialDate = (date)? date : user.dateCreated
-		Date actualDate = DateUtils.getHoje(false)
+		Date actualDate = DateUtils.getToday(false)
 
 		if(actualDate.minus(initialDate) >= 90){
-
-			Orcamento budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
+			Budget budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
 
 			if(!budget.calculated){
-				def budgetMonths = budget.meses
+				def budgetMonths = budget.months
 
 				budgetMonths.each { month ->
 					def monthItems = month.itens
-					def c =  Pagamento.createCriteria()
+					def c = Transaction.createCriteria()
 					
 					monthItems.each{ item ->
 						double total = c.get {
 							and {
 								eq('user', user)
-								eq('subcategoria', item.subcategoria)
-								between('data', initialDate-1, actualDate)
+								eq('subcategory', item.subcategory)
+								between('date', initialDate-1, actualDate)
 							}
-							projections { sum "valor" }
+							projections { sum "value" }
 						}
 
 						double media = (total)? total/3 : 0
 
 						if(media > 0){
-							item.valorPrevisto = media
+							item.budgetedValue = media
 						}
 					}
 				}
@@ -73,29 +69,28 @@ class EventService {
 
 	*/
    
-	void processAlerts(Usuario user){
+	void processAlerts(User user){
 
-		def budget = Orcamento.findByAnoAndUser(DateUtils.anoAtual,user)
-		def mes = OrcmMes.findByMesAndOrcamento(DateUtils.mesAtual,budget)
+		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		def month = BudgetMonth.findByMonthAndBudget(DateUtils.currentMonth,budget)
 		
-		if(orcamentoService.getSaldoPrevisto(mes) > 0 && orcamentoService.getSaldoRealizado(mes,user) > 0){			
+		if(budgetService.getBudgetedBalance(month) > 0 && budgetService.getBalance(month,user) > 0){			
 			createOrUpdateAlert(budget,Constants.ALERT_SALDO_POSITIVO,"alert.saldo.positivo.message")
 			
-   		}else if(orcamentoService.getSaldoPrevisto(mes) < 0 || orcamentoService.getSaldoRealizado(mes,user) < 0){
+   		}else if(budgetService.getBudgetedBalance(month) < 0 || budgetService.getBalance(month,user) < 0){
 		   createOrUpdateAlert(budget,Constants.ALERT_SALDO_NEGATIVO,"alert.saldo.negativo.message")
 		}
 	}
 
-	Alert createOrUpdateAlert(Orcamento budget, int type, String messageCode){
+	Alert createOrUpdateAlert(Budget budget, int type, String messageCode){
 
 		def alert = Alert.findByType(type)
 		
 		 if(!alert){
-			 alert = new Alert(orcamento: budget, enable: true, type: type, message: messageCode)
+			 alert = new Alert(budget: budget, enable: true, type: type, message: messageCode)
 			 alert.save()
 		 } else if(!alert.enable){
 			 alert.enable = true
 		 }
 	}
-	
 }

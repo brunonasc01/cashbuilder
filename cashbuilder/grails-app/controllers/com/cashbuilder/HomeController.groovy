@@ -20,8 +20,11 @@ class HomeController {
 		//box saldo
 		BalanceBoxBean balanceBox = new BalanceBoxBean();
 		balanceBox.title = "box.balance.title1"
-		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)
-		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)		
+		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)		
+		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
+		balanceBox.plannedIncome = budgetService.getBudgetedTotal(budgetMonth,true)
+		balanceBox.plannedExpense = budgetService.getBudgetedTotal(budgetMonth,false)
+				
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
 		//box ultimos registro
@@ -44,9 +47,9 @@ class HomeController {
 		def transaction = transactionService.saveTransaction(user, params)
 		
 		if(transaction.hasErrors()){
-			render(view: "index",model:[transaction:transaction])
-		} else {
-			redirect(action: "index")
-		}
+			flash.message = g.renderErrors(bean: transaction)
+		} 
+		
+		redirect(action: "index")
 	}
 }
