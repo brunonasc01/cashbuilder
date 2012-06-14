@@ -4,16 +4,29 @@
 
 #itemList { padding: 0; }
 
-#goal { padding: 10px 0; }
+/*#goal { padding: 10px 0; }*/
 
-#goal ul { width: inherit; background: #ccc; }
-#goal ul li { background: #fff; float: left; margin:0; text-align: center; font-weight: bold; }
-#goal ul li.name { width: 68%; text-align: left; padding-left: 2%;}
-#goal ul li.state { width: 28%; text-align: right; padding-right: 2%; }
-#goal ul li.values { width: 20%; }
-#goal ul li.of { width: 5%; }
-#goal ul li.space { width: 55%; }
-#goal ul li.bar { width: 100%; clear:both;}
+.inside .left, .inside .right { float:left; }
+.inside .left { width: 120px; padding-right: 5px; border-right: 1px solid; }
+.inside .right { width: 512px; }
+
+ul.stats li, ul.progress li  { font-weight: bold; width: 100%; float: left; }
+
+ul.stats { margin-top: 5px; }
+ul.stats li { text-align: right; }
+ul.stats li.status { }
+ul.stats li.date-limit { font-family: "Arial Black", Arial, sans-serif; }
+ul.stats li.year-limit { font-family: "Arial Black", Arial, sans-serif; }
+
+ul.progress { }
+ul.progress li {  }
+ul.progress li.name { width: 495px; text-align: left; font-size: 1.3em; }
+ul li.icon { width: 16px; }
+ul.progress li.values { width: auto; text-align: center; }
+ul.progress li.of { width: 30px; text-align: center; }
+ul.progress li.actual { width: auto; font-size: 0.8em; float:right;}
+ul.progress li.bar { }
+ul.progress li.bar div{ height: 20px; }
 
 #goalBox ul { width: auto;  }
 #goalBox ul li { float: left; font-weight: bold; margin:0; }
@@ -25,7 +38,5 @@ form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold
 
 form.modalForm ul li.label { width: 110px; text-align: right;  }
 form.modalForm ul li.input { width: auto; padding-left: 10px; padding-right: 20px; }
-form.modalForm ul li.message { width: 250px; padding-left: 10px; font-size: 85%; }
 form.modalForm ul li.button { padding-left: 120px; margin-top: 5px;}
-form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-right: 5%; }
-*form.modalForm ul li.composed_input { width: auto; padding-left: 15px; padding-right: 5%; }
+

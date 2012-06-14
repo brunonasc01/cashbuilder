@@ -91,4 +91,4 @@ form ul li.field-space { margin-bottom: 5px; }
 input.bt_edit { width: 16px; background: url(../images/form/edit-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
 
 input.bt_delete { width: 16px; background: url(../images/form/delete-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
-
+input.bt_delete2 { border:0; }

@@ -20,7 +20,7 @@
 		</div>
 	</g:link>
 	
-	<g:link controller="meta">
+	<g:link controller="goal">
 		<div class="span-4 ${goal? "ativo" : "" }">
 			<span class="goal"></span>
 			Metas

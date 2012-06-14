@@ -11,7 +11,7 @@ class User {
 	Date dateCreated
 	Profile profile
 
-	static hasMany = [budgets: Budget, categories: Category, transactions: Transaction, metas: Meta]
+	static hasMany = [budgets: Budget, categories: Category, transactions: Transaction, goals: Goal]
 	
     static constraints = {
 		email(email: true, unique:true,blank:false)
