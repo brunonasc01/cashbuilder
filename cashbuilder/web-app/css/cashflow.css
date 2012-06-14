@@ -1,19 +1,4 @@
 /* cashflow */
-table { background: #bbb; }
-table tr.header td{ font-weight: bold; background: #bbb; font-size: 1em; }
-table td { background: #fff; border: 1px solid #bbb; font-size: 0.9em; text-align: center; }
-*table td { border: 0; }
-
-
-/* transaction form */
-form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}
-
-form.modalForm ul li.label { width: 110px; text-align: right;  }
-form.modalForm ul li.input { width: auto; padding-left: 10px; padding-right: 20px; }
-form.modalForm ul li.message { width: 250px; padding-left: 10px; font-size: 85%; }
-form.modalForm ul li.button { padding-left: 120px; margin-top: 5px;}
-form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-right: 5%; }
-*form.modalForm ul li.composed_input { width: auto; padding-left: 15px; padding-right: 5%; }
 
 .cashflow ul.legend { font-weight:bold; color: #fff; background-color: #495154; }
 .cashflow ul { float:left; width: 642px; border-bottom: 1px solid #ccc; background-color: #eee;}
@@ -27,3 +12,5 @@ form.modalForm ul li.composed_input { width: auto; padding-left: 1%; padding-rig
 .cashflow ul li.description { width:192px; }
 .cashflow ul.last { border-bottom: none; }
 
+input.bt_edit { width: 16px; background: url(../images/form/edit-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }
+input.bt_delete { width: 16px; background: url(../images/form/delete-icon.png) no-repeat 50%; border:0 none; cursor:pointer; }

@@ -27,7 +27,7 @@
 		</div>
 	</g:link>
 	
-	<g:link controller="relatorio">
+	<g:link controller="report">
 		<div class="span-4 ${stats? "ativo" : "" }">
 			<span class="reports"></span>
 			Relatorios

@@ -8,7 +8,7 @@
     <body>
     	<div class="span-20 prepend-2 append-2">
 		  	<div id="obox">
-				<g:form class="userForm" name="signup" action="save" >
+				<g:form class="newUser" name="signup" action="save" >
 					<div class="title">
 						<g:message code="form.signup.title"/>
 					</div>

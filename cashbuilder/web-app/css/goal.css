@@ -4,8 +4,6 @@
 
 #itemList { padding: 0; }
 
-/*#goal { padding: 10px 0; }*/
-
 .inside .left, .inside .right { float:left; }
 .inside .left { width: 120px; padding-right: 5px; border-right: 1px solid; }
 .inside .right { width: 512px; }
@@ -33,10 +31,4 @@ ul.progress li.bar div{ height: 20px; }
 #goalBox li.label { width: 160px; text-align: right; }
 #goalBox li.value { width: 70px; padding-left: 10px; }
 
-/* form */
-form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin:0;}
-
-form.modalForm ul li.label { width: 110px; text-align: right;  }
-form.modalForm ul li.input { width: auto; padding-left: 10px; padding-right: 20px; }
-form.modalForm ul li.button { padding-left: 120px; margin-top: 5px;}
-
+input.bt_delete2 { border:0; }
