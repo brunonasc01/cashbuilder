@@ -2,8 +2,6 @@ package com.cashbuilder
 
 class BudgetItemController {
 
-	def scaffold = true
-	
     def update() {
 		
 		BudgetItem budgetItem = BudgetItem.get(params.id)

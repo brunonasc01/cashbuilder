@@ -1,6 +1,6 @@
-<%@page import="com.cashbuilder.utils.DateUtils"%>
+<%@page import="com.cashbuilder.DateUtils"%>
 
-CA$HBUILDER ${DateUtils.anoAtual}
+CA$HBUILDER ${DateUtils.currentYear}
 
 <%--		<img src="${resource(dir:'images',file:'facebook-icon.png')}"/>--%>
 		

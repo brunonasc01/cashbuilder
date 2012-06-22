@@ -6,8 +6,6 @@ import com.cashbuilder.cmd.UserPasswordCommand;
 
 class UserController {
 
-	def scaffold = true
-	
     def userService
 	def expensesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
 	
@@ -17,19 +15,19 @@ class UserController {
 		[expenses:expensesList]
 	}
 	
-	def edit = {
+	def edit() {
 		def user = session.user.attach()
 
 		[user: user]
 	}
 	
-	def edit_mail = {
+	def edit_mail() {
 		def user = session.user.attach()
 
 		[user: user]
 	}
 	
-	def edit_password = {
+	def edit_password() {
 		def user = session.user.attach()
 
 		[user: user]

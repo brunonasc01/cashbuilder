@@ -1,8 +1,5 @@
 package com.cashbuilder.beans
 
-import com.cashbuilder.OrcmMes;
-import com.cashbuilder.Usuario;
-
 class BalanceBoxBean {
 
 	String title

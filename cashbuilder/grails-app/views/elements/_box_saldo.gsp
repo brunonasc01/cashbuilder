@@ -1,4 +1,4 @@
-<%@page import="com.cashbuilder.utils.Constants"%>
+<%@page import="com.cashbuilder.Constants"%>
 
 	<div class="title">
 		<g:message code="${bean.title }" default="Saldo" />

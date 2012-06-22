@@ -1,4 +1,4 @@
-package com.cashbuilder.utils
+package com.cashbuilder
 
 class TextUtils {
 

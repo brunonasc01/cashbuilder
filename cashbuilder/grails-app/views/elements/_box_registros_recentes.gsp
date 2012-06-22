@@ -1,5 +1,5 @@
-<%@page import="com.cashbuilder.utils.TextUtils"%>
-<%@page import="com.cashbuilder.utils.Constants"%>
+<%@page import="com.cashbuilder.TextUtils"%>
+<%@page import="com.cashbuilder.Constants"%>
 	
 <div id="rbox">
 	<div class="title">

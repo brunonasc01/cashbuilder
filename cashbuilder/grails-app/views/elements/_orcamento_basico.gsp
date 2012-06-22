@@ -1,4 +1,4 @@
-<%@page import="com.cashbuilder.utils.Constants"%>
+<%@page import="com.cashbuilder.Constants"%>
 
 <g:if test="${list}">	
 	<g:each var="category" in="${list}" status="i">
