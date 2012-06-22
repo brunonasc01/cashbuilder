@@ -1,6 +1,4 @@
 /* administration */
-.left { text-align: left; }
-.right { text-align: right; }
 
 #budgetList { padding: 10px 0; }
 
@@ -18,3 +16,8 @@
 
 #fatherItem ul li, #childItem ul li { background: #fff; float: left; line-height: 25px; font-weight: bold; margin:0;}
 
+.inside .left, .inside .right { float:left; }
+.inside .left {  }
+.inside .right { width: 250px; }
+
+form  input.add_button { font-weight:normal; font-size: 55%; }

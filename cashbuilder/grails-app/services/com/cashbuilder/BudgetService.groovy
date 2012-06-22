@@ -164,41 +164,62 @@ class BudgetService {
 	* @param mes o mes
 	* @return o saldo previsto
 	*/
-   double getBudgetedBalance(BudgetMonth month){
+	double getBudgetedBalance(BudgetMonth month){
 
-	   double entradas = getBudgetedTotal(month,true)
-	   double saidas = getBudgetedTotal(month,false)
+		double entradas = getBudgetedTotal(month,true)
+		double saidas = getBudgetedTotal(month,false)
 
-	   entradas - saidas
-   }
+		entradas - saidas
+	}
    
-   /**
-   * Cria um novo orcamento (a cada ano novo)
-   * @param user Usuario
-   * @param year o ano do orcamento a ser criado
-   */
-  void createNewBudget(User user, int year){
-	  
-	  Budget budget = new Budget(year: year,user: user, calculated:true)
-	  
-	  if(budget.save()){
-		  Budget oldBudget = Budget.findByYearAndUser(year-1,user)
+	/**
+	* Cria um novo orcamento (a cada ano novo)
+	* @param user Usuario
+	* @param year o ano do orcamento a ser criado
+	*/
+	void createNewBudget(User user, int year){
+
+		Budget budget = new Budget(year: year,user: user, calculated:true)
+
+		if(budget.save()){
+			Budget oldBudget = Budget.findByYearAndUser(year-1,user)
+
+			if(oldBudget){
+				def oldBudgetMonthsList = BudgetMonth.findAllByBudget(oldBudget)
+
+				oldBudgetMonthsList.each{ budgetMonth ->
+					def newBudgetMonth = new BudgetMonth(month:budgetMonth.month,budget:budget)
+
+					if(newBudgetMonth.save()){
+						def oldBudgetMonthItems = budgetMonth.itens
+
+						oldBudgetMonthItems.each{ item ->
+							new BudgetItem(category:item.category,subcategory:item.subcategory,month:newBudgetMonth).save()
+						}
+					}
+				}
+			}
+		}
+	}
+  
+	boolean saveFullBudget(User user, String saveType, Map params){
+		if(user){
+			def budgetMonth = BudgetMonth.get(params.id)
 		  
-		  if(oldBudget){
-			  def oldBudgetMonthsList = BudgetMonth.findAllByBudget(oldBudget)
-			  
-			  oldBudgetMonthsList.each{ budgetMonth ->
-				  def newBudgetMonth = new BudgetMonth(month:budgetMonth.month,budget:budget)
-				  
-				  if(newBudgetMonth.save()){
-					  def oldBudgetMonthItems = budgetMonth.itens
-					  
-					  oldBudgetMonthItems.each{ item ->
-						  new BudgetItem(category:item.category,subcategory:item.subcategory,month:newBudgetMonth).save()
-					  }
-				  }
-			  }
-		  }
-	  }
-  }
+			if(budgetMonth){
+				def budget = budgetMonth.budget
+				budget.calculated = true;
+							  
+				if(saveType.equals("month")){
+					budgetMonth.properties = params.properties
+
+				} else if(saveType.equals("year")){
+					BudgetMonth.findAllByBudget(budget).each {
+						it.properties = params.properties
+					}
+				}
+			}
+		} 
+	}
 }
+

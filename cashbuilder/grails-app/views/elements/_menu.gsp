@@ -34,7 +34,7 @@
 		</div>
 	</g:link>
 
-	<g:link controller="administracao">
+	<g:link controller="manager">
 		<div class="span-4 ${adm? "ativo" : "" } last">
 			<span class="adm"></span>
 			Administracao

@@ -3,6 +3,7 @@ form h3 { font-weight:bold; margin-bottom: 5px; margin-top: 20px; margin-left: 1
 form p.policy-message { margin-top: 20px; text-align: center; font-size:.8em;margin-bottom:1.875em;line-height:1.875em; }
 form ul li { float: left; line-height: 30px; text-align: left; font-weight: bold; margin: 5px 0; }
 form ul li small { font-weight: normal; }
+form ul li.label { text-align: right; }
 form ul li.warn { line-height: 20px; margin-top: 0; padding-left: 5px; }
 form ul li.label-error { color: #E40101; }
 form ul li.input-error input { border: 2px solid #E40101; }
@@ -13,7 +14,7 @@ form ul li.input-error input { border: 2px solid #E40101; }
 .form-errors-large { margin: 10px 10px 0 10px;}
 
 /* login form */
-form.loginForm ul li.label { width: 60px;  text-align: right; }
+form.loginForm ul li.label { width: 60px; }
 form.loginForm ul li.input { width: 160px; padding-left: 5px; }
 form.loginForm ul li.button { width: 100%; text-align: center; }
 form.loginForm  ul.password  { margin-top: 10px; }
@@ -21,7 +22,7 @@ form.loginForm  ul.password li { line-height: 20px; margin-bottom:0; }
 form.loginForm  ul li.lostpassword { width:220px; margin-top:0; text-align: right; line-height: 1em; }
 
 /* new user form */
-form.newUser ul li.label { width: 150px;  text-align: right; }
+form.newUser ul li.label { width: 150px; }
 *form.newUser ul li.input select { margin-left: 10px; }
 form.newUser ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
 form.newUser ul li.button { width: 100%; text-align: center; margin-top: 0; }
@@ -31,7 +32,7 @@ form.newUser ul li.input ul li { float:none; }
 form.newUser ul li.warn { margin-left: 150px; }
 
 /* home and popup form */
-form.boxForm ul li.label { width: 100px; text-align: right; }
+form.boxForm ul li.label { width: 100px; }
 form.boxForm ul li.input { width: 150px; padding: 0 .5em; }
 *form.boxForm ul li.input select { margin-left: 10px; }
 form.boxForm ul li.subcategory select { width: 180px; }
@@ -46,13 +47,14 @@ form.boxForm ul li.button { margin-left: 100px; padding: 0 .5em;}
 /* budget form */
 form.budgetForm h5 { font-size: 110%; margin-top: 10px;}
 
-form.budgetForm ul li.label { width: 140px;;  text-align: right; }
+form.budgetForm ul li.label { width: 200px; }
 *form.budgetForm ul li.input select { margin-left: 10px; }
-form.budgetForm ul li.input { width: auto; padding-left: 5px; padding-right: 20px; }
+form.budgetForm ul li.input { width: auto; padding: 0 5px; }
 
-form.budgetForm ul.boxes li.label { width: 50%; text-align: right; }
-form.budgetForm ul.boxes li.input { width: auto; padding-left: 10px; }
-form.budgetForm ul.boxes li.button { width: 100%; padding-left: 0; text-align: center; }
+form.budgetForm .applyBox ul li { text-align: center; }
+form.budgetForm .applyBox ul li.label { width: 55%; text-align: right; }
+form.budgetForm .applyBox ul li.input { width: 30%; }
+form.budgetForm .applyBox ul li.button { width: 100%; margin-top: 10px; }
 
 form.budgetForm ul.display li { float:none; }
 

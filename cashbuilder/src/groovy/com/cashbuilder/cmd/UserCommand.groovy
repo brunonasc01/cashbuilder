@@ -1,9 +1,6 @@
 package com.cashbuilder.cmd
 
-import java.util.Date
-
 import com.cashbuilder.Profile;
-
 import grails.validation.Validateable
 
 @Validateable
