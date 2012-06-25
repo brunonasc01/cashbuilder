@@ -22,7 +22,7 @@ class AjaxEffectsTagLib {
 		
 		def sel_estado = attrs.estado
 		def sel_cidade = attrs.cidade
-		def estado_val = attrs.estado_valor?: ""
+		def estado_val = attrs.estado_valor?: "Selecione"
 		def cidade_val = attrs.cidade_valor?: ""
 		
 		out << "<script src='http://cidades-estados-js.googlecode.com/files/cidades-estados-1.2-utf8.js'></script>"

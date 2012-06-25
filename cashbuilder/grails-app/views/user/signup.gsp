@@ -3,6 +3,9 @@
     <head>
         <meta name="layout" content="base" />
         <r:require modules="recaptcha"/>
+        
+        <g:dgCidadesEstados estado="state" estado_valor="${userInstance?.profile?.state}" 
+			cidade="city" cidade_valor="${userInstance?.profile?.city}" />
     </head>
     
     <body>
@@ -38,56 +41,26 @@
 						
 						<h3><g:message code="form.signup.usedata.title"/></h3>
 					
-						<ul id="field">
-							<li class="label ${hasErrors(bean: userInstance, field: 'firstName', 'label-error')}">
-								<g:message code="firstName.label" default="Primeiro Nome" />*
-							</li>
-							<li class="input ${hasErrors(bean: userInstance, field: 'firstName', 'input-error')}">								
-								<g:textField name="firstName" value="${userInstance?.firstName}" />
-							</li>
+						<ul>
+							<fe:element name="firstName" bean="${userInstance}" compulsory="*"/>
 							
-							<li class="label">								
-								<g:message code="lastName.label" default="Ultimo Nome" />*
-							</li>
-							<li class="input">								
-								<g:textField name="lastName" value="${userInstance?.lastName}" />
-							</li>
+							<fe:element name="lastName" bean="${userInstance}" compulsory="*"/>
 						</ul>
 	
 						<hr />
 					
-						<ul id="field">
-							<li class="label">								
-								<g:message code="email.label" default="Seu e-mail" />*
-							</li>
-							<li class="input">								
-								<g:textField name="email" value="${userInstance?.email}" />
-							</li>
+						<ul>
+							<fe:element name="email" bean="${userInstance}" compulsory="*"/>
 							
-							<li class="label">
-								<g:message code="emailRepeat.label" default="Repita o e-mail" />*
-							</li>
-							<li class="input">								
-								<g:textField name="emailRepeat" value="${userInstance?.emailRepeat}" />
-							</li>
+							<fe:element name="emailRepeat" bean="${userInstance}" compulsory="*"/>
 						</ul>
 						
 						<hr />
 					
-						<ul id="field">
-							<li class="label">								
-								<g:message code="password.label" default="Sua senha" />*
-							</li>
-							<li class="input">
-								<input type="password" name="password" value="${userInstance?.password}" />
-							</li>
+						<ul>
+							<fe:element type="password" name="password" bean="${userInstance}" compulsory="*"/>
 							
-							<li class="label">								
-								<g:message code="passwordRepeat.label" default="Repita a senha" />*
-							</li>
-							<li class="input">
-								<input type="password" name="passwordRepeat" value="${userInstance?.passwordRepeat}" />
-							</li>
+							<fe:element type="password" name="passwordRepeat" bean="${userInstance}" compulsory="*"/>
 							
 							<li class="warn">
 								<small><g:message code="form.password.message"/></small>
@@ -98,19 +71,19 @@
 					
 						<h3><g:message code="form.signup.profiledata.title"/></h3>
 					
-						<ul id="field">
+						<ul>
 							<li class="label">
-								<g:message code="profile.state.label" default="Estado" />
+								<g:message code="profile.state.label" default="Estado" />*
 							</li>
-							<li class="input">
-								<g:textField name="profile.state" value="${userInstance?.profile?.state}" />
+							<li class="input">								
+								<input type="text" name="profile.state" id="state" value="${userInstance?.profile?.state}" />
 							</li>
 							
 							<li class="label">
-								<g:message code="profile.city.label" default="Cidade" />
+								<g:message code="profile.city.label" default="Cidade" />*
 							</li>
 							<li class="input">
-								<g:textField name="profile.city" value="${userInstance?.profile?.city}" />
+								<input type="text" name="profile.city" id="city" value="${userInstance?.profile?.city}" />
 							</li>
 						</ul>
 
@@ -118,7 +91,7 @@
 
 						<g:if test="${expenses }" >
 							<g:set var="counter" value="${0}" />
-							<ul id="field">
+							<ul>
 								<li class="label">
 									<g:message code="profile.expenses.label" default="Despesas" />
 								</li>
@@ -146,7 +119,7 @@
 							<g:message code="form.signup.policy.messagem"/>
 						</p>
 						
-						<ul id="submitField">
+						<ul>
 							<li class="button">
 								<input type="submit" name="create" class="save" value="Cadastrar" id="create" />
 							</li>
