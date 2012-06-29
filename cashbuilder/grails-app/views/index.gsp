@@ -1,12 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
-        <title>Sistema Grails</title>
         <meta name="layout" content="base" />
-        
+        <r:require modules="info"/>
     </head>
     <body>
-		Texto introdutorio
+		<div class="info-text">
+			<g:message code="info.message1"/>
+			
+			<g:form controller="user" action="signup" method="post" >
+				<g:submitButton name="newUser" class="singleButton" value="Comece agora" />
+			</g:form>
+
+			<hr />
+		</div>
+		
+		<ul class="info-box">
+			<li>
+				<b><g:message code="info.box1.title"/></b> 
+				<br />
+				<g:message code="info.box1.message"/> 
+				<br />
+				<a href="#"><g:message code="default.link.read_more"/></a>
+			</li>
+			
+			<li>
+				<b><g:message code="info.box2.title"/></b> 
+				<br />
+				<g:message code="info.box2.message"/> 
+			</li>
+			
+			<li>
+				<b><g:message code="info.box3.title"/></b> 
+				<br />
+				<g:message code="info.box3.message"/> 
+			</li>
+		</ul>
+		
+		<div class="clear"></div>
 		
 		<div class="span-8" id="dialog">
 			<div id="popup">			

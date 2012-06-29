@@ -45,4 +45,8 @@ modules = {
 	recaptcha {
 		resource url:'css/recaptcha.css'
 	}
+	
+	info {
+		resource url:'css/info.css'
+	}
 }
