@@ -13,9 +13,17 @@
 		</g:link>
 	</g:if>
 	<g:else>
-		<a href="javascript:autoModal('dialog');">
-			<g:message code="default.login.label" default="login" />
-		</a>
+		<g:if test="${signup}">
+			<g:link uri="/">
+				<g:message code="app.home" default="home" />
+			</g:link>
+		</g:if>
+		<g:else>
+			<a href="javascript:autoModal('dialog');">
+				<g:message code="default.login.label" default="login" />
+			</a>
+		</g:else>
+
 		<span> | </span>
 		<g:link controller="user" action="signup">
 			<g:message code="default.signup.label" default="signup" />

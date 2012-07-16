@@ -12,7 +12,7 @@ class UserController {
 	static allowedMethods = [save: "POST"]
 	
 	def signup(){
-		[expenses:expensesList]
+		[signup: true, expenses:expensesList]
 	}
 	
 	def edit() {
