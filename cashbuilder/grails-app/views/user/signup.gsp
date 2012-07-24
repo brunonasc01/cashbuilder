@@ -73,14 +73,14 @@
 					
 						<ul>
 							<li class="label">
-								<g:message code="profile.state.label" default="Estado" />*
+								<g:message code="profile.state.label"/>*
 							</li>
 							<li class="input">								
 								<input type="text" name="profile.state" id="state" value="${userInstance?.profile?.state}" />
 							</li>
 							
 							<li class="label">
-								<g:message code="profile.city.label" default="Cidade" />*
+								<g:message code="profile.city.label"/>*
 							</li>
 							<li class="input">
 								<input type="text" name="profile.city" id="city" value="${userInstance?.profile?.city}" />
@@ -93,7 +93,7 @@
 							<g:set var="counter" value="${0}" />
 							<ul>
 								<li class="label">
-									<g:message code="profile.expenses.label" default="Despesas" />
+									<g:message code="profile.expenses.label"/>
 								</li>
 								
 								<li class="input">						

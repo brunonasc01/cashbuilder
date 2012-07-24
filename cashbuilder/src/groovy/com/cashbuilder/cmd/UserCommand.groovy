@@ -20,7 +20,7 @@ class UserCommand {
 		firstName(size:3..20,blank:false)
 		lastName(size:3..30,blank:false)
 		email(email: true, blank:false)
-		emailRepeat(blank:false,
+		emailRepeat(
 			validator: { email2, urc ->
 					if(email2 != urc.email)
 						return ['emailRepeated']
@@ -30,7 +30,7 @@ class UserCommand {
 					Validator: { passwd, user ->
 						return passwd != user.nome
 					})		
-		passwordRepeat(blank: false,
+		passwordRepeat(
 			validator: { passwd2, urc ->
 					if(passwd2 != urc.password)
 						return ['passwordRepeated'] 

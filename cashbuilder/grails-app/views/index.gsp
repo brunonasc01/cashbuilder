@@ -42,14 +42,14 @@
 		<div class="span-8" id="dialog">
 			<div id="popup">			
 				<g:form action="login" controller="login" method="post" class="loginForm" name="loginForm" id="loginForm" >
-					<div class="title popup-title-border">
-						LOGIN
+					<div class="title popup-title-border">						
+						<g:message code="box.login.title.label"/>
 					</div>
 					
 					<div class="inside">
 						<ul>
 							<li class="label">
-								<g:message code="email.label" default="Email" />
+								<g:message code="default.email.label"/>
 							</li>
 							<li class="input">
 								<g:textField name="email" />
@@ -60,13 +60,13 @@
 						
 						<ul class="password">
 							<li class="label">
-								<g:message code="password.label" default="Senha" />
+								<g:message code="default.password.label"/>
 							</li>
 							<li class="input">
 								<g:passwordField name="password" />
 							</li>
 							<li class="lostpassword">
-								<small><a>esqueci a senha<a/></small>
+								<small><a><g:message code="box.login.password.lost"/><a/></small>
 							</li>
 						</ul>
 	
