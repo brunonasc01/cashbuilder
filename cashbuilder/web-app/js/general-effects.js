@@ -188,19 +188,6 @@ function animateProgressBar(element){
 	},percent);
 }
 
-function enableParcels(){
-	$(function(){
-		$('#parcel').click(function(){
-			$('#parcel_msg').toggle();
-			$('#parcels').toggle();
-			
-			if(!$('#parcels').is(':visible')){
-				$('#parcels').attr("value","1");
-			}
-		});
-	});
-}
-
 function styleButtons(){
 	$(function() {
 		$( "input:submit, button, input:reset" ).button();

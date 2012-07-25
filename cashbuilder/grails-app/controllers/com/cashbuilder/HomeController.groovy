@@ -50,6 +50,6 @@ class HomeController {
 			flash.message = g.renderErrors(bean: transaction)
 		} 
 		
-		redirect(action: "index")
+		redirect(action: "index",model:[transaction:transaction])
 	}
 }

@@ -15,19 +15,19 @@
 					&nbsp
 					</li>
 					<li class="day">
-					Dia
+						<g:message code="cashflow.day.title"/>
 					</li>
 					<li class="income">
-					Entrada
+						<g:message code="cashflow.income.title"/>
 					</li>
 					<li class="expense">
-					Saida
+						<g:message code="cashflow.expense.title"/>
 					</li>
 					<li class="category">
-					Categoria
+						<g:message code="cashflow.category.title"/>
 					</li>
 					<li class="description">
-					Descricao
+						<g:message code="cashflow.description.title"/>
 					</li>
 				</ul>
 				

@@ -13,19 +13,19 @@ class DateUtils {
 	static String getMonth(Integer month){
 		
 		switch(month){
-			case 0:	return "Janeiro"
-			case 1:	return "Fevereiro"
-			case 2:	return "Março"
-			case 3:	return "Abril"
-			case 4:	return "Maio"
-			case 5:	return "Junho"
-			case 6:	return "Julho"
-			case 7:	return "Agosto"
-			case 8:	return "Setembro"
-			case 9: return "Outubro"
-			case 10: return "Novembro"
-			case 11: return "Dezembro"
-			default: return "indefinido"
+			case 0:	return "month.january"
+			case 1:	return "month.february"
+			case 2:	return "month.march"
+			case 3:	return "month.april"
+			case 4:	return "month.may"
+			case 5:	return "month.june"
+			case 6:	return "month.july"
+			case 7:	return "month.august"
+			case 8:	return "month.setptember"
+			case 9: return "month.october"
+			case 10: return "month.november"
+			case 11: return "month.december"
+			default: return "month.undefined"
 		}
 	}
 		

@@ -16,7 +16,7 @@
 
     	<div class="span-24">
 			<div id="title">
-    			<h3>${cashFlow.date.month} - ${cashFlow.date.year}</h3>
+    			<h3><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</h3>
     		</div>
     	</div>
     	

@@ -3,7 +3,7 @@
 	
 <div id="rbox">
 	<div class="title">
-		Ultimos Registros
+		<g:message code="box.lasttransaction.title"/>
 	</div>
 	<div id="lastTransactionsBox" class="inside">
 		<g:if test="${ultimosRegistros }">
@@ -25,7 +25,7 @@
 			</g:each>
 		</g:if>
 		<g:else>
-			Nenhum registro
+			<g:message code="box.lasttransaction.empty"/>
 		</g:else>
 	</div>
 	<div class="clear"></div>

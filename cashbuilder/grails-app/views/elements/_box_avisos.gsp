@@ -1,6 +1,6 @@
 <div id="lbox">
 	<div class="title">
-		Avisos
+		<g:message code="box.alert.title" />
 	</div>
 	<div class="inside">
 		<ul>
@@ -10,7 +10,7 @@
 				</g:each>
 			</g:if>
 			<g:else>
-				<li>Nenhum alerta</li>
+				<li><g:message code="alert.no.message" /></li>
 			</g:else>
 		</ul>
 	</div>

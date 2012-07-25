@@ -12,7 +12,7 @@ class UserController {
 	static allowedMethods = [save: "POST"]
 	
 	def signup(){
-		[signup: true, expenses:expensesList]
+		[signup: true]
 	}
 	
 	def edit() {
@@ -51,7 +51,7 @@ class UserController {
 				flash.message = "form.signup.email.error1.message"
 			}
 		}
-		render(view: "signup",model:[userInstance:cmd,expenses:expensesList])
+		render(view: "signup",model:[userInstance:cmd])
 	}
 	
 	def update() {		

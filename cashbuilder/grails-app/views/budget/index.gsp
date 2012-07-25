@@ -17,7 +17,7 @@
 
 		<div class="span-24">
 			<div id="title">
-    			<h3>${budget.date?.month} - ${budget.date?.year }</h3>
+    			<h3><g:message code="${budget.date?.month}"/> - ${budget.date?.year }</h3>
     		</div>
     		
     		<g:if test="${flash.message}">
@@ -40,7 +40,7 @@
     			<div id="rbox">
 
     				<g:if test="${budget.incomeList }">
-    					<div class="title">ENTRADAS</div>
+    					<div class="title"><g:message code="budget.income.title"/></div>
     					
     					<div class="inside">
     						<g:render template="/elements/orcamento_basico" var="list" bean="${budget.incomeList}"></g:render>
@@ -50,7 +50,7 @@
     				<div class="clear"></div>
     				
     				<g:if test="${budget.expenseList }">
-						<div class="title">SAIDAS</div>
+						<div class="title rounded-none"><g:message code="budget.expense.title"/></div>
 						<div class="inside">
 							<g:render template="/elements/orcamento_basico" var="list" bean="${budget.expenseList}"></g:render>
 						</div>

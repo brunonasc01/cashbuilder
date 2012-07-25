@@ -23,12 +23,14 @@
 				<g:if test="${category.subcategories}">
 					<g:each var="subcategory" in="${category.subcategories}">
 					<div id="item">
-						<div class="edit"><button>EDITAR</button></div>
+						<div class="edit">
+							<button><g:message code="budget.button.edit.label"/></button>
+						</div>
 						
 						<div class="save">
 							<g:form action="update" controller="budgetItem">
-								<button type="submit">GRAVAR</button>
-								<button name="undo">DESFAZER</button>
+								<button type="submit"><g:message code="budget.button.save.label"/></button>
+								<button name="undo"><g:message code="budget.button.undo.label"/></button>
 								
 								<g:hiddenField name="monthId" value="${monthIndex}"/>
 								<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
@@ -43,7 +45,7 @@
 						<ul id="basic">
 							<li class="name">${subcategory.name }</li>
 							<li class="values"><span class="right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/></span></li>
-							<li class="of">de</li>
+							<li class="of"><g:message code="default.of"/></li>
 							<li class="values" id="prev"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
 							<li class="bar"><div id="progressbar"></div></li>
 						</ul>
@@ -51,7 +53,7 @@
 						<ul id="edition"> 
 							<li class="name">${subcategory.name }</li>
 							<li class="values"><span class="right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/></span></li>
-							<li class="of">de</li>
+							<li class="of"><g:message code="default.of"/></li>
 							<li class="values" id="prev"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
 							<li class="slider"><div id="sliderbar"></div></li>
 							<li class="input"><g:textField size="6" name="manualValue" value="${df.format(subcategory.budgetedValue)}"/></li>

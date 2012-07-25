@@ -1,14 +1,10 @@
 
 <g:categoriesCombo trigger="categoryCombo" target="subcategoriesCombo"/>
 
-<g:javascript>
-enableParcels();
-</g:javascript>
-
 <div id="lbox">
 	<g:form class="boxForm" name="xpNewReg" action="saveTransaction" controller="home">
 		<div class="title">
-			Novo Lancamento
+			<g:message code="box.transaction.title"/>
 		</div>
 
 		<div class="inside">
@@ -24,7 +20,7 @@ enableParcels();
 		
 			<ul id="field">
 				<li class="label">
-					<g:message code="pagamento.data.label" default="Data" />
+					<g:message code="box.transaction.date.label"/>*
 				</li>
 				<li class="input">
 					<g:jqDatePicker class="date" name="date" value="" />
@@ -35,19 +31,17 @@ enableParcels();
 			
 			<ul>
 				<li class="label">
-					<g:message code="pagamento.valor.label" default="Valor" />*
+					<g:message code="box.transaction.value.label"/>*
 				</li>
 				<li class="input">
 					<g:textField maxlength="10" name="value" value="" />
 				</li>
 				
 				<li class="label">
-					<g:message code="pagamento.parcel.label" default="Parcelado ?" />
+					<g:message code="box.transaction.parcels.label" />
 				</li>
-				<li class="composed_input">
-					<g:checkBox name="parcel" />
-					<small id="parcel_msg">marque para inserir</small>
-					<g:textField maxlength="2" size="2" name="parcels" value="1" />
+				<li class="input">
+					<g:select name="parcels" from="${1..24}"/>
 				</li>
 			</ul>
 			
@@ -55,7 +49,7 @@ enableParcels();
 			
 			<ul id="field">
 				<li class="label">
-					<g:message code="pagamento.categoria.label" default="Categoria" />*
+					<g:message code="box.transaction.category.label"/>*
 				</li>
 				<li class="input category">
 					<g:if test="${registroRapido}">
@@ -66,7 +60,7 @@ enableParcels();
 				</li>
 				
 				<li class="label">
-					<g:message code="pagamento.subcategoria.label" default="Subcategoria" />*
+					<g:message code="box.transaction.subcategory.label"/>*
 				</li>
 				<li class="input subcategory">
 					<g:if test="${registroRapido}">
@@ -82,7 +76,7 @@ enableParcels();
 		
 			<ul id="field">
 				<li class="label">
-					<g:message code="pagamento.descricao.label" default="Descricao" />
+					<g:message code="box.transaction.description.label"/>
 				</li>
 				<li class="input">
 					<g:textField name="description" maxlength="100" size="64"></g:textField>

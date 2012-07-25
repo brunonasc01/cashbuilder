@@ -2,42 +2,42 @@
 	<g:link controller="home">
 		<div class="span-4 ${home? "ativo" : "" }">
 			<span class="home"></span>
-			Home
+			<g:message code="menu.home.label"/>
 		</div>
 	</g:link>
 	
 	<g:link controller="budget">    		
 		<div class="span-4 ${budget? "ativo" : "" }">
 			<span class="budget"></span>
-			Orcamento
+			<g:message code="menu.budget.label"/>
 		</div>
 	</g:link>
 	
 	<g:link controller="cashflow">
 		<div class="span-4 ${cashflow? "ativo" : "" }">
 			<span class="cashflow"></span>
-			Fluxo de Caixa
+			<g:message code="menu.cashflow.label"/>
 		</div>
 	</g:link>
 	
 	<g:link controller="goal">
 		<div class="span-4 ${goal? "ativo" : "" }">
 			<span class="goal"></span>
-			Metas
+			<g:message code="menu.goal.label"/>
 		</div>
 	</g:link>
 	
 	<g:link controller="report">
 		<div class="span-4 ${stats? "ativo" : "" }">
 			<span class="reports"></span>
-			Relatorios
+			<g:message code="menu.report.label"/>
 		</div>
 	</g:link>
 
 	<g:link controller="manager">
 		<div class="span-4 ${adm? "ativo" : "" } last">
 			<span class="adm"></span>
-			Administracao
+			<g:message code="menu.adm.label"/>
 		</div>
 	</g:link>
 </g:if>
