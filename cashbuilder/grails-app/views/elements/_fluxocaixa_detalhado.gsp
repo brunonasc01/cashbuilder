@@ -1,11 +1,11 @@
 <%@page import="com.cashbuilder.Constants"%>
 
 <g:if test="${cashFlow}">
-	<g:javascript>
+	<r:script disposition="head">
 	$(function() {
 		ajaxSubmitToModal('editButton','dialog','edit');
 	});
-	</g:javascript>
+	</r:script>
 			
 	<div class="span-17 last">
    		<div id="rbox">

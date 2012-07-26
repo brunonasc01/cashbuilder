@@ -5,11 +5,11 @@
         <meta name="layout" content="base" />
 		<r:require modules="cashflow"/>
 
-		<g:javascript>
+		<r:script disposition="head">
 		$(function() {
 			ajaxSubmitToModal('newButton','dialog');
 		});
-		</g:javascript>
+		</r:script>
     </head>
     <body>
 		<g:monthMenu month="${monthIndex}" />

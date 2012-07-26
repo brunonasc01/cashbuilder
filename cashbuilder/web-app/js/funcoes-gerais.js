@@ -78,19 +78,15 @@ function ajaxSubmitToModal(trigger,result,action){
 		}
 
 		$.ajax({
-			type: 'POST',
-			data: formData,
-			url: formAction,
-			success:function(data,textStatus){
-				returnElement.html(data);
-				 autoModal(result);
-			},
-			beforeSend: function(){
-				returnElement.html('<img src="/cashbuilder/images/ajax-loader.gif"/>');
-			},
-			error:function(XMLHttpRequest,textStatus,errorThrown){},
-			complete:function(XMLHttpRequest,textStatus){}
+			  type: "POST",
+			  url: formAction,
+			  data: formData,
+			  cache: false
+		}).done(function( html ) {
+			returnElement.html(html);
 		});
+		
+		autoModal(result);
 	});
 }
 

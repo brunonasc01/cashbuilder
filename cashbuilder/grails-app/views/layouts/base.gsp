@@ -4,7 +4,7 @@
         <title><g:layoutTitle default="FAZRICO" /></title>
 
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />		
-		<r:require modules="core"/>
+		
 		<r:layoutResources/>
 
 		<script>
@@ -35,6 +35,10 @@
 
 			<div id="footer" class="span-24">
 		  		<g:render template="/elements/rodape" ></g:render>
+		  	</div>
+		  	
+		  	<div id="links" class="span-24">
+		  		<g:render template="/elements/links" ></g:render>
 		  	</div>
     	</div>
     	

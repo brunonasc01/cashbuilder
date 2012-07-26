@@ -3,6 +3,7 @@
     <head>
         <title>Sistema Grails</title>
         <meta name="layout" content="base" />
+        <r:require modules="core"/>
     </head>
 
     <body>

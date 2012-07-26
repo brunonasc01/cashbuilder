@@ -21,24 +21,29 @@ modules = {
 	}
 	
 	cashflow {
+		dependsOn 'core'
 		resource url:'css/cashflow.css'
 	}
 	
 	budget {
+		dependsOn 'core'
 		resource url:'css/budget.css'
 	}
 	
 	goal {
+		dependsOn 'core'
 		resource url:'css/goal.css'
 //		resource url:'css/modalform.css'
 	}
 	
 	reports {
+		dependsOn 'core'
 		resource url:'css/reports.css'		
 		resource url:'js/FusionCharts.js', disposition: 'head'
 	}
 	
 	adm {
+		dependsOn 'core'
 		resource url:'css/adm.css'
 	}
 	
@@ -47,6 +52,7 @@ modules = {
 	}
 	
 	info {
+		dependsOn 'core'
 		resource url:'css/info.css'
 	}
 }

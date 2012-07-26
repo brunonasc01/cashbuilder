@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
         <meta name="layout" content="base" />
+		<r:require modules="core"/>
 
 		<g:dgCidadesEstados estado="state" estado_valor="${user?.profile?.state}" 
 			cidade="city" cidade_valor="${user?.profile?.city}" />

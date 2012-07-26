@@ -1,14 +1,13 @@
 
 <g:javascript>
 styleButtons();
-enableParcels();
 </g:javascript>
 
 <g:categoriesCombo trigger="categoryCombo" target="subcategoriesCombo"/>
 
 <g:form class="boxForm" name="editTransaction" action="update" controller="transaction">
-	<div class="title">
-		Editar Lancamento
+	<div class="title popup-title-border">
+		<g:message code="box.transaction.edit.title"/>
 	</div>
 	
 	<g:hiddenField name="id" value="${transaction?.id}" />
@@ -19,7 +18,7 @@ enableParcels();
 	
 		<ul id="field">
 			<li class="label">
-				<g:message code="pagamento.data.label" default="Data" />
+				<g:message code="box.transaction.date.label"/>*
 			</li>
 			<li class="input">
 				<g:jqDatePicker class="date" name="date" value="${transaction?.date }" />
@@ -30,7 +29,7 @@ enableParcels();
 		
 		<ul>
 			<li class="label">
-				<g:message code="pagamento.valor.label" default="Valor" />*
+				<g:message code="box.transaction.value.label"/>*
 			</li>
 			<li class="input">
 				<g:textField maxlength="10" name="value" value="${df.format(transaction?.value)}" />
@@ -41,7 +40,7 @@ enableParcels();
 	
 		<ul id="field">
 			<li class="label">
-				<g:message code="pagamento.categoria.label" default="Categoria" />*
+				<g:message code="box.transaction.category.label"/>*
 			</li>
 			<li class="input category">
 				<g:if test="${categoriesList}">
@@ -52,7 +51,7 @@ enableParcels();
 			</li>
 			
 			<li class="label">
-				<g:message code="pagamento.subcategoria.label" default="Subcategoria" />*
+				<g:message code="box.transaction.subcategory.label"/>*
 			</li>
 			<li class="input subcategory">
 				<g:if test="${categoriesList}">
@@ -68,7 +67,7 @@ enableParcels();
 		
 		<ul id="field">
 			<li class="label">
-				<g:message code="pagamento.descricao.label" default="Descricao" />
+				<g:message code="box.transaction.description.label"/>
 			</li>
 			<li class="input">
 				<g:textField name="description" maxlength="100" size="64" value="${transaction?.description }"></g:textField>
