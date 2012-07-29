@@ -50,8 +50,26 @@ class GoalService {
 				}
 				projections { sum "value" }
 			}
-				
+			
 			total = (total)? total : 0
+			
+			int month = DateUtils.currentMonth
+			int year = DateUtils.currentYear
+			Date firstDay = DateUtils.getFirstDay(month, year)
+			Date lastDay = DateUtils.getLastDay(month, year)
+			
+			c = Transaction.createCriteria()
+			
+			Double current = c.get {
+				and {
+					eq('user', user)
+					'in'('subcategory', goal.subcategories)
+					between('date', firstDay, lastDay)
+				}
+				projections { sum "value" }
+			}
+			
+			current = (current)?: 0
 
 			Date date = new Date()
 			
@@ -92,6 +110,7 @@ class GoalService {
 			bean.title = goal.title
 			bean.total = goal.total
 			bean.accumulated = total
+			bean.currentAccumulated = current
 			bean.endDate = cf.format(goal.endDate)
 			bean.endYear = cal.get(Calendar.YEAR)
 

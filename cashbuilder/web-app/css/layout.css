@@ -20,7 +20,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 /* Header */
 #header { background-color: #495154; border-radius: 10px 10px 0px 0px; -moz-border-radius: 10px 10px 0px 0px;}
 #header .logo { height: 50px; padding-left: 5px; font-family: "Arial Black", Arial, sans-serif; }
-#header .logo h2 { color: #fff;/*#CFB52B;*/ }
+#header .logo h2 { color: #CFB52B; }
 #header .subheader { background-color: #6B7576; padding: 0.2em 0; padding-left: 5px; }
 
 /* Menu */
@@ -110,10 +110,11 @@ hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:1px;margi
 
 /*rm*/li { border: 0px solid; }
 
-.rounded-all { border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; box-shadow:0px 0px 10px #090909; }
+.rounded-all { border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
 .rounded-top { border-radius: 10px 10px 0px 0px; -moz-border-radius: 10px 10px 0px 0px; -webkit-border-radius: 10px 10px 0px 0px; }
 .rounded-bottom { border-radius: 0px 0px 10px 10px; -moz-border-radius: 0px 0px 10px 10px; -webkit-border-radius: 0px 0px 10px 10px; }
 .rounded-none { border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; }
 
 .mascara { position:absolute; left:0; top:0; z-index:9000; background-color:#000; display:none; }
 #dialog { position:absolute; left:0; top:0; display: none; z-index:9999; }
+.popup-min-size { min-height: 270px; }

@@ -7,6 +7,7 @@ class GoalBean {
 	def status
 	double total
 	double accumulated
+	double currentAccumulated
 	double percent
 	String endYear
 	String endDate

@@ -16,7 +16,7 @@
 		<g:monthMenu month="${monthIndex}" />
 
 		<div class="span-24">
-			<div id="title">
+			<div id="title" class="rounded-all">
     			<h3><g:message code="${budget.date?.month}"/> - ${budget.date?.year }</h3>
     		</div>
     		

@@ -14,8 +14,8 @@
 
     <body>
     	<div class="span-24">
-			<div id="title">
-    			<h3>Metas</h3>
+			<div id="title" class="rounded-all">
+    			<h3><g:message code="goal.title.label"/></h3>
     		</div>
     	</div>
     
@@ -38,25 +38,25 @@
 			
 			<div id="lbox">
 				<div class="title">
-    				Estatisticas
+    				<g:message code="goal.box.title.label"/>
     			</div>
     			
     			<div id="goalBox" class="inside">
     				<ul>
     					<li class="label">
-    						Metas em Andamento
+    						<g:message code="goal.box.goal1.label"/>
     					</li>
     					<li class="value">
     						${goalStatus[0]}
     					</li>
     					<li class="label">
-    						Metas Alcancadas
+    						<g:message code="goal.box.goal2.label"/>
     					</li>
     					<li class="value">
     						${goalStatus[1]}
     					</li>
     					<li class="label">
-    						Metas Expiradas
+    						<g:message code="goal.box.goal3.label"/>
     					</li>
     					<li class="value">
     						${goalStatus[2]}
@@ -77,13 +77,13 @@
 		            			<ul class="stats">
 									<li class="status">
 										<g:if test="${goal.status == Constants.META_ATINGIDA }">
-											ALCANCADO!
+											<g:message code="goal.status.done.label"/>
 										</g:if>
 										<g:elseif test="${goal.status == Constants.META_PERDIDA }">
-											EXPIRADO
+											<g:message code="goal.status.lost.label"/>
 										</g:elseif>
 										<g:elseif test="${goal.status == Constants.META_CORRENTE }">
-											EM ANDAMENTO
+											<g:message code="goal.status.working.label"/>
 										</g:elseif>
 									</li>
 									
@@ -121,7 +121,8 @@
 									</li>
 									
 									<li class="actual">
-									R$ 100,00 neste mes
+										<g:formatNumber number="${goal.currentAccumulated }" format="${Constants.FORMATO_MOEDA}"/>
+										<g:message code="goal.this.month.message"/>
 									</li>
 									
 									<li class="bar">

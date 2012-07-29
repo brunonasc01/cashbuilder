@@ -7,8 +7,8 @@ styleButtons()
 
 <g:form class="boxForm" name="newGoal" action="save" controller="goal">
 
-	<div class="title">
-		Nova Meta
+	<div class="title popup-title-border">
+		<g:message code="goal.box.title"/>
 	</div>
 	
 	<div class="inside">
@@ -16,7 +16,7 @@ styleButtons()
 
 		<ul>
 			<li class="label">
-				<g:message code="meta.title.label" default="Titulo" />*
+				<g:message code="goal.box.title.label"/>*
 			</li>
 			<li class="input">
 				<input type="text" maxlength="45" size="64" name="title" value=""/>
@@ -27,7 +27,7 @@ styleButtons()
 	
 		<ul>
 			<li class="label">
-				<g:message code="meta.total.label" default="Montante" />*
+				<g:message code="goal.box.total.label"/>*
 			</li>
 			<li class="input">
 				<g:textField maxlength="10" name="total" value="" />
@@ -38,7 +38,7 @@ styleButtons()
 		
 		<ul>
 			<li class="label">
-				<g:message code="meta.dataInicio.label" default="Data Inicio" />*
+				<g:message code="goal.box.start.date.label"/>*
 			</li>
 			<li class="input">
 				<g:jqDatePicker class="date" name="startDate" value="" />
@@ -47,7 +47,7 @@ styleButtons()
 		
 		<ul>
 			<li class="label">
-				<g:message code="meta.dataFim.label" default="Data Fim" />*
+				<g:message code="goal.box.end.date.label"/>*
 			</li>
 			<li class="input">
 				<g:jqDatePicker class="date" name="endDate" value="" />
@@ -58,7 +58,7 @@ styleButtons()
 
 		<ul>
 			<li class="label">
-				<g:message code="pagamento.categoria.label" default="Categoria" />*
+				<g:message code="goal.box.category.label"/>*
 			</li>
 			<li class="input category">
 				<g:if test="${categoriesList}">
@@ -73,7 +73,7 @@ styleButtons()
 	
 		<ul>
 			<li class="label">
-				<g:message code="pagamento.subcategoria.label" default="Subcategoria" />*
+				<g:message code="goal.box.subcategory.label"/>*
 			</li>
 			<li class="input subcategory">
 				<g:if test="${categoriesList}">

@@ -7,7 +7,7 @@
     </head>
     <body>
     	<div class="span-24">
-			<div id="title">
+			<div id="title" class="rounded-all">
     			<h3>Administracao</h3>
     		</div>
 

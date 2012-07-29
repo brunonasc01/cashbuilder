@@ -15,7 +15,7 @@
 		<g:monthMenu month="${monthIndex}" />
 
     	<div class="span-24">
-			<div id="title">
+			<div id="title" class="rounded-all">
     			<h3><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</h3>
     		</div>
     	</div>
@@ -44,12 +44,10 @@
     	</div>
     
     	<div class="span-17 last">
-    		<div id="rbox">
-	    		<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
-    		</div>
+	    	<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
 		</div>
 		
-		<div class="span-16" id="dialog">
+		<div class="span-16 popup-min-size" id="dialog">
 			<div id="popup">	
 		
 			</div>

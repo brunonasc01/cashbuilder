@@ -6,70 +6,71 @@
 		ajaxSubmitToModal('editButton','dialog','edit');
 	});
 	</r:script>
+
+  	<div id="rbox">
+  		<div class="cashflow">
+	  		<ul class="legend rounded-top">
+				<li class="buttons rounded-left">
+				&nbsp
+				</li>
+				<li class="day">
+					<g:message code="cashflow.day.title"/>
+				</li>
+				<li class="income">
+					<g:message code="cashflow.income.title"/>
+				</li>
+				<li class="expense">
+					<g:message code="cashflow.expense.title"/>
+				</li>
+				<li class="category">
+					<g:message code="cashflow.category.title"/>
+				</li>
+				<li class="description rounded-right">
+					<g:message code="cashflow.description.title"/>
+				</li>
+			</ul>
+	  	</div>
+
+		<div class="inside cashflow">
 			
-	<div class="span-17 last">
-   		<div id="rbox">
-			<div class="inside cashflow">
-				<ul class="legend">
+			<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
+				<ul class="${counter == cashFlow.transactions.size() - 1? 'last rounded-bottom' : ''  }">
 					<li class="buttons">
-					&nbsp
+						 <g:form name="formEdit" controller="transaction">
+		                    <g:hiddenField name="id" value="${transaction.id}" />
+		                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
+		                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
+		                </g:form>
 					</li>
 					<li class="day">
-						<g:message code="cashflow.day.title"/>
+						<g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
 					</li>
 					<li class="income">
-						<g:message code="cashflow.income.title"/>
+						<g:if test="${transaction.nature.equals('C')}">
+							<g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:if>
+						<g:else>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:else>
 					</li>
 					<li class="expense">
-						<g:message code="cashflow.expense.title"/>
+						<g:if test="${transaction.nature.equals('D')}">
+						  <g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:if>
+						<g:else>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						</g:else>
 					</li>
 					<li class="category">
-						<g:message code="cashflow.category.title"/>
+						${transaction.subcategory}
 					</li>
 					<li class="description">
-						<g:message code="cashflow.description.title"/>
+						${transaction.description}
 					</li>
 				</ul>
-				
-				<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
-					<ul class="${counter == cashFlow.transactions.size() - 1? 'last' : ''  }">
-						<li class="buttons">
-							 <g:form name="formEdit" controller="transaction">
-			                    <g:hiddenField name="id" value="${transaction.id}" />
-			                    <g:submitButton name="editButton" class="bt_edit" value="" title="editar"/>
-			                    <input type="submit" name="_action_delete" class="bt_delete" value="" title="excluir" onclick="return confirm('Tem Certeza?');" />
-			                </g:form>
-						</li>
-						<li class="day">
-							<g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
-						</li>
-						<li class="income">
-							<g:if test="${transaction.nature.equals('C')}">
-								<g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-							</g:if>
-							<g:else>
-								<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-							</g:else>
-						</li>
-						<li class="expense">
-							<g:if test="${transaction.nature.equals('D')}">
-							  <g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-							</g:if>
-							<g:else>
-								<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-							</g:else>
-						</li>
-						<li class="category">
-							${transaction.subcategory}
-						</li>
-						<li class="description">
-							${transaction.description}
-						</li>
-					</ul>
-				</g:each>
-				
-				<div class="clear"></div>
-			</div>
+			</g:each>
+			
+			<div class="clear"></div>
 		</div>
-	</div>	
+	</div>
 </g:if>
