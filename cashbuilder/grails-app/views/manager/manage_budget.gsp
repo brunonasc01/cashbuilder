@@ -4,7 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
-        <title>Sistema Grails</title>
         <meta name="layout" content="base" />
 		<r:require module="adm"/>        
     </head>
@@ -13,7 +12,7 @@
 
     	<div class="span-24">
 			<div id="title">
-    			<h3>Orcamento Manual</h3>
+    			<h3><g:message code="manager.budget.title.label"/></h3>
     		</div>
     	</div>
     
@@ -22,13 +21,14 @@
 	    			    	
 	    		<div id="lbox">
 		   			<div class="title">
-		           		Aplicar para
+		           		<g:message code="manager.budget.box.title.label"/>
 		           	</div>
 		           	
 		           	<div class="inside applyBox">
 		           		<ul>
 		           			<li class="label">
-		           				Mês (${DateUtils.getMonth(budgetMonth.month) })
+		           				<g:set var="month_key" value="${DateUtils.getMonth(budgetMonth.month)}" />
+		           				<g:message code="month.label"/> (<g:message code="${month_key }"/>)
 		           			</li>
 		           			<li class="input">
 		           				<g:radio name="saveType" value="month" checked="true"></g:radio>
@@ -39,7 +39,7 @@
 		           		
 		           		<ul>
 		           			<li class="label">
-		           				Ano (${DateUtils.currentYear })
+		           				<g:message code="year.label"/> (${DateUtils.currentYear})
 		           			</li>
 		           			<li class="input">
 		           				<g:radio name="saveType" value="year" ></g:radio>
@@ -83,7 +83,7 @@
 					<g:set var="totalIncome" value="${0}" />
 					
 					<div class="title">
-						ENTRADAS
+						<g:message code="manager.budget.income.label"/>
 					</div>
 					
 					<div class="inside">
@@ -113,7 +113,7 @@
 					<div class="clear"></div>
 	
 					<div class="title">
-						SAIDAS
+						<g:message code="manager.budget.expense.label"/>
 					</div>
 					
 					<div class="inside">

@@ -8,7 +8,7 @@
     <body>
     	<div class="span-24">
 			<div id="title">
-    			<h3>Cadastro</h3>
+    			<h3><g:message code="manager.user.title.label"/></h3>
     		</div>
     	</div>
     
@@ -16,7 +16,7 @@
 		  	<div id="obox">
 				<g:form class="newUser" name="editPassword" action="updatePassword" >
 					<div class="title">
-						Atualizacao de senha
+						<g:message code="manager.user.update.password.label"/>
 					</div>
 
 					<div class="inside">
@@ -41,31 +41,16 @@
 					
 						<g:hiddenField name="id" value="${user?.id }" />
 
-						<ul id="field">
-							<li class="label">
-								<g:message code="edit.password.label" default="Senha" />*
-							</li>
-							<li class="input">
-								<g:passwordField name="password" value="" />
-							</li>
+						<ul>
+							<fe:element type="password" name="password" bean="${user}" compulsory="*"/>
 						</ul>
 
 						<hr />
 						
-						<ul id="field">
-							<li class="label">
-								<g:message code="passwordNovo.label" default="Nova senha" />*
-							</li>
-							<li class="input">
-								<g:passwordField name="passwordNew" value="" />
-							</li>
-							
-							<li class="label">
-								<g:message code="passwordRepeat.label" default="Repita a senha" />*
-							</li>
-							<li class="input">
-								<g:passwordField name="passwordRepeat" value="" />
-							</li>
+						<ul>
+							<fe:element type="password" name="passwordNew" bean="${user}" compulsory="*"/>
+														
+							<fe:element type="password" name="passwordRepeat" bean="${user}" compulsory="*"/>
 						</ul>
 						
 						<hr />

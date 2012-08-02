@@ -8,7 +8,7 @@
     <body>
     	<div class="span-24">
 			<div id="title">
-    			<h3>Cadastro</h3>
+    			<h3><g:message code="manager.user.title.label"/></h3>
     		</div>
     	</div>
     
@@ -16,7 +16,7 @@
 		  	<div id="obox">
 				<g:form class="newUser" name="editMail" action="updateMail" >
 					<div class="title">
-						Atualizacao de e-mail
+						<g:message code="manager.user.update.mail.label"/>
 					</div>
 
 					<div class="inside">
@@ -42,31 +42,16 @@
 					
 						<g:hiddenField name="id" value="${user?.id }" />
 
-						<ul id="field">
-							<li class="label">
-								<g:message code="edit.email.label" default="Email" />*
-							</li>
-							<li class="input">
-								<g:textField name="email" value="" />
-							</li>
+						<ul>
+							<fe:element name="email" bean="${user}" compulsory="*"/>
 						</ul>
 
 						<hr />
 
-						<ul id="field">
-							<li class="label">
-								<g:message code="emailNovo.label" default="Novo Email" />*
-							</li>
-							<li class="input">
-								<g:textField name="emailNew" value="" />
-							</li>
-							
-							<li class="label">
-								<g:message code="emailRepeat.label" default="Repita Email" />*
-							</li>
-							<li class="input">
-								<g:textField name="emailRepeat" value="" />
-							</li>
+						<ul>
+							<fe:element name="emailNew" bean="${user}" compulsory="*"/>
+
+							<fe:element name="emailRepeat" bean="${user}" compulsory="*"/>
 						</ul>
 	
 						<hr />

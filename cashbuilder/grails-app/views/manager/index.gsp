@@ -1,35 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
     <head>
-        <title>Sistema Grails</title>
         <meta name="layout" content="base" />
         <r:require module="adm"/>
     </head>
     <body>
     	<div class="span-24">
 			<div id="title" class="rounded-all">
-    			<h3>Administracao</h3>
+    			<h3><g:message code="manager.title.label"/></h3>
     		</div>
 
-			
-	    		<g:if test="${flash.message}">
-	    			<div class="inside">
-						<div class="success">
-							${flash.message}
-						</div>
+    		<g:if test="${flash.message}">
+    			<div class="inside">
+					<div class="success">
+						${flash.message}
 					</div>
-				</g:if>
-			
+				</div>
+			</g:if>
     	</div>
     
 	  	<div class="span-8">
 			<div id="lbox">
 				<div class="title">
-					Orcamento
+					<g:message code="manager.box.title1.label"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><g:link action="manage_budget">Definir Orcamento Manual</g:link></li>
+						<li><g:link action="manage_budget"><g:message code="manager.box.link1.label"/></g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -38,15 +35,15 @@
 	  	<div class="span-8">
 	  		<div id="cbox">
 				<div class="title">
-					Cadastro
+					<g:message code="manager.box.title2.label"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><g:link controller="user" action="edit">Alterar dados cadastrais</g:link></li>
+						<li><g:link controller="user" action="edit"><g:message code="manager.box.link2.label"/></g:link></li>
 						
-						<li><g:link controller="user" action="edit_mail">Alterar endereço de e-mail</g:link></li>
+						<li><g:link controller="user" action="edit_mail"><g:message code="manager.box.link3.label"/></g:link></li>
 						
-						<li><g:link controller="user" action="edit_password">Alterar senha de acesso</g:link></li>
+						<li><g:link controller="user" action="edit_password"><g:message code="manager.box.link4.label"/></g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -55,11 +52,11 @@
 	  	<div class="span-8 last">
 			<div id="rbox">
 				<div class="title">
-					Edicao de Categorias
+					<g:message code="manager.box.title3.label"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><g:link controller="category" action="new_category">Nova categoria/subcategoria</g:link></li>
+						<li><g:link controller="category" action="new_category"><g:message code="manager.box.link5.label"/></g:link></li>
 					</ul>
 				</div>
 			</div>

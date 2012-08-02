@@ -12,7 +12,7 @@
     <body>
     	<div class="span-24">
 			<div id="title">
-    			<h3>Cadastro</h3>
+    			<h3><g:message code="manager.user.title.label"/></h3>
     		</div>
     	</div>
     
@@ -20,7 +20,7 @@
 		  	<div id="obox">
 				<g:form class="newUser" name="editUser" action="update" >
 					<div class="title">
-						Atualizacao de dados pessoais
+						<g:message code="manager.user.update.data.label"/>
 					</div>	
 	
 					<div class="inside">
@@ -46,33 +46,23 @@
 						<g:hiddenField name="id" value="${user?.id }" />
 
 						<ul id="field">
-							<li class="label ${hasErrors(bean: user, field: 'firstName', 'label-error')}">
-								<g:message code="firstName.label" default="Primeiro Nome" />*
-							</li>
-							<li class="input ${hasErrors(bean: user, field: 'firstName', 'input-error')}">								
-								<g:textField name="firstName" value="${user?.firstName}" />
-							</li>
+							<fe:element name="firstName" bean="${user}" compulsory="*"/>
 							
-							<li class="label">								
-								<g:message code="lastName.label" default="Ultimo Nome" />*
-							</li>
-							<li class="input">								
-								<g:textField name="lastName" value="${user?.lastName}" />
-							</li>
+							<fe:element name="lastName" bean="${user}" compulsory="*"/>
 						</ul>
 	
 						<hr />
 
 						<ul id="field">
 							<li class="label">
-								<g:message code="profile.state.label" default="Estado" />
+								<g:message code="profile.state.label"/>*
 							</li>
 							<li class="input">
 								<input type="text" name="profile.state" id="state" value="${user?.profile?.state}" />
 							</li>
 							
 							<li class="label">
-								<g:message code="profile.city.label" default="Cidade" />
+								<g:message code="profile.city.label"/>*
 							</li>
 							<li class="input">
 								<input type="text" name="profile.city" id="city" value="${user?.profile?.city}" />

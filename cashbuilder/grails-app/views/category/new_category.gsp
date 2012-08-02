@@ -8,7 +8,7 @@
     <body>
     	<div class="span-24">
 			<div id="title">
-    			<h3>Edicao de Categorias</h3>
+    			<h3><g:message code="manager.category.title.label"/></h3>
     		</div>
     	</div>
     
@@ -16,7 +16,7 @@
 		  	<div id="obox">
 				<g:form class="newUser" name="new_category" controller="category" >
 					<div class="title">
-						Nova Categoria
+						<g:message code="manager.category.add.label"/>
 					</div>
 
 					<div class="inside">
@@ -41,7 +41,7 @@
 					
 						<g:hiddenField name="custom" value="${category?.custom }" />
 
-						<h3>Categoria</h3>
+						<h3><g:message code="manager.category.label"/></h3>
 
 						<ul id="field">
 							<li class="label">
@@ -60,13 +60,13 @@
 							</li>
 							<li class="input">
 								<g:checkBox name="income" value="${category?.income }" />
-								<small id="parcel_msg">marque para categorias do tipo Entrada</small>
+								<small id="parcel_msg"><g:message code="manager.category.income.warning.message"/></small>
 							</li>
 						</ul>
 	
 						<hr />
 						
-						<h3>Subcategorias <input type="submit" name="_action_add_subcategory" class="add_button" value="Adicionar" /></h3>
+						<h3><g:message code="manager.category.subcategory.label"/> <input type="submit" name="_action_add_subcategory" class="add_button" value="Adicionar" /></h3>
 						
 						<g:if test="${category?.subcategories}" >
 							<g:each var="subcategory" in="${category.subcategories.sort{it.name}}" status="i">
