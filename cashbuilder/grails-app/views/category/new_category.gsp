@@ -7,9 +7,7 @@
     
     <body>
     	<div class="span-24">
-			<div id="title">
-    			<h3><g:message code="manager.category.title.label"/></h3>
-    		</div>
+    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.category.title.label']"/>
     	</div>
     
     	<div class="span-20 prepend-2 append-2">
@@ -43,18 +41,18 @@
 
 						<h3><g:message code="manager.category.label"/></h3>
 
-						<ul id="field">
-							<li class="label">
+						<ul>
+							<li class="label ${hasErrors(bean: category, field: 'name', 'label-error')}">
 								<g:message code="category.nome.label" default="Nome" />*
 							</li>
-							<li class="input field-space">
+							<li class="input field-space ${hasErrors(bean: category, field: 'name', 'input-error')}">
 								<g:textField name="name" value="${category?.name }" />
 							</li>
 						</ul>
 
 						<hr />
 
-						<ul id="field">
+						<ul>
 							<li class="label">
 								<g:message code="categoria.receita.label" default="Receita" />
 							</li>
@@ -71,10 +69,10 @@
 						<g:if test="${category?.subcategories}" >
 							<g:each var="subcategory" in="${category.subcategories.sort{it.name}}" status="i">
 								<ul id="field">
-									<li class="label">
+									<li class="label ${hasErrors(bean: subcategory, field: 'name', 'label-error')}">
 										<g:message code="subcategoria.nome.label" default="Nome" />*
 									</li>
-									<li class="input">
+									<li class="input ${hasErrors(bean: subcategory, field: 'name', 'input-error')}">
 										<g:textField name="subcategories[${i}].name" value="${subcategory.name }"></g:textField>
 									</li>
 								</ul>

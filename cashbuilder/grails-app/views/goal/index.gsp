@@ -14,9 +14,7 @@
 
     <body>
     	<div class="span-24">
-			<div id="title" class="rounded-all">
-    			<h3><g:message code="goal.title.label"/></h3>
-    		</div>
+    		<g:render template="/elements/area_title" model="[bundle_key: 'goal.title.label']"/>
     	</div>
     
     	<g:if test="${flash.message}">

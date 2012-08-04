@@ -6,9 +6,7 @@
     </head>
     <body>
     	<div class="span-24">
-			<div id="title" class="rounded-all">
-    			<h3><g:message code="manager.title.label"/></h3>
-    		</div>
+    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.title.label']"/>
 
     		<g:if test="${flash.message}">
     			<div class="inside">

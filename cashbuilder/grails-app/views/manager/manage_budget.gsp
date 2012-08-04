@@ -11,9 +11,7 @@
     	<g:monthMenu action="manage_budget" month="${monthIndex}" />
 
     	<div class="span-24">
-			<div id="title">
-    			<h3><g:message code="manager.budget.title.label"/></h3>
-    		</div>
+    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.budget.title.label']"/>
     	</div>
     
     	<g:form class="budgetForm">

@@ -11,9 +11,7 @@
     
     <body>
     	<div class="span-24">
-			<div id="title">
-    			<h3><g:message code="manager.user.title.label"/></h3>
-    		</div>
+    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.title.label']"/>
     	</div>
     
     	<div class="span-20 prepend-2 append-2">
@@ -54,17 +52,17 @@
 						<hr />
 
 						<ul id="field">
-							<li class="label">
+							<li class="label ${hasErrors(bean: user?.profile, field: 'state', 'label-error')}">
 								<g:message code="profile.state.label"/>*
 							</li>
-							<li class="input">
+							<li class="input ${hasErrors(bean: user?.profile, field: 'state', 'input-error')}">
 								<input type="text" name="profile.state" id="state" value="${user?.profile?.state}" />
 							</li>
 							
-							<li class="label">
+							<li class="label ${hasErrors(bean: user?.profile, field: 'city', 'label-error')}">
 								<g:message code="profile.city.label"/>*
 							</li>
-							<li class="input">
+							<li class="input ${hasErrors(bean: user?.profile, field: 'city', 'input-error')}">
 								<input type="text" name="profile.city" id="city" value="${user?.profile?.city}" />
 							</li>
 						</ul>

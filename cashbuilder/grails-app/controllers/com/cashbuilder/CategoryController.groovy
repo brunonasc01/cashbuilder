@@ -60,6 +60,11 @@ class CategoryController {
 			flash.message = "Nova categoria gravada com sucesso"
 			redirect(controller: "manager")
 		} else {
+		
+			category.subcategories.each {
+				it.validate()
+			}
+		
 			render(view: "new_category",model:[category: category, adm: true])
 		}
 	}

@@ -7,9 +7,7 @@
     
     <body>
     	<div class="span-24">
-			<div id="title">
-    			<h3><g:message code="manager.user.title.label"/></h3>
-    		</div>
+			<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.title.label']"/>
     	</div>
     
     	<div class="span-20 prepend-2 append-2">
@@ -20,7 +18,6 @@
 					</div>
 
 					<div class="inside">
-						<div class="inside">
 						<g:if test="${flash.message}">
 							<div class="form-errors">
 								<ul>
@@ -43,15 +40,30 @@
 						<g:hiddenField name="id" value="${user?.id }" />
 
 						<ul>
-							<fe:element name="email" bean="${user}" compulsory="*"/>
+							<li class="label ${hasErrors(bean: user, field: 'email', 'label-error')}">
+								<g:message code="edit.email.label"/>*
+							</li>
+							<li class="input ${hasErrors(bean: user, field: 'email', 'input-error')}">
+								<g:textField name="email" />
+							</li>
 						</ul>
 
 						<hr />
 
 						<ul>
-							<fe:element name="emailNew" bean="${user}" compulsory="*"/>
-
-							<fe:element name="emailRepeat" bean="${user}" compulsory="*"/>
+							<li class="label ${hasErrors(bean: user, field: 'emailNew', 'label-error')}">
+								<g:message code="emailNew.label"/>*
+							</li>
+							<li class="input  ${hasErrors(bean: user, field: 'emailNew', 'input-error')}">
+								<g:textField name="emailNew" />
+							</li>
+							
+							<li class="label ${hasErrors(bean: user, field: 'emailRepeat', 'label-error')}">
+								<g:message code="emailRepeat.label"/>*
+							</li>
+							<li class="input ${hasErrors(bean: user, field: 'emailRepeat', 'input-error')}">
+								<g:textField name="emailRepeat" />
+							</li>
 						</ul>
 	
 						<hr />

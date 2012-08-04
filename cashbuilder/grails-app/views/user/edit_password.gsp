@@ -7,9 +7,7 @@
     
     <body>
     	<div class="span-24">
-			<div id="title">
-    			<h3><g:message code="manager.user.title.label"/></h3>
-    		</div>
+			<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.title.label']"/>
     	</div>
     
     	<div class="span-20 prepend-2 append-2">

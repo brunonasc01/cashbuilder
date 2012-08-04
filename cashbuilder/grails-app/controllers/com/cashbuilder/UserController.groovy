@@ -18,19 +18,22 @@ class UserController {
 	def edit() {
 		def user = session.user.attach()
 
-		[user: user]
+		[adm: true, user: user]
 	}
 	
 	def edit_mail() {
 		def user = session.user.attach()
 
-		[user: user]
+		[adm: true, user: user]
 	}
 	
 	def edit_password() {
 		def user = session.user.attach()
 
-		[user: user]
+		UserPasswordCommand upc = new UserPasswordCommand()
+		upc.id = user.id
+		
+		[adm: true, user: upc]
 	}
 	
 	def save(UserCommand cmd) {
@@ -51,6 +54,7 @@ class UserController {
 				flash.message = "form.signup.email.error1.message"
 			}
 		}
+
 		render(view: "signup",model:[userInstance:cmd])
 	}
 	
@@ -59,6 +63,8 @@ class UserController {
 		user.properties = params
 		
 		if(!user.validate()){
+			user.profile.validate()
+			
 			render(view: "edit",model:[user:user])
 		} else{
 			session.user = user
