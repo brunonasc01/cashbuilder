@@ -12,6 +12,14 @@
 
     	<div class="span-24">
     		<g:render template="/elements/area_title" model="[bundle_key: 'manager.budget.title.label']"/>
+    		
+    		<g:if test="${flash.message}">
+    			<div class="inside">
+					<div class="success">
+						${flash.message}
+					</div>
+				</div>
+			</g:if>
     	</div>
     
     	<g:form class="budgetForm">
@@ -62,19 +70,6 @@
     
 		  	<div class="span-17 last">
 		  		<div id="rbox">
-			  		<g:if test="${flash.message}">
-						<div class="notice">
-							${flash.message}
-						</div>
-					</g:if>
-			  		<g:else>
-			            <g:hasErrors bean="${budgetMonth}">
-			            	<div class="error">
-			                	<g:renderErrors bean="${budgetMonth}" as="list" />
-			            	</div>
-			            </g:hasErrors>
-					</g:else>
-	
 					<g:hiddenField name="monthId" value="${budgetMonth.month}"></g:hiddenField>
 					<g:hiddenField name="id" value="${budgetMonth.id}"></g:hiddenField>
 					<g:set var="counter" value="${0}" />
@@ -110,7 +105,7 @@
 	
 					<div class="clear"></div>
 	
-					<div class="title">
+					<div class="title rounded-none">
 						<g:message code="manager.budget.expense.label"/>
 					</div>
 					

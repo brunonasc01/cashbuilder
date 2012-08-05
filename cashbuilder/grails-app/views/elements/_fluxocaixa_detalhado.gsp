@@ -1,6 +1,6 @@
 <%@page import="com.cashbuilder.Constants"%>
 
-<g:if test="${cashFlow}">
+<g:if test="${cashFlow.transactions}">
 	<r:script disposition="head">
 	$(function() {
 		ajaxSubmitToModal('editButton','dialog','edit');
@@ -74,3 +74,11 @@
 		</div>
 	</div>
 </g:if>
+<g:else>
+	<div id="rbox">
+		<div class="empty-box">
+			<g:message code="cashflow.empty.message"/>
+		</div>
+	</div>
+</g:else>
+

@@ -12,6 +12,9 @@ class ReportController {
 	def budgetService
 	
     def index() {
+		
+		boolean emptyReport=false
+		
 		def user = session.user.attach()
 		
 		int currentMonth = DateUtils.currentMonth
@@ -37,6 +40,8 @@ class ReportController {
 			}
 		}
 		
+		emptyReport = columnDataList.size() == 0 || pieDataList.size() == 0
+
 		String columnData = Column3dChartBean.generateGraph(columnDataList)
 		String pieData = PieChartBean.generateGraph(pieDataList)
 		
@@ -58,6 +63,6 @@ class ReportController {
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
-		[stats:true, pieData: pieData, columnData: columnData, barData: barData]
+		[stats:true, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
 	}
 }

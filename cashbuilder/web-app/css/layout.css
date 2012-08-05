@@ -71,6 +71,8 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 
 .popup-title-border { border-radius: 6px 6px 0px 0px; -moz-border-radius: 6px 6px 0px 0px; -webkit-border-radius: 6px 6px 0px 0px; }
 
+.empty-box { margin: 10px; text-align:center; padding: 1em 0; }
+
 .positive { color: #00642D; }
 .negative { color: #E40101; }
 

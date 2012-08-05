@@ -142,6 +142,15 @@
 			  	</div>
 	  		</g:each>
 		</g:if>
+		<g:else>
+			<div class="span-17 last">
+				<div id="rbox">
+					<div class="empty-box">
+						<g:message code="goal.empty.message"/>
+					</div>
+				</div>
+			</div>
+		</g:else>
 		
 		<div class="span-16" id="dialog">
 			<div id="popup">	

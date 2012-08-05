@@ -55,7 +55,7 @@ class UserController {
 			}
 		}
 
-		render(view: "signup",model:[userInstance:cmd])
+		render(view: "signup",model:[userInstance:cmd,signup: true])
 	}
 	
 	def update() {		

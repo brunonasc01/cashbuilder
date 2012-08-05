@@ -13,7 +13,7 @@
 		</g:link>
 	</g:if>
 	<g:else>
-		<g:if test="${signup}">
+		<g:if test="${signup || login}">
 			<g:link uri="/">
 				<g:message code="default.start.label"/>
 			</g:link>

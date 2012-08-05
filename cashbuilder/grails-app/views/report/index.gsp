@@ -13,44 +13,53 @@
     	</div>
     
     	<div class="span-24">
-			<div id="cbox">
-				<div class="title">
-					<g:message code="report.graphic1.title.label"/>
+    		<g:if test="${!emptyReport }">
+				<div id="cbox">
+					<div class="title">
+						<g:message code="report.graphic1.title.label"/>
+					</div>
+					<div class="inside">
+						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Column3D.swf')}" />
+		
+						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
+									chartSWF:chartSWF,strXML:columnData,chartId:'columnData',
+									chartWidth:'900',chartHeight:'250']}"/>		
+					</div>
 				</div>
-				<div class="inside">
-					<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Column3D.swf')}" />
-	
-					<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-								chartSWF:chartSWF,strXML:columnData,chartId:'columnData',
-								chartWidth:'900',chartHeight:'250']}"/>		
+				
+				<div id="cbox">
+					<div class="title">
+						<g:message code="report.graphic2.title.label"/>
+					</div>
+					<div class="inside">
+						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Pie2D.swf')}" />
+		
+						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
+									chartSWF:chartSWF,strXML:pieData,chartId:'pieChart',
+									chartWidth:'450',chartHeight:'250']}"/>
+					</div>
 				</div>
-			</div>
-			
-			<div id="cbox">
-				<div class="title">
-					<g:message code="report.graphic2.title.label"/>
+				
+				<div id="cbox">
+					<div class="title">
+						<g:message code="report.graphic3.title.label"/>
+					</div>
+					<div class="inside">
+						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_MSColumn3D.swf')}" />
+		
+						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
+										chartSWF:chartSWF,strXML:barData,chartId:'barData',
+										chartWidth:'450',chartHeight:'250']}"/>				
+					</div>
 				</div>
-				<div class="inside">
-					<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Pie2D.swf')}" />
-	
-					<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-								chartSWF:chartSWF,strXML:pieData,chartId:'pieChart',
-								chartWidth:'450',chartHeight:'250']}"/>
-				</div>
-			</div>
-			
-			<div id="cbox">
-				<div class="title">
-					<g:message code="report.graphic3.title.label"/>
-				</div>
-				<div class="inside">
-					<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_MSColumn3D.swf')}" />
-	
-					<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-									chartSWF:chartSWF,strXML:barData,chartId:'barData',
-									chartWidth:'450',chartHeight:'250']}"/>				
-				</div>
-			</div>
+			</g:if>
+			<g:else>
+				<div id="rbox">
+					<div class="empty-box">
+	   					<g:message code="report.empty.message"/>
+	   				</div>
+   				</div>
+			</g:else>
 		</div>
 	</body>		
 </html>

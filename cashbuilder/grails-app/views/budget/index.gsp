@@ -55,6 +55,12 @@
 							<g:render template="/elements/orcamento_basico" var="list" bean="${budget.expenseList}"></g:render>
 						</div>
 					</g:if>
+
+					<g:if test="${!budget.expenseList && !budget.incomeList}">
+	    				<div class="empty-box">
+	    					<g:message code="budget.empty.message"/>
+	    				</div>
+    				</g:if>
     			</div>
     		</g:if>
 		</div>

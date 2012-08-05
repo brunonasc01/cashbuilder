@@ -6,9 +6,9 @@ class LoginController {
 	def budgetService
 	def eventService
 	
-	static allowedMethods = [validate_access: "POST"]
+	static allowedMethods = [login: "POST"]
 
-	def login = {
+	def login() {
 		def user = userService.verifyLogin(params)
 		
 		if(user){
@@ -23,12 +23,15 @@ class LoginController {
 			redirect(controller:'home')
 			
 		}else{
-			flash.message = "Usuario ou Senha invalidos"
-			redirect(uri:"/")
+			redirect(action:"loginFailed")
 		}
 	}
 	
-	def logoff = {
+	def loginFailed() {
+		[login: true]
+	}
+	
+	def logoff() {
 		session.user = null
 		redirect(uri:"/")
 	}
