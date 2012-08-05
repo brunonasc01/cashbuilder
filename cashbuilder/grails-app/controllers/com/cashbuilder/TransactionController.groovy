@@ -5,6 +5,8 @@ class TransactionController {
 	def generalService
 	def transactionService
 	
+	static allowedMethods = [save: "POST", update: "POST"]
+	
     def newTransaction() {
 		def user = session.user.attach()
 		def categoriesList = generalService.getCategoriesList(user)
@@ -35,6 +37,12 @@ class TransactionController {
 		}
 
 		redirect(controller:"cashflow", action: "index", params: [monthId: params.monthId])
+	}
+	
+	def delete() {
+
+		transactionService.deleteTransaction(params.id)
+		redirect(controller:"cashflow", action: "index")
 	}
 	
 	def update() {

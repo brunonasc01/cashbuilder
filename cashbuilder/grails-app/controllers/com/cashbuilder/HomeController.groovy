@@ -8,7 +8,7 @@ class HomeController {
 	def generalService
 	def transactionService
 	
-	static allowedMethods = [save_registro: "POST"]
+	static allowedMethods = [saveTransaction: "POST"]
 	
     def index() {
 		

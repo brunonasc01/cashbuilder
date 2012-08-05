@@ -2,6 +2,8 @@ package com.cashbuilder
 
 class BudgetItemController {
 
+	static allowedMethods = [update: "POST"]
+	
     def update() {
 		
 		BudgetItem budgetItem = BudgetItem.get(params.id)

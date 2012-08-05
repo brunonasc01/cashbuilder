@@ -2,6 +2,8 @@ package com.cashbuilder
 
 class CategoryController {
 
+	static allowedMethods = [save_category: "POST"]
+	
     def selectedCategory() {
 		
 		def id = params.id

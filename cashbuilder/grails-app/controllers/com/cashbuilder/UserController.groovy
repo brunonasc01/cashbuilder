@@ -9,7 +9,7 @@ class UserController {
     def userService
 	def expensesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
 	
-	static allowedMethods = [save: "POST"]
+	static allowedMethods = [save: "POST", update: "POST", updatePassword:"POST", updateMail:"POST"]
 	
 	def signup(){
 		[signup: true]
@@ -129,14 +129,12 @@ class UserController {
 		
 		File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categoriaGeral.csv").getFile()
 		files += fileGeral
-		def expensesFileMap = ["Animal de Estimacao":"res/categoriaMascote.csv","Carro ou Moto":"res/categoriaVeiculo.csv","Filho(s)":"res/categoriaFilho.csv"]
 
-		user.profile.expenses.each { expense ->
-			if(expense.enabled){
-				String resourcePath = expensesFileMap.get(expense.name)
-				File file = grailsAttributes.getApplicationContext().getResource(resourcePath).getFile()
-				files += file
-			}
+		def expensesFileMap = ["res/categoriaMascote.csv","res/categoriaVeiculo.csv","res/categoriaFilho.csv"]
+
+		expensesFileMap.each { resourcePath ->
+			File file = grailsAttributes.getApplicationContext().getResource(resourcePath).getFile()
+			files += file
 		}
 		
 		files

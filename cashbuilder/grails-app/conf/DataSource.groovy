@@ -32,9 +32,9 @@ environments {
 			pooled = true
 			dbCreate = "update"
 			driverClassName = "com.mysql.jdbc.Driver"
-			url = "jdbc:mysql://127.0.0.1:3306/cashbuilder"
-			username = "root"
-			password = "g40Nf65"
+			url = "jdbc:mysql://127.0.0.1:3306/fazrico"
+			username = "admin"
+			password = "hj1Br9a"
 		}
 	}
 }

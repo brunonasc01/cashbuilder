@@ -77,6 +77,8 @@ function ajaxSubmitToModal(trigger,result,action){
 			formAction = formAction.replace('index',action);
 		}
 
+		var pop;
+		
 		$.ajax({
 			  type: "POST",
 			  url: formAction,
@@ -84,9 +86,10 @@ function ajaxSubmitToModal(trigger,result,action){
 			  cache: false
 		}).done(function( html ) {
 			returnElement.html(html);
+			pop = setInterval(autoModal(result),1000);
 		});
-		
-		autoModal(result);
+
+		clearInterval(pop);
 	});
 }
 

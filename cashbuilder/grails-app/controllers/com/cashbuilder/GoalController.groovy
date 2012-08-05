@@ -5,6 +5,8 @@ class GoalController {
 	def generalService
 	def goalService
 
+	static allowedMethods = [save: "POST", delete: "POST"]
+	
     def index() {
 		def user = session.user.attach()
 
