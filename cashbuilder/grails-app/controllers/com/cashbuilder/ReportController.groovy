@@ -13,11 +13,15 @@ class ReportController {
 	
     def index() {
 		
+		if(!params.monthId){
+			params.monthId = DateUtils.currentMonth
+		}
+		
 		boolean emptyReport=false
 		
 		def user = session.user.attach()
 		
-		int currentMonth = DateUtils.currentMonth
+		int currentMonth =  Integer.valueOf(params.monthId)
 		int currentYear = DateUtils.currentYear
 		
 		def budget = Budget.findByYearAndUser(currentYear,user)
@@ -57,12 +61,12 @@ class ReportController {
 			double entradas = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)
 			double saidas = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
 			
-			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:DateUtils.getMonth(monthId),entradas:entradas,saidas:saidas)
+			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:g.message(code:DateUtils.getMonth(monthId)),entradas:entradas,saidas:saidas)
 			barDataList += bean
 		}
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
-		[stats:true, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
+		[stats:true, monthIndex: currentMonth, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
 	}
 }

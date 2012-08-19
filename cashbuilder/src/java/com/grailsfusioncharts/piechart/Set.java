@@ -41,6 +41,8 @@ public class Set {
     protected String name;
     @XmlAttribute
     protected BigDecimal value;
+    @XmlAttribute
+    protected String color;
 
     /**
      * Gets the value of the name property.
@@ -88,6 +90,30 @@ public class Set {
      */
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+    
+    /**
+     * Gets the value of the color property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * Sets the value of the color property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setColor(String value) {
+        this.color = value;
     }
 
 }

@@ -55,6 +55,7 @@
 	
 	<xsd:element name="set" type="set"/>
 	<xsd:complexType name="set">
+		<xsd:attribute name="color"  type="xsd:string"/>
 		<xsd:attribute name="name" type="xsd:string"/> 
 		<xsd:attribute name="value" type="xsd:decimal"/>
 	</xsd:complexType>

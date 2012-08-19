@@ -79,6 +79,8 @@ public class Graph {
     protected String thousandSeparator;
     @XmlAttribute
     protected String palette;
+    @XmlAttribute
+    protected String formatNumberScale;
 
     /**
      * Gets the value of the set property.
@@ -415,6 +417,34 @@ public class Graph {
      */
     public void setPalette(String value) {
         this.palette = value;
+    }
+    
+    /**
+     * Gets the value of the formatNumberScale property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFormatNumberScale() {
+        if (formatNumberScale == null) {
+            return "0";
+        } else {
+            return formatNumberScale;
+        }
+    }
+
+    /**
+     * Sets the value of the formatNumberScale property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFormatNumberScale(String value) {
+        this.formatNumberScale = value;
     }
 
 }

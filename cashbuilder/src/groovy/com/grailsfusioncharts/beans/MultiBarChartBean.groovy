@@ -22,9 +22,7 @@ class MultiBarChartBean {
 		graph.setThousandSeparator '.'
 		graph.setDecimalSeparator ','
 		graph.setRotateNames '0'
-		graph.setYAxisName 'Valor'
-		graph.setXAxisName 'Mês'
-		
+
 		Categories cts = (Categories) factory.createCategories()
 		cts.setFont 'Arial'
 		cts.setFontSize '11'

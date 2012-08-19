@@ -3,6 +3,7 @@ package com.grailsfusioncharts.beans
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
+import com.cashbuilder.Constants;
 import com.grailsfusioncharts.column3d.*;
 
 class Column3dChartBean {
@@ -14,17 +15,18 @@ class Column3dChartBean {
 		ObjectFactory factory = new ObjectFactory()
 
 		Graph graph =(Graph)(factory.createGraph())
-
-		graph.setNumberPrefix("R\$")
+		
 		graph.setDecimalPrecision '2'
 		graph.setThousandSeparator '.'
 		graph.setDecimalSeparator ','
+		graph.setFormatNumberScale '0'
 				
-		chartData.each{
+		chartData.eachWithIndex{ data, index ->
 			Set set = (Set) factory.createSet()
-			set.setName it.name
-			set.setValue it.value
-
+			set.setName data.name
+			set.setValue data.value
+			set.setColor(Constants.graphColors[index])
+			
 			graph.getSet().add set
 		}
 

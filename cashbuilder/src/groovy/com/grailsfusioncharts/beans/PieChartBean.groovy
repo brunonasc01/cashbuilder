@@ -3,6 +3,7 @@ package com.grailsfusioncharts.beans
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
+import com.cashbuilder.Constants;
 import com.grailsfusioncharts.piechart.*;
 
 class PieChartBean {
@@ -20,10 +21,11 @@ class PieChartBean {
 		graph.setDecimalPrecision '2'
 		graph.setFormatNumberScale '0'
 				
-		chartData.each{
+		chartData.eachWithIndex{ data, index ->
 			Set set = (Set) factory.createSet()
-			set.setName it.categoria
-			set.setValue it.total
+			set.setName data.categoria
+			set.setValue data.total
+			set.setColor(Constants.graphColors[index])
 
 			graph.getSet().add set
 		}

@@ -7,7 +7,7 @@ $(function() {
 
 <div id="menuMonth">
 	<ul>
-		<li><g:link params="[monthId:'0']" action="${action}"><g:message code="month.january"/></g:link></li>
+		<li><g:link params="[monthId:'0']" class="first" action="${action}"><g:message code="month.january"/></g:link></li>
 		<li><g:link params="[monthId:'1']" action="${action}"><g:message code="month.february"/></g:link></li>
 		<li><g:link params="[monthId:'2']" action="${action}"><g:message code="month.march"/></g:link></li>
 		<li><g:link params="[monthId:'3']" action="${action}"><g:message code="month.april"/></g:link></li>
@@ -18,6 +18,6 @@ $(function() {
 		<li><g:link params="[monthId:'8']" action="${action}"><g:message code="month.setptember"/></g:link></li>
 		<li><g:link params="[monthId:'9']" action="${action}"><g:message code="month.october"/></g:link></li>
 		<li><g:link params="[monthId:'10']" action="${action}"><g:message code="month.november"/></g:link></li>
-		<li><g:link params="[monthId:'11']" action="${action}"><g:message code="month.december"/></g:link></li>
+		<li><g:link params="[monthId:'11']" class="last" action="${action}"><g:message code="month.december"/></g:link></li>
 	</ul>
 </div>

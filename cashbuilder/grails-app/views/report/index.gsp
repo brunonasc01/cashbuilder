@@ -6,12 +6,12 @@
     </head>
 
     <body>
-    	<div class="span-24">
-			<div id="title" class="rounded-all">
-    			<h3><g:message code="report.title.label"/></h3>
-    		</div>
-    	</div>
+    	<g:monthMenu month="${monthIndex}" />
     
+    	<div class="span-24">
+    		<g:render template="/elements/area_title" model="[bundle_key: 'report.title.label']"/>
+    	</div>
+
     	<div class="span-24">
     		<g:if test="${!emptyReport }">
 				<div id="cbox">
@@ -49,12 +49,12 @@
 		
 						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
 										chartSWF:chartSWF,strXML:barData,chartId:'barData',
-										chartWidth:'450',chartHeight:'250']}"/>				
+										chartWidth:'600',chartHeight:'300']}"/>				
 					</div>
 				</div>
 			</g:if>
 			<g:else>
-				<div id="rbox">
+				<div id="obox">
 					<div class="empty-box">
 	   					<g:message code="report.empty.message"/>
 	   				</div>

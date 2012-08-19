@@ -6,12 +6,12 @@
     </head>
 
     <body>
-		<div class="span-12">
+		<div class="span-10 prepend-1 colborder">
 			<div class="common-text">
 				<g:message code="login.failed.message1"/>
 			</div>
 
-			<div class="span-8 prepend-2">
+			<div class="span-8 prepend-1">
 				<div id="obox">
 					<g:form action="login" method="post" class="loginForm">
 						<div class="inside">

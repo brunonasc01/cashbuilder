@@ -18,6 +18,8 @@
 	  	<xsd:attribute name="decimalSeparator" default="," type="xsd:string"/>
 	  	<xsd:attribute name="thousandSeparator" default="." type="xsd:string"/>
 
+		<xsd:attribute name="formatNumberScale" default="0" type="xsd:string"/>
+
 		<xsd:attribute name="palette" default="2" type="xsd:string"/>
 	 </xsd:complexType>
 	
