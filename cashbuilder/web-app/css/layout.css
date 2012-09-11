@@ -27,18 +27,21 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 #menubar { text-align: center; }
 #menubar a { color: #999; }
 #menubar a:hover { text-decoration: none; }
-#menubar div { padding: 0.5em 0; background-color: #ccc; font-weight: bold; cursor: pointer; }
+#menubar div.last { margin-right:0; }
+#menubar div.last span { margin: 0 40px; }
+#menubar div { float:left; margin-right:11px; padding: 0.5em 0; background-color: #ccc; font-weight: bold; cursor: pointer; }
 #menubar .ativo, #menubar div:hover { background-color: #EBEDE2; color: #000; }
 #menubar .ativo span, #menubar div:hover span { background-position: 48px 0; }
-#menubar span { margin: 0 51px; width: 48px; height: 48px; display: block; }
+#menubar span { margin: 0 39px; width: 48px; height: 48px; display: block; }
 
 /* Menu Icons */ 
-/*#menubar span.home { background: url(../images/home_icon.png); }
+#menubar span.home { background: url(../images/home_icon.png); }
 #menubar span.budget { background: url(../images/budget_icon.png); }
 #menubar span.cashflow { background: url(../images/flow_icon.png); }
 #menubar span.goal { background: url(../images/goal_icon.png); }
 #menubar span.reports { background: url(../images/report_icon.png); }
-#menubar span.adm { background: url(../images/adm_icon.png); }*/
+#menubar span.adm { background: url(../images/adm_icon.png); }
+#menubar span.help { background: url(../images/help_icon.png); }
 
 #menubar .ativo span { background-position: 48px 0; }
 

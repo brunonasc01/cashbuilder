@@ -8,6 +8,7 @@ class UserController {
 
     def userService
 	def expensesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
+	def recaptchaService
 	
 	static allowedMethods = [save: "POST", update: "POST", updatePassword:"POST", updateMail:"POST"]
 	
@@ -38,7 +39,10 @@ class UserController {
 	
 	def save(UserCommand cmd) {
 		
-		if(cmd.validate()){
+		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
+			flash.message = "form.signup.captcha.error.message"
+		}		
+		else if(cmd.validate()){
 			if(userService.isEmailAvailable(cmd.email)){
 				def user = new User(cmd.properties)
 				user.password = Encoder.encode(user.password)

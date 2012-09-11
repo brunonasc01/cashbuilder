@@ -115,16 +115,8 @@
 							<hr />
 						</g:if>
 
-						<p class="policy-message">
-							<g:message code="form.signup.policy.messagem"/>
-						</p>
-						
-						<ul>
-							<li class="button">
-								<input type="submit" name="create" class="save" value="Cadastrar" id="create" />
-							</li>
-						</ul>
-						
+						<h3><g:message code="form.signup.captcha.title"/></h3>
+					
 						<ul id="recaptcha_widget" style="display:none">
 							<li class="label">
 								<span class="recaptcha_only_if_image">Digite as palavras</span>
@@ -154,8 +146,20 @@
 						</ul>
 						<recaptcha:ifEnabled>
 					       <recaptcha:recaptcha theme="custom" lang="en" custom_theme_widget="recaptcha_widget"/>
-					   </recaptcha:ifEnabled>
-	
+						</recaptcha:ifEnabled>
+
+						<hr />
+
+						<p class="policy-message">
+							<g:message code="form.signup.policy.messagem"/>
+						</p>
+						
+						<ul>
+							<li class="button">
+								<input type="submit" name="create" class="save" value="Cadastrar" id="create" />
+							</li>
+						</ul>
+
 						<div class="clear"></div>
 	            	</div>
 	            </g:form>
