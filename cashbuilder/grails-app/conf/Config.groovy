@@ -92,4 +92,5 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-grails.validateable.classes = [com.cashbuilder.cmd.PerfilCommand]
+//correcao para o contexto na producao
+grails.app.context = "/"

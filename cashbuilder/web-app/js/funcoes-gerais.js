@@ -54,7 +54,7 @@ function ajaxSubmit(trigger,result,action){
 				returnElement.html(data);
 			},
 			beforeSend: function(){
-				returnElement.html('<img src="/cashbuilder/images/ajax-loader.gif"/>');
+				returnElement.html('<img src="/images/ajax-loader.gif"/>');
 			},
 			error:function(XMLHttpRequest,textStatus,errorThrown){},
 			complete:function(XMLHttpRequest,textStatus){}

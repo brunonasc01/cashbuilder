@@ -2,7 +2,7 @@ package com.cashbuilder
 
 import com.cashbuilder.beans.BalanceBoxBean;
 
-class ManagerController {
+class AdminController {
 
 	def budgetService
 	def generalService

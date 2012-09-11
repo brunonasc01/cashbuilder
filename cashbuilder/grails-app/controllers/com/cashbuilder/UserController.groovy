@@ -73,7 +73,7 @@ class UserController {
 		} else{
 			session.user = user
 			flash.message = "Usuario atualizado com sucesso"
-			redirect(controller: "manager")
+			redirect(controller: "admin")
 		}
 	}
 	
@@ -94,7 +94,7 @@ class UserController {
 					session.user = user
 
 					flash.message = "Senha atualizada com sucesso"
-					redirect(controller: "manager")
+					redirect(controller: "admin")
 				}
 			}
 		} else {
@@ -120,7 +120,7 @@ class UserController {
 					session.user = user
 					
 					flash.message = "E-Mail atualizado com sucesso"
-					redirect(controller: "manager")
+					redirect(controller: "admin")
 				}
 			}
 		} else {

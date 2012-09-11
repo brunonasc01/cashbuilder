@@ -3,7 +3,7 @@ package com.cashbuilder
 class LoginFilters {
 
     def filters = {
-        all(controller:'transaction|budget|cashflow|goal|home|manager|category', action:'*') {
+        all(controller:'transaction|budget|cashflow|goal|home|admin|category', action:'*') {
             before = {
 				if (!session.user) {
 					redirect(uri: "/")

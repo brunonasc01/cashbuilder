@@ -34,7 +34,7 @@
 		</div>
 	</g:link>
 
-	<g:link controller="manager">
+	<g:link controller="admin">
 		<div class="${adm? "ativo" : "" }">
 			<span class="adm"></span>
 			<g:message code="menu.adm.label"/>

@@ -60,7 +60,7 @@ class CategoryController {
 			}
 			
 			flash.message = "Nova categoria gravada com sucesso"
-			redirect(controller: "manager")
+			redirect(controller: "admin")
 		} else {
 		
 			category.subcategories.each {

@@ -3,7 +3,7 @@ package com.cashbuilder
 class AjaxEffectsTagLib {
 
 	def validateForm = { attrs ->
-		def project = '/cashbuilder/'
+		def project = '/'
 		def default_action = 'validator'
 
 		def form = attrs.form
@@ -41,7 +41,7 @@ class AjaxEffectsTagLib {
 	}
 	
 	def categoriesCombo = { attrs ->
-		def project = '/cashbuilder/category/'
+		def project = '/category/'
 		def default_action = 'selectedCategory'
 
 		def trigger = attrs.trigger
