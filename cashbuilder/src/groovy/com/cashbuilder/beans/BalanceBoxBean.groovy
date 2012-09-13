@@ -13,6 +13,8 @@ class BalanceBoxBean {
 	double plannedExpense
 	double plannedBalance
 	double actualBalance
+	double protectionBalance
+	
 	boolean isBudget
 	
 	public double getBalance(){

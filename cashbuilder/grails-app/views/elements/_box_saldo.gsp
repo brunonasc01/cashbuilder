@@ -15,6 +15,19 @@
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 					</li>
 				</ul>
+				
+				<g:if test="${bean.protectionBalance > 0}">
+				<ul class="simple">
+					<li class="label">
+						<g:message code="box.balance.protection.label"/>
+					</li>
+					<li class="value gold">
+						<g:formatNumber number="${bean.protectionBalance}" currencySymbol=""
+							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+					</li>
+				</ul>
+				</g:if>
+				
 				<ul class="simple">
 					<li class="label">
 						<g:message code="box.balance.actual.label"/>

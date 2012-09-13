@@ -1,13 +1,13 @@
-Receitas:Salário;Décimo Terceiro;Férias;Extras;Pensão
-Investimentos:Ações;Fundos;Poupança;Previdência Privada
-Alimentação:Açougue;Feira;Refeições;Supermercado
-Moradia:Água Encanada;Aluguel;Condomínio;Energia Elétrica;Financiamento;Gás;IPTU;Manutenção;Reforma
-Saúde:Plano de Saúde;Consultas;Exames;Remédios
-Educação:Cursos;Faculdade
-Transporte:Passagens;Táxi
-Telecomunicações:Telefone Fixo;Celular;Internet;TV por Assinatura
-Gastos Pessoais:Academia;Calçados;Doações;Estética;Livros;Papelaria;Roupas
-Compras:Eletrônicos;Eletrodomésticos;Móveis;Presentes
-Lazer:Bares;Cinema;Jogos;Restaurantes;Teatro;Viagens
-Tarifas Bancárias:Manutenção de Conta;Juros;DemaisTaxas
-Seguros:Seguro de Vida;Seguro Automóvel;Seguro Residencial
+Receitas:Salário;Décimo Terceiro;Férias;Extras;Pensão:0
+Investimentos:Ações;Fundos;Poupança;Previdência Privada:0
+Alimentação:Açougue;Feira;Refeições;Supermercado:0.2
+Moradia:Água Encanada;Aluguel;Condomínio;Energia Elétrica;Financiamento;Gás;IPTU;Manutenção;Reforma:0.2
+Saúde:Plano de Saúde;Consultas;Exames;Remédios:0.1
+Educação:Cursos;Faculdade:0
+Transporte:Passagens;Táxi:0.1
+Telecomunicações:Telefone Fixo;Celular;Internet;TV por Assinatura:0
+Gastos Pessoais:Academia;Calçados;Doações;Estética;Livros;Papelaria;Roupas:0.1
+Compras:Eletrônicos;Eletrodomésticos;Móveis;Presentes:0
+Lazer:Bares;Cinema;Jogos;Restaurantes;Teatro;Viagens:0.2
+Tarifas Bancárias:Manutenção de Conta;Juros;DemaisTaxas:0
+Seguros:Seguro de Vida;Seguro Automóvel;Seguro Residencial:0

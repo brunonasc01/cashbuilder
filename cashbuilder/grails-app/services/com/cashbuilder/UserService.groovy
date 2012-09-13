@@ -47,7 +47,9 @@ class UserService {
 					if(baseLine.length > 0 && !baseLine[0].contains("#")){						
 						String category = baseLine[0]
 						boolean income = ("Receitas").equals(category)
-						Category categoryBean = new Category( name:category, user:user, income:income )
+						
+						double variationFactor = baseLine[2] as double
+						Category categoryBean = new Category( name:category, user:user, income:income, variationFactor:variationFactor )
 						
 						if(categoryBean.save()){
 							String[] subcategories = baseLine[1].split(";")

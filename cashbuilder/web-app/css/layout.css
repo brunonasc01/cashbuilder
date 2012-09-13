@@ -78,6 +78,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 
 .positive { color: #00642D; }
 .negative { color: #E40101; }
+.gold { color: #CFB52B; }
 
 .msg-erro { display: none; border: 2px solid #E40101; color: #E40101; background: #fccfcf; margin: 5px; font-size: 85%; }
 .msg-erro ul li { float: none; font-weight: bold; margin-left:5px; line-height: 25px;}

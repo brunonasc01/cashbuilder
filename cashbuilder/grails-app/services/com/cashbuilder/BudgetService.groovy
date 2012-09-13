@@ -123,6 +123,26 @@ class BudgetService {
 	}
 	
 	/**
+	 * Calcula o saldo de protecao para o mes
+	 * @param month orcamento do mes
+	 * @return
+	 */
+	double getProtectionBalance(BudgetMonth month, User user){
+		double total;
+		
+		def allCategories = Category.findAllByUser(user)
+		
+		allCategories.each{ category ->
+			if(category.variationFactor > 0){
+				double budgetTotal = getBudgetedTotal(month,category)
+				total += budgetTotal * category.variationFactor
+			}
+		} 
+		
+		(total)? total : 0
+	}
+	
+	/**
 	 * Calcula o saldo previsto no mes, dado um criterio
 	 * O criterio pode ser uma Categoria, Subcategoria ou Natureza do pagamento
 	 * @param mes o mes
