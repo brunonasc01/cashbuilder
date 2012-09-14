@@ -21,3 +21,7 @@ encoding//grails-app/i18n/messages_ru.properties=UTF-8
 encoding//grails-app/i18n/messages_sv.properties=UTF-8
 encoding//grails-app/i18n/messages_th.properties=UTF-8
 encoding//grails-app/i18n/messages_zh_CN.properties=UTF-8
+encoding//web-app/res/categoriaFilho.csv=UTF-8
+encoding//web-app/res/categoriaGeral.csv=UTF-8
+encoding//web-app/res/categoriaMascote.csv=UTF-8
+encoding//web-app/res/categoriaVeiculo.csv=UTF-8
