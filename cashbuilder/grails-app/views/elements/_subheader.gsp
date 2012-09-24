@@ -13,15 +13,15 @@
 		</g:link>
 	</g:if>
 	<g:else>
-		<g:if test="${signup || login}">
-			<g:link uri="/">
-				<g:message code="default.start.label"/>
-			</g:link>
-		</g:if>
-		<g:else>
+		<g:if test="${request.forwardURI.equals("/") }">
 			<a href="javascript:autoModal('dialog');">
 				<g:message code="default.login.label"/>
 			</a>
+		</g:if>
+		<g:else>
+			<g:link uri="/">
+				<g:message code="default.start.label"/>
+			</g:link>
 		</g:else>
 
 		<span> | </span>

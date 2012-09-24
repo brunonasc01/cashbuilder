@@ -66,7 +66,7 @@
 								<g:passwordField name="password" />
 							</li>
 							<li class="lostpassword">
-								<small><a><g:message code="box.login.password.lost"/><a/></small>
+								<small><g:link controller="recovery"><g:message code="box.login.password.lost"/></g:link></small>
 							</li>
 						</ul>
 	
