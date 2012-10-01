@@ -9,13 +9,13 @@
 		<span> | </span>
 
 		<g:link controller="login" action="logoff">
-			<g:message code="default.logoff.label"/>
+			<span class="unlock-icon"><g:message code="default.logoff.label"/></span>
 		</g:link>
 	</g:if>
 	<g:else>
 		<g:if test="${request.forwardURI.equals("/") }">
 			<a href="javascript:autoModal('dialog');">
-				<g:message code="default.login.label"/>
+				<span class="lock-icon"><g:message code="default.login.label"/></span>
 			</a>
 		</g:if>
 		<g:else>

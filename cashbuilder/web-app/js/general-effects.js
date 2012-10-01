@@ -193,3 +193,15 @@ function styleButtons(){
 		$( "input:submit, button, input:reset" ).button();
 	});
 }
+
+function processAnswers(div){
+	$('#'+div+' li p').hide();
+
+	$('#'+div+' li span').click(function(){
+		$(this).parent().siblings().children('p:visible').slideUp('fast');
+		$(this).parent().siblings().children('span').css('font-weight','normal');
+		
+		$(this).css('font-weight','bold');
+		$(this).next().slideToggle('fast');
+	});
+}

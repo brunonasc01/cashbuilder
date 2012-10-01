@@ -13,9 +13,7 @@
     </head>
 
     <body>
-    	<div class="span-24">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'goal.title.label']"/>
-    	</div>
+    	<g:render template="/elements/area_title" model="[bundle_key: 'goal.title.label']"/>
     
     	<g:if test="${flash.message}">
     		<div class="span-24">

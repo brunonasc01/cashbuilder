@@ -14,11 +14,9 @@
     <body>
 		<g:monthMenu month="${monthIndex}" />
 
-    	<div class="span-24">
-			<div id="title" class="rounded-all">
-    			<h3><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</h3>
-    		</div>
-    	</div>
+		<div id="title" class="rounded-all">
+   			<p><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</p>
+   		</div>
     	
     	<g:if test="${flash.message}">
     		<div class="span-24">

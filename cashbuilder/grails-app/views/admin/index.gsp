@@ -5,17 +5,15 @@
         <r:require module="adm"/>
     </head>
     <body>
-    	<div class="span-24">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.title.label']"/>
+   		<g:render template="/elements/area_title" model="[bundle_key: 'manager.title.label']"/>
 
-    		<g:if test="${flash.message}">
-    			<div class="inside">
-					<div class="success">
-						${flash.message}
-					</div>
+   		<g:if test="${flash.message}">
+   			<div class="inside">
+				<div class="success">
+					${flash.message}
 				</div>
-			</g:if>
-    	</div>
+			</div>
+		</g:if>
     
 	  	<div class="span-8">
 			<div id="lbox">

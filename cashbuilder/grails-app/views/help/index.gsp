@@ -4,25 +4,32 @@
     <head>
         <meta name="layout" content="base" />
         <r:require modules="core"/>
+        
+        <g:javascript>
+        	$(function() {
+				processAnswers('helpContent');
+			});
+        </g:javascript>
     </head>
 
     <body>
-    	<div class="span-24">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'help.title.label']"/>
-    	</div>
-
+    	<g:render template="/elements/area_title" model="[bundle_key: 'help.title.label']"/>
+		<g:message code=""/>
+		
+		<div id="helpContent" class="helpList">
+		
 	  	<div class="span-12">
 			<div id="lbox">
 				<div class="title">
-					Questoes Gerais
+					<span class="info-icon"><g:message code="help.general.title"/></span>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">O que é o FazRico</a></li>
-						<li><a href="">Como utilizar o programa</a></li>
-						<li><a href="">Quanto custa?</a></li>
-						<li><a href="">Como o FazRico me faz rico?</a></li>
-						<li><a href="">Como posso contribuir?</a></li>
+						<li><span><g:message code="help.general.ask1.title"/></span><p><g:message code="help.general.ask1.answer"/></p></li>
+						<li><span><g:message code="help.general.ask2.title"/></span><p><g:message code="help.general.ask2.answer"/></p></li>
+						<li><span><g:message code="help.general.ask3.title"/></span><p><g:message code="help.general.ask3.answer"/></p></li>
+						<li><span><g:message code="help.general.ask4.title"/></span><p><g:message code="help.general.ask4.answer"/></p></li>
+						<li><span><g:message code="help.general.ask5.title"/></span><p><g:message code="help.general.ask5.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -31,12 +38,13 @@
 		<div class="span-12 last">
 			<div id="rbox">
 				<div class="title">
-					Problemas Técnicos
+					<g:message code="help.technical.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Esqueci a Senha</a></li>
-						<li><a href="">Demais problemas</a></li>
+						<li><a href="#"><g:message code="help.technical.lostpassword"/></a></li>
+						<li><a href="#"><g:message code="help.technical.bugs"/></a></li>
+						<li><a href="#"><g:message code="help.technical.feedback"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -45,13 +53,13 @@
 	  	<div class="span-12">
 	  		<div id="lbox">
 				<div class="title">
-					Home
+					<g:message code="help.home.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Qual a função da área Home</a></li>
-						<li><a href="">Como visualizar os avisos</a></li>
-						<li><a href="">O 'Novo Lancamento' e diferente do existente no Fluxo de Caixa?</a></li>
+						<li><span><g:message code="help.home.ask1.title"/></span><p><g:message code="help.home.ask1.answer"/></p></li>
+						<li><span><g:message code="help.home.ask2.title"/></span><p><g:message code="help.home.ask2.answer"/></p></li>
+						<li><span><g:message code="help.home.ask3.title"/></span><p><g:message code="help.home.ask3.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -60,15 +68,15 @@
 		<div class="span-12 last">
 	  		<div id="rbox">
 				<div class="title">
-					Orcamento
+					<g:message code="help.budget.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Qual a função da área Orcamento</a></li>
-						<li><a href="">Como planejar o meu orcamento?</a></li>
-						<li><a href="">Como definir o orcamento do ano?</a></li>
-						<li><a href="">Quando o sistema ira montar meu orcamento?</a></li>
-						<li><a href="">Como atualizar o valor planejado para uma categoria?</a></li>
+						<li><span><g:message code="help.budget.ask1.title"/></span><p><g:message code="help.budget.ask1.answer"/></p></li>
+						<li><span><g:message code="help.budget.ask2.title"/></span><p><g:message code="help.budget.ask2.answer"/></p></li>
+						<li><span><g:message code="help.budget.ask3.title"/></span><p><g:message code="help.budget.ask3.answer"/></p></li>
+						<li><span><g:message code="help.budget.ask4.title"/></span><p><g:message code="help.budget.ask4.answer"/></p></li>
+						<li><span><g:message code="help.budget.ask5.title"/></span><p><g:message code="help.budget.ask5.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -77,14 +85,14 @@
 		<div class="span-12">
 	  		<div id="lbox">
 				<div class="title">
-					Fluxo de Caixa
+					<g:message code="help.cashflow.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Qual a função do Fluxo de Caixa</a></li>
-						<li><a href="">Como alterar a ordenacao do Fluxo de Caixa?</a></li>
-						<li><a href="">Como alterar um registro existente?</a></li>
-						<li><a href="">Como apagar um registro existente?</a></li>
+						<li><span><g:message code="help.cashflow.ask1.title"/></span><p><g:message code="help.cashflow.ask1.answer"/></p></li>
+						<li><span><g:message code="help.cashflow.ask2.title"/></span><p><g:message code="help.cashflow.ask2.answer"/></p></li>
+						<li><span><g:message code="help.cashflow.ask3.title"/></span><p><g:message code="help.cashflow.ask3.answer"/></p></li>
+						<li><span><g:message code="help.cashflow.ask4.title"/></span><p><g:message code="help.cashflow.ask4.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -93,15 +101,15 @@
 		<div class="span-12 last">
 	  		<div id="rbox">
 				<div class="title">
-					Metas
+					<g:message code="help.goal.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Qual a função das Metas?</a></li>
-						<li><a href="">Como criar uma meta?</a></li>
-						<li><a href="">Como acompanhar uma meta?</a></li>
-						<li><a href="">Por que não e possivel alterar uma meta?</a></li>
-						<li><a href="">Como excluir uma meta?</a></li>
+						<li><span><g:message code="help.goal.ask1.title"/></span><p><g:message code="help.goal.ask1.answer"/></p></li>
+						<li><span><g:message code="help.goal.ask2.title"/></span><p><g:message code="help.goal.ask2.answer"/></p></li>
+						<li><span><g:message code="help.goal.ask3.title"/></span><p><g:message code="help.goal.ask3.answer"/></p></li>
+						<li><span><g:message code="help.goal.ask4.title"/></span><p><g:message code="help.goal.ask4.answer"/></p></li>
+						<li><span><g:message code="help.goal.ask5.title"/></span><p><g:message code="help.goal.ask5.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -110,12 +118,11 @@
 		<div class="span-12">
 	  		<div id="lbox">
 				<div class="title">
-					Relatorios
+					<g:message code="help.report.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Qual a função dos Relatorios</a></li>
-						
+						<li><span><g:message code="help.report.ask1.title"/></span><p><g:message code="help.report.ask1.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
@@ -124,14 +131,16 @@
 		<div class="span-12 last">
 	  		<div id="rbox">
 				<div class="title">
-					Administracao
+					<g:message code="help.admin.title"/>
 				</div>
 				<div class="inside">
 					<ul>
-						<li><a href="">Quais funcionalidades a Administracao tem?</a></li>
+						<li><span><g:message code="help.admin.ask1.title"/></span><p><g:message code="help.admin.ask1.answer"/></p></li>
 					</ul>
 				</div>
 			</div>
+	  	</div>
+	  	
 	  	</div>
 	</body>		
 </html>

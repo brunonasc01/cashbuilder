@@ -15,19 +15,17 @@
     <body>
 		<g:monthMenu month="${monthIndex}" />
 
-		<div class="span-24">
-			<div id="title" class="rounded-all">
-    			<h3><g:message code="${budget.date?.month}"/> - ${budget.date?.year }</h3>
-    		</div>
-    		
-    		<g:if test="${flash.message}">
-    			<div class="inside">
-					<div class="success">
-						${flash.message}
-					</div>
+		<div id="title" class="rounded-all">
+   			<p><g:message code="${budget.date?.month}"/> - ${budget.date?.year }</p>
+   		</div>
+   		
+   		<g:if test="${flash.message}">
+   			<div class="inside">
+				<div class="success">
+					${flash.message}
 				</div>
-			</g:if>
-    	</div>
+			</div>
+		</g:if>
 
     	<div class="span-7">
 			<div id="lbox">

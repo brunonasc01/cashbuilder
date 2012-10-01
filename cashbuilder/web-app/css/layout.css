@@ -3,7 +3,7 @@ html { background: #DCDCDC; }
 ul, p, h3, h2, h5 { margin: 0; padding: 0; }
 ul { list-style: none; }
 a { color:#333; text-decoration: none; }
-a:focus, a:hover {color:#000; text-decoration: underline;}
+a:hover {color:#000; text-decoration: underline;}
 body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; background: inherit; }
 .center { text-align: center; }
 
@@ -17,11 +17,24 @@ textarea { width: auto; height: auto; font-family:Calibri,"Helvetica Neue", Helv
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0; }
 tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 
+/* Icons */
+.lock-icon { padding-right:20px; background: url(../images/lock-lock-icon.png) no-repeat 100% 1px;}
+.unlock-icon { padding-right:20px; background: url(../images/lock-unlock-icon.png) no-repeat 100% 1px;}
+/*.document-icon { padding-right:20px; background: url(../images/document-icon.png) no-repeat 100% 1px;}*/
+.info-icon { padding-right:20px; background: url(../images/info-icon.png) no-repeat 100% 1px; }
+
+/* Information Popups */
+span.link:hover { cursor:pointer;  }
+
+.information { display:none; }
+
 /* Header */
 #header { background-color: #495154; border-radius: 10px 10px 0px 0px; -moz-border-radius: 10px 10px 0px 0px;}
-#header .logo { height: 50px; padding-left: 5px; font-family: "Arial Black", Arial, sans-serif; }
-#header .logo h2 { color: #CFB52B; }
-#header .subheader { background-color: #6B7576; padding: 0.2em 0; padding-left: 5px; }
+#header .logo { height: auto; padding: 5px; font-family: "Arial Black", Arial, sans-serif; }
+#header .logo p { color: #CFB52B; font-size: 40px; line-height:1; }
+#header .subheader { background-color: #6B7576; padding: 0.2em 0; padding-left: 5px; color:  #EBEDE2; font-weight:bold; }
+#header .subheader a { color: #EBEDE2; }
+#header .subheader a:hover { text-decoration:none; color:#333; } 
 
 /* Menu */
 #menubar { text-align: center; }
@@ -47,19 +60,19 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 
 /* Month Select Menu */
 #menuMonth { text-align: center; margin-top: 10px; }
-#menuMonth ul li { background: #ccc; float: left; font-weight: bold; }
-#menuMonth ul li a { line-height: 1.5em; width: 79px; display: block; color: #999; }
-#menuMonth ul li a.first, #menuMonth ul li a.last { width: 80px; }
+#menuMonth li { background: #ccc; float: left; font-weight: bold; }
+#menuMonth li a { line-height: 1.5em; width: 79px; display: block; color: #999; }
+#menuMonth li a.first, #menuMonth li a.last { width: 80px; }
 
-#menuMonth ul li.selected a { background-color: #495154; color:#fff; }
-#menuMonth ul li:hover a { background-color: #495154; color:#fff; text-decoration: none;}
+#menuMonth li.selected a { background-color: #495154; color:#fff; }
+#menuMonth li:hover a { background-color: #495154; color:#fff; text-decoration: none;}
 
 /* Center */
 #content { background-color: #EBEDE2; min-height: 200px; }
 #hidden_element { display: none; }
 
 #title { margin: 20px 10px 0 10px; background: #495154; padding: 1em 0.5em; }
-#title h3 { font-weight: bold; color: #fff; }
+#title p { font-weight: bold; color: #EBEDE2; font-size:25px; line-height: 1; }
 
 #lbox, #rbox, #cbox, #obox {  padding:0; background: #FEFEFE; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; box-shadow:0px 0px 10px #090909; } 
 #lbox { margin:10px 0 10px 10px; }
@@ -124,3 +137,7 @@ hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:1px;margi
 .mascara { position:absolute; left:0; top:0; z-index:9000; background-color:#000; display:none; }
 #dialog { position:absolute; left:0; top:0; display: none; z-index:9999; }
 .popup-min-size { min-height: 270px; }
+.helpList ul span { cursor: pointer; }
+.helpList p { font-size: 95%; }
+
+.helpList li { border-bottom: 1px solid #ddd; margin-bottom: 5px; }

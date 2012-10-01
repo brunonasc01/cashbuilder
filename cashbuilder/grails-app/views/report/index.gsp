@@ -7,10 +7,8 @@
 
     <body>
     	<g:monthMenu month="${monthIndex}" />
-    
-    	<div class="span-24">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'report.title.label']"/>
-    	</div>
+
+    	<g:render template="/elements/area_title" model="[bundle_key: 'report.title.label']"/>
 
     	<div class="span-24">
     		<g:if test="${!emptyReport }">

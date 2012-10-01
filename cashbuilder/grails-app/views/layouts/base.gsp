@@ -33,12 +33,8 @@
 
 			<div class="clear"></div>
 
-			<div id="footer" class="span-24">
+			<div id="footer" class="span-24 append-bottom">
 		  		<g:render template="/elements/rodape" ></g:render>
-		  	</div>
-		  	
-		  	<div id="links" class="span-24">
-		  		<g:render template="/elements/links" ></g:render>
 		  	</div>
     	</div>
     	
