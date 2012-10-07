@@ -41,7 +41,7 @@
 					<g:message code="box.transaction.parcels.label" />
 				</li>
 				<li class="input">
-					<g:select name="parcels" from="${1..24}"/>
+					<g:select name="parcels" from="${1..24}" optionValue="${{it == 1? "à vista" : it}}"/>
 				</li>
 			</ul>
 			

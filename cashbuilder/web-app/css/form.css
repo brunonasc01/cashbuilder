@@ -44,7 +44,7 @@ form.boxForm ul li.composed_input { width: 180px; }
 form.boxForm ul li.composed_input input[type="checkbox"] { margin-left: .8em; }
 form.boxForm ul li.composed_input input[type="text"] { display: none; }
 form.boxForm ul li.composed_input small { line-height: 38px; }
-form.boxForm ul li.button { margin-left: 100px; padding: 0 .5em;}
+form.boxForm ul li.button { width: 100%; padding: 0 .5em;  text-align: center;}
 
 /* budget form */
 form.budgetForm h5 { font-size: 110%; margin-top: 10px;}
