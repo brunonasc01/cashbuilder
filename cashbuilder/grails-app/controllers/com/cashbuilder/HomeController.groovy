@@ -52,4 +52,8 @@ class HomeController {
 		
 		redirect(action: "index")
 	}
+	
+	def about() {
+		
+	}
 }

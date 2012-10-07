@@ -2,7 +2,7 @@
 html { background: #DCDCDC; }
 ul, p, h3, h2, h5 { margin: 0; padding: 0; }
 ul { list-style: none; }
-a { color:#333; text-decoration: none; }
+a,a:focus { color:#333; text-decoration: none; }
 a:hover {color:#000; text-decoration: underline;}
 body { font-family:Calibri,"Helvetica Neue", Helvetica, sans-serif; font-size: 100%; background: inherit; }
 .center { text-align: center; }
@@ -20,7 +20,7 @@ tbody tr:nth-child(even) td, tbody tr.even td {background:#eee;}
 /* Icons */
 .lock-icon { padding-right:20px; background: url(../images/lock-lock-icon.png) no-repeat 100% 1px;}
 .unlock-icon { padding-right:20px; background: url(../images/lock-unlock-icon.png) no-repeat 100% 1px;}
-/*.document-icon { padding-right:20px; background: url(../images/document-icon.png) no-repeat 100% 1px;}*/
+.document-icon { padding-right:20px; background: url(../images/document-icon.png) no-repeat 100% 1px;}
 .info-icon { padding-right:20px; background: url(../images/info-icon.png) no-repeat 100% 1px; }
 
 /* Information Popups */
@@ -141,3 +141,8 @@ hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:1px;margi
 .helpList p { font-size: 95%; }
 
 .helpList li { border-bottom: 1px solid #ddd; margin-bottom: 5px; }
+
+.text-area hr { margin-bottom: 15px; }
+.text-area h2 { font-weight:bold; margin-top: 20px; margin-left: 5px; }
+.text-area  p { margin-left: 7px;  margin-right: 7px; margin-bottom: 5px; text-align: justify; }
+.text-area  p.image { float: right; margin: 5px; margin-left: 10px; }
