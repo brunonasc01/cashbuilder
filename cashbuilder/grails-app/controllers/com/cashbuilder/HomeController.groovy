@@ -1,6 +1,7 @@
 package com.cashbuilder
 
 import com.cashbuilder.beans.BalanceBoxBean;
+import com.cashbuilder.beans.ContactSubjectBean;
 
 class HomeController {
 
@@ -55,5 +56,22 @@ class HomeController {
 	
 	def about() {
 		
+	}
+	
+	def contact() {
+		def subjects = []
+		
+		subjects += new ContactSubjectBean(id: "sugestion", value: g.message(code:"contact.subject1"))
+		subjects += new ContactSubjectBean(id: "error", value: g.message(code:"contact.subject2"))
+		subjects += new ContactSubjectBean(id: "interface", value: g.message(code:"contact.subject3"))
+		subjects += new ContactSubjectBean(id: "others", value: g.message(code:"contact.subject4"))
+		
+		[subjects : subjects]
+	}
+	
+	def submitContact(){
+		//TODO implementar
+		
+		redirect(uri:"/")
 	}
 }
