@@ -21,9 +21,14 @@
 									<li><g:message code="${flash.message}"/></li>
 								</ul>
 							</div>
-							
-							 <div class="clear"></div>
 						</g:if>
+				  		<g:else>					
+							<g:hasErrors bean="${contact}">
+				            	<div class="form-errors">
+				                	<g:renderErrors bean="${contact}" as="list" />
+				            	</div>
+				            </g:hasErrors>
+			            </g:else>
 					
 						<div class="clear"></div>
 			
@@ -34,44 +39,35 @@
 						<br/>		
 
 						<ul>
-							<li class="label">
-								<g:message code="default.name.label"/>*
-							</li>
-							<li class="input">			
-								<g:textField name="name" />
-							</li>
+							<fe:element name="name" bean="${contact}" compulsory="*"/>
 						</ul>
 						
 						<hr />
 						
 						<ul>
-							<li class="label">
-								<g:message code="default.email.label"/>*
-							</li>
-							<li class="input">			
-								<g:textField name="email" />
-							</li>
+							<fe:element name="email" bean="${contact}" compulsory="*"/>
 						</ul>
 						
 						<hr />
 						
 						<ul>
-							<li class="label">
+							<li class="label ${hasErrors(bean: contact, field: 'subject', 'label-error')}">
 								<g:message code="form.contact.subject.label"/>*
 							</li>
-							<li class="input">			
-								<g:select name="subject" from="${subjects }" optionKey="id" optionValue="value"/>
+							<li class="input ${hasErrors(bean: contact, field: 'subject', 'input-error')}">			
+								<g:select name="subject" from="${subjects }" optionKey="id" optionValue="value"
+									noSelection="['': 'Selecione']" value="${contact?.subject }"/>
 							</li>
 						</ul>
 
 						<hr />
 						
 						<ul>
-							<li class="label">
+							<li class="label ${hasErrors(bean: contact, field: 'message', 'label-error')}">
 								<g:message code="form.contact.message.label"/>*
 							</li>
-							<li class="input">			
-								<g:textArea name="message" cols="50" rows="10" maxlength="500"></g:textArea>
+							<li class="input ${hasErrors(bean: contact, field: 'message', 'input-error')}">			
+								<g:textArea name="message" cols="50" rows="10" maxlength="500" value="${contact.message }"></g:textArea>
 							</li>
 						</ul>
 		
