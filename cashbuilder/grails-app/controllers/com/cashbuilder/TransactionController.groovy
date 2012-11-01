@@ -4,6 +4,7 @@ class TransactionController {
 
 	def generalService
 	def transactionService
+	def eventService
 	
 	static allowedMethods = [save: "POST", update: "POST"]
 	
@@ -34,6 +35,8 @@ class TransactionController {
 
 		if(transaction.hasErrors()){
 			flash.message = g.renderErrors(bean: transaction)
+		} else {
+			eventService.processAlerts(user)
 		}
 
 		redirect(controller:"cashflow", action: "index", params: [monthId: params.monthId])
@@ -50,6 +53,9 @@ class TransactionController {
 		
 		if(transaction.hasErrors()){
 			flash.message = g.renderErrors(bean: transaction)
+		} else {
+			def user = session.user.attach()
+			eventService.processAlerts(user)
 		}
 			
 		redirect(controller:"cashflow", action: "index")

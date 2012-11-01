@@ -38,7 +38,7 @@ class HomeController {
 		}
 
 		def categoriesList = generalService.getCategoriesList(user)
-		def alerts = Alert.findAllByBudget(budget)
+		def alerts = Alert.findAllByBudgetAndEnable(budget,true)
 		
 		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
 	}

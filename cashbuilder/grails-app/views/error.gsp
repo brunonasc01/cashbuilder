@@ -1,11 +1,21 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Grails Runtime Exception</title>
-		<meta name="layout" content="main">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'errors.css')}" type="text/css">
+		<meta name="layout" content="base" />
+        <r:require modules="core"/>
 	</head>
 	<body>
-		<g:renderException exception="${exception}" />
+		<div id="obox">
+			<div class="inside text-area">
+				<h2 class="negative"><g:message code="app.error.title"/> </h2>
+				
+				<hr />
+				
+				<p>				
+				<g:message code="app.error.message"/>
+				</p>
+			</div>
+		</div>
+<%--		<g:renderException exception="${exception}" />--%>
 	</body>
 </html>

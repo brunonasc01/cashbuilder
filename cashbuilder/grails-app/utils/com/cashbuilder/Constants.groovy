@@ -18,6 +18,7 @@ class Constants {
 	
 	static int ALERT_SALDO_POSITIVO = 0
 	static int ALERT_SALDO_NEGATIVO = 1
+	static int ALERT_ORCAMENTO_NEGATIVO = 2
 	
 	static String POSITIVE = "positive"
 	static String NEGATIVE = "negative"

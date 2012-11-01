@@ -73,18 +73,33 @@ class EventService {
 
 		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
 		def month = BudgetMonth.findByMonthAndBudget(DateUtils.currentMonth,budget)
-		
-		if(budgetService.getBudgetedBalance(month) > 0 && budgetService.getBalance(month,user) > 0){			
-			createOrUpdateAlert(budget,Constants.ALERT_SALDO_POSITIVO,"alert.saldo.positivo.message")
+
+		resetAlerts(budget)
+				
+		if(budgetService.getBudgetedBalance(month) < 0){
+		   createOrUpdateAlert(budget,Constants.ALERT_ORCAMENTO_NEGATIVO,"alert.budget.negative.message")
+		   
+		} else if(budgetService.getBalance(month,user) < 0){
+		   createOrUpdateAlert(budget,Constants.ALERT_SALDO_NEGATIVO,"alert.balance.negative.message")
+
+		} else if(budgetService.getBudgetedBalance(month) > 0 && budgetService.getBalance(month,user) > 0){			
+			createOrUpdateAlert(budget,Constants.ALERT_SALDO_POSITIVO,"alert.balance.positive.message")
 			
-   		}else if(budgetService.getBudgetedBalance(month) < 0 || budgetService.getBalance(month,user) < 0){
-		   createOrUpdateAlert(budget,Constants.ALERT_SALDO_NEGATIVO,"alert.saldo.negativo.message")
-		}
+   		}
 	}
 
+	void resetAlerts(Budget budget){
+		
+		def alerts = Alert.findAllByBudget(budget)
+		
+		alerts.each{
+			it.enable = false
+		}
+	}
+	
 	Alert createOrUpdateAlert(Budget budget, int type, String messageCode){
 
-		def alert = Alert.findByType(type)
+		Alert alert = Alert.findByType(type)
 		
 		 if(!alert){
 			 alert = new Alert(budget: budget, enable: true, type: type, message: messageCode)
@@ -92,5 +107,7 @@ class EventService {
 		 } else if(!alert.enable){
 			 alert.enable = true
 		 }
+		 
+		 return alert
 	}
 }

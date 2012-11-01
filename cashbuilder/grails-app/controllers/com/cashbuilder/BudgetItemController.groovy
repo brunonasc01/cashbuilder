@@ -4,6 +4,8 @@ class BudgetItemController {
 
 	static allowedMethods = [update: "POST"]
 	
+	def eventService
+	
     def update() {
 		
 		BudgetItem budgetItem = BudgetItem.get(params.id)
@@ -11,6 +13,10 @@ class BudgetItemController {
 		if(budgetItem){
 			budgetItem.properties = params.properties
 			budgetItem.save()
+			
+			def user = session.user.attach()
+			eventService.processAlerts(user)
+
 			flash.message = "Orcamento atualizado com sucesso"
 		}
 		
