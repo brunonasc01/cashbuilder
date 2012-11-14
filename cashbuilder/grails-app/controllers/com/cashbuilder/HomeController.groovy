@@ -9,6 +9,7 @@ class HomeController {
 	def budgetService
 	def generalService
 	def transactionService
+	def mailService
 	
 	static allowedMethods = [saveTransaction: "POST"]
 	
@@ -75,7 +76,7 @@ class HomeController {
 		if(contact.validate()){
 			
 			mailService.sendMail {
-				to contact.email
+				to Constants.SUPPORT_MAIL
 				subject contact.subject
 				html contact.message
 			}

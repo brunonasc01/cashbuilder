@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 
 class Constants {
 
+	static String SUPPORT_MAIL = "suporte@fazico.com"
+	
 	static String DEBITO = "D"
 	static String CREDITO = "C"
 	
