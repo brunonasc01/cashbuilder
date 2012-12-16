@@ -51,9 +51,9 @@ class BudgetService {
 		(total)? total : 0
 	}
 
-	List getBudgetItems(User user, int month, def criteria){
+	List getBudgetItems(User user, int month, int year, def criteria){
 		
-		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		def budget = Budget.findByYearAndUser(year,user)
 		def budgetMonth = BudgetMonth.findByMonthAndBudget(month,budget)
 		def result = []
 

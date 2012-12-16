@@ -8,7 +8,7 @@
 		<r:require module="adm"/>        
     </head>
     <body>
-    	<g:monthMenu action="manage_budget" month="${monthIndex}" />
+    	<g:monthMenu action="manage_budget" month="${monthIndex}" nextYear="${nextYear}"/>
 
     	<div class="span-24">
     		<g:render template="/elements/area_title" model="[bundle_key: 'manager.budget.title.label']"/>
@@ -45,7 +45,7 @@
 		           		
 		           		<ul>
 		           			<li class="label">
-		           				<g:message code="year.label"/> (${DateUtils.currentYear})
+		           				<g:message code="year.label"/> (${currentYear})
 		           			</li>
 		           			<li class="input">
 		           				<g:radio name="saveType" value="year" ></g:radio>

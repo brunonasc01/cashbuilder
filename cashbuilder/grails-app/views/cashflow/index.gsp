@@ -12,7 +12,7 @@
 		</r:script>
     </head>
     <body>
-		<g:monthMenu month="${monthIndex}" />
+		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
 		<div id="title" class="rounded-all">
    			<p><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</p>

@@ -136,4 +136,8 @@ class DateUtils {
 	static int getCurrentMonth(){
 		return Calendar.getInstance().get(Calendar.MONTH)
 	}
+	
+	static boolean isLastMonthOfYear(){
+		return DateUtils.currentMonth.equals(Calendar.DECEMBER)
+	}
 }

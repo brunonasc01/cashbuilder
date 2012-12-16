@@ -13,7 +13,7 @@
         
     </head>
     <body>
-		<g:monthMenu month="${monthIndex}" />
+		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
 		<div id="title" class="rounded-all">
    			<p><g:message code="${budget.date?.month}"/> - ${budget.date?.year }</p>

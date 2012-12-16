@@ -63,6 +63,7 @@ span.link:hover { cursor:pointer;  }
 #menuMonth li { background: #ccc; float: left; font-weight: bold; }
 #menuMonth li a { line-height: 1.5em; width: 79px; display: block; color: #999; }
 #menuMonth li a.first, #menuMonth li a.last { width: 80px; }
+#menuMonth li a.nextYear { width: 110px; color: #00F; }
 
 #menuMonth li.selected a { background-color: #495154; color:#fff; }
 #menuMonth li:hover a { background-color: #495154; color:#fff; text-decoration: none;}

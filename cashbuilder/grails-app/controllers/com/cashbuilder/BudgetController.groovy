@@ -10,6 +10,14 @@ class BudgetController {
 	def generalService
 	
     def index() {
+		
+		int year = DateUtils.currentYear
+		boolean nextYear = false
+		
+		if(params.nextYear){
+			year = year+1
+			nextYear = true
+		}
 	
 		if(!params.monthId){
 			params.monthId = DateUtils.currentMonth
@@ -17,7 +25,7 @@ class BudgetController {
 
 		int month = Integer.valueOf(params.monthId)
 		def user = session.user.attach()
-		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		def budget = Budget.findByYearAndUser(year,user)
 		def budgetMonth = BudgetMonth.findByMonthAndBudget(month,budget)
 
 		//Calculo do saldo de protecao
@@ -49,7 +57,7 @@ class BudgetController {
 
 		def df = generalService.getNumberFormatter()
 		
-		[budget: true, monthIndex: month, meses: months, budget: budgetBean, balanceBox: balanceBox, df: df]
+		[budget: true, nextYear: nextYear, monthIndex: month, meses: months, budget: budgetBean, balanceBox: balanceBox, df: df]
 		
 	}
 }

@@ -17,6 +17,13 @@ class LoginController {
 
 			if(!budget){
 				budgetService.createNewBudget(user, DateUtils.currentYear)
+				
+			} else if(DateUtils.isLastMonthOfYear()){
+				def budgetNextYear = Budget.findByYearAndUser(DateUtils.currentYear+1,user)
+				
+				if(!budgetNextYear){
+					budgetService.createNewBudget(user, DateUtils.currentYear+1)
+				}
 			}
 
 			eventService.checkEvents(user, null)

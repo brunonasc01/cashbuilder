@@ -1,7 +1,9 @@
 
+<%@page import="com.cashbuilder.DateUtils"%>
+
 <g:javascript>
 $(function() {
-	monthMenuUI('${index}','menuMonth');
+	monthMenuUI('${nextYear? 12 : index}','menuMonth');
 });
 </g:javascript>
 
@@ -18,6 +20,10 @@ $(function() {
 	<li><g:link params="[monthId:'9']" action="${action}"><g:message code="month.october"/></g:link></li>
 	<li><g:link params="[monthId:'10']" action="${action}"><g:message code="month.november"/></g:link></li>
 	<li><g:link params="[monthId:'11']" class="last" action="${action}"><g:message code="month.december"/></g:link></li>
+	
+	<g:if test="${DateUtils.isLastMonthOfYear() }">
+		<li><g:link params="[monthId:'0',nextYear:'true']" class="nextYear" action="${action}"><g:message code="month.january"/> ${DateUtils.currentYear+1 }</g:link></li>
+	</g:if>
 </ul>
 
 <div class="clear"></div>

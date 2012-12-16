@@ -13,6 +13,14 @@ class ReportController {
 	
     def index() {
 		
+		int year = DateUtils.currentYear
+		boolean nextYear = false
+		
+		if(params.nextYear){
+			year = year+1
+			nextYear = true
+		}
+		
 		if(!params.monthId){
 			params.monthId = DateUtils.currentMonth
 		}
@@ -22,7 +30,7 @@ class ReportController {
 		def user = session.user.attach()
 		
 		int currentMonth =  Integer.valueOf(params.monthId)
-		int currentYear = DateUtils.currentYear
+		int currentYear = year
 		
 		def budget = Budget.findByYearAndUser(currentYear,user)
 		def month = BudgetMonth.findByMonthAndBudget(currentMonth,budget)
@@ -67,6 +75,6 @@ class ReportController {
 		
 		String barData = MultiBarChartBean.generateChart(barDataList)
 		
-		[stats:true, monthIndex: currentMonth, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
+		[stats:true, nextYear: nextYear, monthIndex: currentMonth, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
 	}
 }

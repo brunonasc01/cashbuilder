@@ -6,7 +6,7 @@
     </head>
 
     <body>
-    	<g:monthMenu month="${monthIndex}" />
+    	<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
     	<g:render template="/elements/area_title" model="[bundle_key: 'report.title.label']"/>
 

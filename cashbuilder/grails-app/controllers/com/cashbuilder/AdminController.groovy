@@ -15,6 +15,14 @@ class AdminController {
 	
 	def manage_budget() {
 		
+		int year = DateUtils.currentYear
+		boolean nextYear = false
+		
+		if(params.nextYear){
+			year = year+1
+			nextYear = true
+		}
+		
 		if(!params.monthId){
 			params.monthId = DateUtils.currentMonth
 		}
@@ -22,12 +30,12 @@ class AdminController {
 		int iMonth = Integer.valueOf(params.monthId)
 
 		def user = session.user.attach()
-		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		def budget = Budget.findByYearAndUser(year,user)
 		def month = BudgetMonth.findByMonthAndBudget(iMonth,budget)
 
 		def months = BudgetMonth.findAllByBudget(budget)
-		def expenseList = budgetService.getBudgetItems(user,iMonth,false)
-		def incomeList = budgetService.getBudgetItems(user,iMonth,true)
+		def expenseList = budgetService.getBudgetItems(user,iMonth,year,false)
+		def incomeList = budgetService.getBudgetItems(user,iMonth,year,true)
 		def df = generalService.getNumberFormatter()
 
 		BalanceBoxBean balanceBox = new BalanceBoxBean()
@@ -36,7 +44,8 @@ class AdminController {
 		balanceBox.expense = budgetService.getBudgetedTotal(month,false)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE 
 		
-		[ adm: true, df: df, monthIndex: iMonth, expenseList: expenseList, incomeList: incomeList, budgetMonth: month, months: months, balanceBox: balanceBox]
+		[ adm: true, df: df, monthIndex: iMonth, expenseList: expenseList, incomeList: incomeList, budgetMonth: month,
+			 months: months, balanceBox: balanceBox, currentYear: year, nextYear: nextYear]
 	}
 	
 	def save_budget() {
