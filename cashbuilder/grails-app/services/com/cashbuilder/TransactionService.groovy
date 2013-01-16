@@ -6,6 +6,8 @@ class TransactionService {
 
 	static transactional = true
 	
+	def messageSource
+	
     def serviceMethod() {
 
     }
@@ -49,6 +51,10 @@ class TransactionService {
 				transactionDate.set(Calendar.YEAR,transactionYear)
 				
 				def transactionParcel = new Transaction(baseTransaction.properties)
+	
+				Object[] parcelParam = [it+1,parcels]			
+				transactionParcel.description += " "+messageSource.getMessage("transaction.parcel.suffix",parcelParam,"parcela",new Locale("pt", "BR")) 
+				
 				transactionParcel.date = new Date(transactionDate.getTimeInMillis())
 				transactionParcel.save(flush:true)
 				
