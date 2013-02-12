@@ -8,7 +8,7 @@
     <body>
 	  	<div id="obox">
 			<div class="inside text-area">
-				<h2><g:message code="home.about.title"/> </h2>
+				<h2><g:message code="general.terms.title"/> </h2>
 				
 				<hr />
 				
@@ -16,7 +16,7 @@
 					<img src="../res/images/photo.png"></img>
 				</p> -->
 				
-				<g:message code="home.about.text"/>
+				<g:message code="general.terms.text"/>
 			</div>
 		</div>
 	</body>		

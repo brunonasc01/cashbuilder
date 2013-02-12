@@ -7,13 +7,13 @@
 
 </g:if>
 <g:else>
-	<g:link controller="home" action="about"><g:message code="app.about.link"/></g:link>
+	<g:link controller="about" action="."><g:message code="app.about.link"/></g:link>
 	<span> | </span>
-	<a href="#"><g:message code="app.terms.link"/></a>
+	<g:link controller="about" action="terms"><g:message code="app.terms.link"/></g:link>
 	<span> | </span>
 	<g:link url="http://fazrico.wordpress.com" target="blank"><g:message code="app.blog.link"/></g:link>
 	<span> | </span>
-	<g:link controller="home" action="contact"><g:message code="app.contact.link"/></g:link>
+	<g:link controller="contact" action="."><g:message code="app.contact.link"/></g:link>
 	
 	<%--		<img src="${resource(dir:'images',file:'facebook-icon.png')}"/>--%>
 			
