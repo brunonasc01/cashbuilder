@@ -44,13 +44,13 @@ class AjaxEffectsTagLib {
 		def project = '/category/'
 		def default_action = 'selectedCategory'
 
-		def trigger = attrs.trigger
-		def target = attrs.target
+		def categoryCombo = attrs.category
+		def subcategoryCombo = attrs.subcategory
 		def action = attrs.action?: default_action
 
 		out << "<script>"
 		out << "\$(document).ready(function(){"
-		out << "ajaxComboSubcategoria('${trigger}','${project}${action}','${target}');"
+		out << "ajaxSubcategoryCombo('${project}${action}', '${categoryCombo}', '${subcategoryCombo}');"
 		out << "});"
 		out << "</script>"
 	}

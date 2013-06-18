@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta name="layout" content="base" />
 		<r:require modules="reports"/>
@@ -8,9 +8,14 @@
     <body>
     	<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
-    	<g:render template="/elements/area_title" model="[bundle_key: 'report.title.label']"/>
+		<div id="month-title" class="col-1">
+			<h2 class="title-box">
+				<g:message code="report.title.label"/> - Mes?
+				<span class="right-align">2013?</span>
+			</h2>
+		</div>
 
-    	<div class="span-24">
+    	<div class="col-1">
     		<g:if test="${!emptyReport }">
 				<div id="cbox">
 					<div class="title">

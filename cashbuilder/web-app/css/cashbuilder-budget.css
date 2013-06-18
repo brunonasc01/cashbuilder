@@ -1,0 +1,96 @@
+ /* Budget List */
+#budget-list {
+	font-weight: bold;
+}
+
+#budget-list .budget-item {
+	margin-top: 10px;
+	border-bottom: 2px solid #495154;
+	padding-bottom: 10px;
+}
+
+#budget-list .budget-item:first-child {
+	margin-top: 10px;
+}
+
+#budget-list .budget-item:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+#budget-list ul {
+	
+}
+
+#budget-list .values {
+	width: 22%;
+}
+
+#budget-list .button {
+	width: 5%;
+	text-align: center;
+}
+
+#budget-list .of {
+	width: 6%;
+	text-align: center;
+}
+
+#budget-list .child-name {
+	width: 45%;
+}
+
+/* Categoria - Pai */
+#budget-list .main-category .progress-bar{
+	width: 51%;
+}
+
+#budget-list .main-category {
+	
+}
+
+/* Categoria - Filho */
+#budget-list .subcategory-list {
+	overflow: hidden;
+	-webkit-transition: height 0.5s ease-in-out;
+}
+
+
+#budget-list .subcategory-list ul {
+	padding-top: 1em;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#budget-list .subcategory-list .progress-bar{
+	width: 100%;
+	line-height: 1;
+}
+
+#budget-list .subcategory-list .button{
+	min-width: 16px;
+	width: 2.5%;
+}
+
+/* Modal */
+
+.budget-modal {
+	width: 25%;
+	height: auto;
+	margin: -10% 0 0 -12.5%;
+}
+
+.budget-modal form {
+	padding-top: 10px;
+}
+
+.budget-modal label {
+	display: inline-block;
+	text-align: center;
+	width: 40%;
+}
+
+.budget-modal input[type="text"], .budget-modal select{
+	display: inline-block;
+	width: 50%;
+}

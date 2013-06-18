@@ -1,3 +1,5 @@
-<div id="title" class="rounded-all">
-	<p><g:message code="${bundle_key}"/></p>
+<div id="month-title" class="col-100 last">
+	<h2 class="title-box">
+		<g:message code="${bundle_key}"/>
+	</h2>
 </div>

@@ -1,54 +1,49 @@
 <%@page import="com.cashbuilder.Constants"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta name="layout" content="base" />
 		<r:require modules="cashflow"/>
 
 		<r:script disposition="head">
 		$(function() {
-			ajaxSubmitToModal('newButton','dialog');
+			ajaxSubmitToModal('newTransactionForm','modal');
 		});
 		</r:script>
     </head>
     <body>
 		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
-		<div id="title" class="rounded-all">
-   			<p><g:message code="${cashFlow.date.month}"/> - ${cashFlow.date.year}</p>
+		<div id="month-title" class="col-1">
+			<h2 class="title-box">
+				Fluxo de Caixa? - <g:message code="${cashFlow.date.month}"/>
+				<span class="right-align">${cashFlow.date.year}</span>
+			</h2>
    		</div>
     	
     	<g:if test="${flash.message}">
-    		<div class="span-24">
-				<div class="form-errors-large">
-					${flash.message}
+    		<div class="col-1">
+				<div class="message error">
+					<p>${flash.message}</p>
 				</div>
 			</div>
 		</g:if>
     	
-    	<div class="span-7">
-    		<div id="lbox">
-    			<div class="inside center">
-					<g:form action="newTransaction" controller="transaction">
-						<g:hiddenField name="monthId" value="${monthIndex}" />
-						<g:submitButton name="newButton" class="boxButton" value="Novo Lancamento" />
-					</g:form>
-				</div>
+    	<div class="col-25">
+    		<div class="text-center append-bottom-dist">
+				<g:form name="newTransactionForm" action="newTransaction" controller="transaction">
+					<g:hiddenField name="monthId" value="${monthIndex}" />
+					<g:submitButton name="newButton" class="btn btn-large" value="Nova Transacao?" />
+				</g:form>
 			</div>
 
-    		<div id="lbox">
-    			<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
-			</div>
+    		<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
     	</div>
     
-    	<div class="span-17 last">
-	    	<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
-		</div>
-		
-		<div class="span-16 popup-min-size" id="dialog">
-			<div id="popup">	
-		
-			</div>
+    	<div class="col-75">
+    		<div class="box">
+		    	<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
+	    	</div>
 		</div>
 	</body>		
 </html>

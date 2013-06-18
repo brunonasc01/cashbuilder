@@ -34,6 +34,10 @@
 		<g:render template="/elements/rodape" ></g:render>
 	</footer>
 
+	<div class="overlay"></div>
+
+	<div id="modal"></div>
+
 	<r:layoutResources/>
 </body>
 

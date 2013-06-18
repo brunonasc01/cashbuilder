@@ -1,77 +1,39 @@
 <%@page import="com.cashbuilder.Constants"%>
 
-<g:if test="${list}">	
+<g:if test="${list}">
+<div id="budget-list" class="content">
 	<g:each var="category" in="${list}" status="i">
-		<div id="budgetList">
-			<div id="fatherItem">
+		<div class="budget-item">
+			<h4>${category.name}</h4>
 
-				<g:hiddenField name="prevVal" value="${category.budgetedValue }"/>
-				<g:hiddenField name="realVal" value="${category.realizedValue }"/>
-			
-				<ul>
-					<li class="name">${category.name }</li>
-					<li class="button"><span class="ui-icon ui-icon-circle-plus"></span></li>
-					<li class="values"><span class="right"><g:formatNumber number="${category.realizedValue }" format="${Constants.FORMATO_MOEDA}"/></span></li>
-					<li class="pbar"><div id="progressbar"></div></li>
-					<li class="values"><g:formatNumber number="${category.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
-				</ul>
-			</div>
+			<g:hiddenField name="prevVal" value="${category.budgetedValue }"/>
+			<g:hiddenField name="realVal" value="${category.realizedValue }"/>
+		
+			<ul class="inline main-category">
+				<li class="button"><span id="bt_expand" class="bt-icon icon-plus"></span>
+				</li><li class="values text-right"><g:formatNumber number="${category.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
+				</li><li class="progress-bar"><span class="" style="width:${50}%;"></span>
+				</li><li class="values"><g:formatNumber number="${category.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
+			</ul>
 
-			<div class="clear"></div>
-			
-			<div id="childItem">
+			<div id="childItem_${i}" class="subcategory-list">
 				<g:if test="${category.subcategories}">
 					<g:each var="subcategory" in="${category.subcategories}">
-					<div id="item">
-						<div class="edit">
-							<button><g:message code="budget.button.edit.label"/></button>
-						</div>
-						
-						<div class="save">
-							<g:form action="update" controller="budgetItem">
-								<button type="submit"><g:message code="budget.button.save.label"/></button>
-								<button name="undo"><g:message code="budget.button.undo.label"/></button>
-								
-								<g:hiddenField name="monthId" value="${monthIndex}"/>
-								<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
-								<g:hiddenField name="budgetedValue" value="${df.format(subcategory.budgetedValue) }"/>
-							</g:form>
-							
-						</div>
-						
-						<g:hiddenField name="prevVal" value="${subcategory.budgetedValue }"/>
-						<g:hiddenField name="realVal" value="${subcategory.realizedValue }"/>
-
-						<ul id="basic">
-							<li class="name">${subcategory.name }</li>
-							<li class="values"><span class="right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/></span></li>
-							<li class="of"><g:message code="default.of"/></li>
-							<li class="values" id="prev"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
-							<li class="bar"><div id="progressbar"></div></li>
+						<ul class="inline">
+							<li class="button"><span id="bt_edit_budget" class="bt-icon icon-edit"></span>
+							</li><li class="child-name">${subcategory.name}
+							</li><li class="values text-right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
+							</li><li class="of"><g:message code="default.of"/>
+							</li><li class="values"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/>
+							</li><li class="progress-bar"><span style="width:${30}%;"></span>
+							</li>
 						</ul>
-						
-						<ul id="edition"> 
-							<li class="name">${subcategory.name }</li>
-							<li class="values"><span class="right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/></span></li>
-							<li class="of"><g:message code="default.of"/></li>
-							<li class="values" id="prev"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
-							<li class="slider"><div id="sliderbar"></div></li>
-							<li class="input"><g:textField size="6" name="manualValue" value="${df.format(subcategory.budgetedValue)}"/></li>
-						</ul>
-
-						<div class="clear"></div>
-					</div>
 					</g:each>
 				</g:if>
 			</div>
-			
-			<div class="clear"></div>
 		</div>
-		
-		<g:if test="${i < list.size()-1}">
-			<hr />
-		</g:if>
 	</g:each>
+</div>	
 </g:if>
 
 	

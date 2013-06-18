@@ -1,8 +1,8 @@
 
-<g:categoriesCombo trigger="categoryCombo" target="subcategoriesCombo"/>
+<g:categoriesCombo category="categoryCombo" subcategory="subcategoriesCombo"/>
 
 <div class="box">
-	<g:form name="xpNewReg" action="saveTransaction" controller="home">
+	<g:form action="saveTransaction" controller="home">
 		<h3 class="title-box"><g:message code="box.transaction.title"/></h3>
 
 		<div class="content">
@@ -13,7 +13,7 @@
 			</g:if>
 
 			<label for="data"><g:message code="box.transaction.date.label"/>
-			</label><g:jqDatePicker class="date" name="date" value="" />
+			</label><g:datePicker name="date"/>
 			
 			<label for="valor"><g:message code="box.transaction.value.label"/>
 			</label><g:textField maxlength="10" name="value" value="" />

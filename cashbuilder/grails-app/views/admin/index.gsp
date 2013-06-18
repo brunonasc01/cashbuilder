@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta name="layout" content="base" />
         <r:require module="adm"/>
@@ -8,19 +8,18 @@
    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.title.label']"/>
 
    		<g:if test="${flash.message}">
-   			<div class="inside">
-				<div class="success">
+   			<div class="col-100 last">
+				<div class="message error">
 					${flash.message}
 				</div>
 			</div>
 		</g:if>
     
-	  	<div class="span-8">
-			<div id="lbox">
-				<div class="title">
-					<g:message code="manager.box.title1.label"/>
-				</div>
-				<div class="inside">
+	  	<div class="col-33">
+			<div class="box">
+				<h3 class="title-box"><g:message code="manager.box.title1.label"/></h3>
+				
+				<div class="content">
 					<ul>
 						<li><g:link action="manage_budget"><g:message code="manager.box.link1.label"/></g:link></li>
 					</ul>
@@ -28,12 +27,11 @@
 			</div>
 	  	</div>
 	  	
-	  	<div class="span-8">
-	  		<div id="cbox">
-				<div class="title">
-					<g:message code="manager.box.title2.label"/>
-				</div>
-				<div class="inside">
+	  	<div class="col-33">
+	  		<div class="box">
+	  			<h3 class="title-box"><g:message code="manager.box.title2.label"/></h3>
+
+				<div class="content">
 					<ul>
 						<li><g:link controller="user" action="edit"><g:message code="manager.box.link2.label"/></g:link></li>
 						
@@ -45,12 +43,11 @@
 			</div>
 	  	</div>
 	  	
-	  	<div class="span-8 last">
-			<div id="rbox">
-				<div class="title">
-					<g:message code="manager.box.title3.label"/>
-				</div>
-				<div class="inside">
+	  	<div class="col-33">
+			<div class="box">
+				<h3 class="title-box"><g:message code="manager.box.title3.label"/></h3>
+
+				<div class="content">
 					<ul>
 						<li><g:link controller="category" action="new_category"><g:message code="manager.box.link5.label"/></g:link></li>
 					</ul>
