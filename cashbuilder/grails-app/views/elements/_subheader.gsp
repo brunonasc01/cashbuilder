@@ -1,16 +1,19 @@
 
-<div class="subheader">
+<div id="subheader">
 
 	<g:if test="${session.user}">
-		<span>
-			<g:message code="default.welcome.message"/>
-			${session.user.firstName }
-		</span>
-		<span> | </span>
-
-		<g:link controller="login" action="logoff">
-			<span class="unlock-icon"><g:message code="default.logoff.label"/></span>
-		</g:link>
+		<ul class="inline">
+			<li>
+				<g:message code="default.welcome.message"/>
+				${session.user.firstName }
+			</li>
+			
+			<li>
+				<g:link controller="login" action="logoff">
+					<span class="unlock-icon"><g:message code="default.logoff.label"/></span>
+				</g:link>
+			</li>
+		</ul>
 	</g:if>
 	<g:else>
 		<g:if test="${request.forwardURI.equals("/") }">

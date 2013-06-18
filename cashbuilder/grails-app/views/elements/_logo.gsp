@@ -1,3 +1,3 @@
-<div class="logo">
-	<p><g:message code="app.name"/></p>
+<div id="logo">
+	<h1><g:message code="app.name"/></h1>
 </div>

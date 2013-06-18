@@ -1,23 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
-    <head>
-        <meta name="layout" content="base" />
-        <r:require modules="core"/>
-    </head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+	<meta name="layout" content="base" />
+	<r:require modules="core"/>
+</head>
 
-    <body>
-	  	<div id="obox">
-			<div class="inside text-area">
-				<h2><g:message code="general.about.title"/> </h2>
-				
-				<hr />
-				
-				<!-- <p class="image">
-					<img src="../res/images/photo.png"></img>
-				</p> -->
-				
+<body>
+	<div id="month-title" class="col-1">
+		<h2 class="title-box">
+			<g:message code="general.about.title"/>
+		</h2>
+	</div>
+	  	
+	<div class="col-1">
+		<div class="box">
+			<div class="content text-box">
 				<g:message code="general.about.text"/>
 			</div>
 		</div>
-	</body>		
+	</div>
+</body>		
 </html>

@@ -1,0 +1,38 @@
+form {
+	font-size: 0.98em;
+}
+
+label{
+	width: 100%;
+	font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="checkbox"], select{
+	width: 100%;
+	margin-bottom: 5px;
+
+	border: 1px solid #aaaaaa;
+	background: -webkit-linear-gradient(#eeeeee,#fefefe);
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="checkbox"]:focus, select:focus {
+	box-shadow: 0 0 2px 2px #cccccc;
+}
+
+input[type='submit'] {
+	margin-top: 10px;
+}
+
+form.text-large  {
+	font-size: 1.1em;
+}
+
+/*
+input.date {
+	margin-right: 50%;	
+}
+
+input.description {
+	width: 78%;	
+}
+*/

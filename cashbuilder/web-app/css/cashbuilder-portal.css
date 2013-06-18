@@ -1,0 +1,44 @@
+header {
+	box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0,0,0,0.4);
+}
+
+body {
+	background: #cccccc;
+	background: -webkit-linear-gradient(#cccccc,#ffffff);
+	color: #495154;
+	
+}
+
+.grid {
+	background: none;
+}
+
+.highlights {
+	padding-top: 30px;
+}
+
+.highlights h4 {
+	padding-bottom: 5px;
+	
+}
+
+.highlights div {
+	border-right: 1px solid rgba(0,0,0,0.3);
+
+}
+
+.highlights div:last-of-type {
+	border-right: none;
+}
+
+#login-bar {
+	color: #ffffff;
+
+	padding: 3px 0;
+	padding-right: 5px;
+}
+
+form.login input{
+	width: auto;
+	margin: 0;
+}

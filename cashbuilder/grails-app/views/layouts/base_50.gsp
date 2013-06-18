@@ -22,7 +22,7 @@
 		<g:render template="/elements/subheader" ></g:render>
 	</header>
 
-	 <section class="wrapper-90">
+	 <section class="wrapper-50">
 	 	<g:render template="/elements/menu" ></g:render>
 
 		<div class="grid">

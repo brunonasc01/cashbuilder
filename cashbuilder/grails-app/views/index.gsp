@@ -1,95 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
-    <head>
-        <meta name="layout" content="base" />
-        <r:require modules="info"/>
-    </head>
-    <body>
-		<div class="info-text">
-			<g:message code="info.message1"/>
-			
-			<g:form controller="user" action="signup" method="post" >
-				<g:submitButton name="newUser" class="singleButton" value="Comece agora" />
-			</g:form>
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+	<meta name="layout" content="portal" />
+	<r:require modules="portal"/>
+</head>
 
-			<hr />
-		</div>
-		
-		<ul class="info-box">
-			<li>
-				<b><g:message code="info.box1.title"/></b> 
-				<br />
-				<g:message code="info.box1.message"/> 
-				<br />
-				<a href="#"><g:message code="default.link.read_more"/></a>
-			</li>
-			
-			<li>
-				<b><g:message code="info.box2.title"/></b> 
-				<br />
-				<g:message code="info.box2.message"/> 
-			</li>
-			
-			<li>
-				<b><g:message code="info.box3.title"/></b> 
-				<br />
-				<g:message code="info.box3.message"/> 
-			</li>
-		</ul>
-		
-		<div class="clear"></div>
-		
-		<div class="span-8" id="dialog">
-			<div id="popup">			
-				<g:form action="login" controller="login" method="post" class="loginForm" name="loginForm" id="loginForm" >
-					<div class="title popup-title-border">						
-						<g:message code="box.login.title.label"/>
-					</div>
-					
-					<div class="inside">
-						<ul>
-							<li class="label">
-								<g:message code="default.email.label"/>
-							</li>
-							<li class="input">
-								<g:textField name="email" />
-							</li>
-						</ul>
-						
-						<hr />
-						
-						<ul class="password">
-							<li class="label">
-								<g:message code="default.password.label"/>
-							</li>
-							<li class="input">
-								<g:passwordField name="password" />
-							</li>
-							<li class="lostpassword">
-								<small><g:link controller="recovery"><g:message code="box.login.password.lost"/></g:link></small>
-							</li>
-						</ul>
+<body>
+	<div class="text-center append-bottom-dist">
+		<h1 id="logo-portal"><g:message code="app.name"/></h1>
+
+		<h3><g:message code="info.message1"/></h3>
+
+		<g:link controller="user" action="signup" class="btn btn-large append-top-dist">COMECE AGORA</g:link>		
+	</div>
 	
-						<hr />
-	
-						<ul>
-							<li class="button">
-								<input type="submit" name="login" value="Entrar" id="login" />
-							</li>							
-						</ul>
-						
-						<div class="clear"> </div>
-						
-						<!--<ul>
-							<li class="message">
-								
-							</li>
-						</ul>-->
-						
-						<div class="clear"></div>
-					</div>
-				</g:form>
+	<section class="grid highlights">
+		<div class="col-33">
+			<div class="content">
+				<h4><g:message code="info.box1.title"/></h4>
+
+				<p>
+					<g:message code="info.box1.message"/>  
+					<a href="#"><g:message code="default.link.read_more"/></a>
+				 </p>
 			</div>
 		</div>
-	</body>		
+			
+		<div class="col-33">
+			<div class="content">
+				<h4><g:message code="info.box2.title"/></h4>
+				<p>
+					<g:message code="info.box2.message"/>  
+				 </p>
+			</div>
+		</div>
+
+		<div class="col-33 last">
+			<div class="content">
+				<h4><g:message code="info.box3.title"/></h4>
+				<p>
+					<g:message code="info.box3.message"/>  
+				</p>
+			</div>
+		</div>
+	</section>
+</body>		
 </html>

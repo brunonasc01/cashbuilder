@@ -17,17 +17,21 @@
 
 <body>
 	<header>
-		<g:render template="/elements/logo" ></g:render>
-	
-		<g:render template="/elements/subheader" ></g:render>
+		<div id="login-bar" class="text-right">
+			<g:form action="login" controller="login" method="post" class="login">
+				<label><g:message code="default.email.label"/>
+				</label><g:textField name="email" />
+
+				<label><g:message code="default.password.label"/>
+				</label><g:passwordField name="password" />
+
+				<input type="submit" class="btn btn-small" value="OK"/>
+			</g:form>
+		</div>
 	</header>
 
 	 <section class="wrapper-90">
-	 	<g:render template="/elements/menu" ></g:render>
-
-		<div class="grid">
-			<g:layoutBody />
-		</div>	 
+		<g:layoutBody />
 	 </section>
 
 	<footer class="text-center">

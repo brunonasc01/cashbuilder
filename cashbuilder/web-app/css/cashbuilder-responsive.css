@@ -1,0 +1,168 @@
+@media screen and (max-width: 1280px){
+	
+	.menu-icon a:before {
+		content: "";
+	}
+
+	#month-list a span {
+		display: none;
+	}
+
+	#month-list a:nth-child(1):before {		
+		content:"Jan"
+	}
+
+	#month-list a:nth-child(2):before {		
+		content:"Fev"
+	}
+
+	#month-list a:nth-child(3):before {		
+		content:"Mar"
+	}
+
+	#month-list a:nth-child(4):before {		
+		content:"Abr"
+	}
+
+	#month-list a:nth-child(5):before {		
+		content:"Mai"
+	}
+
+	#month-list a:nth-child(6):before {		
+		content:"Jun"
+	}
+
+	#month-list a:nth-child(7):before {		
+		content:"Jul"
+	}
+
+	#month-list a:nth-child(8):before {		
+		content:"Ago"
+	}
+
+	#month-list a:nth-child(9):before {		
+		content:"Set"
+	}
+
+	#month-list a:nth-child(10):before {		
+		content:"Out"
+	}
+
+	#month-list a:nth-child(11):before {		
+		content:"Nov"
+	}
+
+	#month-list a:nth-child(12):before {		
+		content:"Dez"
+	}
+}
+
+@media screen and (max-width: 959px){
+	
+	.menu-icon a span {
+		display: none;
+	}
+
+	a.home:before {
+		content: '\2302';
+	}
+
+	a.budget:before {
+		content: '\e005';
+	}
+
+	a.cashflow:before {
+		content: '\1f4c8';
+	}
+
+	a.goal:before {
+		content: '\2691';
+	}
+
+	a.reports:before {
+		content: '\1f53e';
+	}
+
+	a.admin:before {
+		content: '\2699';
+	}
+
+	a.help:before {
+		content: '\2753';
+	}
+}
+
+@media screen and (max-width: 500px){
+	
+	*{
+		font-size: 97%;
+	}
+
+	#month-list a:nth-child(1):before {		
+		content:"1"
+	}
+
+	#month-list a:nth-child(2):before {		
+		content:"2"
+	}
+
+	#month-list a:nth-child(3):before {		
+		content:"3"
+	}
+
+	#month-list a:nth-child(4):before {		
+		content:"4"
+	}
+
+	#month-list a:nth-child(5):before {		
+		content:"5"
+	}
+
+	#month-list a:nth-child(6):before {		
+		content:"6"
+	}
+
+	#month-list a:nth-child(7):before {		
+		content:"7"
+	}
+
+	#month-list a:nth-child(8):before {		
+		content:"8"
+	}
+
+	#month-list a:nth-child(9):before {		
+		content:"9"
+	}
+
+	#month-list a:nth-child(10):before {		
+		content:"10"
+	}
+
+	#month-list a:nth-child(11):before {		
+		content:"11"
+	}
+
+	#month-list a:nth-child(12):before {
+		content:"12"
+	}
+
+	form label, form input[type="text"], form input[type="password"], form select {
+		text-align: left;
+		width: 100%;
+		margin: 0;
+	}
+
+	input[type='submit'] {
+		margin-top: 5%;
+	}
+
+
+	/* general */
+
+
+	/* portal */
+	.highlights div {
+		border-right: none;
+	}
+}
+}

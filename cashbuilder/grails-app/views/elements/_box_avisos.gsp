@@ -1,8 +1,7 @@
-<div id="lbox">
-	<div class="title">
-		<g:message code="box.alert.title" />
-	</div>
-	<div class="inside">
+<div class="box">
+	<h3 class="title-box"><g:message code="box.alert.title" /></h3>
+
+	<div class="content">
 		<ul>
 			<g:if test="${alerts}">
 				<g:each var="alert" in="${alerts }" status="index">

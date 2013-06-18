@@ -1,32 +1,28 @@
 <%@page import="com.cashbuilder.TextUtils"%>
 <%@page import="com.cashbuilder.Constants"%>
 	
-<div id="rbox">
-	<div class="title">
-		<g:message code="box.lasttransaction.title"/>
-	</div>
-	<div id="lastTransactionsBox" class="inside">
+<div class="box">
+	<h3 class="title-box"><g:message code="box.lasttransaction.title"/></h3>
+
+	<div id="lastTransactionsBox" class="content">
 		<g:if test="${ultimosRegistros }">
 			<g:each var="transaction" in="${ultimosRegistros}" status="counter">
-				<ul class="${counter == ultimosRegistros.size() - 1? 'last' : ''  }">
-					<li class="date">
+				<ul class="inline">
+					<li>
 						<g:formatDate date="${transaction.date }" format="dd/MM"></g:formatDate>
-					</li>
-					<li class="value">
+					</li><li class="text-center positive">
 						<g:formatNumber number="${transaction.value }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</li>					
-					<li class="category">
-						${transaction.subcategory }
+					</li><li class="category">
+						<i>${transaction.subcategory }</i>
 					</li>
 					<li class="description">
 						${TextUtils.abbreviateText(transaction.description,45)  }
 					</li>
-				</ul>
+				</ul>	
 			</g:each>
 		</g:if>
 		<g:else>
 			<g:message code="box.lasttransaction.empty"/>
 		</g:else>
 	</div>
-	<div class="clear"></div>
 </div>
