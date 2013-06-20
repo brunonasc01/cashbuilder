@@ -1,11 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.beans.relatorio.GraphDataBean;
-import com.cashbuilder.beans.relatorio.MultiBarChartDataBean;
-import com.cashbuilder.beans.relatorio.PieChartDataBean;
-import com.grailsfusioncharts.beans.Column3dChartBean;
-import com.grailsfusioncharts.beans.MultiBarChartBean;
-import com.grailsfusioncharts.beans.PieChartBean;
+import com.cashbuilder.beans.relatorio.ReportDataBean;
 
 class ReportController {
 
@@ -36,45 +31,40 @@ class ReportController {
 		def month = BudgetMonth.findByMonthAndBudget(currentMonth,budget)
 		def categories = Category.findAllByIncomeAndUser(false,user)
 		
-		//grafico de pizza
-		def pieDataList = []
-		def columnDataList = []
+		//grafico com css3
 		
-		categories.each { category ->
-			double realizedTotal = budgetService.getRealizedTotal(month, user, category)
-			
-			if(realizedTotal > 0){
-				PieChartDataBean bean = new PieChartDataBean(categoria: category.name, total: realizedTotal)
-				pieDataList += bean
+		def reportData = []
+		def reportScale = []
+		double total = budgetService.getRealizedTotal(month,user,Constants.DEBITO)
+		
+		if(total > 0){
+			categories.each { category ->
+				double categoryTotal = budgetService.getRealizedTotal(month, user, category)
 				
-				GraphDataBean dataBean = new GraphDataBean(name: category.name, value: realizedTotal)
-				columnDataList += dataBean
+				if(categoryTotal > 0){
+					ReportDataBean bean = new ReportDataBean()
+					bean.total =  categoryTotal
+					bean.percent = (categoryTotal/total)*100
+					bean.label = category.name
+					
+					reportData += bean
+				}
+			}
+			
+			double scale = total / 4
+
+			for(double scaleValue=total; scaleValue >= 0;){
+				reportScale += scaleValue
+				scaleValue -= scale
 			}
 		}
 		
-		emptyReport = columnDataList.size() == 0 || pieDataList.size() == 0
-
-		String columnData = Column3dChartBean.generateGraph(columnDataList)
-		String pieData = PieChartBean.generateGraph(pieDataList)
+		emptyReport = reportData.size() == 0
 		
 		//Definicao de mes inicial e final
 		int lastMonth = currentMonth
 		int firstMonth = currentMonth >= 2? currentMonth-2 : 0;
-		
-		//grafico de barras
-		def barDataList = []
-		
-		for(int monthId in firstMonth..lastMonth){
-			def budgetMonth = BudgetMonth.findByMonthAndBudget(monthId,budget)
-			double entradas = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)
-			double saidas = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
-			
-			MultiBarChartDataBean bean = new MultiBarChartDataBean(mes:g.message(code:DateUtils.getMonth(monthId)),entradas:entradas,saidas:saidas)
-			barDataList += bean
-		}
-		
-		String barData = MultiBarChartBean.generateChart(barDataList)
-		
-		[stats:true, nextYear: nextYear, monthIndex: currentMonth, emptyReport: emptyReport, pieData: pieData, columnData: columnData, barData: barData]
+				
+		[stats:true, nextYear: nextYear, monthIndex: currentMonth, emptyReport: emptyReport, reportData: reportData, reportScale: reportScale]
 	}
 }

@@ -17,47 +17,39 @@
 
     	<div class="col-1">
     		<g:if test="${!emptyReport }">
-				<div id="cbox">
-					<div class="title">
+				<div class="box">
+					<h3 class="title-box">
 						<g:message code="report.graphic1.title.label"/>
-					</div>
-					<div class="inside">
-						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Column3D.swf')}" />
-		
-						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-									chartSWF:chartSWF,strXML:columnData,chartId:'columnData',
-									chartWidth:'900',chartHeight:'250']}"/>		
-					</div>
-				</div>
-				
-				<div id="cbox">
-					<div class="title">
-						<g:message code="report.graphic2.title.label"/>
-					</div>
-					<div class="inside">
-						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_Pie2D.swf')}" />
-		
-						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-									chartSWF:chartSWF,strXML:pieData,chartId:'pieChart',
-									chartWidth:'450',chartHeight:'250']}"/>
-					</div>
-				</div>
-				
-				<div id="cbox">
-					<div class="title">
-						<g:message code="report.graphic3.title.label"/>
-					</div>
-					<div class="inside">
-						<g:set var="chartSWF" value="${resource(dir:'fusioncharts',file:'FCF_MSColumn3D.swf')}" />
-		
-						<g:render template="/elements/fusioncharts/FusionChartsRenderer" model="${[
-										chartSWF:chartSWF,strXML:barData,chartId:'barData',
-										chartWidth:'600',chartHeight:'300']}"/>				
+					</h3>
+					<div class="content">
+						<div class="v-chart clearfix">
+							<div class="scale">
+								<ul>
+									<g:each var="scale" in="${reportScale}">
+										<li>${scale }</li>
+									</g:each>	
+								</ul>
+							</div>
+
+							<div class="data">
+								<ul class="bars">
+									<g:each var="data" in="${reportData}">
+										<li style="height: ${data.percent}%"></li>
+									</g:each>	
+								</ul>
+
+								<ul class="labels">
+									<g:each var="data" in="${reportData}">
+										<li>${data.label}</li>
+									</g:each>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</g:if>
 			<g:else>
-				<div id="obox">
+				<div class="box">
 					<div class="empty-box">
 	   					<g:message code="report.empty.message"/>
 	   				</div>
