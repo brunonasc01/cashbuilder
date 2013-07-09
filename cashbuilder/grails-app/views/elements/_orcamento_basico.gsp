@@ -10,9 +10,9 @@
 			<g:hiddenField name="realVal" value="${category.realizedValue }"/>
 		
 			<ul class="inline main-category">
-				<li class="button"><span id="bt_expand" class="bt-icon icon-plus"></span>
+				<li class="button"><span class="bt_expand bt-icon icon-plus"></span>
 				</li><li class="values text-right"><g:formatNumber number="${category.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
-				</li><li class="progress-bar"><span class="" style="width:${50}%;"></span>
+				</li><li class="progress-bar"><span class="${category.barClass }" style="width:${category.barSize}%;"></span>
 				</li><li class="values"><g:formatNumber number="${category.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
 			</ul>
 
@@ -20,12 +20,16 @@
 				<g:if test="${category.subcategories}">
 					<g:each var="subcategory" in="${category.subcategories}">
 						<ul class="inline">
-							<li class="button"><span id="bt_edit_budget" class="bt-icon icon-edit"></span>
+							<li class="button">
+								<g:form name="editBudgetForm" action="edit" controller="budgetItem">
+									<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
+									<span id="bt_edit_budget" class="bt-icon icon-edit"></span>
+								</g:form>
 							</li><li class="child-name">${subcategory.name}
 							</li><li class="values text-right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
 							</li><li class="of"><g:message code="default.of"/>
 							</li><li class="values"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/>
-							</li><li class="progress-bar"><span style="width:${30}%;"></span>
+							</li><li class="progress-bar"><span class="${category.barClass }" style="width:${subcategory.barSize}%;"></span>
 							</li>
 						</ul>
 					</g:each>

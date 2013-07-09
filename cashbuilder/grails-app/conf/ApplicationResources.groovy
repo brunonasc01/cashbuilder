@@ -15,13 +15,27 @@ modules = {
 		resource url:'js/cashbuilder-scripts.js'
 	}
 	
+	datepicker {
+		resource url:'css/jquery-ui/jquery-ui-1.10.3.min.css'
+		resource url:'css/cashbuilder-datepicker.css'
+
+		resource url:'js/jquery-ui-1.10.3.min.js'
+		resource url:'js/locale/jquery.ui.datepicker-pt-BR.js'
+	}
+	
+	home {
+		dependsOn 'core,datepicker'
+		
+		resource url:'css/cashbuilder-home.css'
+	}
+	
 	budget {
 		dependsOn 'core'
 		resource url:'css/cashbuilder-budget.css'
 	}
 	
 	cashflow {
-		dependsOn 'core'
+		dependsOn 'core,datepicker'
 		resource url:'css/cashbuilder-cashflow.css'
 	}
 	

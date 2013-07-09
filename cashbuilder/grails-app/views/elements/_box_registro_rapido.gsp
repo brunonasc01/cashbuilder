@@ -13,7 +13,7 @@
 			</g:if>
 
 			<label for="data"><g:message code="box.transaction.date.label"/>
-			</label><g:datePicker name="date"/>
+			</label><g:jqDatePicker name="date"/>
 			
 			<label for="valor"><g:message code="box.transaction.value.label"/>
 			</label><g:textField maxlength="10" name="value" value="" />

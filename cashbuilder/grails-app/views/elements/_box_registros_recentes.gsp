@@ -4,7 +4,7 @@
 <div class="box">
 	<h3 class="title-box"><g:message code="box.lasttransaction.title"/></h3>
 
-	<div id="lastTransactionsBox" class="content">
+	<div id="transaction-list-box" class="content">
 		<g:if test="${ultimosRegistros }">
 			<g:each var="transaction" in="${ultimosRegistros}" status="counter">
 				<ul class="inline">

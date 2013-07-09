@@ -6,4 +6,7 @@ class BudgetItemCategoryBean {
 	double budgetedValue
 	double realizedValue
 	List subcategories
+	
+	String barClass
+	int barSize
 }

@@ -53,7 +53,7 @@ class BudgetController {
 		balanceBox.actualBalance = budgetService.getBalance(budgetMonth,user)
 		balanceBox.plannedClass = (balanceBox.plannedBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		balanceBox.actualClass = (balanceBox.actualBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
-		balanceBox.protectionBalance = budgetMonth.protectionBalance 
+		//balanceBox.protectionBalance = budgetMonth.protectionBalance 
 
 		def df = generalService.getNumberFormatter()
 		

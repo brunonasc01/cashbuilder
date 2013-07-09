@@ -1,0 +1,24 @@
+/* TRANSACTION LIST BOX */
+#transaction-list-box {
+	padding: 0;
+}
+
+#transaction-list-box ul {
+	padding: 2.680965%;
+	background: -webkit-linear-gradient(#eeeeee,#fefefe);
+	border-top: 1px solid #eeeeee;
+}
+
+#transaction-list-box ul li {
+	width: 47.319035%;
+	font-weight: bold;
+}
+
+#transaction-list-box .category, #transaction-list-box .description {
+	width: 94.63807%;
+	font-weight: normal;
+}
+
+#transaction-list-box .description {
+ 	font-size: 0.9em;
+}

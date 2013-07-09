@@ -6,7 +6,7 @@
         <r:require modules="budget"/>
         
         <g:javascript>
-        	
+		initBudgetScripts();
         </g:javascript>
         
     </head>
@@ -15,7 +15,7 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				Orçamento? - <g:message code="${budget.date?.month}"/>
+				<g:message code="menu.budget.label"/> - <g:message code="${budget.date?.month}"/>
 				<span class="right-align">${budget.date?.year }</span>
 			</h2>
    		</div>

@@ -83,6 +83,25 @@ class BudgetService {
 				categoryBean.budgetedValue = getBudgetedTotal(month,category)
 				categoryBean.realizedValue = getRealizedTotal(month,user,category)
 				
+				if(categoryBean.budgetedValue > 0 && categoryBean.realizedValue > 0){
+					categoryBean.barSize = (categoryBean.realizedValue / categoryBean.budgetedValue) * 100
+					
+					if(categoryBean.barSize < 50){
+						categoryBean.barClass = "low"
+						 
+					} else if(categoryBean.barSize > 75){
+						categoryBean.barClass = "high"
+					}
+					
+					if(categoryBean.barSize >= 100){
+						categoryBean.barSize = 100
+						categoryBean.barClass = "${categoryBean.barClass} full"
+					}
+					
+				} else {
+					categoryBean.barSize = 0
+				}
+
 				if(categoryBean.budgetedValue > 0 || categoryBean.realizedValue > 0){
 					
 					def childList = []
@@ -94,6 +113,25 @@ class BudgetService {
 						subcategoryBean.budgetItem = childItem
 						subcategoryBean.realizedValue = getRealizedTotal(month,user,subcategory)
 	
+						if(subcategoryBean.budgetedValue > 0 && subcategoryBean.realizedValue > 0){
+							subcategoryBean.barSize = (subcategoryBean.realizedValue / subcategoryBean.budgetedValue) * 100
+							
+							if(subcategoryBean.barSize < 50){
+								subcategoryBean.barClass = "low"
+								 
+							} else if(subcategoryBean.barSize > 75){
+								subcategoryBean.barClass = "high"
+							}
+							
+							if(subcategoryBean.barSize >= 100){
+								subcategoryBean.barSize = 100
+								subcategoryBean.barClass = "${subcategoryBean.barClass} full"
+							}
+							
+						} else {
+							subcategoryBean.barSize = 0
+						}
+						
 						if(subcategoryBean.budgetedValue > 0 || subcategoryBean.realizedValue > 0){
 							childList += subcategoryBean
 						}

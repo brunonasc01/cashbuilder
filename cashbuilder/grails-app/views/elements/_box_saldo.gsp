@@ -9,7 +9,7 @@
 				<li class="title">
 					<g:message code="box.balance.planned.label"/>
 				</li>
-				<li class="value">
+				<li class="value ${bean.plannedClass}">
 					 <g:formatNumber number="${bean.plannedBalance}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
@@ -19,7 +19,7 @@
 				<li class="title">
 					<g:message code="box.balance.actual.label"/>
 				</li>
-				<li class="value">
+				<li class="value ${bean.actualClass}">
 					<g:formatNumber number="${bean.actualBalance}" currencySymbol=""
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>

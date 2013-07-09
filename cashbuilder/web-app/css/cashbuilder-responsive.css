@@ -90,6 +90,10 @@
 	a.help:before {
 		content: '\2753';
 	}
+
+	.highlights .col-33 {
+		width: 33%;
+	}
 }
 
 @media screen and (max-width: 500px){
@@ -161,8 +165,12 @@
 
 
 	/* portal */
-	.highlights div {
+	h1#logo-portal {
+		font-size: 4em;
+	}
+
+	.highlights [class*="col-"]{
+		width: 100%;
 		border-right: none;
 	}
-}
 }

@@ -23,8 +23,12 @@ class TransactionController {
 			redirect(controller:"cashflow", action: "index")
 		} else {
 			def categoriesList = generalService.getCategoriesList(transaction.user)
+			def category = Category.findById(transaction.category.id)
+			def subcategoriesList = category.subcategories
 			def df = generalService.getNumberFormatter()
-			render(view: "edittransaction", model: [categoriesList: categoriesList, transaction: transaction, df: df])
+			
+			render(view: "edittransaction", model: [categoriesList: categoriesList, subcategoriesList: subcategoriesList,
+				 transaction: transaction, df: df])
 		}
 	}
 	

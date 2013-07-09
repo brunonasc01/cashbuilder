@@ -2,9 +2,17 @@ package com.cashbuilder
 
 class BudgetItemController {
 
-	static allowedMethods = [update: "POST"]
+	static allowedMethods = [update: "POST", edit: "POST"]
 	
 	def eventService
+	
+	def edit(){
+		def budgetItem = BudgetItem.get(params.id)
+		
+		if(budgetItem){
+			render(view: "edit_item", model: [bean: budgetItem])
+		}
+	}
 	
     def update() {
 		

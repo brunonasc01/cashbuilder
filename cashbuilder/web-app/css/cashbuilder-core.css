@@ -6,6 +6,14 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'StyleIconsPrevNext';
+	src: url('../fonts/cashbuilder-font_prev_next.woff') format('woff');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* GENERAL */
 
 html {
@@ -162,7 +170,6 @@ a.help:before {
 	width:  8.333333%;
 	border: 1px solid #495154;
 	box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0,0,0,0.4);
-	-webkit-transition: all 0.3s ease;
 }
 
 #month-list a:link, #month-list a:active, #month-list a:visited {
@@ -174,6 +181,8 @@ a.help:before {
 	color: #FFD700;
 	box-shadow: inset 0 1px 0 #8fa2a8, 0 0 12px 2px rgba(0,0,0,0.4);
 	text-decoration: none;
+	
+	-webkit-transition: color 0.3s ease;
 }
 
 #month-title h2 {
@@ -247,6 +256,11 @@ footer a:hover {
 .icon-plus:before {
 	font-family: 'StyleIcons';
 	content: '\2795';
+}
+
+.icon-minus:before {
+	font-family: 'StyleIcons';
+	content: '\2796';
 }
 
 .icon-edit:before {

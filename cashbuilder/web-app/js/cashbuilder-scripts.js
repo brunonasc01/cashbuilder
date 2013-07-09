@@ -20,7 +20,13 @@ function ajaxSubcategoryCombo(action, category_combo_id, subcategory_combo_id){
 	});
 }
 
-function ajaxSubmitToModal(form,target){
+/**
+ * Submete o formulario e renderiza o retorno num modal
+ * @param form nome do formulario
+ * @param target local onde deve ser renderizado o retorno
+ * @param action action que deve ser executada
+ */
+function ajaxSubmitToModal(form,target,action){
 
 	var form = $('form[name='+form+']');
 
@@ -31,7 +37,9 @@ function ajaxSubmitToModal(form,target){
 		var formAction = $(this).attr('action');
 		var returnElement = $("#"+target);
 
-		
+		if(action != null){
+			formAction = action
+		}
 		
 		$.ajax({
 			  type: "POST",
@@ -42,5 +50,96 @@ function ajaxSubmitToModal(form,target){
 			returnElement.html(html);
 			$('.overlay, .modal').show();
 		});
+	});
+}
+
+/**
+ * Destaca o mes atual no menu
+ * @param month
+ * @param menu_id
+ */
+function setMonthSelection(month, menu_id){
+	
+	var menu = $('#'+menu_id);
+	menu.find('a').each(function(i){
+		
+		if(i == month){
+			$(this).addClass('active');
+		} else {
+			$(this).hover(
+				function () {
+					$(this).addClass('active');
+				},
+				function () {
+					$(this).removeClass('active');
+				}
+			);
+		}
+	});
+}
+
+/**
+ * Fecha o modal e a sombra
+ */
+function enableCloseOverlay(){
+	$('.overlay').click(function(){
+		$('.overlay, .modal').hide();
+	});
+}
+
+/**
+ * Inicializa os Scripts da area Orcamento
+ */
+function initBudgetScripts(){
+	$(function() {
+		ajaxSubmitToModal('editBudgetForm','modal');
+	
+		$('.icon-edit').click(function(){
+			$(this).parents('form:first').submit();
+		});
+		
+		$('.bt_expand').click(function(){
+		
+			var childList = $(this).parents('ul:first').next('.subcategory-list');
+			var _height = childList.css('height');
+
+			if(_height == '0px'){
+				$(this).toggleClass('icon-plus');
+				$(this).toggleClass('icon-minus');
+
+				childList.css('height','auto')
+				var height = childList.height()
+				childList.css('height',height+'px')
+			} else {
+				$(this).toggleClass('icon-minus');
+				$(this).toggleClass('icon-plus');
+
+				childList.css('height','0px')
+			}
+		});
+
+		enableCloseOverlay();
+	});
+}
+
+/**
+ * Inicializa os Scripts da area Orcamento
+ */
+function initCashflowScripts(){
+	$(function() {
+		ajaxSubmitToModal('newTransactionForm','modal');
+		ajaxSubmitToModal('editTransactionForm','modal');
+	
+		$('.icon-edit').click(function(){
+			$(this).parents('form:first').submit();
+		});
+		
+		$('.icon-delete').click(function(){
+			if(confirm('Tem Certeza ?')){
+				$(this).parents('form:first').submit();
+			}			
+		});
+
+		enableCloseOverlay();
 	});
 }

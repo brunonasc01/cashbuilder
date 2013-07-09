@@ -20,10 +20,13 @@
 			<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
 				<ul class="inline">
 					<li class="buttons">
-						 <g:form controller="transaction">
+						 <g:form name="editTransactionForm" action="edit" controller="transaction">
 		                    <g:hiddenField name="id" value="${transaction.id}" />
-		                    <a id="bt_edit_transaction" class="bt-icon icon-edit"></a>
-		                    <a id="bt_delete_transaction" class="bt-icon icon-delete"></a>
+		                    <a class="bt-icon icon-edit"></a>
+		                </g:form>
+		                <g:form action="delete" controller="transaction">
+		                    <g:hiddenField name="id" value="${transaction.id}" />
+		                    <a class="bt-icon icon-delete"></a>
 		                </g:form>
 					</li><li class="day"><g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
 					</li><li class="income">

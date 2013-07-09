@@ -5,18 +5,16 @@
         <meta name="layout" content="base" />
 		<r:require modules="cashflow"/>
 
-		<r:script disposition="head">
-		$(function() {
-			ajaxSubmitToModal('newTransactionForm','modal');
-		});
-		</r:script>
+		<g:javascript>
+		initCashflowScripts();
+		</g:javascript>
     </head>
     <body>
 		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				Fluxo de Caixa? - <g:message code="${cashFlow.date.month}"/>
+				<g:message code="menu.cashflow.label"/> - <g:message code="${cashFlow.date.month}"/>
 				<span class="right-align">${cashFlow.date.year}</span>
 			</h2>
    		</div>
@@ -33,7 +31,7 @@
     		<div class="text-center append-bottom-dist">
 				<g:form name="newTransactionForm" action="newTransaction" controller="transaction">
 					<g:hiddenField name="monthId" value="${monthIndex}" />
-					<g:submitButton name="newButton" class="btn btn-large" value="Nova Transacao?" />
+					<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'box.transaction.title')}" />
 				</g:form>
 			</div>
 

@@ -3,7 +3,7 @@
 
 <g:javascript>
 $(function() {
-	monthMenuUI('${nextYear? 12 : index}','month-list');
+	setMonthSelection('${nextYear? 12 : index}','month-list');
 });
 </g:javascript>
 

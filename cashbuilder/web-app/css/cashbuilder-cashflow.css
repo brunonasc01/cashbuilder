@@ -31,6 +31,10 @@
 	width: 7%;
 }
 
+#cashflow-table .buttons form{
+	display: inline-block;
+}
+
 #cashflow-table .day{
 	width: 5%;
 }

@@ -1,9 +1,15 @@
 <g:categoriesCombo category="categoryCombo" subcategory="subcategoriesCombo"/>
 
+<g:javascript>
+$('#bt_close_modal').click(function(){
+	$('.overlay, .modal').hide();
+});
+</g:javascript>
+
 <div class="box modal cashflow-modal">
 	<h3 class="title-box">
 		<g:message code="box.transaction.title"/>
-		<g:link id="bt_close_modal" class='bt-icon text-center'></g:link>
+		<a id="bt_close_modal" class='bt-icon text-center'></a>
 	</h3>
 	
 	<div class="content">
@@ -11,7 +17,7 @@
 			<g:hiddenField name="monthId" value="${monthId }"></g:hiddenField>
 	
 			<label for="data"><g:message code="box.transaction.date.label"/>
-			</label><g:datePicker name="date"/>
+			</label><g:jqDatePicker name="date"/>
 			
 			<label for="valor"><g:message code="box.transaction.value.label"/>
 			</label><g:textField maxlength="10" name="value" value="" />
@@ -20,14 +26,14 @@
 			</label><g:select name="parcels" from="${1..24}" optionValue="${{it == 1? "à vista" : it}}"/>
 						
 			<label for="categoria"><g:message code="box.transaction.category.label"/>
-			</label><g:if test="${registroRapido}">
+			</label><g:if test="${categoriesList}">
 						 <g:select id="categoryCombo" name="category.id"
-							from="${registroRapido.categories}" 
+							from="${categoriesList.categories}" 
 							optionKey="id" value="" noSelection="['': 'Selecione']" />
 					</g:if>
 					
 			<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
-			</label><g:if test="${registroRapido}">
+			</label><g:if test="${categoriesList}">
 						<span id="subcategoriesCombo">
 						 <g:select name="subcategory.id" from=""
 							noSelection="['': 'Selecione uma categoria']" />
