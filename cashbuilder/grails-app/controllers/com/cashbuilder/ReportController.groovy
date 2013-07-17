@@ -1,6 +1,8 @@
 package com.cashbuilder
 
+import com.cashbuilder.beans.DateBean;
 import com.cashbuilder.beans.relatorio.ReportDataBean;
+import com.cashbuilder.beans.report.ReportBean;
 
 class ReportController {
 
@@ -19,9 +21,7 @@ class ReportController {
 		if(!params.monthId){
 			params.monthId = DateUtils.currentMonth
 		}
-		
-		boolean emptyReport=false
-		
+
 		def user = session.user.attach()
 		
 		int currentMonth =  Integer.valueOf(params.monthId)
@@ -58,13 +58,19 @@ class ReportController {
 				scaleValue -= scale
 			}
 		}
-		
-		emptyReport = reportData.size() == 0
-		
+
 		//Definicao de mes inicial e final
 		int lastMonth = currentMonth
 		int firstMonth = currentMonth >= 2? currentMonth-2 : 0;
+		
+		ReportBean report = new ReportBean()
+		
+		report.date = new DateBean(year: currentYear, month: DateUtils.getMonth(currentMonth))
+		report.reportData = reportData
+		report.reportScale = reportScale
+		
+		char labelReference = 'A'
 				
-		[stats:true, nextYear: nextYear, monthIndex: currentMonth, emptyReport: emptyReport, reportData: reportData, reportScale: reportScale]
+		[stats:true, nextYear: nextYear, monthIndex: currentMonth, report: report, labelReference:labelReference]
 	}
 }

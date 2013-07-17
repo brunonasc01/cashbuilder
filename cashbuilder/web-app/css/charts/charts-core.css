@@ -83,8 +83,8 @@
 /* VERTICAL CHART */
 
 .v-chart {
-	width: 1000px;
-	height: 227px;
+	width: auto;
+	height: 280px;
 
 	margin: 0 auto;
 	padding-top: 1%;
@@ -92,7 +92,7 @@
 }
 
 .v-chart .data {	
-	height: 100%;
+	height: 65%;
 	width: 90%;
 	float: left;
 	
@@ -192,7 +192,7 @@
 
 .v-chart .scale {
 	width: 5%;
-	height: 100%;
+	height: 65%;
 	text-align: right;
 
 	float: left;
@@ -218,84 +218,106 @@
 	
 }
 
+.v-chart .legends{
+	float: left;
+	width: 100%;
+	padding-top: 35px;
+}
+
+.v-chart .legends li{
+	display: inline-block;
+	width: 25%;
+}
+
+.v-chart .legends span {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
+
+	font-weight: bold;
+	text-align: center;
+	color: #495154;
+}
+
 /* CHART BAR COLORS */
 
-.h-chart .bars li:nth-child(1), .v-chart .bars li:nth-child(1) {
+.h-chart .bars li:nth-child(1), .v-chart .bars li:nth-child(1), .v-chart .legends li:nth-child(1) span {
 	background: #6DCFF6;
 }
 
-.h-chart .bars li:nth-child(2), .v-chart .bars li:nth-child(2) {
+.h-chart .bars li:nth-child(2), .v-chart .bars li:nth-child(2), .v-chart .legends li:nth-child(2) span {
 	background: #F6BD0F;
 }
 
-.h-chart .bars li:nth-child(3), .v-chart .bars li:nth-child(3) {
+.h-chart .bars li:nth-child(3), .v-chart .bars li:nth-child(3), .v-chart .legends li:nth-child(3) span {
 	background: #8BBA00;
 }
 
-.h-chart .bars li:nth-child(4), .v-chart .bars li:nth-child(4) {
+.h-chart .bars li:nth-child(4), .v-chart .bars li:nth-child(4), .v-chart .legends li:nth-child(4) span {
 	background: #FF8E46;
 }
 
-.h-chart .bars li:nth-child(5), .v-chart .bars li:nth-child(5) {
+.h-chart .bars li:nth-child(5), .v-chart .bars li:nth-child(5), .v-chart .legends li:nth-child(5) span {
 	background: #008E8E;
 }
 
-.h-chart .bars li:nth-child(6), .v-chart .bars li:nth-child(6) {
+.h-chart .bars li:nth-child(6), .v-chart .bars li:nth-child(6), .v-chart .legends li:nth-child(6) span {
 	background: #D64646;
 }
 
-.h-chart .bars li:nth-child(7), .v-chart .bars li:nth-child(7) {
+.h-chart .bars li:nth-child(7), .v-chart .bars li:nth-child(7), .v-chart .legends li:nth-child(7) span {
 	background: #8E468E;
 }
 
-.h-chart .bars li:nth-child(8), .v-chart .bars li:nth-child(8) {
+.h-chart .bars li:nth-child(8), .v-chart .bars li:nth-child(8), .v-chart .legends li:nth-child(8) span {
 	background: #588526;
 }
 
-.h-chart .bars li:nth-child(9), .v-chart .bars li:nth-child(9) {
+.h-chart .bars li:nth-child(9), .v-chart .bars li:nth-child(9), .v-chart .legends li:nth-child(9) span {
 	background: #B3AA00;
 }
 
-.h-chart .bars li:nth-child(10), .v-chart .bars li:nth-child(10) {
+.h-chart .bars li:nth-child(10), .v-chart .bars li:nth-child(10), .v-chart .legends li:nth-child(10) span {
 	background: #008ED6;
 }
 
-.h-chart .bars li:nth-child(11), .v-chart .bars li:nth-child(11) {
+.h-chart .bars li:nth-child(11), .v-chart .bars li:nth-child(11), .v-chart .legends li:nth-child(11) span {
 	background: #9D080D;
 }
 
-.h-chart .bars li:nth-child(12), .v-chart .bars li:nth-child(12) {
+.h-chart .bars li:nth-child(12), .v-chart .bars li:nth-child(12), .v-chart .legends li:nth-child(12) span {
 	background: #A186BE;
 }
 
-.h-chart .bars li:nth-child(13), .v-chart .bars li:nth-child(13) {
+.h-chart .bars li:nth-child(13), .v-chart .bars li:nth-child(13), .v-chart .legends li:nth-child(13) span {
 	background: #CC6600;
 }
 
-.h-chart .bars li:nth-child(14), .v-chart .bars li:nth-child(14) {
+.h-chart .bars li:nth-child(14), .v-chart .bars li:nth-child(14), .v-chart .legends li:nth-child(14) span {
 	background: #FDC689;
 }
 
-.h-chart .bars li:nth-child(15), .v-chart .bars li:nth-child(15) {
+.h-chart .bars li:nth-child(15), .v-chart .bars li:nth-child(15), .v-chart .legends li:nth-child(15) span {
 	background: #ABA000;
 }
 
-.h-chart .bars li:nth-child(16), .v-chart .bars li:nth-child(16) {
+.h-chart .bars li:nth-child(16), .v-chart .bars li:nth-child(16), .v-chart .legends li:nth-child(16) span {
 	background: #F26D7D;
 }
 
-.h-chart .bars li:nth-child(17), .v-chart .bars li:nth-child(17) {
+.h-chart .bars li:nth-child(17), .v-chart .bars li:nth-child(17), .v-chart .legends li:nth-child(17) span {
 	background: #FFF200;
 }
 
-.h-chart .bars li:nth-child(18), .v-chart .bars li:nth-child(18) {
+.h-chart .bars li:nth-child(18), .v-chart .bars li:nth-child(18), .v-chart .legends li:nth-child(18) span {
 	background: #0054A6;
 }
 
-.h-chart .bars li:nth-child(19), .v-chart .bars li:nth-child(19) {
+.h-chart .bars li:nth-child(19), .v-chart .bars li:nth-child(19), .v-chart .legends li:nth-child(19) span {
 	background: #F7941C;
 }
 
-.h-chart .bars li:nth-child(20), .v-chart .bars li:nth-child(20) {
+.h-chart .bars li:nth-child(20), .v-chart .bars li:nth-child(20), .v-chart .legends li:nth-child(20) span {
 	background: #CC3300;
 }

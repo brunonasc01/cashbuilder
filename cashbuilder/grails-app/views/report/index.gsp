@@ -10,13 +10,13 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="report.title.label"/> - Mes?
-				<span class="right-align">2013?</span>
+				<g:message code="report.title.label"/> - <g:message code="${report.date.month}"/>
+				<span class="right-align">${report.date.year}</span>
 			</h2>
 		</div>
 
     	<div class="col-1">
-    		<g:if test="${!emptyReport }">
+    		<g:if test="${report.reportData.size() > 0}">
 				<div class="box">
 					<h3 class="title-box">
 						<g:message code="report.graphic1.title.label"/>
@@ -25,7 +25,7 @@
 						<div class="v-chart clearfix">
 							<div class="scale">
 								<ul>
-									<g:each var="scale" in="${reportScale}">
+									<g:each var="scale" in="${report.reportScale}">
 										<li>${scale }</li>
 									</g:each>	
 								</ul>
@@ -33,15 +33,23 @@
 
 							<div class="data">
 								<ul class="bars">
-									<g:each var="data" in="${reportData}">
+									<g:each var="data" in="${report.reportData}">
 										<li style="height: ${data.percent}%"></li>
 									</g:each>	
 								</ul>
 
 								<ul class="labels">
-									<g:each var="data" in="${reportData}">
-										<li>${data.label}</li>
+									<g:each var="data" in="${report.reportData}" status="i">
+										<li>${labelReference+i as char}</li>
 									</g:each>
+								</ul>
+							</div>
+							
+							<div class="legends">
+								<ul>
+									<g:each var="data" in="${report.reportData}" status="i">
+										<li><span>${labelReference+i as char}</span>${data.label}</li>
+									</g:each>	
 								</ul>
 							</div>
 						</div>
