@@ -29,13 +29,13 @@ class BudgetController {
 		def budgetMonth = BudgetMonth.findByMonthAndBudget(month,budget)
 
 		//Calculo do saldo de protecao
-		if(budgetMonth.protectionBalance <= 0){
-			def protectBalance = budgetService.getProtectionBalance(budgetMonth,user)
-
-			if(protectBalance > 0){
-				budgetMonth.protectionBalance = protectBalance
-			}
-		}
+//		if(budgetMonth.protectionBalance <= 0){
+//			def protectBalance = budgetService.getProtectionBalance(budgetMonth,user)
+//
+//			if(protectBalance > 0){
+//				budgetMonth.protectionBalance = protectBalance
+//			}
+//		}
 		
 		def months = BudgetMonth.findAllByBudget(budget)
 

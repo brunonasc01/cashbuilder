@@ -17,6 +17,9 @@ class User {
 		email(email: true, unique:true,blank:false)
 		firstName(size:3..20,blank:false)
 		lastName(size:3..30,blank:false)
-		password(blank:false,minSize:6)
+		password(blank:false,minSize:6,
+				Validator: { passwd, user ->
+						return passwd != user.firstName
+					})
     }
 }

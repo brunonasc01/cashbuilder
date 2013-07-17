@@ -40,16 +40,16 @@
 		    	<g:form method="post" action="save" class="text-large">
 		    		
 			    	<label for="nome"><g:message code="firstName.label" />
-			    	</label><g:textField name="firstName"/>
+			    	</label><g:textField name="firstName" value="${userInstance?.firstName}"/>
 					
 					<label for="sobrenome"><g:message code="lastName.label" />
-			    	</label><g:textField name="lastName"/>
+			    	</label><g:textField name="lastName" value="${userInstance?.lastName}"/>
 					
 					<label for="email"><g:message code="email.label" />
-			    	</label><g:textField name="email"/>
+			    	</label><g:textField name="email" value="${userInstance?.email}"/>
 
 					<label for="emailRepeat"><g:message code="emailRepeat.label" />
-			    	</label><g:textField name="emailRepeat"/>
+			    	</label><g:textField name="emailRepeat" value="${userInstance?.emailRepeat}"/>
 					
 					<label for="password"><g:message code="password.label" />
 			    	</label><g:passwordField name="password"/>
@@ -61,7 +61,7 @@
 					</label><input type="text" name="profile.state" id="state" value="${userInstance?.profile?.state}" />
 					
 					<label for="city"><g:message code="profile.city.label"/>
-					</label><input type="text" name="profile.city" id="state" value="${userInstance?.profile?.state}" />
+					</label><input type="text" name="profile.city" id="state" value="${userInstance?.profile?.city}" />
 
 					<label><g:message code="form.signup.captcha.title"/></label>
 					
