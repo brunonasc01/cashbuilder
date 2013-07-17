@@ -6,7 +6,7 @@
         <r:require modules="goal"/>
         
         <g:javascript>
-        	
+        initGoalScripts();
         </g:javascript>
     </head>
 
@@ -23,7 +23,7 @@
     
 	  	<div class="col-25">
 	  		<div class="text-center append-bottom-dist">
-  				<g:form action="newGoal">
+  				<g:form name="createGoalForm" action="newGoal">
 					<g:submitButton name="newButton" class="btn btn-large" value="Nova Meta" />
 				</g:form>
 			</div>
@@ -69,15 +69,7 @@
 		            		<div class="left left-align">
 		            			<ul class="stats">
 									<li class="status">
-										<g:if test="${goal.status == Constants.META_ATINGIDA }">
-											<g:message code="goal.status.done.label"/>
-										</g:if>
-										<g:elseif test="${goal.status == Constants.META_PERDIDA }">
-											<g:message code="goal.status.lost.label"/>
-										</g:elseif>
-										<g:elseif test="${goal.status == Constants.META_CORRENTE }">
-											<g:message code="goal.status.working.label"/>
-										</g:elseif>
+										<g:message code="goal.status.${goal.status}.label"/>
 									</li><li class="date-limit">${goal.endDate }
 									</li><li class="year-limit">${goal.endYear }
 									</li>
@@ -98,7 +90,7 @@
 									</li><li class="actual">
 										<g:formatNumber number="${goal.currentAccumulated }" format="${Constants.FORMATO_MOEDA}"/>
 										<g:message code="goal.this.month.message"/>
-									</li><li class="progress-bar"><span style="width:25%;"></span></li>
+									</li><li class="progress-bar"><span style="width:${goal.barSize}%;"></span></li>
 			            		</ul>
 		            		</div>
 			            </div>

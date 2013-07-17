@@ -49,6 +49,10 @@
 #goal-list .name {
 	line-height: 1.5;
 	font-size: 1.3em;
+	
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #goal-list .values, #goal-list .of {

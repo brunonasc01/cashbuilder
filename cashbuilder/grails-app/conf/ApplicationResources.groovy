@@ -45,13 +45,13 @@ modules = {
 	}
 	
 	goal {
-		dependsOn 'core'
+		dependsOn 'core,datepicker'
 		resource url:'css/cashbuilder-goal.css'
 	}
 	
 	adm {
 		dependsOn 'core'
-		
+		resource url:'css/cashbuilder-adm.css'
 	}
 	
 	help {

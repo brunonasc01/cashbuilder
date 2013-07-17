@@ -11,4 +11,6 @@ class GoalBean {
 	double percent
 	String endYear
 	String endDate
+	
+	int barSize
 }

@@ -3,6 +3,14 @@
     <head>
         <meta name="layout" content="base" />
         <r:require module="adm"/>
+        
+        <g:javascript>
+        $(function() {
+        	ajaxLinkToModal('edit_user_link','modal')
+        	
+        	enableCloseOverlay();
+        });
+		</g:javascript>
     </head>
     <body>
    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.title.label']"/>
@@ -33,7 +41,7 @@
 
 				<div class="content">
 					<ul>
-						<li><g:link controller="user" action="edit"><g:message code="manager.box.link2.label"/></g:link></li>
+						<li><g:link elementId="edit_user_link"  controller="user" action="edit"><g:message code="manager.box.link2.label"/></g:link></li>
 						
 						<li><g:link controller="user" action="edit_mail"><g:message code="manager.box.link3.label"/></g:link></li>
 						

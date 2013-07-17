@@ -19,7 +19,7 @@ class UserController {
 	def edit() {
 		def user = session.user.attach()
 
-		[adm: true, user: user]
+		render(view: "edit",model:[user:user])
 	}
 	
 	def edit_mail() {

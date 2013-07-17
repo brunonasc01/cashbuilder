@@ -70,36 +70,26 @@ class GoalService {
 			}
 			
 			current = (current)?: 0
-
+			bean.barSize = (total / goal.total) * 100
+			
 			Date date = new Date()
 			
-			if(date.after(goal.endDate)){
-				if(total >= goal.total){
-					bean.status = Constants.META_ATINGIDA
-				}else{
-					bean.status = Constants.META_PERDIDA
+			if(date.after(goal.endDate)) {
+				if(total >= goal.total) {
+					bean.status = "done"
+					bean.barSize = 100
+				} else {
+					bean.status = "lost"
+					bean.barSize = (total / goal.total) * 100
 				}
-			}else{
-				if(total >= goal.total){
-					bean.status = Constants.META_ATINGIDA
-				}else{
-					bean.status = Constants.META_CORRENTE
+			} else {
+				if(total >= goal.total) {
+					bean.status = "done"
+					bean.barSize = 100
+				} else {
+					bean.status = "working"
+					bean.barSize = (total / goal.total) * 100
 				}
-			}
-
-			switch(bean.status){
-				
-				case Constants.META_CORRENTE:
-				bean.percent = (total/goal.total)*100
-				break
-				
-				case Constants.META_ATINGIDA:
-				bean.percent = 100
-				break
-				
-				case Constants.META_PERDIDA:
-				bean.percent = 0
-				break
 			}
 
 			Calendar cal = Calendar.getInstance()

@@ -54,6 +54,33 @@ function ajaxSubmitToModal(form,target,action){
 }
 
 /**
+ * Renderiza o destino do link num modal
+ * @param trigger id do link
+ * @param target local onde deve ser renderizado o destino do link
+ */
+function ajaxLinkToModal(trigger,target){
+	
+	var link = $("#"+trigger);
+	
+	link.click(function(e) {
+		e.preventDefault();
+		
+		var returnElement = $("#"+target);
+		var href = link.attr('href');
+
+		$.ajax({
+			  type: "GET",
+			  url: href,
+			  data: null,
+			  cache: false
+		}).done(function( html ) {
+			returnElement.html(html);
+			$('.overlay, .modal').show();
+		});
+	});
+}
+
+/**
  * Destaca o mes atual no menu
  * @param month
  * @param menu_id
@@ -140,6 +167,15 @@ function initCashflowScripts(){
 			}			
 		});
 
+		enableCloseOverlay();
+	});
+}
+
+
+function initGoalScripts(){
+	$(function() {
+		ajaxSubmitToModal('createGoalForm','modal');
+		
 		enableCloseOverlay();
 	});
 }
