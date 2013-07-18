@@ -424,6 +424,12 @@ a.btn:hover {
 	padding: 0.5em;
 }
 
+.message ul {
+	list-style: square;
+	margin-top: 10px;
+	margin-left: 25px;
+}
+
 .message p:before {
 	font-family: 'StyleIcons';
 	margin-right: 0.5em;

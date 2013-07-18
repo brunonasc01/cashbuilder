@@ -25,6 +25,10 @@ class Constants {
 	static String POSITIVE = "positive"
 	static String NEGATIVE = "negative"
 	
+	static final String MSG_SUCCESS = "success"
+	static final String MSG_ERROR = "error"
+	static final String MSG_INFO = "info"
+
 	static String getFORMATO_MOEDA(){
 						
 		NumberFormat cf = NumberFormat.getCurrencyInstance()

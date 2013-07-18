@@ -4,10 +4,12 @@ $('#bt_close_modal').click(function(){
 });
 </g:javascript>
 
-<div id="change_data_modal" class="box modal adm-modal">
+<div class="box modal adm-modal">
 	<h3 class="title-box">
 		<g:message code="manager.user.update.data.label"/>
-		<a id="bt_close_modal" class='bt-icon text-center'></a></h3>
+		<a id="bt_close_modal" class='bt-icon text-center'></a>
+	</h3>
+
 	<div class="content">
 		<g:form name="editUser" action="update" controller="user" >
 			<g:hiddenField name="id" value="${user?.id }" />
@@ -25,7 +27,7 @@ $('#bt_close_modal').click(function(){
 			</label><input type="text" name="profile.city" id="city" value="${user?.profile?.city}" />
 
 			<div class="content-center">
-				<input type="submit" class="btn" id="submit" value="Atualizar"/>
+				<input type="submit" class="btn" id="submit" value="Gravar"/>
 			</div>
 		</g:form>
 	</div>

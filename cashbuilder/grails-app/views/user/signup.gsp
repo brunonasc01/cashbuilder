@@ -14,24 +14,7 @@
 		</h2>
 	</div>
 
-	<g:if test="${flash.message}">
-		<div class="col-1">
-			<div class="message error">
-				<ul>
-					<li><g:message code="${flash.message}"/></li>
-				</ul>
-			</div>
-		</div>
-	</g:if>
-	<g:else>					
-	<g:hasErrors bean="${userInstance}">
-		<div class="col-1">
-			<div class="message error">
-				<g:renderErrors bean="${userInstance}" as="list" />
-			</div>
-		</div>
-	</g:hasErrors>
-	</g:else>
+	<g:render template="/elements/message" var="bean" bean="${userInstance}" ></g:render>
 
 	<div class="col-1">
 		<div class="box">

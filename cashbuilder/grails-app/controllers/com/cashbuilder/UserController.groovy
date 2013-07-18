@@ -56,7 +56,11 @@ class UserController {
 				}
 			} else {
 				flash.message = "form.signup.email.error1.message"
+				flash.msg_type = Constants.MSG_ERROR
 			}
+		} else {
+			flash.message = "form.signup.data.error1.message"
+			flash.msg_type = Constants.MSG_ERROR
 		}
 
 		render(view: "signup",model:[userInstance:cmd,signup: true])
@@ -69,12 +73,15 @@ class UserController {
 		if(!user.validate()){
 			user.profile.validate()
 			
-			render(view: "edit",model:[user:user])
+			flash.message = "manager.user.update.data.error"
+			flash.msg_type = Constants.MSG_ERROR
 		} else{
 			session.user = user
 			flash.message = "Usuario atualizado com sucesso"
-			redirect(controller: "admin")
+			flash.msg_type = Constants.MSG_SUCCESS
 		}
+		
+		redirect(controller: "admin", model:[bean:user])
 	}
 	
 	def updatePassword(UserPasswordCommand upc) {
