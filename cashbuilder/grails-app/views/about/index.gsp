@@ -7,11 +7,7 @@
 </head>
 
 <body>
-	<div id="month-title" class="col-1">
-		<h2 class="title-box">
-			<g:message code="general.about.title"/>
-		</h2>
-	</div>
+	<g:render template="/elements/area_title" model="[bundle_key: 'general.about.title']"/>
 	  	
 	<div class="col-1">
 		<div class="box">

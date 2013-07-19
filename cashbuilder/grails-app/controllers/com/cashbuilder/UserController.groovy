@@ -6,6 +6,7 @@ import com.cashbuilder.cmd.UserPasswordCommand;
 
 class UserController {
 
+	def generalService
     def userService
 	def expensesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
 	def recaptchaService
@@ -55,33 +56,30 @@ class UserController {
 					redirect(controller: "home")
 				}
 			} else {
-				flash.message = "form.signup.email.error1.message"
-				flash.msg_type = Constants.MSG_ERROR
+				generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
 			}
 		} else {
-			flash.message = "form.signup.data.error1.message"
-			flash.msg_type = Constants.MSG_ERROR
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.data.error1.message")
 		}
 
 		render(view: "signup",model:[userInstance:cmd,signup: true])
 	}
 	
-	def update() {		
+	def update() {
 		def user = User.get(params.id)
 		user.properties = params
 		
 		if(!user.validate()){
 			user.profile.validate()
-			
-			flash.message = "manager.user.update.data.error"
-			flash.msg_type = Constants.MSG_ERROR
+
+			flash.errors = g.renderErrors(bean: user)
+			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.data.error")
 		} else{
 			session.user = user
-			flash.message = "Usuario atualizado com sucesso"
-			flash.msg_type = Constants.MSG_SUCCESS
+			generalService.buildMessage(Constants.MSG_SUCCESS,"Usuario atualizado com sucesso")
 		}
 		
-		redirect(controller: "admin", model:[bean:user])
+		redirect(controller: "admin")
 	}
 	
 	def updatePassword(UserPasswordCommand upc) {
@@ -93,20 +91,21 @@ class UserController {
 				String oldPassword = Encoder.encode(upc.password)
 												
 				if(!user.password.equals(oldPassword)){
-					flash.message = "A senha atual esta incorreta"
-					render(view: "edit_password", model: [user: user])
+					generalService.buildMessage(Constants.MSG_ERROR,"A senha atual esta incorreta")
 				} else {
 					user.password = Encoder.encode(upc.passwordNew)
 					user.save(flush: true)
 					session.user = user
 
-					flash.message = "Senha atualizada com sucesso"
-					redirect(controller: "admin")
+					generalService.buildMessage(Constants.MSG_SUCCESS,"Senha atualizada com sucesso")
 				}
 			}
 		} else {
-			render(view: "edit_password", model: [user: upc])
+			flash.errors = g.renderErrors(bean: upc)
+			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.password.error")
 		}
+
+		redirect(controller: "admin")
 	}
 	
 	def updateMail(UserEmailCommand uec){
@@ -116,23 +115,25 @@ class UserController {
 
 			if(user){
 				if(user.email != uec.email){
-					flash.message = "O e-mail atual esta incorreto"
-					render(view: "edit_mail", model: [user: user])
+					generalService.buildMessage(Constants.MSG_ERROR,"O e-mail atual esta incorreto")
+					
 				} else if(!userService.isEmailAvailable(uec.emailNew)){
-					flash.message = "form.signup.email.error1.message"
-					render(view: "edit_mail", model: [user: user])
+					generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
+
 				} else {
 					user.email = uec.emailNew
 					user.save(flush: true)
 					session.user = user
-					
-					flash.message = "E-Mail atualizado com sucesso"
-					redirect(controller: "admin")
+
+					generalService.buildMessage(Constants.MSG_SUCCESS,"E-Mail atualizado com sucesso")
 				}
 			}
 		} else {
-			render(view: "edit_mail", model: [user: uec])
+			flash.errors = g.renderErrors(bean: uec)
+			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.mail.error")
 		}
+		
+		redirect(controller: "admin")
 	}
 	
 	private def getCategoryFiles(User user){

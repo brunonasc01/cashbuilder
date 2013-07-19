@@ -65,10 +65,6 @@
 	color: #333333;	
 }
 
-.buttons a:hover {
-	text-decoration: none;
-}
-
 .buttons .icon-edit:hover {
 	color: #01a401;
 }

@@ -7,7 +7,7 @@
         
         <g:javascript>
         	$(function() {
-				processAnswers('helpContent');
+				processAnswers('help-list');
 			});
         </g:javascript>
     </head>

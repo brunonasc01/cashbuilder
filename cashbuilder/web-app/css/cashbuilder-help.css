@@ -5,6 +5,10 @@
 	line-height: 1.3;
 }
 
+#help-list p{
+	overflow: hidden;
+}
+
 #help-list li {
 	border-bottom: 1px solid #495154;
 	padding-top: 5px;

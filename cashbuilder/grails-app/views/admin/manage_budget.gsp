@@ -1,27 +1,19 @@
 <%@page import="com.cashbuilder.DateUtils"%>
 <%@page import="com.cashbuilder.Constants"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta name="layout" content="base" />
 		<r:require module="adm"/>        
     </head>
     <body>
     	<g:monthMenu action="manage_budget" month="${monthIndex}" nextYear="${nextYear}"/>
+    	
+   		<g:render template="/elements/area_title" model="[bundle_key: 'manager.budget.title.label']"/>
+   		
+   		<g:render template="/elements/message" var="bean" bean="${bean}" ></g:render>
 
-    	<div class="span-24">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'manager.budget.title.label']"/>
-    		
-    		<g:if test="${flash.message}">
-    			<div class="inside">
-					<div class="success">
-						${flash.message}
-					</div>
-				</div>
-			</g:if>
-    	</div>
-    
     	<g:form name="budget-data-form">
 	    	<div class="col-25">
 	    			    	

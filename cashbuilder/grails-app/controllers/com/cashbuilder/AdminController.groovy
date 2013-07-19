@@ -56,9 +56,9 @@ class AdminController {
 		budgetService.saveFullBudget(user, saveType, params)
 
 		if(saveType.equals("year")){
-			flash.message = "Orcamento para o Ano Salvo com Sucesso."
+			generalService.buildMessage(Constants.MSG_SUCCESS,"Orcamento para o Ano Salvo com Sucesso")
 		}else{
-			flash.message = "Orcamento para o Mes Salvo com Sucesso."
+			generalService.buildMessage(Constants.MSG_SUCCESS,"Orcamento para o Mes Salvo com Sucesso.")
 		}
 
 		redirect(action:'manage_budget', params: [monthId: params.monthId])

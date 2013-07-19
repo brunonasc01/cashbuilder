@@ -39,6 +39,20 @@ a:link, a:active, a:visited {
 	color: #333333;
 }
 
+ul.list-items li {
+	border-bottom: 1px solid #495154;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+ul.list-items li:first-child{
+	padding-top: 0;
+}
+
+ul.list-items li:last-child {
+	border-bottom: none;
+}
+
 a:hover {
 	text-decoration: underline;
 	color: #FFD700;
@@ -289,6 +303,10 @@ footer a:hover {
 	width: 1em;
 	height: 1em;
 	cursor: pointer;
+}
+
+a.bt-icon:hover {
+	text-decoration: none;
 }
 
 .btn {

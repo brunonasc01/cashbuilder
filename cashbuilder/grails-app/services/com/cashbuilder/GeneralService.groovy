@@ -5,9 +5,10 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 
 import com.cashbuilder.beans.CategoriesListBean;
+import org.codehaus.groovy.grails.web.util.WebUtils
 
 class GeneralService {
-
+	
 	static transactional = true
 	
     def serviceMethod() {
@@ -42,5 +43,12 @@ class GeneralService {
 		df.setDecimalFormatSymbols dfs
 		
 		df
+	}
+	
+	void buildMessage(String type, String message){
+		def flashScope = WebUtils.retrieveGrailsWebRequest().flashScope
+		
+		flashScope.message = message
+		flashScope.msg_type = type
 	}
 }

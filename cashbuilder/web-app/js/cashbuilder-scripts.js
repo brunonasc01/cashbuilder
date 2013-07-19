@@ -171,11 +171,43 @@ function initCashflowScripts(){
 	});
 }
 
-
+/**
+ * Inicializa os Scripts da area Metas
+ */
 function initGoalScripts(){
 	$(function() {
 		ajaxSubmitToModal('createGoalForm','modal');
 		
 		enableCloseOverlay();
+	});
+}
+
+/**
+ * Inicializa os Scripts da area Administracao
+ */
+function initAdminScripts(){
+	$(function() {
+		ajaxLinkToModal('edit_user_link','modal')
+    	ajaxLinkToModal('edit_mail_link','modal')
+    	ajaxLinkToModal('edit_password_link','modal')
+    	
+    	enableCloseOverlay();
+	});
+}
+
+function processAnswers(regionId){
+	$('#'+regionId+' li p').css('height','0px');
+	
+	var span = $('#'+regionId+' li span');
+	span.css('cursor','pointer');
+
+	span.click(function(){
+		$(this).parent().siblings().children('p').css('height','0px');
+
+		var answer = $(this).next();
+
+		answer.css('height','auto');
+		var height = answer.height()
+		answer.css('height',height+'px')
 	});
 }

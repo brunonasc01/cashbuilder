@@ -1,6 +1,8 @@
 package com.cashbuilder
 
 class CategoryController {
+	
+	def generalService
 
 	static allowedMethods = [save_category: "POST"]
 	
@@ -38,6 +40,21 @@ class CategoryController {
 		render(view: "new_category",model:[category: category,adm: true])
 	}
 	
+	def remove_subcategory(Category category){
+		def subcategoriesToRemove = []
+
+		category.subcategories.eachWithIndex { obj, i ->
+			def checks = params."remove_${i}"
+
+			if(checks){
+				subcategoriesToRemove += obj
+			}
+		}
+		category.subcategories.removeAll(subcategoriesToRemove)
+		
+		render(view: "new_category",model:[category: category,adm: true])
+	}
+	
 	def save_category(Category category){
 		def user = session.user.attach()
 		category.user = user
@@ -58,15 +75,16 @@ class CategoryController {
 					new BudgetItem(category:category,subcategory:subcategory,month:budgetMonth).save()
 				}
 			}
-			
-			flash.message = "Nova categoria gravada com sucesso"
-			redirect(controller: "admin")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.save.success")
+
+			redirect(action: "new_category")
 		} else {
 		
 			category.subcategories.each {
 				it.validate()
 			}
-		
+			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.save.error")
+
 			render(view: "new_category",model:[category: category, adm: true])
 		}
 	}

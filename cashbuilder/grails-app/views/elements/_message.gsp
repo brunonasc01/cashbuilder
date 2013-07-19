@@ -5,9 +5,14 @@
 				<g:message code="${flash.message}"/>
 			</p>
 			
-			<g:hasErrors bean="${bean}">
-				<g:renderErrors bean="${bean}" as="list" />
-			</g:hasErrors>
+			<g:if test="${flash.errors}">
+				${flash.errors}
+			</g:if>
+			<g:else>
+				<g:hasErrors bean="${bean}">
+					<g:renderErrors bean="${bean}" as="list" />
+				</g:hasErrors>
+			</g:else>
 		</div>
 	</div>
 </g:if>

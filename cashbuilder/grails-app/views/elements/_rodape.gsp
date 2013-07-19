@@ -12,7 +12,7 @@
 	</li>
 
 	<li>
-		<g:link controller="contact" action="."><g:message code="app.contact.link"/></g:link>
+		<g:link controller="contact"><g:message code="app.contact.link"/></g:link>
 	</li>
 </ul>
 

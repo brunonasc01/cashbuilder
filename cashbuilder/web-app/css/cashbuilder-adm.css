@@ -56,20 +56,17 @@
 	color: #e40101;
 }
 
-#new-category a:hover{
-	text-decoration: none;
-}
-
 #new-category label {
 	width: 15%;
 }
 
 #new-category h4 {
-	margin-bottom: 10px;
+	padding-bottom: 10px;
 }
 
-#edit-category-list a:hover {
-	text-decoration: none;
+#new-category input[type="checkbox"] {
+	width: auto;
+	margin: 5px;	
 }
 
 #edit-category-list ul:nth-child(even) {
@@ -87,7 +84,7 @@
 .adm-modal {
 	width: 30%;
 	height: auto;
-	margin: -20% 0 0 -15%;
+	margin: -10% 0 0 -15%;
 }
 
 .adm-modal h4 {
