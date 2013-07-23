@@ -18,6 +18,11 @@
 <body>
 	<header>
 		<div id="login-bar" class="text-right">
+			<ul class="recovery-bar inline">
+				<li><g:link controller="user" action="signup"><g:message code="login.signup.user"/></g:link>
+				</li><li><g:link controller="recovery"><g:message code="login.password.lost"/></g:link>
+			</ul>
+		
 			<g:form action="login" controller="login" method="post" class="login">
 				<label><g:message code="default.email.label"/>
 				</label><g:textField name="email" />

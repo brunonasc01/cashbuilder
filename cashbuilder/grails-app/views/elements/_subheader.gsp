@@ -10,7 +10,8 @@
 			
 			<li>
 				<g:link controller="login" action="logoff">
-					<span class="unlock-icon"><g:message code="default.logoff.label"/></span>
+					<g:message code="default.logoff.label"/>
+					TODO DEFINIR ICONES
 				</g:link>
 			</li>
 		</ul>
@@ -22,14 +23,18 @@
 			</a>
 		</g:if>
 		<g:else>
-			<g:link uri="/">
-				<g:message code="default.start.label"/>
-			</g:link>
-		</g:else>
-
-		<span> | </span>
-		<g:link controller="user" action="signup">
-			<g:message code="default.signup.label"/>
-		</g:link>
+			<ul class="inline">
+				<li>
+					<g:link uri="/" class="icon-home">
+						<g:message code="default.start.label"/>
+					</g:link>
+				</li><li>
+					<g:link controller="user" action="signup">
+						<g:message code="default.signup.label"/>
+						TODO DEFINIR ICONES
+					</g:link>
+				</li>
+			</ul>
+		</g:else>		
 	</g:else>
 </div>

@@ -6,6 +6,7 @@ import com.cashbuilder.cmd.RecoveryCommand;
 
 class RecoveryController {
 
+	def generalService
 	def mailService
 	
     def index() {
@@ -47,7 +48,7 @@ class RecoveryController {
 
 			redirect(uri:"/")
 		} else {
-			flash.message="form.lostpassword.error"
+			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.error")
 			render(view:"index")
 		}
 	}
@@ -65,8 +66,8 @@ class RecoveryController {
 				
 				redirect(uri:"/")
 			}
-			
 		} else {
+			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.reset.error")
 			render(view: "index",model:[bean:rcmd,recovery: true])
 		}
 	}

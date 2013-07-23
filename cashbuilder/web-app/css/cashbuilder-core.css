@@ -96,10 +96,19 @@ h1#logo-portal {
 	border-bottom: 1px solid #6b7576;
 
 	padding: 0.212766%; /* 2 / 940 */
+	color: #333333;
 }
 
 #subheader ul {
 	margin: 0.531915% 0; /* 5 / 940 */
+}
+
+#subheader ul li {
+	border-right: 1px solid;
+}
+
+#subheader ul li:last-child {
+	border-right: none;
 }
 
 /* MAIN MENU */

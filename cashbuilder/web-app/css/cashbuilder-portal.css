@@ -38,6 +38,15 @@ body {
 	padding-right: 5px;
 }
 
+.recovery-bar {
+	font-size: 0.8em;
+	margin-bottom: 5px;
+}
+
+.recovery-bar a:link, .recovery-bar a:active, .recovery-bar a:visited {
+	color: #ffffff;
+}
+
 form.login input{
 	width: auto;
 	margin: 0;
