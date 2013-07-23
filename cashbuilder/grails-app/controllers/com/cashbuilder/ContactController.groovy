@@ -5,6 +5,7 @@ import com.cashbuilder.cmd.ContactCommand;
 
 class ContactController {
 	
+	def generalService
 	def mailService
 
     def index() {
@@ -16,7 +17,7 @@ class ContactController {
 		subjects += new ContactSubjectBean(id: "interface", value: g.message(code:"contact.subject3"))
 		subjects += new ContactSubjectBean(id: "others", value: g.message(code:"contact.subject4"))
 		
-		[contact : contact,subjects : subjects]
+		[contact: contact, subjects: subjects]
 	}
 	
 	def submitContact(ContactCommand contact){
@@ -28,8 +29,11 @@ class ContactController {
 				html contact.message
 			}
 			
-			redirect(uri:"/")
-		}
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.contact.data.success.message")
+			redirect(action:"index")
+		} else {
+			generalService.buildMessage(Constants.MSG_ERROR,"form.contact.data.error.message")
+		}		
 		
 		def subjects = []
 		
@@ -38,6 +42,6 @@ class ContactController {
 		subjects += new ContactSubjectBean(id: "interface", value: g.message(code:"contact.subject3"))
 		subjects += new ContactSubjectBean(id: "others", value: g.message(code:"contact.subject4"))
 		
-		render(view: "contact",model:[contact : contact,subjects : subjects])
+		render(view: "index",model:[contact: contact, subjects: subjects])
 	}
 }
