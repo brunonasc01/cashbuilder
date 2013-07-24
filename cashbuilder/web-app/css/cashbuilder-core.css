@@ -39,6 +39,10 @@ a:link, a:active, a:visited {
 	color: #333333;
 }
 
+a:hover {
+	color: #FFD700;
+}
+
 ul.list-items li {
 	border-bottom: 1px solid #495154;
 	padding-top: 5px;
@@ -51,11 +55,6 @@ ul.list-items li:first-child{
 
 ul.list-items li:last-child {
 	border-bottom: none;
-}
-
-a:hover {
-	text-decoration: underline;
-	color: #FFD700;
 }
 
 /* HEADER */
@@ -96,7 +95,11 @@ h1#logo-portal {
 	border-bottom: 1px solid #6b7576;
 
 	padding: 0.212766%; /* 2 / 940 */
-	color: #333333;
+	color: #ffffff;
+}
+
+#subheader a:link, #subheader a:active, #subheader a:visited {
+	color: #ffffff;
 }
 
 #subheader ul {
@@ -225,14 +228,8 @@ footer {
 }
 
 footer a:link, footer a:active, footer a:visited {
-	color: #ebede2;
+	color: #ffffff;
 }
-
-footer a:hover {
-	text-decoration: underline;
-	color: #FFD700;
-}
-
 
 /* CONTENT BOX */
 

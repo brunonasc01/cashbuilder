@@ -61,10 +61,6 @@
 	width: 30%;
 }
 
-.buttons a:link, .buttons a:active, .buttons a:visited {
-	color: #333333;	
-}
-
 .buttons .icon-edit:hover {
 	color: #01a401;
 }

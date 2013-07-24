@@ -1,14 +1,10 @@
-
 <div id="subheader">
-
 	<g:if test="${session.user}">
 		<ul class="inline">
 			<li>
 				<g:message code="default.welcome.message"/>
 				${session.user.firstName }
-			</li>
-			
-			<li>
+			</li><li>
 				<g:link controller="login" action="logoff">
 					<g:message code="default.logoff.label"/>
 					TODO DEFINIR ICONES
