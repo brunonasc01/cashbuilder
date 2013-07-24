@@ -3,7 +3,7 @@
     
 <head>
 	<meta name="layout" content="base_50" />        
-	<r:require modules="core,recaptcha"/>
+	<r:require modules="portal,recaptcha"/>
 </head>
     
 <body>

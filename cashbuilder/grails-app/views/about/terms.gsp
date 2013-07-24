@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta name="layout" content="base" />
-    <r:require modules="core"/>
+    <r:require modules="portal"/>
 </head>
 
 <body>
