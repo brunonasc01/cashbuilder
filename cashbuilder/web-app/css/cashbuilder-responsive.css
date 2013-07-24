@@ -57,6 +57,12 @@
 	}
 }
 
+@media screen and (min-width: 960px){
+	.modal {
+		margin: -15% 0 0 -12.5%;
+	}
+}
+
 @media screen and (max-width: 959px){
 	
 	.menu-icon a span {

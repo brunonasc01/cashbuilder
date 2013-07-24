@@ -515,8 +515,16 @@ a.btn:hover {
 	position: fixed;
 	top: 50%;
 	left:50%;
+	
+	width: 25%;
+	min-width: 240px;
+	margin: -15% 0 0 -120px;
 
 	box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.4);
+}
+
+.modal form {
+	padding-top: 10px;
 }
 
 .modal h3 {

@@ -78,17 +78,6 @@
 }
 
 /* Modal */
-
-.budget-modal {
-	width: 25%;
-	height: auto;
-	margin: -10% 0 0 -12.5%;
-}
-
-.budget-modal form {
-	padding-top: 10px;
-}
-
 .budget-modal label {
 	display: inline-block;
 	text-align: center;

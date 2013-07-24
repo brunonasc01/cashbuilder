@@ -68,15 +68,3 @@
 .buttons .icon-delete:hover {
 	color: #e40101;
 }
-
-/* Modal */
-
-.cashflow-modal {
-	width: 25%;
-	height: auto;
-	margin: -15% 0 0 -12.5%;
-}
-
-.cashflow-modal form {
-	padding-top: 10px;
-}

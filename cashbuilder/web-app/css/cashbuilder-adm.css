@@ -78,44 +78,7 @@
 	padding-left: 2.454133%;
 }
 
-
 /* Modal */
-
-.adm-modal {
-	width: 30%;
-	height: auto;
-	margin: -10% 0 0 -15%;
-}
-
 .adm-modal h4 {
 	margin-bottom: 10px;
 }
-
-.adm-modal form {
-	padding-top: 10px;
-}
-
-/*.adm-modal input[type="submit"] {
-	margin-top: 10px;
-}
-
-.adm-modal label{
-	width: 25%;
-}
-
-.adm-modal input[type="text"], .adm-modal select{
-	width: 71.038462%;
-}
-
-.mail-form label, .password-form label{
-	width: 30%;
-}
-
-.mail-form input[type="email"], .password-form input[type="password"] {
-	width: 66.038462%;
-}
-
-.mail-form input.no-bt-margin, .password-form input.no-bt-margin, .edit-category-form input.no-bt-margin, select.no-bt-margin {
-	margin-bottom: 0;
-}*/
-
