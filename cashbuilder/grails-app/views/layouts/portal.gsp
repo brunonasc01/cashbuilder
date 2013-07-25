@@ -46,7 +46,7 @@
 	<r:layoutResources/>
 </body>
 
-<!-- 
+ 
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-37678976-1']);
@@ -58,5 +58,5 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
- -->	
+ 
 </html>

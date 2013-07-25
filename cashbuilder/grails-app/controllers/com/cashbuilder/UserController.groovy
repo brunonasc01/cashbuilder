@@ -40,10 +40,10 @@ class UserController {
 	
 	def save(UserCommand cmd) {
 		
-		/*if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
-			flash.message = "form.signup.captcha.error.message"
+		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.error.message")
 		}		
-		else*/ if(cmd.validate()){
+		else if(cmd.validate()){
 			if(userService.isEmailAvailable(cmd.email)){
 				def user = new User(cmd.properties)
 				user.password = Encoder.encode(user.password)
