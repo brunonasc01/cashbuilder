@@ -9,6 +9,7 @@ class HomeController {
 	def budgetService
 	def generalService
 	def transactionService
+	def eventService
 
 	static allowedMethods = [saveTransaction: "POST"]
 	
@@ -59,8 +60,12 @@ class HomeController {
 		def transaction = transactionService.saveTransaction(user, params)
 		
 		if(transaction.hasErrors()){
-			flash.message = g.renderErrors(bean: transaction)
-		} 
+			flash.errors = g.renderErrors(bean: transaction)
+			generalService.buildMessage(Constants.MSG_ERROR,"transaction.data.invalid")
+		} else {
+			eventService.processAlerts(user)
+			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.data.success")
+		}
 		
 		redirect(action: "index")
 	}

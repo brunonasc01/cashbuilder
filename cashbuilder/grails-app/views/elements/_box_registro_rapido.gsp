@@ -6,12 +6,6 @@
 		<h3 class="title-box"><g:message code="box.transaction.title"/></h3>
 
 		<div class="content">
-            <g:if test="${flash.message}">	    		
-				<div class="form-errors">
-					${flash.message}
-				</div>
-			</g:if>
-
 			<label for="data"><g:message code="box.transaction.date.label"/>
 			</label><g:jqDatePicker name="date"/>
 			

@@ -6,6 +6,8 @@
     </head>
 
     <body>
+    	<g:render template="/elements/message"></g:render>
+    
 	  	<div class="col-75">
 	  		<g:render template="/elements/box_avisos" bean="${alerts}" ></g:render>
 	  	</div>
