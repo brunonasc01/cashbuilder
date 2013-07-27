@@ -71,8 +71,9 @@
 					<div class="content">
 						<g:each var="bean" in="${expenseList}">
 							
+							<h4>${bean.category }</h4>
+							
 							<div class="budget-item">
-								<h4>${bean.category }</h4>
 			
 								<g:each var="item" in="${bean.subcategories}">
 									<label>${item.subcategory }

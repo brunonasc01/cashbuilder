@@ -20,21 +20,7 @@
 			</h2>
    		</div>
    		
-   		<g:if test="${flash.message}">
-   			<div class="col-1">
-   				<div class="message success">
-					<p>${flash.message}</p>
-				</div>
-
-				<div class="message info">
-					<p>${flash.message}</p>
-				</div>
-
-				<div class="message error">
-					<p>${flash.message}</p>
-				</div>
-			</div>
-		</g:if>
+   		<g:render template="/elements/message"></g:render>
 
     	<div class="col-25">
 			<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>

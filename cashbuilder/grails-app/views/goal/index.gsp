@@ -13,13 +13,7 @@
     <body>
     	<g:render template="/elements/area_title" model="[bundle_key: 'goal.title.label']"/>
     
-    	<g:if test="${flash.message}">
-    		<div class="col-1">
-				<div class="message info">
-					${flash.message}
-				</div>
-			</div>
-		</g:if>
+    	<g:render template="/elements/message"></g:render>
     
 	  	<div class="col-25">
 	  		<div class="text-center append-bottom-dist">

@@ -19,7 +19,7 @@ class TransactionController {
 		def transaction = Transaction.get(params.id)
 		
 		if (!transaction) {
-			flash.message = "Nao foi possivel editar o pagamento, tente novamente"
+			generalService.buildMessage(Constants.MSG_ERROR,"transaction.edit.error")
 			redirect(controller:"cashflow", action: "index")
 		} else {
 			def categoriesList = generalService.getCategoriesList(transaction.user)
@@ -38,17 +38,20 @@ class TransactionController {
 		def transaction = transactionService.saveTransaction(user, params)
 
 		if(transaction.hasErrors()){
-			flash.message = g.renderErrors(bean: transaction)
+			flash.errors = g.renderErrors(bean: transaction)
+			generalService.buildMessage(Constants.MSG_ERROR,"transaction.data.invalid")
 		} else {
 			eventService.processAlerts(user)
+			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.data.success")
 		}
 
 		redirect(controller:"cashflow", action: "index", params: [monthId: params.monthId])
 	}
 	
 	def delete() {
-
 		transactionService.deleteTransaction(params.id)
+		generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.delete.success")
+		
 		redirect(controller:"cashflow", action: "index")
 	}
 	
@@ -56,10 +59,12 @@ class TransactionController {
 		def transaction = transactionService.updateTransaction(params)
 		
 		if(transaction.hasErrors()){
-			flash.message = g.renderErrors(bean: transaction)
+			flash.errors = g.renderErrors(bean: transaction)
+			generalService.buildMessage(Constants.MSG_ERROR,"transaction.update.data.invalid")
 		} else {
 			def user = session.user.attach()
 			eventService.processAlerts(user)
+			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.update.data.success")
 		}
 			
 		redirect(controller:"cashflow", action: "index")

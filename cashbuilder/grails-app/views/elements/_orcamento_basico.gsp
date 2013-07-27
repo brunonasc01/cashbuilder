@@ -29,7 +29,7 @@
 							</li><li class="values text-right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
 							</li><li class="of"><g:message code="default.of"/>
 							</li><li class="values"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/>
-							</li><li class="progress-bar"><span class="${category.barClass }" style="width:${subcategory.barSize}%;"></span>
+							</li><li class="progress-bar"><span class="${subcategory.barClass }" style="width:${subcategory.barSize}%;"></span>
 							</li>
 						</ul>
 					</g:each>

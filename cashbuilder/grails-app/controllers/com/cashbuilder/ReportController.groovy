@@ -38,22 +38,31 @@ class ReportController {
 		double total = budgetService.getRealizedTotal(month,user,Constants.DEBITO)
 		
 		if(total > 0){
+			double greaterCategory = 0
+			
 			categories.each { category ->
 				double categoryTotal = budgetService.getRealizedTotal(month, user, category)
 				
 				if(categoryTotal > 0){
 					ReportDataBean bean = new ReportDataBean()
 					bean.total =  categoryTotal
-					bean.percent = (categoryTotal/total)*100
 					bean.label = category.name
 					
 					reportData += bean
+					
+					if(categoryTotal > greaterCategory){
+						greaterCategory = categoryTotal
+					}
 				}
 			}
 			
-			double scale = total / 4
+			reportData.each { bean -> 
+				bean.percent = (bean.total/greaterCategory)*100
+			}
+			
+			double scale = greaterCategory / 4
 
-			for(double scaleValue=total; scaleValue >= 0;){
+			for(double scaleValue=greaterCategory; scaleValue >= 0;){
 				reportScale += scaleValue
 				scaleValue -= scale
 			}

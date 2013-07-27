@@ -29,7 +29,11 @@ class GoalController {
 		def goal = goalService.saveGoal(user, params)
 
 		if(goal.hasErrors()){
-			flash.message = g.renderErrors(bean: goal)
+			flash.errors = g.renderErrors(bean: goal)
+			generalService.buildMessage(Constants.MSG_ERROR,"goal.data.save.error")
+
+		} else {
+			generalService.buildMessage(Constants.MSG_SUCCESS,"goal.data.save.success")
 		}
 
 		redirect(action: "index")
@@ -37,6 +41,7 @@ class GoalController {
 	
 	def delete() {
 		def goal = goalService.deleteGoal( params)
+		generalService.buildMessage(Constants.MSG_SUCCESS,"goal.data.delete.success")
 		
 		redirect(action: "index")
 	}

@@ -1,5 +1,7 @@
 package com.cashbuilder
 
+import org.joda.time.LocalDateTime;
+
 import com.cashbuilder.beans.BalanceBoxBean;
 
 class HomeController {
@@ -34,11 +36,21 @@ class HomeController {
 			eq('user', user)
 			order("id", "desc")
 		}
+		
+		//box transacoes futuras
+		LocalDateTime ldt = new LocalDateTime()
+		c =  Transaction.createCriteria()
+
+		def registrosFuturos = c.list(max:4) {
+			eq('user', user)
+			between('date', ldt.plusDays(1).toDate(), ldt.plusMonths(1).toDate())
+			order("date", "desc")
+		}
 
 		def categoriesList = generalService.getCategoriesList(user)
 		def alerts = Alert.findAllByBudgetAndEnable(budget,true)
 		
-		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registroRapido: categoriesList, alerts: alerts]
+		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registrosFuturos: registrosFuturos, registroRapido: categoriesList, alerts: alerts]
 	}
 	
 	def saveTransaction() {

@@ -19,13 +19,7 @@
 			</h2>
    		</div>
     	
-    	<g:if test="${flash.message}">
-    		<div class="col-1">
-				<div class="message error">
-					<p>${flash.message}</p>
-				</div>
-			</div>
-		</g:if>
+    	<g:render template="/elements/message"></g:render>
     	
     	<div class="col-25">
     		<div class="text-center append-bottom-dist">

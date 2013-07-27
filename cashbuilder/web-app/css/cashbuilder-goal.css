@@ -3,7 +3,7 @@
 #goal-info {
 	font-weight: bold;
 	line-height: 1.5;
-	font-size: 0.95em;
+	font-size: 0.95rem;
 }
 
 #goal-info .title{
@@ -48,7 +48,7 @@
 
 #goal-list .name {
 	line-height: 1.5;
-	font-size: 1.3em;
+	font-size: 1.3rem;
 	
 	width: 100%;
 	overflow: hidden;
@@ -62,7 +62,7 @@
 #goal-list .actual {
 	float:right;
 	text-align: right;
-	font-size: 0.8em;
+	font-size: 0.8rem;
 }
 
 #goal-list li.progress-bar {

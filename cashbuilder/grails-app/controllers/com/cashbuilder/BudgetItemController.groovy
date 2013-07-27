@@ -4,6 +4,7 @@ class BudgetItemController {
 
 	static allowedMethods = [update: "POST", edit: "POST"]
 	
+	def generalService
 	def eventService
 	
 	def edit(){
@@ -25,7 +26,7 @@ class BudgetItemController {
 			def user = session.user.attach()
 			eventService.processAlerts(user)
 
-			flash.message = "Orcamento atualizado com sucesso"
+			generalService.buildMessage(Constants.MSG_SUCCESS,"Orcamento atualizado com sucesso")
 		}
 		
 		redirect(controller:"budget", action: "index", params: [monthId: params.monthId])

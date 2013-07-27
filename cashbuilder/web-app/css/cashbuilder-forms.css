@@ -1,5 +1,5 @@
 form, textarea, select {
-	font-size: 0.98em;
+	
 }
 
 label{
@@ -24,15 +24,5 @@ input[type='submit'] {
 }
 
 form.text-large  {
-	font-size: 1.1em;
+	font-size: 1.1rem;
 }
-
-/*
-input.date {
-	margin-right: 50%;	
-}
-
-input.description {
-	width: 78%;	
-}
-*/

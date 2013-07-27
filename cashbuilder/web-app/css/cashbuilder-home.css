@@ -10,15 +10,18 @@
 }
 
 #transaction-list-box ul li {
-	width: 47.319035%;
+	width: 50%;
+	padding-left: 0;
+	padding-right: 0;
 	font-weight: bold;
+	font-size: 1.1rem;
 }
 
 #transaction-list-box .category, #transaction-list-box .description {
-	width: 94.63807%;
+	width: 100%;
 	font-weight: normal;
 }
 
 #transaction-list-box .description {
- 	font-size: 0.9em;
+ 	font-size: 0.9rem;
 }

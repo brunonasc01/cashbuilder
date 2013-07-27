@@ -2,11 +2,11 @@
 <%@page import="com.cashbuilder.Constants"%>
 	
 <div class="box">
-	<h3 class="title-box"><g:message code="box.lasttransaction.title"/></h3>
+	<h3 class="title-box"><g:message code="box.nexttransaction.title"/></h3>
 
 	<div id="transaction-list-box" class="content">
-		<g:if test="${ultimosRegistros }">
-			<g:each var="transaction" in="${ultimosRegistros}" status="counter">
+		<g:if test="${list }">
+			<g:each var="transaction" in="${list}" status="counter">
 				<ul class="inline">
 					<li>
 						<g:formatDate date="${transaction.date }" format="dd/MM"></g:formatDate>

@@ -1,12 +1,14 @@
 /* HELP LIST */
 
 #help-list span, #help-list p{
-	font-size: 0.95em;
+	font-size: 0.95rem;
 	line-height: 1.3;
 }
 
 #help-list p{
 	overflow: hidden;
+	
+	-webkit-transition: height 0.5s;
 }
 
 #help-list li {

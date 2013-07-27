@@ -5,9 +5,8 @@
 				<g:message code="default.welcome.message"/>
 				${session.user.firstName }
 			</li><li>
-				<g:link controller="login" action="logoff">
+				<g:link controller="login" action="logoff" class="icon-unlock">
 					<g:message code="default.logoff.label"/>
-					TODO DEFINIR ICONES
 				</g:link>
 			</li>
 		</ul>
@@ -25,9 +24,8 @@
 						<g:message code="default.start.label"/>
 					</g:link>
 				</li><li>
-					<g:link controller="user" action="signup">
+					<g:link controller="user" action="signup" class="icon-doc">
 						<g:message code="default.signup.label"/>
-						TODO DEFINIR ICONES
 					</g:link>
 				</li>
 			</ul>
