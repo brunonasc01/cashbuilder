@@ -52,7 +52,9 @@
 	
 	width: 100%;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis
 }
 
 #goal-list .values, #goal-list .of {

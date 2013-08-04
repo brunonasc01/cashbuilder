@@ -1,53 +1,56 @@
 header {
-	box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0,0,0,0.4);
-}
+    -moz-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4)
+    }
 
 body {
-	background: #cccccc;
-	background: -webkit-linear-gradient(#cccccc,#ffffff);
-	color: #495154;
-	
-}
+    background: #ccc;
+    background: -moz-linear-gradient(#ccc, #fff);
+    background: -o-linear-gradient(#ccc, #fff);
+    background: -webkit-linear-gradient(#ccc, #fff);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(1, #fff));
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#ccc, EndColorStr=#fff)";
+    background: linear-gradient(#ccc, #fff);
+    color: #495154
+    }
 
 .grid {
-	background: none;
-}
+    background: none
+    }
 
 .highlights {
-	padding-top: 30px;
-}
+    padding-top: 30px
+    }
 
 .highlights h4 {
-	padding-bottom: 5px;
-	
-}
+    padding-bottom: 5px
+    }
 
 .highlights div {
-	border-right: 1px solid rgba(0,0,0,0.3);
-
-}
+    border-right: 1px solid rgba(0, 0, 0, 0.3)
+    }
 
 .highlights div:last-of-type {
-	border-right: none;
-}
+    border-right: none
+    }
 
 #login-bar {
-	color: #ffffff;
-
-	padding: 3px 0;
-	padding-right: 5px;
-}
+    color: #fff;
+    padding: 3px 0;
+    padding-right: 5px
+    }
 
 .recovery-bar {
-	font-size: 0.75rem;
-	margin-bottom: 5px;
-}
+    font-size: 0.75rem;
+    margin-bottom: 5px
+    }
 
 .recovery-bar a:link, .recovery-bar a:active, .recovery-bar a:visited {
-	color: #ffffff;
-}
+    color: #fff
+    }
 
-form.login input{
-	width: auto;
-	margin: 0;
-}
+form.login input {
+    width: auto;
+    margin: 0
+    }

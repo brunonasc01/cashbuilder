@@ -16,9 +16,10 @@
 	float: left;
 
 	background-image: linear-gradient(to right, rgba(73,81,84,1) 1px, transparent 1px);
+    -webkit-background-size: 10% 100%;
 	background-size: 10% 100%;
 	background-repeat: repeat-x;
-	background-position: 0 bottom;
+    background-position: 0 bottom
 }
 
 .h-chart .data ul {
@@ -82,16 +83,16 @@
 }
 
 .v-chart .data {	
-	height: 163px;
+	height: 166px;
 	width: 90%;
 	float: left;
 	
 	background-image: linear-gradient(to bottom, rgba(73,81,84,1) 2px, transparent 1px);
+    -webkit-background-size: 100% 25%;
 	background-size: 100% 25%;
 	background-repeat: repeat-y;
 	background-position: 0 top;
-
-	position: relative;
+    position: relative
 }
 
 .v-chart .data li {
@@ -169,7 +170,7 @@
 
 .v-chart .scale {
 	width: 5%;
-	height: 163px;
+	height: 166px;
 	text-align: right;
 
 	font-weight: bold;
@@ -190,11 +191,7 @@
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
-	bottom: -21px;
-}
-
-.v-chart .labels li::after{
-	
+    bottom: -21px
 }
 
 .v-chart .legends{

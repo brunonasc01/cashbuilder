@@ -1,27 +1,32 @@
 /* TRANSACTION LIST BOX */
 #transaction-list-box {
-	padding: 0;
-}
+    padding: 0
+    }
 
 #transaction-list-box ul {
-	padding: 2.680965%;
-	background: -webkit-linear-gradient(#eeeeee,#fefefe);
-	border-top: 1px solid #eeeeee;
-}
+    padding: 2.680965%;
+    background: -moz-linear-gradient(#eee, #fefefe);
+    background: -o-linear-gradient(#eee, #fefefe);
+    background: -webkit-linear-gradient(#eee, #fefefe);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(1, #fefefe));
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#eee, EndColorStr=#fefefe)";
+    background: linear-gradient(#eee, #fefefe);
+    border-top: 1px solid #eee
+    }
 
 #transaction-list-box ul li {
-	width: 50%;
-	padding-left: 0;
-	padding-right: 0;
-	font-weight: bold;
-	font-size: 1.1rem;
-}
+    width: 50%;
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: bold;
+    font-size: 1.1rem
+    }
 
 #transaction-list-box .category, #transaction-list-box .description {
-	width: 100%;
-	font-weight: normal;
-}
+    width: 100%;
+    font-weight: normal
+    }
 
 #transaction-list-box .description {
- 	font-size: 0.9rem;
-}
+    font-size: 0.9rem
+    }

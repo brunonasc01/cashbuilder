@@ -16,9 +16,8 @@
 
 [class*="col-"], .grid {
 	float: left;
-	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    box-sizing: border-box
 }
 
 .grid {
@@ -166,12 +165,13 @@
 }
 
 .grid {
-	background: #cccccc;
-	background: -webkit-linear-gradient(#cccccc,#6b7576);
-}
-
-@media screen and (max-width: 1280px) {
-
+    background: #ccc;
+    background: -moz-linear-gradient(#ccc, #6b7576);
+    background: -o-linear-gradient(#ccc, #6b7576);
+    background: -webkit-linear-gradient(#ccc, #6b7576);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(1, #6b7576));
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#ccc, EndColorStr=#6b7576)";
+    background: linear-gradient(#ccc, #6b7576)
 }
 
 @media screen and (max-width: 959px) {

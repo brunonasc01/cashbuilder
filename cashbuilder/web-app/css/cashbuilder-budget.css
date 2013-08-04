@@ -55,9 +55,12 @@
 
 /* Categoria - Filho */
 #budget-list .subcategory-list {
-	height: 0;
-	overflow: hidden;
-	-webkit-transition: height 0.5s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out
 }
 
 
