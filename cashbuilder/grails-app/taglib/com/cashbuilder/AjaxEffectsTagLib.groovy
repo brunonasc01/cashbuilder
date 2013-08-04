@@ -2,22 +2,6 @@ package com.cashbuilder
 
 class AjaxEffectsTagLib {
 
-	def validateForm = { attrs ->
-		def project = '/'
-		def default_action = 'validator'
-
-		def form = attrs.form
-		def controller = attrs.controller
-		def action = attrs.action?: default_action
-		def onTop = attrs.onTop?: false;
-		
-		out << "<script>"
-		out << "\$(document).ready(function(){"
-		out << "ajaxValidate('${project}${controller}/${action}','${form}',${onTop});"
-		out << "});"
-		out << "</script>"
-	}
-	
 	def dgCidadesEstados = { attrs ->
 		
 		def sel_estado = attrs.estado

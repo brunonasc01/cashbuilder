@@ -1,4 +1,3 @@
-<%@page import="com.cashbuilder.TextUtils"%>
 <%@page import="com.cashbuilder.Constants"%>
 	
 <div class="box">
@@ -16,7 +15,7 @@
 						<i>${transaction.subcategory }</i>
 					</li>
 					<li class="description">
-						${TextUtils.abbreviateText(transaction.description,45)  }
+						${transaction.description}
 					</li>
 				</ul>	
 			</g:each>
