@@ -7,6 +7,7 @@
 	<meta name="keywords" content="${g.message(code:"app.keywords") }"/>
 
 	<link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />		
+	<link rel="icon" href="${resource(dir:'images',file:'favicon.png')}" />
 
 	<r:layoutResources/>
 

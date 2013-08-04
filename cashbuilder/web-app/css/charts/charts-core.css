@@ -38,16 +38,6 @@
 	border-right: 6px solid rgba(255,255,255, 0.5);
 }
 
-.h-chart .data li::after{
-	border-color: #ffffff #ffffff transparent transparent;
-	border-style: solid;
-	border-width: 3px;
-	content: "";
-	right: -6px;
-	position: absolute;
-	top: 0;
-}
-
 .h-chart .labels {
 	width: 20%;
 	text-align: right;
@@ -92,11 +82,11 @@
 }
 
 .v-chart .data {	
-	height: 65%;
+	height: 163px;
 	width: 90%;
 	float: left;
 	
-	background-image: linear-gradient(to bottom, rgba(73,81,84,1) 1px, transparent 1px);
+	background-image: linear-gradient(to bottom, rgba(73,81,84,1) 2px, transparent 1px);
 	background-size: 100% 25%;
 	background-repeat: repeat-y;
 	background-position: 0 top;
@@ -114,20 +104,7 @@
 	text-align: center;
 	font-size: 0.8em;
 	background: rgba(73,81,84,0.95);
-
-	border-top: 5px solid rgba(255,255,255, 0.5);
-	border-right: 6px solid rgba(255,255,255, 0.2);
 	margin-bottom: 1px;
-}
-
-.v-chart .bars li::after{
-	border-color: #ffffff transparent transparent #ffffff;
-	border-style: solid;
-	border-width: 3px;
-	content: "";
-	right: 80%;
-	position: absolute;
-	top: -6px;
 }
 
 .v-chart .bars li:nth-child(1), .v-chart .labels li:nth-child(1){
@@ -192,9 +169,10 @@
 
 .v-chart .scale {
 	width: 5%;
-	height: 65%;
+	height: 163px;
 	text-align: right;
 
+	font-weight: bold;
 	float: left;
 }
 
@@ -211,6 +189,7 @@
 .v-chart .data .labels li{
 	display: inline-block;
 	text-align: center;
+	font-weight: bold;
 	bottom: -21px;
 }
 
@@ -221,6 +200,7 @@
 .v-chart .legends{
 	float: left;
 	width: 100%;
+	padding-left: 5%;
 	padding-top: 35px;
 }
 
