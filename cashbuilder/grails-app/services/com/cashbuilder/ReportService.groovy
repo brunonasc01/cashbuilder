@@ -70,14 +70,16 @@ class ReportService {
 	def setReportScale(double maxValue){
 		def reportScale = []
 		
-		int top = Math.ceil(maxValue)
-		int scale = top / 4
-		
-		for(int scaleValue = top; scaleValue >= 0;){
-			reportScale += scaleValue
-			scaleValue -= scale
+		if(maxValue > 0){
+			int top = Math.ceil(maxValue)
+			int scale = top / 4
+
+			for(int scaleValue = top; scaleValue >= 0;){
+				reportScale += scaleValue
+				scaleValue -= scale
+			}
+			reportScale[4] = 0
 		}
-		reportScale[4] = 0
 		
 		reportScale
 	}
