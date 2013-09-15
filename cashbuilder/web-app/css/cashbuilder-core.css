@@ -20,12 +20,12 @@ html {
 
 body {
     background: #fff;
+    background-image: linear-gradient(#dcdcdc 1px, transparent 1px), linear-gradient(0, #dcdcdc 1px, transparent 1px);
     background-image: -moz-linear-gradient(#dcdcdc 1px, transparent 1px), -moz-linear-gradient(0, #dcdcdc 1px, transparent 1px);
     background-image: -o-linear-gradient(#dcdcdc 1px, transparent 1px), -o-linear-gradient(0, #dcdcdc 1px, transparent 1px);
     background-image: -webkit-linear-gradient(#dcdcdc 1px, transparent 1px), -webkit-linear-gradient(0, #dcdcdc 1px, transparent 1px);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dcdcdc 1px), color-stop(1, transparent 1px)), -webkit-gradient(linear, left top, left bottom, color-stop(0, #dcdcdc 1px), color-stop(1, transparent 1px));
     filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#dcdcdc 1px, EndColorStr=transparent 1px)";
-    background-image: linear-gradient(#dcdcdc 1px, transparent 1px), linear-gradient(0, #dcdcdc 1px, transparent 1px);
     -webkit-background-size: 20px 20px, 20px 20px;
  	background-size: 20px 20px, 20px 20px;
  	background-position: -1px -1px, -1px -1px;
@@ -57,6 +57,23 @@ ul.list-items li:first-child{
 
 ul.list-items li:last-child {
 	border-bottom: none;
+}
+
+/* SOCIAL BAR */
+.social-bar-48 li a {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+}
+
+.social-bar-48 a.facebook-icon {
+	background-color: #3b5998;
+	background-image: url('../images/facebook-48.png');
+}
+
+.social-bar-48 a.twitter-icon {
+	background-color: #00aced;
+	background-image: url('../images/twitter-48.png');
 }
 
 /* HEADER */
@@ -436,7 +453,6 @@ a.btn:hover {
 .btn-small {
 	padding: 5px 10px;
 	font-size: 0.9rem;
-	text-shadow: none;
 }
 
 .btn-gold {

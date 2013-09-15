@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">        
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="description" content="${g.message(code:"app.description") }"/>        
 	<meta name="keywords" content="${g.message(code:"app.keywords") }"/>
 
 	<link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
@@ -11,7 +12,7 @@
 
 	<r:layoutResources/>
 
-	<title><g:message code="app.header"/></title>
+	<title><g:message code="app.title"/></title>
 
 	<g:layoutHead />
 </head>
@@ -24,7 +25,7 @@
 				</li><li><g:link controller="recovery"><g:message code="login.password.lost"/></g:link>
 			</ul>
 		
-			<g:form action="login" controller="login" method="post" class="login">
+			<g:form action="login" controller="login" method="post" class="login-form">
 				<label><g:message code="default.email.label"/>
 				</label><g:textField name="email" />
 

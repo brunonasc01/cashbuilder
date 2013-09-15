@@ -28,17 +28,5 @@
 
 	<li>
 		<g:link url="http://fazrico.wordpress.com" target="blank"><g:message code="app.blog.link"/></g:link>
-	</li>
-
-	
-</ul>
-
-<ul class="inline">
-	<li>
-		<a href="#">TWITTER</a>
-	</li>
-
-	<li>
-		<a href="#">FACEBOOK</a>
-	</li>
+	</li>	
 </ul>

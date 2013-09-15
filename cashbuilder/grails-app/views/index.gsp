@@ -45,5 +45,17 @@
 			</div>
 		</div>
 	</section>
+	
+	<div class="text-center">
+		<ul class="inline social-bar-48">
+			<li>
+				<a class="facebook-icon" href="#"></a>
+			</li>
+
+			<li>
+				<a class="twitter-icon" href="http://www.twitter.com/fazricobr" target="_blank"></a>
+			</li>
+		</ul>
+	</div>
 </body>		
 </html>

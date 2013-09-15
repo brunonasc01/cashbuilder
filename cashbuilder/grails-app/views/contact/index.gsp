@@ -2,6 +2,7 @@
 <html lang="pt-BR">
     <head>
         <meta name="layout" content="base_50" />
+        <meta name="description" content="${g.message(code:"app.contact.description") }"/>
         <r:require modules="portal"/>
     </head>
 

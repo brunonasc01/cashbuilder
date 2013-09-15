@@ -2,7 +2,8 @@
 <html lang="pt-BR">
     
 <head>
-	<meta name="layout" content="base_50" />        
+	<meta name="layout" content="base_50" />
+	<meta name="description" content="${g.message(code:"app.signup.description") }"/>        
 	<r:require modules="portal,recaptcha"/>
 </head>
     

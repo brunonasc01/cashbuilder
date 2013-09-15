@@ -11,7 +11,7 @@
 
 	<r:layoutResources/>
 
-	<title><g:message code="app.header"/></title>
+	<title><g:message code="app.title"/></title>
 
 	<g:layoutHead />
 </head>
