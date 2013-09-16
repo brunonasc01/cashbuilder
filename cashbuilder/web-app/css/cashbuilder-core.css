@@ -153,6 +153,10 @@ h1#logo-portal {
 	background: #bbbbbb;
 }
 
+#main-menu .items {
+	height: auto;
+}
+
 #main-menu a {
 	display: inline-block;
 	width: 14.285714%;
@@ -166,6 +170,10 @@ h1#logo-portal {
     -o-transition: -o-background 0.3s ease;
     -webkit-transition: -webkit-background 0.3s ease;
     transition: background 0.3s ease
+}
+
+#main-menu a#mobile-menu {
+	display: none
 }
 
 #main-menu a:hover, #main-menu .active {
@@ -186,7 +194,7 @@ h1#logo-portal {
 
 .menu-icon a:before {
 	font-family: 'StyleIcons';
-	margin-right: 3.067485%;
+	margin-right: 5px;
 }
 
 a.home:before {

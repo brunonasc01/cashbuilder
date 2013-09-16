@@ -104,10 +104,77 @@
 
 @media screen and (max-width: 500px){
 	
+	/* GENERAL */
 	*{
-		font-size: 105%;
+		font-size: 100%;
 	}
 
+	form label, form input[type="text"], form input[type="password"], form select {
+		text-align: left;
+		width: 100%;
+		margin: 0;
+	}
+
+	input[type='submit'] {
+		margin-top: 5%;
+	}
+
+	.btn-small {
+		padding: 15px 10px
+	}
+
+	/* MODAL */
+	.modal {
+		position: absolute;
+		top: 0;
+		left:0;
+		
+		width: 100%;
+		margin: 0
+	}
+
+	/* MAIN MENU */
+	#main-menu a {
+		width: 100%;
+		padding: 10px 0
+	}
+	
+	#main-menu .items{
+		display: none
+	}
+	
+	#main-menu a#mobile-menu {
+		display: block
+	}
+
+	.menu-icon a span {
+		display: inline-block
+	}
+
+	/* PORTAL */
+	h1#logo-portal {
+		font-size: 4rem;
+	}
+
+	.highlights [class*="col-"]{
+		width: 100%;
+		border-right: none;
+	}
+	
+	#login-bar {
+		text-align: left;
+	}
+
+	#login-bar input[type="text"] {
+		margin-bottom: 5px;
+	}
+
+	#login-bar input[type="submit"] {
+		margin: 10px 25%;
+		width: 50%;
+	}
+
+	/* MONTH LIST */
 	#month-list a:nth-child(1):before {		
 		content:"1"
 	}
@@ -154,44 +221,5 @@
 
 	#month-list a:nth-child(12):before {
 		content:"12"
-	}
-
-	form label, form input[type="text"], form input[type="password"], form select {
-		text-align: left;
-		width: 100%;
-		margin: 0;
-	}
-
-	input[type='submit'] {
-		margin-top: 5%;
-	}
-
-
-	/* general */
-	.btn-small {
-		padding: 15px 10px
-	}
-
-	/* portal */
-	h1#logo-portal {
-		font-size: 4rem;
-	}
-
-	.highlights [class*="col-"]{
-		width: 100%;
-		border-right: none;
-	}
-	
-	#login-bar {
-		text-align: left;
-	}
-
-	#login-bar input[type="text"] {
-		margin-bottom: 5px;
-	}
-
-	#login-bar input[type="submit"] {
-		margin: 10px 25%;
-		width: 50%;
-	}
+	}	
 }

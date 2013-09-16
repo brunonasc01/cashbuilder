@@ -1,3 +1,5 @@
+<%@page import="com.cashbuilder.Constants"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -10,8 +12,7 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="report.title.label"/> - <g:message code="${report.date.month}"/>
-				<span class="right-align">${report.date.year}</span>
+				<g:message code="report.title.label"/> - <g:message code="${report.date.month}"/> / ${report.date.year}
 			</h2>
 		</div>
 
@@ -26,7 +27,7 @@
 							<div class="scale">
 								<ul>
 									<g:each var="scale" in="${report.reportScale}">
-										<li>${scale }</li>
+										<li><g:formatNumber number="${scale }" currencySymbol="" format="${Constants.FORMATO_MOEDA}"></g:formatNumber></li>
 									</g:each>	
 								</ul>
 							</div>

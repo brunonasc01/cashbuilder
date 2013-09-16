@@ -1,3 +1,20 @@
+/** Inicializacao do menu mobile */
+$(function() {  
+	
+	var windowWidth = $(window).width();  
+	
+	if(windowWidth <= 500){	
+	    var pull        = $('#mobile-menu');  
+	        menu        = $('#main-menu .items');  
+	        menuHeight  = menu.height();  
+	  
+	    $(pull).on('click', function(e) {  
+	        e.preventDefault();  
+	        menu.slideToggle();  
+	    });  
+	}
+});
+
 
 /**
  * Atualiza dinamicamente o combo de subcategoria conforme a selecao da categoria 

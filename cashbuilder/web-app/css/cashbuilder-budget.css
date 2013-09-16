@@ -22,7 +22,7 @@
 	
 }
 
-#budget-list .values {
+#budget-list .values, #budget-list .child-values {
 	width: 22%;
 }
 
@@ -90,4 +90,19 @@
 .budget-modal input[type="text"], .budget-modal select{
 	display: inline-block;
 	width: 50%;
+}
+
+@media screen and (max-width: 500px){
+
+	#budget-list .child-name {
+		width: 95%
+	}
+
+	#budget-list .child-values {
+		width: 45%
+	}
+	
+	#budget-list .of {
+		width: 10%
+	}		
 }

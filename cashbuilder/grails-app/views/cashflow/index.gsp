@@ -14,8 +14,7 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="menu.cashflow.label"/> - <g:message code="${cashFlow.date.month}"/>
-				<span class="right-align">${cashFlow.date.year}</span>
+				<g:message code="menu.cashflow.label"/> - <g:message code="${cashFlow.date.month}"/> / ${cashFlow.date.year}
 			</h2>
    		</div>
     	
