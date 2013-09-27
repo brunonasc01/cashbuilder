@@ -1,13 +1,10 @@
 @font-face {
-    font-family: "StyleIcons";
-    src: url(../fonts/cashbuilder-font.woff) format("woff");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-    font-family: "StyleIconsPrevNext";
-    src: url(../fonts/cashbuilder-font_prev_next.woff) format("woff");
+  font-family: 'cashbuilder-font';
+  src: url('../fonts/cashbuilder-font.eot?81070857');
+  src: url('../fonts/cashbuilder-font.eot?81070857#iefix') format('embedded-opentype'),
+       url('../fonts/cashbuilder-font.woff?81070857') format('woff'),
+       url('../fonts/cashbuilder-font.ttf?81070857') format('truetype'),
+       url('../fonts/cashbuilder-font.svg?81070857#cashbuilder-font') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -18,7 +15,7 @@ html {
 	font-family: Helvetica, sans-serif;	
 }
 
-body {
+body.system {
     background: #fff;
     background-image: linear-gradient(#dcdcdc 1px, transparent 1px), linear-gradient(0, #dcdcdc 1px, transparent 1px);
     background-image: -moz-linear-gradient(#dcdcdc 1px, transparent 1px), -moz-linear-gradient(0, #dcdcdc 1px, transparent 1px);
@@ -193,7 +190,7 @@ h1#logo-portal {
 /* MAIN MENU ICONS */
 
 .menu-icon a:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	margin-right: 5px;
 }
 
@@ -347,27 +344,27 @@ footer a:link, footer a:active, footer a:visited {
 /* BUTTONS AND ICONS */
 
 .icon-plus:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\2795';
 }
 
 .icon-minus:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\2796';
 }
 
 .icon-edit:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\270d';
 }
 
 .icon-delete:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\e729';
 }
 
 .btn-icon:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	margin-right: 0.7%;
 	font-weight: normal;
 }
@@ -377,17 +374,17 @@ footer a:link, footer a:active, footer a:visited {
 }
 
 .icon-unlock:after {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\1f513';	
 }
 
 .icon-doc:before {
-	font-family: 'StyleIcons';
-	content: '\1f4c4';
+	font-family: 'cashbuilder-font';
+	content: '\e813';
 }
 
 .icon-home:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\2302';
 }
 
@@ -606,7 +603,7 @@ a.btn:hover {
 }
 
 .message p:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	margin-right: 0.5em;
 }
 
@@ -701,7 +698,7 @@ a.btn:hover {
 }
 
 .modal a:before {
-	font-family: 'StyleIcons';
+	font-family: 'cashbuilder-font';
 	content: '\2715';
 }
 

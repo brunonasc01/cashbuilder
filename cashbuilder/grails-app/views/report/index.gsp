@@ -65,5 +65,36 @@
    				</div>
 			</g:else>
 		</div>
+		
+		<div class="col-1">
+    		<g:if test="${distribReport.reportData.size() > 0}">
+				<div class="box">
+					<h3 class="title-box">
+						<g:message code="report.graphic2.title.label"/>
+					</h3>
+					<div class="content">
+						<div class="h-chart clearfix">
+							<div>
+								<ul>
+									<g:each var="data" in="${distribReport.reportData}">
+										<li>${data.percent}%
+										</li><li>
+											<span style="width: ${data.percent}%">${data.label}</span>
+										</li>
+									</g:each>
+								</ul>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</g:if>
+			<g:else>
+				<div class="box">
+					<div class="empty-box">
+	   					<g:message code="report.empty.message"/>
+	   				</div>
+   				</div>
+			</g:else>
+		</div>
 	</body>		
 </html>

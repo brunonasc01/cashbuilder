@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <meta name="layout" content="base_50" />
+        <meta name="layout" content="common_50" />
         <r:require modules="portal"/>
     </head>
 

@@ -171,7 +171,9 @@
     background: -webkit-linear-gradient(#ccc, #6b7576);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(1, #6b7576));
     filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#ccc, EndColorStr=#6b7576)";
-    background: linear-gradient(#ccc, #6b7576)
+    background: linear-gradient(#ccc, #6b7576);
+    
+    
 }
 
 @media screen and (max-width: 959px) {
@@ -234,7 +236,7 @@
 	}
 
 	[class*="wrapper-"] {
-		width: 90%;
+		width: 100%;
 	}
 
 	[class*="wrapper-"] .grid {

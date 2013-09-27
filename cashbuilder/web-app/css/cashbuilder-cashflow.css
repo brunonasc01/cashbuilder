@@ -30,6 +30,7 @@
 }
 
 #cashflow-table .buttons{
+	min-width: 1.5rem;
 	width: 7%;
 }
 
@@ -69,4 +70,43 @@
 
 .buttons .icon-delete:hover {
 	color: #e40101;
+}
+
+@media screen and (max-width: 500px){
+	#cashflow-table {	 	
+	 	font-size: 0.95rem
+	}
+	
+	#cashflow-table .content {
+		font-size: 0.90rem;
+	}
+	
+	#cashflow-table .title-box li.day {
+		width: 30%;
+	}
+	
+	#cashflow-table .buttons{
+		min-width: 3.5rem;
+		width: 20%;
+	}
+	
+	#cashflow-table .day{
+		width: 10%;
+	}
+	
+	#cashflow-table .income{
+		width: 20%;
+	}
+	
+	#cashflow-table .expense{
+		width: 20%;
+	}
+	
+	#cashflow-table .category{
+		width: 30%;
+	}
+	
+	#cashflow-table .description{
+		display: none;
+	}
 }

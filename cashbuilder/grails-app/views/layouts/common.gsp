@@ -32,7 +32,7 @@
 	</script>
 </head>
 
-<body class="system">
+<body>
 	<header>
 		<g:render template="/elements/logo" ></g:render>
 	
@@ -40,8 +40,6 @@
 	</header>
 
 	 <section class="wrapper-90">
-	 	<g:render template="/elements/menu" ></g:render>
-
 		<div class="grid">
 			<g:layoutBody />
 		</div>	 
@@ -50,11 +48,7 @@
 	<footer class="text-center">
 		<g:render template="/elements/rodape" ></g:render>
 	</footer>
-
-	<div class="overlay"></div>
-
-	<div id="modal"></div>
-
+	
 	<r:layoutResources/>
 </body>
 

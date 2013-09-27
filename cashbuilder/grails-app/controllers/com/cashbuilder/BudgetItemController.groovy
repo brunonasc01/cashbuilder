@@ -11,7 +11,7 @@ class BudgetItemController {
 		def budgetItem = BudgetItem.get(params.id)
 		
 		if(budgetItem){
-			render(view: "edit_item", model: [bean: budgetItem])
+			render(view: "edit_item", model: [bean: budgetItem, monthId: params.monthId])
 		}
 	}
 	

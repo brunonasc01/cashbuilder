@@ -13,6 +13,7 @@ $('#bt_close_modal').click(function(){
 
 		<g:form action="update" controller="budgetItem">
 			<g:hiddenField name="id" value="${bean.id}"/>
+			<g:hiddenField name="monthId" value="${monthId}"/>
 		
 			<label>Valor Atual</label>
 			<g:textField maxlength="10" name="oldValue" value="${bean.budgetedValue}" disabled="true"/>

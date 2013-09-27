@@ -31,17 +31,17 @@
 					</li><li class="day"><g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
 					</li><li class="income">
 						<g:if test="${transaction.nature.equals('C')}">
-							<g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}" currencySymbol=""></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}" currencySymbol=""></g:formatNumber>
 						</g:else>
 					</li><li class="expense">
 						<g:if test="${transaction.nature.equals('D')}">
-						  <g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+						  <g:formatNumber number="${transaction.value}" format="${Constants.FORMATO_MOEDA}" currencySymbol=""></g:formatNumber>
 						</g:if>
 						<g:else>
-							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
+							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}" currencySymbol=""></g:formatNumber>
 						</g:else>
 					</li><li class="category">${transaction.subcategory}
 					</li><li class="description">${transaction.description}</li>

@@ -58,12 +58,12 @@
 }
 
 .ui-widget-header a.ui-datepicker-prev:before {
-	font-family: 'StyleIconsPrevNext';
+	font-family: 'cashbuilder-font';
 	content: '\e811';
 }
 
 .ui-widget-header a.ui-datepicker-next:before {
-	font-family: 'StyleIconsPrevNext';
+	font-family: 'cashbuilder-font';
 	content: '\e812';
 }
 

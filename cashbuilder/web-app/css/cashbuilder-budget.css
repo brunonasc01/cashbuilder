@@ -22,12 +22,11 @@
 	
 }
 
-#budget-list .values, #budget-list .child-values {
+#budget-list .values {
 	width: 22%;
 }
 
 #budget-list .button {
-	width: 5%;
 	text-align: center;
 }
 
@@ -42,6 +41,10 @@
 
 #budget-list .child-name {
 	width: 45%;
+}
+
+#budget-list .child-values {
+	width: 50%;
 }
 
 /* Categoria - Pai */
@@ -62,7 +65,6 @@
     -webkit-transition: height 0.5s ease-in-out;
     transition: height 0.5s ease-in-out
 }
-
 
 #budget-list .subcategory-list ul {
 	padding-top: 1em;
@@ -94,15 +96,28 @@
 
 @media screen and (max-width: 500px){
 
+	#budget-list li.real-col {
+		display: none;
+	}
+	
+	#budget-list li.prev-col {
+		width: 100%;
+		text-align: right
+	}
+	
+	#budget-list .main-category .progress-bar{
+		width: 90%;
+	}
+	
+	#budget-list .subcategory-list .button{
+		min-width: 24px;
+	}
+	
 	#budget-list .child-name {
-		width: 95%
+		width: auto
 	}
 
 	#budget-list .child-values {
-		width: 45%
-	}
-	
-	#budget-list .of {
-		width: 10%
-	}		
+		width: 100%
+	}	
 }

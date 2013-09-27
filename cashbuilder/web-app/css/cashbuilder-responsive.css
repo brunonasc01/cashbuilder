@@ -119,6 +119,12 @@
 		margin-top: 5%;
 	}
 
+	.bt-icon {
+		font-size: 1.5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
 	.btn-small {
 		padding: 15px 10px
 	}

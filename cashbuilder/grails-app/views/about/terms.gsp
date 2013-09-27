@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta name="layout" content="base" />
+    <meta name="layout" content="common" />
     <meta name="description" content="${g.message(code:"app.terms.description") }"/>
     <r:require modules="portal"/>
 </head>

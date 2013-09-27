@@ -11,9 +11,9 @@
 		
 			<ul class="inline main-category">
 				<li class="button"><span class="bt_expand bt-icon icon-plus"></span>
-				</li><li class="values text-right"><g:formatNumber number="${category.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
+				</li><li class="values real-col text-right"><g:formatNumber number="${category.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
 				</li><li class="progress-bar"><span class="${category.barClass }" style="width:${category.barSize}%;"></span>
-				</li><li class="values"><g:formatNumber number="${category.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
+				</li><li class="values prev-col"><g:formatNumber number="${category.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/></li>
 			</ul>
 
 			<div id="childItem_${i}" class="subcategory-list">
@@ -23,12 +23,14 @@
 							<li class="button">
 								<g:form name="editBudgetForm" action="edit" controller="budgetItem">
 									<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
+									<g:hiddenField name="monthId" value="${monthIndex}"/>
 									<span id="bt_edit_budget" class="bt-icon icon-edit"></span>
 								</g:form>
 							</li><li class="child-name">${subcategory.name}
-							</li><li class="child-values text-right"><g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
-							</li><li class="of"><g:message code="default.of"/>
-							</li><li class="child-values"><g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/>
+							</li><li class="child-values text-right">
+									<g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
+									<g:message code="default.of"/>
+									<g:formatNumber number="${subcategory.budgetedValue }" format="${Constants.FORMATO_MOEDA}"/>
 							</li><li class="progress-bar"><span class="${subcategory.barClass }" style="width:${subcategory.barSize}%;"></span>
 							</li>
 						</ul>

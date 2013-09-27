@@ -2,7 +2,7 @@
 <html lang="pt-BR">
     
 <head>
-	<meta name="layout" content="base" />
+	<meta name="layout" content="common" />
 	<meta name="description" content="${g.message(code:"app.about.description") }"/>
 	<r:require modules="portal"/>
 </head>
