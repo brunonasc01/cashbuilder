@@ -5,19 +5,14 @@ header {
     }
 
 body {
-    background: #ccc;
-    background: -moz-linear-gradient(#ccc, #fff);
-    background: -o-linear-gradient(#ccc, #fff);
-    background: -webkit-linear-gradient(#ccc, #fff);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(1, #fff));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#ccc, EndColorStr=#fff)";
-    background: linear-gradient(#ccc, #fff);
-    /*background-image: url(../images/background.png);
-    background-position: left 50px;
-    background-repeat: no-repeat;
-    background-color: #C0DEED;*/
-    
-    color: #495154
+    background: #CCCCCC;
+    background: -moz-linear-gradient(#00A550, #fff);
+    background: -o-linear-gradient(#00A550, #fff);
+    background: -webkit-linear-gradient(#00A550, #fff);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00A550), color-stop(1, #fff));
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#00A550, EndColorStr=#fff)";
+    background: linear-gradient(#00A550, #fff);    
+    color: #333333
     }
 
 .grid {
@@ -41,17 +36,13 @@ body {
     }
 
 #login-bar {
-    color: #fff;    
+    color: #FFFFFF;    
     padding: 5px
     }
 
 .recovery-bar {
     font-size: 0.85rem;
     margin-bottom: 5px
-    }
-
-.recovery-bar a:link, .recovery-bar a:active, .recovery-bar a:visited {
-    color: #fff
     }
 
 .login-form input {

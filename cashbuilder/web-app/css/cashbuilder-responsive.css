@@ -125,8 +125,9 @@
 		height: 1.5rem;
 	}
 
-	.btn-small {
-		padding: 15px 10px
+	.btn {
+		font-size: 1.3em;
+		padding: 10px 20px;
 	}
 
 	/* MODAL */
@@ -158,8 +159,8 @@
 	}
 
 	/* PORTAL */
-	h1#logo-portal {
-		font-size: 4rem;
+	#logo-portal img{
+		margin: 20px;
 	}
 
 	.highlights [class*="col-"]{

@@ -32,9 +32,7 @@ class ReportController {
 		ReportBean report = reportService.buildBarChart(user, currentMonth, currentYear)
 		
 		ReportBean distribReport = reportService.buildExpendChart(user, currentMonth, currentYear)
-		
-		char labelReference = 'A'
 				
-		[stats:true, nextYear: nextYear, monthIndex: currentMonth, report: report, distribReport: distribReport, labelReference:labelReference]
+		[stats:true, nextYear: nextYear, monthIndex: currentMonth, report: report, distribReport: distribReport]
 	}
 }

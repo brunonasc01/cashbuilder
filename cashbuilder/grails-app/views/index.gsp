@@ -8,7 +8,9 @@
 
 <body>
 	<div class="text-center append-bottom-dist">
-		<h1 id="logo-portal"><g:message code="app.name"/></h1>
+		<div id="logo-portal">
+			<img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_large_full.png')}"/>
+		</div>
 
 		<h3><g:message code="info.message1"/></h3>
 

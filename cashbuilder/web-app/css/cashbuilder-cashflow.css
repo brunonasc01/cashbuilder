@@ -64,14 +64,6 @@
 	width: 30%;
 }
 
-.buttons .icon-edit:hover {
-	color: #01a401;
-}
-
-.buttons .icon-delete:hover {
-	color: #e40101;
-}
-
 @media screen and (max-width: 500px){
 	#cashflow-table {	 	
 	 	font-size: 0.95rem

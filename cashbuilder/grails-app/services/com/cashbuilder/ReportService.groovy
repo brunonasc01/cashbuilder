@@ -50,7 +50,7 @@ class ReportService {
 			}
 			
 			reportData.each { bean ->
-				bean.percent = (bean.total/maxValue)*100
+				bean.percent = ((bean.total/maxValue)*100).round(2)
 			}
 		}
 		
@@ -93,7 +93,7 @@ class ReportService {
 			}
 
 			reportData.each { bean ->
-				bean.percent = (bean.total/total)*100
+				bean.percent = ((bean.total/total)*100).round(2)
 			}
 		}
 		

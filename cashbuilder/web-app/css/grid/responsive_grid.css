@@ -165,13 +165,13 @@
 }
 
 .grid {
-    background: #ccc;
-    background: -moz-linear-gradient(#ccc, #6b7576);
-    background: -o-linear-gradient(#ccc, #6b7576);
-    background: -webkit-linear-gradient(#ccc, #6b7576);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(1, #6b7576));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#ccc, EndColorStr=#6b7576)";
-    background: linear-gradient(#ccc, #6b7576);
+    background: #EEFFEE;
+    background: -moz-linear-gradient(#EEFFEE, #00A550);
+    background: -o-linear-gradient(#EEFFEE, #00A550);
+    background: -webkit-linear-gradient(#EEFFEE, #00A550);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEFFEE), color-stop(1, #00A550));
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#EEFFEE, EndColorStr=#00A550)";
+    background: linear-gradient(#EEFFEE, #00A550);
     
     
 }

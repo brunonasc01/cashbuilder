@@ -1,3 +1,16 @@
+ul.list-items li {
+	border-bottom: 1px solid #495154;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+ul.list-items li:first-child{
+	padding-top: 0;
+}
+
+ul.list-items li:last-child {
+	border-bottom: none;
+}
 
 #budget-data-form h4 {
 	padding-top: 10px;
@@ -23,21 +36,6 @@
 	border-bottom: none;
 }
 
-/*#budget-data-form label {
-	width: 21%;
-	padding-right: 2%;
-}
-
-#budget-data-form input[type="text"] {
-	width: 19.038462%;	
-}
-
-#budget-submit-options label {
-	font-size: 1em;
-	width: 23%;
-	line-height: 2;
-}*/
-
 #budget-submit-options input[type="radio"] {
 		
 }
@@ -47,14 +45,6 @@
 }
 
 /* Manage Category */
-
-.icon-edit:hover {
-	color: #01a401;
-}
-
-.icon-delete:hover {
-	color: #e40101;
-}
 
 #new-category label {
 	width: 15%;

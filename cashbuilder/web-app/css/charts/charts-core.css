@@ -5,6 +5,8 @@
 	margin: 0 auto;
 	padding-top: 1%;
 	padding-bottom: 1%;
+	
+	font-size: 0.9rem
 }
 
 .h-chart li{
@@ -12,16 +14,13 @@
 	display: inline-block;
 	margin-bottom: 8px;
 
-	line-height: 23px;
+	line-height: 23px
 }
 
 .h-chart span{
 	display: inline-block;
 	text-align: right;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	
-	padding-right: 5px;
+	padding-right: 5px
 }
 
 .h-chart li:nth-child(odd){ /* labels */
@@ -29,24 +28,24 @@
 	color: #495154;
 
 	padding-right: 5px;
-	min-width: 50px;
-	width: 10%;
+	min-width: 180px;
+	width: 20%
 }
 
 .h-chart li:nth-child(even){ /* percent bars */
 	color: #ffffff;
-	width: 90%;
+	width: 75%
 }
 
-@media screen and (max-width: 615px){
-	.h-chart li:nth-child(even){ 
-		width: 85%;
+@media screen and (max-width: 900px){
+	.h-chart li:nth-child(even), .h-chart li:nth-child(odd){ 
+		width: 100%
 	}
-}
-
-@media screen and (max-width: 430px){
-	.h-chart li:nth-child(even){ 
-		width: 79%;
+	
+	.h-chart li:nth-child(odd) {
+		text-align: left;
+		margin-bottom: 0;
+		line-height: 1.4
 	}
 }
 
@@ -54,41 +53,113 @@
 
 .v-chart {
 	width: auto;
-	height: 350px;
+	min-height: 200px;
 
 	margin: 0 auto;
 	padding-top: 1%;
-	padding-bottom: 2%;
+	padding-bottom: 2%
 }
 
 .v-chart .data {	
-	height: 166px;
+	height: 150px;
 	width: 90%;
+	
+	position: relative;
 	float: left;
 	
-	background-image: linear-gradient(to bottom, rgba(73,81,84,1) 2px, transparent 1px);
+	background-image: linear-gradient(to bottom, rgba(73,81,84,1) 1px, transparent 1px);
     -webkit-background-size: 100% 25%;
 	background-size: 100% 25%;
 	background-repeat: repeat-y;
-	background-position: 0 top;
-    position: relative
+	background-position: 0 top
+}
+
+.v-chart .data-popup {		
+	font-weight:bold;
+	background: #ffffff;
+	min-width: 50px;
+	padding: 2px;
+		
+	position: absolute;	
+	bottom: 60%;
+	left: 30%;
+	
+	z-index: 999;
+	display: none
+}
+
+.v-chart .data li:hover .data-popup {
+	display: block
 }
 
 .v-chart .data li {
-	width: 4%;
+	min-width: 60px;
+	width: 5%;
 	position: absolute;
-	bottom: 0;
+	bottom: 0
+}
+
+.v-chart .data .labels li{
+	font-size: 0.6em;
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+    bottom: -25px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis
 }
 
 .v-chart .bars li {
 	text-align: center;
 	font-size: 0.8em;
 	background: rgba(73,81,84,0.95);
-	margin-bottom: 1px;
+	margin-bottom: 1px
+}
+
+.v-chart .scale {
+	text-align: right;
+	font-weight: bold;
+	float: left;
+	
+	min-width: 60px;
+	width: 5%;
+	height: 150px
+}
+
+.v-chart .scale ul {
+	height: 100%
+}
+
+.v-chart .scale li{
+	color: #495154;
+	height: 25%;
+	font-size: 0.9em
+}
+
+@media screen and (max-width: 1200px){
+	.v-chart .data li {
+		min-width: 40px
+	}
+	
+	.v-chart .data .labels li{
+		font-size: 0.5em
+	}
+	
+	.v-chart .scale {
+		min-width: 50px;
+		font-size: 0.7em
+	}
+}
+
+@media screen and (max-width: 800px){
+	#vertical-graph {
+		display:none
+	}
 }
 
 .v-chart .bars li:nth-child(1), .v-chart .labels li:nth-child(1){
-	left: 3%;
+	left: 2%;
 }
 
 .v-chart .bars li:nth-child(2), .v-chart .labels li:nth-child(2){
@@ -96,184 +167,213 @@
 }
 
 .v-chart .bars li:nth-child(3), .v-chart .labels li:nth-child(3){
-	left: 15%;
+	left: 16%;
 }
 
 .v-chart .bars li:nth-child(4), .v-chart .labels li:nth-child(4){
-	left: 21%;
+	left: 23%;
 }
 
 .v-chart .bars li:nth-child(5), .v-chart .labels li:nth-child(5){
-	left: 27%;
+	left: 30%;
 }
 
 .v-chart .bars li:nth-child(6), .v-chart .labels li:nth-child(6){
-	left: 33%;
+	left: 37%;
 }
 
 .v-chart .bars li:nth-child(7), .v-chart .labels li:nth-child(7){
-	left: 39%;
+	left: 44%;
 }
 
 .v-chart .bars li:nth-child(8), .v-chart .labels li:nth-child(8){
-	left: 45%;
-}
-
-.v-chart .bars li:nth-child(9), .v-chart .labels li:nth-child(9){
 	left: 51%;
 }
 
+.v-chart .bars li:nth-child(9), .v-chart .labels li:nth-child(9){
+	left: 58%;
+}
+
 .v-chart .bars li:nth-child(10), .v-chart .labels li:nth-child(10){
-	left: 57%;
+	left: 65%;
 }
 
 .v-chart .bars li:nth-child(11), .v-chart .labels li:nth-child(11){
-	left: 63%;
+	left: 72%;
 }
 
 .v-chart .bars li:nth-child(12), .v-chart .labels li:nth-child(12){
-	left: 69%;
+	left: 79%;
 }
 
 .v-chart .bars li:nth-child(13), .v-chart .labels li:nth-child(13){
-	left: 75%;
+	left: 86%;
 }
 
 .v-chart .bars li:nth-child(14), .v-chart .labels li:nth-child(14){
-	left: 81%;
-}
-
-.v-chart .bars li:nth-child(15), .v-chart .labels li:nth-child(15){
-	left: 87%;
-}
-
-.v-chart .scale {
-	width: 5%;
-	height: 166px;
-	text-align: right;
-
-	font-weight: bold;
-	float: left;
-}
-
-.v-chart .scale ul {
-	height: 100%;
-}
-
-.v-chart .scale li{
-	color: #495154;
-	height: 25%;
-	font-size: 0.9em;
-}
-
-.v-chart .data .labels li{
-	display: inline-block;
-	text-align: center;
-	font-weight: bold;
-    bottom: -21px
-}
-
-.v-chart .legends{
-	float: left;
-	width: 100%;
-	padding-left: 5%;
-	padding-top: 35px;
-}
-
-.v-chart .legends li{
-	display: inline-block;
-	width: 25%;
-}
-
-.v-chart .legends span {
-	display: inline-block;
-	width: 18px;
-	height: 18px;
-	margin-right: 8px;
-
-	font-weight: bold;
-	text-align: center;
-	color: #495154;
+	left: 93%;
 }
 
 /* CHART BAR COLORS */
-
-.h-chart li:nth-child(2) span, .v-chart .bars li:nth-child(1), .v-chart .legends li:nth-child(1) span {
+ 
+.h-chart li:nth-child(2) span, .v-chart .bars li:nth-child(1), .v-chart li:nth-child(1) span {
 	background: #6DCFF6;
 }
 
-.h-chart li:nth-child(4) span, .v-chart .bars li:nth-child(2), .v-chart .legends li:nth-child(2) span {
+.h-chart li:nth-child(4) span, .v-chart .bars li:nth-child(2), .v-chart li:nth-child(2) span {
 	background: #F6BD0F;
 }
 
-.h-chart li:nth-child(6) span, .v-chart .bars li:nth-child(3), .v-chart .legends li:nth-child(3) span {
+.h-chart li:nth-child(6) span, .v-chart .bars li:nth-child(3), .v-chart li:nth-child(3) span {
 	background: #8BBA00;
 }
 
-.h-chart li:nth-child(8) span, .v-chart .bars li:nth-child(4), .v-chart .legends li:nth-child(4) span {
+.h-chart li:nth-child(8) span, .v-chart .bars li:nth-child(4), .v-chart li:nth-child(4) span {
 	background: #FF8E46;
 }
 
-.h-chart li:nth-child(10) span, .v-chart .bars li:nth-child(5), .v-chart .legends li:nth-child(5) span {
+.h-chart li:nth-child(10) span, .v-chart .bars li:nth-child(5), .v-chart li:nth-child(5) span {
 	background: #008E8E;
 }
 
-.h-chart li:nth-child(12) span, .v-chart .bars li:nth-child(6), .v-chart .legends li:nth-child(6) span {
+.h-chart li:nth-child(12) span, .v-chart .bars li:nth-child(6), .v-chart li:nth-child(6) span {
 	background: #D64646;
 }
 
-.h-chart li:nth-child(14) span, .v-chart .bars li:nth-child(7), .v-chart .legends li:nth-child(7) span {
+.h-chart li:nth-child(14) span, .v-chart .bars li:nth-child(7), .v-chart li:nth-child(7) span {
 	background: #8E468E;
 }
 
-.h-chart li:nth-child(16) span, .v-chart .bars li:nth-child(8), .v-chart .legends li:nth-child(8) span {
+.h-chart li:nth-child(16) span, .v-chart .bars li:nth-child(8), .v-chart li:nth-child(8) span {
 	background: #588526;
 }
 
-.h-chart li:nth-child(18) span, .v-chart .bars li:nth-child(9), .v-chart .legends li:nth-child(9) span {
+.h-chart li:nth-child(18) span, .v-chart .bars li:nth-child(9), .v-chart li:nth-child(9) span {
 	background: #B3AA00;
 }
 
-.h-chart li:nth-child(20) span, .v-chart .bars li:nth-child(10), .v-chart .legends li:nth-child(10) span {
+.h-chart li:nth-child(20) span, .v-chart .bars li:nth-child(10), .v-chart li:nth-child(10) span {
 	background: #008ED6;
 }
 
-.h-chart li:nth-child(22) span, .v-chart .bars li:nth-child(11), .v-chart .legends li:nth-child(11) span {
+.h-chart li:nth-child(22) span, .v-chart .bars li:nth-child(11), .v-chart li:nth-child(11) span {
 	background: #9D080D;
 }
 
-.h-chart li:nth-child(24) span, .v-chart .bars li:nth-child(12), .v-chart .legends li:nth-child(12) span {
+.h-chart li:nth-child(24) span, .v-chart .bars li:nth-child(12), .v-chart li:nth-child(12) span {
 	background: #A186BE;
 }
 
-.h-chart li:nth-child(26) span, .v-chart .bars li:nth-child(13), .v-chart .legends li:nth-child(13) span {
+.h-chart li:nth-child(26) span, .v-chart .bars li:nth-child(13), .v-chart li:nth-child(13) span {
 	background: #CC6600;
 }
 
-.h-chart li:nth-child(28) span, .v-chart .bars li:nth-child(14), .v-chart .legends li:nth-child(14) span {
+.h-chart li:nth-child(28) span, .v-chart .bars li:nth-child(14), .v-chart li:nth-child(14) span {
 	background: #FDC689;
 }
 
-.h-chart li:nth-child(30) span, .v-chart .bars li:nth-child(15), .v-chart .legends li:nth-child(15) span {
+.h-chart li:nth-child(30) span, .v-chart .bars li:nth-child(15), .v-chart li:nth-child(15) span {
 	background: #ABA000;
 }
 
-.h-chart li:nth-child(32) span, .v-chart .bars li:nth-child(16), .v-chart .legends li:nth-child(16) span {
+.h-chart li:nth-child(32) span, .v-chart .bars li:nth-child(16), .v-chart li:nth-child(16) span {
 	background: #F26D7D;
 }
 
-.h-chart li:nth-child(34) span, .v-chart .bars li:nth-child(17), .v-chart .legends li:nth-child(17) span {
+.h-chart li:nth-child(34) span, .v-chart .bars li:nth-child(17), .v-chart li:nth-child(17) span {
 	background: #FFF200;
 }
 
-.h-chart li:nth-child(36) span, .v-chart .bars li:nth-child(18), .v-chart .legends li:nth-child(18) span {
+.h-chart li:nth-child(36) span, .v-chart .bars li:nth-child(18), .v-chart li:nth-child(18) span {
 	background: #0054A6;
 }
 
-.h-chart li:nth-child(38) span, .v-chart .bars li:nth-child(19), .v-chart .legends li:nth-child(19) span {
+.h-chart li:nth-child(38) span, .v-chart .bars li:nth-child(19), .v-chart li:nth-child(19) span {
 	background: #F7941C;
 }
 
-.h-chart li:nth-child(40) span, .v-chart .bars li:nth-child(20), .v-chart .legends li:nth-child(20) span {
+.h-chart li:nth-child(40) span, .v-chart .bars li:nth-child(20), .v-chart li:nth-child(20) span {
 	background: #CC3300;
+}
+
+/* VERTICAL CHART VALUE POPUP BORDER COLORS */
+
+.v-chart li:nth-child(1) .data-popup {
+	border: 2px solid #6DCFF6;
+}
+
+.v-chart li:nth-child(2) .data-popup {
+	border: 2px solid #F6BD0F;
+}
+
+.v-chart li:nth-child(3) .data-popup {
+	border: 2px solid #8BBA00;
+}
+
+.v-chart li:nth-child(4) .data-popup {
+	border: 2px solid #FF8E46;
+}
+
+.v-chart li:nth-child(5) .data-popup {
+	border: 2px solid #008E8E;
+}
+
+.v-chart li:nth-child(6) .data-popup {
+	border: 2px solid #D64646;
+}
+
+.v-chart li:nth-child(7) .data-popup {
+	border: 2px solid #8E468E;
+}
+
+.v-chart li:nth-child(8) .data-popup {
+	border: 2px solid #588526;
+}
+
+.v-chart li:nth-child(9) .data-popup {
+	border: 2px solid #B3AA00;
+}
+
+.v-chart li:nth-child(10) .data-popup {
+	border: 2px solid #008ED6;
+}
+
+.v-chart li:nth-child(11) .data-popup {
+	border: 2px solid #9D080D;
+}
+
+.v-chart li:nth-child(12) .data-popup {
+	border: 2px solid #A186BE;
+}
+
+.v-chart li:nth-child(13) .data-popup {
+	border: 2px solid #CC6600;
+}
+
+.v-chart li:nth-child(14) .data-popup {
+	border: 2px solid #FDC689;
+}
+
+.v-chart li:nth-child(15) .data-popup {
+	border: 2px solid #ABA000;
+}
+
+.v-chart li:nth-child(16) .data-popup {
+	border: 2px solid #F26D7D;
+}
+
+.v-chart li:nth-child(17) .data-popup {
+	border: 2px solid #FFF200;
+}
+
+.v-chart li:nth-child(18) .data-popup {
+	border: 2px solid #0054A6;
+}
+
+.v-chart li:nth-child(19) .data-popup {
+	border: 2px solid #F7941C;
+}
+
+.v-chart li:nth-child(20) .data-popup {
+	border: 2px solid #CC3300;
 }
