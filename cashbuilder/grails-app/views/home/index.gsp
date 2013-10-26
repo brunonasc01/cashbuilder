@@ -16,9 +16,11 @@
 	  		<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>
 	  	</div>
 
+		<g:if test="${!consult_mode}">
 		<div class="col-25">
 			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
 		</div>
+		</g:if>
 			
 		<div class="col-25">
 			<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros }" ></g:render>

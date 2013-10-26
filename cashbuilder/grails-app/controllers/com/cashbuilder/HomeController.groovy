@@ -16,8 +16,11 @@ class HomeController {
     def index() {
 		
 		def user = session.user.attach()
+		boolean consult_mode = session.consult_year? true : false
 
-		def budget = Budget.findByYearAndUser(DateUtils.currentYear,user)
+		int currentYear = session.consult_year?: DateUtils.currentYear;
+		
+		def budget = Budget.findByYearAndUser(currentYear,user)
 		def budgetMonth = BudgetMonth.findByMonthAndBudget(DateUtils.currentMonth,budget)
 
 		//box saldo
@@ -51,7 +54,7 @@ class HomeController {
 		def categoriesList = generalService.getCategoriesList(user)
 		def alerts = Alert.findAllByBudgetAndEnable(budget,true)
 		
-		[home: true, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registrosFuturos: registrosFuturos, registroRapido: categoriesList, alerts: alerts]
+		[home: true, consult_mode: consult_mode, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registrosFuturos: registrosFuturos, registroRapido: categoriesList, alerts: alerts]
 	}
 	
 	def saveTransaction() {
@@ -68,5 +71,11 @@ class HomeController {
 		}
 		
 		redirect(action: "index")
+	}
+	
+	def reset_consult(){
+		session.consult_year = null
+		
+		redirect(action:'index')
 	}
 }

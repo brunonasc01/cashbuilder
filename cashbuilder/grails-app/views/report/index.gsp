@@ -15,6 +15,8 @@
 				<g:message code="report.title.label"/> - <g:message code="${report.date.month}"/> / ${report.date.year}
 			</h2>
 		</div>
+		
+		<g:render template="/elements/message"></g:render>
 
     	<div id="vertical-graph" class="col-1">
     		<g:if test="${report.reportData.size() > 0}">

@@ -21,12 +21,14 @@
     	<g:render template="/elements/message"></g:render>
     	
     	<div class="col-25">
-    		<div class="text-center append-bottom-dist">
-				<g:form name="newTransactionForm" action="newTransaction" controller="transaction">
-					<g:hiddenField name="monthId" value="${monthIndex}" />
-					<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'box.transaction.title')}" />
-				</g:form>
-			</div>
+    		<g:if test="${!consult_mode }">
+	    		<div class="text-center append-bottom-dist">
+					<g:form name="newTransactionForm" action="newTransaction" controller="transaction">
+						<g:hiddenField name="monthId" value="${monthIndex}" />
+						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'box.transaction.title')}" />
+					</g:form>
+				</div>
+			</g:if>
 
     		<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
     	</div>

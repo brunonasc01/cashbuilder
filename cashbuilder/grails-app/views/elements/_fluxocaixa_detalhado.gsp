@@ -20,14 +20,16 @@
 			<g:each var="transaction" in="${cashFlow.transactions}" status="counter">
 				<ul class="inline">
 					<li class="buttons">
-						 <g:form name="editTransactionForm" action="edit" controller="transaction">
-		                    <g:hiddenField name="id" value="${transaction.id}" />
-		                    <a class="bt-icon icon-edit"></a>
-		                </g:form>
-		                <g:form action="delete" controller="transaction">
-		                    <g:hiddenField name="id" value="${transaction.id}" />
-		                    <a class="bt-icon icon-delete"></a>
-		                </g:form>
+						<g:if test="${!consult_mode }">
+							 <g:form name="editTransactionForm" action="edit" controller="transaction">
+			                    <g:hiddenField name="id" value="${transaction.id}" />
+			                    <a class="bt-icon icon-edit"></a>
+			                </g:form>
+			                <g:form action="delete" controller="transaction">
+			                    <g:hiddenField name="id" value="${transaction.id}" />
+			                    <a class="bt-icon icon-delete"></a>
+			                </g:form>
+		               	</g:if>
 					</li><li class="day"><g:formatDate format="dd" date="${transaction.date}"></g:formatDate>
 					</li><li class="income">
 						<g:if test="${transaction.nature.equals('C')}">

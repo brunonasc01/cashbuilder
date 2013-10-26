@@ -38,7 +38,7 @@ a:link, a:active, a:visited {
 	color: #FFFFFF;
 }
 
-.content a:link, .content a:active, .content a:visited, a.icon-edit, a.icon-delete {
+.content a:link, .content a:active, .content a:visited, a.icon-edit, a.icon-delete, a.message_link {
 	color: #333333;
 }
 
@@ -507,7 +507,6 @@ a.btn:hover {
 	font-size: 1.1rem;
 }
 
-
 /* MESSAGE BOXES */
 
 .message {
@@ -562,6 +561,11 @@ a.btn:hover {
 
 .error p:before {	
 	content: '\2716';
+}
+
+a.message_link {
+	font-weight: bold;
+	font-size: 1.1rem;
 }
 
 /* MODAL */

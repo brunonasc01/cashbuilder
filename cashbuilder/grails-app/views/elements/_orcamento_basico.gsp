@@ -21,11 +21,13 @@
 					<g:each var="subcategory" in="${category.subcategories}">
 						<ul class="inline">
 							<li class="button">
-								<g:form name="editBudgetForm" action="edit" controller="budgetItem">
-									<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
-									<g:hiddenField name="monthId" value="${monthIndex}"/>
-									<span id="bt_edit_budget" class="bt-icon icon-edit"></span>
-								</g:form>
+								<g:if test="${!consult_mode }">
+									<g:form name="editBudgetForm" action="edit" controller="budgetItem">
+										<g:hiddenField name="id" value="${subcategory.budgetItem?.id}"/>
+										<g:hiddenField name="monthId" value="${monthIndex}"/>
+										<span id="bt_edit_budget" class="bt-icon icon-edit"></span>
+									</g:form>
+								</g:if>
 							</li><li class="child-name">${subcategory.name}
 							</li><li class="child-values text-right">
 									<g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>

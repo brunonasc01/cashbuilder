@@ -7,10 +7,26 @@ class AdminController {
 	def budgetService
 	def generalService
 	
-	static allowedMethods = [save_budget: "POST"]
+	static allowedMethods = [save_budget: "POST", consult_legacy:"POST"]
 	
     def index() {
-		[adm: true]
+		
+		def user = session.user.attach()
+		boolean consult_mode = session.consult_year? true : false
+		def yearsList = []
+		
+		if(!consult_mode) {
+			def budgets = Budget.findAllByUser(user)
+			int year = DateUtils.currentYear
+			
+			budgets.each { budget ->
+				if(budget.year != year){
+					yearsList += budget.year
+				}
+			} 
+		}
+		
+		[adm: true, consult_mode: consult_mode, yearsList: yearsList]
 	}
 	
 	def manage_budget() {
@@ -62,5 +78,20 @@ class AdminController {
 		}
 
 		redirect(action:'manage_budget', params: [monthId: params.monthId])
+	}
+	
+	def consult_legacy() {
+		if(params.consult_year){
+			int _year = params.consult_year as Integer
+			session.consult_year = _year 
+		}
+		
+		redirect(action:'index')
+	}
+	
+	def reset_consult(){
+		session.consult_year = null
+		
+		redirect(action:'index')
 	}
 }

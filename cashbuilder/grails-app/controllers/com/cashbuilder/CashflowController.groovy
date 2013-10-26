@@ -24,9 +24,11 @@ class CashflowController {
 		}
 		
 		int currentMonth = Integer.valueOf(params.monthId)
-		int currentYear = year
-		
+				
 		def user = session.user.attach()
+		boolean consult_mode = session.consult_year? true : false
+		int currentYear = session.consult_year?: year;
+
 		def budget = Budget.findByYearAndUser(currentYear,user)
 
 		def months = BudgetMonth.findAllByBudget(budget)
@@ -42,6 +44,12 @@ class CashflowController {
 		balanceBox.expense = budgetService.getRealizedTotal(month,user,Constants.DEBITO)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
-		[cashflow: true, nextYear: nextYear, monthIndex: currentMonth, meses: months, cashFlow:cashflowBean, balanceBox: balanceBox]
+		[cashflow: true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: currentMonth, meses: months, cashFlow:cashflowBean, balanceBox: balanceBox]
+	}
+	
+	def reset_consult(){
+		session.consult_year = null
+		
+		redirect(action:'index')
 	}
 }

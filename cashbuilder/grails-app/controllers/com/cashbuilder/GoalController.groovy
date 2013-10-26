@@ -9,11 +9,12 @@ class GoalController {
 	
     def index() {
 		def user = session.user.attach()
+		boolean consult_mode = session.consult_year? true : false
 
 		def goalsList = goalService.getGoals(user)
 		def goalStatus = goalService.getGoalStats(user)
 
-		[goal : true, goals: goalsList, goalStatus: goalStatus ]
+		[goal : true, consult_mode: consult_mode, goals: goalsList, goalStatus: goalStatus ]
 	}
 	
 	def newGoal() {
@@ -44,5 +45,11 @@ class GoalController {
 		generalService.buildMessage(Constants.MSG_SUCCESS,"goal.data.delete.success")
 		
 		redirect(action: "index")
+	}
+	
+	def reset_consult(){
+		session.consult_year = null
+		
+		redirect(action:'index')
 	}
 }

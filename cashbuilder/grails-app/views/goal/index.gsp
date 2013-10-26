@@ -16,11 +16,13 @@
     	<g:render template="/elements/message"></g:render>
     
 	  	<div class="col-25">
-	  		<div class="text-center append-bottom-dist">
-  				<g:form name="createGoalForm" action="newGoal">
-					<g:submitButton name="newButton" class="btn btn-large" value="Nova Meta" />
-				</g:form>
-			</div>
+	  		<g:if test="${!consult_mode }">
+		  		<div class="text-center append-bottom-dist">
+	  				<g:form name="createGoalForm" action="newGoal">
+						<g:submitButton name="newButton" class="btn btn-large" value="Nova Meta" />
+					</g:form>
+				</div>
+			</g:if>
 
 			<div class="box">
 				<h3 class="title-box"><g:message code="goal.box.title.label"/></h3>

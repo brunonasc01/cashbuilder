@@ -21,9 +21,10 @@ class ReportController {
 		}
 
 		def user = session.user.attach()
+		boolean consult_mode = session.consult_year? true : false
 		
 		int currentMonth =  Integer.valueOf(params.monthId)
-		int currentYear = year
+		int currentYear = session.consult_year?: year;
 
 		//Definicao de mes inicial e final
 		int lastMonth = currentMonth
@@ -33,6 +34,12 @@ class ReportController {
 		
 		ReportBean distribReport = reportService.buildExpendChart(user, currentMonth, currentYear)
 				
-		[stats:true, nextYear: nextYear, monthIndex: currentMonth, report: report, distribReport: distribReport]
+		[stats:true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: currentMonth, report: report, distribReport: distribReport]
+	}
+	
+	def reset_consult(){
+		session.consult_year = null
+		
+		redirect(action:'index')
 	}
 }
