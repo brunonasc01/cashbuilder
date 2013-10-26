@@ -50,7 +50,7 @@
 					<label><g:message code="form.signup.captcha.title"/></label>
 					
 					<recaptcha:ifEnabled>
-					    <recaptcha:recaptcha theme="clean"/>
+					    <recaptcha:recaptcha theme="white"/>
 					</recaptcha:ifEnabled>
 
 					<small><g:message code="form.signup.policy.message"/></small>
