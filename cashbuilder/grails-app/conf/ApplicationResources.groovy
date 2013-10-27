@@ -66,5 +66,6 @@ modules = {
 	portal {
 		dependsOn 'core'
 		resource url:'css/cashbuilder-portal.css'
+		resource url:'js/picturefill.js'
 	}
 }

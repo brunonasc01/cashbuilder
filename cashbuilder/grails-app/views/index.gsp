@@ -9,7 +9,14 @@
 <body>
 	<div class="text-center append-bottom-dist">
 		<div id="logo-portal">
-			<img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_large_full.png')}"/>
+			<span data-picture data-alt="<g:message code="app.name"/>">
+				<span data-src="${resource(dir:'images',file:'logo_large_full.png')}"></span>
+		        <span data-src="${resource(dir:'images',file:'logo_small_full.png')}" data-media="(max-width: 500px)"></span>
+		        
+		        <noscript>
+		            <img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_large_full.png')}"/>
+		        </noscript>
+		    </span>	
 		</div>
 
 		<h3><g:message code="info.message1"/></h3>
