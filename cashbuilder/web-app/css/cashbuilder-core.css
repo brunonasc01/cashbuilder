@@ -42,7 +42,7 @@ a:link, a:active, a:visited {
 	color: #333333;
 }
 
-header, footer, #month-list {
+header, footer, #month-list a {
 	background: #495154;
     background: -moz-linear-gradient(#6b7576, #495154);
     background: -o-linear-gradient(#6b7576, #495154);
@@ -291,12 +291,10 @@ a.help:before {
 
 #month-list a {
 	display: inline-block;
-	padding: 0.454133% 0;	
+	padding: 0.454133% 0;
+	min-width: 60px;
 	width:  8.333333%;
 	border: 1px solid #495154;
-    -moz-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4)
 }
 
 #month-list a:link, #month-list a:active, #month-list a:visited {
@@ -306,14 +304,11 @@ a.help:before {
 
 #month-list a:hover, #month-list a.active {
 	color: #FFD700;
-    -moz-box-shadow: inset 0 1px 0 #8fa2a8, 0 0 12px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: inset 0 1px 0 #8fa2a8, 0 0 12px 2px rgba(0, 0, 0, 0.4);
-	box-shadow: inset 0 1px 0 #8fa2a8, 0 0 12px 2px rgba(0,0,0,0.4);
 	text-decoration: none;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease
+	
+    -moz-box-shadow: inset 0 1px 0 #8fa2a8;
+    -webkit-box-shadow: inset 0 1px 0 #8fa2a8;
+	box-shadow: inset 0 1px 0 #8fa2a8;
 }
 
 #month-title h2 {

@@ -98,6 +98,11 @@
 	.highlights .col-33 {
 		width: 33%;
 	}
+	
+	#month-list a {
+		padding: 5px 0;
+		width: 16.666666%;
+	}
 }
 
 @media screen and (max-width: 500px){
@@ -146,6 +151,10 @@
 		display: inline-block
 	}
 
+	#month-list a {
+		width: 25%;
+	}
+
 	/* PORTAL */
 	#logo-portal img{
 		margin: 20px;
@@ -167,54 +176,5 @@
 	#login-bar input[type="submit"] {
 		margin: 10px 25%;
 		width: 50%;
-	}
-
-	/* MONTH LIST */
-	#month-list a:nth-child(1):before {		
-		content:"1"
-	}
-
-	#month-list a:nth-child(2):before {		
-		content:"2"
-	}
-
-	#month-list a:nth-child(3):before {		
-		content:"3"
-	}
-
-	#month-list a:nth-child(4):before {		
-		content:"4"
-	}
-
-	#month-list a:nth-child(5):before {		
-		content:"5"
-	}
-
-	#month-list a:nth-child(6):before {		
-		content:"6"
-	}
-
-	#month-list a:nth-child(7):before {		
-		content:"7"
-	}
-
-	#month-list a:nth-child(8):before {		
-		content:"8"
-	}
-
-	#month-list a:nth-child(9):before {		
-		content:"9"
-	}
-
-	#month-list a:nth-child(10):before {		
-		content:"10"
-	}
-
-	#month-list a:nth-child(11):before {		
-		content:"11"
-	}
-
-	#month-list a:nth-child(12):before {
-		content:"12"
-	}	
+	}		
 }
