@@ -56,10 +56,6 @@ function ajaxSubmitToModal(form,target,action){
 		if(action != null){
 			formAction = action
 		}
-		
-		//chama a versao modal do formulario
-		formAction = formAction.replace('create','create_modal')
-		formAction = formAction.replace('edit','edit_modal')
 
 		ajaxModalProcess("POST", formAction, formData, target);
 	});
@@ -93,6 +89,10 @@ function ajaxLinkToModal(trigger,target){
 function ajaxModalProcess(_type, _url, _data, _target){
 	
 	var returnElement = $("#"+_target);
+	
+	//chama a versao modal do formulario
+	_url = _url.replace('create','create_modal')
+	_url = _url.replace('edit','edit_modal')
 	
 	$.ajax({
 		  type: _type,
@@ -263,11 +263,13 @@ function initGoalScripts(){
  */
 function initAdminScripts(){
 	$(function() {
-		ajaxLinkToModal('edit_user_link','modal')
-    	ajaxLinkToModal('edit_mail_link','modal')
-    	ajaxLinkToModal('edit_password_link','modal')
-    	
-    	enableCloseOverlay();
+		if(isMobileScr() == false){
+			ajaxLinkToModal('edit_user_link','modal')
+	    	ajaxLinkToModal('edit_mail_link','modal')
+	    	ajaxLinkToModal('edit_password_link','modal')
+	    	
+	    	enableCloseOverlay();
+		}
 	});
 }
 

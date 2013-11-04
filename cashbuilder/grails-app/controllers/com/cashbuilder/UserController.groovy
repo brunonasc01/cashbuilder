@@ -3,6 +3,7 @@ package com.cashbuilder
 import com.cashbuilder.cmd.UserCommand
 import com.cashbuilder.cmd.UserEmailCommand;
 import com.cashbuilder.cmd.UserPasswordCommand;
+import com.cashbuilder.cmd.UserUpdateCommand;
 
 class UserController {
 
@@ -17,25 +18,32 @@ class UserController {
 		[signup: true]
 	}
 	
-	def edit() {
+	def edit_modal() {
 		def user = session.user.attach()
 
-		render(view: "edit",model:[user:user])
+		render(view: "edit_modal",model:[user:user])
 	}
 	
-	def edit_mail() {
+	def edit() {
 		def user = session.user.attach()
-
+		
 		[adm: true, user: user]
 	}
 	
+	def edit_modal_mail() {
+		render(view: "edit_modal_mail")
+	}
+	
+	def edit_mail() {
+		[adm: true]
+	}
+	
+	def edit_modal_password() {
+		render(view: "edit_modal_password")
+	}
+	
 	def edit_password() {
-		def user = session.user.attach()
-
-		UserPasswordCommand upc = new UserPasswordCommand()
-		upc.id = user.id
-		
-		[adm: true, user: upc]
+		[adm: true]
 	}
 	
 	def save(UserCommand cmd) {
@@ -65,27 +73,35 @@ class UserController {
 		render(view: "signup",model:[userInstance:cmd,signup: true])
 	}
 	
-	def update() {
-		def user = User.get(params.id)
-		user.properties = params
-		
-		if(!user.validate()){
-			user.profile.validate()
+	def update(UserUpdateCommand uuc) {
+		def user = session.user.attach()
 
-			flash.errors = g.renderErrors(bean: user)
+		if(!uuc.validate()){
+			uuc.profile.validate()
+
+			flash.errors = g.renderErrors(bean: uuc)
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.data.error")
 		} else{
+			user.properties = uuc.properties
+		
 			session.user = user
 			generalService.buildMessage(Constants.MSG_SUCCESS,"Usuario atualizado com sucesso")
 		}
 		
-		redirect(controller: "admin")
+		boolean full_scr = params.full_scr
+		
+		if(full_scr & uuc.hasErrors()){
+			render(view: "edit", model:[adm: true, user:user])
+		} else {
+			redirect(controller: "admin")
+		}
 	}
 	
 	def updatePassword(UserPasswordCommand upc) {
 		
+		def user = session.user.attach()
+		
 		if(upc.validate()){
-			def user = User.get(upc.id)
 
 			if(user) {			
 				String oldPassword = Encoder.encode(upc.password)
@@ -105,13 +121,20 @@ class UserController {
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.password.error")
 		}
 
-		redirect(controller: "admin")
+		boolean full_scr = params.full_scr
+		
+		if(full_scr & upc.hasErrors()){
+			render(view: "edit_password", model:[adm: true])
+		} else {
+			redirect(controller: "admin")
+		}
 	}
 	
 	def updateMail(UserEmailCommand uec){
 		
+		def user = session.user.attach()
+		
 		if(uec.validate()){
-			def user = User.get(uec.id)
 
 			if(user){
 				if(user.email != uec.email){
@@ -133,7 +156,13 @@ class UserController {
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.mail.error")
 		}
 		
-		redirect(controller: "admin")
+		boolean full_scr = params.full_scr
+		
+		if(full_scr & uec.hasErrors()){
+			render(view: "edit_mail", model:[adm: true, user:user])
+		} else {
+			redirect(controller: "admin")
+		}
 	}
 	
 	private def getCategoryFiles(User user){

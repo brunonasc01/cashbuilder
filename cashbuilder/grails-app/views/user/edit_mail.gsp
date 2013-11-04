@@ -1,35 +1,47 @@
-<g:javascript>
-$('#bt_close_modal').click(function(){
-	$('.overlay, .modal').hide();
-});
-</g:javascript>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<div class="box modal adm-modal">
-	<h3 class="title-box">
-		<g:message code="manager.user.update.mail.label"/>
-		<a id="bt_close_modal" class='bt-icon text-center'></a>
-	</h3>
-	
-	<div class="content">
-		<g:form name="editMail" action="updateMail" controller="user" >
-			<g:hiddenField name="id" value="${user?.id }" />
-			
-			<label><g:message code="edit.email.label" />
-			</label><g:textField name="email" value=""/>
-			
-			<hr/>
-			
-			<label><g:message code="emailNew.label" />
-			</label><g:textField name="emailNew" value=""/>
-			
-			<label><g:message code="emailRepeat.label" />
-			</label><g:textField name="emailRepeat" value=""/>
-			
-			<div class="content-center">
-				<input type="submit" class="btn" id="submit" value="Gravar"/>
-			</div>
-		</g:form>
+<head>
+	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
+    <meta name="layout" content="base" />
+    <r:require modules="adm"/>
+</head>
+
+<body>
+
+	<div id="month-title" class="col-1">
+		<h2 class="title-box">
+			<g:message code="manager.user.update.mail.label"/>
+		</h2>
 	</div>
-</div>
+	
+	<g:render template="/elements/message"></g:render>
 
-<r:layoutResources disposition="defer"/>
+	<div class="col-1">
+		<div class="box">
+			<div class="content">
+				<g:form name="editMail" action="updateMail" controller="user" >
+					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
+				
+					<label><g:message code="edit.email.label" />
+					</label><g:textField name="email" value=""/>
+					
+					<hr/>
+					
+					<label><g:message code="emailNew.label" />
+					</label><g:textField name="emailNew" value=""/>
+					
+					<label><g:message code="emailRepeat.label" />
+					</label><g:textField name="emailRepeat" value=""/>
+					
+					<div class="content-center">
+						<input type="submit" class="btn" id="submit" value="Gravar"/>
+					</div>
+				</g:form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
