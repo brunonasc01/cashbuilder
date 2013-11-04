@@ -23,7 +23,7 @@
     	<div class="col-25">
     		<g:if test="${!consult_mode }">
 	    		<div class="text-center append-bottom-dist">
-					<g:form name="newTransactionForm" action="newTransaction" controller="transaction">
+					<g:form name="newTransactionForm" action="create" controller="transaction">
 						<g:hiddenField name="monthId" value="${monthIndex}" />
 						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'box.transaction.title')}" />
 					</g:form>
@@ -35,7 +35,7 @@
     
     	<div class="col-75">
     		<div class="box">
-		    	<g:render template="/elements/fluxocaixa_detalhado" bean="${cashFlow}"></g:render>
+		    	<g:render template="/elements/cashflow_transaction_list" bean="${cashFlow}"></g:render>
 	    	</div>
 		</div>
 	</body>		

@@ -52,21 +52,16 @@ function ajaxSubmitToModal(form,target,action){
 
 		var formData = $(this).serialize();
 		var formAction = $(this).attr('action');
-		var returnElement = $("#"+target);
 
 		if(action != null){
 			formAction = action
 		}
 		
-		$.ajax({
-			  type: "POST",
-			  url: formAction,
-			  data: formData,
-			  cache: false
-		}).done(function( html ) {
-			returnElement.html(html);
-			$('.overlay, .modal').show();
-		});
+		//chama a versao modal do formulario
+		formAction = formAction.replace('create','create_modal')
+		formAction = formAction.replace('edit','edit_modal')
+
+		ajaxModalProcess("POST", formAction, formData, target);
 	});
 }
 
@@ -81,20 +76,60 @@ function ajaxLinkToModal(trigger,target){
 	
 	link.click(function(e) {
 		e.preventDefault();
-		
-		var returnElement = $("#"+target);
 		var href = link.attr('href');
 
-		$.ajax({
-			  type: "GET",
-			  url: href,
-			  data: null,
-			  cache: false
-		}).done(function( html ) {
-			returnElement.html(html);
-			$('.overlay, .modal').show();
-		});
+		ajaxModalProcess("GET", href, null, target);
 	});
+}
+
+
+/**
+ * Processa uma chamada modal
+ * @param _type tipo GET/POST
+ * @param _url caminho da action
+ * @param _data dados serializados (de formularios)
+ * @param _target id do elemento que deve receber o retorno
+ */
+function ajaxModalProcess(_type, _url, _data, _target){
+	
+	var returnElement = $("#"+_target);
+	
+	$.ajax({
+		  type: _type,
+		  url: _url,
+		  data: _data,
+		  cache: false
+	}).done(function( html ) {
+		returnElement.html(html);
+		setModalPosition(_target);
+
+		$( window ).resize(function() {
+			setModalPosition(_target);
+		});
+
+		$('.overlay, .modal').show();
+	});
+}
+
+/**
+ * Define dinamicamente a posicao do modal
+ * @param target id do elemento modal
+ */
+function setModalPosition(target){
+	
+	var windowWidth = $(window).width();
+	var windowHeight = $(window).height();
+	
+	var modal = $("#"+target).children(".modal");
+	var modalWidth = modal.width()
+	var modalHeight = modal.height()
+
+	if(windowWidth > modalWidth && windowHeight > modalHeight) {
+		var hCenter = parseInt(modalWidth/2)
+		var vCenter = parseInt(modalHeight/2)
+		modal.css("margin-left","-"+hCenter+"px");
+		modal.css("margin-top","-"+vCenter+"px");
+	}
 }
 
 /**
@@ -132,11 +167,30 @@ function enableCloseOverlay(){
 }
 
 /**
+ * Verifica se o tamanho da tela corresponde a 
+ * de um celular
+ * @returns {Boolean}
+ */
+function isMobileScr(){
+	var windowWidth = $(window).width();  
+	
+	if(windowWidth <= 500){
+		return true		
+	}
+	
+	return false
+}
+
+
+/**
  * Inicializa os Scripts da area Orcamento
  */
 function initBudgetScripts(){
 	$(function() {
-		ajaxSubmitToModal('editBudgetForm','modal');
+		
+		if(isMobileScr() == false){
+			ajaxSubmitToModal('editBudgetForm','modal');
+		}
 	
 		$('.icon-edit').click(function(){
 			$(this).parents('form:first').submit();
@@ -171,8 +225,11 @@ function initBudgetScripts(){
  */
 function initCashflowScripts(){
 	$(function() {
-		ajaxSubmitToModal('newTransactionForm','modal');
-		ajaxSubmitToModal('editTransactionForm','modal');
+		
+		if(isMobileScr() == false){
+			ajaxSubmitToModal('newTransactionForm','modal');
+			ajaxSubmitToModal('editTransactionForm','modal');
+		}
 	
 		$('.icon-edit').click(function(){
 			$(this).parents('form:first').submit();
@@ -193,9 +250,11 @@ function initCashflowScripts(){
  */
 function initGoalScripts(){
 	$(function() {
-		ajaxSubmitToModal('createGoalForm','modal');
 		
-		enableCloseOverlay();
+		if(isMobileScr() == false){
+			ajaxSubmitToModal('createGoalForm','modal');		
+			enableCloseOverlay();
+		}
 	});
 }
 

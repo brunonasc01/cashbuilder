@@ -1,12 +1,6 @@
 <%@page import="com.cashbuilder.Constants"%>
 
 <g:if test="${cashFlow.transactions}">
-	<r:script disposition="head">
-	$(function() {
-		ajaxSubmitToModal('editButton','dialog','edit');
-	});
-	</r:script>
-
  	<div id="cashflow-table">
   		<ul class="inline title-box text-center">
 			<li class="day"><g:message code="cashflow.day.title"/>

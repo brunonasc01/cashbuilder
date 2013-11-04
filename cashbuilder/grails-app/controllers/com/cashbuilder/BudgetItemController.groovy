@@ -2,16 +2,22 @@ package com.cashbuilder
 
 class BudgetItemController {
 
-	static allowedMethods = [update: "POST", edit: "POST"]
+	static allowedMethods = [update: "POST", edit: "POST", edit_modal: "POST"]
 	
 	def generalService
 	def eventService
 	
 	def edit(){
 		def budgetItem = BudgetItem.get(params.id)
+
+		[budget: true, bean: budgetItem, monthId: params.monthId]
+	}
+	
+	def edit_modal(){
+		def budgetItem = BudgetItem.get(params.id)
 		
 		if(budgetItem){
-			render(view: "edit_item", model: [bean: budgetItem, monthId: params.monthId])
+			render(view: "edit_modal", model: [bean: budgetItem, monthId: params.monthId])
 		}
 	}
 	

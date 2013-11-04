@@ -17,11 +17,18 @@ class GoalController {
 		[goal : true, consult_mode: consult_mode, goals: goalsList, goalStatus: goalStatus ]
 	}
 	
-	def newGoal() {
+	def create_modal() {
 		def user = session.user.attach()
 		def categoriesList = generalService.getCategoriesList(user)
 
-		render(view: "newgoal", model: [categoriesList: categoriesList])
+		render(view: "create_modal", model: [categoriesList: categoriesList])
+	}
+	
+	def create() {
+		def user = session.user.attach()
+		def categoriesList = generalService.getCategoriesList(user)
+
+		[goal : true, categoriesList: categoriesList ]
 	}
 	
 	def save() {
@@ -36,8 +43,16 @@ class GoalController {
 		} else {
 			generalService.buildMessage(Constants.MSG_SUCCESS,"goal.data.save.success")
 		}
+		
+		boolean full_scr = params.full_scr
 
-		redirect(action: "index")
+		if(full_scr && goal.hasErrors()){
+			def categoriesList = generalService.getCategoriesList(user)
+
+			render(view: "create", model: [categoriesList: categoriesList])
+		} else {
+			redirect(action: "index")
+		}
 	}
 	
 	def delete() {

@@ -2,9 +2,9 @@
 <html lang="pt-BR">
     <head>
     	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
-        <meta name="layout" content="common" />
+        <meta name="layout" content="base" />
         <meta name="description" content="${g.message(code:"app.contact.description") }"/>
-        <r:require modules="portal"/>
+        <r:require modules="core"/>
     </head>
 
     <body>
@@ -42,7 +42,7 @@
 					</g:form>
 	            </div>
 	            
-	            <!--<g:render template="/elements/box_breadcrumb" model="[type: 'footer']"></g:render>-->
+	            <g:render template="/elements/box_breadcrumb" model="[type: 'footer']"></g:render>
 		  	</div>
 	  	</div>
 	</body>		

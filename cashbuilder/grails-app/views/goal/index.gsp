@@ -18,7 +18,7 @@
 	  	<div class="col-25">
 	  		<g:if test="${!consult_mode }">
 		  		<div class="text-center append-bottom-dist">
-	  				<g:form name="createGoalForm" action="newGoal">
+	  				<g:form name="createGoalForm" action="create">
 						<g:submitButton name="newButton" class="btn btn-large" value="Nova Meta" />
 					</g:form>
 				</div>

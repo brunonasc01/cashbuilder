@@ -2,7 +2,8 @@
 <html lang="pt-BR">
     
 <head>
-	<meta name="layout" content="common_50" />
+	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
+	<meta name="layout" content="common" />
 	<meta name="description" content="${g.message(code:"app.signup.description") }"/>        
 	<r:require modules="portal,recaptcha"/>
 </head>

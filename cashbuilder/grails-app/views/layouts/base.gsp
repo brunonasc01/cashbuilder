@@ -39,7 +39,7 @@
 		<g:render template="/elements/subheader" ></g:render>
 	</header>
 
-	 <section class="wrapper-90">
+	 <section class="${wrapper_class?: 'wrapper-90' }">
 	 	<g:render template="/elements/menu" ></g:render>
 
 		<div class="grid">

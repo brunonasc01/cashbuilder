@@ -58,9 +58,7 @@
 }
 
 @media screen and (min-width: 960px){
-	.modal {
-		margin: -15% 0 0 -12.5%;
-	}
+
 }
 
 @media screen and (max-width: 959px){
@@ -129,17 +127,7 @@
 		font-size: 1.3em;
 		padding: 10px 20px;
 	}
-
-	/* MODAL */
-	.modal {
-		position: absolute;
-		top: 0;
-		left:0;
-		
-		width: 100%;
-		margin: 0
-	}
-
+	
 	/* MAIN MENU */
 	#main-menu a {
 		width: 100%;

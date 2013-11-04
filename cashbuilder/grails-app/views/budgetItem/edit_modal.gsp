@@ -6,7 +6,7 @@ $('#bt_close_modal').click(function(){
 
 <div class="box modal budget-modal">
 	<h3 class="title-box">
-		Alterar Orçamento
+		<g:message code="box.budgetitem.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a></h3>
 	<div class="content">
 		<h4>${bean.subcategory?.name }</h4>

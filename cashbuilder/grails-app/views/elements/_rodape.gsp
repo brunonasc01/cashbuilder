@@ -14,15 +14,8 @@
 		</li>
 	</g:if>
 	<g:else>
-		<g:javascript>
-			$(function() {
-			ajaxLinkToModal('contact_link','modal');
-	    	enableCloseOverlay();
-		});
-		</g:javascript>
-	
 		<li>
-			<g:link elementId="contact_link" controller="contact" action="contact_popup"><g:message code="app.contact.link"/></g:link>
+			<g:link elementId="contact_link" controller="contact" action="index"><g:message code="app.contact.link"/></g:link>
 		</li>
 	</g:else>
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <meta name="layout" content="common_50" />
+    	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
+        <meta name="layout" content="common" />
         <r:require modules="portal"/>
     </head>
 
