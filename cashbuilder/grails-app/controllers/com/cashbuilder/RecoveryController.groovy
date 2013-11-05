@@ -9,6 +9,8 @@ class RecoveryController {
 	def generalService
 	def mailService
 	
+	static allowedMethods = [send: "POST"]
+	
     def index() {
 		def token = params.token
 
@@ -46,7 +48,7 @@ class RecoveryController {
 				html g.render(template:"/elements/mail/request_password", model:[username:user.firstName,token:token])				
 			}
 
-			redirect(uri:"/")
+			generalService.buildMessage(Constants.MSG_INFO,"form.lostpassword.send.message")
 		} else {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.error")
 			render(view:"index")
@@ -64,7 +66,7 @@ class RecoveryController {
 				
 				recovery.delete()
 				
-				redirect(uri:"/")
+				generalService.buildMessage(Constants.MSG_SUCCESS,"form.lostpassword.reset.message")
 			}
 		} else {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.reset.error")
