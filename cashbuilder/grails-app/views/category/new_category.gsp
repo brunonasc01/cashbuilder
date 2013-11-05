@@ -3,6 +3,10 @@
     <head>
         <meta name="layout" content="base" />
         <r:require module="adm"/>
+        
+        <g:javascript>
+		initCategoryAdminScripts();
+		</g:javascript>
     </head>
     
     <body>    	
@@ -62,53 +66,34 @@
 	  	<div class="col-50">
 	  		<div class="box">
 				
-				<h3 class="title-box">Editar Categorias</h3>
+				<h3 class="title-box"><g:message code="manager.category.edit.title"/></h3>
 
+				<g:if test="${!editCategories.empty}">
 				<div id="edit-category-list">
+						<g:each var="cCategory" in="${editCategories }">
 					<ul class="inline">
 						<li>
-							<form>
-								<a id="bt_edit_category" href="#" class="bt-icon icon-edit"></a>
-								<a id="bt_remove_category" href="#" class="bt-icon icon-delete"></a>
-							</form>
-						</li><li>
-							Receitas
-						</li>
-					</ul>
+									<g:form name="editCategoryForm" action="edit" controller="category">
+										<g:hiddenField name="id" value="${cCategory.id }"/>
+										<a class="bt-icon icon-edit"></a>
+									</g:form>
 
-					<ul class="inline">
-						<li>
-							<form>
-								<a id="bt_edit_transaction" href="#" class="bt-icon icon-edit"></a>
-								<a href="#" class="bt-icon icon-delete"></a>
-							</form>
+									<g:form name="deleteCategoryForm" action="delete_modal" controller="category">
+										<g:hiddenField name="id" value="${cCategory.id }"/>
+										<a class="bt-icon icon-delete"></a>
+									</g:form>
 						</li><li>
-							Alimentacao
+									${cCategory.name }
 						</li>
 					</ul>
-
-					<ul class="inline">
-						<li>
-							<form>
-								<a id="bt_edit_transaction" href="#" class="bt-icon icon-edit"></a>
-								<a href="#" class="bt-icon icon-delete"></a>
-							</form>
-						</li><li>
-							Gastos Pessoais
-						</li>
-					</ul>
-
-					<ul class="inline">
-						<li>
-							<form>
-								<a id="bt_edit_transaction" href="#" class="bt-icon icon-edit"></a>
-								<a href="#" class="bt-icon icon-delete"></a>
-							</form>
-						</li><li>
-							Alimentacao
-						</li>
-					</ul>
+						</g:each>
 				</div>
+				</g:if>
+				<g:else>
+					<div class="content">
+						<g:message code="manager.category.edit.empty"/>
+					</div>
+				</g:else>
 			</div>
 		</div>
 	</body>		

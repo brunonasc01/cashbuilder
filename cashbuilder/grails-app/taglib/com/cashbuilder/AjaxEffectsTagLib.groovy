@@ -31,10 +31,12 @@ class AjaxEffectsTagLib {
 		def categoryCombo = attrs.category
 		def subcategoryCombo = attrs.subcategory
 		def action = attrs.action?: default_action
+		def multipleSubs = attrs.multipleSubs?: false
+		def name = attrs.name?: 'subcategory.id' 
 
 		out << "<script>"
 		out << "\$(document).ready(function(){"
-		out << "ajaxSubcategoryCombo('${project}${action}', '${categoryCombo}', '${subcategoryCombo}');"
+		out << "ajaxSubcategoryCombo('${project}${action}', '${categoryCombo}', '${subcategoryCombo}', '${multipleSubs}', '${name}');"
 		out << "});"
 		out << "</script>"
 	}

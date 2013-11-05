@@ -59,6 +59,10 @@ ul.list-items li:last-child {
 	margin: 5px;	
 }
 
+#edit-category-list form{
+	display: inline-block;
+}
+
 #edit-category-list ul:nth-child(even) {
 	background: #eeeeee;
 }

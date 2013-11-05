@@ -22,16 +22,25 @@ $(function() {
  * @param category_combo_id
  * @param subcategory_combo_id
  */
-function ajaxSubcategoryCombo(action, category_combo_id, subcategory_combo_id){
+function ajaxSubcategoryCombo(action, category_combo_id, subcategory_combo_id, multiple_subs, subcategory_combo_name){
 	
 	$("#"+category_combo_id).change(function() {
 		$.ajax({
 			type: 'post',
 			url: action,
-			data: "id=" + this.value,
+			data: "id=" + this.value + "&name=" + subcategory_combo_name,
 			cache: false,
 			success: function(html) {
+				if(multiple_subs == "true"){
+					$("span[id*='"+subcategory_combo_id+"']").each(function(i){
+						var re = new RegExp('[X]', 'g');
+						var select = html.replace(re,i);
+
+						$(this).html(select)
+					})
+				} else {
 				$("#"+subcategory_combo_id).html(html);
+			}
 			}
 		});
 	});
@@ -268,6 +277,29 @@ function initAdminScripts(){
 	    	ajaxLinkToModal('edit_mail_link','modal')
 	    	ajaxLinkToModal('edit_password_link','modal')
 	    	
+	    	enableCloseOverlay();
+		}
+	});
+}
+
+/**
+ * Inicializa os Scripts da area Administracao
+ */
+function initCategoryAdminScripts(){
+	$(function() {
+		$('.icon-edit').click(function(){
+			$(this).parents('form:first').submit();
+		});
+		
+		$('.icon-delete').click(function(){
+			//if(confirm('Tem Certeza ?')){
+				$(this).parents('form:first').submit();
+			//}			
+		});
+		
+		if(isMobileScr() == false){
+			ajaxSubmitToModal('editCategoryForm','modal')
+			ajaxSubmitToModal('deleteCategoryForm','modal')			
 	    	enableCloseOverlay();
 		}
 	});
