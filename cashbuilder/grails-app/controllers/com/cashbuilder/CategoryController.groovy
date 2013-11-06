@@ -1,6 +1,8 @@
 package com.cashbuilder
 
+import com.cashbuilder.cmd.CategoryCommand;
 import com.cashbuilder.cmd.CategoryDeleteCommand;
+import com.cashbuilder.cmd.SubcategoryCommand;
 
 class CategoryController {
 	
@@ -35,51 +37,48 @@ class CategoryController {
 		def user = session.user.attach()
 		def customCategories = Category.findAllByUserAndCustom(user,true);
 		
-		Category category = new Category(custom: true)
-		category.subcategories = []
-		category.subcategories += new Subcategory()
+		CategoryCommand cCategory = new CategoryCommand()
+		cCategory.subcategories = []
+		cCategory.subcategories += new SubcategoryCommand()
 		
-		[adm: true, category: category, editCategories: customCategories]
+		[adm: true, category: cCategory, editCategories: customCategories]
 	}
 	
-	def add_subcategory(Category category){
+	def add_subcategory(CategoryCommand ccmd){
 		def user = session.user.attach()
 		def customCategories = Category.findAllByUserAndCustom(user,true);
 		
-		category.user = user
-		category.subcategories += new Subcategory(name:"")
-		render(view: "new_category",model:[category: category, editCategories: customCategories, adm: true])
+		ccmd.subcategories += new Subcategory(name:"")
+		render(view: "new_category",model:[category: ccmd, editCategories: customCategories, adm: true])
 	}
 	
-	def remove_subcategory(Category category){
+	def remove_subcategory(CategoryCommand ccmd){
 		def user = session.user.attach()
 		def customCategories = Category.findAllByUserAndCustom(user,true);
 		
 		def subcategoriesToRemove = []
 
-		category.subcategories.eachWithIndex { obj, i ->
+		ccmd.subcategories.eachWithIndex { obj, i ->
 			def checks = params."remove_${i}"
 
 			if(checks){
 				subcategoriesToRemove += obj
 			}
 		}
-		category.subcategories.removeAll(subcategoriesToRemove)
-		category.user = user
-		
-		render(view: "new_category",model:[category: category, editCategories: customCategories, adm: true])
+		ccmd.subcategories.removeAll(subcategoriesToRemove)
+
+		render(view: "new_category",model:[category: ccmd, editCategories: customCategories, adm: true])
 	}
 	
-	def save_category(Category category){
+	def save_category(CategoryCommand ccmd){
 		def user = session.user.attach()
-		
-		Category nCategory = categoryService.saveCategory(user, category)
+		Category nCategory = categoryService.saveCategory(user, ccmd)
 			
 		if(nCategory.hasErrors()){
 			def customCategories = Category.findAllByUserAndCustom(user,true);
 			
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.save.error")
-			render(view: "new_category",model:[category: category, editCategories: customCategories, adm: true])
+			render(view: "new_category",model:[errorBean: nCategory, category: ccmd, editCategories: customCategories, adm: true])
 			
 		} else {
 			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.save.success")
@@ -91,30 +90,29 @@ class CategoryController {
 		def category = Category.get(params.id)
 			
 		render(view: "edit_modal",model:[category:category])
-			}
+	}
 
 	def edit(){
 		def category = Category.get(params.id)
 
 		[adm: true, category: category]
-				}
+	}
 	
 	def update(){
-		def category = Category.get(params.id)
+		def uCategory = categoryService.updateCategory(params)
 		
-		category.properties = params.properties
-		
-		if(!category.validate()){
-			flash.errors = g.renderErrors(bean: category)
+		if(uCategory.hasErrors()){
+			flash.errors = g.renderErrors(bean: uCategory)
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.update.error.message")
+
 		} else {
 			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.update.success.message")
-			}
+		}
 
 		boolean full_scr = params.full_scr
 		
-		if(full_scr && !category.validate()){
-			render(view: "edit", model:[adm: true, category:category])
+		if(full_scr && uCategory.hasErrors()){
+			render(view: "edit", model:[adm: true, category:uCategory])
 		} else {
 			redirect(action: "new_category")
 		}
@@ -130,28 +128,24 @@ class CategoryController {
 	}
 	
 	def update_deletion(CategoryDeleteCommand cdc){
-		def oldCategory = Category.get(params.id)
-		def newCategory = Category.get(cdc.newId)
-		
-		oldCategory.subcategories.eachWithIndex { oldSub, i ->
-			def transactions = Transaction.findAllByCategoryAndSubcategory(oldCategory,oldSub)
-		
-			if(transactions){
-				transactions.each {
-					it.category = newCategory
-					it.subcategory = Subcategory.get(cdc.newSubcategories.get(i).id)
-				}
-			}
-			
-			def budgetItemList = BudgetItem.findAllByCategoryAndSubcategory(oldCategory,oldSub)
 
-			budgetItemList.each {
-				it.delete()
-			}
+		if(cdc.validate()){
+			categoryService.deleteCustomCategory(params, cdc, false);
+			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.delete.success.message")
+
+		} else {
+			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.delete.error.message")
 		}
-		
-		oldCategory.delete();
 
-		redirect(controller:"admin")
+		redirect(action: "new_category")
 	}
+	
+	def delete_all(CategoryDeleteCommand cdc){
+
+		categoryService.deleteCustomCategory(params, cdc, true);
+		generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.deleteall.success.message")
+
+		redirect(action: "new_category")
+	}
+
 }

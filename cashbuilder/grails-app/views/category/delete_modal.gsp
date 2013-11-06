@@ -15,11 +15,15 @@ $('#bt_close_modal').click(function(){
 	<div class="content">
 		<small><g:message code="manager.category.delete.message"/></small>
 	
-		<hr/>
-	
-		<h4>${oldCategory.name }</h4>
-	
-		<g:form name="editCategory" action="update_deletion" controller="category" >
+		<g:form name="editCategory" controller="category" >
+			<div class="content-center">
+				<g:actionSubmit class="btn" action="delete_all" value="Remover Transacoes" onclick="return confirm('Tem Certeza?')"/>
+			</div>
+		
+			<hr/>
+		
+			<h4>${oldCategory.name }</h4>
+		
 			<g:hiddenField name="id" value="${oldCategory.id }"/>
 			
 			<label><g:message code="manager.category.label"/>
@@ -40,7 +44,7 @@ $('#bt_close_modal').click(function(){
 			</g:each>
 
 			<div class="content-center">
-				<input type="submit" class="btn" id="submit" value="Gravar"/>
+				<g:actionSubmit class="btn" action="update_deletion" value="Remover" onclick="return confirm('Tem Certeza?')" />
 			</div>
 		</g:form>
 	</div>

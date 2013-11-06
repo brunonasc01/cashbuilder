@@ -12,7 +12,7 @@
     <body>    	
     	<g:render template="/elements/area_title" model="[bundle_key: 'manager.category.title.label']"/>
 
-		<g:render template="/elements/message" var="bean" bean="${category}" ></g:render>
+		<g:render template="/elements/message" var="bean" bean="${errorBean}" ></g:render>
 
     	<div class="col-50">
 		  	<div class="box">
