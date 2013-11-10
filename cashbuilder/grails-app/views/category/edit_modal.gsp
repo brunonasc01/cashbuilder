@@ -17,7 +17,7 @@ $('#bt_close_modal').click(function(){
 			<g:hiddenField name="id" value="${category.id }"/>
 			
 			<g:each var="subcategory" in="${category.subcategories}" status="i">
-				<label>[${i+1}] <g:message code="default.name.label"/>
+				<label>[${i+1}] <g:message code="manager.subcategory.label"/>
 				</label><g:textField name="subcategories[${i}].name" value="${subcategory.name}" />
 
 			</g:each>

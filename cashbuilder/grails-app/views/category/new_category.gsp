@@ -78,7 +78,7 @@
 										<a class="bt-icon icon-edit"></a>
 									</g:form>
 
-									<g:form name="deleteCategoryForm" action="delete_modal" controller="category">
+									<g:form name="deleteCategoryForm" action="delete" controller="category">
 										<g:hiddenField name="id" value="${cCategory.id }"/>
 										<a class="bt-icon icon-delete"></a>
 									</g:form>

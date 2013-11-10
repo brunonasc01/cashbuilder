@@ -102,6 +102,7 @@ function ajaxModalProcess(_type, _url, _data, _target){
 	//chama a versao modal do formulario
 	_url = _url.replace('create','create_modal')
 	_url = _url.replace('edit','edit_modal')
+	_url = _url.replace('delete','delete_modal')
 	
 	$.ajax({
 		  type: _type,
@@ -292,9 +293,7 @@ function initCategoryAdminScripts(){
 		});
 		
 		$('.icon-delete').click(function(){
-			//if(confirm('Tem Certeza ?')){
-				$(this).parents('form:first').submit();
-			//}			
+			$(this).parents('form:first').submit();
 		});
 		
 		if(isMobileScr() == false){

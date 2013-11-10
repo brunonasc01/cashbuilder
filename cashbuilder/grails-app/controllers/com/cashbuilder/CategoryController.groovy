@@ -10,7 +10,8 @@ class CategoryController {
 
 	def categoryService
 
-	static allowedMethods = [save_category: "POST"]
+	static allowedMethods = [save_category: "POST", selectedCategory: "POST", selectedMultipleCategories: "POST",
+		 add_subcategory: "POST", remove_subcategory: "POST", update: "POST", update_deletion: "POST", delete_all: "POST"]
 	
     def selectedCategory() {
 		
@@ -127,6 +128,15 @@ class CategoryController {
 		render(view: "delete_modal",model:[oldCategory:category, categoriesList: categoriesList])
 	}
 	
+	def delete(){
+		def category = Category.get(params.id)
+
+		def user = session.user.attach()
+		def categoriesList = generalService.getCategoriesList(user)
+
+		[adm: true, oldCategory:category, categoriesList: categoriesList]
+	}
+	
 	def update_deletion(CategoryDeleteCommand cdc){
 
 		if(cdc.validate()){
@@ -136,8 +146,19 @@ class CategoryController {
 		} else {
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.delete.error.message")
 		}
-
-		redirect(action: "new_category")
+		
+		boolean full_scr = params.full_scr
+		
+		if(full_scr && !cdc.validate()){
+			def category = Category.get(params.id)
+			
+			def user = session.user.attach()
+			def categoriesList = generalService.getCategoriesList(user)
+			
+			render(view: "delete", model: [adm:true, oldCategory:category, categoriesList: categoriesList])
+		} else {
+			redirect(action: "new_category")
+		}		
 	}
 	
 	def delete_all(CategoryDeleteCommand cdc){
