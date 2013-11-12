@@ -1,0 +1,16 @@
+Alimentacao;0.2:Acougue;Feira;Padaria;Restaurantes;Supermercado
+Animais de Estimacao;0.1:Acessorios;Racao;Veterinario
+Automovel;0.15:Combustivel;Estacionamento;Manutencao
+Compras;0.05:Eletrodomesticos;Eletronicos;Moveis;Presentes
+Dividas e Financiamentos;0.02:Cartao de Credito;Emprestimo;Financiamento Casa/Auto
+Educacao;0.1:Cursos;Eventos;Faculdade;Palestras
+Filhos;0.15:Escola;Presentes;Roupas e Calcados
+Gastos Pessoais;0.1:Academia;Celular;Doacoes;Estetica e Perfumaria;Livros e Revistas;Roupas e Calcados
+Impostos e Tarifas;0.05:IPTU;IPVA;Outras Taxas;Tarifas Bancarias
+Investimentos;0.1:Acoes;Fundos;Poupanca;Previdencia;Titulos
+Lazer;0.1:Bares;Cinema;Jogos;Teatro;TV por Assinatura;Viagens
+Moradia;0.15:Agua;Aluguel;Condominio;Energia Eletrica;Gas;Manutencao;Reforma;Telefone e Internet
+Receitas;0.0:Decimo Terceiro;Extras;Ferias;Pensao;Salario
+Saude;0.25:Consultas;Convenio Medico;Exames;Remedios
+Seguros;0.05:Seguro Automovel;Seguro de Vida;Seguro Residencial
+Transporte;0.1:Passagens;Taxi

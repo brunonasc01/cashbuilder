@@ -44,12 +44,14 @@ class UserService {
 				file.eachLine{ line ->					
 					String[] baseLine = line.split(":")
 					
-					if(baseLine.length > 0 && !baseLine[0].contains("#")){						
-						String category = baseLine[0]
-						boolean income = ("Receitas").equals(category)
-						
-						double variationFactor = baseLine[2] as double
-						Category categoryBean = new Category( name:category, user:user, income:income, variationFactor:variationFactor )
+					if(baseLine.length > 0 && !baseLine[0].contains("#")){
+						String[] categoryAndFactor = baseLine[0].split(";")
+
+						String categoryName = categoryAndFactor[0]
+						double variationFactor = categoryAndFactor[1] as double
+						boolean income = ("Receitas").equals(categoryName)
+
+						Category categoryBean = new Category( name:categoryName, user:user, income:income, variationFactor:variationFactor )
 						
 						if(categoryBean.save()){
 							String[] subcategories = baseLine[1].split(";")

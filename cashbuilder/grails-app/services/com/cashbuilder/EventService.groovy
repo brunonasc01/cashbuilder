@@ -60,11 +60,11 @@ class EventService {
 	
 	1- Alerta (Ausencia de caixa para pagamentos)
 	R: Para o dia atual, quando o saldo em caixa for insuficiente para os pagamentos
-	M: Informar o usuário sobre a falta de caixa e recomendar o resgate de aplicacoes
+	M: Informar o usuario sobre a falta de caixa e recomendar o resgate de aplicacoes
 	ou o remanejamento do orcamento
 	
 	2- Alerta (Ausencia de investimento no mes)
-	R: Para o mes atual, quando não existir valor reservado para investimento
+	R: Para o mes atual, quando nao existir valor reservado para investimento
 	M: alertar sobre a necessidade de reservar parte da receita para investimentos.
 
 	*/

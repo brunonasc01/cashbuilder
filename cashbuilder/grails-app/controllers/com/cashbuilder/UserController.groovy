@@ -168,15 +168,8 @@ class UserController {
 	private def getCategoryFiles(User user){
 		def files = []
 		
-		File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categoriaGeral.csv").getFile()
+		File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categories.csv").getFile()
 		files += fileGeral
-
-		def expensesFileMap = ["res/categoriaMascote.csv","res/categoriaVeiculo.csv","res/categoriaFilho.csv"]
-
-		expensesFileMap.each { resourcePath ->
-			File file = grailsAttributes.getApplicationContext().getResource(resourcePath).getFile()
-			files += file
-		}
 		
 		files
 	}
