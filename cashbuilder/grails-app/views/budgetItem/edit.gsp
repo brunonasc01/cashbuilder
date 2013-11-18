@@ -20,7 +20,7 @@
 	<div class="col-1">
 		<div class="box">
 			<div class="content">
-				<h4>${bean.subcategory?.name }</h4>
+				<h4><g:customLabel value="${bean.subcategory}" prefix="label"/></h4>
 		
 				<g:form action="update" controller="budgetItem">
 					<g:hiddenField name="id" value="${bean.id}"/>

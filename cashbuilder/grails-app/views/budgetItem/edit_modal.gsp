@@ -9,7 +9,7 @@ $('#bt_close_modal').click(function(){
 		<g:message code="box.budgetitem.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a></h3>
 	<div class="content">
-		<h4>${bean.subcategory?.name }</h4>
+		<h4><g:customLabel value="${bean.subcategory}" prefix="label"/></h4>
 
 		<g:form action="update" controller="budgetItem">
 			<g:hiddenField name="id" value="${bean.id}"/>

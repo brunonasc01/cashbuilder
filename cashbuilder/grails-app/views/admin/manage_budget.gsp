@@ -16,21 +16,32 @@
 
     	<g:form name="budget-data-form">
 	    	<div class="col-25">
+	    			
+	    		<g:set var="month_key" value="${DateUtils.getMonth(budgetMonth.month)}" />
 	    			    	
 	    		<div class="box append-bottom-dist">
-	    			<h3 class="title-box"><g:message code="manager.budget.box.title.label"/></h3>
-		           	
-		           	<g:set var="month_key" value="${DateUtils.getMonth(budgetMonth.month)}" />
-		           	
+	    			<h3 class="title-box">
+	    				<g:message code="manager.budget.box.title.label"/>
+	    				<g:if test="${!saveYear}">
+	    					(<g:message code="${month_key }"/>)
+	    				</g:if>
+	    			</h3>
+
 		           	<div class="content">
 		           		<div id="budget-submit-options" class="content-center">
-			           		<label><g:message code="month.label"/> (<g:message code="${month_key }"/>)
-			           		</label><g:radio name="saveType" value="month" checked="true"></g:radio>
-			           		
-							<label><g:message code="year.label"/> (${currentYear})
-							</label><g:radio name="saveType" value="year" ></g:radio>
-
-	           				<g:submitButton name="_action_save_budget" class="btn" value="Gravar" />
+		           			<g:if test="${saveYear}">
+				           		<label><g:message code="month.label"/> (<g:message code="${month_key }"/>)
+				           		</label><g:radio name="saveType" value="month" checked="true"></g:radio>
+				           		
+								<label><g:message code="year.label"/> (${currentYear})
+								</label><g:radio name="saveType" value="year" ></g:radio>
+	
+								<g:actionSubmit action="save_budget" class="btn" value="Gravar"/>
+							</g:if>
+							<g:else>
+								<g:hiddenField name="saveType" value="month"/>
+								<g:actionSubmit action="save_budget" class="btn btn-large" value="Gravar Orçamento"/>
+							</g:else>
 	           			</div>
 		   			</div>
 	   			</div>
@@ -54,15 +65,17 @@
 
 							<h4><g:customLabel value="${bean.category}" prefix="label"/></h4>
 
-							<g:each var="item" in="${bean.subcategories}">
-								
-								<label><g:customLabel value="${item.subcategory}" prefix="label"/>
-								</label><g:textField name="itens[${counter}].budgetedValue" value="${df.format(item?.budgetedValue) }" />
-
-								<g:hiddenField name="itens[${counter}].subcategory.id" value="${item?.subcategory.id }"></g:hiddenField>
-								<g:hiddenField name="itens[${counter}].category.id" value="${item?.category.id }"></g:hiddenField>
-								<g:set var="counter" value="${counter + 1}" />
-							</g:each>
+							<div class="budget-item">
+								<g:each var="item" in="${bean.subcategories}">
+									
+									<label><g:customLabel value="${item.subcategory}" prefix="label"/>
+									</label><g:textField name="itens[${counter}].budgetedValue" value="${df.format(item?.budgetedValue) }" />
+	
+									<g:hiddenField name="itens[${counter}].subcategory.id" value="${item?.subcategory.id }"></g:hiddenField>
+									<g:hiddenField name="itens[${counter}].category.id" value="${item?.category.id }"></g:hiddenField>
+									<g:set var="counter" value="${counter + 1}" />
+								</g:each>
+							</div>
 						</g:each>
 					</div>
 
