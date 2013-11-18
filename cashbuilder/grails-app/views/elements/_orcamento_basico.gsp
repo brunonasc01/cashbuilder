@@ -4,7 +4,7 @@
 <div id="budget-list" class="content">
 	<g:each var="category" in="${list}" status="i">
 		<div class="budget-item">
-			<h4>${category.name}</h4>
+			<h4><g:customLabel value="${category.name}" prefix="label"/></h4>
 
 			<g:hiddenField name="prevVal" value="${category.budgetedValue }"/>
 			<g:hiddenField name="realVal" value="${category.realizedValue }"/>
@@ -28,7 +28,7 @@
 										<span id="bt_edit_budget" class="bt-icon icon-edit"></span>
 									</g:form>
 								</g:if>
-							</li><li class="child-name">${subcategory.name}
+							</li><li class="child-name"><g:customLabel value="${subcategory.name}" prefix="label"/>
 							</li><li class="child-values text-right">
 									<g:formatNumber number="${subcategory.realizedValue }" format="${Constants.FORMATO_MOEDA}"/>
 									<g:message code="default.of"/>

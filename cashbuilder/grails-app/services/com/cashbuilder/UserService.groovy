@@ -49,7 +49,7 @@ class UserService {
 
 						String categoryName = categoryAndFactor[0]
 						double variationFactor = categoryAndFactor[1] as double
-						boolean income = ("Receitas").equals(categoryName)
+						boolean income = ("receitas").equals(categoryName)
 
 						Category categoryBean = new Category( name:categoryName, user:user, income:income, variationFactor:variationFactor )
 						

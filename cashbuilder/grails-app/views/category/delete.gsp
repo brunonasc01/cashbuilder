@@ -38,9 +38,9 @@
 					
 					<label><g:message code="manager.category.label"/>
 					</label><g:if test="${categoriesList}">
-								 <g:select id="categoryCombo" name="newId"
+								 <g:comboBox id="categoryCombo" name="newId"
 									from="${categoriesList.categories}" 
-									optionKey="id" value="" noSelection="['': 'Selecione']" />
+									optionKey="id" nameDisplayPrefix="label" />
 							</g:if>
 					
 					<g:each var="subcategory" in="${oldCategory.subcategories}" status="i">

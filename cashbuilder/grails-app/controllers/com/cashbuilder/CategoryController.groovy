@@ -19,7 +19,10 @@ class CategoryController {
 		
 		if(id){
 			def category = Category.findById(params.id)
-			render g.select(optionKey: 'id', from: category.subcategories, name: "subcategory.id")
+			def defaultMessage = ['' : g.message(code: "message.select.subcategory")]
+			
+			render g.comboBox(optionKey: "id", name: "subcategory.id", from: category.subcategories, 
+								nameDisplayPrefix: "label", defaultOption: defaultMessage)
 		}
 	}
 	
@@ -27,10 +30,12 @@ class CategoryController {
 		
 		def id = params.id
 		def name = params.name
-		
+		println name
 		if(id){
 			def category = Category.findById(params.id)
-			render g.select(optionKey: 'id', from: category.subcategories, name: name)
+			def defaultMessage = ['' : g.message(code: "message.select.subcategory")]
+			render g.comboBox(optionKey: 'id', from: category.subcategories, name: name, nameDisplayPrefix: "label",
+								defaultOption: defaultMessage)
 		}
 	}
 	

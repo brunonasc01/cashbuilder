@@ -37,16 +37,16 @@
 								
 					<label for="categoria"><g:message code="box.transaction.category.label"/>
 					</label><g:if test="${categoriesList}">
-								 <g:select id="categoryCombo" name="category.id"
-									from="${categoriesList.categories}" 
-									optionKey="id" value="" noSelection="['': 'Selecione']" />
+								 <g:comboBox id="categoryCombo" name="category.id"
+									from="${categoriesList.categories}" nameDisplayPrefix="label"
+									optionKey="id" defaultOption="['': 'Selecione']" />
 							</g:if>
 							
 					<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
 					</label><g:if test="${categoriesList}">
 								<span id="subcategoriesCombo">
-								 <g:select name="subcategory.id" from=""
-									noSelection="['': 'Selecione uma categoria']" />
+								 <g:comboBox name="subcategory.id" from="" nameDisplayPrefix="label"
+									defaultOption="['': 'Selecione uma categoria']" />
 								</span>
 							</g:if>
 								

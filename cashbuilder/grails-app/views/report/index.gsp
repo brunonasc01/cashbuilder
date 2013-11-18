@@ -45,7 +45,7 @@
 
 								<ul class="labels">
 									<g:each var="data" in="${report.reportData}" status="i">
-											<li>${data.label}</li>
+											<li><g:customLabel value="${data.label}" prefix="label"/></li>
 									</g:each>
 								</ul>
 							</div>
@@ -73,7 +73,7 @@
 							<div>
 								<ul>
 									<g:each var="data" in="${distribReport.reportData}">
-										<li>${data.label}
+										<li><g:customLabel value="${data.label}" prefix="label"/>
 										</li><li>
 											<span style="width: ${data.percent}%">&nbsp;</span><span>${data.percent}%</span>
 										</li>

@@ -6,7 +6,7 @@
     <meta name="layout" content="base" />
     <r:require modules="goal"/>
     
-    <g:categoriesCombo category="categoryCombo" subcategory="subcategoriesCombo" action="selectedMultipleCategories"/>
+    <g:categoriesCombo category="categoryCombo" subcategory="subcategoriesCombo" action="selectedMultipleCategories" name="subcategories[X].id"  multipleSubs="true"/>
 </head>
 
 <body>
@@ -39,18 +39,18 @@
 		
 					<label for="categoria"><g:message code="goal.box.category.label"/>
 					</label><g:if test="${categoriesList}">
-							 <g:select id="categoryCombo" name="select"
+							 <g:comboBox id="categoryCombo" name="select"
 								from="${categoriesList.categories}" 
-								optionKey="id" value="" noSelection="['': 'Selecione']" />
+								optionKey="id" nameDisplayPrefix="label" />
 						</g:if>	
 		
 					<g:set var="counter" value="${0}" />
 		
 		    		<label for="subCategoria"><g:message code="goal.box.subcategory.label"/>
 					</label><g:if test="${categoriesList}">
-							<span id="subcategoriesCombo">
-							 <g:select name="subcategory[${counter}].id"
-								from="" noSelection="['': 'Selecione uma categoria']" />
+							<span id="subcategoriesCombo[${counter}]">
+							 <g:comboBox name="subcategories[${counter}].id" nameDisplayPrefix="label"
+								from="" defaultOption="['': 'Selecione uma categoria']" />
 							</span>
 						</g:if>
 													

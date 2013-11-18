@@ -25,16 +25,16 @@ $('#bt_close_modal').click(function(){
 						
 			<label for="categoria"><g:message code="box.transaction.category.label"/>
 			</label><g:if test="${categoriesList}">
-						 <g:select id="categoryCombo" name="category.id"
-							from="${categoriesList.categories}" 
-							optionKey="id" value="${transaction?.category.id}" noSelection="['': 'Selecione']" />
+						 <g:comboBox id="categoryCombo" name="category.id"
+							from="${categoriesList.categories}" nameDisplayPrefix="label"
+							optionKey="id" value="${transaction?.category.id}"/>
 					</g:if>
 					
 			<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
 			</label><g:if test="${categoriesList}">
 						<span id="subcategoriesCombo">
-						 <g:select name="subcategory.id" from="${subcategoriesList}"
-							optionKey="id" value="${transaction?.subcategory.id}" />
+						 <g:comboBox name="subcategory.id" from="${subcategoriesList}" 
+							optionKey="id" value="${transaction?.subcategory.id}" nameDisplayPrefix="label" />
 						</span>
 					</g:if>
 						

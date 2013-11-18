@@ -39,7 +39,7 @@
 						<g:else>
 							<g:formatNumber number="${0 }" format="${Constants.FORMATO_MOEDA}" currencySymbol=""></g:formatNumber>
 						</g:else>
-					</li><li class="category">${transaction.subcategory}
+					</li><li class="category"><g:customLabel value="${transaction.subcategory}" prefix="label"/> 
 					</li><li class="description">${transaction.description}</li>
 				</ul>
 			</g:each>

@@ -51,12 +51,12 @@
 										
 					<div class="content">
 						<g:each var="bean" in="${incomeList}">
-							
-							<h4>${bean.category }</h4>
+
+							<h4><g:customLabel value="${bean.category}" prefix="label"/></h4>
 
 							<g:each var="item" in="${bean.subcategories}">
 								
-								<label>${item.subcategory }
+								<label><g:customLabel value="${item.subcategory}" prefix="label"/>
 								</label><g:textField name="itens[${counter}].budgetedValue" value="${df.format(item?.budgetedValue) }" />
 
 								<g:hiddenField name="itens[${counter}].subcategory.id" value="${item?.subcategory.id }"></g:hiddenField>
@@ -71,12 +71,12 @@
 					<div class="content">
 						<g:each var="bean" in="${expenseList}">
 							
-							<h4>${bean.category }</h4>
+							<h4><g:customLabel value="${bean.category}" prefix="label"/></h4>
 							
 							<div class="budget-item">
 			
 								<g:each var="item" in="${bean.subcategories}">
-									<label>${item.subcategory }
+									<label><g:customLabel value="${item.subcategory}" prefix="label"/>
 									</label><g:textField name="itens[${counter}].budgetedValue" value="${df.format(item?.budgetedValue) }" />
 
 									<g:hiddenField name="itens[${counter}].subcategory.id" value="${item?.subcategory.id }"></g:hiddenField>
