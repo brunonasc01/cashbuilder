@@ -37,15 +37,15 @@
 	<header>
 		<div id="login-bar" class="text-right">
 			<ul class="recovery-bar inline">
-				<li><g:link controller="user" action="signup"><g:message code="login.signup.user"/></g:link>
-				</li><li><g:link controller="recovery"><g:message code="login.password.lost"/></g:link>
+				<li><g:link controller="user" action="signup"><g:message code="form.login.link.signup"/></g:link>
+				</li><li><g:link controller="recovery"><g:message code="form.login.link.lostpassword"/></g:link>
 			</ul>
 		
 			<g:form action="login" controller="login" method="post" class="login-form">
-				<label><g:message code="default.email.label"/>
+				<label><g:message code="form.label.email"/>
 				</label><g:textField name="email" />
 
-				<label><g:message code="default.password.label"/>
+				<label><g:message code="form.label.password"/>
 				</label><g:passwordField name="password" />
 
 				<input type="submit" class="btn btn-small" value="OK"/>

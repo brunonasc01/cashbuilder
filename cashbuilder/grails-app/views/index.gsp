@@ -19,51 +19,39 @@
 		    </span>	
 		</div>
 
-		<h3><g:message code="info.message1"/></h3>
+		<h3><g:message code="landpage.subtitle"/></h3>
 
-		<g:link controller="user" action="signup" class="btn btn-large append-top-dist">COMECE AGORA</g:link>		
+		<g:link controller="user" action="signup" class="btn btn-large append-top-dist"><g:message code="app.link.register_now"/></g:link>		
 	</div>
 	
 	<section class="grid highlights">
 		<div class="col-33">
 			<div class="content">
-				<h4><g:message code="info.box1.title"/></h4>
-
-				<p>
-					<g:message code="info.box1.message"/>  
-					<a href="#"><g:message code="default.link.read_more"/></a>
-				 </p>
+				<h4><g:message code="landpage.boxleft.title"/></h4>
+				<p><g:message code="landpage.boxleft.message"/>  
+					<a href="#"><g:message code="landpage.link.read_more"/></a></p>
 			</div>
 		</div>
 			
 		<div class="col-33">
 			<div class="content">
-				<h4><g:message code="info.box2.title"/></h4>
-				<p>
-					<g:message code="info.box2.message"/>  
-				 </p>
+				<h4><g:message code="landpage.boxcenter.title"/></h4>
+				<p><g:message code="landpage.boxcenter.message"/></p>
 			</div>
 		</div>
 
 		<div class="col-33 last">
 			<div class="content">
-				<h4><g:message code="info.box3.title"/></h4>
-				<p>
-					<g:message code="info.box3.message"/>  
-				</p>
+				<h4><g:message code="landpage.boxright.title"/></h4>
+				<p><g:message code="landpage.boxright.message"/></p>
 			</div>
 		</div>
 	</section>
 	
 	<div class="text-center">
 		<ul class="inline social-bar-48">
-			<li>
-				<a class="facebook-icon" href="#"></a>
-			</li>
-
-			<li>
-				<a class="twitter-icon" href="http://www.twitter.com/fazricobr" target="_blank"></a>
-			</li>
+			<li><a class="facebook-icon" href="#"></a></li>
+			<li><a class="twitter-icon" href="http://www.twitter.com/fazricobr" target="_blank"></a></li>
 		</ul>
 	</div>
 </body>		
