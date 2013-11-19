@@ -1,12 +1,11 @@
 package com.cashbuilder.cmd
 
-import com.cashbuilder.Profile;
 import com.cashbuilder.User;
 
 import grails.validation.Validateable
 
 @Validateable
-class UserCommand {
+class UserRegisterCommand {
 	
 	String firstName
 	String lastName
@@ -14,8 +13,9 @@ class UserCommand {
 	String emailRepeat
 	String password
 	String passwordRepeat
-	Profile profile
-	
+	String state
+	String city
+		
 	Date dateCreated
 		
 	static constraints = {
@@ -32,5 +32,9 @@ class UserCommand {
 					if(passwd2 != urc.password)
 						return ['passwordRepeated'] 
 			})
+		
+		state(blank: false)
+		
+		city(blank: false)
 	}
 }

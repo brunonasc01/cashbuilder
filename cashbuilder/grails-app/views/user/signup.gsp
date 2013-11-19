@@ -43,10 +43,10 @@
 			    	</label><g:passwordField name="passwordRepeat"/>
 
 					<label for="state"><g:message code="profile.state.label"/>
-					</label><input type="text" name="profile.state" id="state" value="${userInstance?.profile?.state}" />
+					</label><g:textField name="state" value="${userInstance?.state}"/>
 					
 					<label for="city"><g:message code="profile.city.label"/>
-					</label><input type="text" name="profile.city" id="state" value="${userInstance?.profile?.city}" />
+					</label><g:textField name="city" value="${userInstance?.city}"/>
 
 					<label><g:message code="form.signup.captcha.title"/></label>
 					

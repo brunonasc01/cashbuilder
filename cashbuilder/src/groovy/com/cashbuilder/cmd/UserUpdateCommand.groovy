@@ -1,6 +1,5 @@
 package com.cashbuilder.cmd
 
-import com.cashbuilder.Profile;
 import com.cashbuilder.User;
 
 import grails.validation.Validateable
@@ -10,10 +9,13 @@ class UserUpdateCommand {
 	
 	String firstName
 	String lastName
-	String passwordRepeat
-	Profile profile
+	String state
+	String city
 
 	static constraints = {
 		importFrom User
+		
+		state(blank: false)
+		city(blank: false)
 	}
 }

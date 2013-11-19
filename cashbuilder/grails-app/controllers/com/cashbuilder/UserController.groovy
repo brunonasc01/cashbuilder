@@ -1,6 +1,6 @@
 package com.cashbuilder
 
-import com.cashbuilder.cmd.UserCommand
+import com.cashbuilder.cmd.UserRegisterCommand;
 import com.cashbuilder.cmd.UserEmailCommand;
 import com.cashbuilder.cmd.UserPasswordCommand;
 import com.cashbuilder.cmd.UserUpdateCommand;
@@ -9,7 +9,6 @@ class UserController {
 
 	def generalService
     def userService
-	def expensesList = ["Animal de Estimacao","Carro ou Moto","Filho(s)"]
 	def recaptchaService
 	
 	static allowedMethods = [save: "POST", update: "POST", updatePassword:"POST", updateMail:"POST"]
@@ -46,43 +45,43 @@ class UserController {
 		[adm: true]
 	}
 	
-	def save(UserCommand cmd) {
+	def save(UserRegisterCommand urc) {
 		
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.error.message")
-		}		
-		else if(cmd.validate()){
-			if(userService.isEmailAvailable(cmd.email)){
-				def user = new User(cmd.properties)
-				user.password = Encoder.encode(user.password)
-				
-				if(user.save()){
-					def files = getCategoryFiles(user)
-					userService.buildProfile(user,files)
-					session.user = user
 
-					redirect(controller: "home")
-				}
-			} else {
-				generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
-			}
+		} else if(!userService.isEmailAvailable(urc.email)){
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
+
 		} else {
-			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.data.error1.message")
+			User nUser = userService.saveUser(urc)
+
+			if(nUser == null || nUser.hasErrors()){
+				generalService.buildMessage(Constants.MSG_ERROR,"form.signup.data.error1.message")
+				
+			} else {
+				def files = getCategoryFiles()
+				userService.buildProfile(nUser,files)
+				session.user = nUser
+
+				redirect(controller: "home")
+			}
 		}
 
-		render(view: "signup",model:[userInstance:cmd,signup: true])
+		render(view: "signup",model:[userInstance:urc,signup: true])
 	}
 	
 	def update(UserUpdateCommand uuc) {
 		def user = session.user.attach()
 
 		if(!uuc.validate()){
-			uuc.profile.validate()
-
 			flash.errors = g.renderErrors(bean: uuc)
 			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.data.error")
+
 		} else{
 			user.properties = uuc.properties
+			user.profile.state = uuc.state
+			user.profile.city = uuc.city
 		
 			session.user = user
 			generalService.buildMessage(Constants.MSG_SUCCESS,"Usuario atualizado com sucesso")
@@ -165,7 +164,7 @@ class UserController {
 		}
 	}
 	
-	private def getCategoryFiles(User user){
+	private def getCategoryFiles(){
 		def files = []
 		
 		File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categories.csv").getFile()

@@ -22,4 +22,8 @@ class User {
 						return passwd != user.firstName
 					})
     }
+	
+	static mapping = { 
+		profile cascade: 'all'
+	}
 }

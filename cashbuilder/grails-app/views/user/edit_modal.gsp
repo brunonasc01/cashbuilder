@@ -19,10 +19,10 @@ $('#bt_close_modal').click(function(){
 			</label><g:textField name="lastName" value="${user?.lastName}"/>
 
 			<label><g:message code="profile.state.label"/>
-			</label><input type="text" name="profile.state" id="state" value="${user?.profile?.state}" />
+			</label><input type="text" name="state" id="state" value="${user?.profile?.state}" />
 
 			<label><g:message code="profile.city.label"/>
-			</label><input type="text" name="profile.city" id="city" value="${user?.profile?.city}" />
+			</label><input type="text" name="city" id="city" value="${user?.profile?.city}" />
 
 			<div class="content-center">
 				<input type="submit" class="btn" id="submit" value="Gravar"/>

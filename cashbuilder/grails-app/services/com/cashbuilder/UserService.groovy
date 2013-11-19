@@ -2,6 +2,8 @@ package com.cashbuilder
 
 import java.util.Map;
 
+import com.cashbuilder.cmd.UserRegisterCommand;
+
 class UserService {
 
 	static transactional = true
@@ -27,6 +29,18 @@ class UserService {
 	User verifyLogin(Map params){
 		String password = Encoder.encode(params.password)
 		return User.findByEmailAndPassword(params.email,password)
+	}
+	
+	User saveUser(UserRegisterCommand urc){
+		User user = null
+
+		if(urc.validate() && isEmailAvailable(urc.email)){
+			user = parseCommandData(urc)
+			user.password = Encoder.encode(user.password)
+			user.save(flush: true)
+		}
+
+		return user
 	}
 	
 	/**
@@ -80,6 +94,16 @@ class UserService {
 				}
 			}
 		}
+	}
+	
+	User parseCommandData(UserRegisterCommand urc){
+		User user = new User(urc.properties)
+		user.profile = new Profile()
+
+		user.profile.state = urc.state
+		user.profile.city = urc.city
+
+		return user
 	}
 }
 
