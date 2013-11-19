@@ -352,12 +352,14 @@ a.help:before {
 
 .icon-unlock:after {
 	font-family: 'cashbuilder-font';
-	content: '\1f513';	
+	content: '\1f513';
+	font-weight: normal;
 }
 
 .icon-doc:before {
 	font-family: 'cashbuilder-font';
 	content: '\e813';
+	font-weight: normal;
 }
 
 .icon-home:before {
