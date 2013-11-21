@@ -9,7 +9,6 @@
 
     <body>
     	<g:render template="/elements/area_title" model="[bundle_key: 'form.contact.title']"/>
-    
     	<g:render template="/elements/message" var="bean" bean="${contact}"></g:render>
 
 		<div class="col-1">
@@ -19,26 +18,23 @@
 		  		
 		  			<hr />
 		  		
-					<g:form class="text-large" name="contact" action="submitContact" >
-
-						<g:if test="${!userLogged}">
-							<label for="name"><g:message code="name.label" />
-				    		</label><g:textField name="name" value="${contact?.name}"/>
-				    		
-				    		<label for="email"><g:message code="email.label" />
-				    		</label><g:textField name="email" value="${contact?.email}"/>
-			    		</g:if>
-			    		
-			    		<label for="subject"><g:message code="form.contact.subject.label" />
-			    		</label><g:select name="subject" from="${subjects}" optionKey="id" optionValue="value"
-									noSelection="['': 'Selecione']" value="${contact?.subject }"/>
-
-						<label for="messagem"><g:message code="form.contact.message.label" />
-			    		</label><g:textArea name="message" cols="50" rows="5" maxlength="750" value="${contact.message }"></g:textArea>
-						
-						<div class="content-center">
-							<input type="submit" class="btn" id="submit" value="Enviar"/>
-						</div>
+					<g:form class="text-large" name="contact" action="submit" >
+					<g:if test="${!userLogged}">
+						<label><g:message code="form.label.name" />
+			    		</label><g:textField name="name" value="${contact?.name}"/>			    		
+			    		<label><g:message code="form.label.email" />
+			    		</label><g:textField name="email" value="${contact?.email}"/>
+		    		</g:if>
+		    		
+		    		<label><g:message code="form.contact.label.subject" />
+		    		</label><g:select name="subject" from="${subjects}" optionKey="id" optionValue="value"
+								noSelection="['': 'Selecione']" value="${contact?.subject }"/>
+					<label><g:message code="form.contact.label.message" />
+		    		</label><g:textArea name="message" cols="50" rows="5" maxlength="750" value="${contact.message }"></g:textArea>
+					
+					<div class="content-center">
+						<input type="submit" class="btn" id="submit" value="Enviar"/>
+					</div>
 					</g:form>
 	            </div>
 	            

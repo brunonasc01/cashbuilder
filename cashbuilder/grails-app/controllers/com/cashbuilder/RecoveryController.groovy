@@ -48,7 +48,7 @@ class RecoveryController {
 				html g.render(template:"/elements/mail/request_password", model:[username:user.firstName,token:token])				
 			}
 
-			generalService.buildMessage(Constants.MSG_INFO,"form.lostpassword.send.message")
+			generalService.buildMessage(Constants.MSG_INFO,"form.lostpassword.message.send")
 		} else {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.error")
 			render(view:"index")
@@ -66,10 +66,10 @@ class RecoveryController {
 				
 				recovery.delete()
 				
-				generalService.buildMessage(Constants.MSG_SUCCESS,"form.lostpassword.reset.message")
+				generalService.buildMessage(Constants.MSG_SUCCESS,"form.resetpassword.message.success")
 			}
 		} else {
-			generalService.buildMessage(Constants.MSG_ERROR,"form.lostpassword.reset.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.resetpassword.error")
 			render(view: "index",model:[bean:rcmd,recovery: true])
 		}
 	}

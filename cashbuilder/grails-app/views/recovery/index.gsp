@@ -21,14 +21,11 @@
 		  		<div class="content">
 			  		<g:if test="${!recovery }">
 						<g:form name="lostpassword" action="send" >
-							
-							<p><g:message code="form.lostpassword.message"/></p>					
-	
+							<p><g:message code="form.lostpassword.message"/></p>
 							<hr />
-	
-							<label><g:message code="form.lostpassword.email.title"/>
+							<label><g:message code="form.lostpassword.label.email"/>
 							</label><g:textField name="email" />
-	
+
 							<div class="content-center">
 								<input type="submit" class="btn" id="submit" value="Enviar"/>
 							</div>
@@ -42,13 +39,13 @@
 
 							<hr />
 
-							<label><g:message code="passwordNew.label"/>
+							<label><g:message code="form.resetpassword.label.password"/>
 							</label><g:passwordField name="passwordNew" />
 
-							<label><g:message code="passwordRepeat.label"/>
+							<label><g:message code="form.resetpassword.label.passwordRepeat"/>
 							</label><g:passwordField name="passwordRepeat" />
 	
-							<small><g:message code="form.password.message"/></small>
+							<small><g:message code="form.resetpassword.password.warning"/></small>
 
 							<div class="content-center">
 								<input type="submit" class="btn" id="submit" value="Gravar nova Senha"/>

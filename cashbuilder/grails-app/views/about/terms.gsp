@@ -7,12 +7,12 @@
 </head>
 
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'general.terms.title']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'terms.header.title']"/>
 
 	<div class="col-1">
 		<div class="box">
 			<div class="content text-box">
-				<g:message code="general.terms.text"/>
+				<g:message code="terms.text"/>
 			</div>
 		</div>
 	</div>

@@ -13,7 +13,7 @@
     
 		<div class="text-center append-bottom-dist">
   			<g:link uri="/" class="btn btn-large append-top-dist">
-				<g:message code="app.back.index"/>
+				<g:message code="form.label.back"/>
 			</g:link>
 	  	</div>
 	</body>		
