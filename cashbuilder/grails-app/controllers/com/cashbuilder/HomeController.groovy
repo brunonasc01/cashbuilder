@@ -25,7 +25,7 @@ class HomeController {
 
 		//box saldo
 		BalanceBoxBean balanceBox = new BalanceBoxBean();
-		balanceBox.title = "box.balance.title1"
+		balanceBox.title = "box.balance.title.budget"
 		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)		
 		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
 		balanceBox.plannedIncome = budgetService.getBudgetedTotal(budgetMonth,true)
@@ -54,7 +54,8 @@ class HomeController {
 		def categoriesList = generalService.getCategoriesList(user)
 		def alerts = Alert.findAllByBudgetAndEnable(budget,true)
 		
-		[home: true, consult_mode: consult_mode, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros, registrosFuturos: registrosFuturos, registroRapido: categoriesList, alerts: alerts]
+		[home: true, consult_mode: consult_mode, balanceBox: balanceBox, ultimosRegistros: ultimosRegistros,
+			 registrosFuturos: registrosFuturos, registroRapido: categoriesList, alerts: alerts]
 	}
 	
 	def saveTransaction() {
@@ -64,10 +65,10 @@ class HomeController {
 		
 		if(transaction.hasErrors()){
 			flash.errors = g.renderErrors(bean: transaction)
-			generalService.buildMessage(Constants.MSG_ERROR,"transaction.data.invalid")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.transaction.message.error")
 		} else {
 			eventService.processAlerts(user)
-			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.data.success")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.message.success")
 		}
 		
 		redirect(action: "index")

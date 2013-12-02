@@ -1,4 +1,3 @@
-
 <%@page import="com.cashbuilder.DateUtils"%>
 
 <g:javascript>
@@ -9,20 +8,22 @@ $(function() {
 
 <div class="col-1 text-center">
 	<nav id="month-list">
-		<g:link params="[monthId:'0']" action="${action}"><span><g:message code="month.january"/></span>
-		</g:link><g:link params="[monthId:'1']" action="${action}"><span><g:message code="month.february"/></span>
-		</g:link><g:link params="[monthId:'2']" action="${action}"><span><g:message code="month.march"/></span>
-		</g:link><g:link params="[monthId:'3']" action="${action}"><span><g:message code="month.april"/></span>
-		</g:link><g:link params="[monthId:'4']" action="${action}"><span><g:message code="month.may"/></span>
-		</g:link><g:link params="[monthId:'5']" action="${action}"><span><g:message code="month.june"/></span>
-		</g:link><g:link params="[monthId:'6']" action="${action}"><span><g:message code="month.july"/></span>
-		</g:link><g:link params="[monthId:'7']" action="${action}"><span><g:message code="month.august"/></span>
-		</g:link><g:link params="[monthId:'8']" action="${action}"><span><g:message code="month.setptember"/></span>
-		</g:link><g:link params="[monthId:'9']" action="${action}"><span><g:message code="month.october"/></span>
-		</g:link><g:link params="[monthId:'10']" action="${action}"><span><g:message code="month.november"/></span>
-		</g:link><g:link params="[monthId:'11']" action="${action}"><span><g:message code="month.december"/></span></g:link>
+		<g:link params="[monthId:'0']" action="${action}"><span><g:message code="month.0"/></span>
+		</g:link><g:link params="[monthId:'1']" action="${action}"><span><g:message code="month.1"/></span>
+		</g:link><g:link params="[monthId:'2']" action="${action}"><span><g:message code="month.2"/></span>
+		</g:link><g:link params="[monthId:'3']" action="${action}"><span><g:message code="month.3"/></span>
+		</g:link><g:link params="[monthId:'4']" action="${action}"><span><g:message code="month.4"/></span>
+		</g:link><g:link params="[monthId:'5']" action="${action}"><span><g:message code="month.5"/></span>
+		</g:link><g:link params="[monthId:'6']" action="${action}"><span><g:message code="month.6"/></span>
+		</g:link><g:link params="[monthId:'7']" action="${action}"><span><g:message code="month.7"/></span>
+		</g:link><g:link params="[monthId:'8']" action="${action}"><span><g:message code="month.8"/></span>
+		</g:link><g:link params="[monthId:'9']" action="${action}"><span><g:message code="month.9"/></span>
+		</g:link><g:link params="[monthId:'10']" action="${action}"><span><g:message code="month.10"/></span>
+		</g:link><g:link params="[monthId:'11']" action="${action}"><span><g:message code="month.11"/></span></g:link>
 		<g:if test="${DateUtils.isLastMonthOfYear() }">
-			<g:link params="[monthId:'0',nextYear:'true']" class="nextYear" action="${action}"><span><g:message code="month.january"/> ${DateUtils.currentYear+1 }</span></g:link>
+			<g:link params="[monthId:'0',nextYear:'true']" class="nextYear" action="${action}">
+				<span><g:message code="month.0"/> ${DateUtils.currentYear+1 }</span>
+			</g:link>
 		</g:if>
 	</nav>
 </div>

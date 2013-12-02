@@ -46,12 +46,12 @@ class BudgetController {
 		def listSaidas = budgetService.getBudgetData(user, budgetMonth, false)
 		
 		BudgetBean budgetBean = new BudgetBean()
-		budgetBean.date = new DateBean(year: budget.year, month: DateUtils.getMonth(budgetMonth.month))
+		budgetBean.date = new DateBean(year: budget.year, month: "month.${budgetMonth.month}")
 		budgetBean.incomeList = listEntradas
 		budgetBean.expenseList = listSaidas
 
 		BalanceBoxBean balanceBox = new BalanceBoxBean(isBudget:true)
-		balanceBox.title = "box.balance.title3"
+		balanceBox.title = "box.balance.title.balance"
 		balanceBox.plannedBalance = budgetService.getBudgetedBalance(budgetMonth)
 		balanceBox.actualBalance = budgetService.getBalance(budgetMonth,user)
 		balanceBox.plannedClass = (balanceBox.plannedBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
@@ -60,13 +60,12 @@ class BudgetController {
 
 		def df = generalService.getNumberFormatter()
 		
-		[budget: true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: month, meses: months, budget: budgetBean, balanceBox: balanceBox, df: df]
-		
+		[budget: true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: month, meses: months,
+			 budget: budgetBean, balanceBox: balanceBox, df: df]
 	}
 	
 	def reset_consult(){
 		session.consult_year = null
-		
 		redirect(action:'index')
 	}
 }

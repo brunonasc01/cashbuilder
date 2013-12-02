@@ -30,3 +30,7 @@
 #transaction-list-box .description {
     font-size: 0.9rem
     }
+    
+#transaction-list-box p {
+	padding: 2.680965%;
+}

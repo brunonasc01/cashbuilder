@@ -48,16 +48,16 @@ class UserController {
 	def save(UserRegisterCommand urc) {
 		
 		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
-			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.error.message")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.message.error")
 
 		} else if(!userService.isEmailAvailable(urc.email)){
-			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.message.unavailable")
 
 		} else {
 			User nUser = userService.saveUser(urc)
 
 			if(nUser == null || nUser.hasErrors()){
-				generalService.buildMessage(Constants.MSG_ERROR,"form.signup.data.error1.message")
+				generalService.buildMessage(Constants.MSG_ERROR,"form.signup.error.message")
 				
 			} else {
 				def files = getCategoryFiles()

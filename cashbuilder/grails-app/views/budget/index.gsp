@@ -8,14 +8,13 @@
         <g:javascript>
 		initBudgetScripts();
         </g:javascript>
-        
     </head>
     <body>
 		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="menu.budget.label"/> - <span><g:message code="${budget.date?.month}"/></span> / ${budget.date?.year }
+				<g:message code="menu.label.budget"/> - <span><g:message code="${budget.date?.month}"/></span> / ${budget.date?.year }
 			</h2>
    		</div>
    		

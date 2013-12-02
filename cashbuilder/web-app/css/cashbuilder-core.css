@@ -350,7 +350,7 @@ a.help:before {
 	content: '\1f512';	
 }
 
-.icon-unlock:after {
+.icon-unlock:before {
 	font-family: 'cashbuilder-font';
 	content: '\1f513';
 	font-weight: normal;

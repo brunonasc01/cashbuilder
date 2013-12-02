@@ -9,11 +9,8 @@
 </head>
     
 <body>
-
 	<div id="month-title" class="col-1">
-		<h2 class="title-box">
-			<g:message code="form.signup.title"/>
-		</h2>
+		<h2 class="title-box"><g:message code="form.signup.title"/></h2>
 	</div>
 
 	<g:render template="/elements/message" var="bean" bean="${userInstance}" ></g:render>
@@ -21,45 +18,32 @@
 	<div class="col-1">
 		<div class="box">
 			<div class="content">
-
 		    	<g:form method="post" action="save" class="text-large">
-		    		
-			    	<label for="nome"><g:message code="firstName.label" />
+			    	<label><g:message code="form.signup.label.firstName" />
 			    	</label><g:textField name="firstName" value="${userInstance?.firstName}"/>
-					
-					<label for="sobrenome"><g:message code="lastName.label" />
+					<label><g:message code="form.signup.label.lastName" />
 			    	</label><g:textField name="lastName" value="${userInstance?.lastName}"/>
-					
-					<label for="email"><g:message code="email.label" />
+					<label><g:message code="form.signup.label.email" />
 			    	</label><g:textField name="email" value="${userInstance?.email}"/>
-
-					<label for="emailRepeat"><g:message code="emailRepeat.label" />
+					<label><g:message code="form.signup.label.emailRepeat" />
 			    	</label><g:textField name="emailRepeat" value="${userInstance?.emailRepeat}"/>
-					
-					<label for="password"><g:message code="password.label" />
+					<label><g:message code="form.signup.label.password" />
 			    	</label><g:passwordField name="password"/>
-					
-					<label for="passwordRepeat"><g:message code="passwordRepeat.label" />
+					<label><g:message code="form.signup.label.passwordRepeat" />
 			    	</label><g:passwordField name="passwordRepeat"/>
-
-					<label for="state"><g:message code="profile.state.label"/>
+					<label><g:message code="form.signup.label.state"/>
 					</label><g:textField name="state" value="${userInstance?.state}"/>
-					
-					<label for="city"><g:message code="profile.city.label"/>
+					<label><g:message code="form.signup.label.city"/>
 					</label><g:textField name="city" value="${userInstance?.city}"/>
-
 					<label><g:message code="form.signup.captcha.title"/></label>
-					
 					<recaptcha:ifEnabled>
 					    <recaptcha:recaptcha theme="white"/>
 					</recaptcha:ifEnabled>
-
 					<small><g:message code="form.signup.policy.message"/></small>
 											
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Cadastrar"/>
 					</div>
-
 		    	</g:form>
 		    </div>
 		</div>

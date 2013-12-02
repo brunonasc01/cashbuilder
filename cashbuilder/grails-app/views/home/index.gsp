@@ -18,16 +18,16 @@
 
 		<g:if test="${!consult_mode}">
 		<div class="col-25">
-			<g:render template="/elements/box_registro_rapido" bean="${registroRapido}" ></g:render>
+			<g:render template="/elements/cashflow_transaction_create_box" bean="${registroRapido}" ></g:render>
 		</div>
 		</g:if>
 			
 		<div class="col-25">
-			<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros }" ></g:render>
+			<g:render template="/elements/box_registros_recentes" bean="${ultimosRegistros}" ></g:render>
 		</div>
 		
 		<div class="col-25">
-			<g:render template="/elements/box_registros_futuros" var="list" bean="${registrosFuturos }" ></g:render>
+			<g:render template="/elements/box_registros_futuros" var="list" bean="${registrosFuturos}" ></g:render>
 		</div>
 	</body>		
 </html>
