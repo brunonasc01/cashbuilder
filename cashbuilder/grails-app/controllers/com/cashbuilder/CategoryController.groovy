@@ -30,10 +30,11 @@ class CategoryController {
 		
 		def id = params.id
 		def name = params.name
-		println name
+
 		if(id){
 			def category = Category.findById(params.id)
 			def defaultMessage = ['' : g.message(code: "message.select.subcategory")]
+
 			render g.comboBox(optionKey: 'id', from: category.subcategories, name: name, nameDisplayPrefix: "label",
 								defaultOption: defaultMessage)
 		}
@@ -126,7 +127,6 @@ class CategoryController {
 	
 	def delete_modal(){
 		def category = Category.get(params.id)
-
 		def user = session.user.attach()
 		def categoriesList = generalService.getCategoriesList(user)
 		
@@ -135,7 +135,6 @@ class CategoryController {
 	
 	def delete(){
 		def category = Category.get(params.id)
-
 		def user = session.user.attach()
 		def categoriesList = generalService.getCategoriesList(user)
 
@@ -156,16 +155,15 @@ class CategoryController {
 		
 		if(full_scr && !cdc.validate()){
 			def category = Category.get(params.id)
-			
 			def user = session.user.attach()
 			def categoriesList = generalService.getCategoriesList(user)
-			
+
 			render(view: "delete", model: [adm:true, oldCategory:category, categoriesList: categoriesList])
 		} else {
 			redirect(action: "new_category")
 		}		
 	}
-	
+
 	def delete_all(CategoryDeleteCommand cdc){
 
 		categoryService.deleteCustomCategory(params, cdc, true);

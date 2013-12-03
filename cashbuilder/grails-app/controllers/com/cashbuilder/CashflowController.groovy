@@ -36,20 +36,20 @@ class CashflowController {
 						
 		CashFlowBean cashflowBean = new CashFlowBean()
 		cashflowBean.transactions = transactionService.getTransactions(user,currentMonth,currentYear)
-		cashflowBean.date = new DateBean(year: currentYear, month: DateUtils.getMonth(currentMonth))
+		cashflowBean.date = new DateBean(year: currentYear, month: "month.${currentMonth}")
 		
 		BalanceBoxBean balanceBox = new BalanceBoxBean()
-		balanceBox.title = "box.balance.title2"
+		balanceBox.title = "box.balance.title.total"
 		balanceBox.income = budgetService.getRealizedTotal(month,user,Constants.CREDITO)
 		balanceBox.expense = budgetService.getRealizedTotal(month,user,Constants.DEBITO)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
 		
-		[cashflow: true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: currentMonth, meses: months, cashFlow:cashflowBean, balanceBox: balanceBox]
+		[cashflow: true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: currentMonth, meses: months,
+			 cashFlow:cashflowBean, balanceBox: balanceBox]
 	}
 	
 	def reset_consult(){
 		session.consult_year = null
-		
 		redirect(action:'index')
 	}
 }

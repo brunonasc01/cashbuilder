@@ -10,7 +10,6 @@ class GoalController {
     def index() {
 		def user = session.user.attach()
 		boolean consult_mode = session.consult_year? true : false
-
 		def goalsList = goalService.getGoals(user)
 		def goalStatus = goalService.getGoalStats(user)
 
@@ -64,7 +63,6 @@ class GoalController {
 	
 	def reset_consult(){
 		session.consult_year = null
-		
 		redirect(action:'index')
 	}
 }

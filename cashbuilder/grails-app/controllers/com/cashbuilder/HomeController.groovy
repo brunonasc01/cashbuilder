@@ -76,7 +76,6 @@ class HomeController {
 	
 	def reset_consult(){
 		session.consult_year = null
-		
 		redirect(action:'index')
 	}
 }

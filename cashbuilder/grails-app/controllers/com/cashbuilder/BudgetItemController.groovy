@@ -31,7 +31,6 @@ class BudgetItemController {
 			
 			def user = session.user.attach()
 			eventService.processAlerts(user)
-
 			generalService.buildMessage(Constants.MSG_SUCCESS,"Orcamento atualizado com sucesso")
 		}
 		

@@ -29,28 +29,16 @@
 				    			
     			<div id="goal-info" class="content">
     				<ul class="inline">
-    					<li class="title">
-    						<g:message code="goal.box.goal1.label"/>
-    					</li>
-    					<li class="value">
-    						${goalStatus[0]}
-    					</li>
+    					<li class="title"><g:message code="goal.box.goal1.label"/></li>
+    					<li class="value">${goalStatus[0]}</li>
     				</ul>
     				<ul class="inline">
-    					<li class="title">
-    						<g:message code="goal.box.goal2.label"/>
-    					</li>
-    					<li class="value">
-    						${goalStatus[1]}
-    					</li>
+    					<li class="title"><g:message code="goal.box.goal2.label"/></li>
+    					<li class="value">${goalStatus[1]}</li>
     				</ul>
     				<ul class="inline">
-    					<li class="title">
-    						<g:message code="goal.box.goal3.label"/>
-    					</li>
-    					<li class="value">
-    						${goalStatus[2]}
-    					</li>
+    					<li class="title"><g:message code="goal.box.goal3.label"/></li>
+    					<li class="value">${goalStatus[2]}</li>
     				</ul>
     			</div>
 			</div>
@@ -81,7 +69,7 @@
 	 										<a href="#"><span class="ui-icon ui-icon-trash"></span></a>
 										</g:form>
 									</li><li class="values text-right"><g:formatNumber number="${goal.accumulated }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-									</li><li class="of">de
+									</li><li class="of"><g:message code="default.of"/>
 									</li><li class="values text-left"><g:formatNumber number="${goal.total }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 									</li><li class="actual">
 										<g:formatNumber number="${goal.currentAccumulated }" format="${Constants.FORMATO_MOEDA}"/>

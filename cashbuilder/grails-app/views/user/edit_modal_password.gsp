@@ -14,15 +14,13 @@ $('#bt_close_modal').click(function(){
 		<g:form name="editPassword" action="updatePassword" controller="user" >
 			<label><g:message code="edit.password.label" />
 			</label><g:passwordField name="password" value=""/>
-			
 			<hr />
-			
+
 			<label><g:message code="passwordNew.label" />
 			</label><g:passwordField name="passwordNew" value=""/>
-			
 			<label><g:message code="passwordRepeat.label" />
 			</label><g:passwordField name="passwordRepeat" value=""/>
-			
+
 			<div class="content-center">
 				<input type="submit" class="btn" id="submit" value="Gravar"/>
 			</div>

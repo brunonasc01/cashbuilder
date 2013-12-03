@@ -11,13 +11,14 @@
 <g:elseif test="${flash.message}">
 	<div class="col-1">
 		<div class="message ${flash.msg_type}">
-			<p>
-				<g:message code="${flash.message}"/>
-			</p>
-			
-			<g:if test="${flash.errors}">
-				${flash.errors}
+			<p><g:message code="${flash.message}"/></p>
+
+			<g:if test="${flash.budget_updated}" >
+				<ul><li><g:message code="default.budget_update.message"/></li></ul>
 			</g:if>
+			<g:elseif test="${flash.errors}">
+				${flash.errors}
+			</g:elseif>
 			<g:else>
 				<g:hasErrors bean="${bean}">
 					<g:renderErrors bean="${bean}" as="list" />

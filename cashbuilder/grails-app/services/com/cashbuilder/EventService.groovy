@@ -13,8 +13,6 @@ class EventService {
     }
 	
 	void checkEvents(User user, Date date){
-
-		calculateBudget(user,date)
 		processAlerts(user)
 	}
 	

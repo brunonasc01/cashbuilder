@@ -15,9 +15,8 @@
 		  	<div class="box">
 		  		<div class="content">
 		  			<p><g:message code="form.contact.message"/></p>
-		  		
 		  			<hr />
-		  		
+
 					<g:form class="text-large" name="contact" action="submit" >
 					<g:if test="${!userLogged}">
 						<label><g:message code="form.label.name" />

@@ -8,12 +8,7 @@
 </head>
 
 <body>
-
-	<div id="month-title" class="col-1">
-		<h2 class="title-box">
-			<g:message code="manager.user.update.password.label"/>
-		</h2>
-	</div>
+	<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.update.password.label']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -22,18 +17,16 @@
 			<div class="content">
 				<g:form name="editPassword" action="updatePassword" controller="user" >
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
-				
+
 					<label><g:message code="edit.password.label" />
 					</label><g:passwordField name="password" value=""/>
-					
 					<hr />
-					
+
 					<label><g:message code="passwordNew.label" />
 					</label><g:passwordField name="passwordNew" value=""/>
-					
 					<label><g:message code="passwordRepeat.label" />
 					</label><g:passwordField name="passwordRepeat" value=""/>
-					
+
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Gravar"/>
 					</div>
@@ -41,7 +34,5 @@
 			</div>
 		</div>
 	</div>
-	
 </body>
-
 </html>

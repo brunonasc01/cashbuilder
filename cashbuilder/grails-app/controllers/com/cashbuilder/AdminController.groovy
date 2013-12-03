@@ -77,7 +77,6 @@ class AdminController {
 		}else{
 			generalService.buildMessage(Constants.MSG_SUCCESS,"Orcamento para o Mes Salvo com Sucesso.")
 		}
-
 		redirect(action:'manage_budget', params: [monthId: params.monthId])
 	}
 	
@@ -86,13 +85,11 @@ class AdminController {
 			int _year = params.consult_year as Integer
 			session.consult_year = _year 
 		}
-		
 		redirect(action:'index')
 	}
 	
 	def reset_consult(){
 		session.consult_year = null
-		
 		redirect(action:'index')
 	}
 }

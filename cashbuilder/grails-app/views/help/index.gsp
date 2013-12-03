@@ -4,11 +4,11 @@
     <head>
         <meta name="layout" content="base" />
         <r:require modules="help"/>
-        
+
         <g:javascript>
-        	$(function() {
-				processAnswers('help-list');
-			});
+		$(function() {
+			processAnswers('help-list');
+		});
         </g:javascript>
     </head>
 

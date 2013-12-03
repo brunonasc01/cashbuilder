@@ -9,12 +9,8 @@
 
 <body>
 
-	<div id="month-title" class="col-1">
-		<h2 class="title-box">
-			<g:message code="manager.user.update.mail.label"/>
-		</h2>
-	</div>
-	
+	<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.update.mail.label']"/>
+
 	<g:render template="/elements/message"></g:render>
 
 	<div class="col-1">
@@ -25,15 +21,13 @@
 				
 					<label><g:message code="edit.email.label" />
 					</label><g:textField name="email" value=""/>
-					
 					<hr/>
-					
+
 					<label><g:message code="emailNew.label" />
 					</label><g:textField name="emailNew" value=""/>
-					
 					<label><g:message code="emailRepeat.label" />
 					</label><g:textField name="emailRepeat" value=""/>
-					
+
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Gravar"/>
 					</div>
@@ -41,7 +35,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
-
 </html>

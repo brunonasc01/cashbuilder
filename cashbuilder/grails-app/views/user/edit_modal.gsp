@@ -14,13 +14,10 @@ $('#bt_close_modal').click(function(){
 		<g:form name="editUser" action="update" controller="user" >
 			<label><g:message code="firstName.label" />
 			</label><g:textField name="firstName" value="${user?.firstName}"/>
-
 			<label><g:message code="lastName.label" />
 			</label><g:textField name="lastName" value="${user?.lastName}"/>
-
 			<label><g:message code="profile.state.label"/>
 			</label><input type="text" name="state" id="state" value="${user?.profile?.state}" />
-
 			<label><g:message code="profile.city.label"/>
 			</label><input type="text" name="city" id="city" value="${user?.profile?.city}" />
 

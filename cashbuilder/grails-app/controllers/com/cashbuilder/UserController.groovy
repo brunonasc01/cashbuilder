@@ -166,7 +166,6 @@ class UserController {
 	
 	private def getCategoryFiles(){
 		def files = []
-		
 		File fileGeral = grailsAttributes.getApplicationContext().getResource("res/categories.csv").getFile()
 		files += fileGeral
 		

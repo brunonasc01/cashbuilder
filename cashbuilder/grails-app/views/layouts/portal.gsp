@@ -44,7 +44,6 @@
 			<g:form action="login" controller="login" method="post" class="login-form">
 				<label><g:message code="form.label.email"/>
 				</label><g:textField name="email" />
-
 				<label><g:message code="form.label.password"/>
 				</label><g:passwordField name="password" />
 

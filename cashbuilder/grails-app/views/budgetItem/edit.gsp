@@ -8,12 +8,7 @@
 </head>
 
 <body>
-
-	<div id="month-title" class="col-1">
-		<h2 class="title-box">
-			<g:message code="box.budgetitem.title"/>
-		</h2>
-	</div>
+	<g:render template="/elements/area_title" model="[bundle_key:'form.budgetitem.title']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -25,13 +20,10 @@
 				<g:form action="update" controller="budgetItem">
 					<g:hiddenField name="id" value="${bean.id}"/>
 					<g:hiddenField name="monthId" value="${monthId}"/>
-									
-					<label>Valor Atual</label>
+					<label><g:message code="form.budgetitem.label.currentValue"/></label>
 					<g:textField maxlength="10" name="oldValue" value="${bean.budgetedValue}" disabled="true"/>
-		
-					<label>Novo Valor</label>
+					<label><g:message code="form.budgetitem.label.newValue"/></label>
 					<g:textField maxlength="10" name="budgetedValue" value="" />
-		
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Gravar"/>
 					</div>
@@ -40,5 +32,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

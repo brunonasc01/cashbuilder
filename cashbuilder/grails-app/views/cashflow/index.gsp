@@ -14,7 +14,7 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="menu.cashflow.label"/> - <g:message code="${cashFlow.date.month}"/> / ${cashFlow.date.year}
+				<g:message code="menu.label.cashflow"/> - <g:message code="${cashFlow.date.month}"/> / ${cashFlow.date.year}
 			</h2>
    		</div>
     	
@@ -25,7 +25,7 @@
 	    		<div class="text-center append-bottom-dist">
 					<g:form name="newTransactionForm" action="create" controller="transaction">
 						<g:hiddenField name="monthId" value="${monthIndex}" />
-						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'box.transaction.title')}" />
+						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'form.transaction.title')}" />
 					</g:form>
 				</div>
 			</g:if>

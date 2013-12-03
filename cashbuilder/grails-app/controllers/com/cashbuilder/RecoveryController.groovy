@@ -18,17 +18,15 @@ class RecoveryController {
 			def recovery = Recovery.findByToken(token)
 			
 			if(recovery){
-				RecoveryCommand rcmd = new RecoveryCommand(token: token) 
+				RecoveryCommand rcmd = new RecoveryCommand(token: token)
 				
 				[recovery: true, bean: rcmd]
 			}
 		}
-			
 	}
 	
 	def send(){
 		def email = params.email
-		
 		def user = User.findByEmail(email)
 		
 		if(user){
@@ -57,15 +55,13 @@ class RecoveryController {
 	
 	def reset(RecoveryCommand rcmd){
 		if(rcmd.validate()){
-
 			def recovery = Recovery.findByToken(rcmd.token)
 
 			if(recovery){
 				def user = recovery.user
-				user.password = Encoder.encode(rcmd.passwordNew)
-				
+				user.password = Encoder.encode(rcmd.passwordNew)				
 				recovery.delete()
-				
+
 				generalService.buildMessage(Constants.MSG_SUCCESS,"form.resetpassword.message.success")
 			}
 		} else {

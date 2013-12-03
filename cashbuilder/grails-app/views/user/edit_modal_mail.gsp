@@ -14,15 +14,13 @@ $('#bt_close_modal').click(function(){
 		<g:form name="editMail" action="updateMail" controller="user" >
 			<label><g:message code="edit.email.label" />
 			</label><g:textField name="email" value=""/>
-			
 			<hr/>
-			
+
 			<label><g:message code="emailNew.label" />
 			</label><g:textField name="emailNew" value=""/>
-			
 			<label><g:message code="emailRepeat.label" />
 			</label><g:textField name="emailRepeat" value=""/>
-			
+
 			<div class="content-center">
 				<input type="submit" class="btn" id="submit" value="Gravar"/>
 			</div>

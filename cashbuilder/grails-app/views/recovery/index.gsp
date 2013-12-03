@@ -36,15 +36,12 @@
 							<g:hiddenField name="token" value="${bean?.token}" />
 
 							<p><g:message code="form.resetpassword.message"/></p>
-
 							<hr />
 
 							<label><g:message code="form.resetpassword.label.password"/>
 							</label><g:passwordField name="passwordNew" />
-
 							<label><g:message code="form.resetpassword.label.passwordRepeat"/>
 							</label><g:passwordField name="passwordRepeat" />
-	
 							<small><g:message code="form.resetpassword.password.warning"/></small>
 
 							<div class="content-center">

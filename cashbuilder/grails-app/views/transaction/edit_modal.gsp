@@ -19,17 +19,14 @@ $('#bt_close_modal').click(function(){
 	
 			<label for="data"><g:message code="box.transaction.date.label"/>
 			</label><g:jqDatePicker name="date" value="${transaction?.date }"/>
-			
 			<label for="valor"><g:message code="box.transaction.value.label"/>
 			</label><g:textField maxlength="10" name="value" value="${df.format(transaction?.value)}" />
-						
 			<label for="categoria"><g:message code="box.transaction.category.label"/>
 			</label><g:if test="${categoriesList}">
 						 <g:comboBox id="categoryCombo" name="category.id"
 							from="${categoriesList.categories}" nameDisplayPrefix="label"
 							optionKey="id" value="${transaction?.category.id}"/>
 					</g:if>
-					
 			<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
 			</label><g:if test="${categoriesList}">
 						<span id="subcategoriesCombo">
@@ -37,7 +34,6 @@ $('#bt_close_modal').click(function(){
 							optionKey="id" value="${transaction?.subcategory.id}" nameDisplayPrefix="label" />
 						</span>
 					</g:if>
-						
 			<label for="descricao"><g:message code="box.transaction.description.label"/>
 			</label><g:textField name="description" maxlength="100" size="64" value="${transaction?.description }"></g:textField>
 

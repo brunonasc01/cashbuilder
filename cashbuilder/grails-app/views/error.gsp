@@ -12,7 +12,6 @@
 		<div class="box">
 			<div class="content">
 				<h2 class="negative"><g:message code="app.error.title"/></h2>
-
 				<hr />
 
 				<p><g:message code="app.error.message"/></p>

@@ -4,7 +4,7 @@
     <head>
         <meta name="layout" content="base" />
         <r:require modules="budget"/>
-        
+
         <g:javascript>
 		initBudgetScripts();
         </g:javascript>
@@ -25,19 +25,16 @@
     	</div>
     
     	<div class="col-66">
-    		<g:if test="${budget }">
+    		<g:if test="${budget}">
     			<div class="box">
-
     				<g:if test="${budget.incomeList }">
     					<h3 class="title-box"><g:message code="budget.income.title"/></h3>
-
-    					<g:render template="/elements/orcamento_basico" var="list" bean="${budget.incomeList}"></g:render>
+    					<g:render template="/elements/budget_list" var="list" bean="${budget.incomeList}"></g:render>
     				</g:if>
 
     				<g:if test="${budget.expenseList }">
     					<h3 class="title-box"><g:message code="budget.expense.title"/></h3>
-
-						<g:render template="/elements/orcamento_basico" var="list" bean="${budget.expenseList}"></g:render>
+						<g:render template="/elements/budget_list" var="list" bean="${budget.expenseList}"></g:render>
 					</g:if>
 
 					<g:if test="${!budget.expenseList && !budget.incomeList}">
@@ -48,5 +45,5 @@
     			</div>
     		</g:if>
 		</div>
-	</body>		
+	</body>
 </html>
