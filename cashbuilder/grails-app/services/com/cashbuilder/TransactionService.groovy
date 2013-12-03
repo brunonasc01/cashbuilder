@@ -2,11 +2,15 @@ package com.cashbuilder
 
 import java.util.Map;
 
+import org.codehaus.groovy.grails.web.util.WebUtils;
+import org.joda.time.DateTime;
+
 class TransactionService {
 
 	static transactional = true
 	
 	def messageSource
+	def budgetService
 	
     def serviceMethod() {
 
@@ -23,9 +27,35 @@ class TransactionService {
 
 				transaction.save()
 
+				handleBudgetUpdate(user,transaction)
+				
 				return transaction
 			} else {
 				return saveTransactionParcels(user,params)
+			}
+		}
+	}
+	
+	void handleBudgetUpdate(User user, Transaction transaction){
+		if(!transaction.hasErrors()){
+			DateTime date = new DateTime(transaction.date);
+			def budget = Budget.findByYearAndUser(date.year,user)
+
+			if(budget) {
+				def budgetMonth = BudgetMonth.findByMonthAndBudget(date.monthOfYear-1,budget)
+				double budgetTotal = budgetService.getBudgetedTotal(budgetMonth,transaction.subcategory)
+				double realizedTotal = budgetService.getRealizedTotal(budgetMonth, user, transaction.subcategory)
+				double balance = realizedTotal - budgetTotal
+
+				if(budgetTotal <= 0 || balance > 0.5){
+					BudgetItem budgetItem = BudgetItem.findBySubcategoryAndMonth(transaction.subcategory,budgetMonth)
+
+					if(budgetItem){
+						budgetItem.budgetedValue += (budgetItem.budgetedValue > 0 )? (balance) : realizedTotal;
+						def flashScope = WebUtils.retrieveGrailsWebRequest().flashScope
+						flashScope.budget_updated = true 
+					}
+				}
 			}
 		}
 	}
@@ -57,6 +87,8 @@ class TransactionService {
 				
 				transactionParcel.date = new Date(transactionDate.getTimeInMillis())
 				transactionParcel.save(flush:true)
+				
+				handleBudgetUpdate(user,transactionParcel)
 				
 				if(transactionMonth == Calendar.DECEMBER){
 					transactionMonth = 0
