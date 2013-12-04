@@ -8,7 +8,7 @@ $('#bt_close_modal').click(function(){
 
 <div class="box modal cashflow-modal">
 	<h3 class="title-box">
-		<g:message code="box.transaction.title"/>
+		<g:message code="form.transaction.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a>
 	</h3>
 	
@@ -16,26 +16,26 @@ $('#bt_close_modal').click(function(){
 		<g:form controller="transaction" action="save">
 			<g:hiddenField name="monthId" value="${monthId }"></g:hiddenField>
 	
-			<label for="data"><g:message code="box.transaction.date.label"/>
+			<label for="data"><g:message code="form.transaction.label.date"/>
 			</label><g:jqDatePicker name="date"/>
-			<label for="valor"><g:message code="box.transaction.value.label"/>
+			<label for="valor"><g:message code="form.transaction.label.value"/>
 			</label><g:textField maxlength="10" name="value" value="" />
-			<label for="parcelas"><g:message code="box.transaction.parcels.label" />
+			<label for="parcelas"><g:message code="form.transaction.label.parcels" />
 			</label><g:select name="parcels" from="${1..24}" optionValue="${{it == 1? "à vista" : it}}"/>
-			<label for="categoria"><g:message code="box.transaction.category.label"/>
+			<label for="categoria"><g:message code="form.label.category"/>
 			</label><g:if test="${categoriesList}">
 						 <g:comboBox id="categoryCombo" name="category.id"
 							from="${categoriesList.categories}" nameDisplayPrefix="label"
 							optionKey="id" defaultOption="['': 'Selecione']" />
 					</g:if>
-			<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
+			<label for="subCategoria"><g:message code="form.label.subcategory"/>
 			</label><g:if test="${categoriesList}">
 						<span id="subcategoriesCombo">
 						 <g:comboBox name="subcategory.id" from=""
 							defaultOption="['': 'Selecione uma categoria']" />
 						</span>
 					</g:if>
-			<label for="descricao"><g:message code="box.transaction.description.label"/>
+			<label for="descricao"><g:message code="form.transaction.label.description"/>
 			</label><g:textField name="description" maxlength="100" size="64"></g:textField>
 
 			<div class="content-center">

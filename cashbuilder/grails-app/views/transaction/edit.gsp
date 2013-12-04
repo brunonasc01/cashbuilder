@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'box.transaction.edit.title']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'form.transaction.edit.title']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -22,24 +22,24 @@
 					<g:hiddenField name="monthId" value="${monthId }"></g:hiddenField>
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
 			
-					<label for="data"><g:message code="box.transaction.date.label"/>
+					<label for="data"><g:message code="form.transaction.label.date"/>
 					</label><g:jqDatePicker name="date" value="${transaction?.date }"/>
-					<label for="valor"><g:message code="box.transaction.value.label"/>
+					<label for="valor"><g:message code="form.transaction.label.value"/>
 					</label><g:textField maxlength="10" name="value" value="${df.format(transaction?.value)}" />
-					<label for="categoria"><g:message code="box.transaction.category.label"/>
+					<label for="categoria"><g:message code="form.label.category"/>
 					</label><g:if test="${categoriesList}">
 								 <g:comboBox id="categoryCombo" name="category.id"
 									from="${categoriesList.categories}" nameDisplayPrefix="label" 
 									optionKey="id" value="${transaction?.category.id}"/>
 							</g:if>
-					<label for="subCategoria"><g:message code="box.transaction.subcategory.label"/>
+					<label for="subCategoria"><g:message code="form.label.subcategory"/>
 					</label><g:if test="${categoriesList}">
 								<span id="subcategoriesCombo">
 								 <g:comboBox name="subcategory.id" from="${subcategoriesList}" nameDisplayPrefix="label"
 									optionKey="id" value="${transaction?.subcategory.id}" />
 								</span>
 							</g:if>
-					<label for="descricao"><g:message code="box.transaction.description.label"/>
+					<label for="descricao"><g:message code="form.transaction.label.description"/>
 					</label><g:textField name="description" maxlength="100" size="64" value="${transaction?.description }"></g:textField>
 
 					<div class="content-center">

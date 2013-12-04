@@ -26,7 +26,7 @@ class TransactionController {
 		def transaction = Transaction.get(params.id)
 		
 		if (!transaction) {
-			generalService.buildMessage(Constants.MSG_ERROR,"transaction.edit.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.transaction.edit.error")
 			redirect(controller:"cashflow", action: "index")
 		} else {
 			def categoriesList = generalService.getCategoriesList(transaction.user)
@@ -45,10 +45,10 @@ class TransactionController {
 
 		if(transaction.hasErrors()){
 			flash.errors = g.renderErrors(bean: transaction)
-			generalService.buildMessage(Constants.MSG_ERROR,"transaction.data.invalid")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.transaction.message.error")
 		} else {
 			eventService.processAlerts(user)
-			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.data.success")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.message.success")
 		}
 
 		boolean full_scr = params.full_scr
@@ -67,7 +67,7 @@ class TransactionController {
 		def transaction = Transaction.get(params.id)
 		
 		if (!transaction) {
-			generalService.buildMessage(Constants.MSG_ERROR,"transaction.edit.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.transaction.edit.error")
 			redirect(controller:"cashflow", action: "index")
 		} else {
 			def categoriesList = generalService.getCategoriesList(transaction.user)
@@ -84,11 +84,11 @@ class TransactionController {
 		
 		if(transaction.hasErrors()){
 			flash.errors = g.renderErrors(bean: transaction)
-			generalService.buildMessage(Constants.MSG_ERROR,"transaction.update.data.invalid")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.transaction.update.error")
 		} else {
 			def user = session.user.attach()
 			eventService.processAlerts(user)
-			generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.update.data.success")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.update.success")
 		}
 		
 		boolean full_scr = params.full_scr
@@ -107,7 +107,7 @@ class TransactionController {
 	
 	def delete() {
 		transactionService.deleteTransaction(params.id)
-		generalService.buildMessage(Constants.MSG_SUCCESS,"transaction.delete.success")
+		generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.delete.success")
 		
 		redirect(controller:"cashflow", action: "index")
 	}
