@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.update.password.label']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'form.edituser.password.label']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -18,13 +18,13 @@
 				<g:form name="editPassword" action="updatePassword" controller="user" >
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
 
-					<label><g:message code="edit.password.label" />
+					<label><g:message code="form.edituser.label.password" />
 					</label><g:passwordField name="password" value=""/>
 					<hr />
 
-					<label><g:message code="passwordNew.label" />
+					<label><g:message code="form.edituser.label.passwordNew" />
 					</label><g:passwordField name="passwordNew" value=""/>
-					<label><g:message code="passwordRepeat.label" />
+					<label><g:message code="form.edituser.label.passwordRepeat" />
 					</label><g:passwordField name="passwordRepeat" value=""/>
 
 					<div class="content-center">

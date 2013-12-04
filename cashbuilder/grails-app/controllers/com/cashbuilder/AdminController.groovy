@@ -56,7 +56,7 @@ class AdminController {
 		boolean calculated = !budget.calculated
 
 		BalanceBoxBean balanceBox = new BalanceBoxBean()
-		balanceBox.title = "box.balance.title4"
+		balanceBox.title = "box.balance.title.prevtotal"
 		balanceBox.income = budgetService.getBudgetedTotal(month,true)
 		balanceBox.expense = budgetService.getBudgetedTotal(month,false)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE 

@@ -2,8 +2,9 @@
 	<div class="col-1">
 		<div class="message info">
 			<p>
-				<g:message code="default.consult_mode.messsage1"/> <b>${session.consult_year }</b>. <g:message code="default.consult_mode.messsage2"/>
-				<g:link action="reset_consult" class="message_link">clique aqui</g:link>
+				<g:message code="default.consult_mode.messsage.activated"/>
+				<b>${session.consult_year }</b>. <g:message code="default.consult_mode.message.warning"/>
+				<g:link action="reset_consult" class="message_link"><g:message code="default.click_here"/></g:link>
 			</p>
 		</div>
 	</div>

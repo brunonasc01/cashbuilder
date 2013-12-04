@@ -10,7 +10,7 @@
 <body>
 	<div id="month-title" class="col-1">
 		<h2 class="title-box">
-			<g:message code="manager.category.edit.label"/>
+			<g:message code="form.manager.category.edit.title"/>
 		</h2>
 	</div>
 
@@ -26,7 +26,7 @@
 					<g:hiddenField name="id" value="${category.id }"/>
 					
 					<g:each var="subcategory" in="${category.subcategories}" status="i">
-						<label>[${i+1}] <g:message code="default.name.label"/>
+						<label>[${i+1}] <g:message code="form.label.subcategory"/>
 						</label><g:textField name="subcategories[${i}].name" value="${subcategory.name}" />
 					</g:each>
 		
@@ -38,5 +38,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

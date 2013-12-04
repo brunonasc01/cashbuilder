@@ -84,11 +84,11 @@ class CategoryController {
 		if(nCategory.hasErrors()){
 			def customCategories = Category.findAllByUserAndCustom(user,true);
 			
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.save.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.manager.category.message.error")
 			render(view: "new_category",model:[errorBean: nCategory, category: ccmd, editCategories: customCategories, adm: true])
 			
 		} else {
-			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.save.success")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.manager.category.message.success")
 			redirect(action: "new_category")
 		}
 	}
@@ -110,10 +110,10 @@ class CategoryController {
 		
 		if(uCategory.hasErrors()){
 			flash.errors = g.renderErrors(bean: uCategory)
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.update.error.message")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.manager.category.update.error.message")
 
 		} else {
-			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.update.success.message")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.manager.category.update.success.message")
 		}
 
 		boolean full_scr = params.full_scr
@@ -145,10 +145,10 @@ class CategoryController {
 
 		if(cdc.validate()){
 			categoryService.deleteCustomCategory(params, cdc, false);
-			generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.delete.success.message")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.manager.category.delete.message.success")
 
 		} else {
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.category.delete.error.message")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.manager.category.delete.message.error")
 		}
 		
 		boolean full_scr = params.full_scr
@@ -167,7 +167,7 @@ class CategoryController {
 	def delete_all(CategoryDeleteCommand cdc){
 
 		categoryService.deleteCustomCategory(params, cdc, true);
-		generalService.buildMessage(Constants.MSG_SUCCESS,"manager.category.deleteall.success.message")
+		generalService.buildMessage(Constants.MSG_SUCCESS,"form.manager.category.deleteall.message.success")
 
 		redirect(action: "new_category")
 	}

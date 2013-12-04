@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.update.data.label']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'form.edituser.data.title']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -18,13 +18,13 @@
 				<g:form name="editUser" action="update" controller="user" >
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
 
-					<label><g:message code="firstName.label" />
+					<label><g:message code="form.signup.label.firstName" />
 					</label><g:textField name="firstName" value="${user?.firstName}"/>
-					<label><g:message code="lastName.label" />
+					<label><g:message code="form.signup.label.lastName" />
 					</label><g:textField name="lastName" value="${user?.lastName}"/>
-					<label><g:message code="profile.state.label"/>
+					<label><g:message code="form.signup.label.state"/>
 					</label><input type="text" name="state" id="state" value="${user?.profile?.state}" />
-					<label><g:message code="profile.city.label"/>
+					<label><g:message code="form.signup.label.city"/>
 					</label><input type="text" name="city" id="city" value="${user?.profile?.city}" />
 
 					<div class="content-center">

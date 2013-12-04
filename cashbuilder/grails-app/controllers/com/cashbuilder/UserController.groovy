@@ -76,7 +76,7 @@ class UserController {
 
 		if(!uuc.validate()){
 			flash.errors = g.renderErrors(bean: uuc)
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.data.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.edituser.data.error")
 
 		} else{
 			user.properties = uuc.properties
@@ -84,7 +84,7 @@ class UserController {
 			user.profile.city = uuc.city
 		
 			session.user = user
-			generalService.buildMessage(Constants.MSG_SUCCESS,"Usuario atualizado com sucesso")
+			generalService.buildMessage(Constants.MSG_SUCCESS,"form.edituser.data.success")
 		}
 		
 		boolean full_scr = params.full_scr
@@ -106,18 +106,18 @@ class UserController {
 				String oldPassword = Encoder.encode(upc.password)
 												
 				if(!user.password.equals(oldPassword)){
-					generalService.buildMessage(Constants.MSG_ERROR,"A senha atual esta incorreta")
+					generalService.buildMessage(Constants.MSG_ERROR,"form.edituser.password.current.error")
 				} else {
 					user.password = Encoder.encode(upc.passwordNew)
 					user.save(flush: true)
 					session.user = user
 
-					generalService.buildMessage(Constants.MSG_SUCCESS,"Senha atualizada com sucesso")
+					generalService.buildMessage(Constants.MSG_SUCCESS,"form.edituser.password.success")
 				}
 			}
 		} else {
 			flash.errors = g.renderErrors(bean: upc)
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.password.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.edituser.password.error")
 		}
 
 		boolean full_scr = params.full_scr
@@ -137,7 +137,7 @@ class UserController {
 
 			if(user){
 				if(user.email != uec.email){
-					generalService.buildMessage(Constants.MSG_ERROR,"O e-mail atual esta incorreto")
+					generalService.buildMessage(Constants.MSG_ERROR,"form.edituser.mail.current.error")
 					
 				} else if(!userService.isEmailAvailable(uec.emailNew)){
 					generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.error1.message")
@@ -147,12 +147,12 @@ class UserController {
 					user.save(flush: true)
 					session.user = user
 
-					generalService.buildMessage(Constants.MSG_SUCCESS,"E-Mail atualizado com sucesso")
+					generalService.buildMessage(Constants.MSG_SUCCESS,"form.edituser.mail.success")
 				}
 			}
 		} else {
 			flash.errors = g.renderErrors(bean: uec)
-			generalService.buildMessage(Constants.MSG_ERROR,"manager.user.update.mail.error")
+			generalService.buildMessage(Constants.MSG_ERROR,"form.edituser.mail.error")
 		}
 		
 		boolean full_scr = params.full_scr

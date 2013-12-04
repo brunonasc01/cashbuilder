@@ -8,8 +8,7 @@
 </head>
 
 <body>
-
-	<g:render template="/elements/area_title" model="[bundle_key: 'manager.user.update.mail.label']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'form.edituser.mail.title']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -19,13 +18,13 @@
 				<g:form name="editMail" action="updateMail" controller="user" >
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
 				
-					<label><g:message code="edit.email.label" />
+					<label><g:message code="form.edituser.label.email" />
 					</label><g:textField name="email" value=""/>
 					<hr/>
 
-					<label><g:message code="emailNew.label" />
+					<label><g:message code="form.edituser.label.emailNew" />
 					</label><g:textField name="emailNew" value=""/>
-					<label><g:message code="emailRepeat.label" />
+					<label><g:message code="form.edituser.label.emailRepeat" />
 					</label><g:textField name="emailRepeat" value=""/>
 
 					<div class="content-center">

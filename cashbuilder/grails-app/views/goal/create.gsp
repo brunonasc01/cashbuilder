@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'goal.box.title']"/>
+	<g:render template="/elements/area_title" model="[bundle_key: 'form.goal.title']"/>
 
 	<g:render template="/elements/message"></g:render>
 
@@ -19,15 +19,15 @@
 			<div class="content">
 				<g:form controller="goal" action="save">
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
-					<label><g:message code="goal.box.title.label"/>
+					<label><g:message code="form.goal.label.title"/>
 					</label><g:textField name="title" value="" />
-					<label><g:message code="goal.box.total.label"/>
+					<label><g:message code="form.goal.label.total"/>
 					</label><g:textField maxlength="10" name="total" value="" />
-					<label><g:message code="goal.box.start.date.label"/>
+					<label><g:message code="form.goal.label.startdate"/>
 					</label><g:jqDatePicker name="startDate"/>
-					<label><g:message code="goal.box.end.date.label"/>
+					<label><g:message code="form.goal.label.enddate"/>
 					</label><g:jqDatePicker name="endDate"/>
-					<label for="categoria"><g:message code="goal.box.category.label"/>
+					<label for="categoria"><g:message code="form.goal.label.category"/>
 					</label><g:if test="${categoriesList}">
 							 <g:comboBox id="categoryCombo" name="select"
 								from="${categoriesList.categories}" 
@@ -35,7 +35,7 @@
 						</g:if>
 
 					<g:set var="counter" value="${0}" />
-		    		<label for="subCategoria"><g:message code="goal.box.subcategory.label"/>
+		    		<label for="subCategoria"><g:message code="form.goal.label.subcategory"/>
 					</label><g:if test="${categoriesList}">
 							<span id="subcategoriesCombo[${counter}]">
 							 <g:comboBox name="subcategories[${counter}].id" nameDisplayPrefix="label"

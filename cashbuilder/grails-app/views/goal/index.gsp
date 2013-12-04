@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    	<g:render template="/elements/area_title" model="[bundle_key: 'goal.title.label']"/>
+    	<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.goal']"/>
     
     	<g:render template="/elements/message"></g:render>
     
@@ -19,25 +19,25 @@
 	  		<g:if test="${!consult_mode }">
 		  		<div class="text-center append-bottom-dist">
 	  				<g:form name="createGoalForm" action="create">
-						<g:submitButton name="newButton" class="btn btn-large" value="Nova Meta" />
+						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'form.goal.title')}" />
 					</g:form>
 				</div>
 			</g:if>
 
 			<div class="box">
-				<h3 class="title-box"><g:message code="goal.box.title.label"/></h3>
+				<h3 class="title-box"><g:message code="box.goal.label.title"/></h3>
 				    			
     			<div id="goal-info" class="content">
     				<ul class="inline">
-    					<li class="title"><g:message code="goal.box.goal1.label"/></li>
+    					<li class="title"><g:message code="box.goal.label.working"/></li>
     					<li class="value">${goalStatus[0]}</li>
     				</ul>
     				<ul class="inline">
-    					<li class="title"><g:message code="goal.box.goal2.label"/></li>
+    					<li class="title"><g:message code="box.goal.label.finished"/></li>
     					<li class="value">${goalStatus[1]}</li>
     				</ul>
     				<ul class="inline">
-    					<li class="title"><g:message code="goal.box.goal3.label"/></li>
+    					<li class="title"><g:message code="box.goal.label.expired"/></li>
     					<li class="value">${goalStatus[2]}</li>
     				</ul>
     			</div>
@@ -53,7 +53,7 @@
 		            		<div class="left left-align">
 		            			<ul class="stats">
 									<li class="status">
-										<g:message code="goal.status.${goal.status}.label"/>
+										<g:message code="box.goal.status.${goal.status}"/>
 									</li><li class="date-limit">${goal.endDate }
 									</li><li class="year-limit">${goal.endYear }
 									</li>
@@ -73,7 +73,7 @@
 									</li><li class="values text-left"><g:formatNumber number="${goal.total }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 									</li><li class="actual">
 										<g:formatNumber number="${goal.currentAccumulated }" format="${Constants.FORMATO_MOEDA}"/>
-										<g:message code="goal.this.month.message"/>
+										<g:message code="box.goal.this.month.message"/>
 									</li><li class="progress-bar"><span style="width:${goal.barSize}%;"></span></li>
 			            		</ul>
 		            		</div>

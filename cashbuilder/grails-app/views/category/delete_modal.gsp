@@ -8,12 +8,12 @@ $('#bt_close_modal').click(function(){
 
 <div class="box modal adm-modal">
 	<h3 class="title-box">
-		<g:message code="manager.category.delete.label"/>
+		<g:message code="form.manager.category.delete.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a>
 	</h3>
 
 	<div class="content">
-		<small><g:message code="manager.category.delete.message"/></small>
+		<small><g:message code="form.manager.category.delete.message"/></small>
 	
 		<g:form name="editCategory" controller="category" >
 			<div class="content-center">
@@ -26,7 +26,7 @@ $('#bt_close_modal').click(function(){
 		
 			<g:hiddenField name="id" value="${oldCategory.id }"/>
 			
-			<label><g:message code="manager.category.label"/>
+			<label><g:message code="form.label.category"/>
 			</label><g:if test="${categoriesList}">
 						 <g:comboBox id="categoryCombo" name="newId"
 							from="${categoriesList.categories}" 

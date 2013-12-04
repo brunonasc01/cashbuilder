@@ -12,7 +12,7 @@
 
 		<div id="month-title" class="col-1">
 			<h2 class="title-box">
-				<g:message code="report.title.label"/> - <g:message code="${report.date.month}"/> / ${report.date.year}
+				<g:message code="menu.label.report"/> - <g:message code="month.${monthIndex}"/> / ${report.date.year}
 			</h2>
 		</div>
 		
@@ -22,7 +22,7 @@
     		<g:if test="${report.reportData.size() > 0}">
 				<div class="box">
 					<h3 class="title-box">
-						<g:message code="report.graphic1.title.label"/>
+						<g:message code="report.graph.expenses.title"/>
 					</h3>
 					<div class="content">
 						<div class="v-chart clearfix">
@@ -66,7 +66,7 @@
     		<g:if test="${distribReport.reportData.size() > 0}">
 				<div class="box">
 					<h3 class="title-box">
-						<g:message code="report.graphic2.title.label"/>
+						<g:message code="report.graph.percent.title"/>
 					</h3>
 					<div class="content">
 						<div class="h-chart clearfix">

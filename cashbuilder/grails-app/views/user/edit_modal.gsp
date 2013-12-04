@@ -6,19 +6,19 @@ $('#bt_close_modal').click(function(){
 
 <div class="box modal adm-modal">
 	<h3 class="title-box">
-		<g:message code="manager.user.update.data.label"/>
+		<g:message code="form.edituser.data.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a>
 	</h3>
 
 	<div class="content">
 		<g:form name="editUser" action="update" controller="user" >
-			<label><g:message code="firstName.label" />
+			<label><g:message code="form.signup.label.firstName" />
 			</label><g:textField name="firstName" value="${user?.firstName}"/>
-			<label><g:message code="lastName.label" />
+			<label><g:message code="form.signup.label.lastName" />
 			</label><g:textField name="lastName" value="${user?.lastName}"/>
-			<label><g:message code="profile.state.label"/>
+			<label><g:message code="form.signup.label.state"/>
 			</label><input type="text" name="state" id="state" value="${user?.profile?.state}" />
-			<label><g:message code="profile.city.label"/>
+			<label><g:message code="form.signup.label.city"/>
 			</label><input type="text" name="city" id="city" value="${user?.profile?.city}" />
 
 			<div class="content-center">

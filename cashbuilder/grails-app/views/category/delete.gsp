@@ -12,7 +12,7 @@
 <body>
 	<div id="month-title" class="col-1">
 		<h2 class="title-box">
-			<g:message code="manager.category.delete.label"/>
+			<g:message code="form.manager.category.delete.title"/>
 		</h2>
 	</div>
 
@@ -21,7 +21,7 @@
 	<div class="col-1">
 		<div class="box">
 			<div class="content">
-				<small><g:message code="manager.category.delete.message"/></small>
+				<small><g:message code="form.manager.category.delete.message"/></small>
 			
 				<g:form name="editCategory" controller="category" >
 					<g:hiddenField name="full_scr" value="true"></g:hiddenField>
@@ -36,7 +36,7 @@
 				
 					<g:hiddenField name="id" value="${oldCategory.id }"/>
 					
-					<label><g:message code="manager.category.label"/>
+					<label><g:message code="form.label.category"/>
 					</label><g:if test="${categoriesList}">
 								 <g:comboBox id="categoryCombo" name="newId"
 									from="${categoriesList.categories}" 

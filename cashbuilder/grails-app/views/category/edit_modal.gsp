@@ -6,7 +6,7 @@ $('#bt_close_modal').click(function(){
 
 <div class="box modal adm-modal">
 	<h3 class="title-box">
-		<g:message code="manager.category.edit.label"/>
+		<g:message code="form.manager.category.edit.title"/>
 		<a id="bt_close_modal" class='bt-icon text-center'></a>
 	</h3>
 
@@ -17,7 +17,7 @@ $('#bt_close_modal').click(function(){
 			<g:hiddenField name="id" value="${category.id }"/>
 			
 			<g:each var="subcategory" in="${category.subcategories}" status="i">
-				<label>[${i+1}] <g:message code="manager.subcategory.label"/>
+				<label>[${i+1}] <g:message code="form.label.name"/>
 				</label><g:textField name="subcategories[${i}].name" value="${subcategory.name}" />
 
 			</g:each>
