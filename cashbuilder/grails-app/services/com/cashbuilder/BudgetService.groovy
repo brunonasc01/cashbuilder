@@ -13,6 +13,24 @@ class BudgetService {
 	def serviceMethod() {
 	}
 
+	double verifyBudgetOverflow(User user, BudgetMonth budgetMonth, Category category){
+		double overflow = 0
+
+		double totalIncome = getRealizedTotal(budgetMonth,user,Constants.CREDITO)
+		double totalCategory = getRealizedTotal(budgetMonth,user,category)
+
+		if(totalIncome > 0 && totalCategory > 0 && category.variationFactor > 0){
+			double categoryPercent = category.variationFactor
+			double maxValue = totalIncome * categoryPercent
+
+			if(totalCategory - maxValue > 10){
+				overflow =  totalCategory - maxValue
+			}
+		}
+
+		overflow
+	}
+ 	
 	/**
 	 * 
 	 * @param budgetMonth

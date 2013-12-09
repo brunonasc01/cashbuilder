@@ -106,7 +106,10 @@ class TransactionController {
 	}
 	
 	def delete() {
-		transactionService.deleteTransaction(params.id)
+		def user = session.user.attach()
+		if(transactionService.deleteTransaction(params.id)){
+			eventService.processAlerts(user)
+		}
 		generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.delete.success")
 		
 		redirect(controller:"cashflow", action: "index")

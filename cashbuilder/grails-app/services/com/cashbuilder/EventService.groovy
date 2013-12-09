@@ -7,6 +7,7 @@ class EventService {
     static transactional = true
 
 	def budgetService
+	def messageSource
 	
     def serviceMethod() {
 
@@ -73,17 +74,34 @@ class EventService {
 		def month = BudgetMonth.findByMonthAndBudget(DateUtils.currentMonth,budget)
 
 		resetAlerts(budget)
-				
-		if(budgetService.getBudgetedBalance(month) < 0){
+
+		double budgetBalance = budgetService.getBudgetedBalance(month)
+		double realBalance = budgetService.getBalance(month,user)
+		
+		if(budgetBalance < 0){
 		   createOrUpdateAlert(budget,Constants.ALERT_ORCAMENTO_NEGATIVO,"alert.budget.negative.message")
-		   
-		} else if(budgetService.getBalance(month,user) < 0){
+
+		} else if(realBalance < 0){
 		   createOrUpdateAlert(budget,Constants.ALERT_SALDO_NEGATIVO,"alert.balance.negative.message")
 
-		} else if(budgetService.getBudgetedBalance(month) > 0 && budgetService.getBalance(month,user) > 0){			
+		} else if(budgetBalance > 0 && realBalance > 0){			
 			createOrUpdateAlert(budget,Constants.ALERT_SALDO_POSITIVO,"alert.balance.positive.message")
-			
    		}
+		
+		def userCategories = Category.findAllByUserAndCustom(user,false);
+		def categoryOverflow = []
+		
+		userCategories.each { category ->
+			if(!category.name.toLowerCase().equals("investimentos")){
+				double overflow = budgetService.verifyBudgetOverflow(user, month, category)
+
+				if(overflow > 0){
+					String name = messageSource.getMessage("label.${category.name}",null,"categoria",new Locale("pt", "BR"))
+					String proportion = "${(category.variationFactor * 100) as Integer}"
+					createOrUpdateAlert(budget,category.id as int,"alert.category.overflow.message",name,proportion)
+				}
+			}
+		}
 	}
 
 	void resetAlerts(Budget budget){
@@ -95,12 +113,11 @@ class EventService {
 		}
 	}
 	
-	Alert createOrUpdateAlert(Budget budget, int type, String messageCode){
-
+	Alert createOrUpdateAlert(Budget budget, int type, String messageCode, String... args){
 		Alert alert = Alert.findByType(type)
 		
 		 if(!alert){
-			 alert = new Alert(budget: budget, enable: true, type: type, message: messageCode)
+			 alert = new Alert(budget: budget, enable: true, type: type, message: messageCode, parameters: args?:"")
 			 alert.save()
 		 } else if(!alert.enable){
 			 alert.enable = true

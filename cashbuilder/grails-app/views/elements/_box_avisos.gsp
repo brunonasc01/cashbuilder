@@ -5,7 +5,7 @@
 		<ul>
 			<g:if test="${alerts}">
 				<g:each var="alert" in="${alerts }" status="index">
-					<li><b>${index+1})</b> <g:message code="${alert.message }" /> </li>
+					<li><b>${index+1})</b> <g:message code="${alert.message }" args="${alert.parameters?.split(',') }" /></li>
 				</g:each>
 			</g:if>
 			<g:else>
