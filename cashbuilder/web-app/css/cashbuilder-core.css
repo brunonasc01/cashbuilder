@@ -42,7 +42,7 @@ a:link, a:active, a:visited {
 	color: #333333;
 }
 
-header, footer, #month-list a {
+header, footer {
 	background: #495154;
     background: -moz-linear-gradient(#6b7576, #495154);
     background: -o-linear-gradient(#6b7576, #495154);
@@ -282,33 +282,38 @@ a.help:before {
 
 /* MONTH MENU */
 
-#month-list {
-    -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+ #months a {
+	background: #495154;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
 }
 
-#month-list a {
+#months a {
 	display: inline-block;
-	padding: 0.454133% 0;
+	padding: 0.8em 0;
+	width: 8.098958%;
 	min-width: 60px;
-	width:  8.333333%;
-	border: 1px solid #495154;
-}
-
-#month-list a:link, #month-list a:active, #month-list a:visited {
-	color: #CCCCCC;
 	font-weight: bold;
+	vertical-align: top;
+	margin-right: 0.234375%;
+    margin-top: 0.234375%;
 }
 
-#month-list a:hover, #month-list a.active {
-	color: #FFD700;
+#months > a:last-child {
+    margin-right: 0;
+}
+
+#months a:link, #months a:active, #months a:visited {
+
+}
+
+#months a.past {
+	color: #EEEEEE;
+    background: #6B7376;
+}
+
+#months a:hover, #months a.active {
+	background: #00A550;
 	text-decoration: none;
-	
-    -moz-box-shadow: inset 0 1px 0 #8fa2a8;
-    -webkit-box-shadow: inset 0 1px 0 #8fa2a8;
-	box-shadow: inset 0 1px 0 #8fa2a8;
 }
 
 #month-title h2 {

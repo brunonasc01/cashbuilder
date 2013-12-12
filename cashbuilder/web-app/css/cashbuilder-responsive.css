@@ -3,58 +3,6 @@
 	.menu-icon a:before {
 		content: "";
 	}
-
-	#month-list a span {
-		display: none;
-	}
-
-	#month-list a:nth-child(1):before {		
-		content:"Jan"
-	}
-
-	#month-list a:nth-child(2):before {		
-		content:"Fev"
-	}
-
-	#month-list a:nth-child(3):before {		
-		content:"Mar"
-	}
-
-	#month-list a:nth-child(4):before {		
-		content:"Abr"
-	}
-
-	#month-list a:nth-child(5):before {		
-		content:"Mai"
-	}
-
-	#month-list a:nth-child(6):before {		
-		content:"Jun"
-	}
-
-	#month-list a:nth-child(7):before {		
-		content:"Jul"
-	}
-
-	#month-list a:nth-child(8):before {		
-		content:"Ago"
-	}
-
-	#month-list a:nth-child(9):before {		
-		content:"Set"
-	}
-
-	#month-list a:nth-child(10):before {		
-		content:"Out"
-	}
-
-	#month-list a:nth-child(11):before {		
-		content:"Nov"
-	}
-
-	#month-list a:nth-child(12):before {		
-		content:"Dez"
-	}
 }
 
 @media screen and (min-width: 960px){
@@ -98,11 +46,13 @@
 	.highlights .col-33 {
 		width: 33%;
 	}
-	
-	#month-list a {
-		padding: 5px 0;
-		width: 16.666666%;
-	}
+}
+
+@media screen and (max-width: 850px){
+    #months > a {
+        margin-right: 3px;
+        margin-top: 3px;
+    }
 }
 
 @media screen and (max-width: 500px){
@@ -149,10 +99,6 @@
 
 	.menu-icon a span {
 		display: inline-block
-	}
-
-	#month-list a {
-		width: 25%;
 	}
 
 	/* PORTAL */

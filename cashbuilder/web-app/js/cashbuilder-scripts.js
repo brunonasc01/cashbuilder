@@ -147,22 +147,13 @@ function setModalPosition(target){
  * @param month
  * @param menu_id
  */
-function setMonthSelection(month, menu_id){
-	
-	var menu = $('#'+menu_id);
-	menu.find('a').each(function(i){
-		
+function setMonthSelection(month, menu_id, currentMonth){
+
+	$('#'+menu_id+' a').each(function(i){
 		if(i == month){
 			$(this).addClass('active');
-		} else {
-			$(this).hover(
-				function () {
-					$(this).addClass('active');
-				},
-				function () {
-					$(this).removeClass('active');
-				}
-			);
+		} else if(i < currentMonth) {
+			$(this).addClass('past');
 		}
 	});
 }
