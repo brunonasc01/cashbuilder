@@ -294,8 +294,11 @@ a.help:before {
 	min-width: 60px;
 	font-weight: bold;
 	vertical-align: top;
+	text-align: center;
 	margin-right: 0.234375%;
     margin-top: 0.234375%;
+    
+    border: 1px solid #495154;
 }
 
 #months > a:last-child {
