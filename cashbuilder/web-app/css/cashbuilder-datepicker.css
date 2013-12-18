@@ -6,20 +6,9 @@
 }
 
 .ui-datepicker .ui-widget-header{
-	border: 1px solid #495154;
-
-	background: #6b7576;
-    background: -moz-linear-gradient(#6b7576, #495154);
-    background: -o-linear-gradient(#6b7576, #495154);
-	background: -webkit-linear-gradient(#6b7576,#495154);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #6b7576), color-stop(1, #495154));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#6b7576, EndColorStr=#495154)";
-    background: linear-gradient(#6b7576, #495154);
+	border: none;
+	background: #086196;
     color: #fff;
-    -moz-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0, 0, 0, 0.4);
-	box-shadow: inset 0 1px 0 #8fa2a8, 0 2px 2px rgba(0,0,0,0.4);
-    text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.5)
 }
 
 .ui-widget-header .ui-datepicker-prev span, .ui-widget-header .ui-datepicker-next span{
@@ -33,28 +22,45 @@
 .ui-widget-header a.ui-datepicker-prev, .ui-widget-header a.ui-datepicker-next {
 	background: none;
 	top: 7px;
-
 	text-align: center;
 	cursor: pointer;
 }
 
 .ui-widget-header a.ui-datepicker-prev:hover {
-	color: #FFD700;	
-	text-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+	color: #FFFFFF;
+	font-weight: bold;
 	text-decoration: none;
-
 	border: none;
 	right: auto;
-	left: 2px;
+	left: 1px;
 }
 
 .ui-widget-header a.ui-datepicker-next:hover {
-	color: #FFD700;	
-	text-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+	color: #FFFFFF;
+	font-weight: bold;
 	text-decoration: none;
-
 	border: none;
-	right: 2px;
+	right: 1px;
+}
+
+.ui-datepicker-calendar a.ui-state-default {
+	background: #EEEEEE;
+	border: none;
+}
+
+.ui-datepicker-calendar a.ui-state-hover {
+	background: #11B662;
+	color: #FFFFFF;
+}
+
+.ui-datepicker-calendar a.ui-state-active {
+	background: #00A550;
+	color: #FFFFFF;
+}
+
+.ui-datepicker-calendar a.ui-state-highlight {
+	background: #35D282;
+	color: #FFFFFF;
 }
 
 .ui-widget-header a.ui-datepicker-prev:before {
@@ -66,5 +72,3 @@
 	font-family: 'cashbuilder-font';
 	content: '\e812';
 }
-
-

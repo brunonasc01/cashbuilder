@@ -6,19 +6,11 @@ label {
 input[type="text"], input[type="email"], input[type="password"], input[type="checkbox"], select, textarea {
     width: 100%;
     margin-bottom: 5px;
-    border: 1px solid #aaa;
-    background: -moz-linear-gradient(#eee, #fefefe);
-    background: -o-linear-gradient(#eee, #fefefe);
-    background: -webkit-linear-gradient(#eee, #fefefe);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(1, #fefefe));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#eee, EndColorStr=#fefefe)";
-    background: linear-gradient(#eee, #fefefe)
+    border: 1px solid #aaa;    
     }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="checkbox"]:focus, select:focus {
-    -moz-box-shadow: 0 0 2px 2px #ccc;
-    -webkit-box-shadow: 0 0 2px 2px #ccc;
-    box-shadow: 0 0 2px 2px #ccc
+    border: 1px solid #f00;
     }
 
 input[type="submit"] {

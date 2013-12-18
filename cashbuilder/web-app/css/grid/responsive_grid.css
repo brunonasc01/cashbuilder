@@ -28,61 +28,49 @@
 	padding-left: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-
-	background-color: rgba(0,0,0,.3);
 }
 
 .grid .content{
 	padding: 10px;
-
-	background-color: rgba(0,0,0,.1);
-}
-
-.fake-content {
-	background: #cccccc;
 }
 
 .col-100, .col-1 {
 	width: 100%;
-	background-color: rgba(200,200,200,.5);
 }
 
 .col-75 {
-	width: 75%;
-	
+	width: 75%;	
 }
 
 .col-66 {
 	width: 66.66%;
-	background-color: rgba(166,166,166,.5);	
 }
 
 .col-50 {
-	width: 50%;
-	background-color: rgba(150,150,150,.5);
+	width: 50%;	
 }
 
 .col-33 {
-	width: 33.33%;
-	background-color: rgba(133,133,133,.5);	
+	width: 33.33%;		
 }
 
 .col-25 {
 	width: 25%;
-	background-color: rgba(125,125,125,.5);
 }
 
-
-/* grid de largura 100% */
+/* grid 100% */
 
 .wrapper-100 {
 	width: 100%;
-	background-color: rgba(255,100,100,.5);	
-
 	margin: 0 auto;
 }
 
 .wrapper-100 .grid {
+	padding-bottom: 1.5%;
+}
+
+.wrapper-100 .grid {
+	padding-right: 1.5%;
 	padding-bottom: 1.5%;
 }
 
@@ -91,11 +79,10 @@
 	padding-left: 1.5%;
 }
 
-/* grid de largura 90% */
+/* grid 90% */
 
 .wrapper-90 {
-	width: 90%;	
-	background-color: rgba(255,255,90,.5);	
+	width: 90%;
 }
 
 .wrapper-90 .grid {
@@ -108,11 +95,10 @@
 	padding-left: 1.666667%;
 }
 
-/* grid de largura 75% */
+/* grid 75% */
 
 .wrapper-75 {
 	width: 75%;
-	background-color: rgba(75,255,75,.5);	
 }
 
 .wrapper-75 .grid {
@@ -125,11 +111,10 @@
 	padding-left: 2.0%;
 }
 
-/* grid de largura 50% */
+/* grid 50% */
 
 .wrapper-50 {
 	width: 50%;
-	background-color: rgba(50,50,255,.5);	
 }
 
 .wrapper-50 .grid {
@@ -142,11 +127,10 @@
 	padding-left: 3.0%;
 }
 
-/* grid de largura 25% */
+/* grid 25% */
 
 .wrapper-25 {
-	width: 25%;	
-	background-color: rgba(25,255,255,.5);	
+	width: 25%;
 }
 
 .wrapper-25 .grid {
@@ -156,24 +140,6 @@
 .wrapper-25 .grid [class*='col-'] {
 	padding-top: 6.0%;
 	padding-left: 6.0%;
-}
-
-/* disable test backgrounds */
-
-[class*="wrapper-"],[class*="col-"],.grid .content {
-	background: none;
-}
-
-.grid {
-    background: #EEFFEE;
-    background: -moz-linear-gradient(#EEFFEE, #00A550);
-    background: -o-linear-gradient(#EEFFEE, #00A550);
-    background: -webkit-linear-gradient(#EEFFEE, #00A550);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEFFEE), color-stop(1, #00A550));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#EEFFEE, EndColorStr=#00A550)";
-    background: linear-gradient(#EEFFEE, #00A550);
-    
-    
 }
 
 @media screen and (max-width: 959px) {
@@ -197,7 +163,6 @@
 	.col-25 {
 		width: 50%;
 	}	
-
 
 	/* grid 75 */
 	.wrapper-75 {
