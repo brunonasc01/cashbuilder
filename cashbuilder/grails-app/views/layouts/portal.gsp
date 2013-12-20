@@ -57,7 +57,7 @@
 	 </section>
 
 	<footer class="text-center">
-		<g:render template="/elements/rodape" ></g:render>
+		<g:render template="/elements/rodape" model="[showCommon:true]" ></g:render>
 	</footer>
 
 	<r:layoutResources/>

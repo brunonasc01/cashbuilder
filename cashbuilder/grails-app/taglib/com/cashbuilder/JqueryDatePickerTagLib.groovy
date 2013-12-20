@@ -15,7 +15,8 @@ class JqueryDatePickerTagLib {
 		}
 
 		//Create date text field and supporting hidden text fields need by grails
-		out << "<input type='text' name='${name}' id='${name}' value='${date}' readonly='true' />"
+		out << "<input type='text' name='${name}_input' id='${name}_input' value='${date}' readonly='true' />"
+		out << "<input type='hidden' name='${name}' id='${name}' value='date.struct'/>"
 		out << "<input type='hidden' name='${name}_minute' id='${name}_minute' value='${cal.get(Calendar.MINUTE)}' />"
 		out << "<input type='hidden' name='${name}_hour' id='${name}_hour' value='${cal.get(Calendar.HOUR_OF_DAY)}' />"
 		out << "<input type='hidden' name='${name}_day' id='${name}_day' value='${value? cal.get(Calendar.DATE) : ''}' />"
@@ -24,7 +25,7 @@ class JqueryDatePickerTagLib {
 
 		//Code to parse selected date into hidden fields required by grails
 		out << "<script type='text/javascript'> \$(function(){"
-		out << "\$('#${name}').datepicker({"	
+		out << "\$('#${name}_input').datepicker({"	
 		out << "onSelect: function(dateText, inst) {"
 		out << "\$('#${name}_day').attr('value',\$(this).datepicker('getDate').getDate());"
 		out << "\$('#${name}_month').attr('value',\$(this).datepicker('getDate').getMonth() +1);"

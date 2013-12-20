@@ -21,7 +21,7 @@ class TransactionService {
 			int parcels = Integer.valueOf(params.parcels)?: 1
 
 			if(parcels <= 1){
-				def transaction = new Transaction(params.properties)
+				def transaction = new Transaction(params)
 				transaction.nature = (transaction.category?.income)? Constants.CREDITO : Constants.DEBITO
 				transaction.user = user
 

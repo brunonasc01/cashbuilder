@@ -36,7 +36,7 @@
 	<header>
 		<g:render template="/elements/logo" ></g:render>
 	
-		<g:render template="/elements/subheader" ></g:render>
+		<g:render template="/elements/subheader" model="[showCommon:true]"></g:render>
 	</header>
 
 	 <section class="${wrapper_class?: 'wrapper-90' }">
@@ -46,7 +46,7 @@
 	 </section>
 
 	<footer class="text-center">
-		<g:render template="/elements/rodape" ></g:render>
+		<g:render template="/elements/rodape" model="[showCommon:true]"></g:render>
 	</footer>
 	
 	<r:layoutResources/>
