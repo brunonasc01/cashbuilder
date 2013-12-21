@@ -36,34 +36,10 @@ class TransactionService {
 		}
 	}
 	
-	void handleBudgetUpdate(User user, Transaction transaction){
-		if(!transaction.hasErrors()){
-			DateTime date = new DateTime(transaction.date);
-			def budget = Budget.findByYearAndUser(date.year,user)
-
-			if(budget) {
-				def budgetMonth = BudgetMonth.findByMonthAndBudget(date.monthOfYear-1,budget)
-				double budgetTotal = budgetService.getBudgetedTotal(budgetMonth,transaction.subcategory)
-				double realizedTotal = budgetService.getRealizedTotal(budgetMonth, user, transaction.subcategory)
-				double balance = realizedTotal - budgetTotal
-
-				if(budgetTotal <= 0 || balance > 0.5){
-					BudgetItem budgetItem = BudgetItem.findBySubcategoryAndMonth(transaction.subcategory,budgetMonth)
-
-					if(budgetItem){
-						budgetItem.budgetedValue += (budgetItem.budgetedValue > 0 )? (balance) : realizedTotal;
-						def flashScope = WebUtils.retrieveGrailsWebRequest().flashScope
-						flashScope.budget_updated = true 
-					}
-				}
-			}
-		}
-	}
-	
 	Transaction saveTransactionParcels(User user, Map params){
 		
 		Calendar transactionDate = Calendar.getInstance()
-		def baseTransaction = new Transaction(params.properties)
+		def baseTransaction = new Transaction(params)
 		baseTransaction.nature = (baseTransaction.category?.income)? Constants.CREDITO : Constants.DEBITO
 		baseTransaction.user = user
 
@@ -100,6 +76,30 @@ class TransactionService {
 		}
 		
 		return baseTransaction;
+	}
+	
+	void handleBudgetUpdate(User user, Transaction transaction){
+		if(!transaction.hasErrors()){
+			DateTime date = new DateTime(transaction.date);
+			def budget = Budget.findByYearAndUser(date.year,user)
+
+			if(budget) {
+				def budgetMonth = BudgetMonth.findByMonthAndBudget(date.monthOfYear-1,budget)
+				double budgetTotal = budgetService.getBudgetedTotal(budgetMonth,transaction.subcategory)
+				double realizedTotal = budgetService.getRealizedTotal(budgetMonth, user, transaction.subcategory)
+				double balance = realizedTotal - budgetTotal
+
+				if(budgetTotal <= 0 || balance > 0.5){
+					BudgetItem budgetItem = BudgetItem.findBySubcategoryAndMonth(transaction.subcategory,budgetMonth)
+
+					if(budgetItem){
+						budgetItem.budgetedValue += (budgetItem.budgetedValue > 0 )? (balance) : realizedTotal;
+						def flashScope = WebUtils.retrieveGrailsWebRequest().flashScope
+						flashScope.budget_updated = true
+					}
+				}
+			}
+		}
 	}
 	
 	boolean deleteTransaction(String transactionId){

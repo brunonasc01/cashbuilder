@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    	<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.goal']"/>
+    	<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.goal',class_icon:'icon-goal']"/>
     
     	<g:render template="/elements/message"></g:render>
     

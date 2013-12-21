@@ -44,7 +44,7 @@ class CategoryService {
 		def category = Category.get(params.id)
 		
 		if(category){
-			category.properties = params.properties
+			category.properties = params
 			
 			if(category.validate()){
 				category.save()

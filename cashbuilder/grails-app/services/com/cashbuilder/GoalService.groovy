@@ -17,7 +17,7 @@ class GoalService {
 	
 	Goal saveGoal(User user, Map params){
 		if(user){
-			def goal = new Goal(params.properties)
+			def goal = new Goal(params)
 			goal.user = user;
 		
 			goal.save()

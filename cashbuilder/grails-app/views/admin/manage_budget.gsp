@@ -8,9 +8,9 @@
 		<r:require module="adm"/>        
     </head>
     <body>
-    	<g:monthMenu action="manage_budget" month="${monthIndex}" nextYear="${nextYear}"/>
-    	
-   		<g:render template="/elements/area_title" model="[bundle_key: 'form.manager.budget.title']"/>
+   		<g:render template="/elements/area_title" model="[bundle_key: 'form.manager.budget.title',class_icon:'icon-admin']"/>
+   		
+   		<g:monthMenu action="manage_budget" month="${monthIndex}" nextYear="${nextYear}"/>
    		
    		<g:render template="/elements/message" var="bean" bean="${bean}" ></g:render>
 

@@ -8,13 +8,13 @@
     </head>
 
     <body>
-    	<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
-
 		<div id="month-title" class="col-1">
-			<h2 class="title-box">
+			<h2 class="title-box icon-reports">
 				<g:message code="menu.label.report"/> - <g:message code="month.${monthIndex}"/> / ${report.date.year}
 			</h2>
 		</div>
+		
+		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
 		
 		<g:render template="/elements/message"></g:render>
 

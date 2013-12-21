@@ -13,7 +13,7 @@
     </head>
 
     <body>
-    	<g:render template="/elements/area_title" model="[bundle_key: 'help.title.label']"/>
+    	<g:render template="/elements/area_title" model="[bundle_key: 'help.title.label',class_icon:'icon-help']"/>
 
 		<div id="help-list" class="grid">
 			<div class="col-33">

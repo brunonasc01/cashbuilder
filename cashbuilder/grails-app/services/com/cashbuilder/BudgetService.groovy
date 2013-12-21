@@ -282,11 +282,11 @@ class BudgetService {
 				budget.calculated = true;
 							  
 				if(saveType.equals("month")){
-					budgetMonth.properties = params.properties
+					budgetMonth.properties = params
 
 				} else if(saveType.equals("year")){
 					BudgetMonth.findAllByBudget(budget).each {
-						it.properties = params.properties
+						it.properties = params
 					}
 				}
 			}

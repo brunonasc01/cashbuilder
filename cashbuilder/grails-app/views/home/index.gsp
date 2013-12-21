@@ -6,6 +6,8 @@
     </head>
 
     <body>
+    	<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.home',class_icon:'icon-home']"/>
+    
     	<g:render template="/elements/message"></g:render>
     
 	  	<div class="col-75">

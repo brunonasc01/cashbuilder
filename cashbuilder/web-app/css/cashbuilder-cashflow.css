@@ -10,6 +10,10 @@
 	font-size: 0.95rem;
 }
 
+#cashflow-table .content ul {
+	border: 1px solid #DCDCDC;
+}
+
 #cashflow-table li {
 	padding: 0.454133% 0;
 }
@@ -24,9 +28,6 @@
 
 #cashflow-table .title-box li {
 	font-weight: bold;
-	-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4)
 }
 
 #cashflow-table .buttons{

@@ -128,6 +128,11 @@ footer {
 	position: relative;
 }
 
+.title-box:before {
+	font-family: 'cashbuilder-font';
+	margin-right: 5px;
+}
+
 #subheader {
 	background: #6b7576;
 	border-bottom: 1px solid #6b7576;
@@ -201,31 +206,31 @@ footer {
 	margin-right: 5px;
 }
 
-span.home:before {
+.icon-home:before {
 	content: '\2302';
 }
 
-span.budget:before {
+.icon-budget:before {
 	content: '\e005';
 }
 
-span.cashflow:before {
+.icon-cashflow:before {
 	content: '\1f4c8';
 }
 
-span.goal:before {
+.icon-goal:before {
 	content: '\2691';
 }
 
-span.reports:before {
+.icon-reports:before {
 	content: '\1f53e';
 }
 
-span.admin:before {
+.icon-admin:before {
 	content: '\2699';
 }
 
-span.help:before {
+.icon-help:before {
 	content: '\2753';
 }
 
@@ -271,7 +276,7 @@ span.help:before {
 }
 
 #month-title h2 {
-	padding: 10px; /* 3 / 940 */
+	padding: 15px 10px; /* 3 / 940 */
 	line-height: 1;
 }	
 
@@ -385,22 +390,13 @@ a.btn:hover {
 .progress-bar{
 	background-color: #6b7576;
 	padding: 3px;
-    -moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-    border-radius: 5px
+    
 }
 
 .progress-bar span{
 	height: 100%;	
 	display: block;
 	background: #FFD700;
-    
-	-webkit-border-top-left-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    border-top-left-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-bottom-left-radius: 3px
 }
 
 .progress-bar span.low{
@@ -412,9 +408,6 @@ a.btn:hover {
 }
 
 .progress-bar span.full {
-    -moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-    border-radius: 3px;
 	background: #2f96b4;
 }
 

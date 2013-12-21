@@ -9,7 +9,7 @@
 		</g:javascript>
     </head>
     <body>
-   		<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.adm']"/>
+   		<g:render template="/elements/area_title" model="[bundle_key: 'menu.label.adm',class_icon:'icon-admin']"/>
 
    		<g:render template="/elements/message"></g:render>
 

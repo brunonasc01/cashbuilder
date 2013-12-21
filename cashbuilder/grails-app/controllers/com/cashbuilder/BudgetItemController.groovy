@@ -26,7 +26,7 @@ class BudgetItemController {
 		BudgetItem budgetItem = BudgetItem.get(params.id)
 		
 		if(budgetItem){
-			budgetItem.properties = params.properties
+			budgetItem.properties = params
 			budgetItem.save()
 			
 			def user = session.user.attach()

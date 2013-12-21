@@ -10,13 +10,13 @@
 		</g:javascript>
     </head>
     <body>
-		<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
-
 		<div id="month-title" class="col-1">
-			<h2 class="title-box">
+			<h2 class="title-box icon-cashflow">
 				<g:message code="menu.label.cashflow"/> - <g:message code="${cashFlow.date.month}"/> / ${cashFlow.date.year}
 			</h2>
    		</div>
+    	
+    	<g:monthMenu month="${monthIndex}" nextYear="${nextYear}" />
     	
     	<g:render template="/elements/message"></g:render>
     	
