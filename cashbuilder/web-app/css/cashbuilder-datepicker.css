@@ -44,23 +44,24 @@
 }
 
 .ui-datepicker-calendar a.ui-state-default {
-	background: #EEEEEE;
+	color: #FFFFFF;
+	background: #495154;
 	border: none;
 }
 
 .ui-datepicker-calendar a.ui-state-hover {
 	background: #11B662;
-	color: #FFFFFF;
+	color: #222222;
 }
 
 .ui-datepicker-calendar a.ui-state-active {
 	background: #00A550;
-	color: #FFFFFF;
+	color: #222222;
 }
 
 .ui-datepicker-calendar a.ui-state-highlight {
 	background: #35D282;
-	color: #FFFFFF;
+	color: #222222;
 }
 
 .ui-widget-header a.ui-datepicker-prev:before {

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<div id="month-title" class="col-1">
+	<div class="area-title col-1">
 		<h2 class="title-box">
 			<g:message code="form.manager.category.delete.title"/>
 		</h2>

@@ -8,7 +8,7 @@
     </head>
 
     <body>
-		<div id="month-title" class="col-1">
+		<div class="area-title col-1">
 			<h2 class="title-box icon-reports">
 				<g:message code="menu.label.report"/> - <g:message code="month.${monthIndex}"/> / ${report.date.year}
 			</h2>

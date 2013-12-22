@@ -23,7 +23,7 @@
 <g:elseif test="${type == "footer" }">
 	<div class="box-footer-links right-align text-right">
 		<ul class="inline">
-			<li><a href="index.html">Inicio</a>
+			<li><a href="">Inicio</a>
 			</li><li><a href="#">Topo</a>
 			</li>
 		</ul>		            	

@@ -2,9 +2,8 @@ header {
     
     }
 
-body {
+body.landing {
     background: #ECECEC;
-    color: #333333
     }
 
 .grid {

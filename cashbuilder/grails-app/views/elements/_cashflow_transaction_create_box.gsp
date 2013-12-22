@@ -6,7 +6,7 @@
 
 		<div class="content">
 			<label for="data"><g:message code="form.transaction.label.date"/>
-			</label><g:jqDatePicker name="date"/>
+			</label><g:jqDatePicker name="date" value="${new Date() }"/>
 			<label for="valor"><g:message code="form.transaction.label.value"/>
 			</label><g:textField maxlength="10" name="value" value="" />
 			<label for="parcelas"><g:message code="form.transaction.label.parcels"/>

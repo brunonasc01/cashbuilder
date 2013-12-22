@@ -12,24 +12,15 @@
 /* GENERAL */
 
 .grid {
-    background: #ECECEC;
+    
 }
 
 html {
 	font-family: Helvetica, sans-serif;	
 }
 
-body.system {
-    background: #fff;
-    background-image: linear-gradient(#dcdcdc 1px, transparent 1px), linear-gradient(0, #dcdcdc 1px, transparent 1px);
-    background-image: -moz-linear-gradient(#dcdcdc 1px, transparent 1px), -moz-linear-gradient(0, #dcdcdc 1px, transparent 1px);
-    background-image: -o-linear-gradient(#dcdcdc 1px, transparent 1px), -o-linear-gradient(0, #dcdcdc 1px, transparent 1px);
-    background-image: -webkit-linear-gradient(#dcdcdc 1px, transparent 1px), -webkit-linear-gradient(0, #dcdcdc 1px, transparent 1px);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dcdcdc 1px), color-stop(1, transparent 1px)), -webkit-gradient(linear, left top, left bottom, color-stop(0, #dcdcdc 1px), color-stop(1, transparent 1px));
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#dcdcdc 1px, EndColorStr=transparent 1px)";
-    -webkit-background-size: 20px 20px, 20px 20px;
- 	background-size: 20px 20px, 20px 20px;
- 	background-position: -1px -1px, -1px -1px;
+body {
+    background: #495154;
 }
 
 hr {
@@ -42,8 +33,17 @@ a:link, a:active, a:visited {
 	color: #FFFFFF;
 }
 
-.content a:link, .content a:active, .content a:visited, a.icon-edit, a.icon-delete, a.message_link, .box-footer-links a:link, .box-footer-links a:active, .box-footer-links a:visited {
-	color: #333333;
+.content a, a.icon-edit, a.icon-delete, a.message_link, .box-footer-links a {
+	color: #222222;
+}
+
+.content a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.content a:hover {
+	color: #086196;
 }
 
 header, footer {
@@ -56,10 +56,23 @@ header {
 	width: 100%;
 }
 
+.area-title h2 {
+	padding: 15px 10px; /* 3 / 940 */
+	line-height: 1;
+}
+
 /* FOOTER */
 
 footer {
 	padding: 1.595745%; /* 15 / 940 */
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer a:hover {
+	color: #222222;
 }
 
 /* LOGO */
@@ -79,11 +92,7 @@ footer {
 .box-footer-links {
 	background-color: inherit;
 	font-weight: bold;
-	padding: 10px 5px;
-
-	border-left: 1px solid #DCDCDC;
-	border-right: 1px solid #DCDCDC;
-	border-bottom: 1px solid #DCDCDC;
+	padding: 10px 5px;	
 }
 
 .box-footer-links ul li {
@@ -98,13 +107,10 @@ footer {
 
 .box {
     background: #FFFFFF;
-    border-bottom: 1px solid #DCDCDC
 }
 
 .box .content {
-	color: #333333;
-	border-left: 1px solid #DCDCDC;
-	border-right: 1px solid #DCDCDC;
+	color: #222222;
 }
 
 .box .text-box {
@@ -123,8 +129,8 @@ footer {
 }
 
 .title-box {
-	background: #215371;    
-    color: #fff;
+	background: #3B95CB;    
+    color: #222222;
 	position: relative;
 }
 
@@ -134,11 +140,14 @@ footer {
 }
 
 #subheader {
-	background: #6b7576;
-	border-bottom: 1px solid #6b7576;
-
+	background: #033E62;
 	padding: 0.212766%; /* 2 / 940 */
 	color: #FFFFFF;
+}
+
+#subheader a{
+	text-decoration: none;
+	color: #61A3CB;
 }
 
 #subheader ul {
@@ -166,11 +175,13 @@ footer {
 }
 
 #main-menu a {
-	background: #61A3CB;
+	background: #6B7376;
 	display: inline-block;
 	margin-right: 1.5%;
 	width: 13%; /*14.285714%*/
 	padding: 1% 0;
+	font-weight: bold;
+	
 	-moz-transition: -moz-background 0.3s ease;
     -o-transition: -o-background 0.3s ease;
     -webkit-transition: -webkit-background 0.3s ease;
@@ -185,14 +196,13 @@ footer {
 	display: none
 }
 
-#main-menu a:hover, #main-menu .active {
-    background: #033E62;
+#main-menu a {
 	text-decoration: none;
 }
- 
-#main-menu a:link, #main-menu a:active, #main-menu a:visited {
-	color: #FFFFFF;
-	font-weight: bold;
+
+#main-menu a:hover, #main-menu a.active {	
+    background: #F5C43D;
+    color: #222222;
 }
 
 /* MAIN MENU ICONS */
@@ -238,8 +248,7 @@ footer {
 /* MONTH MENU */
 
  #months a {
-	background: #495154;
-	
+	background: #6B7376;
 	-moz-transition: -moz-background 0.3s ease;
     -o-transition: -o-background 0.3s ease;
     -webkit-transition: -webkit-background 0.3s ease;
@@ -252,6 +261,7 @@ footer {
 	width: 8.098958%;
 	min-width: 60px;
 	font-weight: bold;
+	text-decoration: none;
 	vertical-align: top;
 	text-align: center;
 	margin-right: 0.234375%;
@@ -262,32 +272,18 @@ footer {
     margin-right: 0;
 }
 
-#months a:link, #months a:active, #months a:visited {
-
-}
-
-#months a.past {
-	color: #EEEEEE;
-    background: #6B7376;
-}
-
 #months a:hover, #months a.active {
 	background: #00A550;
-	text-decoration: none;
+	color: #222222;
 }
-
-#month-title h2 {
-	padding: 15px 10px; /* 3 / 940 */
-	line-height: 1;
-}	
 
 /* BUTTONS AND ICONS */
 
-.icon-edit:hover {
+a.icon-edit:hover {
 	color: #01a401;
 }
 
-.icon-delete:hover {
+a.icon-delete:hover {
 	color: #e40101;
 }
 
@@ -380,36 +376,33 @@ input.btn {
 
 a.btn:link, a.btn:active, a.btn:visited {
 	font-weight: bold;
-}
-
-a.btn:hover {
 	text-decoration: none;
 }
 
 /* PROGRESS BAR */
 
-.progress-bar{
-	background-color: #6b7576;
-	padding: 3px;
+li.progress-bar{
+	background-color: #495154;
+	padding: 5px;
     
 }
 
 .progress-bar span{
 	height: 100%;	
 	display: block;
-	background: #FFD700;
+	background: #F5C43D;
 }
 
 .progress-bar span.low{
-	background: #51a351;    
+	background: #35D282;    
 }
 
 .progress-bar span.high{
-	background: #bd362f;    
+	background: #F56A3D;    
 }
 
 .progress-bar span.full {
-	background: #2f96b4;
+	background: #3B95CB;
 }
 
 .progress-bar span:before{
@@ -456,9 +449,7 @@ a.btn:hover {
 }
 
 .success {
-	background: #dff0d8;
-	color: #468847;
-	border: 1px solid #51a351;
+	background: #35D282;
 }
 
 .success p:before {	
@@ -466,9 +457,7 @@ a.btn:hover {
 }
 
 .info {
-	background: #d9edf7;
-	color: #3a87ad;
-	border: 1px solid #2f96b4;	 
+	background: #61A3CB;
 }
 
 .info p:before {	
@@ -476,9 +465,7 @@ a.btn:hover {
 }
 
 .error {
-	background: #f2dede;
-	color: #b94a48;
-	border: 1px solid #bd362f;
+	background: #F56A3D;
 }
 
 .error p:before {	
@@ -488,6 +475,11 @@ a.btn:hover {
 a.message_link {
 	font-weight: bold;
 	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+a.message_link:hover {
+	color: #033E62;
 }
 
 /* MODAL */

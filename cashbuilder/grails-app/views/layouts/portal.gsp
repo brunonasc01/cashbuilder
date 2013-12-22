@@ -33,7 +33,7 @@
 	</script>
 </head>
 
-<body>
+<body class="landing">
 	<header>
 		<div id="login-bar" class="text-right">
 			<ul class="recovery-bar inline">

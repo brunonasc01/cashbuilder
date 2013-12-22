@@ -6,11 +6,11 @@ label {
 input[type="text"], input[type="email"], input[type="password"], input[type="checkbox"], select, textarea {
     width: 100%;
     margin-bottom: 5px;
-    border: 1px solid #aaa;    
+    border: 1px solid #222222;    
     }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="checkbox"]:focus, select:focus {
-    border: 1px solid #f00;
+    border: 1px solid #3B95CB;
     }
 
 input[type="submit"] {

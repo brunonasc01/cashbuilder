@@ -10,7 +10,7 @@
 		</g:javascript>
     </head>
     <body>
-		<div id="month-title" class="col-1">
+		<div class="area-title col-1">
 			<h2 class="title-box icon-cashflow">
 				<g:message code="menu.label.cashflow"/> - <g:message code="${cashFlow.date.month}"/> / ${cashFlow.date.year}
 			</h2>
