@@ -11,7 +11,7 @@
 		<div id="logo-portal">
 			<span data-picture data-alt="<g:message code="app.name"/>">
 				<span data-src="${resource(dir:'images',file:'logo_large_full.png')}"></span>
-		        <span data-src="${resource(dir:'images',file:'logo_small_full.png')}" data-media="(max-width: 500px)"></span>
+		        <span data-src="${resource(dir:'images',file:'logo_small_land.png')}" data-media="(max-width: 500px)"></span>
 		        
 		        <noscript>
 		            <img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_large_full.png')}"/>

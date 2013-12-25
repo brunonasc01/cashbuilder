@@ -1,3 +1,3 @@
 <div id="logo">
-	<img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_small_full.png')}"/>
+	<img alt="<g:message code="app.name"/>" src="${resource(dir:'images',file:'logo_small_header.png')}"/>
 </div>

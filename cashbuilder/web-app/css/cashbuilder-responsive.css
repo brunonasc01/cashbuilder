@@ -66,28 +66,5 @@
 
 	.menu-icon a span {
 		display: inline-block
-	}
-
-	/* PORTAL */
-	#logo-portal img{
-		margin: 20px;
-	}
-
-	.highlights [class*="col-"]{
-		width: 100%;
-		border-right: none;
-	}
-	
-	#login-bar {
-		text-align: left;
-	}
-
-	#login-bar input[type="text"] {
-		margin-bottom: 5px;
-	}
-
-	#login-bar input[type="submit"] {
-		margin: 10px 25%;
-		width: 50%;
 	}		
 }

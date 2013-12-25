@@ -43,7 +43,6 @@
 	.h-chart li:nth-child(odd) {
 		text-align: left;
 		margin-bottom: 0;
-		line-height: 1.4
 	}
 }
 
