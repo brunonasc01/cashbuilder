@@ -22,12 +22,14 @@ class UserRegisterCommand {
 		importFrom User
 				
 		emailRepeat(
+			nullable: true,
 			validator: { email2, urc ->
 					if(email2 != urc.email)
 						return ['emailRepeated']
 			})
 
 		passwordRepeat(
+			nullable: true,
 			validator: { passwd2, urc ->
 					if(passwd2 != urc.password)
 						return ['passwordRepeated'] 

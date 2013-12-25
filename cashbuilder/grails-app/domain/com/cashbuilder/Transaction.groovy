@@ -18,7 +18,7 @@ class Transaction {
 		subcategory(nullable:false)
 		value(blank:false, scale:2,
 			validator: { val ->
-					if( val in String || val <= 0 || val == null )
+					if( val == null || val in String || val <= 0 )
 						return ['empty']
 			})
 		parcels(blank:false, min:1,

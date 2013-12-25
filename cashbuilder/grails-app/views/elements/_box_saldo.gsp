@@ -26,21 +26,21 @@
 			<ul class="inline">
 				<li class="title"><g:message code="box.balance.label.income"/></li>
 				<li class="value positive">
-					 <g:formatNumber number="${bean.income}" currencySymbol=""
+					 <g:formatNumber number="${bean.income}" currencySymbol="+"
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
 			</ul>
 			<ul class="inline">
 				<li class="title"><g:message code="box.balance.label.expense"/></li>
 				<li class="value negative">
-					 <g:formatNumber number="${bean.expense}" currencySymbol=""
+					 <g:formatNumber number="${bean.expense}" currencySymbol="-"
 							format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
 			</ul>
 			<ul class="inline">
 				<li class="title"><g:message code="box.balance.label.balance"/></li>
-				<li class="value">
-					 <g:formatNumber number="${bean.balance}" currencySymbol=""
+				<li class="value ${bean.balanceClass}">
+					 <g:formatNumber number="${bean.balance}" currencySymbol="${bean.balance >= 0 ? '+':''}"
 							 format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 				</li>
 			</ul>

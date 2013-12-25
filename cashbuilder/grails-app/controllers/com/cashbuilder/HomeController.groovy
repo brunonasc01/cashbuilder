@@ -28,11 +28,8 @@ class HomeController {
 		balanceBox.title = "box.balance.title.budget"
 		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)		
 		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
-		balanceBox.plannedIncome = budgetService.getBudgetedTotal(budgetMonth,true)
-		balanceBox.plannedExpense = budgetService.getBudgetedTotal(budgetMonth,false)
-				
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
-		
+
 		//box ultimos registro
 		def c =  Transaction.createCriteria()
 		

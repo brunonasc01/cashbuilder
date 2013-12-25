@@ -21,7 +21,7 @@
 					<g:hiddenField name="id" value="${bean.id}"/>
 					<g:hiddenField name="monthId" value="${monthId}"/>
 					<label><g:message code="form.budgetitem.label.currentValue"/></label>
-					<g:textField maxlength="10" name="oldValue" value="${bean.budgetedValue}" disabled="true"/>
+					<g:textField maxlength="10" name="oldValue" value="${df.format(bean.budgetedValue)}" disabled="true"/>
 					<label><g:message code="form.budgetitem.label.newValue"/></label>
 					<g:textField maxlength="10" name="budgetedValue" value="" />
 					<div class="content-center">

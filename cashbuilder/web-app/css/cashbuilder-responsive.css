@@ -1,8 +1,5 @@
 @media screen and (max-width: 1280px){
 	
-	.menu-icon a:before {
-		content: "";
-	}
 }
 
 @media screen and (min-width: 960px){
@@ -11,36 +8,8 @@
 
 @media screen and (max-width: 959px){
 	
-	.menu-icon a span {
+	.menu-icon a b {
 		display: none;
-	}
-
-	a.home:before {
-		content: '\2302';
-	}
-
-	a.budget:before {
-		content: '\e005';
-	}
-
-	a.cashflow:before {
-		content: '\1f4c8';
-	}
-
-	a.goal:before {
-		content: '\2691';
-	}
-
-	a.reports:before {
-		content: '\1f53e';
-	}
-
-	a.admin:before {
-		content: '\2699';
-	}
-
-	a.help:before {
-		content: '\2753';
 	}
 
 	.highlights .col-33 {
@@ -49,10 +18,7 @@
 }
 
 @media screen and (max-width: 850px){
-    #months > a {
-        margin-right: 3px;
-        margin-top: 3px;
-    }
+   
 }
 
 @media screen and (max-width: 500px){
@@ -94,7 +60,8 @@
 	}
 	
 	#main-menu a#mobile-menu {
-		display: block
+		display: block;
+		font-weight: bold;
 	}
 
 	.menu-icon a span {

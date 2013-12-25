@@ -9,15 +9,17 @@ class BudgetItemController {
 	
 	def edit(){
 		def budgetItem = BudgetItem.get(params.id)
+		def df = generalService.getNumberFormatter()
 
-		[budget: true, bean: budgetItem, monthId: params.monthId]
+		[budget: true, bean: budgetItem, df: df, monthId: params.monthId]
 	}
 	
 	def edit_modal(){
 		def budgetItem = BudgetItem.get(params.id)
+		def df = generalService.getNumberFormatter()
 		
 		if(budgetItem){
-			render(view: "edit_modal", model: [bean: budgetItem, monthId: params.monthId])
+			render(view: "edit_modal", model: [bean: budgetItem, df: df, monthId: params.monthId])
 		}
 	}
 	
