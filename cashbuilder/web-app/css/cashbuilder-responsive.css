@@ -8,6 +8,10 @@
 
 @media screen and (max-width: 959px){
 	
+	.menu-icon span:before {		
+		margin-right: 0px;
+	}
+	
 	.menu-icon a b {
 		display: none;
 	}

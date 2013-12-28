@@ -15,8 +15,8 @@
     <body>
     	<g:render template="/elements/area_title" model="[bundle_key: 'help.title.label',class_icon:'icon-help']"/>
 
-		<div id="help-list" class="grid">
-			<div class="col-33">
+		<div id="help-list"">
+			<!-- <div class="col-33">
 				<div class="box">
 					<h3 class="title-box"><g:message code="help.technical.title"/></h3>
 					
@@ -28,7 +28,7 @@
 						</ul>
 					</div>
 				</div>
-		  	</div>
+		  	</div> -->
 			
 			<div class="col-1">
 				<div class="box">

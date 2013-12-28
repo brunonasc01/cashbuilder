@@ -43,6 +43,10 @@ a:link, a:active, a:visited {
 	font-weight: bold;
 }
 
+a.icon-edit, a.icon-delete {
+	font-weight: normal;
+}
+
 .content a:hover {
 	color: #086196;
 }

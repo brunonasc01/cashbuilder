@@ -1,3 +1,4 @@
+<%@page import="com.cashbuilder.Constants"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,10 +24,10 @@
 					<label><g:message code="form.signup.label.lastName" />
 					</label><g:textField name="lastName" value="${user?.lastName}"/>
 					<label><g:message code="form.signup.label.state"/>
-					</label><input type="text" name="state" id="state" value="${user?.profile?.state}" />
+					</label><g:select name="state"  from="${Constants.STATES_LIST}" value="${user?.profile?.state}"
+								noSelection="[' ': 'Selecione']" valueMessagePrefix="state"/>
 					<label><g:message code="form.signup.label.city"/>
 					</label><input type="text" name="city" id="city" value="${user?.profile?.city}" />
-
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Gravar"/>
 					</div>

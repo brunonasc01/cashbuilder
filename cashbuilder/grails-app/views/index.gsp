@@ -29,7 +29,7 @@
 			<div class="content">
 				<h4><g:message code="landpage.boxleft.title"/></h4>
 				<p><g:message code="landpage.boxleft.message"/>  
-					<a href="#"><g:message code="landpage.link.read_more"/></a></p>
+					<!-- <a href="#"><g:message code="landpage.link.read_more"/></a> --></p>
 			</div>
 		</div>
 			

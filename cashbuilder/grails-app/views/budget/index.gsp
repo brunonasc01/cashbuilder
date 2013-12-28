@@ -39,9 +39,11 @@
 					</g:if>
 
 					<g:if test="${!budget.expenseList && !budget.incomeList}">
-	    				<div class="empty-box">
-	    					<g:message code="budget.empty.message"/>
-	    				</div>
+						<div class="box">
+							<div class="content">
+								<g:message code="budget.empty.message"/>
+							</div>
+						</div>
     				</g:if>
     			</div>
     		</g:if>

@@ -18,8 +18,17 @@
 		
 		<g:render template="/elements/message"></g:render>
 
-    	<div id="vertical-graph" class="col-1">
-    		<g:if test="${report.reportData.size() > 0}">
+		<g:if test="${report.reportData.size() == 0 && distribReport.reportData.size() == 0}">
+			<div class="col-1">
+				<div class="box">
+					<div class="content">
+						<g:message code="report.empty.message"/>
+					</div>
+				</div>
+			</div>
+		</g:if>
+		<g:else>
+	    	<div id="vertical-graph" class="col-1">
 				<div class="box">
 					<h3 class="title-box">
 						<g:message code="report.graph.expenses.title"/>
@@ -33,7 +42,7 @@
 									</g:each>	
 								</ul>
 							</div>
-
+	
 							<div class="data">
 								<ul class="bars">
 									<g:each var="data" in="${report.reportData}">
@@ -42,7 +51,7 @@
 										</li>
 									</g:each>	
 								</ul>
-
+	
 								<ul class="labels">
 									<g:each var="data" in="${report.reportData}" status="i">
 											<li><g:customLabel value="${data.label}" prefix="label"/></li>
@@ -52,18 +61,9 @@
 						</div>
 					</div>
 				</div>
-			</g:if>
-			<g:else>
-				<div class="box">
-					<div class="empty-box">
-	   					<g:message code="report.empty.message"/>
-	   				</div>
-   				</div>
-			</g:else>
-		</div>
-		
-		<div class="col-1">
-    		<g:if test="${distribReport.reportData.size() > 0}">
+			</div>
+			
+			<div class="col-1">
 				<div class="box">
 					<h3 class="title-box">
 						<g:message code="report.graph.percent.title"/>
@@ -83,14 +83,7 @@
 						</div>
 					</div>
 				</div>
-			</g:if>
-			<g:else>
-				<div class="box">
-					<div class="empty-box">
-	   					<g:message code="report.empty.message"/>
-	   				</div>
-   				</div>
-			</g:else>
-		</div>
+			</div>
+		</g:else>
 	</body>		
 </html>

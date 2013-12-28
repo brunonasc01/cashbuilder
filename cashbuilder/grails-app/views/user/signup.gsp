@@ -1,3 +1,4 @@
+<%@page import="com.cashbuilder.Constants"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
     
@@ -30,7 +31,8 @@
 					<label><g:message code="form.signup.label.passwordRepeat" />
 			    	</label><g:passwordField name="passwordRepeat"/>
 					<label><g:message code="form.signup.label.state"/>
-					</label><g:textField name="state" value="${userInstance?.state}"/>
+					</label><g:select name="state"  from="${Constants.STATES_LIST}" value="${userInstance?.state}"
+								noSelection="[' ': 'Selecione']" valueMessagePrefix="state"/>
 					<label><g:message code="form.signup.label.city"/>
 					</label><g:textField name="city" value="${userInstance?.city}"/>
 					<label><g:message code="form.signup.captcha.title"/></label>
