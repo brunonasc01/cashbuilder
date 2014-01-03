@@ -36,9 +36,9 @@
 					<label><g:message code="form.signup.label.city"/>
 					</label><g:textField name="city" value="${userInstance?.city}"/>
 					<label><g:message code="form.signup.captcha.title"/></label>
-					<recaptcha:ifEnabled>
-					    <recaptcha:recaptcha theme="white"/>
-					</recaptcha:ifEnabled>
+					<br /> <img src="${createLink(controller: 'simpleCaptcha', action: 'captcha')}"/>
+					<g:textField name="captcha"/>
+					
 					<small><g:message code="form.signup.policy.message"/></small>
 											
 					<div class="content-center">

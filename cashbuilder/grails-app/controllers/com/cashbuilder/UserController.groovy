@@ -9,7 +9,7 @@ class UserController {
 
 	def generalService
     def userService
-	def recaptchaService
+	def simpleCaptchaService
 	
 	static allowedMethods = [save: "POST", update: "POST", updatePassword:"POST", updateMail:"POST"]
 	
@@ -47,7 +47,7 @@ class UserController {
 	
 	def save(UserRegisterCommand urc) {
 		
-		if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
+		if (!simpleCaptchaService.validateCaptcha(params.captcha)) {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.message.error")
 
 		} else if(!userService.isEmailAvailable(urc.email)){

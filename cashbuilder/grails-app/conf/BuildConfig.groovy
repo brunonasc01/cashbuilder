@@ -58,9 +58,9 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.0.0"
         compile ':cache:1.1.1'
-		compile ":recaptcha:0.6.7"
 		compile ":joda-time:1.4"
 		compile ":mail:1.0.1"
+		compile ":simple-captcha:0.9.9"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.1" // or ":hibernate4:4.1.11.1"

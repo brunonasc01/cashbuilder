@@ -106,6 +106,28 @@ grails {
 			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
 			   "mail.smtp.socketFactory.fallback":"false"]   }
  }
+
+simpleCaptcha {
+	// font size used in CAPTCHA images
+	fontSize = 30
+	height = 150
+	width = 200
+	// number of characters in CAPTCHA text
+	length = 7
+
+	// amount of space between the bottom of the CAPTCHA text and the bottom of the CAPTCHA image
+	bottomPadding = 10
+
+	// distance between the diagonal lines used to obfuscate the text
+	lineSpacing = 10
+
+	// the charcters shown in the CAPTCHA text must be one of the following
+	chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
+
+	// this param will be passed as the first argument to this java.awt.Font constructor
+	// http://docs.oracle.com/javase/6/docs/api/java/awt/Font.html#Font(java.lang.String,%20int,%20int)
+	font = "sans-serif"
+}
 // Uncomment and edit the following lines to start using Grails encoding & escaping improvements
 
 /* remove this line 
