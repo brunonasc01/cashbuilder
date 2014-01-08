@@ -9,12 +9,13 @@ class UserController {
 
 	def generalService
     def userService
-	def simpleCaptchaService
-	
+
 	static allowedMethods = [save: "POST", update: "POST", updatePassword:"POST", updateMail:"POST"]
 	
 	def signup(){
-		[signup: true]
+		def timestamp = System.currentTimeMillis()
+		
+		[signup: true, timestamp: timestamp]
 	}
 	
 	def edit_modal() {
@@ -47,8 +48,8 @@ class UserController {
 	
 	def save(UserRegisterCommand urc) {
 		
-		if (!simpleCaptchaService.validateCaptcha(params.captcha)) {
-			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.captcha.message.error")
+		if (System.currentTimeMillis() - (params.timestamp as Long) < 3000 ) {
+			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.validation.message.error")
 
 		} else if(!userService.isEmailAvailable(urc.email)){
 			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.message.unavailable")
@@ -68,7 +69,8 @@ class UserController {
 			}
 		}
 
-		render(view: "signup",model:[userInstance:urc,signup: true])
+		def timestamp = System.currentTimeMillis()
+		render(view: "signup",model:[userInstance:urc,signup: true, timestamp: timestamp])
 	}
 	
 	def update(UserUpdateCommand uuc) {

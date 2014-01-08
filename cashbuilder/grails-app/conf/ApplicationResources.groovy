@@ -59,10 +59,6 @@ modules = {
 		resource url:'css/cashbuilder-help.css'
 	}
 	
-	recaptcha {
-		resource url:'css/recaptcha.css'
-	}
-	
 	portal {
 		dependsOn 'core'
 		resource url:'css/cashbuilder-portal.css'

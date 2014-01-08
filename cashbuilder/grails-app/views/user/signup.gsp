@@ -6,7 +6,7 @@
 	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
 	<meta name="layout" content="common" />
 	<meta name="description" content="${g.message(code:"app.signup.description") }"/>        
-	<r:require modules="portal,recaptcha"/>
+	<r:require modules="portal"/>
 </head>
     
 <body>
@@ -18,6 +18,8 @@
 		<div class="box">
 			<div class="content">
 		    	<g:form method="post" action="save" class="text-large">
+		    		<g:hiddenField name="timestamp" value="${timestamp}"/>
+		    	
 			    	<label><g:message code="form.signup.label.firstName" />
 			    	</label><g:textField name="firstName" value="${userInstance?.firstName}"/>
 					<label><g:message code="form.signup.label.lastName" />
@@ -35,12 +37,9 @@
 								noSelection="[' ': 'Selecione']" valueMessagePrefix="state"/>
 					<label><g:message code="form.signup.label.city"/>
 					</label><g:textField name="city" value="${userInstance?.city}"/>
-					<label><g:message code="form.signup.captcha.title"/></label>
-					<br /> <img src="${createLink(controller: 'simpleCaptcha', action: 'captcha')}"/>
-					<g:textField name="captcha"/>
-					
+
 					<small><g:message code="form.signup.policy.message"/></small>
-											
+
 					<div class="content-center">
 						<input type="submit" class="btn" id="submit" value="Cadastrar"/>
 					</div>
