@@ -12,7 +12,7 @@ class Category {
 	
     static constraints = {
 		name(blank: false, size:3..20)
-		variationFactor(blank:false, scale:1)
+		variationFactor(blank:false, scale:2)
     }
 	
 	static mapping = {

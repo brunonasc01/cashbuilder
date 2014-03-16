@@ -10,7 +10,7 @@
 					<li><g:formatDate date="${transaction.date }" format="dd/MM"></g:formatDate>
 					</li><li class="text-center ${transaction.nature == Constants.DEBITO? "negative" : "positive" }">
 						<g:formatNumber number="${transaction.value }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
-					</li><li class="category"><i>${transaction.subcategory }</i>
+					</li><li class="category"><i><g:customLabel value="${transaction.subcategory}" prefix="label"/></i>
 					</li><li class="description">${transaction.description}</li>
 				</ul>
 			</g:each>

@@ -2,12 +2,15 @@ package com.cashbuilder
 
 import java.util.Date;
 
+import org.hibernate.SessionFactory;
+
 class EventService {
 
     static transactional = true
 
 	def budgetService
 	def messageSource
+	SessionFactory sessionFactory
 	
     def serviceMethod() {
 
@@ -15,6 +18,10 @@ class EventService {
 	
 	void checkEvents(User user, Date date){
 		processAlerts(user)
+		
+		def hibSession = sessionFactory.getCurrentSession()
+		assert hibSession != null
+		hibSession.flush()
 	}
 	
 	void calculateBudget(User user, Date date){
