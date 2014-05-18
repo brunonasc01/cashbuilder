@@ -45,12 +45,7 @@ body.landing {
     margin: 0
     }
     
-@media screen and (max-width: 500px){
-
-	#logo-portal img{
-		margin: 20px;
-	}
-
+@media screen and (max-width: 800px){
 	.highlights [class*="col-"]{
 		width: 100%;
 		border-right: none;
@@ -58,6 +53,13 @@ body.landing {
 	
 	.highlights > div {
 		min-height: 0px;
+	}
+}
+    
+@media screen and (max-width: 500px){
+
+	#logo-portal img{
+		margin: 20px;
 	}
 	
 	#login-bar {

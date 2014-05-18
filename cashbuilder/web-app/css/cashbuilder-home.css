@@ -1,3 +1,13 @@
+.line::before,
+.line::after {
+	content: "";
+	display: table;
+}
+
+.line::after {
+	clear: both;
+}
+
 /* TRANSACTION LIST BOX */
 #transaction-list-box {
     padding: 0
@@ -27,4 +37,16 @@
     
 #transaction-list-box p {
 	padding: 2.680965%;
+}
+
+@media screen and (max-width: 959px) {
+	.line::before,
+	.line::after {
+		content: "";
+		display: block;
+	}
+	
+	.line::after {
+		clear: none;
+	}
 }

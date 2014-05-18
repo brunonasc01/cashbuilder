@@ -256,6 +256,12 @@ function initGoalScripts(){
 			ajaxSubmitToModal('createGoalForm','modal');		
 			enableCloseOverlay();
 		}
+		
+		$('.icon-delete').click(function(){
+			if(confirm('Tem Certeza ?')){
+				$(this).parents('form:first').submit();
+			}			
+		});
 	});
 }
 

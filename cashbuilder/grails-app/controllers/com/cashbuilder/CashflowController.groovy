@@ -40,6 +40,7 @@ class CashflowController {
 		
 		BalanceBoxBean balanceBox = new BalanceBoxBean()
 		balanceBox.title = "box.balance.title.total"
+		balanceBox.label = "box.balance.label.balance"
 		balanceBox.income = budgetService.getRealizedTotal(month,user,Constants.CREDITO)
 		balanceBox.expense = budgetService.getRealizedTotal(month,user,Constants.DEBITO)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE

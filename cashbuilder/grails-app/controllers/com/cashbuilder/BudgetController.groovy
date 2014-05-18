@@ -50,13 +50,12 @@ class BudgetController {
 		budgetBean.incomeList = listEntradas
 		budgetBean.expenseList = listSaidas
 
-		BalanceBoxBean balanceBox = new BalanceBoxBean(isBudget:true)
-		balanceBox.title = "box.balance.title.balance"
-		balanceBox.plannedBalance = budgetService.getBudgetedBalance(budgetMonth)
-		balanceBox.actualBalance = budgetService.getBalance(budgetMonth,user)
-		balanceBox.plannedClass = (balanceBox.plannedBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
-		balanceBox.actualClass = (balanceBox.actualBalance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE
-		//balanceBox.protectionBalance = budgetMonth.protectionBalance 
+		BalanceBoxBean balanceBox = new BalanceBoxBean()
+		balanceBox.title = "box.balance.title.budget"
+		balanceBox.label = "box.balance.label.planned"
+		balanceBox.income = budgetService.getBudgetedTotal(budgetMonth,true)
+		balanceBox.expense = budgetService.getBudgetedTotal(budgetMonth,false)		
+		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE 
 
 		def df = generalService.getNumberFormatter()
 		

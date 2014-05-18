@@ -1,0 +1,28 @@
+body {
+	background: #ECECEC;
+}
+
+.login {
+	margin: 10% auto 0 auto;
+	width: 320px;
+}
+
+.login .login-fields {
+	margin-top: 20px;
+	background: #086196;
+	padding: 20px;
+}
+
+.login label {
+	color: #FFFFFF;
+}
+
+.login input[type='text'], .login input[type='password'] {
+	font-size: 1.3rem;
+	padding: 5px;
+}
+
+ul.login-links {
+	margin-top: 20px;
+	font-size: 0.95rem;
+}

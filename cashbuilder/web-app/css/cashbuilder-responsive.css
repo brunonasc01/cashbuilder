@@ -25,6 +25,35 @@
    
 }
 
+@media screen and (max-width: 800px){
+	.balance-box {
+		
+	}
+	
+	.balance-box > ul {
+		display: block;
+		width: 100%;
+	}
+	
+	.balance-box > ul li{
+		display: inline-block;
+		width: 50%;
+	}
+	
+	.balance-box .title, .balance-box .value {
+		font-size: 1.7rem;
+	}
+	
+	.balance-box .title {
+		text-align: right;
+		padding-right: 10%;
+	}
+	
+	.balance-box .value {
+		text-align: left;
+	}
+}
+
 @media screen and (max-width: 500px){
 	
 	/* GENERAL */
@@ -51,6 +80,10 @@
 	.btn {
 		font-size: 1.3em;
 		padding: 10px 20px;
+	}
+	
+	.balance-box .title, .balance-box .value {
+		font-size: 1.4rem;
 	}
 	
 	/* MAIN MENU */

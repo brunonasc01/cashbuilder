@@ -24,19 +24,23 @@
 				</div>
 			</g:if>
 
+		</div>
+		<div class="col-75">
 			<div class="box">
 				<h3 class="title-box"><g:message code="box.goal.label.title"/></h3>
 				    			
-    			<div id="goal-info" class="content">
-    				<ul class="inline">
+    			<div class="goal-info working">
+    				<ul class="text-center">
     					<li class="title"><g:message code="box.goal.label.working"/></li>
     					<li class="value">${goalStatus[0]}</li>
     				</ul>
-    				<ul class="inline">
+    			</div><div class="goal-info done">
+    				<ul class="text-center">
     					<li class="title"><g:message code="box.goal.label.finished"/></li>
     					<li class="value">${goalStatus[1]}</li>
     				</ul>
-    				<ul class="inline">
+    			</div><div class="goal-info lost">
+    				<ul class="text-center">
     					<li class="title"><g:message code="box.goal.label.expired"/></li>
     					<li class="value">${goalStatus[2]}</li>
     				</ul>
@@ -44,29 +48,24 @@
 			</div>
 	  	</div>
 
-		<div class="col-66">
+		<div class="col-100">
 		<g:if test="${goals}">
 			<div id="goal-list">
 				<g:each var="goal" in="${goals}" status="i">
 				  	<div class="box append-bottom-dist">
-						<div class="content clearfix">
-		            		<div class="left left-align">
-		            			<ul class="stats">
-									<li class="status">
-										<g:message code="box.goal.status.${goal.status}"/>
-									</li><li class="date-limit">${goal.endDate }
+	            		<div class="left text-center">
+	            			<ul class="stats ${goal.status }">
+								<li class="date-limit">${goal.endDate }
 									</li><li class="year-limit">${goal.endYear }
 									</li>
 								</ul>
-		            		</div>
-			            		
-		            		<div class="right left-align">
+	            		</div><div class="right">
 		            			<ul class="inline">
 									<li class="name">${goal.title}
 									</li><li class="icon">
 										<g:form action="delete">
 											<g:hiddenField name="id" value="${goal.id}" />
-	 										<a href="#"><span class="ui-icon ui-icon-trash"></span></a>
+	 										<a class="bt-icon icon-delete"></a>
 										</g:form>
 									</li><li class="values text-right"><g:formatNumber number="${goal.accumulated }" format="${Constants.FORMATO_MOEDA}"></g:formatNumber>
 									</li><li class="of"><g:message code="default.of"/>
@@ -77,7 +76,6 @@
 									</li><li class="progress-bar"><span style="width:${goal.barSize}%;"></span></li>
 			            		</ul>
 		            		</div>
-			            </div>
 				  	</div>
 		  		</g:each>
 		  	</div>

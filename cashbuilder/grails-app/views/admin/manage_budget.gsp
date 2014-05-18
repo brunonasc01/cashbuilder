@@ -47,7 +47,7 @@
 	   			</div>
 
 	   			<div class="box">
-	   				<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
+	   				<g:render template="/elements/box_saldo_home" var="bean" bean="${balanceBox }"  ></g:render>
 				</div>
 	    	</div>
     

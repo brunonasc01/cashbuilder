@@ -25,7 +25,7 @@ class HomeController {
 
 		//box saldo
 		BalanceBoxBean balanceBox = new BalanceBoxBean();
-		balanceBox.title = "box.balance.title.budget"
+		balanceBox.title = "box.balance.title.home"
 		balanceBox.income = budgetService.getRealizedTotal(budgetMonth,user,Constants.CREDITO)		
 		balanceBox.expense = budgetService.getRealizedTotal(budgetMonth,user,Constants.DEBITO)
 		balanceBox.balanceClass = (balanceBox.balance >= 0) ? Constants.POSITIVE : Constants.NEGATIVE

@@ -21,11 +21,19 @@
    		
    		<g:render template="/elements/message"></g:render>
 
-    	<div class="col-25">
+		<div class="col-25">
+			
+		</div>
+
+    	<div class="col-75">
 			<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>
     	</div>
     
-    	<div class="col-66">
+    	<div class="col-25">
+			
+		</div>
+    
+    	<div class="col-75">
     		<g:if test="${budget}">
     			<div class="box">
     				<g:if test="${budget.incomeList }">

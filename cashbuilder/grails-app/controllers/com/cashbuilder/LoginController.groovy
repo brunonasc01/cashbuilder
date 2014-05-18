@@ -8,6 +8,10 @@ class LoginController {
 	
 	static allowedMethods = [login: "POST"]
 
+	def index() {
+		
+	}
+	
 	def login() {
 		def user = userService.verifyLogin(params)
 		
