@@ -6,7 +6,7 @@ class TransactionController {
 	def transactionService
 	def eventService
 	
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST", undelete: "POST"]
 	
     def create_modal() {
 		def user = session.user.attach()
@@ -107,10 +107,20 @@ class TransactionController {
 	
 	def delete() {
 		def user = session.user.attach()
-		if(transactionService.deleteTransaction(params.id)){
+		def transaction = Transaction.get(params.id)
+		
+		if(transaction){
+			transactionService.deleteTransaction(params.id)
 			eventService.processAlerts(user)
 		}
-		generalService.buildMessage(Constants.MSG_SUCCESS,"form.transaction.delete.success")
+		def df = generalService.getNumberFormatter()
+		
+		chain(controller:"cashflow", action: "index", model: [deletedBean: new Transaction(transaction.properties), df: df])
+	}
+	
+	def undelete() {
+		def user = session.user.attach()
+		def transaction = transactionService.saveTransaction(user, params)
 		
 		redirect(controller:"cashflow", action: "index")
 	}

@@ -15,6 +15,23 @@
     
     	<g:render template="/elements/message"></g:render>
     
+		<g:if test="${deletedBean}">
+    		<div class="col-1">
+    			<div class="message error">
+    				<g:form name="undeleteForm" action="undelete">
+    					<g:hiddenField name="title" value="${deletedBean.title}"/>
+    					<g:hiddenField name="startDate" value="${deletedBean.startDate}"/>
+    					<g:hiddenField name="endDate" value="${deletedBean.endDate}"/>
+    					<g:hiddenField name="total" value="${df.format(deletedBean.total)}"/>
+    					<g:hiddenField name="finished" value="${deletedBean.finished}"/>
+    					<g:hiddenField name="subcategories[0]" value="${deletedBean.subcategories[0].id}"/>
+
+    					<p><g:link class="text_link" elementId="unDeleteLink" action="undelete"><g:message code="goal.data.delete.undo"/></g:link></p>
+    				</g:form>
+    			</div>
+    		</div>
+    	</g:if>
+    
 	  	<div class="col-25">
 	  		<g:if test="${!consult_mode }">
 		  		<div class="text-center append-bottom-dist">

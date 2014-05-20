@@ -237,9 +237,12 @@ function initCashflowScripts(){
 		});
 		
 		$('.icon-delete').click(function(){
-			if(confirm('Tem Certeza ?')){
 				$(this).parents('form:first').submit();
-			}			
+		});
+		
+		$('#unDeleteLink').click(function(e){
+			e.preventDefault();
+			$(this).parents('form:first').submit();
 		});
 
 		enableCloseOverlay();
@@ -258,9 +261,12 @@ function initGoalScripts(){
 		}
 		
 		$('.icon-delete').click(function(){
-			if(confirm('Tem Certeza ?')){
 				$(this).parents('form:first').submit();
-			}			
+		});
+
+		$('#unDeleteLink').click(function(e){
+			e.preventDefault();
+			$(this).parents('form:first').submit();
 		});
 	});
 }

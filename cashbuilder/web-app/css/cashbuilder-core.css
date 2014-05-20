@@ -533,6 +533,11 @@ a.message_link:hover {
 	color: #033E62;
 }
 
+.message a.text_link {
+	color: #000000;
+	font-weight: bold;
+}
+
 /* MODAL */
 
 .overlay {

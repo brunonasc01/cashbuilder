@@ -25,11 +25,12 @@ class GoalService {
 		}
 	}
 	
-	Goal deleteGoal(Map params){
-		def goal = Goal.get(params.id)
+	boolean deleteGoal(String goalId){
+		def goal = Goal.get(goalId)
 
 		if(goal) {
 			goal.delete()			
+			return true			
 		}
 	}
 	

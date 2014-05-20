@@ -55,8 +55,22 @@ class GoalController {
 	}
 	
 	def delete() {
-		def goal = goalService.deleteGoal( params)
-		generalService.buildMessage(Constants.MSG_SUCCESS,"goal.data.delete.success")
+		def goal = Goal.get(params.id)
+
+		def deletedGoal = new Goal(goal.properties)
+		deletedGoal.subcategories = goal.subcategories
+		
+		if(goal){
+			goalService.deleteGoal(params.id)
+		}
+		def df = generalService.getNumberFormatter()
+
+		chain(action: "index", model: [deletedBean: deletedGoal, df: df])
+	}
+	
+	def undelete() {
+		def user = session.user.attach()
+		def goal = goalService.saveGoal(user, params)
 		
 		redirect(action: "index")
 	}
