@@ -24,10 +24,7 @@
 			    		<label><g:message code="form.label.email" />
 			    		</label><g:textField name="email" value="${contact?.email}"/>
 		    		</g:if>
-		    		
-		    		<label><g:message code="form.contact.label.subject" />
-		    		</label><g:select name="subject" from="${subjects}" optionKey="id" optionValue="value"
-								noSelection="['': 'Selecione']" value="${contact?.subject }"/>
+
 					<label><g:message code="form.contact.label.message" />
 		    		</label><g:textArea name="message" cols="50" rows="5" maxlength="750" value="${contact.message }"></g:textArea>
 					
