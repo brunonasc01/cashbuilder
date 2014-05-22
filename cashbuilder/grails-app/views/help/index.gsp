@@ -47,7 +47,6 @@
 					<div class="content">
 						<ul>
 							<li><span><g:message code="help.home.ask1.title"/></span><p><g:message code="help.home.ask1.answer"/></p></li>
-							<li><span><g:message code="help.home.ask2.title"/></span><p><g:message code="help.home.ask2.answer"/></p></li>
 							<li><span><g:message code="help.home.ask3.title"/></span><p><g:message code="help.home.ask3.answer"/></p></li>
 						</ul>
 					</div>
