@@ -38,25 +38,31 @@
     		</div>
     	</g:if>
     	
-    	<div class="col-25">
-    		<g:if test="${!consult_mode }">
-	    		<div class="text-center append-bottom-dist">
-					<g:form name="newTransactionForm" action="create" controller="transaction">
-						<g:hiddenField name="monthId" value="${monthIndex}" />
-						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'form.transaction.btn.title')}" />
-					</g:form>
-				</div>
-			</g:if>
-    	</div>
+    	<g:if test="${!consult_mode }">
+		<aside class="mobile-only col-25">
+			<g:form name="newTransactionForm" action="create" controller="transaction">
+				<g:hiddenField name="monthId" value="${monthIndex}" />
+				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.transaction.btn.title')}" />
+			</g:form>
+    	</aside>
+		</g:if>
 
-    	<div class="col-75">
+    	<div id="content" class="col-75">
     		<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox }"  ></g:render>
-    	</div>
     
-    	<div class="col-1">
-    		<div class="box">
+    		<div class="box append-top">
 		    	<g:render template="/elements/cashflow_transaction_list" bean="${cashFlow}"></g:render>
 	    	</div>
 		</div>
+    
+    	<g:if test="${!consult_mode }">
+		<aside class="col-25">
+			<g:form name="newTransactionForm" action="create" controller="transaction">
+				<g:hiddenField name="monthId" value="${monthIndex}" />
+				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.transaction.btn.title')}" />
+			</g:form>
+    	</aside>
+    	</g:if>
+
 	</body>		
 </html>

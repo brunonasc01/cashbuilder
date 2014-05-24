@@ -14,7 +14,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     border: 1px solid #3B95CB;
     }
 
-input[type="submit"] {
+input[type="submit"].btn {
     margin-top: 10px
     }
 

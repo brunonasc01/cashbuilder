@@ -12,6 +12,8 @@ $(function() {
 	        e.preventDefault();  
 	        menu.slideToggle();  
 	    });  
+	    
+	    $('.mobile-only').show();
 	}
 });
 

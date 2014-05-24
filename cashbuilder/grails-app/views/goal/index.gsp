@@ -32,17 +32,15 @@
     		</div>
     	</g:if>
     
-	  	<div class="col-25">
-	  		<g:if test="${!consult_mode }">
-		  		<div class="text-center append-bottom-dist">
-	  				<g:form name="createGoalForm" action="create">
-						<g:submitButton name="newButton" class="btn btn-large" value="${g.message(code:'form.goal.title')}" />
-					</g:form>
-				</div>
-			</g:if>
+		<g:if test="${!consult_mode }">
+		<aside class="mobile-only col-25">
+ 			<g:form name="createGoalForm" action="create">
+				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.goal.title')}" />
+			</g:form>
+		</aside>
+		</g:if>
 
-		</div>
-		<div class="col-75">
+		<div id="content" class="col-75">
 			<div class="box">
 				<h3 class="title-box"><g:message code="box.goal.label.title"/></h3>
 				    			
@@ -63,13 +61,11 @@
     				</ul>
     			</div>
 			</div>
-	  	</div>
 
-		<div class="col-100">
-		<g:if test="${goals}">
-			<div id="goal-list">
+			<g:if test="${goals}">
+				<div id="goal-list" class="append-top">
 				<g:each var="goal" in="${goals}" status="i">
-				  	<div class="box append-bottom-dist">
+				  	<div class="box">
 	            		<div class="left text-center">
 	            			<ul class="stats ${goal.status }">
 								<li class="date-limit">${goal.endDate }
@@ -95,15 +91,23 @@
 		            		</div>
 				  	</div>
 		  		</g:each>
-		  	</div>
-		</g:if>
-		<g:else>
-			<div class="box">
+		  		</div>
+			</g:if>
+			<g:else>
+			<div class="box append-top">
 				<div class="content">
 					<g:message code="goal.empty.message"/>
 				</div>
 			</div>
-		</g:else>
+			</g:else>
 		</div>
+		
+		<g:if test="${!consult_mode }">
+		<aside class="col-25">
+ 			<g:form name="createGoalForm" action="create">
+				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.goal.title')}" />
+			</g:form>
+		</aside>
+		</g:if>
 	</body>		
 </html>

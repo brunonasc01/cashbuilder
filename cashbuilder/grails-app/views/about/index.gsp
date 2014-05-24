@@ -2,6 +2,7 @@
 <html lang="pt-BR">
     
 <head>
+	<g:set var="wrapper_class" value="wrapper-100" scope="request"></g:set>
 	<meta name="layout" content="common" />
 	<meta name="description" content="${g.message(code:"app.about.description") }"/>
 	<r:require modules="portal"/>

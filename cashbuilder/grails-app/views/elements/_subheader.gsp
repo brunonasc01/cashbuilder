@@ -1,6 +1,6 @@
 <div id="subheader">
 	<ul class="inline">
-	<g:if test="${showCommon}">
+	<g:if test="${showCommon || !session.user}">
 		<li><g:link uri="/" class="icon-home">
 			<g:message code="app.link.index"/></g:link>
 		</li><li><g:link controller="user" action="signup" class="icon-doc">

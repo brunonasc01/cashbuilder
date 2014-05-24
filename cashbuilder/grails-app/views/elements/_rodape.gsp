@@ -1,5 +1,5 @@
 <ul class="inline">
-<g:if test="${showCommon}">
+<g:if test="${showCommon || !session.user}">
 	<li><g:link controller="about" action="."><g:message code="app.link.about"/></g:link></li>
 	<li><g:link controller="about" action="terms"><g:message code="app.link.terms"/></g:link></li>
 	<li><g:link controller="contact"><g:message code="app.link.contact"/></g:link></li>

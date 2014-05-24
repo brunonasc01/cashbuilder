@@ -21,21 +21,11 @@
    		
    		<g:render template="/elements/message"></g:render>
 
-		<div class="col-25">
-			
-		</div>
-
-    	<div class="col-75">
+    	<div id="content" class="col-75">
 			<g:render template="/elements/box_saldo" var="bean" bean="${balanceBox}"  ></g:render>
-    	</div>
-    
-    	<div class="col-25">
-			
-		</div>
-    
-    	<div class="col-75">
+
     		<g:if test="${budget}">
-    			<div class="box">
+    			<div class="box append-top">
     				<g:if test="${budget.incomeList }">
     					<h3 class="title-box"><g:message code="budget.income.title"/></h3>
     					<g:render template="/elements/budget_list" var="list" bean="${budget.incomeList}"></g:render>
@@ -56,5 +46,12 @@
     			</div>
     		</g:if>
 		</div>
+		
+		<aside class="col-25">
+			<g:link class="side-button btn-action text-center" controller="admin" action="manage_budget">
+				<g:message code="budget.manage-budget.link"/></g:link>
+			
+			<a class="side-button btn-help text-center append-top" href="#"><g:message code="default.aside.help.link"/></a>
+		</aside>
 	</body>
 </html>

@@ -11,8 +11,12 @@
 
 /* GENERAL */
 
-.grid {
-    
+.mobile-only {
+	display:none;
+}
+
+#content {
+	float: right;
 }
 
 html {
@@ -34,21 +38,21 @@ a:link, a:active, a:visited {
 	color: #FFFFFF;
 }
 
-.content a, a.icon-edit, a.icon-delete, a.message_link, .box-footer-links a {
-	color: #222222;
-}
-
 .content a {
 	text-decoration: none;
 	font-weight: bold;
 }
 
-a.icon-edit, a.icon-delete {
-	font-weight: normal;
+.content a, a.icon-edit, a.icon-delete, a.message_link, .box-footer-links a {
+	color: #222222;
 }
 
 .content a:hover {
 	color: #086196;
+}
+
+a.icon-edit, a.icon-delete {
+	font-weight: normal;
 }
 
 header, footer {
@@ -64,6 +68,37 @@ header {
 .area-title h2 {
 	padding: 15px 10px; /* 3 / 940 */
 	line-height: 1;
+}
+
+/* SUBHEADER */
+
+#subheader {
+	background: #033E62;
+	padding: 0.212766%; /* 2 / 940 */
+	color: #FFFFFF;
+}
+
+#subheader a{
+	text-decoration: none;
+	color: #61A3CB;
+}
+
+#subheader ul {
+	margin: 5px 0; /* 5 / 940 */
+	font-weight: bold;
+}
+
+#subheader ul li {
+	border-right: 2px solid;
+	padding: 0 5px;
+}
+
+#subheader ul li:last-child {
+	border-right: none;
+}
+
+#subheader a.logoff {
+	color: #F56A3D;
 }
 
 /* FOOTER */
@@ -119,7 +154,8 @@ footer a:hover {
 }
 
 .box .text-box {
-	font-size: 1.1rem;
+	font-size: 1.3rem;
+	padding: 20px;
 	text-align: justify;
 }
 
@@ -144,33 +180,38 @@ footer a:hover {
 	margin-right: 5px;
 }
 
-#subheader {
-	background: #033E62;
-	padding: 0.212766%; /* 2 / 940 */
-	color: #FFFFFF;
-}
+/* SIDEBAR */
 
-#subheader a{
-	text-decoration: none;
-	color: #61A3CB;
-}
-
-#subheader ul {
-	margin: 5px 0; /* 5 / 940 */
+aside .side-button {
+	background-color: #CCCCCC;
+	padding: 22px 15px; /*padding: 22px 15px 22px 90px; para imagens apenas */
+	display: block;
+	font-size: 1.2em;
 	font-weight: bold;
+	text-decoration: none;
 }
 
-#subheader ul li {
-	border-right: 2px solid;
-	padding: 0 5px;
+aside input[type="submit"].side-button {
+	color: #FFFFFF;
+	width: 100%;
+	border: none;
 }
 
-#subheader ul li:last-child {
-	border-right: none;
+aside .btn-help {
+	background: #EB3900; 
 }
 
-#subheader a.logoff {
-	color: #F56A3D;
+aside .btn-help:hover {
+	background: #FC4A11; 
+}
+
+aside .btn-action {
+	background: #00A551;
+	transition: background 0.3s ease;
+}
+
+aside .btn-action:hover {
+	background: #11B662;
 }
 
 /* MAIN MENU */
