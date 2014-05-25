@@ -33,5 +33,9 @@
 		<div class="col-25">
 			<g:render template="/elements/box_registros_futuros" var="list" bean="${registrosFuturos}" ></g:render>
 		</div>
+		
+		<div class="col-25">
+			<g:render template="/elements/anuncio" model="[tipo:'sidebar']"></g:render>
+		</div>
 	</body>		
 </html>

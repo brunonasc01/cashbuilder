@@ -101,13 +101,14 @@
 			</div>
 			</g:else>
 		</div>
-		
-		<g:if test="${!consult_mode }">
+
 		<aside class="col-25">
+		<g:if test="${!consult_mode }">
  			<g:form name="createGoalForm" action="create">
 				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.goal.title')}" />
 			</g:form>
+		</g:if>	
+			<g:render template="/elements/anuncio" model="[tipo:'sidebar', divClass:'append-top']"></g:render>
 		</aside>
-		</g:if>
 	</body>		
 </html>

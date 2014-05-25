@@ -35,6 +35,8 @@
 <body>
 	<header>
 		<g:render template="/elements/logo" ></g:render>
+		
+		<g:render template="/elements/anuncio" model="[tipo:'header']"></g:render>
 	
 		<g:render template="/elements/subheader" model="[showCommon:true]"></g:render>
 	</header>

@@ -54,15 +54,15 @@
 		    	<g:render template="/elements/cashflow_transaction_list" bean="${cashFlow}"></g:render>
 	    	</div>
 		</div>
-    
-    	<g:if test="${!consult_mode }">
+    	
 		<aside class="col-25">
+		<g:if test="${!consult_mode }">
 			<g:form name="newTransactionForm" action="create" controller="transaction">
 				<g:hiddenField name="monthId" value="${monthIndex}" />
 				<g:submitButton name="newButton" class="side-button btn-action" value="${g.message(code:'form.transaction.btn.title')}" />
 			</g:form>
+		</g:if>	
+			<g:render template="/elements/anuncio" model="[tipo:'sidebar', divClass:'append-top']"></g:render>
     	</aside>
-    	</g:if>
-
 	</body>		
 </html>

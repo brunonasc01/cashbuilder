@@ -48,8 +48,12 @@
 		</div>
 		
 		<aside class="col-25">
+			<g:render template="/elements/anuncio" model="[tipo:'sidebar']"></g:render>
+
+			<g:if test="${!consult_mode }">
 			<g:link class="side-button btn-action text-center" controller="admin" action="manage_budget">
 				<g:message code="budget.manage-budget.link"/></g:link>
+			</g:if>
 			
 			<a class="side-button btn-help text-center append-top" href="#"><g:message code="default.aside.help.link"/></a>
 		</aside>
