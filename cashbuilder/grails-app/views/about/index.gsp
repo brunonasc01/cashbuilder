@@ -12,10 +12,8 @@
 	<g:render template="/elements/area_title" model="[bundle_key: 'about.header.title']"/>
 	  	
 	<div class="col-1">
-		<div class="box">
-			<div class="content text-box">
-				<g:message code="about.text"/>
-			</div>
+		<div class="text-box">
+			<g:message code="about.text"/>
 		</div>
 	</div>
 </body>		

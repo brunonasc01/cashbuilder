@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-    	<g:set var="wrapper_class" value="wrapper-50" scope="request"></g:set>
+    	<g:set var="wrapper_class" value="wrapper-75" scope="request"></g:set>
         <meta name="layout" content="common" />
         <r:require modules="portal"/>
     </head>

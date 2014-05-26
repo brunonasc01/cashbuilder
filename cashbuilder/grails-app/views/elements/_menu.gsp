@@ -1,4 +1,5 @@
 <g:if test="${session.user && !ocultaMenu}">
+<div class="col-1">
 <nav id="main-menu" class="text-center menu-icon">
 	<a href="" id="mobile-menu">Menu</a>
 	<div class="items">
@@ -19,4 +20,5 @@
 		</g:link>
 	</div>
 </nav>
+</div>
 </g:if>

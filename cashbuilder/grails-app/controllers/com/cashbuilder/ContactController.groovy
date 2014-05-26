@@ -10,11 +10,16 @@ class ContactController {
 
     def index() {
 		def contact = new ContactCommand()
-		boolean userLogged = session.user
 
-		[contact: contact, userLogged: userLogged]
+		[contact: contact]
 	}
 
+	def contact() {
+		def contact = new ContactCommand()
+
+		[contact: contact]
+	}
+	
 	def submit(ContactCommand contact){
 
 		boolean userLogged = session.user
@@ -41,7 +46,12 @@ class ContactController {
 			} 
 		} else {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.contact.message.error")
-			render(view: "index",model:[contact: contact, userLogged: userLogged])
+			
+			if(userLogged){
+				render(view: "contact",model:[contact: contact, userLogged: userLogged])
+			} else {
+				render(view: "index",model:[contact: contact, userLogged: userLogged])
+			}
 		}
 	}
 }

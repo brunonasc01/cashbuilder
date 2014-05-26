@@ -32,7 +32,7 @@
 	</script>
 </head>
 
-<body>
+<body class="light-background">
 	<header>
 		<g:render template="/elements/logo" ></g:render>
 		

@@ -32,7 +32,7 @@
 	</script>
 </head>
 
-<body class="system">
+<body>
 	<header>
 		<g:render template="/elements/logo" ></g:render>
 		
@@ -44,9 +44,7 @@
 	 <section class="${wrapper_class?: 'wrapper-100' }">
 
 		<div class="grid">
-			<div class="col-1">
-				<g:render template="/elements/menu" ></g:render>
-			</div>
+			<g:render template="/elements/menu" ></g:render>
 		
 			<g:layoutBody />
 		</div>	 

@@ -34,6 +34,10 @@ body {
     background: #495154;
 }
 
+body.light-background {
+    background: #ECECEC;
+}
+
 hr {
 	height: 1px;
 	background-color: #222222;
@@ -166,14 +170,19 @@ a.logo-img {
 	color: #222222;
 }
 
-.box .text-box {
+.text-box {
+	color: #222222;
 	font-size: 1.3rem;
-	padding: 20px;
+	padding: 10px 20px;
 	text-align: justify;
 }
 
 .text-box p {
 	margin-top: 10px;
+}
+
+.text-box p:first-child {
+	margin-top: 0px;
 }
 
 .text-box ul {

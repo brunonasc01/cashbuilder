@@ -46,6 +46,10 @@
 	width: 66.66%;
 }
 
+.col-66.single {
+	margin-left: 16.67%;
+}
+
 .col-50 {
 	width: 50%;	
 }
@@ -164,6 +168,10 @@
 
 	.col-66 {
 		width: 100%;
+	}
+	
+	[class*="col-"].single {
+		margin-left: 0;
 	}
 
 	.col-50 {
