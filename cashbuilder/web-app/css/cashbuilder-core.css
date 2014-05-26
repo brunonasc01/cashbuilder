@@ -13,8 +13,8 @@
 
 .header-ad {
 	padding: 10px;
-	height: 100px;
 	width: 750px;
+	max-height: 110px;
 }
 
 .mobile-only {
@@ -128,8 +128,16 @@ footer a:hover {
 }
 
 #logo {
-	padding: 15px;
+	padding: 20px 15px 15px 15px;
 	display: inline-block;
+}
+
+a.logo-img {
+	background-image: url('../images/logo_small_header.png');
+	width: 258px;
+	height: 64px;
+	display: inline-block;
+	text-indent: -9999px;
 }
 
 /* CONTENT BOX */

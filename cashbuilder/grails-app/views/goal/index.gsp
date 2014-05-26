@@ -63,9 +63,9 @@
 			</div>
 
 			<g:if test="${goals}">
-				<div id="goal-list" class="append-top">
+				<div id="goal-list">
 				<g:each var="goal" in="${goals}" status="i">
-				  	<div class="box">
+				  	<div class="box append-top">
 	            		<div class="left text-center">
 	            			<ul class="stats ${goal.status }">
 								<li class="date-limit">${goal.endDate }

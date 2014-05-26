@@ -90,7 +90,7 @@
 }
 
 .v-chart .data li {
-	min-width: 60px;
+	min-width: 50px;
 	width: 5%;
 	position: absolute;
 	bottom: 0

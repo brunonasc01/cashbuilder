@@ -15,12 +15,11 @@
 <g:elseif test="${'header' == tipo}">
 <div class="header-ad right-align">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<!-- FAZRICO_HEADER -->
+	<!-- FAZRICO_HEADER2 -->
 	<ins class="adsbygoogle"
-	     style="display:block"
+	     style="display:inline-block;width:728px;height:90px"
 	     data-ad-client="ca-pub-3598899791603887"
-	     data-ad-slot="5968914859"
-	     data-ad-format="auto"></ins>
+	     data-ad-slot="9332680455"></ins>
 	<script>
 	(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
