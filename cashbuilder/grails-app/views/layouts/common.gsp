@@ -34,10 +34,10 @@
 
 <body class="light-background">
 	<header>
-		<g:render template="/elements/logo" ></g:render>
-		
-		<g:render template="/elements/anuncio" model="[tipo:'header']"></g:render>
-	
+		<div class="text-center">
+			<g:render template="/elements/logo" ></g:render>
+		</div>
+
 		<g:render template="/elements/subheader" model="[showCommon:true]"></g:render>
 	</header>
 

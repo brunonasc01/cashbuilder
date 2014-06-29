@@ -48,6 +48,16 @@ a:link, a:active, a:visited {
 	color: #FFFFFF;
 }
 
+a.text-link {
+	text-decoration: none;
+	font-weight: bold;
+	color: #086196;
+}
+
+a.text-link:hover {
+	color: #61A3CB;
+}
+
 .content a {
 	text-decoration: none;
 	font-weight: bold;
@@ -80,6 +90,11 @@ header {
 	line-height: 1;
 }
 
+.single-title {
+	padding: 15px 0;
+	line-height: 1;
+}
+
 /* SUBHEADER */
 
 #subheader {
@@ -90,6 +105,9 @@ header {
 
 #subheader a{
 	text-decoration: none;
+}
+
+#subheader a:hover {
 	color: #61A3CB;
 }
 
@@ -99,8 +117,9 @@ header {
 }
 
 #subheader ul li {
-	border-right: 2px solid;
-	padding: 0 5px;
+	font-size: 1.1rem;
+	border-right: 3px solid;
+	padding: 0 10px;
 }
 
 #subheader ul li:last-child {
@@ -119,10 +138,11 @@ footer {
 
 footer a {
 	text-decoration: none;
+	font-weight: bold;
 }
 
 footer a:hover {
-	color: #222222;
+	color: #033E62;
 }
 
 /* LOGO */
@@ -178,7 +198,7 @@ a.logo-img {
 }
 
 .text-box p {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .text-box p:first-child {
@@ -188,6 +208,16 @@ a.logo-img {
 .text-box ul {
 	padding-left: 2em;
 	list-style: disc;
+}
+
+.text-box a {
+	color: #086196;
+	text-decoration: none;
+	font-weight: bold;	
+}
+
+.text-box a:hover {
+	color: #61A3CB;
 }
 
 .title-box {
@@ -673,4 +703,9 @@ a.message_link:hover {
 .social-bar-48 a.twitter-icon {
 	background-color: #00aced;
 	background-image: url('../images/twitter-48.png');
+}
+
+.social-bar-48 a.googleplus-icon {
+	background-color: #d14836;
+	background-image: url('../images/googleplus-48.png');
 }

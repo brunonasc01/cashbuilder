@@ -7,49 +7,47 @@
     </head>
 
     <body>
-    	<g:if test="${!recovery }">
-    		<g:render template="/elements/area_title" model="[bundle_key: 'form.lostpassword.title']"/>
-    	</g:if>
-    	<g:else>
-    		<g:render template="/elements/area_title" model="[bundle_key: 'form.resetpassword.title']"/>
-    	</g:else>
-    
     	<g:render template="/elements/message" var="bean" bean="${bean}"></g:render>
     
 		<div class="col-1">
-		  	<div class="box">
-		  		<div class="content">
-			  		<g:if test="${!recovery }">
-						<g:form name="lostpassword" action="send" >
-							<p><g:message code="form.lostpassword.message"/></p>
-							<hr />
-							<label><g:message code="form.lostpassword.label.email"/>
-							</label><g:textField name="email" />
+		  	<div class="font-1_3">
+				<g:if test="${!recovery }">
+		    		<h2 class="single-title"><g:message code="form.lostpassword.title"/></h2>
+		    	</g:if>
+		    	<g:else>
+		    		<h2 class="single-title"><g:message code="form.resetpassword.title"/></h2>
+		    	</g:else>
 
-							<div class="content-center">
-								<input type="submit" class="btn" id="submit" value="Enviar"/>
-							</div>
-			            </g:form>
-		            </g:if>
-		            <g:else>
-		            	<g:form name="resetpassword" action="reset" >
-							<g:hiddenField name="token" value="${bean?.token}" />
+		  		<g:if test="${!recovery }">
+					<g:form class="common-form" name="lostpassword" action="send" >
+						<p class="font-1_1"><g:message code="form.lostpassword.message"/></p>
+						<hr />
+						<label><g:message code="form.lostpassword.label.email"/>
+						</label><g:textField name="email" />
 
-							<p><g:message code="form.resetpassword.message"/></p>
-							<hr />
+						<div class="content-center">
+							<input type="submit" class="btn" id="submit" value="Enviar"/>
+						</div>
+		            </g:form>
+	            </g:if>
+	            <g:else>
+	            	<g:form name="resetpassword" action="reset" >
+						<g:hiddenField name="token" value="${bean?.token}" />
 
-							<label><g:message code="form.resetpassword.label.password"/>
-							</label><g:passwordField name="passwordNew" />
-							<label><g:message code="form.resetpassword.label.passwordRepeat"/>
-							</label><g:passwordField name="passwordRepeat" />
-							<small><g:message code="form.resetpassword.password.warning"/></small>
+						<p><g:message code="form.resetpassword.message"/></p>
+						<hr />
 
-							<div class="content-center">
-								<input type="submit" class="btn" id="submit" value="Gravar nova Senha"/>
-							</div>
-			            </g:form>
-		            </g:else>
-	            </div>
+						<label><g:message code="form.resetpassword.label.password"/>
+						</label><g:passwordField name="passwordNew" />
+						<label><g:message code="form.resetpassword.label.passwordRepeat"/>
+						</label><g:passwordField name="passwordRepeat" />
+						<small><g:message code="form.resetpassword.password.warning"/></small>
+
+						<div class="content-center">
+							<input type="submit" class="btn" id="submit" value="Gravar nova Senha"/>
+						</div>
+		            </g:form>
+	            </g:else>
 		  	</div>
 	  	</div>
 	</body>		

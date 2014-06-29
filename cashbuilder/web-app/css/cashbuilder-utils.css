@@ -71,3 +71,11 @@ ul.inline li{
 	padding-left: 0.531915%; /* 5 / 940 */
 	padding-right: 0.531915%; /* 5 / 940 */
 }
+
+.font-1_1 {
+	font-size: 1.1rem;
+}
+
+.font-1_3 {
+	font-size: 1.3rem;
+}

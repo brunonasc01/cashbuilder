@@ -10,14 +10,12 @@
 </head>
     
 <body>
-	<g:render template="/elements/area_title" model="[bundle_key: 'form.signup.title']"/>
-
 	<g:render template="/elements/message" var="bean" bean="${userInstance}" ></g:render>
 
 	<div class="col-1">
-		<div class="box">
-			<div class="content">
-		    	<g:form method="post" action="save" class="text-large">
+		<div class="font-1_3">
+			<h2 class="single-title"><g:message code="form.signup.title"/></h2>
+		    	<g:form method="post" action="save" class="text-large common-form">
 		    		<g:hiddenField name="timestamp" value="${timestamp}"/>
 		    	
 			    	<label><g:message code="form.signup.label.firstName" />
@@ -44,7 +42,7 @@
 						<input type="submit" class="btn" id="submit" value="Cadastrar"/>
 					</div>
 		    	</g:form>
-		    </div>
+		    
 		</div>
 	</div>    	
 </body>		
