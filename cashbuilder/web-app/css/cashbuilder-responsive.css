@@ -135,5 +135,9 @@
 
 	.menu-icon a span {
 		display: none;
+	}
+	
+	ul li.progress-bar{
+		padding: 3px;
 	}		
 }
