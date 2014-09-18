@@ -5,4 +5,8 @@ class ReportDataBean {
 	String label
 	int index
 	double total
+	
+	public int getExpendScale(){
+		Math.ceil(Double.valueOf(percent)/25)
+	}
 }

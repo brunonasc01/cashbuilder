@@ -81,6 +81,29 @@
 					</div>
 				</div>
 			</div>
+			
+						<div class="box append-top">
+				<h3 class="title-box">
+					<g:message code="report.graph.yearTotal.title"/>
+					<small>(até esse mês)</small>
+				</h3>
+				<div class="content">
+					<div class="h-chart clearfix">
+						<div>
+							<ul>
+								<g:each var="data" in="${rangeReport.reportData}">
+									<li class="size-${data.getExpendScale()}"><g:customLabel value="${data.label}" prefix="label"/>
+									</li><li class="size-${data.getExpendScale()}">
+										<span style="width: ${data.percent}%">&nbsp;</span><span>
+											<g:formatNumber number="${data.total}" currencySymbol="" format="${Constants.FORMATO_MOEDA}"/>
+										</span>
+									</li>
+								</g:each>
+							</ul>
+						</div>	
+					</div>
+				</div>
+			</div>
 		</div>
 		</g:else>
 		

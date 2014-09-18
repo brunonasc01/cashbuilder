@@ -30,9 +30,10 @@ class ReportController {
 		int firstMonth = currentMonth >= 2? currentMonth-2 : 0;		
 		ReportBean report = reportService.buildBarChart(user, currentMonth, currentYear)
 		ReportBean distribReport = reportService.buildExpendChart(user, currentMonth, currentYear)
+		ReportBean distribYearReport = reportService.buildYearExpendChart(user, currentMonth, currentYear)
 				
 		[stats:true, consult_mode: consult_mode, nextYear: nextYear, monthIndex: currentMonth, report: report,
-			 distribReport: distribReport]
+			 distribReport: distribReport, rangeReport: distribYearReport]
 	}
 	
 	def reset_consult(){

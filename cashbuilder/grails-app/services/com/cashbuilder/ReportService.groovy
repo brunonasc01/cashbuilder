@@ -104,6 +104,47 @@ class ReportService {
 	}
 	
 	/**
+	 * Monta as listas de dados para exibicao do grafico de barras
+	 * @param user
+	 * @param month
+	 * @param year
+	 * @return
+	 */
+	ReportBean buildYearExpendChart(User user, int month, int year){
+
+		def budget = Budget.findByYearAndUser(year,user)
+		def budgetMonth = BudgetMonth.findByMonthAndBudget(month,budget)
+		double total = budgetService.getRealizedTotalByRange(budgetMonth,user,Constants.DEBITO)
+		
+		def reportData = []
+		
+		if(total > 0){
+			def categories = Category.findAllByIncomeAndUser(false,user)
+			
+			categories.each { category ->
+				double categoryTotal = budgetService.getRealizedTotalByRange(budgetMonth, user, category)
+				
+				if(categoryTotal > 0){
+					ReportDataBean bean = new ReportDataBean()
+					bean.total =  categoryTotal
+					bean.label = category.name
+					
+					reportData += bean
+				}
+			}
+
+			reportData.each { bean ->
+				bean.percent = ((bean.total/total)*100).round(2)
+			}
+		}
+		
+		ReportBean report = new ReportBean()
+		report.reportData = reportData
+		
+		report
+	}
+	
+	/**
 	 * Define as faixas de valor para o grafico de barras
 	 * @param maxValue
 	 * @return

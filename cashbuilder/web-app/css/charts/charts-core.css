@@ -23,6 +23,21 @@
 	padding-right: 5px
 }
 
+.h-chart li.size-2{
+	line-height: 27px;
+	font-size: 1.1rem;
+}
+
+.h-chart li.size-3{
+	line-height: 32px;
+	font-size: 1.2rem;
+}
+
+.h-chart li.size-4{
+	line-height: 35px;
+	font-size: 1.3rem;
+}
+
 .h-chart li:nth-child(odd){ /* labels */
 	text-align: right;
 	padding-right: 5px;

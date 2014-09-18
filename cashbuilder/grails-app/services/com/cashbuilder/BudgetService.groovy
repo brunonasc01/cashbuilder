@@ -69,6 +69,46 @@ class BudgetService {
 		(total)? total : 0
 	}
 
+	/**
+	 *
+	 * @param budgetMonth
+	 * @param user
+	 * @param criteria
+	 * @return
+	 */
+	double getRealizedTotalByRange(BudgetMonth budgetMonth, User user, def criteria){
+
+		String searchCriteria;
+
+		if(criteria in Category){
+			searchCriteria = "category"
+		} else if(criteria in Subcategory){
+			searchCriteria = "subcategory"
+		} else if(criteria in String){
+			searchCriteria = "nature"
+		}
+
+		int month = budgetMonth.month
+		int year = budgetMonth.budget.year
+		
+		//First Day of Year
+		Date firstDay = DateUtils.getFirstDay(0, year)
+		Date lastDay = DateUtils.getLastDay(month, year)
+
+		def c =  Transaction.createCriteria()
+		
+		def total = c.get {
+			and {
+				eq('user', user)
+				eq(searchCriteria, criteria)
+				between('date', firstDay, lastDay)
+			}
+			projections { sum "value" }
+		}
+
+		(total)? total : 0
+	}
+	
 	List getBudgetItems(User user, int month, int year, def criteria){
 		
 		def budget = Budget.findByYearAndUser(year,user)
