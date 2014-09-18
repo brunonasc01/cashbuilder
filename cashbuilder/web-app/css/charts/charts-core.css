@@ -65,7 +65,7 @@
 
 .v-chart {
 	width: auto;
-	min-height: 200px;
+	min-height: 210px;
 
 	margin: 0 auto;
 	padding-top: 1%;
@@ -116,7 +116,7 @@
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
-    bottom: -25px;
+    bottom: -30px;
     
     overflow: hidden;
     text-overflow: ellipsis
@@ -227,164 +227,168 @@
 
 /* CHART BAR COLORS */
  
+.h-chart li span {
+	color: #FFFFFF;
+}
+ 
 .h-chart li:nth-child(2) span, .v-chart .bars li:nth-child(1), .v-chart li:nth-child(1) span {
-	background: #6DCFF6;
+	background: #237EA0;
 }
 
 .h-chart li:nth-child(4) span, .v-chart .bars li:nth-child(2), .v-chart li:nth-child(2) span {
-	background: #F6BD0F;
+	background: #A07A05;
 }
 
 .h-chart li:nth-child(6) span, .v-chart .bars li:nth-child(3), .v-chart li:nth-child(3) span {
-	background: #8BBA00;
+	background: #5A7900;
 }
 
 .h-chart li:nth-child(8) span, .v-chart .bars li:nth-child(4), .v-chart li:nth-child(4) span {
-	background: #FF8E46;
+	background: #A64F17;
 }
 
 .h-chart li:nth-child(10) span, .v-chart .bars li:nth-child(5), .v-chart li:nth-child(5) span {
-	background: #008E8E;
+	background: #005C5C;
 }
 
 .h-chart li:nth-child(12) span, .v-chart .bars li:nth-child(6), .v-chart li:nth-child(6) span {
-	background: #D64646;
+	background: #8B1717;
 }
 
 .h-chart li:nth-child(14) span, .v-chart .bars li:nth-child(7), .v-chart li:nth-child(7) span {
-	background: #8E468E;
+	background: #5C175C;
 }
 
 .h-chart li:nth-child(16) span, .v-chart .bars li:nth-child(8), .v-chart li:nth-child(8) span {
-	background: #588526;
+	background: #33560C;
 }
 
 .h-chart li:nth-child(18) span, .v-chart .bars li:nth-child(9), .v-chart li:nth-child(9) span {
-	background: #B3AA00;
+	background: #746F00;
 }
 
 .h-chart li:nth-child(20) span, .v-chart .bars li:nth-child(10), .v-chart li:nth-child(10) span {
-	background: #008ED6;
+	background: #005E8B;
 }
 
 .h-chart li:nth-child(22) span, .v-chart .bars li:nth-child(11), .v-chart li:nth-child(11) span {
-	background: #9D080D;
+	background: #660305;
 }
 
 .h-chart li:nth-child(24) span, .v-chart .bars li:nth-child(12), .v-chart li:nth-child(12) span {
-	background: #A186BE;
+	background: #522C7C;
 }
 
 .h-chart li:nth-child(26) span, .v-chart .bars li:nth-child(13), .v-chart li:nth-child(13) span {
-	background: #CC6600;
+	background: #854200;
 }
 
 .h-chart li:nth-child(28) span, .v-chart .bars li:nth-child(14), .v-chart li:nth-child(14) span {
-	background: #FDC689;
+	background: #A46C2D;
 }
 
 .h-chart li:nth-child(30) span, .v-chart .bars li:nth-child(15), .v-chart li:nth-child(15) span {
-	background: #ABA000;
+	background: #6F6800;
 }
 
 .h-chart li:nth-child(32) span, .v-chart .bars li:nth-child(16), .v-chart li:nth-child(16) span {
-	background: #F26D7D;
+	background: #9D2332;
 }
 
 .h-chart li:nth-child(34) span, .v-chart .bars li:nth-child(17), .v-chart li:nth-child(17) span {
-	background: #FFF200;
+	background: #A69D00;
 }
 
 .h-chart li:nth-child(36) span, .v-chart .bars li:nth-child(18), .v-chart li:nth-child(18) span {
-	background: #0054A6;
+	background: #00376C;
 }
 
 .h-chart li:nth-child(38) span, .v-chart .bars li:nth-child(19), .v-chart li:nth-child(19) span {
-	background: #F7941C;
+	background: #A15D09;
 }
 
 .h-chart li:nth-child(40) span, .v-chart .bars li:nth-child(20), .v-chart li:nth-child(20) span {
-	background: #CC3300;
+	background: #852200;
 }
 
 /* VERTICAL CHART VALUE POPUP BORDER COLORS */
 
 .v-chart li:nth-child(1) .data-popup {
-	border: 2px solid #6DCFF6;
+	border: 2px solid #237EA0;
 }
 
 .v-chart li:nth-child(2) .data-popup {
-	border: 2px solid #F6BD0F;
+	border: 2px solid #A07A05;
 }
 
 .v-chart li:nth-child(3) .data-popup {
-	border: 2px solid #8BBA00;
+	border: 2px solid #5A7900;
 }
 
 .v-chart li:nth-child(4) .data-popup {
-	border: 2px solid #FF8E46;
+	border: 2px solid #A64F17;
 }
 
 .v-chart li:nth-child(5) .data-popup {
-	border: 2px solid #008E8E;
+	border: 2px solid #005C5C;
 }
 
 .v-chart li:nth-child(6) .data-popup {
-	border: 2px solid #D64646;
+	border: 2px solid #8B1717;
 }
 
 .v-chart li:nth-child(7) .data-popup {
-	border: 2px solid #8E468E;
+	border: 2px solid #5C175C;
 }
 
 .v-chart li:nth-child(8) .data-popup {
-	border: 2px solid #588526;
+	border: 2px solid #33560C;
 }
 
 .v-chart li:nth-child(9) .data-popup {
-	border: 2px solid #B3AA00;
+	border: 2px solid #746F00;
 }
 
 .v-chart li:nth-child(10) .data-popup {
-	border: 2px solid #008ED6;
+	border: 2px solid #005E8B;
 }
 
 .v-chart li:nth-child(11) .data-popup {
-	border: 2px solid #9D080D;
+	border: 2px solid #660305;
 }
 
 .v-chart li:nth-child(12) .data-popup {
-	border: 2px solid #A186BE;
+	border: 2px solid #522C7C;
 }
 
 .v-chart li:nth-child(13) .data-popup {
-	border: 2px solid #CC6600;
+	border: 2px solid #854200;
 }
 
 .v-chart li:nth-child(14) .data-popup {
-	border: 2px solid #FDC689;
+	border: 2px solid #A46C2D;
 }
 
 .v-chart li:nth-child(15) .data-popup {
-	border: 2px solid #ABA000;
+	border: 2px solid #6F6800;
 }
 
 .v-chart li:nth-child(16) .data-popup {
-	border: 2px solid #F26D7D;
+	border: 2px solid #9D2332;
 }
 
 .v-chart li:nth-child(17) .data-popup {
-	border: 2px solid #FFF200;
+	border: 2px solid #A69D00;
 }
 
 .v-chart li:nth-child(18) .data-popup {
-	border: 2px solid #0054A6;
+	border: 2px solid #00376C;
 }
 
 .v-chart li:nth-child(19) .data-popup {
-	border: 2px solid #F7941C;
+	border: 2px solid #A15D09;
 }
 
 .v-chart li:nth-child(20) .data-popup {
-	border: 2px solid #CC3300;
+	border: 2px solid #852200;
 }
