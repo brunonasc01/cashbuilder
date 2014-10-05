@@ -55,6 +55,7 @@ class UserController {
 			generalService.buildMessage(Constants.MSG_ERROR,"form.signup.email.message.unavailable")
 
 		} else {
+			urc.lastLogin = new Date()
 			User nUser = userService.saveUser(urc)
 
 			if(nUser == null || nUser.hasErrors()){

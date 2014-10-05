@@ -142,4 +142,20 @@ class TransactionService {
 		
 		transactions
 	}
+	
+	def saveLastMonthBalance(User user, double balance){
+		def category = Category.findByUserAndName(user,"receitas")
+		
+		def transaction = new Transaction()
+		transaction.user = user
+		transaction.date = new Date()
+		transaction.value = balance
+		transaction.nature = Constants.CREDITO
+		transaction.parcels = 1
+		transaction.category = category
+		transaction.subcategory = Subcategory.findByCategoryAndName(category,"extras")
+		transaction.description = "Saldo do mes Anterior"
+		
+		transaction.save()
+	}
 }

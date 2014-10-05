@@ -10,6 +10,7 @@ class User {
 	String password
 	Date dateCreated
 	Profile profile
+	Date lastLogin
 
 	static hasMany = [budgets: Budget, categories: Category, transactions: Transaction, goals: Goal]
 	

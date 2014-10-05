@@ -138,6 +138,12 @@ class DateUtils {
 	}
 	
 	static boolean isLastMonthOfYear(){
-		return DateUtils.currentMonth.equals(Calendar.DECEMBER)
+		return currentMonth.equals(Calendar.DECEMBER)
+	}
+	
+	static boolean isFirstDayOfMonth(){
+		Calendar cal = Calendar.getInstance()
+		
+		return cal.get(Calendar.DATE) == cal.getActualMinimum(Calendar.DATE)
 	}
 }

@@ -1,5 +1,7 @@
 package com.cashbuilder.cmd
 
+import java.util.Date;
+
 import com.cashbuilder.User;
 
 import grails.validation.Validateable
@@ -17,6 +19,7 @@ class UserRegisterCommand {
 	String city
 		
 	Date dateCreated
+	Date lastLogin
 		
 	static constraints = {
 		importFrom User

@@ -445,9 +445,10 @@ input.btn {
 
 .btn {
 	background: #00A551;
-	padding: 5px 20px;
+	padding: 8px 24px;
 	color: #FFFFFF;
 	font-weight: bold;
+	font-size: 1.1rem;
     display: inline-block;
 	-moz-transition: -moz-background 0.3s ease;
     -o-transition: -o-background 0.3s ease;
@@ -600,7 +601,7 @@ ul li.progress-bar{
 }
 
 .info {
-	background: #61A3CB;
+	background: #F5C43D;
 }
 
 .info p:before {	
