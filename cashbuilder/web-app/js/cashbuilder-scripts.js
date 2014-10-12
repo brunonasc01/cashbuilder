@@ -15,6 +15,10 @@ $(function() {
 	    
 	    $('.mobile-only').show();
 	}
+	
+	  $('#toggle-navbar').click(function(e){
+			$('.mobile-menu').slideToggle();
+	  });
 });
 
 

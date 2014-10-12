@@ -1,6 +1,10 @@
 /* grid */
 
 [class*="wrapper-"] {
+	margin: 0 auto;
+}
+
+#container[class*="wrapper-"] {
 	margin: 2% auto;
 }
 
@@ -175,7 +179,7 @@
 	}
 
 	.col-50 {
-		width: 50%;		
+		width: 50%;
 	}
 
 	.col-33 {
@@ -187,6 +191,10 @@
 	}	
 
 	/* grid 75 */
+	.wrapper-90 {
+		width: 95%;	
+	}
+	
 	.wrapper-75 {
 		width: 90%;	
 	}

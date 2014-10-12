@@ -30,6 +30,10 @@ html {
 	line-height: 1.5;
 }
 
+header, footer {
+	background: #086196;
+}
+
 body {
     background: #495154;
 }
@@ -75,10 +79,6 @@ a.icon-edit, a.icon-delete {
 	font-weight: normal;
 }
 
-header, footer {
-	background: #086196;
-}
-
 /* HEADER */
 
 header {
@@ -93,6 +93,84 @@ header {
 .single-title {
 	padding: 15px 0;
 	line-height: 1;
+}
+
+header .menu {
+	height: 99px;
+	line-height: 99px;
+	vertical-align: middle;
+}
+
+header .menu a {
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 15px;
+	border-left: 2px solid #FFFFFF;
+}
+
+header .menu a:first-child {
+	border: none;
+}
+
+header .menu a:hover {
+	color: #033E62;
+}
+
+header a.btn {
+	display: inline;
+	padding: 5px 20px;
+	font-size: 1rem;	
+	border: none;
+}
+
+header a.btn:hover {
+	color: #FFFFFF;
+}
+
+header .mobile-menu {
+	background: #033E62;
+	display: none;	
+}
+
+header .mobile-menu li {
+	border-bottom: 1px solid #FFFFFF;
+}
+
+header .mobile-menu li:last-child {
+	border: none;
+}
+
+header .mobile-menu a{
+	text-decoration: none;
+	display: block;
+	padding: 10px 15px;
+}
+
+header .mobile-menu a:hover {
+	background: #61A3CB;
+	color: #033E62;
+}
+
+header .toggle-navbar {
+	padding: 8px 11px;
+	background: transparent;
+	border: 1px solid #FFFFFF;
+}
+
+header .toggle-navbar:focus {
+	outline: 0;
+	background-color: transparent !important;
+}
+
+.toggle-navbar .line-bar {
+	display: block;
+	width: 22px;
+	height: 2px;
+	background-color: #FFFFFF;
+}
+
+.toggle-navbar .line-bar+.line-bar {
+	margin-top: 4px;
 }
 
 /* SUBHEADER */
@@ -439,7 +517,7 @@ a.bt-icon:hover {
 	text-decoration: none;
 }
 
-input.btn {
+.btn {
 	border: none;
 }
 

@@ -34,7 +34,7 @@
 </head>
 
 <body>
-	 <section class="${wrapper_class?: 'wrapper-90' }">
+	 <section id="container" class="${wrapper_class?: 'wrapper-90' }">
 		<g:layoutBody />
 	 </section>
 	<r:layoutResources/>

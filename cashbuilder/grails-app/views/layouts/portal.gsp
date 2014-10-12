@@ -52,7 +52,7 @@
 		</div>
 	</header>
 
-	 <section class="wrapper-90">
+	 <section id="container" class="wrapper-90">
 		<g:layoutBody />
 	 </section>
 

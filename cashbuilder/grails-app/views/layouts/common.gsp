@@ -28,20 +28,41 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-	
 	</script>
 </head>
 
 <body class="light-background">
 	<header>
-		<div class="text-center">
+		<nav class="mobile-menu">
+			<ul>
+				<li><g:link controller="about" action="."><g:message code="app.link.oque_e"/></g:link></li>
+				<li><g:link controller="about" action="."><g:message code="app.link.como_funciona"/></g:link></li>					
+				<li><g:link url="http://blog.fazrico.com"><g:message code="app.link.blog"/></g:link></li>	
+				<li><g:link controller="login"><g:message code="app.link.login"/></g:link></li>
+				<li><g:link controller="user" action="signup"><g:message code="app.link.signup_2"/></g:link></li>
+			</ul>
+		</nav>
+		<div class="wrapper-90">
 			<g:render template="/elements/logo" ></g:render>
+	
+			<div class="right-align">
+				<nav class="menu">
+					<g:link controller="about" action="."><g:message code="app.link.oque_e"/></g:link>
+					<g:link controller="about" action="."><g:message code="app.link.como_funciona"/></g:link>					
+					<g:link url="http://blog.fazrico.com"><g:message code="app.link.blog"/></g:link>					
+					<g:link controller="login" class="btn"><g:message code="app.link.login"/></g:link>
+					<g:link controller="user" action="signup" class="btn"><g:message code="app.link.signup_2"/></g:link>
+				</nav>
+				<button id="toggle-navbar" class="mobile-only toggle-navbar">
+					<span class="line-bar"></span>
+					<span class="line-bar"></span>
+					<span class="line-bar"></span>
+				</button>
+			</div>
 		</div>
-
-		<g:render template="/elements/subheader" model="[showCommon:true]"></g:render>
 	</header>
 
-	 <section class="${wrapper_class?: 'wrapper-90' }">
+	 <section id="container" class="${wrapper_class?: 'wrapper-90' }">
 		<div class="grid">
 			<g:layoutBody />
 		</div>	 
