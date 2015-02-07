@@ -1,0 +1,123 @@
+ /* Budget List */
+#budget-list {
+	font-weight: bold;
+}
+
+#budget-list .budget-item {
+	margin-top: 10px;
+	border-bottom: 2px solid #495154;
+	padding-bottom: 10px;
+}
+
+#budget-list .budget-item:first-child {
+	margin-top: 10px;
+}
+
+#budget-list .budget-item:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+#budget-list ul {
+	
+}
+
+#budget-list .values {
+	width: 22%;
+}
+
+#budget-list .button {
+	text-align: center;
+}
+
+.button .icon-edit:hover {
+	color: #01a401;
+}
+
+#budget-list .of {
+	width: 6%;
+	text-align: center;
+}
+
+#budget-list .child-name {
+	width: 45%;
+}
+
+#budget-list .child-values {
+	width: 50%;
+}
+
+/* Categoria - Pai */
+#budget-list .main-category .progress-bar{
+	width: 51%;
+}
+
+#budget-list .main-category {
+	
+}
+
+/* Categoria - Filho */
+#budget-list .subcategory-list {
+    height: 0;
+    overflow: hidden;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out
+}
+
+#budget-list .subcategory-list ul {
+	padding-top: 1em;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#budget-list .subcategory-list .progress-bar{
+	width: 100%;
+	line-height: 1;
+}
+
+#budget-list .subcategory-list .button{
+	min-width: 16px;
+	width: 2.5%;
+}
+
+/* Modal */
+.budget-modal label {
+	display: inline-block;
+	text-align: center;
+	width: 40%;
+}
+
+.budget-modal input[type="text"], .budget-modal select{
+	display: inline-block;
+	width: 50%;
+}
+
+@media screen and (max-width: 500px){
+
+	#budget-list li.real-col {
+		display: none;
+	}
+	
+	#budget-list li.prev-col {
+		width: 100%;
+		text-align: right
+	}
+	
+	#budget-list .main-category .progress-bar{
+		width: 90%;
+	}
+	
+	#budget-list .subcategory-list .button{
+		min-width: 24px;
+	}
+	
+	#budget-list .child-name {
+		width: auto
+	}
+
+	#budget-list .child-values {
+		width: 100%
+	}	
+}

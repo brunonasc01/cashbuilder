@@ -1,0 +1,134 @@
+@media only screen and (max-width: 1200px) and (min-width: 960px) {
+	.header-ad {
+		text-align: center;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 959px){	
+	.header-ad {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.menu-icon span:before {		
+		margin-right: 0px;
+	}
+	
+	.menu-icon a b {
+		display: none;
+	}
+
+	.highlights .col-33 {
+		width: 33%;
+	}
+	
+	.text-box {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (max-width: 900px){
+	header .menu {
+		display: none;
+	}
+	
+	header .mobile-only.toggle-navbar {
+		display: block;
+		margin-top: 33px;
+	}
+}
+
+@media only screen and (max-width: 800px){
+	.header-ad {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.balance-box > ul {
+		display: block;
+		width: 100%;
+	}
+	
+	.balance-box > ul li{
+		display: inline-block;
+		width: 50%;
+	}
+	
+	.balance-box .title, .balance-box .value {
+		font-size: 1.7rem;
+	}
+	
+	.balance-box .title {
+		text-align: right;
+		padding-right: 10%;
+	}
+	
+	.balance-box .value {
+		text-align: left;
+	}
+}
+
+@media only screen and (max-width: 500px){
+	header .wrapper-90{
+		padding: 0 20px;
+	}
+	
+	.header-ad {
+		text-align: center;
+		width: 100%;
+	}
+
+	/* GENERAL */
+	*{
+		font-size: 100%;
+	}
+
+	form label, form input[type="text"], form input[type="password"], form select {
+		text-align: left;
+		width: 100%;
+		margin: 0;
+	}
+
+	.bt-icon {
+		font-size: 1.5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.btn {
+		font-size: 1.3em;
+		padding: 10px 20px;
+	}
+	
+	.balance-box .title, .balance-box .value {
+		font-size: 1.4rem;
+	}
+	
+	/* MAIN MENU */
+	#main-menu a {
+		width: 100%;
+		padding: 10px 0
+	}
+	
+	#main-menu .items{
+		display: none
+	}
+	
+	#main-menu a#mobile-menu {
+		display: block;
+		font-weight: bold;
+	}
+	
+	.menu-icon a b {
+		display: inline-block;
+	}
+
+	.menu-icon a span {
+		display: none;
+	}
+	
+	ul li.progress-bar{
+		padding: 3px;
+	}		
+}

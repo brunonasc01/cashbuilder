@@ -1,0 +1,77 @@
+header {
+    
+    }
+
+body.landing {
+    background: #ECECEC;
+    }
+
+.grid {
+    background: none
+    }
+
+.highlights {
+    padding-top: 30px
+    }
+
+.highlights > div {
+	min-height: 214px;
+}
+
+.highlights h4 {
+    padding-bottom: 5px
+    }
+
+.highlights div {
+    border-right: 1px solid rgba(0, 0, 0, 0.3)
+    }
+
+.highlights div:last-of-type {
+    border-right: none
+    }
+
+#login-bar {
+    color: #FFFFFF;    
+    padding: 5px
+    }
+
+.recovery-bar {
+    font-size: 0.85rem;
+    margin-bottom: 5px
+    }
+
+.login-form input {
+    width: auto;
+    margin: 0
+    }
+    
+@media screen and (max-width: 800px){
+	.highlights [class*="col-"]{
+		width: 100%;
+		border-right: none;
+	}
+	
+	.highlights > div {
+		min-height: 0px;
+	}
+}
+    
+@media screen and (max-width: 500px){
+
+	#logo-portal img{
+		margin: 20px;
+	}
+	
+	#login-bar {
+		text-align: left;
+	}
+
+	#login-bar input[type="text"] {
+		margin-bottom: 5px;
+	}
+
+	#login-bar input[type="submit"] {
+		margin: 10px 25%;
+		width: 50%;
+	}		
+}    

@@ -1,0 +1,16 @@
+alimentacao;0.35:acougue;feira;padaria;restaurantes;supermercado
+animais_de_estimacao;0.05:acessorios;racao;veterinario
+automovel;0.15:combustivel;estacionamento;manutencao
+compras;0.15:eletrodomesticos;eletronicos;moveis;presentes
+dividas;0.3:cartao_de_credito;emprestimo;financiamentos
+educacao;0.15:cursos;eventos;faculdade;palestras
+filhos;0.15:escola;mesada;presentes;vestuario
+gastos_pessoais;0.1:academia;celular;doacoes;estetica;livros_e_revistas;vestuario
+impostos_e_tarifas;0.05:iptu;ipva;outras_taxas;tarifas_bancarias
+investimentos;0.1:acoes;fundos;poupanca;previdencia;titulos
+lazer;0.1:bares;cinema;jogos;teatro;tv_por_assinatura;viagens
+moradia;0.2:agua;aluguel;condominio;energia_eletrica;gas;manutencao;reforma;telefone_e_internet
+receitas;0.0:decimo_terceiro;extras;ferias;pensao;salario
+saude;0.2:consultas;convenio_medico;exames;remedios
+seguros;0.03:seguro_automovel;seguro_de_vida;seguro_residencial
+transporte;0.05:passagens;taxi

@@ -1,0 +1,105 @@
+/* Table */
+
+#cashflow-table {
+ 	padding: 0;
+ 	font-size: 1.1rem;
+}
+
+#cashflow-table .content {
+	padding: 0;
+	font-size: 0.95rem;
+}
+
+#cashflow-table .content ul {
+	border: 1px solid #DCDCDC;
+}
+
+#cashflow-table li {
+	padding: 0.454133% 0;
+}
+
+#cashflow-table .content li {
+	padding-left: 0.454133%;
+}
+
+#cashflow-table .content ul:nth-child(even) {
+	background: #eeeeee;
+}
+
+#cashflow-table .title-box li {
+	font-weight: bold;
+}
+
+#cashflow-table .buttons{
+	min-width: 1.5rem;
+	width: 7%;
+}
+
+#cashflow-table .buttons form{
+	display: inline-block;
+}
+
+#cashflow-table .day{
+	width: 5%;
+}
+
+#cashflow-table .title-box li.day {
+	text-align: right;
+	padding-right: 0.854133%;
+	width: 12%;
+}
+
+#cashflow-table .income{
+	width: 19%;
+}
+
+#cashflow-table .expense{
+	width: 19%;
+}
+
+#cashflow-table .category{
+	width: 20%;
+}
+
+#cashflow-table .description{
+	width: 30%;
+}
+
+@media screen and (max-width: 500px){
+	#cashflow-table {	 	
+	 	font-size: 0.95rem
+	}
+	
+	#cashflow-table .content {
+		font-size: 0.90rem;
+	}
+	
+	#cashflow-table .title-box li.day {
+		width: 30%;
+	}
+	
+	#cashflow-table .buttons{
+		min-width: 3.5rem;
+		width: 20%;
+	}
+	
+	#cashflow-table .day{
+		width: 10%;
+	}
+	
+	#cashflow-table .income{
+		width: 20%;
+	}
+	
+	#cashflow-table .expense{
+		width: 20%;
+	}
+	
+	#cashflow-table .category{
+		width: 30%;
+	}
+	
+	#cashflow-table .description{
+		display: none;
+	}
+}

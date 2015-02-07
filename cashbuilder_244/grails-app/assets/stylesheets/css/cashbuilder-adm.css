@@ -1,0 +1,78 @@
+ul.list-items li {
+	border-bottom: 1px solid #222222;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+ul.list-items li:first-child{
+	padding-top: 0;
+}
+
+ul.list-items li:last-child {
+	border-bottom: none;
+}
+
+#budget-data-form h4 {
+	padding-top: 10px;
+	font-size: 1.13rem;
+	/*border-top: 2px solid #495154;
+	padding-top: 10px;
+
+	margin-bottom: 5px;*/
+}
+
+#budget-data-form h4:first-child {
+	border-top: none;
+	padding-top: 0;
+}
+
+#budget-data-form .budget-item {
+	margin-top: 10px;
+	border-bottom: 2px solid #222222;
+	padding-bottom: 10px;
+}
+
+#budget-data-form .budget-item:last-child {
+	border-bottom: none;
+}
+
+#budget-submit-options input[type="radio"] {
+		
+}
+
+#budget-submit-options input[type="submit"] {
+	margin-top: 0.5em;
+}
+
+/* Manage Category */
+
+#new-category label {
+	width: 15%;
+}
+
+#new-category h4 {
+	padding-bottom: 10px;
+}
+
+#new-category input[type="checkbox"] {
+	width: auto;
+	margin: 5px;	
+}
+
+#edit-category-list form{
+	display: inline-block;
+}
+
+#edit-category-list ul:nth-child(even) {
+	background: #eeeeee;
+}
+
+#edit-category-list li {
+	padding: 0.854133% 0;
+	padding-left: 2.454133%;
+}
+
+/* Modal */
+.adm-modal h4 {
+	margin-bottom: 10px;
+}
