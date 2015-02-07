@@ -51,10 +51,7 @@ class AdminController {
 		
 		def months = BudgetMonth.findAllByBudget(budget)
 		def expenseList = budgetService.getBudgetItems(user,iMonth,year,false)
-		
-		println "list total"
-		println "$expenseList.size()"
-		
+
 		def incomeList = budgetService.getBudgetItems(user,iMonth,year,true)
 		def df = generalService.getNumberFormatter()
 		boolean calculated = !budget.calculated
